@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html itemscope itemtype="http://schema.org/WebPage" lang="">
+  <head>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+    <meta name="robots" content="noodp" />
+    <title>Fortinet - FortiGate 60E SSL-VPN 設置 - </title><meta name="author" content="Laurance">
+<meta name="author-link" content="">
+<meta name="description" content="( 實現分群連接 SSL-VPN )" /><meta name="keywords" content='FortiGate' /><meta itemprop="name" content="Fortinet - FortiGate 60E SSL-VPN 設置">
+<meta itemprop="description" content="( 實現分群連接 SSL-VPN )"><meta itemprop="datePublished" content="2022-09-18T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2022-09-18T00:00:00+00:00" />
+<meta itemprop="wordCount" content="100"><meta itemprop="image" content="https://laurance.eu.org/tan.jpg"/>
+<meta itemprop="keywords" content="FortiGate," /><meta property="og:title" content="Fortinet - FortiGate 60E SSL-VPN 設置" />
+<meta property="og:description" content="( 實現分群連接 SSL-VPN )" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://laurance.eu.org/posts/fortinet-fortigate60e-vpn%E8%A8%AD%E7%BD%AE/" /><meta property="og:image" content="https://laurance.eu.org/tan.jpg"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-09-18T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-09-18T00:00:00+00:00" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://laurance.eu.org/tan.jpg"/>
+
+<meta name="twitter:title" content="Fortinet - FortiGate 60E SSL-VPN 設置"/>
+<meta name="twitter:description" content="( 實現分群連接 SSL-VPN )"/>
+<meta name="application-name" content="FixIt">
+<meta name="apple-mobile-web-app-title" content="FixIt"><meta name="theme-color" data-light="#f8f8f8" data-dark="#252627" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="https://laurance.eu.org/favicon.png"><link rel="apple-touch-icon" sizes="180x180" href="https://laurance.eu.org/apple-touch-icon.png"><link rel="mask-icon" href="https://laurance.eu.org/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="https://laurance.eu.org/site.webmanifest"><link rel="canonical" href="https://laurance.eu.org/posts/fortinet-fortigate60e-vpn%E8%A8%AD%E7%BD%AE/" /><link rel="prev" href="https://laurance.eu.org/posts/cacti-%E6%96%B0%E5%A2%9E%E6%A9%9F%E5%99%A8%E5%8F%8A%E5%9C%96%E8%A1%A8/" /><link rel="next" href="https://laurance.eu.org/posts/fortinet-fortigate60e-ssl%E5%8C%AF%E5%85%A53%E5%80%8B%E6%9C%88%E6%86%91%E8%AD%89/" /><link rel="stylesheet" href="https://laurance.eu.org/css/style.min.css"><link rel="stylesheet" href="https://laurance.eu.org/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="https://laurance.eu.org/lib/animate/animate.min.css"><script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Fortinet - FortiGate 60E SSL-VPN 設置",
+    "inLanguage": "",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https:\/\/laurance.eu.org\/posts\/fortinet-fortigate60e-vpn%E8%A8%AD%E7%BD%AE\/"
+    },"genre": "posts","keywords": "FortiGate","wordcount":  100 ,
+    "url": "https:\/\/laurance.eu.org\/posts\/fortinet-fortigate60e-vpn%E8%A8%AD%E7%BD%AE\/","datePublished": "2022-09-18T00:00:00+00:00","dateModified": "2022-09-18T00:00:00+00:00","publisher": {
+      "@type": "Organization",
+      "name": ""},"author": {
+        "@type": "Person",
+        "name": "Laurance"
+      },"description": "( 實現分群連接 SSL-VPN )"
+  }
+  </script></head>
+  <body data-header-desktop="sticky" data-header-mobile="auto"><script>(window.localStorage?.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('dark' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'dark' === 'dark')) && document.body.setAttribute('data-theme', 'dark');</script><div class="wrapper" data-page-style="wide"><header class="desktop animate__faster" id="header-desktop">
+  <div class="header-wrapper">
+    <div class="header-title">
+      <a href="https://laurance.eu.org/" title=""><img loading="lazy" src="https://laurance.eu.org/fixit.min.svg" srcset="https://laurance.eu.org/fixit.min.svg, https://laurance.eu.org/fixit.min.svg 1.5x, https://laurance.eu.org/fixit.min.svg 2x" sizes="auto" data-title="/fixit.min.svg" data-alt="/fixit.min.svg" class="logo" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/><span id="typeit-header-desktop" class="typeit"></span></a><span class="header-subtitle"></span></div>
+    <nav>
+      <ul class="menu"><li class="menu-item">
+              <a
+                class="menu-link"
+                href="https://laurance.eu.org/categories/"
+                
+                
+              ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> 分類</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="https://laurance.eu.org/tags/"
+                
+                
+              ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 標籤</a></li><li class="menu-item delimiter"></li><li class="menu-item search" id="search-desktop">
+            <input type="text" placeholder="搜索關鍵字" id="search-input-desktop">
+            <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+              <i class="fa-solid fa-search fa-fw" aria-hidden="true"></i>
+            </a>
+            <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+              <i class="fa-solid fa-times-circle fa-fw" aria-hidden="true"></i>
+            </a>
+            <span class="search-button search-loading" id="search-loading-desktop">
+              <i class="fa-solid fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+            </span>
+          </li><li class="menu-item theme-switch" title="Switch Theme">
+          <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
+        </li></ul>
+    </nav>
+  </div>
+</header><header class="mobile animate__faster" id="header-mobile">
+  <div class="header-container">
+    <div class="header-wrapper">
+      <div class="header-title">
+        <a href="https://laurance.eu.org/" title=""><img loading="lazy" src="https://laurance.eu.org/fixit.min.svg" srcset="https://laurance.eu.org/fixit.min.svg, https://laurance.eu.org/fixit.min.svg 1.5x, https://laurance.eu.org/fixit.min.svg 2x" sizes="auto" data-title="/fixit.min.svg" data-alt="/fixit.min.svg" class="logo" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/><span id="typeit-header-title-mobile" class="typeit"></span></a><span class="header-subtitle"></span></div>
+      <div class="menu-toggle" id="menu-toggle-mobile">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+    <nav>
+      <ul class="menu" id="menu-mobile"><li class="search-wrapper">
+            <div class="search mobile" id="search-mobile">
+              <input type="text" placeholder="搜索關鍵字" id="search-input-mobile">
+              <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                <i class="fa-solid fa-search fa-fw" aria-hidden="true"></i>
+              </a>
+              <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                <i class="fa-solid fa-times-circle fa-fw" aria-hidden="true"></i>
+              </a>
+              <span class="search-button search-loading" id="search-loading-mobile">
+                <i class="fa-solid fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+              </span>
+            </div>
+            <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+              Cancel
+            </a>
+          </li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="https://laurance.eu.org/categories/"
+                  
+                  
+                ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> 分類</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="https://laurance.eu.org/tags/"
+                  
+                  
+                ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 標籤</a></li><li class="menu-item menu-system">
+          <span class="menu-system-item theme-switch" title="Switch Theme"><i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i></span></li>
+      </ul>
+    </nav>
+  </div>
+</header><div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+  </div>
+  <div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+  </div><main class="container"><aside class="toc" id="toc-auto"></aside>
+
+  <aside class="aside-custom">
+    </aside>
+
+  <article class="page single">
+    <div class="header"><h1 class="single-title animate__animated animate__flipInX"><span>Fortinet - FortiGate 60E SSL-VPN 設置</span>
+      </h1></div><div class="post-meta">
+      <div class="post-meta-line"><span class="post-author"><span class="author"><i class="fa-solid fa-user-circle" aria-hidden="true"></i>
+      Laurance</span></span>
+          <span class="post-category">included in <a href="https://laurance.eu.org/categories/fortigate/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> FortiGate</a></span></div>
+      <div class="post-meta-line"><span title="published on 2022-09-18 00:00:00"><i class="fa-regular fa-calendar-alt fa-fw me-1" aria-hidden="true"></i><time datetime="2022-09-18">2022-09-18</time></span>&nbsp;<span title="Updated on 2022-09-18 00:00:00"><i class="fa-regular fa-edit fa-fw me-1" aria-hidden="true"></i><time datetime="2022-09-18">2022-09-18</time></span>&nbsp;<span><i class="fa-solid fa-pencil-alt fa-fw me-1" aria-hidden="true"></i>100 words</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw me-1" aria-hidden="true"></i>One minute</span>&nbsp;<span id="busuanzi_container_page_pv" class="busuanzi_visitors comment-visitors" data-flag-title="Fortinet - FortiGate 60E SSL-VPN 設置">
+            <i class="fa-regular fa-eye fa-fw me-1" aria-hidden="true"></i><span id="busuanzi_value_page_pv">-</span>&nbsp;views
+          </span>&nbsp;</div>
+    </div><div class="content" id="content"><p>&ldquo;( 實現分群連接 SSL-VPN )&rdquo;</p>
+<div class="details admonition note open">
+    <div class="details-summary admonition-title">
+      <i class="icon fa-solid fa-pencil-alt fa-fw" aria-hidden="true"></i>Note<i class="details-icon fa-solid fa-angle-right fa-fw" aria-hidden="true"></i>
+    </div>
+    <div class="details-content">
+      <div class="admonition-content"><h1 id="1-網路--介面切-wan1-對應外網-設定成vpn入口">1. 網路 &raquo; 介面切 WAN1 對應外網 (設定成VPN入口)</h1>
+<h2 id="group1-1721619850-17216198100--addr1">(Group1: 172.16.198.50-172.16.198.100 &raquo; ADDR1)</h2>
+<h2 id="group2-17216198101-17216198150--addr2">(Group2: 172.16.198.101-172.16.198.150 &raquo; ADDR2)</h2>
+<h2 id="其餘port設定為lan口-internalport1-7-ip遮罩-1721605516-關閉dhcp">其餘port設定為LAN口 (internal:port1-7) IP/遮罩 172.16.0.55/16 關閉DHCP</h2>
+<p><code>默認會無法解放LAN-Port,因為被其他位置占用,解除之後就可以了</code></div>
+    </div>
+  </div>
+<p><img loading="lazy" src="001.png" srcset="https://laurance.eu.org/posts/fortinet-fortigate60e-vpn%E8%A8%AD%E7%BD%AE/001.png, 001.png 1.5x, https://laurance.eu.org/posts/fortinet-fortigate60e-vpn%E8%A8%AD%E7%BD%AE/001.png 2x" sizes="auto" data-title="/posts/fortinet-fortigate60e-vpn%E8%A8%AD%E7%BD%AE/001.png" data-alt="/posts/fortinet-fortigate60e-vpn%E8%A8%AD%E7%BD%AE/001.png" width="1920" height="937" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/></p>
+<div class="details admonition note open">
+    <div class="details-summary admonition-title">
+      <i class="icon fa-solid fa-pencil-alt fa-fw" aria-hidden="true"></i>Note<i class="details-icon fa-solid fa-angle-right fa-fw" aria-hidden="true"></i>
+    </div>
+    <div class="details-content">
+      <div class="admonition-content"><h1 id="2-設置辦公室內部dns">2. 設置辦公室內部DNS</h1>
+</div>
+    </div>
+  </div>
+<p><img loading="lazy" src="002.png" srcset="https://laurance.eu.org/posts/fortinet-fortigate60e-vpn%E8%A8%AD%E7%BD%AE/002.png, 002.png 1.5x, https://laurance.eu.org/posts/fortinet-fortigate60e-vpn%E8%A8%AD%E7%BD%AE/002.png 2x" sizes="auto" data-title="/posts/fortinet-fortigate60e-vpn%E8%A8%AD%E7%BD%AE/002.png" data-alt="/posts/fortinet-fortigate60e-vpn%E8%A8%AD%E7%BD%AE/002.png" width="1920" height="937" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/></p>
+<div class="details admonition note open">
+    <div class="details-summary admonition-title">
+      <i class="icon fa-solid fa-pencil-alt fa-fw" aria-hidden="true"></i>Note<i class="details-icon fa-solid fa-angle-right fa-fw" aria-hidden="true"></i>
+    </div>
+    <div class="details-content">
+      <div class="admonition-content"><h1 id="3-開啟進階功能開關--系統管理-feature-visibility-其餘依照環境設置">3. 開啟進階功能開關 &raquo; 系統管理 Feature Visibility (其餘依照環境設置)</h1>
+</div>
+    </div>
+  </div>
+<p><img loading="lazy" src="003.png" srcset="https://laurance.eu.org/posts/fortinet-fortigate60e-vpn%E8%A8%AD%E7%BD%AE/003.png, 003.png 1.5x, https://laurance.eu.org/posts/fortinet-fortigate60e-vpn%E8%A8%AD%E7%BD%AE/003.png 2x" sizes="auto" data-title="/posts/fortinet-fortigate60e-vpn%E8%A8%AD%E7%BD%AE/003.png" data-alt="/posts/fortinet-fortigate60e-vpn%E8%A8%AD%E7%BD%AE/003.png" width="1920" height="937" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/></p>
+<div class="details admonition note open">
+    <div class="details-summary admonition-title">
+      <i class="icon fa-solid fa-pencil-alt fa-fw" aria-hidden="true"></i>Note<i class="details-icon fa-solid fa-angle-right fa-fw" aria-hidden="true"></i>
+    </div>
+    <div class="details-content">
+      <div class="admonition-content"><h1 id="4-新增位址--內部-internal-ip">4. 新增位址 &raquo; 內部 Internal-IP</h1>
+</div>
+    </div>
+  </div>
+<p><img loading="lazy" src="004.png" srcset="https://laurance.eu.org/posts/fortinet-fortigate60e-vpn%E8%A8%AD%E7%BD%AE/004.png, 004.png 1.5x, https://laurance.eu.org/posts/fortinet-fortigate60e-vpn%E8%A8%AD%E7%BD%AE/004.png 2x" sizes="auto" data-title="/posts/fortinet-fortigate60e-vpn%E8%A8%AD%E7%BD%AE/004.png" data-alt="/posts/fortinet-fortigate60e-vpn%E8%A8%AD%E7%BD%AE/004.png" width="1920" height="937" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/></p>
+<div class="details admonition note open">
+    <div class="details-summary admonition-title">
+      <i class="icon fa-solid fa-pencil-alt fa-fw" aria-hidden="true"></i>Note<i class="details-icon fa-solid fa-angle-right fa-fw" aria-hidden="true"></i>
+    </div>
+    <div class="details-content">
+      <div class="admonition-content"><h1 id="5-新增位址--sslvpn_tunnel_addr1--sslvpn_tunnel_addr2-做2個vpn通道">5. 新增位址 &raquo; SSLVPN_TUNNEL_ADDR1 , SSLVPN_TUNNEL_ADDR2 (做2個VPN通道)</h1>
+</div>
+    </div>
+  </div>
+<p><img loading="lazy" src="006.png" srcset="https://laurance.eu.org/posts/fortinet-fortigate60e-vpn%E8%A8%AD%E7%BD%AE/006.png, 006.png 1.5x, https://laurance.eu.org/posts/fortinet-fortigate60e-vpn%E8%A8%AD%E7%BD%AE/006.png 2x" sizes="auto" data-title="/posts/fortinet-fortigate60e-vpn%E8%A8%AD%E7%BD%AE/006.png" data-alt="/posts/fortinet-fortigate60e-vpn%E8%A8%AD%E7%BD%AE/006.png" width="1920" height="937" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/></p>
+<p><img loading="lazy" src="007.png" srcset="https://laurance.eu.org/posts/fortinet-fortigate60e-vpn%E8%A8%AD%E7%BD%AE/007.png, 007.png 1.5x, https://laurance.eu.org/posts/fortinet-fortigate60e-vpn%E8%A8%AD%E7%BD%AE/007.png 2x" sizes="auto" data-title="/posts/fortinet-fortigate60e-vpn%E8%A8%AD%E7%BD%AE/007.png" data-alt="/posts/fortinet-fortigate60e-vpn%E8%A8%AD%E7%BD%AE/007.png" width="1920" height="937" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/></p>
+<div class="details admonition note open">
+    <div class="details-summary admonition-title">
+      <i class="icon fa-solid fa-pencil-alt fa-fw" aria-hidden="true"></i>Note<i class="details-icon fa-solid fa-angle-right fa-fw" aria-hidden="true"></i>
+    </div>
+    <div class="details-content">
+      <div class="admonition-content"><h1 id="6-ssl-vpn入口頁面--新建-vpn-group1--vpn-group2-對應-addr1--addr2">6. SSL-VPN入口頁面 &raquo; 新建 VPN-GROUP1 , VPN-GROUP2 對應 ADDR1 , ADDR2</h1>
+</div>
+    </div>
+  </div>
+<p><img loading="lazy" src="021.png" srcset="https://laurance.eu.org/posts/fortinet-fortigate60e-vpn%E8%A8%AD%E7%BD%AE/021.png, 021.png 1.5x, https://laurance.eu.org/posts/fortinet-fortigate60e-vpn%E8%A8%AD%E7%BD%AE/021.png 2x" sizes="auto" data-title="/posts/fortinet-fortigate60e-vpn%E8%A8%AD%E7%BD%AE/021.png" data-alt="/posts/fortinet-fortigate60e-vpn%E8%A8%AD%E7%BD%AE/021.png" width="1920" height="937" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/></p>
+<p><img loading="lazy" src="022.png" srcset="https://laurance.eu.org/posts/fortinet-fortigate60e-vpn%E8%A8%AD%E7%BD%AE/022.png, 022.png 1.5x, https://laurance.eu.org/posts/fortinet-fortigate60e-vpn%E8%A8%AD%E7%BD%AE/022.png 2x" sizes="auto" data-title="/posts/fortinet-fortigate60e-vpn%E8%A8%AD%E7%BD%AE/022.png" data-alt="/posts/fortinet-fortigate60e-vpn%E8%A8%AD%E7%BD%AE/022.png" width="1920" height="937" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/></p>
+<div class="details admonition note open">
+    <div class="details-summary admonition-title">
+      <i class="icon fa-solid fa-pencil-alt fa-fw" aria-hidden="true"></i>Note<i class="details-icon fa-solid fa-angle-right fa-fw" aria-hidden="true"></i>
+    </div>
+    <div class="details-content">
+      <div class="admonition-content"><h1 id="7-設置靜態路由-wan1-vpn入口">7. 設置靜態路由 WAN1 (VPN入口)</h1>
+</div>
+    </div>
+  </div>
+<p><img loading="lazy" src="008.png" srcset="https://laurance.eu.org/posts/fortinet-fortigate60e-vpn%E8%A8%AD%E7%BD%AE/008.png, 008.png 1.5x, https://laurance.eu.org/posts/fortinet-fortigate60e-vpn%E8%A8%AD%E7%BD%AE/008.png 2x" sizes="auto" data-title="/posts/fortinet-fortigate60e-vpn%E8%A8%AD%E7%BD%AE/008.png" data-alt="/posts/fortinet-fortigate60e-vpn%E8%A8%AD%E7%BD%AE/008.png" width="1920" height="937" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/></p>
+<div class="details admonition note open">
+    <div class="details-summary admonition-title">
+      <i class="icon fa-solid fa-pencil-alt fa-fw" aria-hidden="true"></i>Note<i class="details-icon fa-solid fa-angle-right fa-fw" aria-hidden="true"></i>
+    </div>
+    <div class="details-content">
+      <div class="admonition-content"><h1 id="8-設置政策路由-設置wan1出口來源分兩個-group">8. 設置政策路由 (設置WAN1出口,來源分兩個 Group)</h1>
+</div>
+    </div>
+  </div>
+<p><img loading="lazy" src="010.png" srcset="https://laurance.eu.org/posts/fortinet-fortigate60e-vpn%E8%A8%AD%E7%BD%AE/010.png, 010.png 1.5x, https://laurance.eu.org/posts/fortinet-fortigate60e-vpn%E8%A8%AD%E7%BD%AE/010.png 2x" sizes="auto" data-title="/posts/fortinet-fortigate60e-vpn%E8%A8%AD%E7%BD%AE/010.png" data-alt="/posts/fortinet-fortigate60e-vpn%E8%A8%AD%E7%BD%AE/010.png" width="1920" height="937" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/></p>
+<p><img loading="lazy" src="011.png" srcset="https://laurance.eu.org/posts/fortinet-fortigate60e-vpn%E8%A8%AD%E7%BD%AE/011.png, 011.png 1.5x, https://laurance.eu.org/posts/fortinet-fortigate60e-vpn%E8%A8%AD%E7%BD%AE/011.png 2x" sizes="auto" data-title="/posts/fortinet-fortigate60e-vpn%E8%A8%AD%E7%BD%AE/011.png" data-alt="/posts/fortinet-fortigate60e-vpn%E8%A8%AD%E7%BD%AE/011.png" width="1920" height="937" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/></p>
+<p><img loading="lazy" src="012.png" srcset="https://laurance.eu.org/posts/fortinet-fortigate60e-vpn%E8%A8%AD%E7%BD%AE/012.png, 012.png 1.5x, https://laurance.eu.org/posts/fortinet-fortigate60e-vpn%E8%A8%AD%E7%BD%AE/012.png 2x" sizes="auto" data-title="/posts/fortinet-fortigate60e-vpn%E8%A8%AD%E7%BD%AE/012.png" data-alt="/posts/fortinet-fortigate60e-vpn%E8%A8%AD%E7%BD%AE/012.png" width="1920" height="937" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/></p>
+<div class="details admonition note open">
+    <div class="details-summary admonition-title">
+      <i class="icon fa-solid fa-pencil-alt fa-fw" aria-hidden="true"></i>Note<i class="details-icon fa-solid fa-angle-right fa-fw" aria-hidden="true"></i>
+    </div>
+    <div class="details-content">
+      <div class="admonition-content"><h1 id="9-ip-pool--新建ip池-外部ip設置自己到自己">9. IP Pool &raquo; 新建IP池 (外部IP設置自己到自己)</h1>
+</div>
+    </div>
+  </div>
+<p><img loading="lazy" src="013.png" srcset="https://laurance.eu.org/posts/fortinet-fortigate60e-vpn%E8%A8%AD%E7%BD%AE/013.png, 013.png 1.5x, https://laurance.eu.org/posts/fortinet-fortigate60e-vpn%E8%A8%AD%E7%BD%AE/013.png 2x" sizes="auto" data-title="/posts/fortinet-fortigate60e-vpn%E8%A8%AD%E7%BD%AE/013.png" data-alt="/posts/fortinet-fortigate60e-vpn%E8%A8%AD%E7%BD%AE/013.png" width="1920" height="937" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/></p>
+<div class="details admonition note open">
+    <div class="details-summary admonition-title">
+      <i class="icon fa-solid fa-pencil-alt fa-fw" aria-hidden="true"></i>Note<i class="details-icon fa-solid fa-angle-right fa-fw" aria-hidden="true"></i>
+    </div>
+    <div class="details-content">
+      <div class="admonition-content"><h1 id="10-新增用戶群組">10. 新增用戶群組</h1>
+</div>
+    </div>
+  </div>
+<p><img loading="lazy" src="014.png" srcset="https://laurance.eu.org/posts/fortinet-fortigate60e-vpn%E8%A8%AD%E7%BD%AE/014.png, 014.png 1.5x, https://laurance.eu.org/posts/fortinet-fortigate60e-vpn%E8%A8%AD%E7%BD%AE/014.png 2x" sizes="auto" data-title="/posts/fortinet-fortigate60e-vpn%E8%A8%AD%E7%BD%AE/014.png" data-alt="/posts/fortinet-fortigate60e-vpn%E8%A8%AD%E7%BD%AE/014.png" width="1920" height="937" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/></p>
+<div class="details admonition note open">
+    <div class="details-summary admonition-title">
+      <i class="icon fa-solid fa-pencil-alt fa-fw" aria-hidden="true"></i>Note<i class="details-icon fa-solid fa-angle-right fa-fw" aria-hidden="true"></i>
+    </div>
+    <div class="details-content">
+      <div class="admonition-content"><h1 id="11-ssl-vpn設定--監聽走wan1--4826port--ip範圍addr1addr2--認證入口對應群組">11. SSL-VPN設定 &raquo; 監聽走WAN1 , 4826Port , IP範圍:ADDR1,ADDR2 , 認證入口對應群組</h1>
+</div>
+    </div>
+  </div>
+<p><img loading="lazy" src="015.png" srcset="https://laurance.eu.org/posts/fortinet-fortigate60e-vpn%E8%A8%AD%E7%BD%AE/015.png, 015.png 1.5x, https://laurance.eu.org/posts/fortinet-fortigate60e-vpn%E8%A8%AD%E7%BD%AE/015.png 2x" sizes="auto" data-title="/posts/fortinet-fortigate60e-vpn%E8%A8%AD%E7%BD%AE/015.png" data-alt="/posts/fortinet-fortigate60e-vpn%E8%A8%AD%E7%BD%AE/015.png" width="1920" height="937" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/></p>
+<div class="details admonition note open">
+    <div class="details-summary admonition-title">
+      <i class="icon fa-solid fa-pencil-alt fa-fw" aria-hidden="true"></i>Note<i class="details-icon fa-solid fa-angle-right fa-fw" aria-hidden="true"></i>
+    </div>
+    <div class="details-content">
+      <div class="admonition-content"><h1 id="12-新增ipv4政策">12. 新增IPV4政策</h1>
+<h2 id="internal-wan1-sslvpn-lan-sslvpn-wan1">(internal-wan1) (SSLVPN-LAN) (SSLVPN-WAN1)</h2>
+</div>
+    </div>
+  </div>
+<p><img loading="lazy" src="016.png" srcset="https://laurance.eu.org/posts/fortinet-fortigate60e-vpn%E8%A8%AD%E7%BD%AE/016.png, 016.png 1.5x, https://laurance.eu.org/posts/fortinet-fortigate60e-vpn%E8%A8%AD%E7%BD%AE/016.png 2x" sizes="auto" data-title="/posts/fortinet-fortigate60e-vpn%E8%A8%AD%E7%BD%AE/016.png" data-alt="/posts/fortinet-fortigate60e-vpn%E8%A8%AD%E7%BD%AE/016.png" width="1920" height="937" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/></p>
+<p><img loading="lazy" src="017.png" srcset="https://laurance.eu.org/posts/fortinet-fortigate60e-vpn%E8%A8%AD%E7%BD%AE/017.png, 017.png 1.5x, https://laurance.eu.org/posts/fortinet-fortigate60e-vpn%E8%A8%AD%E7%BD%AE/017.png 2x" sizes="auto" data-title="/posts/fortinet-fortigate60e-vpn%E8%A8%AD%E7%BD%AE/017.png" data-alt="/posts/fortinet-fortigate60e-vpn%E8%A8%AD%E7%BD%AE/017.png" width="1920" height="937" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/></p>
+<p><img loading="lazy" src="018.png" srcset="https://laurance.eu.org/posts/fortinet-fortigate60e-vpn%E8%A8%AD%E7%BD%AE/018.png, 018.png 1.5x, https://laurance.eu.org/posts/fortinet-fortigate60e-vpn%E8%A8%AD%E7%BD%AE/018.png 2x" sizes="auto" data-title="/posts/fortinet-fortigate60e-vpn%E8%A8%AD%E7%BD%AE/018.png" data-alt="/posts/fortinet-fortigate60e-vpn%E8%A8%AD%E7%BD%AE/018.png" width="1920" height="937" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/></p>
+<p><img loading="lazy" src="019.png" srcset="https://laurance.eu.org/posts/fortinet-fortigate60e-vpn%E8%A8%AD%E7%BD%AE/019.png, 019.png 1.5x, https://laurance.eu.org/posts/fortinet-fortigate60e-vpn%E8%A8%AD%E7%BD%AE/019.png 2x" sizes="auto" data-title="/posts/fortinet-fortigate60e-vpn%E8%A8%AD%E7%BD%AE/019.png" data-alt="/posts/fortinet-fortigate60e-vpn%E8%A8%AD%E7%BD%AE/019.png" width="1920" height="937" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/></p>
+<hr></div><div class="post-footer" id="post-footer">
+  <div class="post-info">
+    <div class="post-info-line">
+      <div class="post-info-mod">
+        <span title="Updated on 2022-09-18 00:00:00">Updated on 2022-09-18&nbsp;</span>
+      </div><div class="post-info-license">
+          <span><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span>
+        </div></div>
+    <div class="post-info-line">
+      <div class="post-info-md"><span><a href="https://laurance.eu.org/posts/fortinet-fortigate60e-vpn%E8%A8%AD%E7%BD%AE/index.md" title="Read Markdown" class="link-to-markdown">Read Markdown</a></span></div>
+      <div class="post-info-share">
+        <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://laurance.eu.org/posts/fortinet-fortigate60e-vpn%E8%A8%AD%E7%BD%AE/" data-title="Fortinet - FortiGate 60E SSL-VPN 設置" data-hashtags="FortiGate"><i class="fa-brands fa-twitter fa-fw" aria-hidden="true"></i></a>
+  <a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://laurance.eu.org/posts/fortinet-fortigate60e-vpn%E8%A8%AD%E7%BD%AE/" data-hashtag="FortiGate"><i class="fa-brands fa-facebook-square fa-fw" aria-hidden="true"></i></a>
+  <a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://laurance.eu.org/posts/fortinet-fortigate60e-vpn%E8%A8%AD%E7%BD%AE/" data-title="Fortinet - FortiGate 60E SSL-VPN 設置"><i class="fa-brands fa-weibo fa-fw" aria-hidden="true"></i></a>
+  </span>
+      </div>
+    </div>
+  </div>
+
+  <div class="post-info-more">
+    <section class="post-tags"><i class="fa-solid fa-tags fa-fw me-1" aria-hidden="true"></i><a href='https://laurance.eu.org/tags/fortigate/' class="post-tag">FortiGate</a></section>
+    <section>
+      <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="https://laurance.eu.org/">Home</a></span>
+    </section>
+  </div>
+
+  <div class="post-nav"><a href="https://laurance.eu.org/posts/cacti-%E6%96%B0%E5%A2%9E%E6%A9%9F%E5%99%A8%E5%8F%8A%E5%9C%96%E8%A1%A8/" class="post-nav-item" rel="prev" title="Cacti - 新增機器監控及圖表"><i class="fa-solid fa-angle-left fa-fw" aria-hidden="true"></i>Cacti - 新增機器監控及圖表</a>
+      <a href="https://laurance.eu.org/posts/fortinet-fortigate60e-ssl%E5%8C%AF%E5%85%A53%E5%80%8B%E6%9C%88%E6%86%91%E8%AD%89/" class="post-nav-item" rel="next" title="Fortinet - FortiGate60E SSL匯入自簽3個月憑證">Fortinet - FortiGate60E SSL匯入自簽3個月憑證<i class="fa-solid fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+</article></main><footer class="footer">
+    <div class="footer-container"><div class="footer-line powered">Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreferrer" title="Hugo 0.111.3">Hugo</a> | Theme - <a href="https://github.com/hugo-fixit/FixIt" target="_blank" rel="external" title="FixIt v0.2.18"><img class="fixit-icon" src="https://laurance.eu.org/fixit.min.svg" alt="FixIt logo" />&nbsp;FixIt</a>
+        </div><div class="footer-line copyright" itemscope itemtype="http://schema.org/CreativeWork"><i class="fa-regular fa-copyright fa-fw" aria-hidden="true"></i>
+            <span itemprop="copyrightYear">2021 - 2023</span><span class="author" itemprop="copyrightHolder">
+              <a href="https://laurance.eu.org/">Laurance</a></span></div><div class="footer-line statistics"></div><div class="footer-line visitor">
+          <span id="busuanzi_container_site_uv" title='Total visitors'><i class="fa-regular fa-user fa-fw" aria-hidden="true"></i>&nbsp;<span id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span></span><span id="busuanzi_container_site_pv" class="footer-divider" title='Total visits'><i class="fa-regular fa-eye fa-fw" aria-hidden="true"></i>&nbsp;<span id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span></span>
+        </div></div>
+  </footer></div><div class="widgets"><div class="fixed-buttons animate__faster d-none"><div class="fixed-button back-to-top" role="button" aria-label="Back to Top"><i class="fa-solid fa-arrow-up fa-fw" aria-hidden="true"></i><span class="variant-numeric d-none">0%</span>
+        </div></div><div id="mask"></div><noscript>
+    <div class="noscript-warning">Theme FixIt works best with JavaScript enabled.</div>
+  </noscript>
+</div><link rel="stylesheet" href="https://laurance.eu.org/lib/lightgallery/css/lightgallery-bundle.min.css"><link rel="stylesheet" href="https://laurance.eu.org/lib/katex/katex.min.css"><link rel="stylesheet" href="https://laurance.eu.org/lib/cookieconsent/cookieconsent.min.css"><link rel="stylesheet" href="https://laurance.eu.org/lib/pace/themes/blue/pace-theme-minimal.css"><script src="https://laurance.eu.org/lib/autocomplete/autocomplete.min.js" defer></script><script src="https://laurance.eu.org/lib/lunr/lunr.min.js" defer></script><script src="https://laurance.eu.org/lib/lightgallery/lightgallery.min.js" defer></script><script src="https://laurance.eu.org/lib/lightgallery/plugins/thumbnail/lg-thumbnail.min.js" defer></script><script src="https://laurance.eu.org/lib/lightgallery/plugins/zoom/lg-zoom.min.js" defer></script><script src="https://laurance.eu.org/lib/sharer/sharer.min.js" async defer></script><script src="https://laurance.eu.org/lib/typeit/index.umd.js" defer></script><script src="https://laurance.eu.org/lib/katex/katex.min.js" defer></script><script src="https://laurance.eu.org/lib/katex/auto-render.min.js" defer></script><script src="https://laurance.eu.org/lib/katex/copy-tex.min.js" defer></script><script src="https://laurance.eu.org/lib/katex/mhchem.min.js" defer></script><script src="https://laurance.eu.org/lib/cookieconsent/cookieconsent.min.js" defer></script><script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async defer></script><script src="https://laurance.eu.org/lib/pace/pace.min.js" async defer></script><script>window.config={"autoBookmark":true,"code":{"copyTitle":"Copy to clipboard","editLockTitle":"Lock editable code block","editUnLockTitle":"Unlock editable code block","editable":true,"maxShownLines":10},"comment":{"enable":false},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"data":{"typeit-header-desktop":" Laurance's Note Bloggggg ","typeit-header-title-mobile":" Laurance's Note Bloggggg "},"enablePWA":true,"lightgallery":true,"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":20,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"typeit-header-desktop":["typeit-header-desktop"],"typeit-header-title-mobile":["typeit-header-title-mobile"]},"duration":-1,"loop":false,"speed":100}};</script><script src="https://laurance.eu.org/js/theme.min.js" defer></script></body>
+</html>

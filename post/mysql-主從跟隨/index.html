@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html itemscope itemtype="http://schema.org/WebPage" lang="">
+  <head>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+    <meta name="robots" content="noodp" />
+    <title>MySQL - Replication 主從式跟隨架構設定 - </title><meta name="author" content="Laurance">
+<meta name="author-link" content="">
+<meta name="description" content="Master Slave Replication 的架構 Example 在 master server 執行的 SQL command 會被記錄在 Binary Log 裡面 master 將 Binary Log 傳送到 slave 的 Relay Log slave 依據 Relay Log 做資料的變更 建立 MySQL Replication 實作紀錄 [ Slave 設定為不寫 binlog] Master server 設定 : { 修改 Master 設定檔 } vim /etc/mysql/my.cnf [mysqld] skip-external-locking sql_mode=NO_AUTO_Create_USER,NO_ENGINE_SUBSTITUTION #default-storage-engine=MYISAM explicit_defaults_for_timestamp=true #-------------------------------------- #default-tmp-storage-engine=MYISAM character_set_server = utf8 innodb_buffer_pool_size = 1500M innodb_log_buffer_size = 32M innodb_log_file_size = 16M innodb_flush_log_at_trx_commit = 2 innodb_buffer_pool_instances = 1 innodb_file_per_table=1 #------------------------------------- max_connections = 2000 max_allowed_packet = 64M table_open_cache = 512 sort_buffer_size = 4M net_buffer_length = 8K read_buffer_size = 256K read_rnd_buffer_size = 512K myisam_sort_buffer_size = 128M #key_buffer = 256M #------------------------------------- socket = /var/lib/mysql/mysql." /><meta name="keywords" content='MySQL' /><meta itemprop="name" content="MySQL - Replication 主從式跟隨架構設定">
+<meta itemprop="description" content="Master Slave Replication 的架構 Example 在 master server 執行的 SQL command 會被記錄在 Binary Log 裡面 master 將 Binary Log 傳送到 slave 的 Relay Log slave 依據 Relay Log 做資料的變更 建立 MySQL Replication 實作紀錄 [ Slave 設定為不寫 binlog] Master server 設定 : { 修改 Master 設定檔 } vim /etc/mysql/my.cnf [mysqld] skip-external-locking sql_mode=NO_AUTO_Create_USER,NO_ENGINE_SUBSTITUTION #default-storage-engine=MYISAM explicit_defaults_for_timestamp=true #-------------------------------------- #default-tmp-storage-engine=MYISAM character_set_server = utf8 innodb_buffer_pool_size = 1500M innodb_log_buffer_size = 32M innodb_log_file_size = 16M innodb_flush_log_at_trx_commit = 2 innodb_buffer_pool_instances = 1 innodb_file_per_table=1 #------------------------------------- max_connections = 2000 max_allowed_packet = 64M table_open_cache = 512 sort_buffer_size = 4M net_buffer_length = 8K read_buffer_size = 256K read_rnd_buffer_size = 512K myisam_sort_buffer_size = 128M #key_buffer = 256M #------------------------------------- socket = /var/lib/mysql/mysql."><meta itemprop="datePublished" content="2022-08-03T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2022-08-03T00:00:00+00:00" />
+<meta itemprop="wordCount" content="382"><meta itemprop="image" content="https://laurance.eu.org/tan.jpg"/>
+<meta itemprop="keywords" content="MySQL," /><meta property="og:title" content="MySQL - Replication 主從式跟隨架構設定" />
+<meta property="og:description" content="Master Slave Replication 的架構 Example 在 master server 執行的 SQL command 會被記錄在 Binary Log 裡面 master 將 Binary Log 傳送到 slave 的 Relay Log slave 依據 Relay Log 做資料的變更 建立 MySQL Replication 實作紀錄 [ Slave 設定為不寫 binlog] Master server 設定 : { 修改 Master 設定檔 } vim /etc/mysql/my.cnf [mysqld] skip-external-locking sql_mode=NO_AUTO_Create_USER,NO_ENGINE_SUBSTITUTION #default-storage-engine=MYISAM explicit_defaults_for_timestamp=true #-------------------------------------- #default-tmp-storage-engine=MYISAM character_set_server = utf8 innodb_buffer_pool_size = 1500M innodb_log_buffer_size = 32M innodb_log_file_size = 16M innodb_flush_log_at_trx_commit = 2 innodb_buffer_pool_instances = 1 innodb_file_per_table=1 #------------------------------------- max_connections = 2000 max_allowed_packet = 64M table_open_cache = 512 sort_buffer_size = 4M net_buffer_length = 8K read_buffer_size = 256K read_rnd_buffer_size = 512K myisam_sort_buffer_size = 128M #key_buffer = 256M #------------------------------------- socket = /var/lib/mysql/mysql." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://laurance.eu.org/posts/mysql-%E4%B8%BB%E5%BE%9E%E8%B7%9F%E9%9A%A8/" /><meta property="og:image" content="https://laurance.eu.org/tan.jpg"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-08-03T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-08-03T00:00:00+00:00" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://laurance.eu.org/tan.jpg"/>
+
+<meta name="twitter:title" content="MySQL - Replication 主從式跟隨架構設定"/>
+<meta name="twitter:description" content="Master Slave Replication 的架構 Example 在 master server 執行的 SQL command 會被記錄在 Binary Log 裡面 master 將 Binary Log 傳送到 slave 的 Relay Log slave 依據 Relay Log 做資料的變更 建立 MySQL Replication 實作紀錄 [ Slave 設定為不寫 binlog] Master server 設定 : { 修改 Master 設定檔 } vim /etc/mysql/my.cnf [mysqld] skip-external-locking sql_mode=NO_AUTO_Create_USER,NO_ENGINE_SUBSTITUTION #default-storage-engine=MYISAM explicit_defaults_for_timestamp=true #-------------------------------------- #default-tmp-storage-engine=MYISAM character_set_server = utf8 innodb_buffer_pool_size = 1500M innodb_log_buffer_size = 32M innodb_log_file_size = 16M innodb_flush_log_at_trx_commit = 2 innodb_buffer_pool_instances = 1 innodb_file_per_table=1 #------------------------------------- max_connections = 2000 max_allowed_packet = 64M table_open_cache = 512 sort_buffer_size = 4M net_buffer_length = 8K read_buffer_size = 256K read_rnd_buffer_size = 512K myisam_sort_buffer_size = 128M #key_buffer = 256M #------------------------------------- socket = /var/lib/mysql/mysql."/>
+<meta name="application-name" content="FixIt">
+<meta name="apple-mobile-web-app-title" content="FixIt"><meta name="theme-color" data-light="#f8f8f8" data-dark="#252627" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="https://laurance.eu.org/favicon.png"><link rel="apple-touch-icon" sizes="180x180" href="https://laurance.eu.org/apple-touch-icon.png"><link rel="mask-icon" href="https://laurance.eu.org/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="https://laurance.eu.org/site.webmanifest"><link rel="canonical" href="https://laurance.eu.org/posts/mysql-%E4%B8%BB%E5%BE%9E%E8%B7%9F%E9%9A%A8/" /><link rel="prev" href="https://laurance.eu.org/posts/mysql-%E5%B8%B8%E7%94%A8%E8%AA%9E%E6%B3%95/" /><link rel="next" href="https://laurance.eu.org/posts/mysql-yum%E5%AE%89%E8%A3%9D/" /><link rel="stylesheet" href="https://laurance.eu.org/css/style.min.css"><link rel="stylesheet" href="https://laurance.eu.org/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="https://laurance.eu.org/lib/animate/animate.min.css"><script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "MySQL - Replication 主從式跟隨架構設定",
+    "inLanguage": "",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https:\/\/laurance.eu.org\/posts\/mysql-%E4%B8%BB%E5%BE%9E%E8%B7%9F%E9%9A%A8\/"
+    },"genre": "posts","keywords": "MySQL","wordcount":  382 ,
+    "url": "https:\/\/laurance.eu.org\/posts\/mysql-%E4%B8%BB%E5%BE%9E%E8%B7%9F%E9%9A%A8\/","datePublished": "2022-08-03T00:00:00+00:00","dateModified": "2022-08-03T00:00:00+00:00","publisher": {
+      "@type": "Organization",
+      "name": ""},"author": {
+        "@type": "Person",
+        "name": "Laurance"
+      },"description": ""
+  }
+  </script></head>
+  <body data-header-desktop="sticky" data-header-mobile="auto"><script>(window.localStorage?.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('dark' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'dark' === 'dark')) && document.body.setAttribute('data-theme', 'dark');</script><div class="wrapper" data-page-style="wide"><header class="desktop animate__faster" id="header-desktop">
+  <div class="header-wrapper">
+    <div class="header-title">
+      <a href="https://laurance.eu.org/" title=""><img loading="lazy" src="https://laurance.eu.org/fixit.min.svg" srcset="https://laurance.eu.org/fixit.min.svg, https://laurance.eu.org/fixit.min.svg 1.5x, https://laurance.eu.org/fixit.min.svg 2x" sizes="auto" data-title="/fixit.min.svg" data-alt="/fixit.min.svg" class="logo" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/><span id="typeit-header-desktop" class="typeit"></span></a><span class="header-subtitle"></span></div>
+    <nav>
+      <ul class="menu"><li class="menu-item">
+              <a
+                class="menu-link"
+                href="https://laurance.eu.org/categories/"
+                
+                
+              ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> 分類</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="https://laurance.eu.org/tags/"
+                
+                
+              ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 標籤</a></li><li class="menu-item delimiter"></li><li class="menu-item search" id="search-desktop">
+            <input type="text" placeholder="搜索關鍵字" id="search-input-desktop">
+            <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+              <i class="fa-solid fa-search fa-fw" aria-hidden="true"></i>
+            </a>
+            <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+              <i class="fa-solid fa-times-circle fa-fw" aria-hidden="true"></i>
+            </a>
+            <span class="search-button search-loading" id="search-loading-desktop">
+              <i class="fa-solid fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+            </span>
+          </li><li class="menu-item theme-switch" title="Switch Theme">
+          <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
+        </li></ul>
+    </nav>
+  </div>
+</header><header class="mobile animate__faster" id="header-mobile">
+  <div class="header-container">
+    <div class="header-wrapper">
+      <div class="header-title">
+        <a href="https://laurance.eu.org/" title=""><img loading="lazy" src="https://laurance.eu.org/fixit.min.svg" srcset="https://laurance.eu.org/fixit.min.svg, https://laurance.eu.org/fixit.min.svg 1.5x, https://laurance.eu.org/fixit.min.svg 2x" sizes="auto" data-title="/fixit.min.svg" data-alt="/fixit.min.svg" class="logo" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/><span id="typeit-header-title-mobile" class="typeit"></span></a><span class="header-subtitle"></span></div>
+      <div class="menu-toggle" id="menu-toggle-mobile">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+    <nav>
+      <ul class="menu" id="menu-mobile"><li class="search-wrapper">
+            <div class="search mobile" id="search-mobile">
+              <input type="text" placeholder="搜索關鍵字" id="search-input-mobile">
+              <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                <i class="fa-solid fa-search fa-fw" aria-hidden="true"></i>
+              </a>
+              <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                <i class="fa-solid fa-times-circle fa-fw" aria-hidden="true"></i>
+              </a>
+              <span class="search-button search-loading" id="search-loading-mobile">
+                <i class="fa-solid fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+              </span>
+            </div>
+            <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+              Cancel
+            </a>
+          </li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="https://laurance.eu.org/categories/"
+                  
+                  
+                ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> 分類</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="https://laurance.eu.org/tags/"
+                  
+                  
+                ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 標籤</a></li><li class="menu-item menu-system">
+          <span class="menu-system-item theme-switch" title="Switch Theme"><i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i></span></li>
+      </ul>
+    </nav>
+  </div>
+</header><div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+  </div>
+  <div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+  </div><main class="container"><aside class="toc" id="toc-auto"><h2 class="toc-title">Contents&nbsp;<i class="toc-icon fa-solid fa-angle-down fa-fw" aria-hidden="true"></i></h2>
+      <div class="toc-content" id="toc-content-auto"></div></aside>
+
+  <aside class="aside-custom">
+    </aside>
+
+  <article class="page single">
+    <div class="header"><h1 class="single-title animate__animated animate__flipInX"><span>MySQL - Replication 主從式跟隨架構設定</span>
+      </h1></div><div class="post-meta">
+      <div class="post-meta-line"><span class="post-author"><span class="author"><i class="fa-solid fa-user-circle" aria-hidden="true"></i>
+      Laurance</span></span>
+          <span class="post-category">included in <a href="https://laurance.eu.org/categories/database/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> Database</a></span></div>
+      <div class="post-meta-line"><span title="published on 2022-08-03 00:00:00"><i class="fa-regular fa-calendar-alt fa-fw me-1" aria-hidden="true"></i><time datetime="2022-08-03">2022-08-03</time></span>&nbsp;<span title="Updated on 2022-08-03 00:00:00"><i class="fa-regular fa-edit fa-fw me-1" aria-hidden="true"></i><time datetime="2022-08-03">2022-08-03</time></span>&nbsp;<span><i class="fa-solid fa-pencil-alt fa-fw me-1" aria-hidden="true"></i>382 words</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw me-1" aria-hidden="true"></i>2 minutes</span>&nbsp;<span id="busuanzi_container_page_pv" class="busuanzi_visitors comment-visitors" data-flag-title="MySQL - Replication 主從式跟隨架構設定">
+            <i class="fa-regular fa-eye fa-fw me-1" aria-hidden="true"></i><span id="busuanzi_value_page_pv">-</span>&nbsp;views
+          </span>&nbsp;</div>
+    </div><div class="details toc" id="toc-static" data-kept="false">
+        <div class="details-summary toc-title">
+          <span>Contents</span>
+          <span><i class="details-icon fa-solid fa-angle-right" aria-hidden="true"></i></span>
+        </div>
+        <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#master-server-設定-"><strong>Master server 設定 :</strong></a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#重新啟動-mysql-服務-使設定檔生效"><strong>重新啟動 MySQL 服務 [使設定檔生效]</strong></a></li>
+    <li><a href="#登陸-master-建立-slave-帳號"><strong>登陸 Master 建立 Slave 帳號</strong></a></li>
+    <li><a href="#dump-語法"><strong>DUMP 語法</strong></a></li>
+    <li><a href="#登陸-master-查看-master-資訊"><strong>登陸 Master 查看 Master 資訊</strong></a></li>
+    <li><a href="#將-sql-檔-scp-至-slave"><strong>將 SQL 檔 SCP 至 Slave</strong></a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#slave-停-db"><strong>Slave 停 DB</strong></a></li>
+    <li><a href="#將-master-的-sql-檔匯入-slave"><strong>將 Master 的 SQL 檔匯入 Slave</strong></a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#啟動-slave-db"><strong>啟動 Slave DB</strong></a></li>
+    <li><a href="#設定-slavedb指定-master-db-登入資訊並啟動-replication"><strong>設定 SlaveDB，指定 Master DB 登入資訊，並啟動 Replication</strong></a></li>
+  </ul>
+</nav></div>
+      </div><div class="content" id="content"><hr>
+<hr>
+<h1 id="master-slave-replication-的架構"><strong>Master Slave Replication 的架構</strong></h1>
+<hr>
+<hr>
+<div class="details admonition example open">
+    <div class="details-summary admonition-title">
+      <i class="icon fa-solid fa-list-ol fa-fw" aria-hidden="true"></i>Example<i class="details-icon fa-solid fa-angle-right fa-fw" aria-hidden="true"></i>
+    </div>
+    <div class="details-content">
+      <div class="admonition-content"><h3 id="在-master--server-執行的-sql-command-會被記錄在-binary-log-裡面">在 master  server 執行的 SQL command 會被記錄在 Binary Log 裡面</h3>
+<h3 id="master-將-binary-log-傳送到-slave-的-relay-log">master 將 Binary Log 傳送到 slave 的 Relay Log</h3>
+<h3 id="slave-依據-relay-log-做資料的變更">slave 依據 Relay Log 做資料的變更</h3>
+</div>
+    </div>
+  </div>
+<hr>
+<hr>
+<p><img loading="lazy" src="101.png" srcset="https://laurance.eu.org/posts/mysql-%E4%B8%BB%E5%BE%9E%E8%B7%9F%E9%9A%A8/101.png, 101.png 1.5x, https://laurance.eu.org/posts/mysql-%E4%B8%BB%E5%BE%9E%E8%B7%9F%E9%9A%A8/101.png 2x" sizes="auto" data-title="/posts/mysql-%E4%B8%BB%E5%BE%9E%E8%B7%9F%E9%9A%A8/101.png" data-alt="/posts/mysql-%E4%B8%BB%E5%BE%9E%E8%B7%9F%E9%9A%A8/101.png" width="1164" height="675" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/></p>
+<hr>
+<hr>
+<h1 id="建立-mysql-replication-實作紀錄--slave-設定為不寫-binlog"><strong>建立 MySQL Replication 實作紀錄 [ Slave 設定為不寫 binlog]</strong></h1>
+<hr>
+<hr>
+<h2 id="master-server-設定-"><strong>Master server 設定 :</strong></h2>
+<hr>
+<hr>
+<h1 id="-修改-master-設定檔-"><strong>{ 修改 Master 設定檔 }</strong></h1>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span>vim <span style="color:#f92672">/</span>etc<span style="color:#f92672">/</span>mysql<span style="color:#f92672">/</span>my.cnf
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span>[mysqld]
+</span></span><span style="display:flex;"><span>skip<span style="color:#f92672">-</span><span style="color:#66d9ef">external</span><span style="color:#f92672">-</span>locking
+</span></span><span style="display:flex;"><span>sql_mode<span style="color:#f92672">=</span>NO_AUTO_Create_USER,NO_ENGINE_SUBSTITUTION
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">#</span><span style="color:#66d9ef">default</span><span style="color:#f92672">-</span><span style="color:#66d9ef">storage</span><span style="color:#f92672">-</span>engine<span style="color:#f92672">=</span>MYISAM
+</span></span><span style="display:flex;"><span>explicit_defaults_for_timestamp<span style="color:#f92672">=</span><span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">#</span><span style="color:#75715e">--------------------------------------
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">#</span><span style="color:#66d9ef">default</span><span style="color:#f92672">-</span>tmp<span style="color:#f92672">-</span><span style="color:#66d9ef">storage</span><span style="color:#f92672">-</span>engine<span style="color:#f92672">=</span>MYISAM
+</span></span><span style="display:flex;"><span>character_set_server <span style="color:#f92672">=</span> utf8
+</span></span><span style="display:flex;"><span>innodb_buffer_pool_size <span style="color:#f92672">=</span> <span style="color:#ae81ff">1500</span>M
+</span></span><span style="display:flex;"><span>innodb_log_buffer_size <span style="color:#f92672">=</span> <span style="color:#ae81ff">32</span>M
+</span></span><span style="display:flex;"><span>innodb_log_file_size <span style="color:#f92672">=</span> <span style="color:#ae81ff">16</span>M
+</span></span><span style="display:flex;"><span>innodb_flush_log_at_trx_commit <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>
+</span></span><span style="display:flex;"><span>innodb_buffer_pool_instances <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>innodb_file_per_table<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">#</span><span style="color:#75715e">-------------------------------------
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>max_connections <span style="color:#f92672">=</span> <span style="color:#ae81ff">2000</span>
+</span></span><span style="display:flex;"><span>max_allowed_packet <span style="color:#f92672">=</span> <span style="color:#ae81ff">64</span>M
+</span></span><span style="display:flex;"><span>table_open_cache <span style="color:#f92672">=</span> <span style="color:#ae81ff">512</span>
+</span></span><span style="display:flex;"><span>sort_buffer_size <span style="color:#f92672">=</span> <span style="color:#ae81ff">4</span>M
+</span></span><span style="display:flex;"><span>net_buffer_length <span style="color:#f92672">=</span> <span style="color:#ae81ff">8</span>K
+</span></span><span style="display:flex;"><span>read_buffer_size <span style="color:#f92672">=</span> <span style="color:#ae81ff">256</span>K
+</span></span><span style="display:flex;"><span>read_rnd_buffer_size <span style="color:#f92672">=</span> <span style="color:#ae81ff">512</span>K
+</span></span><span style="display:flex;"><span>myisam_sort_buffer_size <span style="color:#f92672">=</span> <span style="color:#ae81ff">128</span>M
+</span></span><span style="display:flex;"><span><span style="color:#f92672">#</span>key_buffer <span style="color:#f92672">=</span> <span style="color:#ae81ff">256</span>M
+</span></span><span style="display:flex;"><span><span style="color:#f92672">#</span><span style="color:#75715e">-------------------------------------
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>socket <span style="color:#f92672">=</span> <span style="color:#f92672">/</span>var<span style="color:#f92672">/</span>lib<span style="color:#f92672">/</span>mysql<span style="color:#f92672">/</span>mysql.sock
+</span></span><span style="display:flex;"><span>pid<span style="color:#f92672">-</span>file <span style="color:#f92672">=</span> mysql.pid
+</span></span><span style="display:flex;"><span>log<span style="color:#f92672">-</span>error <span style="color:#f92672">=</span> mysql.err
+</span></span><span style="display:flex;"><span>log<span style="color:#f92672">-</span>slave<span style="color:#f92672">-</span>updates
+</span></span><span style="display:flex;"><span>max_binlog_size <span style="color:#f92672">=</span> <span style="color:#ae81ff">500</span>M
+</span></span><span style="display:flex;"><span>binlog_format<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;MIXED&#34;</span>
+</span></span><span style="display:flex;"><span>log<span style="color:#f92672">-</span>bin <span style="color:#f92672">=</span> log<span style="color:#f92672">-</span>bin
+</span></span><span style="display:flex;"><span>server_id <span style="color:#f92672">=</span> <span style="color:#ae81ff">999</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>relay<span style="color:#f92672">-</span>log<span style="color:#f92672">-</span>purge <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">max</span><span style="color:#f92672">-</span>relay<span style="color:#f92672">-</span>log<span style="color:#f92672">-</span><span style="color:#66d9ef">size</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">500</span>M
+</span></span><span style="display:flex;"><span>relay<span style="color:#f92672">-</span>log<span style="color:#f92672">-</span><span style="color:#66d9ef">space</span><span style="color:#f92672">-</span><span style="color:#66d9ef">limit</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">500</span>M
+</span></span><span style="display:flex;"><span> 
+</span></span><span style="display:flex;"><span>slow_query_log <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>slow_query_log_file <span style="color:#f92672">=</span> slow<span style="color:#f92672">-</span>queries.log
+</span></span><span style="display:flex;"><span>long_query_time <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">#</span><span style="color:#75715e">---------------------------------------------
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>[mysqld_multi]
+</span></span><span style="display:flex;"><span>mysqld <span style="color:#f92672">=</span> <span style="color:#f92672">/</span>usr<span style="color:#f92672">/</span>bin<span style="color:#f92672">/</span>mysqld_safe
+</span></span><span style="display:flex;"><span>mysqladmin <span style="color:#f92672">=</span> <span style="color:#f92672">/</span>usr<span style="color:#f92672">/</span>bin<span style="color:#f92672">/</span>mysqladmin
+</span></span></code></pre></div><hr>
+<hr>
+<h2 id="重新啟動-mysql-服務-使設定檔生效"><strong>重新啟動 MySQL 服務 [使設定檔生效]</strong></h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span>mysqladmin <span style="color:#f92672">-</span>uroot <span style="color:#f92672">-</span>p shutdown
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>mysqld_safe <span style="color:#f92672">&amp;</span>
+</span></span></code></pre></div><hr>
+<hr>
+<h2 id="登陸-master-建立-slave-帳號"><strong>登陸 Master 建立 Slave 帳號</strong></h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span>mysql <span style="color:#f92672">-</span>u root <span style="color:#f92672">-</span>p
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span>STOP SLAVE;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">GRANT</span> REPLICATION SLAVE <span style="color:#66d9ef">ON</span> <span style="color:#f92672">*</span>.<span style="color:#f92672">*</span> <span style="color:#66d9ef">TO</span> <span style="color:#e6db74">&#39;輸入使用者名稱&#39;</span><span style="color:#f92672">@</span><span style="color:#e6db74">&#39;輸入來源 + %&#39;</span> IDENTIFIED <span style="color:#66d9ef">BY</span> <span style="color:#e6db74">&#39;輸入密碼&#39;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>FLUSH <span style="color:#66d9ef">PRIVILEGES</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">SHOW</span> MASTER STATUS;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>exit;
+</span></span></code></pre></div><hr>
+<hr>
+<h2 id="dump-語法"><strong>DUMP 語法</strong></h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span>mysqldump <span style="color:#f92672">-</span>uroot <span style="color:#f92672">-</span>p <span style="color:#75715e">--all-databases &gt; masterdatabase.sql
+</span></span></span></code></pre></div><hr>
+<hr>
+<h2 id="登陸-master-查看-master-資訊"><strong>登陸 Master 查看 Master 資訊</strong></h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span>mysql <span style="color:#f92672">-</span>u root <span style="color:#f92672">-</span>p
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">show</span> master status;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>exit;
+</span></span></code></pre></div><hr>
+<hr>
+<h2 id="將-sql-檔-scp-至-slave"><strong>將 SQL 檔 SCP 至 Slave</strong></h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span>scp masterdatabase.<span style="color:#66d9ef">sql</span> root<span style="color:#f92672">@</span>slave<span style="color:#960050;background-color:#1e0010">主機來源</span>:<span style="color:#f92672">~</span>
+</span></span></code></pre></div><hr>
+<hr>
+<h1 id="-修改-slave-設定檔-"><strong>{ 修改 Slave 設定檔 }</strong></h1>
+<hr>
+<hr>
+<h2 id="slave-停-db"><strong>Slave 停 DB</strong></h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span>mysqladmin <span style="color:#f92672">-</span>uroot <span style="color:#f92672">-</span>p shutdown
+</span></span></code></pre></div><hr>
+<hr>
+<h2 id="將-master-的-sql-檔匯入-slave"><strong>將 Master 的 SQL 檔匯入 Slave</strong></h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span>mysql <span style="color:#f92672">-</span>u root <span style="color:#f92672">-</span>p <span style="color:#f92672">&lt;</span> <span style="color:#f92672">/</span>home<span style="color:#f92672">/</span>masterdatabase.<span style="color:#66d9ef">sql</span>
+</span></span></code></pre></div><hr>
+<hr>
+<h1 id="修改-slave-設定檔"><strong>修改 Slave 設定檔</strong></h1>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span>vim <span style="color:#f92672">/</span>etc<span style="color:#f92672">/</span>my.cnf
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span>[mysqld]
+</span></span><span style="display:flex;"><span>skip<span style="color:#f92672">-</span><span style="color:#66d9ef">external</span><span style="color:#f92672">-</span>locking
+</span></span><span style="display:flex;"><span><span style="color:#f92672">#</span>skip<span style="color:#f92672">-</span>innodb
+</span></span><span style="display:flex;"><span><span style="color:#f92672">#</span>skip<span style="color:#f92672">-</span>name<span style="color:#f92672">-</span>resolve
+</span></span><span style="display:flex;"><span>sql_mode<span style="color:#f92672">=</span>NO_AUTO_Create_USER,NO_ENGINE_SUBSTITUTION
+</span></span><span style="display:flex;"><span>server_id <span style="color:#f92672">=</span> <span style="color:#ae81ff">998</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>innodb_buffer_pool_size <span style="color:#f92672">=</span> <span style="color:#ae81ff">1500</span>M
+</span></span><span style="display:flex;"><span>innodb_log_buffer_size <span style="color:#f92672">=</span> <span style="color:#ae81ff">32</span>M
+</span></span><span style="display:flex;"><span>innodb_log_file_size <span style="color:#f92672">=</span> <span style="color:#ae81ff">16</span>M
+</span></span><span style="display:flex;"><span>innodb_flush_log_at_trx_commit <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>
+</span></span><span style="display:flex;"><span>innodb_buffer_pool_instances <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">#</span>innodb_file_format <span style="color:#f92672">=</span> barracuda
+</span></span><span style="display:flex;"><span><span style="color:#f92672">#</span>innodb_file_format_max <span style="color:#f92672">=</span> barracuda
+</span></span><span style="display:flex;"><span>innodb_file_per_table <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">read</span><span style="color:#f92672">-</span><span style="color:#66d9ef">only</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">#</span><span style="color:#75715e">-------------------------------------
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>max_connections <span style="color:#f92672">=</span> <span style="color:#ae81ff">2000</span>
+</span></span><span style="display:flex;"><span>max_allowed_packet <span style="color:#f92672">=</span> <span style="color:#ae81ff">64</span>M
+</span></span><span style="display:flex;"><span>table_open_cache <span style="color:#f92672">=</span> <span style="color:#ae81ff">512</span>
+</span></span><span style="display:flex;"><span>sort_buffer_size <span style="color:#f92672">=</span> <span style="color:#ae81ff">4</span>M
+</span></span><span style="display:flex;"><span>net_buffer_length <span style="color:#f92672">=</span> <span style="color:#ae81ff">8</span>K
+</span></span><span style="display:flex;"><span>read_buffer_size <span style="color:#f92672">=</span> <span style="color:#ae81ff">256</span>K
+</span></span><span style="display:flex;"><span>read_rnd_buffer_size <span style="color:#f92672">=</span> <span style="color:#ae81ff">512</span>K
+</span></span><span style="display:flex;"><span>myisam_sort_buffer_size <span style="color:#f92672">=</span> <span style="color:#ae81ff">128</span>M
+</span></span><span style="display:flex;"><span><span style="color:#f92672">#</span>key_buffer <span style="color:#f92672">=</span> <span style="color:#ae81ff">256</span>M
+</span></span><span style="display:flex;"><span><span style="color:#f92672">#</span><span style="color:#75715e">-------------------------------------
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>socket <span style="color:#f92672">=</span> <span style="color:#f92672">/</span>var<span style="color:#f92672">/</span>lib<span style="color:#f92672">/</span>mysql<span style="color:#f92672">/</span>mysql.sock
+</span></span><span style="display:flex;"><span>pid<span style="color:#f92672">-</span>file <span style="color:#f92672">=</span> mysql.pid
+</span></span><span style="display:flex;"><span>log<span style="color:#f92672">-</span>error <span style="color:#f92672">=</span> mysql.err
+</span></span><span style="display:flex;"><span>log<span style="color:#f92672">-</span>slave<span style="color:#f92672">-</span>updates
+</span></span><span style="display:flex;"><span>port <span style="color:#f92672">=</span> <span style="color:#ae81ff">3306</span>
+</span></span><span style="display:flex;"><span>relay<span style="color:#f92672">-</span>log<span style="color:#f92672">-</span>purge <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">max</span><span style="color:#f92672">-</span>relay<span style="color:#f92672">-</span>log<span style="color:#f92672">-</span><span style="color:#66d9ef">size</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">500</span>M
+</span></span><span style="display:flex;"><span>relay<span style="color:#f92672">-</span>log<span style="color:#f92672">-</span><span style="color:#66d9ef">space</span><span style="color:#f92672">-</span><span style="color:#66d9ef">limit</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">500</span>M
+</span></span><span style="display:flex;"><span> 
+</span></span><span style="display:flex;"><span>slow_query_log <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>slow_query_log_file <span style="color:#f92672">=</span> slow<span style="color:#f92672">-</span>queries.log
+</span></span><span style="display:flex;"><span><span style="color:#f92672">#</span>long_query_time <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">#</span><span style="color:#75715e">---------------------------------------------
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>[mysqld_multi]
+</span></span><span style="display:flex;"><span>mysqld <span style="color:#f92672">=</span> <span style="color:#f92672">/</span>usr<span style="color:#f92672">/</span>bin<span style="color:#f92672">/</span>mysqld_safe
+</span></span><span style="display:flex;"><span>mysqladmin <span style="color:#f92672">=</span> <span style="color:#f92672">/</span>usr<span style="color:#f92672">/</span>bin<span style="color:#f92672">/</span>mysqladmin
+</span></span></code></pre></div><hr>
+<hr>
+<h2 id="啟動-slave-db"><strong>啟動 Slave DB</strong></h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span>mysqld_safe <span style="color:#f92672">&amp;</span>
+</span></span></code></pre></div><hr>
+<hr>
+<h2 id="設定-slavedb指定-master-db-登入資訊並啟動-replication"><strong>設定 SlaveDB，指定 Master DB 登入資訊，並啟動 Replication</strong></h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span>mysql <span style="color:#f92672">-</span>u root <span style="color:#f92672">-</span>p
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span>STOP SLAVE;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>CHANGE MASTER <span style="color:#66d9ef">TO</span> MASTER_HOST<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;輸入Master主機ip&#39;</span>, MASTER_USER<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;輸入使用者名稱&#39;</span>, MASTER_PASSWORD<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;輸入密碼&#39;</span>, MASTER_LOG_FILE<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;mariadb-bin.000001&#39;</span>, MASTER_LOG_POS<span style="color:#f92672">=</span><span style="color:#ae81ff">479</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">start</span> slave;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">SHOW</span> SLAVE STATUS <span style="color:#960050;background-color:#1e0010">\</span><span style="color:#66d9ef">G</span>;
+</span></span></code></pre></div><hr>
+<hr>
+<p>############################################</p>
+<hr>
+
+</div><div class="post-footer" id="post-footer">
+  <div class="post-info">
+    <div class="post-info-line">
+      <div class="post-info-mod">
+        <span title="Updated on 2022-08-03 00:00:00">Updated on 2022-08-03&nbsp;</span>
+      </div><div class="post-info-license">
+          <span><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span>
+        </div></div>
+    <div class="post-info-line">
+      <div class="post-info-md"><span><a href="https://laurance.eu.org/posts/mysql-%E4%B8%BB%E5%BE%9E%E8%B7%9F%E9%9A%A8/index.md" title="Read Markdown" class="link-to-markdown">Read Markdown</a></span></div>
+      <div class="post-info-share">
+        <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://laurance.eu.org/posts/mysql-%E4%B8%BB%E5%BE%9E%E8%B7%9F%E9%9A%A8/" data-title="MySQL - Replication 主從式跟隨架構設定" data-hashtags="MySQL"><i class="fa-brands fa-twitter fa-fw" aria-hidden="true"></i></a>
+  <a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://laurance.eu.org/posts/mysql-%E4%B8%BB%E5%BE%9E%E8%B7%9F%E9%9A%A8/" data-hashtag="MySQL"><i class="fa-brands fa-facebook-square fa-fw" aria-hidden="true"></i></a>
+  <a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://laurance.eu.org/posts/mysql-%E4%B8%BB%E5%BE%9E%E8%B7%9F%E9%9A%A8/" data-title="MySQL - Replication 主從式跟隨架構設定"><i class="fa-brands fa-weibo fa-fw" aria-hidden="true"></i></a>
+  </span>
+      </div>
+    </div>
+  </div>
+
+  <div class="post-info-more">
+    <section class="post-tags"><i class="fa-solid fa-tags fa-fw me-1" aria-hidden="true"></i><a href='https://laurance.eu.org/tags/mysql/' class="post-tag">MySQL</a></section>
+    <section>
+      <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="https://laurance.eu.org/">Home</a></span>
+    </section>
+  </div>
+
+  <div class="post-nav"><a href="https://laurance.eu.org/posts/mysql-%E5%B8%B8%E7%94%A8%E8%AA%9E%E6%B3%95/" class="post-nav-item" rel="prev" title="MySQL - 常用語法整理"><i class="fa-solid fa-angle-left fa-fw" aria-hidden="true"></i>MySQL - 常用語法整理</a>
+      <a href="https://laurance.eu.org/posts/mysql-yum%E5%AE%89%E8%A3%9D/" class="post-nav-item" rel="next" title="MariaDB - CentOS 7 yum 安裝源 ( yum_repo )">MariaDB - CentOS 7 yum 安裝源 ( yum_repo )<i class="fa-solid fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+</article></main><footer class="footer">
+    <div class="footer-container"><div class="footer-line powered">Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreferrer" title="Hugo 0.111.3">Hugo</a> | Theme - <a href="https://github.com/hugo-fixit/FixIt" target="_blank" rel="external" title="FixIt v0.2.18"><img class="fixit-icon" src="https://laurance.eu.org/fixit.min.svg" alt="FixIt logo" />&nbsp;FixIt</a>
+        </div><div class="footer-line copyright" itemscope itemtype="http://schema.org/CreativeWork"><i class="fa-regular fa-copyright fa-fw" aria-hidden="true"></i>
+            <span itemprop="copyrightYear">2021 - 2023</span><span class="author" itemprop="copyrightHolder">
+              <a href="https://laurance.eu.org/">Laurance</a></span></div><div class="footer-line statistics"></div><div class="footer-line visitor">
+          <span id="busuanzi_container_site_uv" title='Total visitors'><i class="fa-regular fa-user fa-fw" aria-hidden="true"></i>&nbsp;<span id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span></span><span id="busuanzi_container_site_pv" class="footer-divider" title='Total visits'><i class="fa-regular fa-eye fa-fw" aria-hidden="true"></i>&nbsp;<span id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span></span>
+        </div></div>
+  </footer></div><div class="widgets"><div class="fixed-buttons animate__faster d-none"><div class="fixed-button back-to-top" role="button" aria-label="Back to Top"><i class="fa-solid fa-arrow-up fa-fw" aria-hidden="true"></i><span class="variant-numeric d-none">0%</span>
+        </div></div><div id="mask"></div><noscript>
+    <div class="noscript-warning">Theme FixIt works best with JavaScript enabled.</div>
+  </noscript>
+</div><link rel="stylesheet" href="https://laurance.eu.org/lib/lightgallery/css/lightgallery-bundle.min.css"><link rel="stylesheet" href="https://laurance.eu.org/lib/katex/katex.min.css"><link rel="stylesheet" href="https://laurance.eu.org/lib/cookieconsent/cookieconsent.min.css"><link rel="stylesheet" href="https://laurance.eu.org/lib/pace/themes/blue/pace-theme-minimal.css"><script src="https://laurance.eu.org/lib/autocomplete/autocomplete.min.js" defer></script><script src="https://laurance.eu.org/lib/lunr/lunr.min.js" defer></script><script src="https://laurance.eu.org/lib/lightgallery/lightgallery.min.js" defer></script><script src="https://laurance.eu.org/lib/lightgallery/plugins/thumbnail/lg-thumbnail.min.js" defer></script><script src="https://laurance.eu.org/lib/lightgallery/plugins/zoom/lg-zoom.min.js" defer></script><script src="https://laurance.eu.org/lib/sharer/sharer.min.js" async defer></script><script src="https://laurance.eu.org/lib/typeit/index.umd.js" defer></script><script src="https://laurance.eu.org/lib/katex/katex.min.js" defer></script><script src="https://laurance.eu.org/lib/katex/auto-render.min.js" defer></script><script src="https://laurance.eu.org/lib/katex/copy-tex.min.js" defer></script><script src="https://laurance.eu.org/lib/katex/mhchem.min.js" defer></script><script src="https://laurance.eu.org/lib/cookieconsent/cookieconsent.min.js" defer></script><script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async defer></script><script src="https://laurance.eu.org/lib/pace/pace.min.js" async defer></script><script>window.config={"autoBookmark":true,"code":{"copyTitle":"Copy to clipboard","editLockTitle":"Lock editable code block","editUnLockTitle":"Unlock editable code block","editable":true,"maxShownLines":10},"comment":{"enable":false},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"data":{"typeit-header-desktop":" Laurance's Note Bloggggg ","typeit-header-title-mobile":" Laurance's Note Bloggggg "},"enablePWA":true,"lightgallery":true,"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":20,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"typeit-header-desktop":["typeit-header-desktop"],"typeit-header-title-mobile":["typeit-header-title-mobile"]},"duration":-1,"loop":false,"speed":100}};</script><script src="https://laurance.eu.org/js/theme.min.js" defer></script></body>
+</html>

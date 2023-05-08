@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html itemscope itemtype="http://schema.org/WebPage" lang="">
+  <head>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+    <meta name="robots" content="noodp" />
+    <title>haproxy - 設定檔解析 - </title><meta name="author" content="Laurance">
+<meta name="author-link" content="">
+<meta name="description" content="global 設定 ( 全域設定 ) global log 127.0.0.1 local5 chroot /usr/local/haproxy pidfile /var/run/haproxy.pid maxconn 5000 user haproxy group haproxy daemon stats socket /etc/haproxy/haproxy.sock mode 600 level admin stats timeout 2m #----------------------------------------------------------------------------------------------- Example log 設定至本機 syslog 預設位置 (級別為 local5 notice)
+chroot 設定為 haproxy 主要運行位置
+pidfile 設定為 haproxy 進程
+maxconn 設定每個 haproxy 進程可以接受的最大併發連接數
+daemon 設定為背景執行
+default 設定 ( 設定能用來配置套用到 frontend、backend、listen 等配置 ) defaults mode tcp log global option httplog option dontlognull option log-health-checks retries 3 timeout http-request 30s timeout queue 300s timeout connect 600s timeout client 10m timeout server 10m timeout http-keep-alive 30s timeout check 600s maxconn 4000 #----------------------------------------------------------------------------------------------- Example mode 指定了 HAProxy instance 所使用的通訊協定" /><meta name="keywords" content='Haproxy' /><meta itemprop="name" content="haproxy - 設定檔解析">
+<meta itemprop="description" content="global 設定 ( 全域設定 ) global log 127.0.0.1 local5 chroot /usr/local/haproxy pidfile /var/run/haproxy.pid maxconn 5000 user haproxy group haproxy daemon stats socket /etc/haproxy/haproxy.sock mode 600 level admin stats timeout 2m #----------------------------------------------------------------------------------------------- Example log 設定至本機 syslog 預設位置 (級別為 local5 notice)
+chroot 設定為 haproxy 主要運行位置
+pidfile 設定為 haproxy 進程
+maxconn 設定每個 haproxy 進程可以接受的最大併發連接數
+daemon 設定為背景執行
+default 設定 ( 設定能用來配置套用到 frontend、backend、listen 等配置 ) defaults mode tcp log global option httplog option dontlognull option log-health-checks retries 3 timeout http-request 30s timeout queue 300s timeout connect 600s timeout client 10m timeout server 10m timeout http-keep-alive 30s timeout check 600s maxconn 4000 #----------------------------------------------------------------------------------------------- Example mode 指定了 HAProxy instance 所使用的通訊協定"><meta itemprop="datePublished" content="2023-03-09T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2023-03-09T00:00:00+00:00" />
+<meta itemprop="wordCount" content="313"><meta itemprop="image" content="https://laurance.eu.org/tan.jpg"/>
+<meta itemprop="keywords" content="Haproxy," /><meta property="og:title" content="haproxy - 設定檔解析" />
+<meta property="og:description" content="global 設定 ( 全域設定 ) global log 127.0.0.1 local5 chroot /usr/local/haproxy pidfile /var/run/haproxy.pid maxconn 5000 user haproxy group haproxy daemon stats socket /etc/haproxy/haproxy.sock mode 600 level admin stats timeout 2m #----------------------------------------------------------------------------------------------- Example log 設定至本機 syslog 預設位置 (級別為 local5 notice)
+chroot 設定為 haproxy 主要運行位置
+pidfile 設定為 haproxy 進程
+maxconn 設定每個 haproxy 進程可以接受的最大併發連接數
+daemon 設定為背景執行
+default 設定 ( 設定能用來配置套用到 frontend、backend、listen 等配置 ) defaults mode tcp log global option httplog option dontlognull option log-health-checks retries 3 timeout http-request 30s timeout queue 300s timeout connect 600s timeout client 10m timeout server 10m timeout http-keep-alive 30s timeout check 600s maxconn 4000 #----------------------------------------------------------------------------------------------- Example mode 指定了 HAProxy instance 所使用的通訊協定" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://laurance.eu.org/posts/haproxy-%E8%A8%AD%E7%BD%AE%E5%8E%9F%E7%90%86%E8%A7%A3%E6%9E%90/" /><meta property="og:image" content="https://laurance.eu.org/tan.jpg"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-03-09T00:00:00+00:00" />
+<meta property="article:modified_time" content="2023-03-09T00:00:00+00:00" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://laurance.eu.org/tan.jpg"/>
+
+<meta name="twitter:title" content="haproxy - 設定檔解析"/>
+<meta name="twitter:description" content="global 設定 ( 全域設定 ) global log 127.0.0.1 local5 chroot /usr/local/haproxy pidfile /var/run/haproxy.pid maxconn 5000 user haproxy group haproxy daemon stats socket /etc/haproxy/haproxy.sock mode 600 level admin stats timeout 2m #----------------------------------------------------------------------------------------------- Example log 設定至本機 syslog 預設位置 (級別為 local5 notice)
+chroot 設定為 haproxy 主要運行位置
+pidfile 設定為 haproxy 進程
+maxconn 設定每個 haproxy 進程可以接受的最大併發連接數
+daemon 設定為背景執行
+default 設定 ( 設定能用來配置套用到 frontend、backend、listen 等配置 ) defaults mode tcp log global option httplog option dontlognull option log-health-checks retries 3 timeout http-request 30s timeout queue 300s timeout connect 600s timeout client 10m timeout server 10m timeout http-keep-alive 30s timeout check 600s maxconn 4000 #----------------------------------------------------------------------------------------------- Example mode 指定了 HAProxy instance 所使用的通訊協定"/>
+<meta name="application-name" content="FixIt">
+<meta name="apple-mobile-web-app-title" content="FixIt"><meta name="theme-color" data-light="#f8f8f8" data-dark="#252627" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="https://laurance.eu.org/favicon.png"><link rel="apple-touch-icon" sizes="180x180" href="https://laurance.eu.org/apple-touch-icon.png"><link rel="mask-icon" href="https://laurance.eu.org/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="https://laurance.eu.org/site.webmanifest"><link rel="canonical" href="https://laurance.eu.org/posts/haproxy-%E8%A8%AD%E7%BD%AE%E5%8E%9F%E7%90%86%E8%A7%A3%E6%9E%90/" /><link rel="prev" href="https://laurance.eu.org/posts/gcp-google-cloud-monitoring-by-grafana/" /><link rel="next" href="https://laurance.eu.org/posts/hugo%E6%B7%BB%E5%8A%A0algolia%E6%90%9C%E7%B4%A2%E6%94%AF%E6%8C%81/" /><link rel="stylesheet" href="https://laurance.eu.org/css/style.min.css"><link rel="stylesheet" href="https://laurance.eu.org/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="https://laurance.eu.org/lib/animate/animate.min.css"><script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "haproxy - 設定檔解析",
+    "inLanguage": "",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https:\/\/laurance.eu.org\/posts\/haproxy-%E8%A8%AD%E7%BD%AE%E5%8E%9F%E7%90%86%E8%A7%A3%E6%9E%90\/"
+    },"genre": "posts","keywords": "Haproxy","wordcount":  313 ,
+    "url": "https:\/\/laurance.eu.org\/posts\/haproxy-%E8%A8%AD%E7%BD%AE%E5%8E%9F%E7%90%86%E8%A7%A3%E6%9E%90\/","datePublished": "2023-03-09T00:00:00+00:00","dateModified": "2023-03-09T00:00:00+00:00","publisher": {
+      "@type": "Organization",
+      "name": ""},"author": {
+        "@type": "Person",
+        "name": "Laurance"
+      },"description": ""
+  }
+  </script></head>
+  <body data-header-desktop="sticky" data-header-mobile="auto"><script>(window.localStorage?.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('dark' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'dark' === 'dark')) && document.body.setAttribute('data-theme', 'dark');</script><div class="wrapper" data-page-style="wide"><header class="desktop animate__faster" id="header-desktop">
+  <div class="header-wrapper">
+    <div class="header-title">
+      <a href="https://laurance.eu.org/" title=""><img loading="lazy" src="https://laurance.eu.org/fixit.min.svg" srcset="https://laurance.eu.org/fixit.min.svg, https://laurance.eu.org/fixit.min.svg 1.5x, https://laurance.eu.org/fixit.min.svg 2x" sizes="auto" data-title="/fixit.min.svg" data-alt="/fixit.min.svg" class="logo" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/><span id="typeit-header-desktop" class="typeit"></span></a><span class="header-subtitle"></span></div>
+    <nav>
+      <ul class="menu"><li class="menu-item">
+              <a
+                class="menu-link"
+                href="https://laurance.eu.org/categories/"
+                
+                
+              ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> 分類</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="https://laurance.eu.org/tags/"
+                
+                
+              ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 標籤</a></li><li class="menu-item delimiter"></li><li class="menu-item search" id="search-desktop">
+            <input type="text" placeholder="搜索關鍵字" id="search-input-desktop">
+            <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+              <i class="fa-solid fa-search fa-fw" aria-hidden="true"></i>
+            </a>
+            <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+              <i class="fa-solid fa-times-circle fa-fw" aria-hidden="true"></i>
+            </a>
+            <span class="search-button search-loading" id="search-loading-desktop">
+              <i class="fa-solid fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+            </span>
+          </li><li class="menu-item theme-switch" title="Switch Theme">
+          <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
+        </li></ul>
+    </nav>
+  </div>
+</header><header class="mobile animate__faster" id="header-mobile">
+  <div class="header-container">
+    <div class="header-wrapper">
+      <div class="header-title">
+        <a href="https://laurance.eu.org/" title=""><img loading="lazy" src="https://laurance.eu.org/fixit.min.svg" srcset="https://laurance.eu.org/fixit.min.svg, https://laurance.eu.org/fixit.min.svg 1.5x, https://laurance.eu.org/fixit.min.svg 2x" sizes="auto" data-title="/fixit.min.svg" data-alt="/fixit.min.svg" class="logo" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/><span id="typeit-header-title-mobile" class="typeit"></span></a><span class="header-subtitle"></span></div>
+      <div class="menu-toggle" id="menu-toggle-mobile">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+    <nav>
+      <ul class="menu" id="menu-mobile"><li class="search-wrapper">
+            <div class="search mobile" id="search-mobile">
+              <input type="text" placeholder="搜索關鍵字" id="search-input-mobile">
+              <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                <i class="fa-solid fa-search fa-fw" aria-hidden="true"></i>
+              </a>
+              <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                <i class="fa-solid fa-times-circle fa-fw" aria-hidden="true"></i>
+              </a>
+              <span class="search-button search-loading" id="search-loading-mobile">
+                <i class="fa-solid fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+              </span>
+            </div>
+            <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+              Cancel
+            </a>
+          </li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="https://laurance.eu.org/categories/"
+                  
+                  
+                ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> 分類</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="https://laurance.eu.org/tags/"
+                  
+                  
+                ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 標籤</a></li><li class="menu-item menu-system">
+          <span class="menu-system-item theme-switch" title="Switch Theme"><i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i></span></li>
+      </ul>
+    </nav>
+  </div>
+</header><div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+  </div>
+  <div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+  </div><main class="container"><aside class="toc" id="toc-auto"><h2 class="toc-title">Contents&nbsp;<i class="toc-icon fa-solid fa-angle-down fa-fw" aria-hidden="true"></i></h2>
+      <div class="toc-content" id="toc-content-auto"></div></aside>
+
+  <aside class="aside-custom">
+    </aside>
+
+  <article class="page single">
+    <div class="header"><h1 class="single-title animate__animated animate__flipInX"><span>haproxy - 設定檔解析</span>
+      </h1></div><div class="post-meta">
+      <div class="post-meta-line"><span class="post-author"><span class="author"><i class="fa-solid fa-user-circle" aria-hidden="true"></i>
+      Laurance</span></span>
+          <span class="post-category">included in <a href="https://laurance.eu.org/categories/dns/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> DNS</a></span></div>
+      <div class="post-meta-line"><span title="published on 2023-03-09 00:00:00"><i class="fa-regular fa-calendar-alt fa-fw me-1" aria-hidden="true"></i><time datetime="2023-03-09">2023-03-09</time></span>&nbsp;<span title="Updated on 2023-03-09 00:00:00"><i class="fa-regular fa-edit fa-fw me-1" aria-hidden="true"></i><time datetime="2023-03-09">2023-03-09</time></span>&nbsp;<span><i class="fa-solid fa-pencil-alt fa-fw me-1" aria-hidden="true"></i>313 words</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw me-1" aria-hidden="true"></i>2 minutes</span>&nbsp;<span id="busuanzi_container_page_pv" class="busuanzi_visitors comment-visitors" data-flag-title="haproxy - 設定檔解析">
+            <i class="fa-regular fa-eye fa-fw me-1" aria-hidden="true"></i><span id="busuanzi_value_page_pv">-</span>&nbsp;views
+          </span>&nbsp;</div>
+    </div><div class="details toc" id="toc-static" data-kept="false">
+        <div class="details-summary toc-title">
+          <span>Contents</span>
+          <span><i class="details-icon fa-solid fa-angle-right" aria-hidden="true"></i></span>
+        </div>
+        <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#global-設定--全域設定-">global 設定 ( 全域設定 )</a></li>
+        <li><a href="#default-設定--設定能用來配置套用到-frontendbackendlisten-等配置-">default 設定 ( 設定能用來配置套用到 frontend、backend、listen 等配置 )</a></li>
+        <li><a href="#listen-stats-設定--監聽狀態-">listen stats 設定 ( 監聽狀態 )</a></li>
+        <li><a href="#frontend-設定--設定會配置伺服器聆聽來自用戶端連線請求的聆聽-socket-">frontend 設定 ( 設定會配置伺服器聆聽來自用戶端連線請求的聆聽 socket )</a></li>
+        <li><a href="#backend-設定--設定會指定真實伺服器的-ip-位址以及負載平衡程式的排程演算法-">backend 設定 ( 設定會指定真實伺服器的 IP 位址，以及負載平衡程式的排程演算法 )</a></li>
+      </ul>
+    </li>
+    <li><a href="#演算法說明"><strong>演算法說明</strong></a></li>
+  </ul>
+</nav></div>
+      </div><div class="content" id="content"><hr>
+<hr>
+<h3 id="global-設定--全域設定-">global 設定 ( 全域設定 )</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">global</span>
+</span></span><span style="display:flex;"><span>        log <span style="color:#ae81ff">127</span>.<span style="color:#ae81ff">0</span>.<span style="color:#ae81ff">0</span>.<span style="color:#ae81ff">1</span> local5
+</span></span><span style="display:flex;"><span>        chroot <span style="color:#f92672">/</span>usr<span style="color:#f92672">/</span><span style="color:#66d9ef">local</span><span style="color:#f92672">/</span>haproxy
+</span></span><span style="display:flex;"><span>        pidfile <span style="color:#f92672">/</span>var<span style="color:#f92672">/</span>run<span style="color:#f92672">/</span>haproxy.pid
+</span></span><span style="display:flex;"><span>        maxconn <span style="color:#ae81ff">5000</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">user</span> haproxy
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">group</span> haproxy
+</span></span><span style="display:flex;"><span>        daemon
+</span></span><span style="display:flex;"><span>        stats socket <span style="color:#f92672">/</span>etc<span style="color:#f92672">/</span>haproxy<span style="color:#f92672">/</span>haproxy.sock <span style="color:#66d9ef">mode</span> <span style="color:#ae81ff">600</span> <span style="color:#66d9ef">level</span> <span style="color:#66d9ef">admin</span>
+</span></span><span style="display:flex;"><span>        stats timeout <span style="color:#ae81ff">2</span>m
+</span></span><span style="display:flex;"><span><span style="color:#f92672">#</span><span style="color:#75715e">-----------------------------------------------------------------------------------------------
+</span></span></span></code></pre></div><div class="details admonition example open">
+    <div class="details-summary admonition-title">
+      <i class="icon fa-solid fa-list-ol fa-fw" aria-hidden="true"></i>Example<i class="details-icon fa-solid fa-angle-right fa-fw" aria-hidden="true"></i>
+    </div>
+    <div class="details-content">
+      <div class="admonition-content"><p><code>log</code>       設定至本機 syslog 預設位置 (級別為 local5 <code>notice</code>)</p>
+<p><code>chroot</code>    設定為 haproxy 主要運行位置</p>
+<p><code>pidfile</code>   設定為 haproxy 進程</p>
+<p><code>maxconn</code>   設定每個 haproxy 進程可以接受的最大併發連接數</p>
+<p><code>daemon</code>    設定為背景執行</p>
+</div>
+    </div>
+  </div>
+<hr>
+<hr>
+<h3 id="default-設定--設定能用來配置套用到-frontendbackendlisten-等配置-">default 設定 ( 設定能用來配置套用到 frontend、backend、listen 等配置 )</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">defaults</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">mode</span> tcp
+</span></span><span style="display:flex;"><span>        log <span style="color:#66d9ef">global</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">option</span> httplog
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">option</span> dontlognull
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">option</span> log<span style="color:#f92672">-</span>health<span style="color:#f92672">-</span>checks
+</span></span><span style="display:flex;"><span>        retries <span style="color:#ae81ff">3</span>
+</span></span><span style="display:flex;"><span>        timeout http<span style="color:#f92672">-</span>request <span style="color:#ae81ff">30</span>s
+</span></span><span style="display:flex;"><span>        timeout queue <span style="color:#ae81ff">300</span>s
+</span></span><span style="display:flex;"><span>        timeout <span style="color:#66d9ef">connect</span> <span style="color:#ae81ff">600</span>s
+</span></span><span style="display:flex;"><span>        timeout client <span style="color:#ae81ff">10</span>m
+</span></span><span style="display:flex;"><span>        timeout server <span style="color:#ae81ff">10</span>m
+</span></span><span style="display:flex;"><span>        timeout http<span style="color:#f92672">-</span>keep<span style="color:#f92672">-</span>alive <span style="color:#ae81ff">30</span>s
+</span></span><span style="display:flex;"><span>        timeout <span style="color:#66d9ef">check</span> <span style="color:#ae81ff">600</span>s
+</span></span><span style="display:flex;"><span>        maxconn <span style="color:#ae81ff">4000</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">#</span><span style="color:#75715e">-----------------------------------------------------------------------------------------------
+</span></span></span></code></pre></div><div class="details admonition example open">
+    <div class="details-summary admonition-title">
+      <i class="icon fa-solid fa-list-ol fa-fw" aria-hidden="true"></i>Example<i class="details-icon fa-solid fa-angle-right fa-fw" aria-hidden="true"></i>
+    </div>
+    <div class="details-content">
+      <div class="admonition-content"><p><code>mode</code>  指定了 HAProxy instance 所使用的通訊協定</p>
+<p><code>log</code>   指定 LOG 將寫入的位址 global 值參照了 global 一節中的 log 參數中所指定的 HAProxy instance</p>
+<p><code>option httplog</code>    能紀錄 HTTP session 的多種值，包括 HTTP 請求、session 狀態、連線數、來源位址、以及連線計數器等等</p>
+<p><code>option dontlognull</code>    停用了對 null 連線之記錄，表示 HAProxy 不會記錄未傳遞任何資料的連線</p>
+<p><code>option log-health-checks</code>  記錄健康檢查日誌</p>
+<p><code>retries</code>   指定了在無法第一次就連上時，真實伺服器會重試連線的次數</p>
+<p><code>timeout http-request</code>  http請求超時時間</p>
+<p><code>timeout queue</code>     排隊超時</p>
+<p><code>timeout connect</code>   設置成功連接到一臺服務器的最長等待時間，默認單位是毫秒</p>
+<p><code>timeout client</code>    設置連接客戶端發送數據時的成功連接最長等待時間，默認單位是毫秒</p>
+<p><code>timeout server</code>    設置服務器端迴應客戶度數據發送的最長等待時間，默認單位是毫秒</p>
+<p><code>timeout http-keep-alive </code>  設置長連接時間</p>
+<p><code>timeout check</code>     設置超時時間</p>
+<p><code>maxconn</code>       最大連接數</p>
+</div>
+    </div>
+  </div>
+<hr>
+<hr>
+<h3 id="listen-stats-設定--監聽狀態-">listen stats 設定 ( 監聽狀態 )</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">listen</span> stats
+</span></span><span style="display:flex;"><span>        bind  XX:XX:XX:XX:<span style="color:#ae81ff">8080</span> (<span style="color:#960050;background-color:#1e0010">內網</span>IP)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">mode</span>    http
+</span></span><span style="display:flex;"><span>        log     <span style="color:#ae81ff">127</span>.<span style="color:#ae81ff">0</span>.<span style="color:#ae81ff">0</span>.<span style="color:#ae81ff">1</span> local0 err
+</span></span><span style="display:flex;"><span>        stats   uri     <span style="color:#f92672">/</span>hastats
+</span></span><span style="display:flex;"><span>        stats auth    <span style="color:#66d9ef">admin</span>:<span style="color:#66d9ef">admin</span>
+</span></span><span style="display:flex;"><span>        stats refresh <span style="color:#ae81ff">10</span>s
+</span></span><span style="display:flex;"><span>        stats hide<span style="color:#f92672">-</span><span style="color:#66d9ef">version</span>
+</span></span><span style="display:flex;"><span>        stats <span style="color:#66d9ef">admin</span> <span style="color:#66d9ef">if</span> <span style="color:#66d9ef">TRUE</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">#</span><span style="color:#75715e">-----------------------------------------------------------------------------------------------        
+</span></span></span></code></pre></div><div class="details admonition example open">
+    <div class="details-summary admonition-title">
+      <i class="icon fa-solid fa-list-ol fa-fw" aria-hidden="true"></i>Example<i class="details-icon fa-solid fa-angle-right fa-fw" aria-hidden="true"></i>
+    </div>
+    <div class="details-content">
+      <div class="admonition-content"><code>bind</code>  設定 IP , PORT</div>
+    </div>
+  </div>
+<hr>
+<hr>
+<h3 id="frontend-設定--設定會配置伺服器聆聽來自用戶端連線請求的聆聽-socket-">frontend 設定 ( 設定會配置伺服器聆聽來自用戶端連線請求的聆聽 socket )</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span>frontend ha86
+</span></span><span style="display:flex;"><span>        bind <span style="color:#f92672">*</span>:<span style="color:#ae81ff">3386</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">mode</span> tcp
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">option</span> tcplog
+</span></span><span style="display:flex;"><span>        default_backend mysqlha86
+</span></span></code></pre></div><div class="details admonition example open">
+    <div class="details-summary admonition-title">
+      <i class="icon fa-solid fa-list-ol fa-fw" aria-hidden="true"></i>Example<i class="details-icon fa-solid fa-angle-right fa-fw" aria-hidden="true"></i>
+    </div>
+    <div class="details-content">
+      <div class="admonition-content"><code>option tcplog</code>  允許記錄tcp連接的狀態和時間</div>
+    </div>
+  </div>
+<hr>
+<hr>
+<h3 id="backend-設定--設定會指定真實伺服器的-ip-位址以及負載平衡程式的排程演算法-">backend 設定 ( 設定會指定真實伺服器的 IP 位址，以及負載平衡程式的排程演算法 )</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span>backend mysqlha86
+</span></span><span style="display:flex;"><span>        balance leastconn
+</span></span><span style="display:flex;"><span>        server db86 XX:XX:XX:XX:<span style="color:#ae81ff">3306</span> <span style="color:#66d9ef">check</span> port <span style="color:#ae81ff">3306</span> rise <span style="color:#ae81ff">1</span> fall <span style="color:#ae81ff">2</span> maxconn <span style="color:#ae81ff">2000</span> weight <span style="color:#ae81ff">100</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">#</span><span style="color:#75715e">-----------------------------------------------------------------------------------------------        
+</span></span></span></code></pre></div><div class="details admonition example open">
+    <div class="details-summary admonition-title">
+      <i class="icon fa-solid fa-list-ol fa-fw" aria-hidden="true"></i>Example<i class="details-icon fa-solid fa-angle-right fa-fw" aria-hidden="true"></i>
+    </div>
+    <div class="details-content">
+      <div class="admonition-content"><p><code>balance</code>   指定負載平衡程式的排程演算法，此範例中使用的乃最少連線排程法 <code>leastconn</code></p>
+<p><code>server</code>    指定了後端可以使用的伺服器 db86</p>
+<p><code>check</code>     設置定期「健康檢查」的伺服器，以確保伺服器的可用性</p>
+<p><code>rise 1</code>    表示 1 次檢查結果正確則認爲服務器可用</p>
+<p><code>fall 2</code>    表示檢測結果失敗 2 次則認爲服務器不可用</p>
+<p><code>weight</code>    權重</p>
+</div>
+    </div>
+  </div>
+<hr>
+<hr>
+<h2 id="演算法說明"><strong>演算法說明</strong></h2>
+<table>
+<thead>
+<tr>
+<th>演算法名稱</th>
+<th>設置參數</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>循環法</td>
+<td>roundrobin</td>
+<td>將請求依序發給集區中的伺服器。使用此演算法則時，所有真實伺服器不管能力為何，都會被視為平等</td>
+</tr>
+<tr>
+<td>靜態循環法</td>
+<td>static-rr</td>
+<td>一般地在一組伺服器之間循序性地分散各項請求，不過不允許動態式配置伺服器的權重。然而，基於伺服器權重的靜態本質，後端中不會有伺服器啟用數量上的限制</td>
+</tr>
+<tr>
+<td>最少連線排程法</td>
+<td>leastconn</td>
+<td>將請求分散至連線數較少的真實伺服器。當處於一個動態式且包含各種 session 或是連線長度的環境中，對管理員來說這個排程器可能會較適合其環境</td>
+</tr>
+<tr>
+<td>來源</td>
+<td>source</td>
+<td>透過雜湊請求的來源 IP 位址，並除以所有運作中的伺服器的權重，以判斷哪個伺服器將會收到請求</td>
+</tr>
+<tr>
+<td>URI</td>
+<td>uri</td>
+<td>透過雜湊整個 URI（或是 URI 的可配置部分）並除以所有運作中的伺服器的權重，以判斷哪個伺服器將會收到請求</td>
+</tr>
+<tr>
+<td>URL 參數</td>
+<td>url_param</td>
+<td>藉由在來源 URL 請求中找尋特定參數字串，並執行一項雜湊計算除以所有運作中的伺服器的權重，以將請求分散至伺服器上</td>
+</tr>
+<tr>
+<td>表頭名稱</td>
+<td>hdr</td>
+<td>透過選取各個來源 HTTP 請求中的特定表頭名稱來將請求發佈至伺服器上，並進行一項雜湊計算然後除以所有運作中伺服器的權重</td>
+</tr>
+<tr>
+<td>RDP Cookie</td>
+<td>rdp-cookie</td>
+<td>透過查詢每項 TCP 請求的 RDP cookie 來將請求發佈至伺服器上，並執行一項雜湊計算然後除以所有運作中伺服器的權重</td>
+</tr>
+</tbody>
+</table>
+<p>參考: <a href="https://access.redhat.com/documentation/zh-tw/red_hat_enterprise_linux/7/html/load_balancer_administration/s1-haproxy-setup-global"target="_blank" rel="external nofollow noopener noreferrer">https://access.redhat.com/documentation/zh-tw/red_hat_enterprise_linux/7/html/load_balancer_administration/s1-haproxy-setup-global<i class="fa-solid fa-external-link-alt fa-fw fa-xs ms-1 text-secondary" aria-hidden="true"></i></a></p>
+<hr>
+
+</div><div class="post-footer" id="post-footer">
+  <div class="post-info">
+    <div class="post-info-line">
+      <div class="post-info-mod">
+        <span title="Updated on 2023-03-09 00:00:00">Updated on 2023-03-09&nbsp;</span>
+      </div><div class="post-info-license">
+          <span><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span>
+        </div></div>
+    <div class="post-info-line">
+      <div class="post-info-md"><span><a href="https://laurance.eu.org/posts/haproxy-%E8%A8%AD%E7%BD%AE%E5%8E%9F%E7%90%86%E8%A7%A3%E6%9E%90/index.md" title="Read Markdown" class="link-to-markdown">Read Markdown</a></span></div>
+      <div class="post-info-share">
+        <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://laurance.eu.org/posts/haproxy-%E8%A8%AD%E7%BD%AE%E5%8E%9F%E7%90%86%E8%A7%A3%E6%9E%90/" data-title="haproxy - 設定檔解析" data-hashtags="Haproxy"><i class="fa-brands fa-twitter fa-fw" aria-hidden="true"></i></a>
+  <a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://laurance.eu.org/posts/haproxy-%E8%A8%AD%E7%BD%AE%E5%8E%9F%E7%90%86%E8%A7%A3%E6%9E%90/" data-hashtag="Haproxy"><i class="fa-brands fa-facebook-square fa-fw" aria-hidden="true"></i></a>
+  <a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://laurance.eu.org/posts/haproxy-%E8%A8%AD%E7%BD%AE%E5%8E%9F%E7%90%86%E8%A7%A3%E6%9E%90/" data-title="haproxy - 設定檔解析"><i class="fa-brands fa-weibo fa-fw" aria-hidden="true"></i></a>
+  </span>
+      </div>
+    </div>
+  </div>
+
+  <div class="post-info-more">
+    <section class="post-tags"><i class="fa-solid fa-tags fa-fw me-1" aria-hidden="true"></i><a href='https://laurance.eu.org/tags/haproxy/' class="post-tag">Haproxy</a></section>
+    <section>
+      <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="https://laurance.eu.org/">Home</a></span>
+    </section>
+  </div>
+
+  <div class="post-nav"><a href="https://laurance.eu.org/posts/gcp-google-cloud-monitoring-by-grafana/" class="post-nav-item" rel="prev" title="GCP - Google Cloud Monitoring by Grafana"><i class="fa-solid fa-angle-left fa-fw" aria-hidden="true"></i>GCP - Google Cloud Monitoring by Grafana</a>
+      <a href="https://laurance.eu.org/posts/hugo%E6%B7%BB%E5%8A%A0algolia%E6%90%9C%E7%B4%A2%E6%94%AF%E6%8C%81/" class="post-nav-item" rel="next" title="HUGO - 添加 Algolia 搜索支持">HUGO - 添加 Algolia 搜索支持<i class="fa-solid fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+</article></main><footer class="footer">
+    <div class="footer-container"><div class="footer-line powered">Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreferrer" title="Hugo 0.111.3">Hugo</a> | Theme - <a href="https://github.com/hugo-fixit/FixIt" target="_blank" rel="external" title="FixIt v0.2.18"><img class="fixit-icon" src="https://laurance.eu.org/fixit.min.svg" alt="FixIt logo" />&nbsp;FixIt</a>
+        </div><div class="footer-line copyright" itemscope itemtype="http://schema.org/CreativeWork"><i class="fa-regular fa-copyright fa-fw" aria-hidden="true"></i>
+            <span itemprop="copyrightYear">2021 - 2023</span><span class="author" itemprop="copyrightHolder">
+              <a href="https://laurance.eu.org/">Laurance</a></span></div><div class="footer-line statistics"></div><div class="footer-line visitor">
+          <span id="busuanzi_container_site_uv" title='Total visitors'><i class="fa-regular fa-user fa-fw" aria-hidden="true"></i>&nbsp;<span id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span></span><span id="busuanzi_container_site_pv" class="footer-divider" title='Total visits'><i class="fa-regular fa-eye fa-fw" aria-hidden="true"></i>&nbsp;<span id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span></span>
+        </div></div>
+  </footer></div><div class="widgets"><div class="fixed-buttons animate__faster d-none"><div class="fixed-button back-to-top" role="button" aria-label="Back to Top"><i class="fa-solid fa-arrow-up fa-fw" aria-hidden="true"></i><span class="variant-numeric d-none">0%</span>
+        </div></div><div id="mask"></div><noscript>
+    <div class="noscript-warning">Theme FixIt works best with JavaScript enabled.</div>
+  </noscript>
+</div><link rel="stylesheet" href="https://laurance.eu.org/lib/lightgallery/css/lightgallery-bundle.min.css"><link rel="stylesheet" href="https://laurance.eu.org/lib/katex/katex.min.css"><link rel="stylesheet" href="https://laurance.eu.org/lib/cookieconsent/cookieconsent.min.css"><link rel="stylesheet" href="https://laurance.eu.org/lib/pace/themes/blue/pace-theme-minimal.css"><script src="https://laurance.eu.org/lib/autocomplete/autocomplete.min.js" defer></script><script src="https://laurance.eu.org/lib/lunr/lunr.min.js" defer></script><script src="https://laurance.eu.org/lib/lightgallery/lightgallery.min.js" defer></script><script src="https://laurance.eu.org/lib/lightgallery/plugins/thumbnail/lg-thumbnail.min.js" defer></script><script src="https://laurance.eu.org/lib/lightgallery/plugins/zoom/lg-zoom.min.js" defer></script><script src="https://laurance.eu.org/lib/sharer/sharer.min.js" async defer></script><script src="https://laurance.eu.org/lib/typeit/index.umd.js" defer></script><script src="https://laurance.eu.org/lib/katex/katex.min.js" defer></script><script src="https://laurance.eu.org/lib/katex/auto-render.min.js" defer></script><script src="https://laurance.eu.org/lib/katex/copy-tex.min.js" defer></script><script src="https://laurance.eu.org/lib/katex/mhchem.min.js" defer></script><script src="https://laurance.eu.org/lib/cookieconsent/cookieconsent.min.js" defer></script><script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async defer></script><script src="https://laurance.eu.org/lib/pace/pace.min.js" async defer></script><script>window.config={"autoBookmark":true,"code":{"copyTitle":"Copy to clipboard","editLockTitle":"Lock editable code block","editUnLockTitle":"Unlock editable code block","editable":true,"maxShownLines":10},"comment":{"enable":false},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"data":{"typeit-header-desktop":" Laurance's Note Bloggggg ","typeit-header-title-mobile":" Laurance's Note Bloggggg "},"enablePWA":true,"lightgallery":true,"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":20,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"typeit-header-desktop":["typeit-header-desktop"],"typeit-header-title-mobile":["typeit-header-title-mobile"]},"duration":-1,"loop":false,"speed":100}};</script><script src="https://laurance.eu.org/js/theme.min.js" defer></script></body>
+</html>

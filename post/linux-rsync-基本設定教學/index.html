@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html itemscope itemtype="http://schema.org/WebPage" lang="">
+  <head>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+    <meta name="robots" content="noodp" />
+    <title>Linux - Rsync 基本設定 - </title><meta name="author" content="Laurance">
+<meta name="author-link" content="">
+<meta name="description" content="測試環境 A主機 ( Server端 ) IP :192.168.1.222
+B主機 ( Clinet端 ) IP :192.168.1.122
+B主機( Clinet端 ) 設定 安裝服務 yim install xinetd rsync 修改服務設定 xinetd.conf vim /etc/xinetd.d/rsync service rsync { disable = no socket_type = stream wait = no user = root server = /usr/bin/rsync server_args = --daemon log_on_failure &#43;= USERID } 修改服務設定 rsyncd.conf vim /etc/rsyncd.conf [update] path = / auth users = update hosts allow = XX.XX.XX.XX //來源IP uid = root gid = root secrets file = /etc/rsync." /><meta name="keywords" content='Rsync' /><meta itemprop="name" content="Linux - Rsync 基本設定">
+<meta itemprop="description" content="測試環境 A主機 ( Server端 ) IP :192.168.1.222
+B主機 ( Clinet端 ) IP :192.168.1.122
+B主機( Clinet端 ) 設定 安裝服務 yim install xinetd rsync 修改服務設定 xinetd.conf vim /etc/xinetd.d/rsync service rsync { disable = no socket_type = stream wait = no user = root server = /usr/bin/rsync server_args = --daemon log_on_failure &#43;= USERID } 修改服務設定 rsyncd.conf vim /etc/rsyncd.conf [update] path = / auth users = update hosts allow = XX.XX.XX.XX //來源IP uid = root gid = root secrets file = /etc/rsync."><meta itemprop="datePublished" content="2023-02-03T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2023-02-03T00:00:00+00:00" />
+<meta itemprop="wordCount" content="105"><meta itemprop="image" content="https://laurance.eu.org/tan.jpg"/>
+<meta itemprop="keywords" content="Rsync," /><meta property="og:title" content="Linux - Rsync 基本設定" />
+<meta property="og:description" content="測試環境 A主機 ( Server端 ) IP :192.168.1.222
+B主機 ( Clinet端 ) IP :192.168.1.122
+B主機( Clinet端 ) 設定 安裝服務 yim install xinetd rsync 修改服務設定 xinetd.conf vim /etc/xinetd.d/rsync service rsync { disable = no socket_type = stream wait = no user = root server = /usr/bin/rsync server_args = --daemon log_on_failure &#43;= USERID } 修改服務設定 rsyncd.conf vim /etc/rsyncd.conf [update] path = / auth users = update hosts allow = XX.XX.XX.XX //來源IP uid = root gid = root secrets file = /etc/rsync." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://laurance.eu.org/posts/linux-rsync-%E5%9F%BA%E6%9C%AC%E8%A8%AD%E5%AE%9A%E6%95%99%E5%AD%B8/" /><meta property="og:image" content="https://laurance.eu.org/tan.jpg"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-02-03T00:00:00+00:00" />
+<meta property="article:modified_time" content="2023-02-03T00:00:00+00:00" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://laurance.eu.org/tan.jpg"/>
+
+<meta name="twitter:title" content="Linux - Rsync 基本設定"/>
+<meta name="twitter:description" content="測試環境 A主機 ( Server端 ) IP :192.168.1.222
+B主機 ( Clinet端 ) IP :192.168.1.122
+B主機( Clinet端 ) 設定 安裝服務 yim install xinetd rsync 修改服務設定 xinetd.conf vim /etc/xinetd.d/rsync service rsync { disable = no socket_type = stream wait = no user = root server = /usr/bin/rsync server_args = --daemon log_on_failure &#43;= USERID } 修改服務設定 rsyncd.conf vim /etc/rsyncd.conf [update] path = / auth users = update hosts allow = XX.XX.XX.XX //來源IP uid = root gid = root secrets file = /etc/rsync."/>
+<meta name="application-name" content="FixIt">
+<meta name="apple-mobile-web-app-title" content="FixIt"><meta name="theme-color" data-light="#f8f8f8" data-dark="#252627" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="https://laurance.eu.org/favicon.png"><link rel="apple-touch-icon" sizes="180x180" href="https://laurance.eu.org/apple-touch-icon.png"><link rel="mask-icon" href="https://laurance.eu.org/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="https://laurance.eu.org/site.webmanifest"><link rel="canonical" href="https://laurance.eu.org/posts/linux-rsync-%E5%9F%BA%E6%9C%AC%E8%A8%AD%E5%AE%9A%E6%95%99%E5%AD%B8/" /><link rel="prev" href="https://laurance.eu.org/posts/linux-%E4%BD%BF%E7%94%A8-locate-%E5%B0%8B%E6%89%BE%E6%AA%94%E6%A1%88%E6%95%99%E5%AD%B8%E8%88%87%E7%AF%84%E4%BE%8B/" /><link rel="next" href="https://laurance.eu.org/posts/svn-%E8%A7%A3%E6%B1%BAsvn%E6%AF%8F%E6%AC%A1%E9%83%BD%E9%9C%80%E8%A6%81%E8%BC%B8%E5%85%A5%E5%AF%86%E7%A2%BC/" /><link rel="stylesheet" href="https://laurance.eu.org/css/style.min.css"><link rel="stylesheet" href="https://laurance.eu.org/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="https://laurance.eu.org/lib/animate/animate.min.css"><script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Linux - Rsync 基本設定",
+    "inLanguage": "",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https:\/\/laurance.eu.org\/posts\/linux-rsync-%E5%9F%BA%E6%9C%AC%E8%A8%AD%E5%AE%9A%E6%95%99%E5%AD%B8\/"
+    },"genre": "posts","keywords": "Rsync","wordcount":  105 ,
+    "url": "https:\/\/laurance.eu.org\/posts\/linux-rsync-%E5%9F%BA%E6%9C%AC%E8%A8%AD%E5%AE%9A%E6%95%99%E5%AD%B8\/","datePublished": "2023-02-03T00:00:00+00:00","dateModified": "2023-02-03T00:00:00+00:00","publisher": {
+      "@type": "Organization",
+      "name": ""},"author": {
+        "@type": "Person",
+        "name": "Laurance"
+      },"description": ""
+  }
+  </script></head>
+  <body data-header-desktop="sticky" data-header-mobile="auto"><script>(window.localStorage?.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('dark' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'dark' === 'dark')) && document.body.setAttribute('data-theme', 'dark');</script><div class="wrapper" data-page-style="wide"><header class="desktop animate__faster" id="header-desktop">
+  <div class="header-wrapper">
+    <div class="header-title">
+      <a href="https://laurance.eu.org/" title=""><img loading="lazy" src="https://laurance.eu.org/fixit.min.svg" srcset="https://laurance.eu.org/fixit.min.svg, https://laurance.eu.org/fixit.min.svg 1.5x, https://laurance.eu.org/fixit.min.svg 2x" sizes="auto" data-title="/fixit.min.svg" data-alt="/fixit.min.svg" class="logo" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/><span id="typeit-header-desktop" class="typeit"></span></a><span class="header-subtitle"></span></div>
+    <nav>
+      <ul class="menu"><li class="menu-item">
+              <a
+                class="menu-link"
+                href="https://laurance.eu.org/categories/"
+                
+                
+              ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> 分類</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="https://laurance.eu.org/tags/"
+                
+                
+              ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 標籤</a></li><li class="menu-item delimiter"></li><li class="menu-item search" id="search-desktop">
+            <input type="text" placeholder="搜索關鍵字" id="search-input-desktop">
+            <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+              <i class="fa-solid fa-search fa-fw" aria-hidden="true"></i>
+            </a>
+            <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+              <i class="fa-solid fa-times-circle fa-fw" aria-hidden="true"></i>
+            </a>
+            <span class="search-button search-loading" id="search-loading-desktop">
+              <i class="fa-solid fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+            </span>
+          </li><li class="menu-item theme-switch" title="Switch Theme">
+          <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
+        </li></ul>
+    </nav>
+  </div>
+</header><header class="mobile animate__faster" id="header-mobile">
+  <div class="header-container">
+    <div class="header-wrapper">
+      <div class="header-title">
+        <a href="https://laurance.eu.org/" title=""><img loading="lazy" src="https://laurance.eu.org/fixit.min.svg" srcset="https://laurance.eu.org/fixit.min.svg, https://laurance.eu.org/fixit.min.svg 1.5x, https://laurance.eu.org/fixit.min.svg 2x" sizes="auto" data-title="/fixit.min.svg" data-alt="/fixit.min.svg" class="logo" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/><span id="typeit-header-title-mobile" class="typeit"></span></a><span class="header-subtitle"></span></div>
+      <div class="menu-toggle" id="menu-toggle-mobile">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+    <nav>
+      <ul class="menu" id="menu-mobile"><li class="search-wrapper">
+            <div class="search mobile" id="search-mobile">
+              <input type="text" placeholder="搜索關鍵字" id="search-input-mobile">
+              <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                <i class="fa-solid fa-search fa-fw" aria-hidden="true"></i>
+              </a>
+              <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                <i class="fa-solid fa-times-circle fa-fw" aria-hidden="true"></i>
+              </a>
+              <span class="search-button search-loading" id="search-loading-mobile">
+                <i class="fa-solid fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+              </span>
+            </div>
+            <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+              Cancel
+            </a>
+          </li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="https://laurance.eu.org/categories/"
+                  
+                  
+                ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> 分類</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="https://laurance.eu.org/tags/"
+                  
+                  
+                ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 標籤</a></li><li class="menu-item menu-system">
+          <span class="menu-system-item theme-switch" title="Switch Theme"><i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i></span></li>
+      </ul>
+    </nav>
+  </div>
+</header><div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+  </div>
+  <div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+  </div><main class="container"><aside class="toc" id="toc-auto"><h2 class="toc-title">Contents&nbsp;<i class="toc-icon fa-solid fa-angle-down fa-fw" aria-hidden="true"></i></h2>
+      <div class="toc-content" id="toc-content-auto"></div></aside>
+
+  <aside class="aside-custom">
+    </aside>
+
+  <article class="page single">
+    <div class="header"><h1 class="single-title animate__animated animate__flipInX"><span>Linux - Rsync 基本設定</span>
+      </h1></div><div class="post-meta">
+      <div class="post-meta-line"><span class="post-author"><span class="author"><i class="fa-solid fa-user-circle" aria-hidden="true"></i>
+      Laurance</span></span>
+          <span class="post-category">included in <a href="https://laurance.eu.org/categories/linux/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> Linux</a></span></div>
+      <div class="post-meta-line"><span title="published on 2023-02-03 00:00:00"><i class="fa-regular fa-calendar-alt fa-fw me-1" aria-hidden="true"></i><time datetime="2023-02-03">2023-02-03</time></span>&nbsp;<span title="Updated on 2023-02-03 00:00:00"><i class="fa-regular fa-edit fa-fw me-1" aria-hidden="true"></i><time datetime="2023-02-03">2023-02-03</time></span>&nbsp;<span><i class="fa-solid fa-pencil-alt fa-fw me-1" aria-hidden="true"></i>105 words</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw me-1" aria-hidden="true"></i>One minute</span>&nbsp;<span id="busuanzi_container_page_pv" class="busuanzi_visitors comment-visitors" data-flag-title="Linux - Rsync 基本設定">
+            <i class="fa-regular fa-eye fa-fw me-1" aria-hidden="true"></i><span id="busuanzi_value_page_pv">-</span>&nbsp;views
+          </span>&nbsp;</div>
+    </div><div class="details toc" id="toc-static" data-kept="false">
+        <div class="details-summary toc-title">
+          <span>Contents</span>
+          <span><i class="details-icon fa-solid fa-angle-right" aria-hidden="true"></i></span>
+        </div>
+        <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#b主機-clinet端--設定">B主機( Clinet端 ) 設定</a>
+      <ul>
+        <li><a href="#安裝服務">安裝服務</a></li>
+        <li><a href="#修改服務設定-xinetdconf">修改服務設定 xinetd.conf</a></li>
+        <li><a href="#修改服務設定-rsyncdconf">修改服務設定 rsyncd.conf</a></li>
+        <li><a href="#設定帳號密碼">設定帳號密碼</a></li>
+        <li><a href="#啟動服務">啟動服務</a></li>
+      </ul>
+    </li>
+    <li><a href="#a主機-server端-設定">A主機 (Server端) 設定</a>
+      <ul>
+        <li><a href="#設定密碼即可">設定密碼即可</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+      </div><div class="content" id="content"><hr>
+<hr>
+<h1 id="測試環境"><strong>測試環境</strong></h1>
+<p><strong>A主機 ( Server端 ) IP :192.168.1.222</strong></p>
+<p><strong>B主機 ( Clinet端 ) IP :192.168.1.122</strong></p>
+<hr>
+<hr>
+<hr>
+<h2 id="b主機-clinet端--設定">B主機( Clinet端 ) 設定</h2>
+<h3 id="安裝服務">安裝服務</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span>yim install xinetd rsync
+</span></span></code></pre></div><h3 id="修改服務設定-xinetdconf">修改服務設定 xinetd.conf</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span>vim <span style="color:#f92672">/</span>etc<span style="color:#f92672">/</span>xinetd.d<span style="color:#f92672">/</span>rsync
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>service rsync
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">{</span>
+</span></span><span style="display:flex;"><span>        disable         <span style="color:#f92672">=</span> <span style="color:#66d9ef">no</span>
+</span></span><span style="display:flex;"><span>        socket_type     <span style="color:#f92672">=</span> stream
+</span></span><span style="display:flex;"><span>        wait            <span style="color:#f92672">=</span> <span style="color:#66d9ef">no</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">user</span>            <span style="color:#f92672">=</span> root
+</span></span><span style="display:flex;"><span>        server          <span style="color:#f92672">=</span> <span style="color:#f92672">/</span>usr<span style="color:#f92672">/</span>bin<span style="color:#f92672">/</span>rsync
+</span></span><span style="display:flex;"><span>        server_args     <span style="color:#f92672">=</span> <span style="color:#75715e">--daemon
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        log_on_failure  <span style="color:#f92672">+=</span> USERID
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">}</span>
+</span></span></code></pre></div><h3 id="修改服務設定-rsyncdconf">修改服務設定 rsyncd.conf</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span>vim <span style="color:#f92672">/</span>etc<span style="color:#f92672">/</span>rsyncd.conf
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>[<span style="color:#66d9ef">update</span>]
+</span></span><span style="display:flex;"><span>path <span style="color:#f92672">=</span>          <span style="color:#f92672">/</span>
+</span></span><span style="display:flex;"><span>auth users <span style="color:#f92672">=</span>    <span style="color:#66d9ef">update</span>
+</span></span><span style="display:flex;"><span>hosts allow <span style="color:#f92672">=</span>   XX.XX.XX.XX  <span style="color:#f92672">//</span><span style="color:#960050;background-color:#1e0010">來源</span>IP
+</span></span><span style="display:flex;"><span>uid <span style="color:#f92672">=</span>           root
+</span></span><span style="display:flex;"><span>gid <span style="color:#f92672">=</span>           root
+</span></span><span style="display:flex;"><span>secrets file <span style="color:#f92672">=</span>  <span style="color:#f92672">/</span>etc<span style="color:#f92672">/</span>rsync.secrets
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">read</span> <span style="color:#66d9ef">only</span> <span style="color:#f92672">=</span>     <span style="color:#66d9ef">no</span>
+</span></span></code></pre></div><h3 id="設定帳號密碼">設定帳號密碼</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span>vim <span style="color:#f92672">/</span>etc<span style="color:#f92672">/</span>rsync.secrets
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">update</span>:<span style="color:#ae81ff">123</span>abc
+</span></span></code></pre></div><h3 id="啟動服務">啟動服務</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span>systemctl <span style="color:#66d9ef">start</span> xinetd
+</span></span></code></pre></div><hr>
+<hr>
+<hr>
+<h2 id="a主機-server端-設定">A主機 (Server端) 設定</h2>
+<h3 id="設定密碼即可">設定密碼即可</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span>vim rsync.secrets
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">123</span>abc
+</span></span></code></pre></div><h1 id="同步語法"><strong>同步語法</strong></h1>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span>rsync <span style="color:#f92672">-</span>aHSz  <span style="color:#75715e">--delete --contimeout=5 --password-file=/etc/rsync.secrets /hugoserver update@XX.XX.XX.XX::update
+</span></span></span></code></pre></div><hr>
+
+</div><div class="post-footer" id="post-footer">
+  <div class="post-info">
+    <div class="post-info-line">
+      <div class="post-info-mod">
+        <span title="Updated on 2023-02-03 00:00:00">Updated on 2023-02-03&nbsp;</span>
+      </div><div class="post-info-license">
+          <span><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span>
+        </div></div>
+    <div class="post-info-line">
+      <div class="post-info-md"><span><a href="https://laurance.eu.org/posts/linux-rsync-%E5%9F%BA%E6%9C%AC%E8%A8%AD%E5%AE%9A%E6%95%99%E5%AD%B8/index.md" title="Read Markdown" class="link-to-markdown">Read Markdown</a></span></div>
+      <div class="post-info-share">
+        <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://laurance.eu.org/posts/linux-rsync-%E5%9F%BA%E6%9C%AC%E8%A8%AD%E5%AE%9A%E6%95%99%E5%AD%B8/" data-title="Linux - Rsync 基本設定" data-hashtags="Rsync"><i class="fa-brands fa-twitter fa-fw" aria-hidden="true"></i></a>
+  <a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://laurance.eu.org/posts/linux-rsync-%E5%9F%BA%E6%9C%AC%E8%A8%AD%E5%AE%9A%E6%95%99%E5%AD%B8/" data-hashtag="Rsync"><i class="fa-brands fa-facebook-square fa-fw" aria-hidden="true"></i></a>
+  <a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://laurance.eu.org/posts/linux-rsync-%E5%9F%BA%E6%9C%AC%E8%A8%AD%E5%AE%9A%E6%95%99%E5%AD%B8/" data-title="Linux - Rsync 基本設定"><i class="fa-brands fa-weibo fa-fw" aria-hidden="true"></i></a>
+  </span>
+      </div>
+    </div>
+  </div>
+
+  <div class="post-info-more">
+    <section class="post-tags"><i class="fa-solid fa-tags fa-fw me-1" aria-hidden="true"></i><a href='https://laurance.eu.org/tags/rsync/' class="post-tag">Rsync</a></section>
+    <section>
+      <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="https://laurance.eu.org/">Home</a></span>
+    </section>
+  </div>
+
+  <div class="post-nav"><a href="https://laurance.eu.org/posts/linux-%E4%BD%BF%E7%94%A8-locate-%E5%B0%8B%E6%89%BE%E6%AA%94%E6%A1%88%E6%95%99%E5%AD%B8%E8%88%87%E7%AF%84%E4%BE%8B/" class="post-nav-item" rel="prev" title="Linux - 使用 locate 尋找檔案教學與範例"><i class="fa-solid fa-angle-left fa-fw" aria-hidden="true"></i>Linux - 使用 locate 尋找檔案教學與範例</a>
+      <a href="https://laurance.eu.org/posts/svn-%E8%A7%A3%E6%B1%BAsvn%E6%AF%8F%E6%AC%A1%E9%83%BD%E9%9C%80%E8%A6%81%E8%BC%B8%E5%85%A5%E5%AF%86%E7%A2%BC/" class="post-nav-item" rel="next" title="SVN - Linux 解決每次 commit 都需要輸入密碼">SVN - Linux 解決每次 commit 都需要輸入密碼<i class="fa-solid fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+</article></main><footer class="footer">
+    <div class="footer-container"><div class="footer-line powered">Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreferrer" title="Hugo 0.111.3">Hugo</a> | Theme - <a href="https://github.com/hugo-fixit/FixIt" target="_blank" rel="external" title="FixIt v0.2.18"><img class="fixit-icon" src="https://laurance.eu.org/fixit.min.svg" alt="FixIt logo" />&nbsp;FixIt</a>
+        </div><div class="footer-line copyright" itemscope itemtype="http://schema.org/CreativeWork"><i class="fa-regular fa-copyright fa-fw" aria-hidden="true"></i>
+            <span itemprop="copyrightYear">2021 - 2023</span><span class="author" itemprop="copyrightHolder">
+              <a href="https://laurance.eu.org/">Laurance</a></span></div><div class="footer-line statistics"></div><div class="footer-line visitor">
+          <span id="busuanzi_container_site_uv" title='Total visitors'><i class="fa-regular fa-user fa-fw" aria-hidden="true"></i>&nbsp;<span id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span></span><span id="busuanzi_container_site_pv" class="footer-divider" title='Total visits'><i class="fa-regular fa-eye fa-fw" aria-hidden="true"></i>&nbsp;<span id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span></span>
+        </div></div>
+  </footer></div><div class="widgets"><div class="fixed-buttons animate__faster d-none"><div class="fixed-button back-to-top" role="button" aria-label="Back to Top"><i class="fa-solid fa-arrow-up fa-fw" aria-hidden="true"></i><span class="variant-numeric d-none">0%</span>
+        </div></div><div id="mask"></div><noscript>
+    <div class="noscript-warning">Theme FixIt works best with JavaScript enabled.</div>
+  </noscript>
+</div><link rel="stylesheet" href="https://laurance.eu.org/lib/lightgallery/css/lightgallery-bundle.min.css"><link rel="stylesheet" href="https://laurance.eu.org/lib/katex/katex.min.css"><link rel="stylesheet" href="https://laurance.eu.org/lib/cookieconsent/cookieconsent.min.css"><link rel="stylesheet" href="https://laurance.eu.org/lib/pace/themes/blue/pace-theme-minimal.css"><script src="https://laurance.eu.org/lib/autocomplete/autocomplete.min.js" defer></script><script src="https://laurance.eu.org/lib/lunr/lunr.min.js" defer></script><script src="https://laurance.eu.org/lib/lightgallery/lightgallery.min.js" defer></script><script src="https://laurance.eu.org/lib/lightgallery/plugins/thumbnail/lg-thumbnail.min.js" defer></script><script src="https://laurance.eu.org/lib/lightgallery/plugins/zoom/lg-zoom.min.js" defer></script><script src="https://laurance.eu.org/lib/sharer/sharer.min.js" async defer></script><script src="https://laurance.eu.org/lib/typeit/index.umd.js" defer></script><script src="https://laurance.eu.org/lib/katex/katex.min.js" defer></script><script src="https://laurance.eu.org/lib/katex/auto-render.min.js" defer></script><script src="https://laurance.eu.org/lib/katex/copy-tex.min.js" defer></script><script src="https://laurance.eu.org/lib/katex/mhchem.min.js" defer></script><script src="https://laurance.eu.org/lib/cookieconsent/cookieconsent.min.js" defer></script><script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async defer></script><script src="https://laurance.eu.org/lib/pace/pace.min.js" async defer></script><script>window.config={"autoBookmark":true,"code":{"copyTitle":"Copy to clipboard","editLockTitle":"Lock editable code block","editUnLockTitle":"Unlock editable code block","editable":true,"maxShownLines":10},"comment":{"enable":false},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"data":{"typeit-header-desktop":" Laurance's Note Bloggggg ","typeit-header-title-mobile":" Laurance's Note Bloggggg "},"enablePWA":true,"lightgallery":true,"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":20,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"typeit-header-desktop":["typeit-header-desktop"],"typeit-header-title-mobile":["typeit-header-title-mobile"]},"duration":-1,"loop":false,"speed":100}};</script><script src="https://laurance.eu.org/js/theme.min.js" defer></script></body>
+</html>

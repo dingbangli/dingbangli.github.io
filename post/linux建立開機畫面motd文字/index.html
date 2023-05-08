@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html itemscope itemtype="http://schema.org/WebPage" lang="">
+  <head>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+    <meta name="robots" content="noodp" />
+    <title>Linux - 建立開機畫面 motd 文字 - </title><meta name="author" content="Laurance">
+<meta name="author-link" content="">
+<meta name="description" content=" 建立開機畫面 motd 文字 使用 vim 替換 ^[ 為 轉義 字符 在 vim 內按 : 輸入以下內容 %s/\^\[/ (不要點擊Enter)
+輸入 Ctrl&#43;v 然後點擊 Esc 轉換字符 最後輸入 /g ，點擊 Enter 如果操作正確 ^[ 則從灰色變為藍色，如果沒有點擊 u 返回 另一種方法 ( 使用 echo ) EX: echo $&#39;\e[1;37m&#39; &gt; myfile 各符號代表意思 : 符號 意思 %s 搜索 / 第一項 ^[ 轉義版本 ^[ / 第二項，使用鍵盤插入實際 Esc /g 重複所有出現 " /><meta name="keywords" content='Linux' /><meta itemprop="name" content="Linux - 建立開機畫面 motd 文字">
+<meta itemprop="description" content=" 建立開機畫面 motd 文字 使用 vim 替換 ^[ 為 轉義 字符 在 vim 內按 : 輸入以下內容 %s/\^\[/ (不要點擊Enter)
+輸入 Ctrl&#43;v 然後點擊 Esc 轉換字符 最後輸入 /g ，點擊 Enter 如果操作正確 ^[ 則從灰色變為藍色，如果沒有點擊 u 返回 另一種方法 ( 使用 echo ) EX: echo $&#39;\e[1;37m&#39; &gt; myfile 各符號代表意思 : 符號 意思 %s 搜索 / 第一項 ^[ 轉義版本 ^[ / 第二項，使用鍵盤插入實際 Esc /g 重複所有出現 "><meta itemprop="datePublished" content="2022-08-10T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2022-08-10T00:00:00+00:00" />
+<meta itemprop="wordCount" content="57"><meta itemprop="image" content="https://laurance.eu.org/tan.jpg"/>
+<meta itemprop="keywords" content="Linux," /><meta property="og:title" content="Linux - 建立開機畫面 motd 文字" />
+<meta property="og:description" content=" 建立開機畫面 motd 文字 使用 vim 替換 ^[ 為 轉義 字符 在 vim 內按 : 輸入以下內容 %s/\^\[/ (不要點擊Enter)
+輸入 Ctrl&#43;v 然後點擊 Esc 轉換字符 最後輸入 /g ，點擊 Enter 如果操作正確 ^[ 則從灰色變為藍色，如果沒有點擊 u 返回 另一種方法 ( 使用 echo ) EX: echo $&#39;\e[1;37m&#39; &gt; myfile 各符號代表意思 : 符號 意思 %s 搜索 / 第一項 ^[ 轉義版本 ^[ / 第二項，使用鍵盤插入實際 Esc /g 重複所有出現 " />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://laurance.eu.org/posts/linux%E5%BB%BA%E7%AB%8B%E9%96%8B%E6%A9%9F%E7%95%AB%E9%9D%A2motd%E6%96%87%E5%AD%97/" /><meta property="og:image" content="https://laurance.eu.org/tan.jpg"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-08-10T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-08-10T00:00:00+00:00" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://laurance.eu.org/tan.jpg"/>
+
+<meta name="twitter:title" content="Linux - 建立開機畫面 motd 文字"/>
+<meta name="twitter:description" content=" 建立開機畫面 motd 文字 使用 vim 替換 ^[ 為 轉義 字符 在 vim 內按 : 輸入以下內容 %s/\^\[/ (不要點擊Enter)
+輸入 Ctrl&#43;v 然後點擊 Esc 轉換字符 最後輸入 /g ，點擊 Enter 如果操作正確 ^[ 則從灰色變為藍色，如果沒有點擊 u 返回 另一種方法 ( 使用 echo ) EX: echo $&#39;\e[1;37m&#39; &gt; myfile 各符號代表意思 : 符號 意思 %s 搜索 / 第一項 ^[ 轉義版本 ^[ / 第二項，使用鍵盤插入實際 Esc /g 重複所有出現 "/>
+<meta name="application-name" content="FixIt">
+<meta name="apple-mobile-web-app-title" content="FixIt"><meta name="theme-color" data-light="#f8f8f8" data-dark="#252627" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="https://laurance.eu.org/favicon.png"><link rel="apple-touch-icon" sizes="180x180" href="https://laurance.eu.org/apple-touch-icon.png"><link rel="mask-icon" href="https://laurance.eu.org/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="https://laurance.eu.org/site.webmanifest"><link rel="canonical" href="https://laurance.eu.org/posts/linux%E5%BB%BA%E7%AB%8B%E9%96%8B%E6%A9%9F%E7%95%AB%E9%9D%A2motd%E6%96%87%E5%AD%97/" /><link rel="prev" href="https://laurance.eu.org/posts/windows-cmd%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/" /><link rel="next" href="https://laurance.eu.org/posts/docker-%E9%80%8F%E9%81%8Eimage%E5%82%B3%E8%BC%B8%E8%87%B3%E5%8F%A6%E4%B8%80%E5%8F%B0%E5%85%A7%E7%B6%B2%E6%A9%9F%E5%99%A8/" /><link rel="stylesheet" href="https://laurance.eu.org/css/style.min.css"><link rel="stylesheet" href="https://laurance.eu.org/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="https://laurance.eu.org/lib/animate/animate.min.css"><script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Linux - 建立開機畫面 motd 文字",
+    "inLanguage": "",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https:\/\/laurance.eu.org\/posts\/linux%E5%BB%BA%E7%AB%8B%E9%96%8B%E6%A9%9F%E7%95%AB%E9%9D%A2motd%E6%96%87%E5%AD%97\/"
+    },"genre": "posts","keywords": "Linux","wordcount":  57 ,
+    "url": "https:\/\/laurance.eu.org\/posts\/linux%E5%BB%BA%E7%AB%8B%E9%96%8B%E6%A9%9F%E7%95%AB%E9%9D%A2motd%E6%96%87%E5%AD%97\/","datePublished": "2022-08-10T00:00:00+00:00","dateModified": "2022-08-10T00:00:00+00:00","publisher": {
+      "@type": "Organization",
+      "name": ""},"author": {
+        "@type": "Person",
+        "name": "Laurance"
+      },"description": ""
+  }
+  </script></head>
+  <body data-header-desktop="sticky" data-header-mobile="auto"><script>(window.localStorage?.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('dark' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'dark' === 'dark')) && document.body.setAttribute('data-theme', 'dark');</script><div class="wrapper" data-page-style="wide"><header class="desktop animate__faster" id="header-desktop">
+  <div class="header-wrapper">
+    <div class="header-title">
+      <a href="https://laurance.eu.org/" title=""><img loading="lazy" src="https://laurance.eu.org/fixit.min.svg" srcset="https://laurance.eu.org/fixit.min.svg, https://laurance.eu.org/fixit.min.svg 1.5x, https://laurance.eu.org/fixit.min.svg 2x" sizes="auto" data-title="/fixit.min.svg" data-alt="/fixit.min.svg" class="logo" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/><span id="typeit-header-desktop" class="typeit"></span></a><span class="header-subtitle"></span></div>
+    <nav>
+      <ul class="menu"><li class="menu-item">
+              <a
+                class="menu-link"
+                href="https://laurance.eu.org/categories/"
+                
+                
+              ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> 分類</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="https://laurance.eu.org/tags/"
+                
+                
+              ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 標籤</a></li><li class="menu-item delimiter"></li><li class="menu-item search" id="search-desktop">
+            <input type="text" placeholder="搜索關鍵字" id="search-input-desktop">
+            <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+              <i class="fa-solid fa-search fa-fw" aria-hidden="true"></i>
+            </a>
+            <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+              <i class="fa-solid fa-times-circle fa-fw" aria-hidden="true"></i>
+            </a>
+            <span class="search-button search-loading" id="search-loading-desktop">
+              <i class="fa-solid fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+            </span>
+          </li><li class="menu-item theme-switch" title="Switch Theme">
+          <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
+        </li></ul>
+    </nav>
+  </div>
+</header><header class="mobile animate__faster" id="header-mobile">
+  <div class="header-container">
+    <div class="header-wrapper">
+      <div class="header-title">
+        <a href="https://laurance.eu.org/" title=""><img loading="lazy" src="https://laurance.eu.org/fixit.min.svg" srcset="https://laurance.eu.org/fixit.min.svg, https://laurance.eu.org/fixit.min.svg 1.5x, https://laurance.eu.org/fixit.min.svg 2x" sizes="auto" data-title="/fixit.min.svg" data-alt="/fixit.min.svg" class="logo" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/><span id="typeit-header-title-mobile" class="typeit"></span></a><span class="header-subtitle"></span></div>
+      <div class="menu-toggle" id="menu-toggle-mobile">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+    <nav>
+      <ul class="menu" id="menu-mobile"><li class="search-wrapper">
+            <div class="search mobile" id="search-mobile">
+              <input type="text" placeholder="搜索關鍵字" id="search-input-mobile">
+              <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                <i class="fa-solid fa-search fa-fw" aria-hidden="true"></i>
+              </a>
+              <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                <i class="fa-solid fa-times-circle fa-fw" aria-hidden="true"></i>
+              </a>
+              <span class="search-button search-loading" id="search-loading-mobile">
+                <i class="fa-solid fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+              </span>
+            </div>
+            <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+              Cancel
+            </a>
+          </li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="https://laurance.eu.org/categories/"
+                  
+                  
+                ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> 分類</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="https://laurance.eu.org/tags/"
+                  
+                  
+                ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 標籤</a></li><li class="menu-item menu-system">
+          <span class="menu-system-item theme-switch" title="Switch Theme"><i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i></span></li>
+      </ul>
+    </nav>
+  </div>
+</header><div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+  </div>
+  <div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+  </div><main class="container"><aside class="toc" id="toc-auto"><h2 class="toc-title">Contents&nbsp;<i class="toc-icon fa-solid fa-angle-down fa-fw" aria-hidden="true"></i></h2>
+      <div class="toc-content" id="toc-content-auto"></div></aside>
+
+  <aside class="aside-custom">
+    </aside>
+
+  <article class="page single">
+    <div class="header"><h1 class="single-title animate__animated animate__flipInX"><span>Linux - 建立開機畫面 motd 文字</span>
+      </h1></div><div class="post-meta">
+      <div class="post-meta-line"><span class="post-author"><span class="author"><i class="fa-solid fa-user-circle" aria-hidden="true"></i>
+      Laurance</span></span>
+          <span class="post-category">included in <a href="https://laurance.eu.org/categories/linux/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> Linux</a></span></div>
+      <div class="post-meta-line"><span title="published on 2022-08-10 00:00:00"><i class="fa-regular fa-calendar-alt fa-fw me-1" aria-hidden="true"></i><time datetime="2022-08-10">2022-08-10</time></span>&nbsp;<span title="Updated on 2022-08-10 00:00:00"><i class="fa-regular fa-edit fa-fw me-1" aria-hidden="true"></i><time datetime="2022-08-10">2022-08-10</time></span>&nbsp;<span><i class="fa-solid fa-pencil-alt fa-fw me-1" aria-hidden="true"></i>57 words</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw me-1" aria-hidden="true"></i>One minute</span>&nbsp;<span id="busuanzi_container_page_pv" class="busuanzi_visitors comment-visitors" data-flag-title="Linux - 建立開機畫面 motd 文字">
+            <i class="fa-regular fa-eye fa-fw me-1" aria-hidden="true"></i><span id="busuanzi_value_page_pv">-</span>&nbsp;views
+          </span>&nbsp;</div>
+    </div><div class="details toc" id="toc-static" data-kept="false">
+        <div class="details-summary toc-title">
+          <span>Contents</span>
+          <span><i class="details-icon fa-solid fa-angle-right" aria-hidden="true"></i></span>
+        </div>
+        <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#建立開機畫面-motd-文字">建立開機畫面 <code>motd</code> 文字</a></li>
+    <li><a href="#使用-vim-替換---為-轉義-字符">使用 <code>vim</code> 替換 <code>^[ </code> 為 <code>轉義</code> 字符</a>
+      <ul>
+        <li><a href="#在-vim-內按---">在 vim 內按 <code>:</code></a></li>
+        <li><a href="#輸入以下內容">輸入以下內容</a></li>
+        <li><a href="#輸入-ctrlv-然後點擊-esc-轉換字符">輸入 <code>Ctrl+v</code> 然後點擊 <code>Esc</code> 轉換字符</a></li>
+        <li><a href="#最後輸入-g-點擊-enter">最後輸入 <code>/g</code> ，點擊 <code>Enter</code></a></li>
+        <li><a href="#如果操作正確--則從灰色變為藍色如果沒有點擊-u-返回">如果操作正確 <code>^[</code> 則從灰色變為藍色，如果沒有點擊 <code>u</code> 返回</a></li>
+      </ul>
+    </li>
+    <li><a href="#另一種方法--使用-echo-">另一種方法 ( 使用 echo )</a></li>
+    <li><a href="#各符號代表意思-">各符號代表意思 :</a></li>
+  </ul>
+</nav></div>
+      </div><div class="content" id="content"><hr>
+<hr>
+<h2 id="建立開機畫面-motd-文字">建立開機畫面 <code>motd</code> 文字</h2>
+<hr>
+<hr>
+<h2 id="使用-vim-替換---為-轉義-字符">使用 <code>vim</code> 替換 <code>^[ </code> 為 <code>轉義</code> 字符</h2>
+<hr>
+<hr>
+<h3 id="在-vim-內按---">在 vim 內按 <code>:</code></h3>
+<hr>
+<hr>
+<h3 id="輸入以下內容">輸入以下內容</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#f92672">%</span>s<span style="color:#f92672">/</span><span style="color:#960050;background-color:#1e0010">\</span><span style="color:#f92672">^</span><span style="color:#960050;background-color:#1e0010">\</span>[<span style="color:#f92672">/</span> 
+</span></span></code></pre></div><p><code>(不要點擊Enter)</code></p>
+<hr>
+<hr>
+<h3 id="輸入-ctrlv-然後點擊-esc-轉換字符">輸入 <code>Ctrl+v</code> 然後點擊 <code>Esc</code> 轉換字符</h3>
+<hr>
+<hr>
+<h3 id="最後輸入-g-點擊-enter">最後輸入 <code>/g</code> ，點擊 <code>Enter</code></h3>
+<hr>
+<hr>
+<h3 id="如果操作正確--則從灰色變為藍色如果沒有點擊-u-返回">如果操作正確 <code>^[</code> 則從灰色變為藍色，如果沒有點擊 <code>u</code> 返回</h3>
+<hr>
+<hr>
+<h2 id="另一種方法--使用-echo-">另一種方法 ( 使用 echo )</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span>EX:
+</span></span><span style="display:flex;"><span>echo <span style="color:#960050;background-color:#1e0010">$</span><span style="color:#e6db74">&#39;\e[1;37m&#39;</span> <span style="color:#f92672">&gt;</span> myfile
+</span></span></code></pre></div><hr>
+<hr>
+<h2 id="各符號代表意思-">各符號代表意思 :</h2>
+<table>
+<thead>
+<tr>
+<th>符號</th>
+<th>意思</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>%s</td>
+<td>搜索</td>
+</tr>
+<tr>
+<td>/</td>
+<td>第一項</td>
+</tr>
+<tr>
+<td>^[</td>
+<td>轉義版本 ^[</td>
+</tr>
+<tr>
+<td>/</td>
+<td>第二項，使用鍵盤插入實際 Esc</td>
+</tr>
+<tr>
+<td>/g</td>
+<td>重複所有出現</td>
+</tr>
+</tbody>
+</table>
+<hr>
+
+</div><div class="post-footer" id="post-footer">
+  <div class="post-info">
+    <div class="post-info-line">
+      <div class="post-info-mod">
+        <span title="Updated on 2022-08-10 00:00:00">Updated on 2022-08-10&nbsp;</span>
+      </div><div class="post-info-license">
+          <span><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span>
+        </div></div>
+    <div class="post-info-line">
+      <div class="post-info-md"><span><a href="https://laurance.eu.org/posts/linux%E5%BB%BA%E7%AB%8B%E9%96%8B%E6%A9%9F%E7%95%AB%E9%9D%A2motd%E6%96%87%E5%AD%97/index.md" title="Read Markdown" class="link-to-markdown">Read Markdown</a></span></div>
+      <div class="post-info-share">
+        <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://laurance.eu.org/posts/linux%E5%BB%BA%E7%AB%8B%E9%96%8B%E6%A9%9F%E7%95%AB%E9%9D%A2motd%E6%96%87%E5%AD%97/" data-title="Linux - 建立開機畫面 motd 文字" data-hashtags="Linux"><i class="fa-brands fa-twitter fa-fw" aria-hidden="true"></i></a>
+  <a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://laurance.eu.org/posts/linux%E5%BB%BA%E7%AB%8B%E9%96%8B%E6%A9%9F%E7%95%AB%E9%9D%A2motd%E6%96%87%E5%AD%97/" data-hashtag="Linux"><i class="fa-brands fa-facebook-square fa-fw" aria-hidden="true"></i></a>
+  <a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://laurance.eu.org/posts/linux%E5%BB%BA%E7%AB%8B%E9%96%8B%E6%A9%9F%E7%95%AB%E9%9D%A2motd%E6%96%87%E5%AD%97/" data-title="Linux - 建立開機畫面 motd 文字"><i class="fa-brands fa-weibo fa-fw" aria-hidden="true"></i></a>
+  </span>
+      </div>
+    </div>
+  </div>
+
+  <div class="post-info-more">
+    <section class="post-tags"><i class="fa-solid fa-tags fa-fw me-1" aria-hidden="true"></i><a href='https://laurance.eu.org/tags/linux/' class="post-tag">Linux</a></section>
+    <section>
+      <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="https://laurance.eu.org/">Home</a></span>
+    </section>
+  </div>
+
+  <div class="post-nav"><a href="https://laurance.eu.org/posts/windows-cmd%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/" class="post-nav-item" rel="prev" title="Windows - CMD 常用指令"><i class="fa-solid fa-angle-left fa-fw" aria-hidden="true"></i>Windows - CMD 常用指令</a>
+      <a href="https://laurance.eu.org/posts/docker-%E9%80%8F%E9%81%8Eimage%E5%82%B3%E8%BC%B8%E8%87%B3%E5%8F%A6%E4%B8%80%E5%8F%B0%E5%85%A7%E7%B6%B2%E6%A9%9F%E5%99%A8/" class="post-nav-item" rel="next" title="Docker - 透過image傳輸至另一台內網機器">Docker - 透過image傳輸至另一台內網機器<i class="fa-solid fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+</article></main><footer class="footer">
+    <div class="footer-container"><div class="footer-line powered">Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreferrer" title="Hugo 0.111.3">Hugo</a> | Theme - <a href="https://github.com/hugo-fixit/FixIt" target="_blank" rel="external" title="FixIt v0.2.18"><img class="fixit-icon" src="https://laurance.eu.org/fixit.min.svg" alt="FixIt logo" />&nbsp;FixIt</a>
+        </div><div class="footer-line copyright" itemscope itemtype="http://schema.org/CreativeWork"><i class="fa-regular fa-copyright fa-fw" aria-hidden="true"></i>
+            <span itemprop="copyrightYear">2021 - 2023</span><span class="author" itemprop="copyrightHolder">
+              <a href="https://laurance.eu.org/">Laurance</a></span></div><div class="footer-line statistics"></div><div class="footer-line visitor">
+          <span id="busuanzi_container_site_uv" title='Total visitors'><i class="fa-regular fa-user fa-fw" aria-hidden="true"></i>&nbsp;<span id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span></span><span id="busuanzi_container_site_pv" class="footer-divider" title='Total visits'><i class="fa-regular fa-eye fa-fw" aria-hidden="true"></i>&nbsp;<span id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span></span>
+        </div></div>
+  </footer></div><div class="widgets"><div class="fixed-buttons animate__faster d-none"><div class="fixed-button back-to-top" role="button" aria-label="Back to Top"><i class="fa-solid fa-arrow-up fa-fw" aria-hidden="true"></i><span class="variant-numeric d-none">0%</span>
+        </div></div><div id="mask"></div><noscript>
+    <div class="noscript-warning">Theme FixIt works best with JavaScript enabled.</div>
+  </noscript>
+</div><link rel="stylesheet" href="https://laurance.eu.org/lib/lightgallery/css/lightgallery-bundle.min.css"><link rel="stylesheet" href="https://laurance.eu.org/lib/katex/katex.min.css"><link rel="stylesheet" href="https://laurance.eu.org/lib/cookieconsent/cookieconsent.min.css"><link rel="stylesheet" href="https://laurance.eu.org/lib/pace/themes/blue/pace-theme-minimal.css"><script src="https://laurance.eu.org/lib/autocomplete/autocomplete.min.js" defer></script><script src="https://laurance.eu.org/lib/lunr/lunr.min.js" defer></script><script src="https://laurance.eu.org/lib/lightgallery/lightgallery.min.js" defer></script><script src="https://laurance.eu.org/lib/lightgallery/plugins/thumbnail/lg-thumbnail.min.js" defer></script><script src="https://laurance.eu.org/lib/lightgallery/plugins/zoom/lg-zoom.min.js" defer></script><script src="https://laurance.eu.org/lib/sharer/sharer.min.js" async defer></script><script src="https://laurance.eu.org/lib/typeit/index.umd.js" defer></script><script src="https://laurance.eu.org/lib/katex/katex.min.js" defer></script><script src="https://laurance.eu.org/lib/katex/auto-render.min.js" defer></script><script src="https://laurance.eu.org/lib/katex/copy-tex.min.js" defer></script><script src="https://laurance.eu.org/lib/katex/mhchem.min.js" defer></script><script src="https://laurance.eu.org/lib/cookieconsent/cookieconsent.min.js" defer></script><script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async defer></script><script src="https://laurance.eu.org/lib/pace/pace.min.js" async defer></script><script>window.config={"autoBookmark":true,"code":{"copyTitle":"Copy to clipboard","editLockTitle":"Lock editable code block","editUnLockTitle":"Unlock editable code block","editable":true,"maxShownLines":10},"comment":{"enable":false},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"data":{"typeit-header-desktop":" Laurance's Note Bloggggg ","typeit-header-title-mobile":" Laurance's Note Bloggggg "},"enablePWA":true,"lightgallery":true,"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":20,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"typeit-header-desktop":["typeit-header-desktop"],"typeit-header-title-mobile":["typeit-header-title-mobile"]},"duration":-1,"loop":false,"speed":100}};</script><script src="https://laurance.eu.org/js/theme.min.js" defer></script></body>
+</html>

@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html itemscope itemtype="http://schema.org/WebPage" lang="">
+  <head>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+    <meta name="robots" content="noodp" />
+    <title>HUGO - 添加 Algolia 搜索支持 - </title><meta name="author" content="Laurance">
+<meta name="author-link" content="">
+<meta name="description" content="新增搜索模塊 Algolia 配置在 hugo 上,實現本地搜索 Algolia官方網址
+{Step 1} 新建 application 及 index {Step 2} 紀錄 Keys 等等會用到 ( Application ID, Search-Only API Key, Admin API Key ) {Step 3} 修改 config.yaml 主要生成 Algolia 索引 outputFormats: Algolia: baseName: algolia isPlainText: true mediaType: application/json notAlternative: true outputs: home: [&#34;HTML&#34;, &#34;RSS&#34;, &#34;Algolia&#34;] params.algolia: appId: &#34;Application ID&#34; indexName: &#34;Index name&#34; searchOnlyKey: &#34;Admin API Key&#34; {Step 4} 在目錄下 layouts/_default 新建 list.algolia.json 文件 {{/* 生成Algolia搜索索引文件 */}} {{- $." /><meta name="keywords" content='HUGO' /><meta itemprop="name" content="HUGO - 添加 Algolia 搜索支持">
+<meta itemprop="description" content="新增搜索模塊 Algolia 配置在 hugo 上,實現本地搜索 Algolia官方網址
+{Step 1} 新建 application 及 index {Step 2} 紀錄 Keys 等等會用到 ( Application ID, Search-Only API Key, Admin API Key ) {Step 3} 修改 config.yaml 主要生成 Algolia 索引 outputFormats: Algolia: baseName: algolia isPlainText: true mediaType: application/json notAlternative: true outputs: home: [&#34;HTML&#34;, &#34;RSS&#34;, &#34;Algolia&#34;] params.algolia: appId: &#34;Application ID&#34; indexName: &#34;Index name&#34; searchOnlyKey: &#34;Admin API Key&#34; {Step 4} 在目錄下 layouts/_default 新建 list.algolia.json 文件 {{/* 生成Algolia搜索索引文件 */}} {{- $."><meta itemprop="datePublished" content="2023-03-10T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2023-03-10T00:00:00+00:00" />
+<meta itemprop="wordCount" content="210"><meta itemprop="image" content="https://laurance.eu.org/tan.jpg"/>
+<meta itemprop="keywords" content="HUGO," /><meta property="og:title" content="HUGO - 添加 Algolia 搜索支持" />
+<meta property="og:description" content="新增搜索模塊 Algolia 配置在 hugo 上,實現本地搜索 Algolia官方網址
+{Step 1} 新建 application 及 index {Step 2} 紀錄 Keys 等等會用到 ( Application ID, Search-Only API Key, Admin API Key ) {Step 3} 修改 config.yaml 主要生成 Algolia 索引 outputFormats: Algolia: baseName: algolia isPlainText: true mediaType: application/json notAlternative: true outputs: home: [&#34;HTML&#34;, &#34;RSS&#34;, &#34;Algolia&#34;] params.algolia: appId: &#34;Application ID&#34; indexName: &#34;Index name&#34; searchOnlyKey: &#34;Admin API Key&#34; {Step 4} 在目錄下 layouts/_default 新建 list.algolia.json 文件 {{/* 生成Algolia搜索索引文件 */}} {{- $." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://laurance.eu.org/posts/hugo%E6%B7%BB%E5%8A%A0algolia%E6%90%9C%E7%B4%A2%E6%94%AF%E6%8C%81/" /><meta property="og:image" content="https://laurance.eu.org/tan.jpg"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-03-10T00:00:00+00:00" />
+<meta property="article:modified_time" content="2023-03-10T00:00:00+00:00" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://laurance.eu.org/tan.jpg"/>
+
+<meta name="twitter:title" content="HUGO - 添加 Algolia 搜索支持"/>
+<meta name="twitter:description" content="新增搜索模塊 Algolia 配置在 hugo 上,實現本地搜索 Algolia官方網址
+{Step 1} 新建 application 及 index {Step 2} 紀錄 Keys 等等會用到 ( Application ID, Search-Only API Key, Admin API Key ) {Step 3} 修改 config.yaml 主要生成 Algolia 索引 outputFormats: Algolia: baseName: algolia isPlainText: true mediaType: application/json notAlternative: true outputs: home: [&#34;HTML&#34;, &#34;RSS&#34;, &#34;Algolia&#34;] params.algolia: appId: &#34;Application ID&#34; indexName: &#34;Index name&#34; searchOnlyKey: &#34;Admin API Key&#34; {Step 4} 在目錄下 layouts/_default 新建 list.algolia.json 文件 {{/* 生成Algolia搜索索引文件 */}} {{- $."/>
+<meta name="application-name" content="FixIt">
+<meta name="apple-mobile-web-app-title" content="FixIt"><meta name="theme-color" data-light="#f8f8f8" data-dark="#252627" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="https://laurance.eu.org/favicon.png"><link rel="apple-touch-icon" sizes="180x180" href="https://laurance.eu.org/apple-touch-icon.png"><link rel="mask-icon" href="https://laurance.eu.org/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="https://laurance.eu.org/site.webmanifest"><link rel="canonical" href="https://laurance.eu.org/posts/hugo%E6%B7%BB%E5%8A%A0algolia%E6%90%9C%E7%B4%A2%E6%94%AF%E6%8C%81/" /><link rel="prev" href="https://laurance.eu.org/posts/haproxy-%E8%A8%AD%E7%BD%AE%E5%8E%9F%E7%90%86%E8%A7%A3%E6%9E%90/" /><link rel="next" href="https://laurance.eu.org/posts/nginx-%E6%B7%BB%E5%8A%A0-echo-%E6%A8%A1%E7%B5%84/" /><link rel="stylesheet" href="https://laurance.eu.org/css/style.min.css"><link rel="stylesheet" href="https://laurance.eu.org/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="https://laurance.eu.org/lib/animate/animate.min.css"><script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "HUGO - 添加 Algolia 搜索支持",
+    "inLanguage": "",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https:\/\/laurance.eu.org\/posts\/hugo%E6%B7%BB%E5%8A%A0algolia%E6%90%9C%E7%B4%A2%E6%94%AF%E6%8C%81\/"
+    },"genre": "posts","keywords": "HUGO","wordcount":  210 ,
+    "url": "https:\/\/laurance.eu.org\/posts\/hugo%E6%B7%BB%E5%8A%A0algolia%E6%90%9C%E7%B4%A2%E6%94%AF%E6%8C%81\/","datePublished": "2023-03-10T00:00:00+00:00","dateModified": "2023-03-10T00:00:00+00:00","publisher": {
+      "@type": "Organization",
+      "name": ""},"author": {
+        "@type": "Person",
+        "name": "Laurance"
+      },"description": ""
+  }
+  </script></head>
+  <body data-header-desktop="sticky" data-header-mobile="auto"><script>(window.localStorage?.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('dark' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'dark' === 'dark')) && document.body.setAttribute('data-theme', 'dark');</script><div class="wrapper" data-page-style="wide"><header class="desktop animate__faster" id="header-desktop">
+  <div class="header-wrapper">
+    <div class="header-title">
+      <a href="https://laurance.eu.org/" title=""><img loading="lazy" src="https://laurance.eu.org/fixit.min.svg" srcset="https://laurance.eu.org/fixit.min.svg, https://laurance.eu.org/fixit.min.svg 1.5x, https://laurance.eu.org/fixit.min.svg 2x" sizes="auto" data-title="/fixit.min.svg" data-alt="/fixit.min.svg" class="logo" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/><span id="typeit-header-desktop" class="typeit"></span></a><span class="header-subtitle"></span></div>
+    <nav>
+      <ul class="menu"><li class="menu-item">
+              <a
+                class="menu-link"
+                href="https://laurance.eu.org/categories/"
+                
+                
+              ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> 分類</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="https://laurance.eu.org/tags/"
+                
+                
+              ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 標籤</a></li><li class="menu-item delimiter"></li><li class="menu-item search" id="search-desktop">
+            <input type="text" placeholder="搜索關鍵字" id="search-input-desktop">
+            <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+              <i class="fa-solid fa-search fa-fw" aria-hidden="true"></i>
+            </a>
+            <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+              <i class="fa-solid fa-times-circle fa-fw" aria-hidden="true"></i>
+            </a>
+            <span class="search-button search-loading" id="search-loading-desktop">
+              <i class="fa-solid fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+            </span>
+          </li><li class="menu-item theme-switch" title="Switch Theme">
+          <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
+        </li></ul>
+    </nav>
+  </div>
+</header><header class="mobile animate__faster" id="header-mobile">
+  <div class="header-container">
+    <div class="header-wrapper">
+      <div class="header-title">
+        <a href="https://laurance.eu.org/" title=""><img loading="lazy" src="https://laurance.eu.org/fixit.min.svg" srcset="https://laurance.eu.org/fixit.min.svg, https://laurance.eu.org/fixit.min.svg 1.5x, https://laurance.eu.org/fixit.min.svg 2x" sizes="auto" data-title="/fixit.min.svg" data-alt="/fixit.min.svg" class="logo" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/><span id="typeit-header-title-mobile" class="typeit"></span></a><span class="header-subtitle"></span></div>
+      <div class="menu-toggle" id="menu-toggle-mobile">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+    <nav>
+      <ul class="menu" id="menu-mobile"><li class="search-wrapper">
+            <div class="search mobile" id="search-mobile">
+              <input type="text" placeholder="搜索關鍵字" id="search-input-mobile">
+              <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                <i class="fa-solid fa-search fa-fw" aria-hidden="true"></i>
+              </a>
+              <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                <i class="fa-solid fa-times-circle fa-fw" aria-hidden="true"></i>
+              </a>
+              <span class="search-button search-loading" id="search-loading-mobile">
+                <i class="fa-solid fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+              </span>
+            </div>
+            <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+              Cancel
+            </a>
+          </li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="https://laurance.eu.org/categories/"
+                  
+                  
+                ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> 分類</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="https://laurance.eu.org/tags/"
+                  
+                  
+                ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 標籤</a></li><li class="menu-item menu-system">
+          <span class="menu-system-item theme-switch" title="Switch Theme"><i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i></span></li>
+      </ul>
+    </nav>
+  </div>
+</header><div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+  </div>
+  <div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+  </div><main class="container"><aside class="toc" id="toc-auto"><h2 class="toc-title">Contents&nbsp;<i class="toc-icon fa-solid fa-angle-down fa-fw" aria-hidden="true"></i></h2>
+      <div class="toc-content" id="toc-content-auto"></div></aside>
+
+  <aside class="aside-custom">
+    </aside>
+
+  <article class="page single">
+    <div class="header"><h1 class="single-title animate__animated animate__flipInX"><span>HUGO - 添加 Algolia 搜索支持</span>
+      </h1></div><div class="post-meta">
+      <div class="post-meta-line"><span class="post-author"><span class="author"><i class="fa-solid fa-user-circle" aria-hidden="true"></i>
+      Laurance</span></span>
+          <span class="post-category">included in <a href="https://laurance.eu.org/categories/hugo/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> HUGO</a></span></div>
+      <div class="post-meta-line"><span title="published on 2023-03-10 00:00:00"><i class="fa-regular fa-calendar-alt fa-fw me-1" aria-hidden="true"></i><time datetime="2023-03-10">2023-03-10</time></span>&nbsp;<span title="Updated on 2023-03-10 00:00:00"><i class="fa-regular fa-edit fa-fw me-1" aria-hidden="true"></i><time datetime="2023-03-10">2023-03-10</time></span>&nbsp;<span><i class="fa-solid fa-pencil-alt fa-fw me-1" aria-hidden="true"></i>210 words</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw me-1" aria-hidden="true"></i>One minute</span>&nbsp;<span id="busuanzi_container_page_pv" class="busuanzi_visitors comment-visitors" data-flag-title="HUGO - 添加 Algolia 搜索支持">
+            <i class="fa-regular fa-eye fa-fw me-1" aria-hidden="true"></i><span id="busuanzi_value_page_pv">-</span>&nbsp;views
+          </span>&nbsp;</div>
+    </div><div class="details toc" id="toc-static" data-kept="false">
+        <div class="details-summary toc-title">
+          <span>Contents</span>
+          <span><i class="details-icon fa-solid fa-angle-right" aria-hidden="true"></i></span>
+        </div>
+        <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#step-1-新建-application-及-index">{Step 1} 新建 application 及 index</a></li>
+        <li><a href="#step-2-紀錄-keys-等等會用到--application-id-search-only-api-key-admin-api-key-">{Step 2} 紀錄 Keys 等等會用到 ( <code>Application ID</code>, <code>Search-Only API Key</code>, <code>Admin API Key</code> )</a></li>
+        <li><a href="#step-3-修改-configyaml-主要生成-algolia-索引">{Step 3} 修改 <code>config.yaml</code> 主要生成 <code>Algolia 索引</code></a></li>
+        <li><a href="#step-4-在目錄下-layouts_default-新建-listalgoliajson-文件">{Step 4} 在目錄下 <code>layouts/_default</code> 新建 <code>list.algolia.json</code> 文件</a></li>
+        <li><a href="#step-5-目錄下執行-hugo-命令後在-public-下會生成-algoliajson">{Step 5} 目錄下執行 <code>hugo</code> 命令後,在 <code>public/</code> 下會生成 <code>algolia.json</code></a></li>
+        <li><a href="#step-6-將上述生成的-algoliajson-上傳至-algolia">{Step 6} 將上述生成的 <code>algolia.json</code> 上傳至 <code>Algolia</code></a></li>
+        <li><a href="#step-7-安裝-atomic-algolia-目的-自動上傳">{Step 7} 安裝 <code>Atomic-Algolia</code> (目的: 自動上傳)</a>
+          <ul>
+            <li><a href="#在根目錄下語法">在根目錄下語法</a></li>
+            <li><a href="#修改根目錄下的-packagejson">修改根目錄下的 <code>Package.Json</code></a></li>
+            <li><a href="#建立-env-檔">建立 .ENV 檔</a></li>
+            <li><a href="#上傳索引文件">上傳索引文件</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+      </div><div class="content" id="content"><hr>
+<hr>
+<h1 id="新增搜索模塊-algolia-配置在-hugo-上實現本地搜索"><strong>新增搜索模塊 <code>Algolia</code> 配置在 hugo 上,實現本地搜索</strong></h1>
+<p><a href="https://www.algolia.com/"target="_blank" rel="external nofollow noopener noreferrer">Algolia官方網址<i class="fa-solid fa-external-link-alt fa-fw fa-xs ms-1 text-secondary" aria-hidden="true"></i></a></p>
+<hr>
+<hr>
+<h3 id="step-1-新建-application-及-index">{Step 1} 新建 application 及 index</h3>
+<p><img loading="lazy" src="301.png" srcset="https://laurance.eu.org/posts/hugo%E6%B7%BB%E5%8A%A0algolia%E6%90%9C%E7%B4%A2%E6%94%AF%E6%8C%81/301.png, 301.png 1.5x, https://laurance.eu.org/posts/hugo%E6%B7%BB%E5%8A%A0algolia%E6%90%9C%E7%B4%A2%E6%94%AF%E6%8C%81/301.png 2x" sizes="auto" data-title="/posts/hugo%E6%B7%BB%E5%8A%A0algolia%E6%90%9C%E7%B4%A2%E6%94%AF%E6%8C%81/301.png" data-alt="/posts/hugo%E6%B7%BB%E5%8A%A0algolia%E6%90%9C%E7%B4%A2%E6%94%AF%E6%8C%81/301.png" width="1513" height="776" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/>
+<img loading="lazy" src="302.png" srcset="https://laurance.eu.org/posts/hugo%E6%B7%BB%E5%8A%A0algolia%E6%90%9C%E7%B4%A2%E6%94%AF%E6%8C%81/302.png, 302.png 1.5x, https://laurance.eu.org/posts/hugo%E6%B7%BB%E5%8A%A0algolia%E6%90%9C%E7%B4%A2%E6%94%AF%E6%8C%81/302.png 2x" sizes="auto" data-title="/posts/hugo%E6%B7%BB%E5%8A%A0algolia%E6%90%9C%E7%B4%A2%E6%94%AF%E6%8C%81/302.png" data-alt="/posts/hugo%E6%B7%BB%E5%8A%A0algolia%E6%90%9C%E7%B4%A2%E6%94%AF%E6%8C%81/302.png" width="1502" height="777" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/></p>
+<hr>
+<hr>
+<h3 id="step-2-紀錄-keys-等等會用到--application-id-search-only-api-key-admin-api-key-">{Step 2} 紀錄 Keys 等等會用到 ( <code>Application ID</code>, <code>Search-Only API Key</code>, <code>Admin API Key</code> )</h3>
+<p><img loading="lazy" src="303.png" srcset="https://laurance.eu.org/posts/hugo%E6%B7%BB%E5%8A%A0algolia%E6%90%9C%E7%B4%A2%E6%94%AF%E6%8C%81/303.png, 303.png 1.5x, https://laurance.eu.org/posts/hugo%E6%B7%BB%E5%8A%A0algolia%E6%90%9C%E7%B4%A2%E6%94%AF%E6%8C%81/303.png 2x" sizes="auto" data-title="/posts/hugo%E6%B7%BB%E5%8A%A0algolia%E6%90%9C%E7%B4%A2%E6%94%AF%E6%8C%81/303.png" data-alt="/posts/hugo%E6%B7%BB%E5%8A%A0algolia%E6%90%9C%E7%B4%A2%E6%94%AF%E6%8C%81/303.png" width="1920" height="937" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/></p>
+<hr>
+<hr>
+<h3 id="step-3-修改-configyaml-主要生成-algolia-索引">{Step 3} 修改 <code>config.yaml</code> 主要生成 <code>Algolia 索引</code></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span>outputFormats:
+</span></span><span style="display:flex;"><span>    Algolia:
+</span></span><span style="display:flex;"><span>        baseName: algolia
+</span></span><span style="display:flex;"><span>        isPlainText: <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>        mediaType: application<span style="color:#f92672">/</span>json
+</span></span><span style="display:flex;"><span>        notAlternative: <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>outputs:
+</span></span><span style="display:flex;"><span>    home: [<span style="color:#e6db74">&#34;HTML&#34;</span>, <span style="color:#e6db74">&#34;RSS&#34;</span>, <span style="color:#e6db74">&#34;Algolia&#34;</span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>params.algolia:
+</span></span><span style="display:flex;"><span>    appId: <span style="color:#e6db74">&#34;Application ID&#34;</span>
+</span></span><span style="display:flex;"><span>    indexName: <span style="color:#e6db74">&#34;Index name&#34;</span>
+</span></span><span style="display:flex;"><span>    searchOnlyKey: <span style="color:#e6db74">&#34;Admin API Key&#34;</span>
+</span></span></code></pre></div><hr>
+<hr>
+<h3 id="step-4-在目錄下-layouts_default-新建-listalgoliajson-文件">{Step 4} 在目錄下 <code>layouts/_default</code> 新建 <code>list.algolia.json</code> 文件</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">{{</span><span style="color:#75715e">/* 生成Algolia搜索索引文件 */</span><span style="color:#960050;background-color:#1e0010">}}</span>
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">{{</span><span style="color:#f92672">-</span> <span style="color:#960050;background-color:#1e0010">$</span>.Scratch.<span style="color:#66d9ef">Add</span> <span style="color:#e6db74">&#34;index&#34;</span> slice <span style="color:#f92672">-</span><span style="color:#960050;background-color:#1e0010">}}</span>
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">{{</span><span style="color:#75715e">/* content/posts或content/post目錄下的博文才生成索引 */</span><span style="color:#960050;background-color:#1e0010">}}</span>
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">{{</span><span style="color:#f92672">-</span> range <span style="color:#66d9ef">where</span> (<span style="color:#66d9ef">where</span> .Site.Pages <span style="color:#e6db74">&#34;Type&#34;</span> <span style="color:#e6db74">&#34;in&#34;</span> (slice <span style="color:#e6db74">&#34;posts&#34;</span> <span style="color:#e6db74">&#34;post&#34;</span>)) <span style="color:#e6db74">&#34;IsPage&#34;</span> <span style="color:#66d9ef">true</span> <span style="color:#f92672">-</span><span style="color:#960050;background-color:#1e0010">}}</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#960050;background-color:#1e0010">{{</span><span style="color:#f92672">-</span> <span style="color:#66d9ef">if</span> <span style="color:#66d9ef">and</span> (<span style="color:#66d9ef">not</span> .Draft) (<span style="color:#66d9ef">not</span> .Params.private) <span style="color:#f92672">-</span><span style="color:#960050;background-color:#1e0010">}}</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#960050;background-color:#1e0010">{{</span><span style="color:#f92672">-</span> <span style="color:#960050;background-color:#1e0010">$</span>.Scratch.<span style="color:#66d9ef">Add</span> <span style="color:#e6db74">&#34;index&#34;</span> (dict <span style="color:#e6db74">&#34;objectID&#34;</span> .File.UniqueID <span style="color:#e6db74">&#34;url&#34;</span> .Permalink <span style="color:#e6db74">&#34;content&#34;</span> (.Summary <span style="color:#f92672">|</span> plainify) <span style="color:#e6db74">&#34;tags&#34;</span> .Params.Tags <span style="color:#e6db74">&#34;lvl0&#34;</span> .Title <span style="color:#e6db74">&#34;lvl1&#34;</span> .Params.Categories <span style="color:#e6db74">&#34;lvl2&#34;</span> <span style="color:#e6db74">&#34;摘要&#34;</span>) <span style="color:#f92672">-</span><span style="color:#960050;background-color:#1e0010">}}</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#960050;background-color:#1e0010">{{</span><span style="color:#f92672">-</span> <span style="color:#66d9ef">end</span> <span style="color:#f92672">-</span><span style="color:#960050;background-color:#1e0010">}}</span>
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">{{</span><span style="color:#f92672">-</span> <span style="color:#66d9ef">end</span> <span style="color:#f92672">-</span><span style="color:#960050;background-color:#1e0010">}}</span>
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">{{</span><span style="color:#f92672">-</span> <span style="color:#960050;background-color:#1e0010">$</span>.Scratch.<span style="color:#66d9ef">Get</span> <span style="color:#e6db74">&#34;index&#34;</span> <span style="color:#f92672">|</span> jsonify <span style="color:#f92672">-</span><span style="color:#960050;background-color:#1e0010">}}</span>
+</span></span></code></pre></div><hr>
+<hr>
+<h3 id="step-5-目錄下執行-hugo-命令後在-public-下會生成-algoliajson">{Step 5} 目錄下執行 <code>hugo</code> 命令後,在 <code>public/</code> 下會生成 <code>algolia.json</code></h3>
+<hr>
+<hr>
+<h3 id="step-6-將上述生成的-algoliajson-上傳至-algolia">{Step 6} 將上述生成的 <code>algolia.json</code> 上傳至 <code>Algolia</code></h3>
+<p><img loading="lazy" src="305.png" srcset="https://laurance.eu.org/posts/hugo%E6%B7%BB%E5%8A%A0algolia%E6%90%9C%E7%B4%A2%E6%94%AF%E6%8C%81/305.png, 305.png 1.5x, https://laurance.eu.org/posts/hugo%E6%B7%BB%E5%8A%A0algolia%E6%90%9C%E7%B4%A2%E6%94%AF%E6%8C%81/305.png 2x" sizes="auto" data-title="/posts/hugo%E6%B7%BB%E5%8A%A0algolia%E6%90%9C%E7%B4%A2%E6%94%AF%E6%8C%81/305.png" data-alt="/posts/hugo%E6%B7%BB%E5%8A%A0algolia%E6%90%9C%E7%B4%A2%E6%94%AF%E6%8C%81/305.png" width="1920" height="937" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/></p>
+<hr>
+<hr>
+<h3 id="step-7-安裝-atomic-algolia-目的-自動上傳">{Step 7} 安裝 <code>Atomic-Algolia</code> (目的: 自動上傳)</h3>
+<h4 id="在根目錄下語法">在根目錄下語法</h4>
+<p><code>註：這裡需要用到 npm 套件工具，所以需要安裝 node js</code></p>
+<pre><code>npm init  (這裡直接一直 ENTER)
+
+npm install atomic-algolia --save
+</code></pre>
+<h4 id="修改根目錄下的-packagejson">修改根目錄下的 <code>Package.Json</code></h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#e6db74">&#34;scripts&#34;</span>: <span style="color:#960050;background-color:#1e0010">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;test&#34;</span>: <span style="color:#e6db74">&#34;echo \&#34;</span>Error: <span style="color:#66d9ef">no</span> test specified<span style="color:#960050;background-color:#1e0010">\</span><span style="color:#e6db74">&#34; &amp;&amp; exit 1&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;algolia&#34;</span>: <span style="color:#e6db74">&#34;atomic-algolia&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#960050;background-color:#1e0010">}</span>,
+</span></span></code></pre></div><p><code>到根目錄下的 package.json 內，在 scripts 下添加</code></p>
+<p><code>Json 格式記得要加逗號,不然會跳 ERROR</code></p>
+<p><img loading="lazy" src="306.png" srcset="https://laurance.eu.org/posts/hugo%E6%B7%BB%E5%8A%A0algolia%E6%90%9C%E7%B4%A2%E6%94%AF%E6%8C%81/306.png, 306.png 1.5x, https://laurance.eu.org/posts/hugo%E6%B7%BB%E5%8A%A0algolia%E6%90%9C%E7%B4%A2%E6%94%AF%E6%8C%81/306.png 2x" sizes="auto" data-title="/posts/hugo%E6%B7%BB%E5%8A%A0algolia%E6%90%9C%E7%B4%A2%E6%94%AF%E6%8C%81/306.png" data-alt="/posts/hugo%E6%B7%BB%E5%8A%A0algolia%E6%90%9C%E7%B4%A2%E6%94%AF%E6%8C%81/306.png" width="1896" height="161" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/></p>
+<h4 id="建立-env-檔">建立 .ENV 檔</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span>ALGOLIA_APP_ID<span style="color:#f92672">=</span><span style="color:#960050;background-color:#1e0010">你的</span>Application ID
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>ALGOLIA_INDEX_NAME<span style="color:#f92672">=</span><span style="color:#960050;background-color:#1e0010">你的索引名字</span>  
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>ALGOLIA_INDEX_FILE<span style="color:#f92672">=</span><span style="color:#66d9ef">public</span><span style="color:#f92672">/</span>algolia.json
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>ALGOLIA_ADMIN_KEY<span style="color:#f92672">=</span><span style="color:#960050;background-color:#1e0010">你的</span><span style="color:#66d9ef">Admin</span> API <span style="color:#66d9ef">Key</span>
+</span></span></code></pre></div><hr>
+<hr>
+<h4 id="上傳索引文件">上傳索引文件</h4>
+<pre><code>可以在 local 端執行 `npm run algolia` 這行指令查看效果
+</code></pre>
+<p><img loading="lazy" src="307.png" srcset="https://laurance.eu.org/posts/hugo%E6%B7%BB%E5%8A%A0algolia%E6%90%9C%E7%B4%A2%E6%94%AF%E6%8C%81/307.png, 307.png 1.5x, https://laurance.eu.org/posts/hugo%E6%B7%BB%E5%8A%A0algolia%E6%90%9C%E7%B4%A2%E6%94%AF%E6%8C%81/307.png 2x" sizes="auto" data-title="/posts/hugo%E6%B7%BB%E5%8A%A0algolia%E6%90%9C%E7%B4%A2%E6%94%AF%E6%8C%81/307.png" data-alt="/posts/hugo%E6%B7%BB%E5%8A%A0algolia%E6%90%9C%E7%B4%A2%E6%94%AF%E6%8C%81/307.png" width="1896" height="159" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/></p>
+<p>參考: <a href="https://edward852.github.io/post/hugo%E6%B7%BB%E5%8A%A0algolia%E6%90%9C%E7%B4%A2%E6%94%AF%E6%8C%81/#%E7%94%9F%E6%88%90%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6"target="_blank" rel="external nofollow noopener noreferrer">https://edward852.github.io/post/hugo%E6%B7%BB%E5%8A%A0algolia%E6%90%9C%E7%B4%A2%E6%94%AF%E6%8C%81/#%E7%94%9F%E6%88%90%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6<i class="fa-solid fa-external-link-alt fa-fw fa-xs ms-1 text-secondary" aria-hidden="true"></i></a></p>
+<hr>
+
+</div><div class="post-footer" id="post-footer">
+  <div class="post-info">
+    <div class="post-info-line">
+      <div class="post-info-mod">
+        <span title="Updated on 2023-03-10 00:00:00">Updated on 2023-03-10&nbsp;</span>
+      </div><div class="post-info-license">
+          <span><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span>
+        </div></div>
+    <div class="post-info-line">
+      <div class="post-info-md"><span><a href="https://laurance.eu.org/posts/hugo%E6%B7%BB%E5%8A%A0algolia%E6%90%9C%E7%B4%A2%E6%94%AF%E6%8C%81/index.md" title="Read Markdown" class="link-to-markdown">Read Markdown</a></span></div>
+      <div class="post-info-share">
+        <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://laurance.eu.org/posts/hugo%E6%B7%BB%E5%8A%A0algolia%E6%90%9C%E7%B4%A2%E6%94%AF%E6%8C%81/" data-title="HUGO - 添加 Algolia 搜索支持" data-hashtags="HUGO"><i class="fa-brands fa-twitter fa-fw" aria-hidden="true"></i></a>
+  <a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://laurance.eu.org/posts/hugo%E6%B7%BB%E5%8A%A0algolia%E6%90%9C%E7%B4%A2%E6%94%AF%E6%8C%81/" data-hashtag="HUGO"><i class="fa-brands fa-facebook-square fa-fw" aria-hidden="true"></i></a>
+  <a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://laurance.eu.org/posts/hugo%E6%B7%BB%E5%8A%A0algolia%E6%90%9C%E7%B4%A2%E6%94%AF%E6%8C%81/" data-title="HUGO - 添加 Algolia 搜索支持"><i class="fa-brands fa-weibo fa-fw" aria-hidden="true"></i></a>
+  </span>
+      </div>
+    </div>
+  </div>
+
+  <div class="post-info-more">
+    <section class="post-tags"><i class="fa-solid fa-tags fa-fw me-1" aria-hidden="true"></i><a href='https://laurance.eu.org/tags/hugo/' class="post-tag">HUGO</a></section>
+    <section>
+      <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="https://laurance.eu.org/">Home</a></span>
+    </section>
+  </div>
+
+  <div class="post-nav"><a href="https://laurance.eu.org/posts/haproxy-%E8%A8%AD%E7%BD%AE%E5%8E%9F%E7%90%86%E8%A7%A3%E6%9E%90/" class="post-nav-item" rel="prev" title="haproxy - 設定檔解析"><i class="fa-solid fa-angle-left fa-fw" aria-hidden="true"></i>haproxy - 設定檔解析</a>
+      <a href="https://laurance.eu.org/posts/nginx-%E6%B7%BB%E5%8A%A0-echo-%E6%A8%A1%E7%B5%84/" class="post-nav-item" rel="next" title="Nginx - 重新編譯 &amp;&amp; 添加 echo 模組">Nginx - 重新編譯 &amp;&amp; 添加 echo 模組<i class="fa-solid fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+</article></main><footer class="footer">
+    <div class="footer-container"><div class="footer-line powered">Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreferrer" title="Hugo 0.111.3">Hugo</a> | Theme - <a href="https://github.com/hugo-fixit/FixIt" target="_blank" rel="external" title="FixIt v0.2.18"><img class="fixit-icon" src="https://laurance.eu.org/fixit.min.svg" alt="FixIt logo" />&nbsp;FixIt</a>
+        </div><div class="footer-line copyright" itemscope itemtype="http://schema.org/CreativeWork"><i class="fa-regular fa-copyright fa-fw" aria-hidden="true"></i>
+            <span itemprop="copyrightYear">2021 - 2023</span><span class="author" itemprop="copyrightHolder">
+              <a href="https://laurance.eu.org/">Laurance</a></span></div><div class="footer-line statistics"></div><div class="footer-line visitor">
+          <span id="busuanzi_container_site_uv" title='Total visitors'><i class="fa-regular fa-user fa-fw" aria-hidden="true"></i>&nbsp;<span id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span></span><span id="busuanzi_container_site_pv" class="footer-divider" title='Total visits'><i class="fa-regular fa-eye fa-fw" aria-hidden="true"></i>&nbsp;<span id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span></span>
+        </div></div>
+  </footer></div><div class="widgets"><div class="fixed-buttons animate__faster d-none"><div class="fixed-button back-to-top" role="button" aria-label="Back to Top"><i class="fa-solid fa-arrow-up fa-fw" aria-hidden="true"></i><span class="variant-numeric d-none">0%</span>
+        </div></div><div id="mask"></div><noscript>
+    <div class="noscript-warning">Theme FixIt works best with JavaScript enabled.</div>
+  </noscript>
+</div><link rel="stylesheet" href="https://laurance.eu.org/lib/lightgallery/css/lightgallery-bundle.min.css"><link rel="stylesheet" href="https://laurance.eu.org/lib/katex/katex.min.css"><link rel="stylesheet" href="https://laurance.eu.org/lib/cookieconsent/cookieconsent.min.css"><link rel="stylesheet" href="https://laurance.eu.org/lib/pace/themes/blue/pace-theme-minimal.css"><script src="https://laurance.eu.org/lib/autocomplete/autocomplete.min.js" defer></script><script src="https://laurance.eu.org/lib/lunr/lunr.min.js" defer></script><script src="https://laurance.eu.org/lib/lightgallery/lightgallery.min.js" defer></script><script src="https://laurance.eu.org/lib/lightgallery/plugins/thumbnail/lg-thumbnail.min.js" defer></script><script src="https://laurance.eu.org/lib/lightgallery/plugins/zoom/lg-zoom.min.js" defer></script><script src="https://laurance.eu.org/lib/sharer/sharer.min.js" async defer></script><script src="https://laurance.eu.org/lib/typeit/index.umd.js" defer></script><script src="https://laurance.eu.org/lib/katex/katex.min.js" defer></script><script src="https://laurance.eu.org/lib/katex/auto-render.min.js" defer></script><script src="https://laurance.eu.org/lib/katex/copy-tex.min.js" defer></script><script src="https://laurance.eu.org/lib/katex/mhchem.min.js" defer></script><script src="https://laurance.eu.org/lib/cookieconsent/cookieconsent.min.js" defer></script><script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async defer></script><script src="https://laurance.eu.org/lib/pace/pace.min.js" async defer></script><script>window.config={"autoBookmark":true,"code":{"copyTitle":"Copy to clipboard","editLockTitle":"Lock editable code block","editUnLockTitle":"Unlock editable code block","editable":true,"maxShownLines":10},"comment":{"enable":false},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"data":{"typeit-header-desktop":" Laurance's Note Bloggggg ","typeit-header-title-mobile":" Laurance's Note Bloggggg "},"enablePWA":true,"lightgallery":true,"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":20,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"typeit-header-desktop":["typeit-header-desktop"],"typeit-header-title-mobile":["typeit-header-title-mobile"]},"duration":-1,"loop":false,"speed":100}};</script><script src="https://laurance.eu.org/js/theme.min.js" defer></script></body>
+</html>

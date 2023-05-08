@@ -1,1576 +1,229 @@
 <!DOCTYPE html>
-<html lang="en-us" dir="ltr">
-    <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='筆記 記錄美好生活
-'><title>Posts</title>
-
-<link rel='canonical' href='https://note.laurance.ml/post/'>
-
-<link rel="stylesheet" href="/scss/style.min.ac77dcf8b111b51da39a92990f431923f210f3876d85798a2125667f96dc33a4.css"><meta property='og:title' content='Posts'>
-<meta property='og:description' content='筆記 記錄美好生活
-'>
-<meta property='og:url' content='https://note.laurance.ml/post/'>
-<meta property='og:site_name' content='Laurance&#39;s Note'>
-<meta property='og:type' content='website'><meta property='og:updated_time' content=' 2023-03-23T00:00:00&#43;00:00 '/>
-<meta name="twitter:title" content="Posts">
-<meta name="twitter:description" content="筆記 記錄美好生活
-"><link rel="alternate" type="application/rss&#43;xml" href="https://note.laurance.ml/post/index.xml">
-    <link rel="shortcut icon" href="static/favicon.ico" />
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <title>Live2D 看板娘 / Demo</title>
-</head>
-<body>
-<script src="https://cdn.jsdelivr.net/gh/dingbangli/live2d-widget@latest/autoload.js"></script>
-</body>
-</html>
-<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-
-    </head>
-    <body class="">
-    <script>
-        (function() {
-            const colorSchemeKey = 'StackColorScheme';
-            if(!localStorage.getItem(colorSchemeKey)){
-                localStorage.setItem(colorSchemeKey, "auto");
-            }
-        })();
-    </script><script>
-    (function() {
-        const colorSchemeKey = 'StackColorScheme';
-        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
-        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
-
-        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
-            
-
-            document.documentElement.dataset.scheme = 'dark';
-        } else {
-            document.documentElement.dataset.scheme = 'light';
-        }
-    })();
-</script>
-<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
-    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
-        <span class="hamburger-box">
-            <span class="hamburger-inner"></span>
-        </span>
-    </button>
-
-    <header>
-        
-            
-            <figure class="site-avatar">
-                <a href="/">
-                
-                    
-                    
-                    
-                        
-                        <img src="/img/avatar_hu49eacb73e01f91348578131d7e8658f5_11993_300x0_resize_box_3.png" width="300"
-                            height="301" class="site-logo" loading="lazy" alt="Avatar">
-                    
-                
-                </a>
-                
-                    <span class="emoji">🍥</span>
-                
-            </figure>
-            
-        
-        
-        <div class="site-meta">
-            <h1 class="site-name"><a href="/">Laurance&#39;s Note</a></h1>
-            <h2 class="site-description">筆記 記錄美好生活
-</h2>
-        </div>
-    </header><ol class="menu" id="main-menu">
-        
-        
-        
-
-        <li >
-            <a href='/' >
-                
-                
-                
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <polyline points="5 12 3 12 12 3 21 12 19 12" />
-  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
-  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
-</svg>
-
-
-
-                
-                <span>Home</span>
-            </a>
-        </li>
-        
-        
-
-        <li >
-            <a href='/about/' >
-                
-                
-                
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="12" cy="7" r="4" />
-  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
-</svg>
-
-
-
-                
-                <span>About</span>
-            </a>
-        </li>
-        
-        
-
-        <li >
-            <a href='/archives/' >
-                
-                
-                
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <rect x="3" y="4" width="18" height="4" rx="2" />
-  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
-  <line x1="10" y1="12" x2="14" y2="12" />
-</svg>
-
-
-
-                
-                <span>Archives</span>
-            </a>
-        </li>
-        
-        
-
-        <li >
-            <a href='/search/' >
-                
-                
-                
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="10" cy="10" r="7" />
-  <line x1="21" y1="21" x2="15" y2="15" />
-</svg>
-
-
-
-                
-                <span>Search</span>
-            </a>
-        </li>
-        
-        
-
-        <li >
-            <a href='/links/' >
-                
-                
-                
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
-  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
-</svg>
-
-
-
-                
-                <span>Links</span>
-            </a>
-        </li>
-        
-
-        <div class="menu-bottom-section">
-            
-            
-                <li id="dark-mode-toggle">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="8" cy="12" r="2" />
-  <rect x="2" y="6" width="20" height="12" rx="6" />
-</svg>
-
-
-
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="16" cy="12" r="2" />
-  <rect x="2" y="6" width="20" height="12" rx="6" />
-</svg>
-
-
-
-                    <span>Dark Mode</span>
-                </li>
-            
-        </div>
-    </ol>
-</aside>
-<main class="main full-width">
-    <header>
-        <h3 class="section-title">
-            
-                Section
-            
-        </h3>
-
-        <div class="section-card">
-            <div class="section-details">
-                <h3 class="section-count">225 pages</h3>
-                <h1 class="section-term">Posts</h1>
-                
-            </div>
-        </div>
-    </header>
+<html itemscope itemtype="http://schema.org/WebPage" lang="">
+  <head>
     
-    <section class="article-list--compact">
-        
-            <article>
-    <a href="/p/influxdb-http-crud-%E8%AA%9E%E6%B3%95/">
-        <div class="article-details">
-            <h2 class="article-title">InfluxDB-http CRUD 語法</h2>
-            <footer class="article-time">
-                <time datetime='2023-03-23T00:00:00Z'>Mar 23, 2023</time>
-            </footer>
-        </div>
-            <div class="article-image">
-                <img src="/p/influxdb-http-crud-%E8%AA%9E%E6%B3%95/100_hu3943a49f3cf3881293921668d3732a89_68244_120x120_fill_q75_box_smart1.jpg" 
-                        width="120"
-                        height="120" 
-                        alt="InfluxDB-http CRUD 語法"
-                        loading="lazy">
-                
-            </div>
-        
-    </a>
-</article>
-        
-            <article>
-    <a href="/p/influxdb-%E5%BB%BA%E7%AB%8B%E4%BD%BF%E7%94%A8%E8%80%85%E5%AF%86%E7%A2%BC%E5%8F%8A%E6%AC%8A%E9%99%90/">
-        <div class="article-details">
-            <h2 class="article-title">InfluxDB-建立使用者密碼及權限</h2>
-            <footer class="article-time">
-                <time datetime='2023-03-23T00:00:00Z'>Mar 23, 2023</time>
-            </footer>
-        </div>
-            <div class="article-image">
-                <img src="/p/influxdb-%E5%BB%BA%E7%AB%8B%E4%BD%BF%E7%94%A8%E8%80%85%E5%AF%86%E7%A2%BC%E5%8F%8A%E6%AC%8A%E9%99%90/100_hu3943a49f3cf3881293921668d3732a89_68244_120x120_fill_q75_box_smart1.jpg" 
-                        width="120"
-                        height="120" 
-                        alt="InfluxDB-建立使用者密碼及權限"
-                        loading="lazy">
-                
-            </div>
-        
-    </a>
-</article>
-        
-            <article>
-    <a href="/p/gcp-chatgpt-%E4%B8%B2%E6%8E%A5-firebase%E5%8F%8Alinebot/">
-        <div class="article-details">
-            <h2 class="article-title">GCP-ChatGPT 串接 Firebase及Linebot</h2>
-            <footer class="article-time">
-                <time datetime='2023-03-22T00:00:00Z'>Mar 22, 2023</time>
-            </footer>
-        </div>
-            <div class="article-image">
-                <img src="/p/gcp-chatgpt-%E4%B8%B2%E6%8E%A5-firebase%E5%8F%8Alinebot/100_hu955ca03f846527c7d15132e3291bde7f_39307_120x120_fill_box_smart1_3.png" 
-                        width="120"
-                        height="120" 
-                        alt="GCP-ChatGPT 串接 Firebase及Linebot"
-                        loading="lazy">
-                
-            </div>
-        
-    </a>
-</article>
-        
-            <article>
-    <a href="/p/postgresql-install-postgresql-14.7-on-centos7/">
-        <div class="article-details">
-            <h2 class="article-title">Postgresql-install postgresql-14.7 on centos7</h2>
-            <footer class="article-time">
-                <time datetime='2023-03-21T00:00:00Z'>Mar 21, 2023</time>
-            </footer>
-        </div>
-            <div class="article-image">
-                <img src="/p/postgresql-install-postgresql-14.7-on-centos7/100_hu33d5a232e6145cf3db53180f3ae836a8_4639_120x120_fill_box_smart1_3.png" 
-                        width="120"
-                        height="120" 
-                        alt="Postgresql-install postgresql-14.7 on centos7"
-                        loading="lazy">
-                
-            </div>
-        
-    </a>
-</article>
-        
-            <article>
-    <a href="/p/postgresql-%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/">
-        <div class="article-details">
-            <h2 class="article-title">Postgresql-常用指令</h2>
-            <footer class="article-time">
-                <time datetime='2023-03-21T00:00:00Z'>Mar 21, 2023</time>
-            </footer>
-        </div>
-            <div class="article-image">
-                <img src="/p/postgresql-%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/100_hu33d5a232e6145cf3db53180f3ae836a8_4639_120x120_fill_box_smart1_3.png" 
-                        width="120"
-                        height="120" 
-                        alt="Postgresql-常用指令"
-                        loading="lazy">
-                
-            </div>
-        
-    </a>
-</article>
-        
-            <article>
-    <a href="/p/windows-win10%E5%B0%88%E6%A5%AD%E7%89%88%E9%87%91%E9%91%B0/">
-        <div class="article-details">
-            <h2 class="article-title">Windows-win10專業版金鑰</h2>
-            <footer class="article-time">
-                <time datetime='2023-03-20T00:00:00Z'>Mar 20, 2023</time>
-            </footer>
-        </div>
-            <div class="article-image">
-                <img src="/p/windows-win10%E5%B0%88%E6%A5%AD%E7%89%88%E9%87%91%E9%91%B0/100_hue86d16e89f42e1cd25cf83156a3f9032_45736_120x120_fill_box_smart1_3.png" 
-                        width="120"
-                        height="120" 
-                        alt="Windows-win10專業版金鑰"
-                        loading="lazy">
-                
-            </div>
-        
-    </a>
-</article>
-        
-            <article>
-    <a href="/p/xshell-7-v7.0.0001-install/">
-        <div class="article-details">
-            <h2 class="article-title">Xshell 7 - v7.0.0001 install</h2>
-            <footer class="article-time">
-                <time datetime='2023-03-20T00:00:00Z'>Mar 20, 2023</time>
-            </footer>
-        </div>
-            <div class="article-image">
-                <img src="/p/xshell-7-v7.0.0001-install/100_hue325434b9abad1332e770d87639ae219_31220_120x120_fill_box_smart1_3.png" 
-                        width="120"
-                        height="120" 
-                        alt="Xshell 7 - v7.0.0001 install"
-                        loading="lazy">
-                
-            </div>
-        
-    </a>
-</article>
-        
-            <article>
-    <a href="/p/xshell-7-%E5%8C%AF%E5%87%BA%E5%8F%8A%E5%8C%AF%E5%85%A5/">
-        <div class="article-details">
-            <h2 class="article-title">Xshell 7-匯出及匯入</h2>
-            <footer class="article-time">
-                <time datetime='2023-03-20T00:00:00Z'>Mar 20, 2023</time>
-            </footer>
-        </div>
-            <div class="article-image">
-                <img src="/p/xshell-7-%E5%8C%AF%E5%87%BA%E5%8F%8A%E5%8C%AF%E5%85%A5/100_hue325434b9abad1332e770d87639ae219_31220_120x120_fill_box_smart1_3.png" 
-                        width="120"
-                        height="120" 
-                        alt="Xshell 7-匯出及匯入"
-                        loading="lazy">
-                
-            </div>
-        
-    </a>
-</article>
-        
-            <article>
-    <a href="/p/nginx-%E6%B7%BB%E5%8A%A0-echo-%E6%A8%A1%E7%B5%84/">
-        <div class="article-details">
-            <h2 class="article-title">Nginx-添加 echo 模組</h2>
-            <footer class="article-time">
-                <time datetime='2023-03-13T00:00:00Z'>Mar 13, 2023</time>
-            </footer>
-        </div>
-            <div class="article-image">
-                <img src="/p/nginx-%E6%B7%BB%E5%8A%A0-echo-%E6%A8%A1%E7%B5%84/100_hud639c4e125de7e8ad17e2519279d4fee_29636_120x120_fill_box_smart1_3.png" 
-                        width="120"
-                        height="120" 
-                        alt="Nginx-添加 echo 模組"
-                        loading="lazy">
-                
-            </div>
-        
-    </a>
-</article>
-        
-            <article>
-    <a href="/p/hugo-%E6%B7%BB%E5%8A%A0-algolia-%E6%90%9C%E7%B4%A2%E6%94%AF%E6%8C%81/">
-        <div class="article-details">
-            <h2 class="article-title">HUGO 添加 Algolia 搜索支持</h2>
-            <footer class="article-time">
-                <time datetime='2023-03-10T00:00:00Z'>Mar 10, 2023</time>
-            </footer>
-        </div>
-            <div class="article-image">
-                <img src="/p/hugo-%E6%B7%BB%E5%8A%A0-algolia-%E6%90%9C%E7%B4%A2%E6%94%AF%E6%8C%81/100_hu1eca35fab2be5a61a943c0c4f6a621a8_107137_120x120_fill_box_smart1_3.png" 
-                        width="120"
-                        height="120" 
-                        alt="HUGO 添加 Algolia 搜索支持"
-                        loading="lazy">
-                
-            </div>
-        
-    </a>
-</article>
-        
-            <article>
-    <a href="/p/haproxy-%E8%A8%AD%E5%AE%9A%E6%AA%94%E8%A7%A3%E6%9E%90/">
-        <div class="article-details">
-            <h2 class="article-title">haproxy 設定檔解析</h2>
-            <footer class="article-time">
-                <time datetime='2023-03-09T00:00:00Z'>Mar 09, 2023</time>
-            </footer>
-        </div>
-            <div class="article-image">
-                <img src="/p/haproxy-%E8%A8%AD%E5%AE%9A%E6%AA%94%E8%A7%A3%E6%9E%90/100_hud764e26bdedecaeaa848d66344e0dcef_67009_120x120_fill_box_smart1_3.png" 
-                        width="120"
-                        height="120" 
-                        alt="haproxy 設定檔解析"
-                        loading="lazy">
-                
-            </div>
-        
-    </a>
-</article>
-        
-            <article>
-    <a href="/p/gcp-google-cloud-monitoring-by-grafana/">
-        <div class="article-details">
-            <h2 class="article-title">GCP-Google Cloud Monitoring by Grafana</h2>
-            <footer class="article-time">
-                <time datetime='2023-03-06T00:00:00Z'>Mar 06, 2023</time>
-            </footer>
-        </div>
-            <div class="article-image">
-                <img src="/p/gcp-google-cloud-monitoring-by-grafana/100_hu955ca03f846527c7d15132e3291bde7f_39307_120x120_fill_box_smart1_3.png" 
-                        width="120"
-                        height="120" 
-                        alt="GCP-Google Cloud Monitoring by Grafana"
-                        loading="lazy">
-                
-            </div>
-        
-    </a>
-</article>
-        
-            <article>
-    <a href="/p/linux-%E6%A0%B8%E5%BF%83-%E7%B3%BB%E7%B5%B1%E6%97%A5%E8%AA%8C%E6%AA%94-local-%E7%B4%9A%E5%88%A5/">
-        <div class="article-details">
-            <h2 class="article-title">Linux 核心 &amp; 系統日誌檔 (local 級別)</h2>
-            <footer class="article-time">
-                <time datetime='2023-03-03T00:00:00Z'>Mar 03, 2023</time>
-            </footer>
-        </div>
-            <div class="article-image">
-                <img src="/p/linux-%E6%A0%B8%E5%BF%83-%E7%B3%BB%E7%B5%B1%E6%97%A5%E8%AA%8C%E6%AA%94-local-%E7%B4%9A%E5%88%A5/100_hu1acf48b62c2e007a3a704d91e9dd9674_43864_120x120_fill_box_smart1_3.png" 
-                        width="120"
-                        height="120" 
-                        alt="Linux 核心 &amp; 系統日誌檔 (local 級別)"
-                        loading="lazy">
-                
-            </div>
-        
-    </a>
-</article>
-        
-            <article>
-    <a href="/p/mongod-studio-3t-for-mongodb-2019-019.3.0/">
-        <div class="article-details">
-            <h2 class="article-title">Mongod-Studio 3T for MongoDB 2019 019.3.0</h2>
-            <footer class="article-time">
-                <time datetime='2023-03-03T00:00:00Z'>Mar 03, 2023</time>
-            </footer>
-        </div>
-            <div class="article-image">
-                <img src="/p/mongod-studio-3t-for-mongodb-2019-019.3.0/100_hu5573e9113ac5ca93c9830f3619376466_35662_120x120_fill_box_smart1_3.png" 
-                        width="120"
-                        height="120" 
-                        alt="Mongod-Studio 3T for MongoDB 2019 019.3.0"
-                        loading="lazy">
-                
-            </div>
-        
-    </a>
-</article>
-        
-            <article>
-    <a href="/p/windows-bat%E6%89%B9%E8%99%95%E7%90%86%E8%85%B3%E6%9C%AC%E4%B8%AD%E6%96%87%E4%BA%82%E7%A2%BC%E5%95%8F%E9%A1%8C%E8%A7%A3%E6%B1%BA/">
-        <div class="article-details">
-            <h2 class="article-title">Windows-bat批處理腳本中文亂碼問題解決</h2>
-            <footer class="article-time">
-                <time datetime='2023-03-02T00:00:00Z'>Mar 02, 2023</time>
-            </footer>
-        </div>
-            <div class="article-image">
-                <img src="/p/windows-bat%E6%89%B9%E8%99%95%E7%90%86%E8%85%B3%E6%9C%AC%E4%B8%AD%E6%96%87%E4%BA%82%E7%A2%BC%E5%95%8F%E9%A1%8C%E8%A7%A3%E6%B1%BA/100_hue86d16e89f42e1cd25cf83156a3f9032_45736_120x120_fill_box_smart1_3.png" 
-                        width="120"
-                        height="120" 
-                        alt="Windows-bat批處理腳本中文亂碼問題解決"
-                        loading="lazy">
-                
-            </div>
-        
-    </a>
-</article>
-        
-            <article>
-    <a href="/p/windows-%E5%AE%89%E8%A3%9D%E7%A8%8B%E5%BC%8F--chocolatey-%E5%AE%89%E8%A3%9D-yt-dlp/">
-        <div class="article-details">
-            <h2 class="article-title">Windows-安裝程式--Chocolatey (安裝 yt-dlp)</h2>
-            <footer class="article-time">
-                <time datetime='2023-03-02T00:00:00Z'>Mar 02, 2023</time>
-            </footer>
-        </div>
-            <div class="article-image">
-                <img src="/p/windows-%E5%AE%89%E8%A3%9D%E7%A8%8B%E5%BC%8F--chocolatey-%E5%AE%89%E8%A3%9D-yt-dlp/100_hue86d16e89f42e1cd25cf83156a3f9032_45736_120x120_fill_box_smart1_3.png" 
-                        width="120"
-                        height="120" 
-                        alt="Windows-安裝程式--Chocolatey (安裝 yt-dlp)"
-                        loading="lazy">
-                
-            </div>
-        
-    </a>
-</article>
-        
-            <article>
-    <a href="/p/nginx-%E5%8F%83%E6%95%B8%E9%85%8D%E7%BD%AE-tri_files-uri/">
-        <div class="article-details">
-            <h2 class="article-title">Nginx-參數配置 tri_files $uri</h2>
-            <footer class="article-time">
-                <time datetime='2023-02-19T00:00:00Z'>Feb 19, 2023</time>
-            </footer>
-        </div>
-            <div class="article-image">
-                <img src="/p/nginx-%E5%8F%83%E6%95%B8%E9%85%8D%E7%BD%AE-tri_files-uri/100_hud639c4e125de7e8ad17e2519279d4fee_29636_120x120_fill_box_smart1_3.png" 
-                        width="120"
-                        height="120" 
-                        alt="Nginx-參數配置 tri_files $uri"
-                        loading="lazy">
-                
-            </div>
-        
-    </a>
-</article>
-        
-            <article>
-    <a href="/p/gcp-cloud-functions-%E9%83%A8%E5%B1%AC-line-bot--openai/">
-        <div class="article-details">
-            <h2 class="article-title">GCP-Cloud Functions 部屬 LINE BOT &#43; OpenAI</h2>
-            <footer class="article-time">
-                <time datetime='2023-02-16T00:00:00Z'>Feb 16, 2023</time>
-            </footer>
-        </div>
-            <div class="article-image">
-                <img src="/p/gcp-cloud-functions-%E9%83%A8%E5%B1%AC-line-bot--openai/100_hu955ca03f846527c7d15132e3291bde7f_39307_120x120_fill_box_smart1_3.png" 
-                        width="120"
-                        height="120" 
-                        alt="GCP-Cloud Functions 部屬 LINE BOT &#43; OpenAI"
-                        loading="lazy">
-                
-            </div>
-        
-    </a>
-</article>
-        
-            <article>
-    <a href="/p/grafana-iframe-%E5%8E%BB%E9%99%A4-bar-%E5%B7%A5%E5%85%B7%E6%A2%9D/">
-        <div class="article-details">
-            <h2 class="article-title">Grafana-Iframe 去除 bar 工具條</h2>
-            <footer class="article-time">
-                <time datetime='2023-02-16T00:00:00Z'>Feb 16, 2023</time>
-            </footer>
-        </div>
-            <div class="article-image">
-                <img src="/p/grafana-iframe-%E5%8E%BB%E9%99%A4-bar-%E5%B7%A5%E5%85%B7%E6%A2%9D/100_hu620c7a524b6dcb360e250bc73a09da7c_32448_120x120_fill_box_smart1_3.png" 
-                        width="120"
-                        height="120" 
-                        alt="Grafana-Iframe 去除 bar 工具條"
-                        loading="lazy">
-                
-            </div>
-        
-    </a>
-</article>
-        
-            <article>
-    <a href="/p/windows-%E5%AE%89%E8%A3%9D%E5%BD%B1%E7%89%87%E4%B8%8B%E8%BC%89%E5%B7%A5%E5%85%B7-youtube-dl/">
-        <div class="article-details">
-            <h2 class="article-title">Windows-安裝影片下載工具 youtube-dl</h2>
-            <footer class="article-time">
-                <time datetime='2023-02-15T00:00:00Z'>Feb 15, 2023</time>
-            </footer>
-        </div>
-            <div class="article-image">
-                <img src="/p/windows-%E5%AE%89%E8%A3%9D%E5%BD%B1%E7%89%87%E4%B8%8B%E8%BC%89%E5%B7%A5%E5%85%B7-youtube-dl/100_hue86d16e89f42e1cd25cf83156a3f9032_45736_120x120_fill_box_smart1_3.png" 
-                        width="120"
-                        height="120" 
-                        alt="Windows-安裝影片下載工具 youtube-dl"
-                        loading="lazy">
-                
-            </div>
-        
-    </a>
-</article>
-        
-            <article>
-    <a href="/p/windows-%E5%AE%89%E8%A3%9D%E8%BD%89%E6%AA%94%E5%B7%A5%E5%85%B7-ffmpeg/">
-        <div class="article-details">
-            <h2 class="article-title">Windows-安裝轉檔工具 FFmpeg</h2>
-            <footer class="article-time">
-                <time datetime='2023-02-15T00:00:00Z'>Feb 15, 2023</time>
-            </footer>
-        </div>
-            <div class="article-image">
-                <img src="/p/windows-%E5%AE%89%E8%A3%9D%E8%BD%89%E6%AA%94%E5%B7%A5%E5%85%B7-ffmpeg/100_hue86d16e89f42e1cd25cf83156a3f9032_45736_120x120_fill_box_smart1_3.png" 
-                        width="120"
-                        height="120" 
-                        alt="Windows-安裝轉檔工具 FFmpeg"
-                        loading="lazy">
-                
-            </div>
-        
-    </a>
-</article>
-        
-            <article>
-    <a href="/p/linux-youtube-dl-ffmpeg-%E5%AE%89%E8%A3%9D%E6%95%99%E5%AD%B8/">
-        <div class="article-details">
-            <h2 class="article-title">Linux-youtube-dl &amp;&amp; ffmpeg 安裝教學</h2>
-            <footer class="article-time">
-                <time datetime='2023-02-13T00:00:00Z'>Feb 13, 2023</time>
-            </footer>
-        </div>
-            <div class="article-image">
-                <img src="/p/linux-youtube-dl-ffmpeg-%E5%AE%89%E8%A3%9D%E6%95%99%E5%AD%B8/100_hu1acf48b62c2e007a3a704d91e9dd9674_43864_120x120_fill_box_smart1_3.png" 
-                        width="120"
-                        height="120" 
-                        alt="Linux-youtube-dl &amp;&amp; ffmpeg 安裝教學"
-                        loading="lazy">
-                
-            </div>
-        
-    </a>
-</article>
-        
-            <article>
-    <a href="/p/svn-%E8%A7%A3%E6%B1%BA%E6%AF%8F%E6%AC%A1%E9%83%BD%E9%9C%80%E8%A6%81%E8%BC%B8%E5%85%A5%E5%AF%86%E7%A2%BC/">
-        <div class="article-details">
-            <h2 class="article-title">SVN-解決每次都需要輸入密碼</h2>
-            <footer class="article-time">
-                <time datetime='2023-02-04T00:00:00Z'>Feb 04, 2023</time>
-            </footer>
-        </div>
-            <div class="article-image">
-                <img src="/p/svn-%E8%A7%A3%E6%B1%BA%E6%AF%8F%E6%AC%A1%E9%83%BD%E9%9C%80%E8%A6%81%E8%BC%B8%E5%85%A5%E5%AF%86%E7%A2%BC/100_hu791d074278204665296c002ec84be428_1698_120x120_fill_box_smart1_3.png" 
-                        width="120"
-                        height="120" 
-                        alt="SVN-解決每次都需要輸入密碼"
-                        loading="lazy">
-                
-            </div>
-        
-    </a>
-</article>
-        
-            <article>
-    <a href="/p/linux-rsync-%E5%9F%BA%E6%9C%AC%E8%A8%AD%E5%AE%9A%E6%95%99%E5%AD%B8/">
-        <div class="article-details">
-            <h2 class="article-title">Linux-Rsync 基本設定教學</h2>
-            <footer class="article-time">
-                <time datetime='2023-02-03T00:00:00Z'>Feb 03, 2023</time>
-            </footer>
-        </div>
-            <div class="article-image">
-                <img src="/p/linux-rsync-%E5%9F%BA%E6%9C%AC%E8%A8%AD%E5%AE%9A%E6%95%99%E5%AD%B8/100_hu1acf48b62c2e007a3a704d91e9dd9674_43864_120x120_fill_box_smart1_3.png" 
-                        width="120"
-                        height="120" 
-                        alt="Linux-Rsync 基本設定教學"
-                        loading="lazy">
-                
-            </div>
-        
-    </a>
-</article>
-        
-            <article>
-    <a href="/p/linux-%E4%BD%BF%E7%94%A8-locate-%E5%B0%8B%E6%89%BE%E6%AA%94%E6%A1%88%E6%95%99%E5%AD%B8%E8%88%87%E7%AF%84%E4%BE%8B/">
-        <div class="article-details">
-            <h2 class="article-title">Linux-使用 locate 尋找檔案教學與範例</h2>
-            <footer class="article-time">
-                <time datetime='2023-02-01T00:00:00Z'>Feb 01, 2023</time>
-            </footer>
-        </div>
-            <div class="article-image">
-                <img src="/p/linux-%E4%BD%BF%E7%94%A8-locate-%E5%B0%8B%E6%89%BE%E6%AA%94%E6%A1%88%E6%95%99%E5%AD%B8%E8%88%87%E7%AF%84%E4%BE%8B/100_hu1acf48b62c2e007a3a704d91e9dd9674_43864_120x120_fill_box_smart1_3.png" 
-                        width="120"
-                        height="120" 
-                        alt="Linux-使用 locate 尋找檔案教學與範例"
-                        loading="lazy">
-                
-            </div>
-        
-    </a>
-</article>
-        
-            <article>
-    <a href="/p/linux-%E9%96%8B%E6%A9%9F%E5%87%BA%E7%8F%BE-or-type-control-d-to-continue-%E8%A7%A3%E6%B1%BA%E8%BE%A6%E6%B3%95/">
-        <div class="article-details">
-            <h2 class="article-title">Linux-開機出現 (or type control -D to continue) 解決辦法</h2>
-            <footer class="article-time">
-                <time datetime='2023-02-01T00:00:00Z'>Feb 01, 2023</time>
-            </footer>
-        </div>
-            <div class="article-image">
-                <img src="/p/linux-%E9%96%8B%E6%A9%9F%E5%87%BA%E7%8F%BE-or-type-control-d-to-continue-%E8%A7%A3%E6%B1%BA%E8%BE%A6%E6%B3%95/100_hu1acf48b62c2e007a3a704d91e9dd9674_43864_120x120_fill_box_smart1_3.png" 
-                        width="120"
-                        height="120" 
-                        alt="Linux-開機出現 (or type control -D to continue) 解決辦法"
-                        loading="lazy">
-                
-            </div>
-        
-    </a>
-</article>
-        
-            <article>
-    <a href="/p/rclone%E5%95%9F%E5%8B%95%E8%85%B3%E6%9C%AC-centos7/">
-        <div class="article-details">
-            <h2 class="article-title">Rclone啟動腳本 {CentOS7}</h2>
-            <footer class="article-time">
-                <time datetime='2023-02-01T00:00:00Z'>Feb 01, 2023</time>
-            </footer>
-        </div>
-            <div class="article-image">
-                <img src="/p/rclone%E5%95%9F%E5%8B%95%E8%85%B3%E6%9C%AC-centos7/100_hud1173e144569cec1c001e63ae0101148_19051_120x120_fill_box_smart1_3.png" 
-                        width="120"
-                        height="120" 
-                        alt="Rclone啟動腳本 {CentOS7}"
-                        loading="lazy">
-                
-            </div>
-        
-    </a>
-</article>
-        
-            <article>
-    <a href="/p/rclone%E6%8E%9B%E8%BC%89-google-drive-%E4%BD%9C%E7%82%BA%E6%9C%AC%E5%9C%B0%E7%A1%AC%E7%A2%9F%E4%BD%BF%E7%94%A8/">
-        <div class="article-details">
-            <h2 class="article-title">Rclone掛載 google drive 作為本地硬碟使用 </h2>
-            <footer class="article-time">
-                <time datetime='2023-02-01T00:00:00Z'>Feb 01, 2023</time>
-            </footer>
-        </div>
-            <div class="article-image">
-                <img src="/p/rclone%E6%8E%9B%E8%BC%89-google-drive-%E4%BD%9C%E7%82%BA%E6%9C%AC%E5%9C%B0%E7%A1%AC%E7%A2%9F%E4%BD%BF%E7%94%A8/100_hud1173e144569cec1c001e63ae0101148_19051_120x120_fill_box_smart1_3.png" 
-                        width="120"
-                        height="120" 
-                        alt="Rclone掛載 google drive 作為本地硬碟使用 "
-                        loading="lazy">
-                
-            </div>
-        
-    </a>
-</article>
-        
-            <article>
-    <a href="/p/nginx-405-not-allowed/">
-        <div class="article-details">
-            <h2 class="article-title">Nginx-405 Not Allowed</h2>
-            <footer class="article-time">
-                <time datetime='2023-01-29T00:00:00Z'>Jan 29, 2023</time>
-            </footer>
-        </div>
-            <div class="article-image">
-                <img src="/p/nginx-405-not-allowed/100_hud639c4e125de7e8ad17e2519279d4fee_29636_120x120_fill_box_smart1_3.png" 
-                        width="120"
-                        height="120" 
-                        alt="Nginx-405 Not Allowed"
-                        loading="lazy">
-                
-            </div>
-        
-    </a>
-</article>
-        
-            <article>
-    <a href="/p/centos-%E5%A6%82%E4%BD%95%E5%B0%87%E5%AE%89%E8%A3%9D%E5%8C%85%E5%8F%8A%E5%85%B6%E4%BE%9D%E8%B3%B4%E5%8C%85%E4%B8%8B%E8%BC%89%E5%88%B0%E6%9C%AC%E5%9C%B0/">
-        <div class="article-details">
-            <h2 class="article-title">CentOS-如何將安裝包及其依賴包下載到本地</h2>
-            <footer class="article-time">
-                <time datetime='2023-01-26T00:00:00Z'>Jan 26, 2023</time>
-            </footer>
-        </div>
-            <div class="article-image">
-                <img src="/p/centos-%E5%A6%82%E4%BD%95%E5%B0%87%E5%AE%89%E8%A3%9D%E5%8C%85%E5%8F%8A%E5%85%B6%E4%BE%9D%E8%B3%B4%E5%8C%85%E4%B8%8B%E8%BC%89%E5%88%B0%E6%9C%AC%E5%9C%B0/100_huc03b46b7f8bda3b0ed1195c88ee7f533_13486_120x120_fill_box_smart1_3.png" 
-                        width="120"
-                        height="120" 
-                        alt="CentOS-如何將安裝包及其依賴包下載到本地"
-                        loading="lazy">
-                
-            </div>
-        
-    </a>
-</article>
-        
-            <article>
-    <a href="/p/redis-%E4%B8%BB%E5%BE%9E%E8%B7%9F%E9%9A%A8%E5%BB%BA%E7%AB%8B/">
-        <div class="article-details">
-            <h2 class="article-title">Redis-主從跟隨建立</h2>
-            <footer class="article-time">
-                <time datetime='2023-01-20T00:00:00Z'>Jan 20, 2023</time>
-            </footer>
-        </div>
-            <div class="article-image">
-                <img src="/p/redis-%E4%B8%BB%E5%BE%9E%E8%B7%9F%E9%9A%A8%E5%BB%BA%E7%AB%8B/100_hu74f8d656a97bc6b7ca99b23e97f954a2_40393_120x120_fill_box_smart1_3.png" 
-                        width="120"
-                        height="120" 
-                        alt="Redis-主從跟隨建立"
-                        loading="lazy">
-                
-            </div>
-        
-    </a>
-</article>
-        
-            <article>
-    <a href="/p/mysql-error-1932-table-mysql.gtid_slave_pos-doesnt-exist-in-engine/">
-        <div class="article-details">
-            <h2 class="article-title">Mysql error-1932 Table &#39;mysql.gtid_slave_pos&#39; doesn&#39;t exist in engine</h2>
-            <footer class="article-time">
-                <time datetime='2023-01-19T00:00:00Z'>Jan 19, 2023</time>
-            </footer>
-        </div>
-            <div class="article-image">
-                <img src="/p/mysql-error-1932-table-mysql.gtid_slave_pos-doesnt-exist-in-engine/100_huad49eaec4f433d83d4d3047da152b4f9_9127_120x120_fill_box_smart1_3.png" 
-                        width="120"
-                        height="120" 
-                        alt="Mysql error-1932 Table &#39;mysql.gtid_slave_pos&#39; doesn&#39;t exist in engine"
-                        loading="lazy">
-                
-            </div>
-        
-    </a>
-</article>
-        
-            <article>
-    <a href="/p/mysql-1062-%E4%B8%BB%E5%BE%9E%E9%8C%AF%E8%AA%A4-error-duplicate-entry-xxxxx-for-key-xxx-on-query./">
-        <div class="article-details">
-            <h2 class="article-title">Mysql-1062 主從錯誤 Error &#39;Duplicate entry &#39;XXXXX&#39; for key &#39;XXX&#39;&#39; on query.</h2>
-            <footer class="article-time">
-                <time datetime='2023-01-19T00:00:00Z'>Jan 19, 2023</time>
-            </footer>
-        </div>
-            <div class="article-image">
-                <img src="/p/mysql-1062-%E4%B8%BB%E5%BE%9E%E9%8C%AF%E8%AA%A4-error-duplicate-entry-xxxxx-for-key-xxx-on-query./100_huad49eaec4f433d83d4d3047da152b4f9_9127_120x120_fill_box_smart1_3.png" 
-                        width="120"
-                        height="120" 
-                        alt="Mysql-1062 主從錯誤 Error &#39;Duplicate entry &#39;XXXXX&#39; for key &#39;XXX&#39;&#39; on query."
-                        loading="lazy">
-                
-            </div>
-        
-    </a>
-</article>
-        
-            <article>
-    <a href="/p/mysql-error-1118-42000-at-line-4904-row-size-too-large-8126.-changing-some-columns-to-text-or-blob-or-using-row_format/">
-        <div class="article-details">
-            <h2 class="article-title">Mysql-Error 1118 (42000) at line 4904: Row size too large (&gt; 8126). Changing some columns to TEXT or BLOB or using ROW_FORMAT</h2>
-            <footer class="article-time">
-                <time datetime='2023-01-19T00:00:00Z'>Jan 19, 2023</time>
-            </footer>
-        </div>
-            <div class="article-image">
-                <img src="/p/mysql-error-1118-42000-at-line-4904-row-size-too-large-8126.-changing-some-columns-to-text-or-blob-or-using-row_format/100_huad49eaec4f433d83d4d3047da152b4f9_9127_120x120_fill_box_smart1_3.png" 
-                        width="120"
-                        height="120" 
-                        alt="Mysql-Error 1118 (42000) at line 4904: Row size too large (&gt; 8126). Changing some columns to TEXT or BLOB or using ROW_FORMAT"
-                        loading="lazy">
-                
-            </div>
-        
-    </a>
-</article>
-        
-            <article>
-    <a href="/p/redis-%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/">
-        <div class="article-details">
-            <h2 class="article-title">Redis-常用指令</h2>
-            <footer class="article-time">
-                <time datetime='2023-01-19T00:00:00Z'>Jan 19, 2023</time>
-            </footer>
-        </div>
-            <div class="article-image">
-                <img src="/p/redis-%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/100_hu74f8d656a97bc6b7ca99b23e97f954a2_40393_120x120_fill_box_smart1_3.png" 
-                        width="120"
-                        height="120" 
-                        alt="Redis-常用指令"
-                        loading="lazy">
-                
-            </div>
-        
-    </a>
-</article>
-        
-            <article>
-    <a href="/p/dns_server-mydns-%E6%9C%8D%E5%8B%99%E5%99%A8%E7%9A%84%E5%8F%AF%E8%A6%96%E5%8C%96%E7%AE%A1%E7%90%86-by-centos6/">
-        <div class="article-details">
-            <h2 class="article-title">DNS_SERVER-MyDNS 服務器的可視化管理 by CentOS6</h2>
-            <footer class="article-time">
-                <time datetime='2022-12-30T00:00:00Z'>Dec 30, 2022</time>
-            </footer>
-        </div>
-            <div class="article-image">
-                <img src="/p/dns_server-mydns-%E6%9C%8D%E5%8B%99%E5%99%A8%E7%9A%84%E5%8F%AF%E8%A6%96%E5%8C%96%E7%AE%A1%E7%90%86-by-centos6/100_hu4f6562e501064fb4525a6459b027d812_33292_120x120_fill_box_smart1_3.png" 
-                        width="120"
-                        height="120" 
-                        alt="DNS_SERVER-MyDNS 服務器的可視化管理 by CentOS6"
-                        loading="lazy">
-                
-            </div>
-        
-    </a>
-</article>
-        
-            <article>
-    <a href="/p/vpn-%E5%BB%BA%E7%BD%AE-xl2tpd--ipsec-%E6%9C%8D%E5%8B%99-by-docker/">
-        <div class="article-details">
-            <h2 class="article-title">VPN-建置 XL2TPD &#43; IPSec 服務 by DOCKER</h2>
-            <footer class="article-time">
-                <time datetime='2022-12-27T00:00:00Z'>Dec 27, 2022</time>
-            </footer>
-        </div>
-            <div class="article-image">
-                <img src="/p/vpn-%E5%BB%BA%E7%BD%AE-xl2tpd--ipsec-%E6%9C%8D%E5%8B%99-by-docker/100_hu4a5e9b40bf0434de798ba3ff501006e2_11543_120x120_fill_q75_box_smart1.jpg" 
-                        width="120"
-                        height="120" 
-                        alt="VPN-建置 XL2TPD &#43; IPSec 服務 by DOCKER"
-                        loading="lazy">
-                
-            </div>
-        
-    </a>
-</article>
-        
-            <article>
-    <a href="/p/svn-%E5%88%AA%E9%99%A4%E6%97%A9%E6%9C%9F%E7%89%88%E6%9C%AC%E5%BA%AB-%E8%A8%98%E5%BE%97%E5%85%88%E5%82%99%E4%BB%BD/">
-        <div class="article-details">
-            <h2 class="article-title">SVN-刪除早期版本庫 (記得先備份!!!)</h2>
-            <footer class="article-time">
-                <time datetime='2022-12-26T00:00:00Z'>Dec 26, 2022</time>
-            </footer>
-        </div>
-            <div class="article-image">
-                <img src="/p/svn-%E5%88%AA%E9%99%A4%E6%97%A9%E6%9C%9F%E7%89%88%E6%9C%AC%E5%BA%AB-%E8%A8%98%E5%BE%97%E5%85%88%E5%82%99%E4%BB%BD/100_hu791d074278204665296c002ec84be428_1698_120x120_fill_box_smart1_3.png" 
-                        width="120"
-                        height="120" 
-                        alt="SVN-刪除早期版本庫 (記得先備份!!!)"
-                        loading="lazy">
-                
-            </div>
-        
-    </a>
-</article>
-        
-            <article>
-    <a href="/p/vpn-%E5%BB%BA%E7%BD%AE-socks5ss5%E4%BB%A3%E7%90%86/">
-        <div class="article-details">
-            <h2 class="article-title">VPN-建置 SOCKS5(SS5)代理</h2>
-            <footer class="article-time">
-                <time datetime='2022-12-26T00:00:00Z'>Dec 26, 2022</time>
-            </footer>
-        </div>
-            <div class="article-image">
-                <img src="/p/vpn-%E5%BB%BA%E7%BD%AE-socks5ss5%E4%BB%A3%E7%90%86/100_hu4a5e9b40bf0434de798ba3ff501006e2_11543_120x120_fill_q75_box_smart1.jpg" 
-                        width="120"
-                        height="120" 
-                        alt="VPN-建置 SOCKS5(SS5)代理"
-                        loading="lazy">
-                
-            </div>
-        
-    </a>
-</article>
-        
-            <article>
-    <a href="/p/nginx-%E6%B7%BB%E5%8A%A0%E7%99%BD%E5%90%8D%E5%96%AE-%E5%B0%81%E9%8E%96%E5%9C%8B%E5%AE%B6-ip-%E6%96%B9%E5%BC%8F/">
-        <div class="article-details">
-            <h2 class="article-title">Nginx-添加白名單 &amp; 封鎖國家 IP 方式</h2>
-            <footer class="article-time">
-                <time datetime='2022-12-25T00:00:00Z'>Dec 25, 2022</time>
-            </footer>
-        </div>
-            <div class="article-image">
-                <img src="/p/nginx-%E6%B7%BB%E5%8A%A0%E7%99%BD%E5%90%8D%E5%96%AE-%E5%B0%81%E9%8E%96%E5%9C%8B%E5%AE%B6-ip-%E6%96%B9%E5%BC%8F/100_hud639c4e125de7e8ad17e2519279d4fee_29636_120x120_fill_box_smart1_3.png" 
-                        width="120"
-                        height="120" 
-                        alt="Nginx-添加白名單 &amp; 封鎖國家 IP 方式"
-                        loading="lazy">
-                
-            </div>
-        
-    </a>
-</article>
-        
-            <article>
-    <a href="/p/rsyslog%E6%97%A5%E8%AA%8C%E9%81%A0%E7%AB%AF%E9%9B%86%E4%B8%AD%E5%BC%8F%E7%AE%A1%E7%90%86/">
-        <div class="article-details">
-            <h2 class="article-title">Rsyslog日誌遠端集中式管理</h2>
-            <footer class="article-time">
-                <time datetime='2022-12-21T00:00:00Z'>Dec 21, 2022</time>
-            </footer>
-        </div>
-            <div class="article-image">
-                <img src="/p/rsyslog%E6%97%A5%E8%AA%8C%E9%81%A0%E7%AB%AF%E9%9B%86%E4%B8%AD%E5%BC%8F%E7%AE%A1%E7%90%86/100_hu1acf48b62c2e007a3a704d91e9dd9674_43864_120x120_fill_box_smart1_3.png" 
-                        width="120"
-                        height="120" 
-                        alt="Rsyslog日誌遠端集中式管理"
-                        loading="lazy">
-                
-            </div>
-        
-    </a>
-</article>
-        
-            <article>
-    <a href="/p/grafana-loki-%E6%9F%A5%E8%A9%A2%E8%AA%9E%E8%A8%80-logql/">
-        <div class="article-details">
-            <h2 class="article-title">Grafana-Loki 查詢語言 LogQL</h2>
-            <footer class="article-time">
-                <time datetime='2022-12-16T00:00:00Z'>Dec 16, 2022</time>
-            </footer>
-        </div>
-            <div class="article-image">
-                <img src="/p/grafana-loki-%E6%9F%A5%E8%A9%A2%E8%AA%9E%E8%A8%80-logql/100_hu620c7a524b6dcb360e250bc73a09da7c_32448_120x120_fill_box_smart1_3.png" 
-                        width="120"
-                        height="120" 
-                        alt="Grafana-Loki 查詢語言 LogQL"
-                        loading="lazy">
-                
-            </div>
-        
-    </a>
-</article>
-        
-            <article>
-    <a href="/p/grafana-%E4%BD%BF%E7%94%A8uptime%E6%9F%A5%E8%A9%A2%E7%B3%BB%E7%B5%B1%E9%81%8B%E8%A1%8C%E6%99%82%E9%96%93/">
-        <div class="article-details">
-            <h2 class="article-title">Grafana-使用uptime查詢系統運行時間</h2>
-            <footer class="article-time">
-                <time datetime='2022-12-16T00:00:00Z'>Dec 16, 2022</time>
-            </footer>
-        </div>
-            <div class="article-image">
-                <img src="/p/grafana-%E4%BD%BF%E7%94%A8uptime%E6%9F%A5%E8%A9%A2%E7%B3%BB%E7%B5%B1%E9%81%8B%E8%A1%8C%E6%99%82%E9%96%93/100_hu620c7a524b6dcb360e250bc73a09da7c_32448_120x120_fill_box_smart1_3.png" 
-                        width="120"
-                        height="120" 
-                        alt="Grafana-使用uptime查詢系統運行時間"
-                        loading="lazy">
-                
-            </div>
-        
-    </a>
-</article>
-        
-            <article>
-    <a href="/p/grafana-%E5%BB%BA%E7%AB%8B-panel-for-loading/">
-        <div class="article-details">
-            <h2 class="article-title">Grafana-建立 panel for loading</h2>
-            <footer class="article-time">
-                <time datetime='2022-12-16T00:00:00Z'>Dec 16, 2022</time>
-            </footer>
-        </div>
-            <div class="article-image">
-                <img src="/p/grafana-%E5%BB%BA%E7%AB%8B-panel-for-loading/100_hu620c7a524b6dcb360e250bc73a09da7c_32448_120x120_fill_box_smart1_3.png" 
-                        width="120"
-                        height="120" 
-                        alt="Grafana-建立 panel for loading"
-                        loading="lazy">
-                
-            </div>
-        
-    </a>
-</article>
-        
-            <article>
-    <a href="/p/grafana-%E5%BB%BA%E7%AB%8B-panel-for-memory/">
-        <div class="article-details">
-            <h2 class="article-title">Grafana-建立 panel for memory</h2>
-            <footer class="article-time">
-                <time datetime='2022-12-16T00:00:00Z'>Dec 16, 2022</time>
-            </footer>
-        </div>
-            <div class="article-image">
-                <img src="/p/grafana-%E5%BB%BA%E7%AB%8B-panel-for-memory/100_hu620c7a524b6dcb360e250bc73a09da7c_32448_120x120_fill_box_smart1_3.png" 
-                        width="120"
-                        height="120" 
-                        alt="Grafana-建立 panel for memory"
-                        loading="lazy">
-                
-            </div>
-        
-    </a>
-</article>
-        
-            <article>
-    <a href="/p/grafana-%E5%BB%BA%E7%AB%8B-panel-for-storage/">
-        <div class="article-details">
-            <h2 class="article-title">Grafana-建立 panel for storage</h2>
-            <footer class="article-time">
-                <time datetime='2022-12-16T00:00:00Z'>Dec 16, 2022</time>
-            </footer>
-        </div>
-            <div class="article-image">
-                <img src="/p/grafana-%E5%BB%BA%E7%AB%8B-panel-for-storage/100_hu620c7a524b6dcb360e250bc73a09da7c_32448_120x120_fill_box_smart1_3.png" 
-                        width="120"
-                        height="120" 
-                        alt="Grafana-建立 panel for storage"
-                        loading="lazy">
-                
-            </div>
-        
-    </a>
-</article>
-        
-            <article>
-    <a href="/p/grafana-%E6%90%AD%E5%BB%BAlokipromtail-%E5%A4%9A%E5%A5%97%E5%8D%B3%E6%99%82%E6%80%A7%E6%97%A5%E8%AA%8C/">
-        <div class="article-details">
-            <h2 class="article-title">Grafana-搭建Loki、Promtail 多套即時性日誌</h2>
-            <footer class="article-time">
-                <time datetime='2022-12-16T00:00:00Z'>Dec 16, 2022</time>
-            </footer>
-        </div>
-            <div class="article-image">
-                <img src="/p/grafana-%E6%90%AD%E5%BB%BAlokipromtail-%E5%A4%9A%E5%A5%97%E5%8D%B3%E6%99%82%E6%80%A7%E6%97%A5%E8%AA%8C/100_hu620c7a524b6dcb360e250bc73a09da7c_32448_120x120_fill_box_smart1_3.png" 
-                        width="120"
-                        height="120" 
-                        alt="Grafana-搭建Loki、Promtail 多套即時性日誌"
-                        loading="lazy">
-                
-            </div>
-        
-    </a>
-</article>
-        
-            <article>
-    <a href="/p/grafana-%E6%90%AD%E5%BB%BAlokipromtailgrafana%E8%BC%95%E9%87%8F%E7%B4%9A%E6%97%A5%E8%AA%8C%E7%B3%BB%E7%B5%B1/">
-        <div class="article-details">
-            <h2 class="article-title">Grafana-搭建Loki、Promtail、Grafana輕量級日誌系統</h2>
-            <footer class="article-time">
-                <time datetime='2022-12-16T00:00:00Z'>Dec 16, 2022</time>
-            </footer>
-        </div>
-            <div class="article-image">
-                <img src="/p/grafana-%E6%90%AD%E5%BB%BAlokipromtailgrafana%E8%BC%95%E9%87%8F%E7%B4%9A%E6%97%A5%E8%AA%8C%E7%B3%BB%E7%B5%B1/100_hu620c7a524b6dcb360e250bc73a09da7c_32448_120x120_fill_box_smart1_3.png" 
-                        width="120"
-                        height="120" 
-                        alt="Grafana-搭建Loki、Promtail、Grafana輕量級日誌系統"
-                        loading="lazy">
-                
-            </div>
-        
-    </a>
-</article>
-        
-            <article>
-    <a href="/p/mysql-changed-limits-max_connections-%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/">
-        <div class="article-details">
-            <h2 class="article-title">MySQL-Changed limits max_connections 解决方法</h2>
-            <footer class="article-time">
-                <time datetime='2022-12-14T00:00:00Z'>Dec 14, 2022</time>
-            </footer>
-        </div>
-            <div class="article-image">
-                <img src="/p/mysql-changed-limits-max_connections-%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/100_huad49eaec4f433d83d4d3047da152b4f9_9127_120x120_fill_box_smart1_3.png" 
-                        width="120"
-                        height="120" 
-                        alt="MySQL-Changed limits max_connections 解决方法"
-                        loading="lazy">
-                
-            </div>
-        
-    </a>
-</article>
-        
-            <article>
-    <a href="/p/nginx-proxypass-hugo/">
-        <div class="article-details">
-            <h2 class="article-title">Nginx-Proxypass (HUGO)</h2>
-            <footer class="article-time">
-                <time datetime='2022-12-13T00:00:00Z'>Dec 13, 2022</time>
-            </footer>
-        </div>
-            <div class="article-image">
-                <img src="/p/nginx-proxypass-hugo/100_hud639c4e125de7e8ad17e2519279d4fee_29636_120x120_fill_box_smart1_3.png" 
-                        width="120"
-                        height="120" 
-                        alt="Nginx-Proxypass (HUGO)"
-                        loading="lazy">
-                
-            </div>
-        
-    </a>
-</article>
-        
-    </section>
-    <nav class='pagination'>
-        
-        
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+    <meta name="robots" content="noodp" />
+    <title>All Posts - </title><meta name="author" content="Laurance">
+<meta name="author-link" content="">
+<meta name="description" content="Laurance&#39;s Blog" /><meta name="keywords" content='Hugo, FixIt' /><meta itemprop="name" content="Posts">
+<meta itemprop="description" content="Laurance&#39;s Blog"><meta property="og:title" content="Posts" />
+<meta property="og:description" content="Laurance&#39;s Blog" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://laurance.eu.org/posts/" /><meta property="og:image" content="https://laurance.eu.org/tan.jpg"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://laurance.eu.org/tan.jpg"/>
 
-        
-            
-                <span class='page-link current'>1</span>
+<meta name="twitter:title" content="Posts"/>
+<meta name="twitter:description" content="Laurance&#39;s Blog"/>
+<meta name="application-name" content="FixIt">
+<meta name="apple-mobile-web-app-title" content="FixIt"><meta name="theme-color" data-light="#f8f8f8" data-dark="#252627" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="https://laurance.eu.org/favicon.png"><link rel="apple-touch-icon" sizes="180x180" href="https://laurance.eu.org/apple-touch-icon.png"><link rel="mask-icon" href="https://laurance.eu.org/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="https://laurance.eu.org/site.webmanifest"><link rel="canonical" href="https://laurance.eu.org/posts/" /><link rel="alternate" href="https://laurance.eu.org/posts/index.xml" type="application/rss+xml" title="">
+  <link rel="feed" href="https://laurance.eu.org/posts/index.xml" type="application/rss+xml" title=""><link rel="stylesheet" href="https://laurance.eu.org/css/style.min.css"><link rel="stylesheet" href="https://laurance.eu.org/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="https://laurance.eu.org/lib/animate/animate.min.css"></head>
+  <body data-header-desktop="sticky" data-header-mobile="auto"><script>(window.localStorage?.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('dark' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'dark' === 'dark')) && document.body.setAttribute('data-theme', 'dark');</script><div class="wrapper" data-page-style="wide"><header class="desktop animate__faster" id="header-desktop">
+  <div class="header-wrapper">
+    <div class="header-title">
+      <a href="https://laurance.eu.org/" title=""><img loading="lazy" src="https://laurance.eu.org/fixit.min.svg" srcset="https://laurance.eu.org/fixit.min.svg, https://laurance.eu.org/fixit.min.svg 1.5x, https://laurance.eu.org/fixit.min.svg 2x" sizes="auto" data-title="/fixit.min.svg" data-alt="/fixit.min.svg" class="logo" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/><span id="typeit-header-desktop" class="typeit"></span></a><span class="header-subtitle"></span></div>
+    <nav>
+      <ul class="menu"><li class="menu-item">
+              <a
+                class="menu-link"
+                href="https://laurance.eu.org/categories/"
                 
-            
-            
-                    <a class='page-link' href='/post/page/2/'>2</a>
                 
-            
-            
-                    
-                        
-                        <span class='page-link dots'>&hellip;</span>
-                    
+              ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> 分類</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="https://laurance.eu.org/tags/"
                 
-            
-            
-                    
                 
-            
-            
-                    <a class='page-link' href='/post/page/5/'>5</a>
-                
-            
+              ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 標籤</a></li><li class="menu-item delimiter"></li><li class="menu-item search" id="search-desktop">
+            <input type="text" placeholder="搜索關鍵字" id="search-input-desktop">
+            <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+              <i class="fa-solid fa-search fa-fw" aria-hidden="true"></i>
+            </a>
+            <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+              <i class="fa-solid fa-times-circle fa-fw" aria-hidden="true"></i>
+            </a>
+            <span class="search-button search-loading" id="search-loading-desktop">
+              <i class="fa-solid fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+            </span>
+          </li><li class="menu-item theme-switch" title="Switch Theme">
+          <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
+        </li></ul>
     </nav>
-
-<footer class="site-footer">
-    <section class="copyright">
-        &copy; 
-        
-            2022 - 
-        
-        2023 Laurance&#39;s Note
-    </section>
-    
-    <section class="powerby">
-        
-            All rights reserved <br/>
-        
-
-        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
-        
-    </section>
-</footer>
-
-<span id="busuanzi_container_site_pv">
-    總瀏覽  <span id="busuanzi_value_site_pv"></span>  次
-</span>
-
-
-            </main>
-    <aside class="sidebar right-sidebar sticky">
-        
-            
-                <form action="/search/" class="search-form widget" >
-        <p>
-            <label>Search</label>
-            <input name="keyword" required placeholder="Type something..." />
-        
-            <button title="Search">
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="10" cy="10" r="7" />
-  <line x1="21" y1="21" x2="15" y2="15" />
-</svg>
-
-
-
-            </button>
-        </p>
-    </form>
-            
-        
-            
-                <section class="widget archives">
-        <div class="widget-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-infinity" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <path d="M9.828 9.172a4 4 0 1 0 0 5.656 a10 10 0 0 0 2.172 -2.828a10 10 0 0 1 2.172 -2.828 a4 4 0 1 1 0 5.656a10 10 0 0 1 -2.172 -2.828a10 10 0 0 0 -2.172 -2.828" />
-</svg>
-
-
-
-        </div>
-        <h2 class="widget-title section-title">Archives</h2>
-
-        
-        
-        
-        
-        
-        <div class="widget-archive--list">
-            <div class="archives-year">
-                    <a href="/archives/#2023">
-                        
-                            <span class="year">2023</span>
-                            <span class="count">35</span>
-                        
-                    </a> 
-                </div>
-            <div class="archives-year">
-                    <a href="/archives/#2022">
-                        
-                            <span class="year">2022</span>
-                            <span class="count">184</span>
-                        
-                    </a> 
-                </div>
-            <div class="archives-year">
-                    <a href="/archives/#2020">
-                        
-                            <span class="year">2020</span>
-                            <span class="count">1</span>
-                        
-                    </a> 
-                </div>
-            <div class="archives-year">
-                    <a href="/archives/#2019">
-                        
-                            <span class="year">2019</span>
-                            <span class="count">5</span>
-                        
-                    </a> 
-                </div>
-            
-        </div>
-    </section>
-            
-        
-            
-                <section class="widget tagCloud">
-    <div class="widget-icon">
-        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-tag" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <path d="M11 3L20 12a1.5 1.5 0 0 1 0 2L14 20a1.5 1.5 0 0 1 -2 0L3 11v-4a4 4 0 0 1 4 -4h4" />
-  <circle cx="9" cy="9" r="2" />
-</svg>
-
-
-
+  </div>
+</header><header class="mobile animate__faster" id="header-mobile">
+  <div class="header-container">
+    <div class="header-wrapper">
+      <div class="header-title">
+        <a href="https://laurance.eu.org/" title=""><img loading="lazy" src="https://laurance.eu.org/fixit.min.svg" srcset="https://laurance.eu.org/fixit.min.svg, https://laurance.eu.org/fixit.min.svg 1.5x, https://laurance.eu.org/fixit.min.svg 2x" sizes="auto" data-title="/fixit.min.svg" data-alt="/fixit.min.svg" class="logo" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/><span id="typeit-header-title-mobile" class="typeit"></span></a><span class="header-subtitle"></span></div>
+      <div class="menu-toggle" id="menu-toggle-mobile">
+        <span></span><span></span><span></span>
+      </div>
     </div>
-    <h2 class="widget-title section-title">Tags</h2>
-
-    <div class="tagCloud-tags">
-        
-            <a href="/tags/mysql/" class="font_size_15">
-                MySQL
+    <nav>
+      <ul class="menu" id="menu-mobile"><li class="search-wrapper">
+            <div class="search mobile" id="search-mobile">
+              <input type="text" placeholder="搜索關鍵字" id="search-input-mobile">
+              <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                <i class="fa-solid fa-search fa-fw" aria-hidden="true"></i>
+              </a>
+              <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                <i class="fa-solid fa-times-circle fa-fw" aria-hidden="true"></i>
+              </a>
+              <span class="search-button search-loading" id="search-loading-mobile">
+                <i class="fa-solid fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+              </span>
+            </div>
+            <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+              Cancel
             </a>
-        
-            <a href="/tags/aws/" class="font_size_14">
-                AWS
-            </a>
-        
-            <a href="/tags/nginx/" class="font_size_14">
-                Nginx
-            </a>
-        
-            <a href="/tags/centos/" class="font_size_11">
-                CentOS
-            </a>
-        
-            <a href="/tags/grafana/" class="font_size_11">
-                Grafana
-            </a>
-        
-            <a href="/tags/kubernetes/" class="font_size_11">
-                Kubernetes
-            </a>
-        
-            <a href="/tags/linux/" class="font_size_9">
-                Linux
-            </a>
-        
-            <a href="/tags/gcp/" class="font_size_8">
-                GCP
-            </a>
-        
-            <a href="/tags/iptables/" class="font_size_8">
-                Iptables
-            </a>
-        
-            <a href="/tags/php/" class="font_size_8">
-                PHP
-            </a>
-        
-            <a href="/tags/svn/" class="font_size_8">
-                SVN
-            </a>
-        
-            <a href="/tags/windows/" class="font_size_7">
-                Windows
-            </a>
-        
-            <a href="/tags/docker/" class="font_size_6">
-                Docker
-            </a>
-        
-            <a href="/tags/mongodb/" class="font_size_6">
-                Mongodb
-            </a>
-        
-            <a href="/tags/redis/" class="font_size_6">
-                Redis
-            </a>
-        
-            <a href="/tags/shell-script/" class="font_size_6">
-                shell script
-            </a>
-        
-            <a href="/tags/influxdb/" class="font_size_5">
-                influxdb
-            </a>
-        
-            <a href="/tags/telegraf/" class="font_size_5">
-                telegraf
-            </a>
-        
-            <a href="/tags/xencenter/" class="font_size_5">
-                XenCenter
-            </a>
-        
-            <a href="/tags/fortigate/" class="font_size_4">
-                FortiGate
-            </a>
-        
-            <a href="/tags/cacti/" class="font_size_3">
-                Cacti
-            </a>
-        
-            <a href="/tags/debian/" class="font_size_3">
-                Debian
-            </a>
-        
-            <a href="/tags/dns/" class="font_size_3">
-                DNS
-            </a>
-        
-            <a href="/tags/loki/" class="font_size_3">
-                Loki
-            </a>
-        
-            <a href="/tags/memcache/" class="font_size_3">
-                Memcache
-            </a>
-        
-            <a href="/tags/promtail/" class="font_size_3">
-                Promtail
-            </a>
-        
-            <a href="/tags/rclone/" class="font_size_3">
-                rclone
-            </a>
-        
-            <a href="/tags/apache/" class="font_size_2">
-                Apache
-            </a>
-        
-            <a href="/tags/git/" class="font_size_2">
-                GIT
-            </a>
-        
-            <a href="/tags/logrotate/" class="font_size_2">
-                Logrotate
-            </a>
-        
-            <a href="/tags/postgresql/" class="font_size_2">
-                Postgresql
-            </a>
-        
-            <a href="/tags/prometheus/" class="font_size_2">
-                Prometheus
-            </a>
-        
-            <a href="/tags/rsync/" class="font_size_2">
-                rsync
-            </a>
-        
-            <a href="/tags/xshell/" class="font_size_2">
-                Xshell
-            </a>
-        
-            <a href="/tags/youtube-dl/" class="font_size_2">
-                youtube-dl
-            </a>
-        
-            <a href="/tags/crontab/" class="font_size_1">
-                Crontab
-            </a>
-        
-            <a href="/tags/exporter/" class="font_size_1">
-                exporter
-            </a>
-        
-            <a href="/tags/ffmpeg/" class="font_size_1">
-                FFmpeg
-            </a>
-        
-            <a href="/tags/firebase/" class="font_size_1">
-                Firebase
-            </a>
-        
-            <a href="/tags/haproxy/" class="font_size_1">
-                Haproxy
-            </a>
-        
-    </div>
-</section>
-            
-        
-    </aside>
-
-
-        </div>
-        <script 
-                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
-                
-                >
-            </script><script type="text/javascript" src="/ts/main.js" defer></script>
-<script>
-    (function () {
-        const customFont = document.createElement('link');
-        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
-
-        customFont.type = "text/css";
-        customFont.rel = "stylesheet";
-
-        document.head.appendChild(customFont);
-    }());
-</script>
-
-    </body>
+          </li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="https://laurance.eu.org/categories/"
+                  
+                  
+                ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> 分類</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="https://laurance.eu.org/tags/"
+                  
+                  
+                ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 標籤</a></li><li class="menu-item menu-system">
+          <span class="menu-system-item theme-switch" title="Switch Theme"><i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i></span></li>
+      </ul>
+    </nav>
+  </div>
+</header><div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+  </div>
+  <div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+  </div><main class="container"><div class="page archive">
+    <div class="header"><h1 class="single-title animate__animated animate__pulse animate__faster">All Posts
+        <sup>214</sup>
+      </h1><p class="single-subtitle total-word-count" title='Total one word'><i class="fa-regular fa-keyboard fa-fw" aria-hidden="true"></i> Total 24.71K words</p></div><h2 class="group-title">2023</h2><article class="archive-item">
+            <a href="https://laurance.eu.org/posts/influxdb-%E5%BB%BA%E7%AB%8B%E4%BD%BF%E7%94%A8%E8%80%85%E5%AF%86%E7%A2%BC/" class="archive-item-link">InfluxDB - 如何建立使用者密碼及相關權限</a>
+            <span class="archive-item-date" title='2023-03-23 00:00:00'>03-23</span>
+          </article><article class="archive-item">
+            <a href="https://laurance.eu.org/posts/gcp-chatgpt-%E4%B8%B2%E6%8E%A5-firebase%E5%8F%8Alinebot/" class="archive-item-link">GCP - ChatGPT 串接 Firebase 及 Linebot</a>
+            <span class="archive-item-date" title='2023-03-22 00:00:00'>03-22</span>
+          </article><article class="archive-item">
+            <a href="https://laurance.eu.org/posts/postgresql-%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/" class="archive-item-link">Postgresql - 常用指令</a>
+            <span class="archive-item-date" title='2023-03-21 00:00:00'>03-21</span>
+          </article><article class="archive-item">
+            <a href="https://laurance.eu.org/posts/postgresql-%E5%AE%89%E8%A3%9Dpostgresql-14.7-on-centos7/" class="archive-item-link">Postgresql - install postgresql-14.7 on centos7</a>
+            <span class="archive-item-date" title='2023-03-21 00:00:00'>03-21</span>
+          </article><article class="archive-item">
+            <a href="https://laurance.eu.org/posts/xshell-7-%E5%8C%AF%E5%87%BA%E5%8F%8A%E5%8C%AF%E5%85%A5/" class="archive-item-link">Xshell 7 - 匯出及匯入</a>
+            <span class="archive-item-date" title='2023-03-20 00:00:00'>03-20</span>
+          </article><article class="archive-item">
+            <a href="https://laurance.eu.org/posts/xshell-7-v7.0.0001-install/" class="archive-item-link">Xshell 7 - v7.0.0001 install</a>
+            <span class="archive-item-date" title='2023-03-20 00:00:00'>03-20</span>
+          </article><article class="archive-item">
+            <a href="https://laurance.eu.org/posts/windows-win10%E5%B0%88%E6%A5%AD%E7%89%88%E9%87%91%E9%91%B0/" class="archive-item-link">Windows - win10 專業版金鑰</a>
+            <span class="archive-item-date" title='2023-03-20 00:00:00'>03-20</span>
+          </article><article class="archive-item">
+            <a href="https://laurance.eu.org/posts/nginx-%E6%B7%BB%E5%8A%A0-echo-%E6%A8%A1%E7%B5%84/" class="archive-item-link">Nginx - 重新編譯 &amp;&amp; 添加 echo 模組</a>
+            <span class="archive-item-date" title='2023-03-13 00:00:00'>03-13</span>
+          </article><article class="archive-item">
+            <a href="https://laurance.eu.org/posts/hugo%E6%B7%BB%E5%8A%A0algolia%E6%90%9C%E7%B4%A2%E6%94%AF%E6%8C%81/" class="archive-item-link">HUGO - 添加 Algolia 搜索支持</a>
+            <span class="archive-item-date" title='2023-03-10 00:00:00'>03-10</span>
+          </article><article class="archive-item">
+            <a href="https://laurance.eu.org/posts/haproxy-%E8%A8%AD%E7%BD%AE%E5%8E%9F%E7%90%86%E8%A7%A3%E6%9E%90/" class="archive-item-link">haproxy - 設定檔解析</a>
+            <span class="archive-item-date" title='2023-03-09 00:00:00'>03-09</span>
+          </article><article class="archive-item">
+            <a href="https://laurance.eu.org/posts/gcp-google-cloud-monitoring-by-grafana/" class="archive-item-link">GCP - Google Cloud Monitoring by Grafana</a>
+            <span class="archive-item-date" title='2023-03-06 00:00:00'>03-06</span>
+          </article><article class="archive-item">
+            <a href="https://laurance.eu.org/posts/mongod-studio-3t-for-mongodb-2019-019.3.0/" class="archive-item-link">MongoDB -Studio 3T for MongoDB 2019 019.3.0</a>
+            <span class="archive-item-date" title='2023-03-03 00:00:00'>03-03</span>
+          </article><article class="archive-item">
+            <a href="https://laurance.eu.org/posts/linux-%E7%B3%BB%E7%B5%B1log-local%E7%B4%9A%E5%88%A5/" class="archive-item-link">Linux - 核心 &amp; 系統日誌檔 (local 級別) 紀錄</a>
+            <span class="archive-item-date" title='2023-03-03 00:00:00'>03-03</span>
+          </article><article class="archive-item">
+            <a href="https://laurance.eu.org/posts/windows-%E5%AE%89%E8%A3%9D%E7%A8%8B%E5%BC%8F--chocolatey/" class="archive-item-link">Windows - 安裝影片下載工具 yt-dlp 及 Chocolatey</a>
+            <span class="archive-item-date" title='2023-03-02 00:00:00'>03-02</span>
+          </article><article class="archive-item">
+            <a href="https://laurance.eu.org/posts/windows-bat%E6%89%B9%E8%99%95%E7%90%86%E8%85%B3%E6%9C%AC%E4%B8%AD%E6%96%87%E4%BA%82%E7%A2%BC%E5%95%8F%E9%A1%8C%E8%A7%A3%E6%B1%BA/" class="archive-item-link">Windows - bat 批處理腳本中文亂碼問題解決</a>
+            <span class="archive-item-date" title='2023-03-02 00:00:00'>03-02</span>
+          </article><article class="archive-item">
+            <a href="https://laurance.eu.org/posts/nginx-%E5%8F%83%E6%95%B8-tri_files-uri/" class="archive-item-link">Nginx - 參數配置 tri_files $uri</a>
+            <span class="archive-item-date" title='2023-02-19 00:00:00'>02-19</span>
+          </article><article class="archive-item">
+            <a href="https://laurance.eu.org/posts/grafana-iframe-%E5%8E%BB%E9%99%A4-bar/" class="archive-item-link">Grafana - Iframe 去除 bar 工具條</a>
+            <span class="archive-item-date" title='2023-02-16 00:00:00'>02-16</span>
+          </article><article class="archive-item">
+            <a href="https://laurance.eu.org/posts/gcp-cloud-functions-%E9%83%A8%E5%B1%AC-line-bot-&#43;-openai/" class="archive-item-link">GCP - Cloud Functions 部屬 LINE BOT &#43; OpenAI</a>
+            <span class="archive-item-date" title='2023-02-16 00:00:00'>02-16</span>
+          </article><article class="archive-item">
+            <a href="https://laurance.eu.org/posts/windows-%E5%AE%89%E8%A3%9D%E8%BD%89%E6%AA%94%E5%B7%A5%E5%85%B7-ffmpeg/" class="archive-item-link">Windows - 安裝轉檔工具 FFmpeg</a>
+            <span class="archive-item-date" title='2023-02-15 00:00:00'>02-15</span>
+          </article><article class="archive-item">
+            <a href="https://laurance.eu.org/posts/windows-%E5%AE%89%E8%A3%9D%E5%BD%B1%E7%89%87%E4%B8%8B%E8%BC%89%E5%B7%A5%E5%85%B7-youtube-dl/" class="archive-item-link">Windows - 安裝影片下載工具 youtube-dl</a>
+            <span class="archive-item-date" title='2023-02-15 00:00:00'>02-15</span>
+          </article><article class="archive-item">
+            <a href="https://laurance.eu.org/posts/linux-youtube-dl-ffmpeg-%E5%AE%89%E8%A3%9D%E6%95%99%E5%AD%B8/" class="archive-item-link">Linux - youtube-dl &amp;&amp; ffmpeg 安裝教學</a>
+            <span class="archive-item-date" title='2023-02-13 00:00:00'>02-13</span>
+          </article><article class="archive-item">
+            <a href="https://laurance.eu.org/posts/svn-%E8%A7%A3%E6%B1%BAsvn%E6%AF%8F%E6%AC%A1%E9%83%BD%E9%9C%80%E8%A6%81%E8%BC%B8%E5%85%A5%E5%AF%86%E7%A2%BC/" class="archive-item-link">SVN - Linux 解決每次 commit 都需要輸入密碼</a>
+            <span class="archive-item-date" title='2023-02-04 00:00:00'>02-04</span>
+          </article><article class="archive-item">
+            <a href="https://laurance.eu.org/posts/linux-rsync-%E5%9F%BA%E6%9C%AC%E8%A8%AD%E5%AE%9A%E6%95%99%E5%AD%B8/" class="archive-item-link">Linux - Rsync 基本設定</a>
+            <span class="archive-item-date" title='2023-02-03 00:00:00'>02-03</span>
+          </article><article class="archive-item">
+            <a href="https://laurance.eu.org/posts/rclone%E6%8E%9B%E8%BC%89-google-drive-%E4%BD%9C%E7%82%BA%E6%9C%AC%E5%9C%B0%E7%A1%AC%E7%A2%9F%E4%BD%BF%E7%94%A8/" class="archive-item-link">Rclone - 掛載 google drive 作為本地硬碟使用 </a>
+            <span class="archive-item-date" title='2023-02-01 00:00:00'>02-01</span>
+          </article><article class="archive-item">
+            <a href="https://laurance.eu.org/posts/rclone%E5%95%9F%E5%8B%95%E8%85%B3%E6%9C%AC-centos7/" class="archive-item-link">Rclone - 啟動腳本 {CentOS7}</a>
+            <span class="archive-item-date" title='2023-02-01 00:00:00'>02-01</span>
+          </article><article class="archive-item">
+            <a href="https://laurance.eu.org/posts/linux-%E9%96%8B%E6%A9%9F%E5%87%BA%E7%8F%BE-or-type-control-d-to-continue-%E8%A7%A3%E6%B1%BA%E8%BE%A6%E6%B3%95/" class="archive-item-link">Linux - 開機出現 or type control -D to continue 解決辦法</a>
+            <span class="archive-item-date" title='2023-02-01 00:00:00'>02-01</span>
+          </article><article class="archive-item">
+            <a href="https://laurance.eu.org/posts/linux-%E4%BD%BF%E7%94%A8-locate-%E5%B0%8B%E6%89%BE%E6%AA%94%E6%A1%88%E6%95%99%E5%AD%B8%E8%88%87%E7%AF%84%E4%BE%8B/" class="archive-item-link">Linux - 使用 locate 尋找檔案教學與範例</a>
+            <span class="archive-item-date" title='2023-02-01 00:00:00'>02-01</span>
+          </article><article class="archive-item">
+            <a href="https://laurance.eu.org/posts/nginx-405-not-allowed/" class="archive-item-link">Nginx - 405 Not Allowed 解決方法</a>
+            <span class="archive-item-date" title='2023-01-29 00:00:00'>01-29</span>
+          </article><article class="archive-item">
+            <a href="https://laurance.eu.org/posts/centos-%E5%A6%82%E4%BD%95%E5%B0%87%E5%AE%89%E8%A3%9D%E5%8C%85%E5%8F%8A%E5%85%B6%E4%BE%9D%E8%B3%B4%E5%8C%85%E4%B8%8B%E8%BC%89%E5%88%B0%E6%9C%AC%E5%9C%B0/" class="archive-item-link">CentOS - 如何將安裝包及其依賴包下載到本地</a>
+            <span class="archive-item-date" title='2023-01-26 00:00:00'>01-26</span>
+          </article><article class="archive-item">
+            <a href="https://laurance.eu.org/posts/redis-%E4%B8%BB%E5%BE%9E%E8%B7%9F%E9%9A%A8%E5%BB%BA%E7%AB%8B/" class="archive-item-link">Redis - 主從跟隨建立</a>
+            <span class="archive-item-date" title='2023-01-20 00:00:00'>01-20</span>
+          </article><ul class="pagination"><li class="page-item active">
+          <span class="page-link">
+            <a href="https://laurance.eu.org/posts/">1</a>
+          </span>
+        </li><li class="page-item">
+          <span class="page-link">
+            <a href="https://laurance.eu.org/posts/page/2/">2</a>
+          </span>
+        </li><li class="page-item">
+          <span class="page-link">
+            <a href="https://laurance.eu.org/posts/page/3/">3</a>
+          </span>
+        </li><li class="page-item">
+          <span class="page-link" aria-hidden="true">&hellip;</span>
+        </li><li class="page-item">
+          <span class="page-link">
+            <a href="https://laurance.eu.org/posts/page/8/">8</a>
+          </span>
+        </li></ul></div></main><footer class="footer">
+    <div class="footer-container"><div class="footer-line powered">Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreferrer" title="Hugo 0.111.3">Hugo</a> | Theme - <a href="https://github.com/hugo-fixit/FixIt" target="_blank" rel="external" title="FixIt v0.2.18"><img class="fixit-icon" src="https://laurance.eu.org/fixit.min.svg" alt="FixIt logo" />&nbsp;FixIt</a>
+        </div><div class="footer-line copyright" itemscope itemtype="http://schema.org/CreativeWork"><i class="fa-regular fa-copyright fa-fw" aria-hidden="true"></i>
+            <span itemprop="copyrightYear">2021 - 2023</span><span class="author" itemprop="copyrightHolder">
+              <a href="https://laurance.eu.org/">Laurance</a></span></div><div class="footer-line statistics"></div><div class="footer-line visitor">
+          <span id="busuanzi_container_site_uv" title='Total visitors'><i class="fa-regular fa-user fa-fw" aria-hidden="true"></i>&nbsp;<span id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span></span><span id="busuanzi_container_site_pv" class="footer-divider" title='Total visits'><i class="fa-regular fa-eye fa-fw" aria-hidden="true"></i>&nbsp;<span id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span></span>
+        </div></div>
+  </footer></div><div class="widgets"><div class="fixed-buttons animate__faster d-none"><div class="fixed-button back-to-top" role="button" aria-label="Back to Top"><i class="fa-solid fa-arrow-up fa-fw" aria-hidden="true"></i><span class="variant-numeric d-none">0%</span>
+        </div></div><div id="mask"></div><noscript>
+    <div class="noscript-warning">Theme FixIt works best with JavaScript enabled.</div>
+  </noscript>
+</div><link rel="stylesheet" href="https://laurance.eu.org/lib/lightgallery/css/lightgallery-bundle.min.css"><link rel="stylesheet" href="https://laurance.eu.org/lib/katex/katex.min.css"><link rel="stylesheet" href="https://laurance.eu.org/lib/cookieconsent/cookieconsent.min.css"><link rel="stylesheet" href="https://laurance.eu.org/lib/pace/themes/blue/pace-theme-minimal.css"><script src="https://laurance.eu.org/lib/autocomplete/autocomplete.min.js" defer></script><script src="https://laurance.eu.org/lib/lunr/lunr.min.js" defer></script><script src="https://laurance.eu.org/lib/lightgallery/lightgallery.min.js" defer></script><script src="https://laurance.eu.org/lib/lightgallery/plugins/thumbnail/lg-thumbnail.min.js" defer></script><script src="https://laurance.eu.org/lib/lightgallery/plugins/zoom/lg-zoom.min.js" defer></script><script src="https://laurance.eu.org/lib/sharer/sharer.min.js" async defer></script><script src="https://laurance.eu.org/lib/typeit/index.umd.js" defer></script><script src="https://laurance.eu.org/lib/katex/katex.min.js" defer></script><script src="https://laurance.eu.org/lib/katex/auto-render.min.js" defer></script><script src="https://laurance.eu.org/lib/katex/copy-tex.min.js" defer></script><script src="https://laurance.eu.org/lib/katex/mhchem.min.js" defer></script><script src="https://laurance.eu.org/lib/cookieconsent/cookieconsent.min.js" defer></script><script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async defer></script><script src="https://laurance.eu.org/lib/pace/pace.min.js" async defer></script><script>window.config={"code":{"copyTitle":"Copy to clipboard","editLockTitle":"Lock editable code block","editUnLockTitle":"Unlock editable code block","editable":true,"maxShownLines":10},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"data":{"typeit-header-desktop":" Laurance's Note Bloggggg ","typeit-header-title-mobile":" Laurance's Note Bloggggg "},"enablePWA":true,"lightgallery":true,"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":20,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"typeit-header-desktop":["typeit-header-desktop"],"typeit-header-title-mobile":["typeit-header-title-mobile"]},"duration":-1,"loop":false,"speed":100}};</script><script src="https://laurance.eu.org/js/theme.min.js" defer></script></body>
 </html>

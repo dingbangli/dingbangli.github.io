@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html itemscope itemtype="http://schema.org/WebPage" lang="">
+  <head>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+    <meta name="robots" content="noodp" />
+    <title>GCP - ChatGPT 串接 Firebase 及 Linebot - </title><meta name="author" content="Laurance">
+<meta name="author-link" content="">
+<meta name="description" content="Note 建立與設定線上即時性資料庫 Firebase Realtime database https://console.firebase.google.com/u/0/ 點選 Go to console 點選 建立專案 輸入 專案名稱及打勾協議 取消勾選與 Google Analytics 建立關聯，可以直接建立專案 建立關聯可以透過 Google Analytics 進行數據分析統計，但如果只是要單純使用資料庫，可以不必建立關聯 Note 建立 Realtime Database 資料庫 專案建立完成後就會進入專案畫面，從左側選擇 建構 &gt; Realtime Database 選擇後，點擊建立資料庫 資料庫的位置選擇美國 繼續下一步 使用鎖定模式啟用 ( 鎖定模式表示這個資料庫禁止存取，啟用後會再修改設定使資料庫可以存取資料 ) Note 建立好的畫面 Note 修改 Realtime Database 存取權限 進入規則頁籤，將規則從 false 修改為 ture 點擊發布，就能將資料庫改成所有人都可以存取的狀態 建立 GCP-Cloud Functions # requirements.txt # Function dependencies, for example: # package&gt;=version line-bot-sdk requests openai git&#43;https://github.com/ozgur/python-firebase # main.py from linebot import LineBotApi, WebhookHandler from linebot." /><meta name="keywords" content='Firebase' /><meta itemprop="name" content="GCP - ChatGPT 串接 Firebase 及 Linebot">
+<meta itemprop="description" content="Note 建立與設定線上即時性資料庫 Firebase Realtime database https://console.firebase.google.com/u/0/ 點選 Go to console 點選 建立專案 輸入 專案名稱及打勾協議 取消勾選與 Google Analytics 建立關聯，可以直接建立專案 建立關聯可以透過 Google Analytics 進行數據分析統計，但如果只是要單純使用資料庫，可以不必建立關聯 Note 建立 Realtime Database 資料庫 專案建立完成後就會進入專案畫面，從左側選擇 建構 &gt; Realtime Database 選擇後，點擊建立資料庫 資料庫的位置選擇美國 繼續下一步 使用鎖定模式啟用 ( 鎖定模式表示這個資料庫禁止存取，啟用後會再修改設定使資料庫可以存取資料 ) Note 建立好的畫面 Note 修改 Realtime Database 存取權限 進入規則頁籤，將規則從 false 修改為 ture 點擊發布，就能將資料庫改成所有人都可以存取的狀態 建立 GCP-Cloud Functions # requirements.txt # Function dependencies, for example: # package&gt;=version line-bot-sdk requests openai git&#43;https://github.com/ozgur/python-firebase # main.py from linebot import LineBotApi, WebhookHandler from linebot."><meta itemprop="datePublished" content="2023-03-22T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2023-03-22T00:00:00+00:00" />
+<meta itemprop="wordCount" content="218"><meta itemprop="image" content="https://laurance.eu.org/tan.jpg"/>
+<meta itemprop="keywords" content="Firebase," /><meta property="og:title" content="GCP - ChatGPT 串接 Firebase 及 Linebot" />
+<meta property="og:description" content="Note 建立與設定線上即時性資料庫 Firebase Realtime database https://console.firebase.google.com/u/0/ 點選 Go to console 點選 建立專案 輸入 專案名稱及打勾協議 取消勾選與 Google Analytics 建立關聯，可以直接建立專案 建立關聯可以透過 Google Analytics 進行數據分析統計，但如果只是要單純使用資料庫，可以不必建立關聯 Note 建立 Realtime Database 資料庫 專案建立完成後就會進入專案畫面，從左側選擇 建構 &gt; Realtime Database 選擇後，點擊建立資料庫 資料庫的位置選擇美國 繼續下一步 使用鎖定模式啟用 ( 鎖定模式表示這個資料庫禁止存取，啟用後會再修改設定使資料庫可以存取資料 ) Note 建立好的畫面 Note 修改 Realtime Database 存取權限 進入規則頁籤，將規則從 false 修改為 ture 點擊發布，就能將資料庫改成所有人都可以存取的狀態 建立 GCP-Cloud Functions # requirements.txt # Function dependencies, for example: # package&gt;=version line-bot-sdk requests openai git&#43;https://github.com/ozgur/python-firebase # main.py from linebot import LineBotApi, WebhookHandler from linebot." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://laurance.eu.org/posts/gcp-chatgpt-%E4%B8%B2%E6%8E%A5-firebase%E5%8F%8Alinebot/" /><meta property="og:image" content="https://laurance.eu.org/tan.jpg"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-03-22T00:00:00+00:00" />
+<meta property="article:modified_time" content="2023-03-22T00:00:00+00:00" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://laurance.eu.org/tan.jpg"/>
+
+<meta name="twitter:title" content="GCP - ChatGPT 串接 Firebase 及 Linebot"/>
+<meta name="twitter:description" content="Note 建立與設定線上即時性資料庫 Firebase Realtime database https://console.firebase.google.com/u/0/ 點選 Go to console 點選 建立專案 輸入 專案名稱及打勾協議 取消勾選與 Google Analytics 建立關聯，可以直接建立專案 建立關聯可以透過 Google Analytics 進行數據分析統計，但如果只是要單純使用資料庫，可以不必建立關聯 Note 建立 Realtime Database 資料庫 專案建立完成後就會進入專案畫面，從左側選擇 建構 &gt; Realtime Database 選擇後，點擊建立資料庫 資料庫的位置選擇美國 繼續下一步 使用鎖定模式啟用 ( 鎖定模式表示這個資料庫禁止存取，啟用後會再修改設定使資料庫可以存取資料 ) Note 建立好的畫面 Note 修改 Realtime Database 存取權限 進入規則頁籤，將規則從 false 修改為 ture 點擊發布，就能將資料庫改成所有人都可以存取的狀態 建立 GCP-Cloud Functions # requirements.txt # Function dependencies, for example: # package&gt;=version line-bot-sdk requests openai git&#43;https://github.com/ozgur/python-firebase # main.py from linebot import LineBotApi, WebhookHandler from linebot."/>
+<meta name="application-name" content="FixIt">
+<meta name="apple-mobile-web-app-title" content="FixIt"><meta name="theme-color" data-light="#f8f8f8" data-dark="#252627" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="https://laurance.eu.org/favicon.png"><link rel="apple-touch-icon" sizes="180x180" href="https://laurance.eu.org/apple-touch-icon.png"><link rel="mask-icon" href="https://laurance.eu.org/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="https://laurance.eu.org/site.webmanifest"><link rel="canonical" href="https://laurance.eu.org/posts/gcp-chatgpt-%E4%B8%B2%E6%8E%A5-firebase%E5%8F%8Alinebot/" /><link rel="prev" href="https://laurance.eu.org/posts/postgresql-%E5%AE%89%E8%A3%9Dpostgresql-14.7-on-centos7/" /><link rel="next" href="https://laurance.eu.org/posts/influxdb-%E5%BB%BA%E7%AB%8B%E4%BD%BF%E7%94%A8%E8%80%85%E5%AF%86%E7%A2%BC/" /><link rel="stylesheet" href="https://laurance.eu.org/css/style.min.css"><link rel="stylesheet" href="https://laurance.eu.org/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="https://laurance.eu.org/lib/animate/animate.min.css"><script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "GCP - ChatGPT 串接 Firebase 及 Linebot",
+    "inLanguage": "",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https:\/\/laurance.eu.org\/posts\/gcp-chatgpt-%E4%B8%B2%E6%8E%A5-firebase%E5%8F%8Alinebot\/"
+    },"genre": "posts","keywords": "Firebase","wordcount":  218 ,
+    "url": "https:\/\/laurance.eu.org\/posts\/gcp-chatgpt-%E4%B8%B2%E6%8E%A5-firebase%E5%8F%8Alinebot\/","datePublished": "2023-03-22T00:00:00+00:00","dateModified": "2023-03-22T00:00:00+00:00","publisher": {
+      "@type": "Organization",
+      "name": ""},"author": {
+        "@type": "Person",
+        "name": "Laurance"
+      },"description": ""
+  }
+  </script></head>
+  <body data-header-desktop="sticky" data-header-mobile="auto"><script>(window.localStorage?.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('dark' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'dark' === 'dark')) && document.body.setAttribute('data-theme', 'dark');</script><div class="wrapper" data-page-style="wide"><header class="desktop animate__faster" id="header-desktop">
+  <div class="header-wrapper">
+    <div class="header-title">
+      <a href="https://laurance.eu.org/" title=""><img loading="lazy" src="https://laurance.eu.org/fixit.min.svg" srcset="https://laurance.eu.org/fixit.min.svg, https://laurance.eu.org/fixit.min.svg 1.5x, https://laurance.eu.org/fixit.min.svg 2x" sizes="auto" data-title="/fixit.min.svg" data-alt="/fixit.min.svg" class="logo" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/><span id="typeit-header-desktop" class="typeit"></span></a><span class="header-subtitle"></span></div>
+    <nav>
+      <ul class="menu"><li class="menu-item">
+              <a
+                class="menu-link"
+                href="https://laurance.eu.org/categories/"
+                
+                
+              ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> 分類</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="https://laurance.eu.org/tags/"
+                
+                
+              ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 標籤</a></li><li class="menu-item delimiter"></li><li class="menu-item search" id="search-desktop">
+            <input type="text" placeholder="搜索關鍵字" id="search-input-desktop">
+            <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+              <i class="fa-solid fa-search fa-fw" aria-hidden="true"></i>
+            </a>
+            <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+              <i class="fa-solid fa-times-circle fa-fw" aria-hidden="true"></i>
+            </a>
+            <span class="search-button search-loading" id="search-loading-desktop">
+              <i class="fa-solid fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+            </span>
+          </li><li class="menu-item theme-switch" title="Switch Theme">
+          <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
+        </li></ul>
+    </nav>
+  </div>
+</header><header class="mobile animate__faster" id="header-mobile">
+  <div class="header-container">
+    <div class="header-wrapper">
+      <div class="header-title">
+        <a href="https://laurance.eu.org/" title=""><img loading="lazy" src="https://laurance.eu.org/fixit.min.svg" srcset="https://laurance.eu.org/fixit.min.svg, https://laurance.eu.org/fixit.min.svg 1.5x, https://laurance.eu.org/fixit.min.svg 2x" sizes="auto" data-title="/fixit.min.svg" data-alt="/fixit.min.svg" class="logo" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/><span id="typeit-header-title-mobile" class="typeit"></span></a><span class="header-subtitle"></span></div>
+      <div class="menu-toggle" id="menu-toggle-mobile">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+    <nav>
+      <ul class="menu" id="menu-mobile"><li class="search-wrapper">
+            <div class="search mobile" id="search-mobile">
+              <input type="text" placeholder="搜索關鍵字" id="search-input-mobile">
+              <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                <i class="fa-solid fa-search fa-fw" aria-hidden="true"></i>
+              </a>
+              <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                <i class="fa-solid fa-times-circle fa-fw" aria-hidden="true"></i>
+              </a>
+              <span class="search-button search-loading" id="search-loading-mobile">
+                <i class="fa-solid fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+              </span>
+            </div>
+            <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+              Cancel
+            </a>
+          </li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="https://laurance.eu.org/categories/"
+                  
+                  
+                ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> 分類</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="https://laurance.eu.org/tags/"
+                  
+                  
+                ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 標籤</a></li><li class="menu-item menu-system">
+          <span class="menu-system-item theme-switch" title="Switch Theme"><i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i></span></li>
+      </ul>
+    </nav>
+  </div>
+</header><div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+  </div>
+  <div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+  </div><main class="container"><aside class="toc" id="toc-auto"><h2 class="toc-title">Contents&nbsp;<i class="toc-icon fa-solid fa-angle-down fa-fw" aria-hidden="true"></i></h2>
+      <div class="toc-content" id="toc-content-auto"></div></aside>
+
+  <aside class="aside-custom">
+    </aside>
+
+  <article class="page single">
+    <div class="header"><h1 class="single-title animate__animated animate__flipInX"><span>GCP - ChatGPT 串接 Firebase 及 Linebot</span>
+      </h1></div><div class="post-meta">
+      <div class="post-meta-line"><span class="post-author"><span class="author"><i class="fa-solid fa-user-circle" aria-hidden="true"></i>
+      Laurance</span></span>
+          <span class="post-category">included in <a href="https://laurance.eu.org/categories/gcp/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> GCP</a></span></div>
+      <div class="post-meta-line"><span title="published on 2023-03-22 00:00:00"><i class="fa-regular fa-calendar-alt fa-fw me-1" aria-hidden="true"></i><time datetime="2023-03-22">2023-03-22</time></span>&nbsp;<span title="Updated on 2023-03-22 00:00:00"><i class="fa-regular fa-edit fa-fw me-1" aria-hidden="true"></i><time datetime="2023-03-22">2023-03-22</time></span>&nbsp;<span><i class="fa-solid fa-pencil-alt fa-fw me-1" aria-hidden="true"></i>218 words</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw me-1" aria-hidden="true"></i>2 minutes</span>&nbsp;<span id="busuanzi_container_page_pv" class="busuanzi_visitors comment-visitors" data-flag-title="GCP - ChatGPT 串接 Firebase 及 Linebot">
+            <i class="fa-regular fa-eye fa-fw me-1" aria-hidden="true"></i><span id="busuanzi_value_page_pv">-</span>&nbsp;views
+          </span>&nbsp;</div>
+    </div><div class="details toc" id="toc-static" data-kept="false">
+        <div class="details-summary toc-title">
+          <span>Contents</span>
+          <span><i class="details-icon fa-solid fa-angle-right" aria-hidden="true"></i></span>
+        </div>
+        <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#點選-go-to-console">點選 <code>Go to console</code></a></li>
+    <li><a href="#點選-建立專案">點選 <code>建立專案</code></a></li>
+    <li><a href="#輸入-專案名稱及打勾協議">輸入 <code>專案名稱</code>及<code>打勾協議</code></a></li>
+    <li><a href="#取消勾選與-google-analytics-建立關聯可以直接建立專案">取消勾選與 <code>Google Analytics</code> 建立關聯，可以直接建立專案</a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#建立關聯可以透過-google-analytics--進行數據分析統計但如果只是要單純使用資料庫可以不必建立關聯">建立關聯可以透過 Google Analytics  進行數據分析統計，但如果只是要單純使用資料庫，可以不必建立關聯</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#專案建立完成後就會進入專案畫面從左側選擇-建構--realtime-database">專案建立完成後就會進入專案畫面，從左側選擇 <code>建構</code> &gt; <code>Realtime Database</code></a></li>
+    <li><a href="#選擇後點擊建立資料庫">選擇後，點擊<code>建立資料庫</code></a></li>
+    <li><a href="#資料庫的位置選擇美國-繼續下一步">資料庫的位置選擇<code>美國</code> 繼續下一步</a></li>
+    <li><a href="#使用鎖定模式啟用--鎖定模式表示這個資料庫禁止存取啟用後會再修改設定使資料庫可以存取資料-">使用<code>鎖定模式</code>啟用 ( 鎖定模式表示這個資料庫禁止存取，啟用後會再修改設定使資料庫可以存取資料 )</a></li>
+    <li><a href="#進入規則頁籤將規則從-false-修改為-ture-點擊發布就能將資料庫改成所有人都可以存取的狀態">進入<code>規則</code>頁籤，將規則從 <code>false</code> 修改為 <code>ture</code> 點擊<code>發布</code>，就能將資料庫改成<code>所有人都可以存取</code>的狀態</a></li>
+    <li><a href="#建立-gcp-cloud-functions">建立 <code>GCP-Cloud Functions</code></a></li>
+    <li><a href="#建立好-function-後--將-觸發網址-貼入-line-developers-webhook-url-並點選-verify-驗證">建立好 <code>Function</code> 後 , 將 <code>觸發網址</code> 貼入 <code>Line Developers Webhook URL</code> 並點選 <code>Verify 驗證</code></a></li>
+    <li><a href="#進入-firebase-realtime-database-也能看到歷史紀錄的資料">進入 <code>Firebase Realtime database</code> 也能看到歷史紀錄的資料</a></li>
+  </ul>
+</nav></div>
+      </div><div class="content" id="content"><div class="details admonition note open">
+    <div class="details-summary admonition-title">
+      <i class="icon fa-solid fa-pencil-alt fa-fw" aria-hidden="true"></i>Note<i class="details-icon fa-solid fa-angle-right fa-fw" aria-hidden="true"></i>
+    </div>
+    <div class="details-content">
+      <div class="admonition-content"><h1 id="建立與設定線上即時性資料庫-firebase-realtime-database">建立與設定線上即時性資料庫 <code>Firebase Realtime database</code></h1>
+<hr>
+<p><a href="https://console.firebase.google.com/u/0/"target="_blank" rel="external nofollow noopener noreferrer">https://console.firebase.google.com/u/0/<i class="fa-solid fa-external-link-alt fa-fw fa-xs ms-1 text-secondary" aria-hidden="true"></i></a></div>
+    </div>
+  </div>
+<hr>
+<hr>
+<hr>
+<h2 id="點選-go-to-console">點選 <code>Go to console</code></h2>
+<hr>
+<hr>
+<hr>
+<p><img loading="lazy" src="301.png" srcset="https://laurance.eu.org/posts/gcp-chatgpt-%E4%B8%B2%E6%8E%A5-firebase%E5%8F%8Alinebot/301.png, 301.png 1.5x, https://laurance.eu.org/posts/gcp-chatgpt-%E4%B8%B2%E6%8E%A5-firebase%E5%8F%8Alinebot/301.png 2x" sizes="auto" data-title="/posts/gcp-chatgpt-%E4%B8%B2%E6%8E%A5-firebase%E5%8F%8Alinebot/301.png" data-alt="/posts/gcp-chatgpt-%E4%B8%B2%E6%8E%A5-firebase%E5%8F%8Alinebot/301.png" width="1920" height="937" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/></p>
+<hr>
+<hr>
+<hr>
+<h2 id="點選-建立專案">點選 <code>建立專案</code></h2>
+<hr>
+<hr>
+<hr>
+<p><img loading="lazy" src="302.png" srcset="https://laurance.eu.org/posts/gcp-chatgpt-%E4%B8%B2%E6%8E%A5-firebase%E5%8F%8Alinebot/302.png, 302.png 1.5x, https://laurance.eu.org/posts/gcp-chatgpt-%E4%B8%B2%E6%8E%A5-firebase%E5%8F%8Alinebot/302.png 2x" sizes="auto" data-title="/posts/gcp-chatgpt-%E4%B8%B2%E6%8E%A5-firebase%E5%8F%8Alinebot/302.png" data-alt="/posts/gcp-chatgpt-%E4%B8%B2%E6%8E%A5-firebase%E5%8F%8Alinebot/302.png" width="1903" height="598" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/></p>
+<hr>
+<hr>
+<hr>
+<h2 id="輸入-專案名稱及打勾協議">輸入 <code>專案名稱</code>及<code>打勾協議</code></h2>
+<hr>
+<hr>
+<hr>
+<p><img loading="lazy" src="303.png" srcset="https://laurance.eu.org/posts/gcp-chatgpt-%E4%B8%B2%E6%8E%A5-firebase%E5%8F%8Alinebot/303.png, 303.png 1.5x, https://laurance.eu.org/posts/gcp-chatgpt-%E4%B8%B2%E6%8E%A5-firebase%E5%8F%8Alinebot/303.png 2x" sizes="auto" data-title="/posts/gcp-chatgpt-%E4%B8%B2%E6%8E%A5-firebase%E5%8F%8Alinebot/303.png" data-alt="/posts/gcp-chatgpt-%E4%B8%B2%E6%8E%A5-firebase%E5%8F%8Alinebot/303.png" width="1920" height="937" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/></p>
+<hr>
+<hr>
+<hr>
+<h2 id="取消勾選與-google-analytics-建立關聯可以直接建立專案">取消勾選與 <code>Google Analytics</code> 建立關聯，可以直接建立專案</h2>
+<h4 id="建立關聯可以透過-google-analytics--進行數據分析統計但如果只是要單純使用資料庫可以不必建立關聯">建立關聯可以透過 Google Analytics  進行數據分析統計，但如果只是要單純使用資料庫，可以不必建立關聯</h4>
+<hr>
+<hr>
+<hr>
+<p><img loading="lazy" src="304.png" srcset="https://laurance.eu.org/posts/gcp-chatgpt-%E4%B8%B2%E6%8E%A5-firebase%E5%8F%8Alinebot/304.png, 304.png 1.5x, https://laurance.eu.org/posts/gcp-chatgpt-%E4%B8%B2%E6%8E%A5-firebase%E5%8F%8Alinebot/304.png 2x" sizes="auto" data-title="/posts/gcp-chatgpt-%E4%B8%B2%E6%8E%A5-firebase%E5%8F%8Alinebot/304.png" data-alt="/posts/gcp-chatgpt-%E4%B8%B2%E6%8E%A5-firebase%E5%8F%8Alinebot/304.png" width="1920" height="937" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/></p>
+<hr>
+<hr>
+<hr>
+<div class="details admonition note open">
+    <div class="details-summary admonition-title">
+      <i class="icon fa-solid fa-pencil-alt fa-fw" aria-hidden="true"></i>Note<i class="details-icon fa-solid fa-angle-right fa-fw" aria-hidden="true"></i>
+    </div>
+    <div class="details-content">
+      <div class="admonition-content"><h1 id="建立-realtime-database-資料庫">建立 Realtime Database 資料庫</h1>
+</div>
+    </div>
+  </div>
+<hr>
+<hr>
+<hr>
+<h2 id="專案建立完成後就會進入專案畫面從左側選擇-建構--realtime-database">專案建立完成後就會進入專案畫面，從左側選擇 <code>建構</code> &gt; <code>Realtime Database</code></h2>
+<hr>
+<hr>
+<hr>
+<p><img loading="lazy" src="305.png" srcset="https://laurance.eu.org/posts/gcp-chatgpt-%E4%B8%B2%E6%8E%A5-firebase%E5%8F%8Alinebot/305.png, 305.png 1.5x, https://laurance.eu.org/posts/gcp-chatgpt-%E4%B8%B2%E6%8E%A5-firebase%E5%8F%8Alinebot/305.png 2x" sizes="auto" data-title="/posts/gcp-chatgpt-%E4%B8%B2%E6%8E%A5-firebase%E5%8F%8Alinebot/305.png" data-alt="/posts/gcp-chatgpt-%E4%B8%B2%E6%8E%A5-firebase%E5%8F%8Alinebot/305.png" width="1920" height="937" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/></p>
+<hr>
+<hr>
+<hr>
+<h2 id="選擇後點擊建立資料庫">選擇後，點擊<code>建立資料庫</code></h2>
+<hr>
+<hr>
+<hr>
+<p><img loading="lazy" src="306.png" srcset="https://laurance.eu.org/posts/gcp-chatgpt-%E4%B8%B2%E6%8E%A5-firebase%E5%8F%8Alinebot/306.png, 306.png 1.5x, https://laurance.eu.org/posts/gcp-chatgpt-%E4%B8%B2%E6%8E%A5-firebase%E5%8F%8Alinebot/306.png 2x" sizes="auto" data-title="/posts/gcp-chatgpt-%E4%B8%B2%E6%8E%A5-firebase%E5%8F%8Alinebot/306.png" data-alt="/posts/gcp-chatgpt-%E4%B8%B2%E6%8E%A5-firebase%E5%8F%8Alinebot/306.png" width="1920" height="937" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/></p>
+<hr>
+<hr>
+<hr>
+<h2 id="資料庫的位置選擇美國-繼續下一步">資料庫的位置選擇<code>美國</code> 繼續下一步</h2>
+<hr>
+<hr>
+<hr>
+<p><img loading="lazy" src="307.png" srcset="https://laurance.eu.org/posts/gcp-chatgpt-%E4%B8%B2%E6%8E%A5-firebase%E5%8F%8Alinebot/307.png, 307.png 1.5x, https://laurance.eu.org/posts/gcp-chatgpt-%E4%B8%B2%E6%8E%A5-firebase%E5%8F%8Alinebot/307.png 2x" sizes="auto" data-title="/posts/gcp-chatgpt-%E4%B8%B2%E6%8E%A5-firebase%E5%8F%8Alinebot/307.png" data-alt="/posts/gcp-chatgpt-%E4%B8%B2%E6%8E%A5-firebase%E5%8F%8Alinebot/307.png" width="1920" height="937" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/></p>
+<hr>
+<hr>
+<hr>
+<h2 id="使用鎖定模式啟用--鎖定模式表示這個資料庫禁止存取啟用後會再修改設定使資料庫可以存取資料-">使用<code>鎖定模式</code>啟用 ( 鎖定模式表示這個資料庫禁止存取，啟用後會再修改設定使資料庫可以存取資料 )</h2>
+<hr>
+<hr>
+<hr>
+<p><img loading="lazy" src="308.png" srcset="https://laurance.eu.org/posts/gcp-chatgpt-%E4%B8%B2%E6%8E%A5-firebase%E5%8F%8Alinebot/308.png, 308.png 1.5x, https://laurance.eu.org/posts/gcp-chatgpt-%E4%B8%B2%E6%8E%A5-firebase%E5%8F%8Alinebot/308.png 2x" sizes="auto" data-title="/posts/gcp-chatgpt-%E4%B8%B2%E6%8E%A5-firebase%E5%8F%8Alinebot/308.png" data-alt="/posts/gcp-chatgpt-%E4%B8%B2%E6%8E%A5-firebase%E5%8F%8Alinebot/308.png" width="1920" height="937" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/></p>
+<hr>
+<hr>
+<hr>
+<div class="details admonition note open">
+    <div class="details-summary admonition-title">
+      <i class="icon fa-solid fa-pencil-alt fa-fw" aria-hidden="true"></i>Note<i class="details-icon fa-solid fa-angle-right fa-fw" aria-hidden="true"></i>
+    </div>
+    <div class="details-content">
+      <div class="admonition-content"><h1 id="建立好的畫面">建立好的畫面</h1>
+</div>
+    </div>
+  </div>
+<hr>
+<hr>
+<hr>
+<p><img loading="lazy" src="309.png" srcset="https://laurance.eu.org/posts/gcp-chatgpt-%E4%B8%B2%E6%8E%A5-firebase%E5%8F%8Alinebot/309.png, 309.png 1.5x, https://laurance.eu.org/posts/gcp-chatgpt-%E4%B8%B2%E6%8E%A5-firebase%E5%8F%8Alinebot/309.png 2x" sizes="auto" data-title="/posts/gcp-chatgpt-%E4%B8%B2%E6%8E%A5-firebase%E5%8F%8Alinebot/309.png" data-alt="/posts/gcp-chatgpt-%E4%B8%B2%E6%8E%A5-firebase%E5%8F%8Alinebot/309.png" width="1920" height="937" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/></p>
+<hr>
+<hr>
+<hr>
+<div class="details admonition note open">
+    <div class="details-summary admonition-title">
+      <i class="icon fa-solid fa-pencil-alt fa-fw" aria-hidden="true"></i>Note<i class="details-icon fa-solid fa-angle-right fa-fw" aria-hidden="true"></i>
+    </div>
+    <div class="details-content">
+      <div class="admonition-content"><h1 id="修改-realtime-database-存取權限">修改 Realtime Database 存取權限</h1>
+</div>
+    </div>
+  </div>
+<hr>
+<hr>
+<hr>
+<h2 id="進入規則頁籤將規則從-false-修改為-ture-點擊發布就能將資料庫改成所有人都可以存取的狀態">進入<code>規則</code>頁籤，將規則從 <code>false</code> 修改為 <code>ture</code> 點擊<code>發布</code>，就能將資料庫改成<code>所有人都可以存取</code>的狀態</h2>
+<hr>
+<hr>
+<hr>
+<p><img loading="lazy" src="310.png" srcset="https://laurance.eu.org/posts/gcp-chatgpt-%E4%B8%B2%E6%8E%A5-firebase%E5%8F%8Alinebot/310.png, 310.png 1.5x, https://laurance.eu.org/posts/gcp-chatgpt-%E4%B8%B2%E6%8E%A5-firebase%E5%8F%8Alinebot/310.png 2x" sizes="auto" data-title="/posts/gcp-chatgpt-%E4%B8%B2%E6%8E%A5-firebase%E5%8F%8Alinebot/310.png" data-alt="/posts/gcp-chatgpt-%E4%B8%B2%E6%8E%A5-firebase%E5%8F%8Alinebot/310.png" width="1920" height="937" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/>
+<img loading="lazy" src="311.png" srcset="https://laurance.eu.org/posts/gcp-chatgpt-%E4%B8%B2%E6%8E%A5-firebase%E5%8F%8Alinebot/311.png, 311.png 1.5x, https://laurance.eu.org/posts/gcp-chatgpt-%E4%B8%B2%E6%8E%A5-firebase%E5%8F%8Alinebot/311.png 2x" sizes="auto" data-title="/posts/gcp-chatgpt-%E4%B8%B2%E6%8E%A5-firebase%E5%8F%8Alinebot/311.png" data-alt="/posts/gcp-chatgpt-%E4%B8%B2%E6%8E%A5-firebase%E5%8F%8Alinebot/311.png" width="1920" height="937" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/></p>
+<hr>
+<hr>
+<hr>
+<h2 id="建立-gcp-cloud-functions">建立 <code>GCP-Cloud Functions</code></h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">#</span> requirements.txt
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">#</span> <span style="color:#66d9ef">Function</span> dependencies, <span style="color:#66d9ef">for</span> example:
+</span></span><span style="display:flex;"><span><span style="color:#f92672">#</span> package<span style="color:#f92672">&gt;=</span><span style="color:#66d9ef">version</span>
+</span></span><span style="display:flex;"><span>line<span style="color:#f92672">-</span>bot<span style="color:#f92672">-</span>sdk
+</span></span><span style="display:flex;"><span>requests
+</span></span><span style="display:flex;"><span>openai
+</span></span><span style="display:flex;"><span>git<span style="color:#f92672">+</span>https:<span style="color:#f92672">//</span>github.com<span style="color:#f92672">/</span>ozgur<span style="color:#f92672">/</span>python<span style="color:#f92672">-</span>firebase
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">#</span> main.py
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">from</span> linebot import LineBotApi, WebhookHandler
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">from</span> linebot.models import TextSendMessage, StickerSendMessage, ImageSendMessage, LocationSendMessage
+</span></span><span style="display:flex;"><span>import requests, json
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>import openai
+</span></span><span style="display:flex;"><span>openai.api_key <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;XXXXXXXXXXXXXXXXXXXX&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">from</span> firebase import firebase
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>token <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;XXXXXXXXX&#39;</span>
+</span></span><span style="display:flex;"><span>secret <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;XXXXXXXXX&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>def linebot(request):
+</span></span><span style="display:flex;"><span>    body <span style="color:#f92672">=</span> request.get_data(as_text<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
+</span></span><span style="display:flex;"><span>    json_data <span style="color:#f92672">=</span> json.loads(body)
+</span></span><span style="display:flex;"><span>    try:
+</span></span><span style="display:flex;"><span>        line_bot_api <span style="color:#f92672">=</span> LineBotApi(token)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">handler</span> <span style="color:#f92672">=</span> WebhookHandler(secret)
+</span></span><span style="display:flex;"><span>        signature <span style="color:#f92672">=</span> request.headers[<span style="color:#e6db74">&#39;X-Line-Signature&#39;</span>]
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">handler</span>.handle(body, signature)
+</span></span><span style="display:flex;"><span>        tk <span style="color:#f92672">=</span> json_data[<span style="color:#e6db74">&#39;events&#39;</span>][<span style="color:#ae81ff">0</span>][<span style="color:#e6db74">&#39;replyToken&#39;</span>]
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">timestamp</span> <span style="color:#f92672">=</span> json_data[<span style="color:#e6db74">&#39;events&#39;</span>][<span style="color:#ae81ff">0</span>][<span style="color:#e6db74">&#39;timestamp&#39;</span>]
+</span></span><span style="display:flex;"><span>        msg_type <span style="color:#f92672">=</span> json_data[<span style="color:#e6db74">&#39;events&#39;</span>][<span style="color:#ae81ff">0</span>][<span style="color:#e6db74">&#39;message&#39;</span>][<span style="color:#e6db74">&#39;type&#39;</span>]
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> msg_type <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;text&#39;</span>:
+</span></span><span style="display:flex;"><span>            msg <span style="color:#f92672">=</span> json_data[<span style="color:#e6db74">&#39;events&#39;</span>][<span style="color:#ae81ff">0</span>][<span style="color:#e6db74">&#39;message&#39;</span>][<span style="color:#e6db74">&#39;text&#39;</span>]
+</span></span><span style="display:flex;"><span>            url <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;XXXXXXXXXXXXXX.firebaseio.com&#39;</span>
+</span></span><span style="display:flex;"><span>            fdb <span style="color:#f92672">=</span> firebase.FirebaseApplication(url, <span style="color:#66d9ef">None</span>)
+</span></span><span style="display:flex;"><span>                        chatgpt <span style="color:#f92672">=</span> fdb.<span style="color:#66d9ef">get</span>(<span style="color:#e6db74">&#39;/&#39;</span>,<span style="color:#e6db74">&#39;chatgpt&#39;</span>)
+</span></span><span style="display:flex;"><span>            
+</span></span><span style="display:flex;"><span>                        <span style="color:#66d9ef">if</span> chatgpt <span style="color:#f92672">==</span> <span style="color:#66d9ef">None</span>:
+</span></span><span style="display:flex;"><span>                            messages <span style="color:#f92672">=</span> []
+</span></span><span style="display:flex;"><span>                        <span style="color:#66d9ef">else</span>:
+</span></span><span style="display:flex;"><span>                            messages <span style="color:#f92672">=</span> chatgpt
+</span></span><span style="display:flex;"><span>            
+</span></span><span style="display:flex;"><span>                        <span style="color:#66d9ef">if</span> msg <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;!reset&#39;</span>:
+</span></span><span style="display:flex;"><span>                            reply_msg <span style="color:#f92672">=</span> TextSendMessage(text<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;對話歷史紀錄已經清空！&#39;</span>)
+</span></span><span style="display:flex;"><span>                            line_bot_api.reply_message(tk,reply_msg)
+</span></span><span style="display:flex;"><span>                            fdb.<span style="color:#66d9ef">delete</span>(<span style="color:#e6db74">&#39;/&#39;</span>,<span style="color:#e6db74">&#39;chatgpt&#39;</span>)
+</span></span><span style="display:flex;"><span>                        <span style="color:#66d9ef">else</span>:
+</span></span><span style="display:flex;"><span>                            messages.append(<span style="color:#960050;background-color:#1e0010">{</span><span style="color:#e6db74">&#34;role&#34;</span>:<span style="color:#e6db74">&#34;user&#34;</span>,<span style="color:#e6db74">&#34;content&#34;</span>:msg<span style="color:#960050;background-color:#1e0010">}</span>)
+</span></span><span style="display:flex;"><span>                            response <span style="color:#f92672">=</span> openai.ChatCompletion.<span style="color:#66d9ef">create</span>(
+</span></span><span style="display:flex;"><span>                                model<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;gpt-3.5-turbo&#34;</span>,
+</span></span><span style="display:flex;"><span>                                max_tokens<span style="color:#f92672">=</span><span style="color:#ae81ff">640</span>,
+</span></span><span style="display:flex;"><span>                                temperature<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>.<span style="color:#ae81ff">5</span>,
+</span></span><span style="display:flex;"><span>                                messages<span style="color:#f92672">=</span>messages
+</span></span><span style="display:flex;"><span>                            )
+</span></span><span style="display:flex;"><span>                            ai_msg <span style="color:#f92672">=</span> response.choices[<span style="color:#ae81ff">0</span>].message.content.<span style="color:#66d9ef">replace</span>(<span style="color:#e6db74">&#39;\n&#39;</span>,<span style="color:#e6db74">&#39;&#39;</span>)
+</span></span><span style="display:flex;"><span>                            messages.append(<span style="color:#960050;background-color:#1e0010">{</span><span style="color:#e6db74">&#34;role&#34;</span>:<span style="color:#e6db74">&#34;assistant&#34;</span>,<span style="color:#e6db74">&#34;content&#34;</span>:ai_msg<span style="color:#960050;background-color:#1e0010">}</span>)
+</span></span><span style="display:flex;"><span>                            reply_msg <span style="color:#f92672">=</span> TextSendMessage(text<span style="color:#f92672">=</span>ai_msg)
+</span></span><span style="display:flex;"><span>                            line_bot_api.reply_message(tk,reply_msg)
+</span></span><span style="display:flex;"><span>                            fdb.put_async(<span style="color:#e6db74">&#39;/&#39;</span>,<span style="color:#e6db74">&#39;chatgpt&#39;</span>,messages)
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">else</span>:
+</span></span><span style="display:flex;"><span>                        reply_msg <span style="color:#f92672">=</span> TextSendMessage(text<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;你傳的不是文字訊息啦&#39;</span>)
+</span></span><span style="display:flex;"><span>                        line_bot_api.reply_message(tk,reply_msg)
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">except</span> <span style="color:#66d9ef">Exception</span> <span style="color:#66d9ef">as</span> e:
+</span></span><span style="display:flex;"><span>                    detail <span style="color:#f92672">=</span> e.args[<span style="color:#ae81ff">0</span>]
+</span></span><span style="display:flex;"><span>                    print(detail)
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#39;OK&#39;</span>
+</span></span></code></pre></div><hr>
+<hr>
+<hr>
+<h2 id="建立好-function-後--將-觸發網址-貼入-line-developers-webhook-url-並點選-verify-驗證">建立好 <code>Function</code> 後 , 將 <code>觸發網址</code> 貼入 <code>Line Developers Webhook URL</code> 並點選 <code>Verify 驗證</code></h2>
+<hr>
+<hr>
+<hr>
+<p><img loading="lazy" src="312.png" srcset="https://laurance.eu.org/posts/gcp-chatgpt-%E4%B8%B2%E6%8E%A5-firebase%E5%8F%8Alinebot/312.png, 312.png 1.5x, https://laurance.eu.org/posts/gcp-chatgpt-%E4%B8%B2%E6%8E%A5-firebase%E5%8F%8Alinebot/312.png 2x" sizes="auto" data-title="/posts/gcp-chatgpt-%E4%B8%B2%E6%8E%A5-firebase%E5%8F%8Alinebot/312.png" data-alt="/posts/gcp-chatgpt-%E4%B8%B2%E6%8E%A5-firebase%E5%8F%8Alinebot/312.png" width="1920" height="937" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/></p>
+<hr>
+<hr>
+<hr>
+<h2 id="進入-firebase-realtime-database-也能看到歷史紀錄的資料">進入 <code>Firebase Realtime database</code> 也能看到歷史紀錄的資料</h2>
+<hr>
+<hr>
+<hr>
+<p><img loading="lazy" src="313.png" srcset="https://laurance.eu.org/posts/gcp-chatgpt-%E4%B8%B2%E6%8E%A5-firebase%E5%8F%8Alinebot/313.png, 313.png 1.5x, https://laurance.eu.org/posts/gcp-chatgpt-%E4%B8%B2%E6%8E%A5-firebase%E5%8F%8Alinebot/313.png 2x" sizes="auto" data-title="/posts/gcp-chatgpt-%E4%B8%B2%E6%8E%A5-firebase%E5%8F%8Alinebot/313.png" data-alt="/posts/gcp-chatgpt-%E4%B8%B2%E6%8E%A5-firebase%E5%8F%8Alinebot/313.png" width="1920" height="937" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/></p>
+<hr>
+
+</div><div class="post-footer" id="post-footer">
+  <div class="post-info">
+    <div class="post-info-line">
+      <div class="post-info-mod">
+        <span title="Updated on 2023-03-22 00:00:00">Updated on 2023-03-22&nbsp;</span>
+      </div><div class="post-info-license">
+          <span><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span>
+        </div></div>
+    <div class="post-info-line">
+      <div class="post-info-md"><span><a href="https://laurance.eu.org/posts/gcp-chatgpt-%E4%B8%B2%E6%8E%A5-firebase%E5%8F%8Alinebot/index.md" title="Read Markdown" class="link-to-markdown">Read Markdown</a></span></div>
+      <div class="post-info-share">
+        <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://laurance.eu.org/posts/gcp-chatgpt-%E4%B8%B2%E6%8E%A5-firebase%E5%8F%8Alinebot/" data-title="GCP - ChatGPT 串接 Firebase 及 Linebot" data-hashtags="Firebase"><i class="fa-brands fa-twitter fa-fw" aria-hidden="true"></i></a>
+  <a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://laurance.eu.org/posts/gcp-chatgpt-%E4%B8%B2%E6%8E%A5-firebase%E5%8F%8Alinebot/" data-hashtag="Firebase"><i class="fa-brands fa-facebook-square fa-fw" aria-hidden="true"></i></a>
+  <a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://laurance.eu.org/posts/gcp-chatgpt-%E4%B8%B2%E6%8E%A5-firebase%E5%8F%8Alinebot/" data-title="GCP - ChatGPT 串接 Firebase 及 Linebot"><i class="fa-brands fa-weibo fa-fw" aria-hidden="true"></i></a>
+  </span>
+      </div>
+    </div>
+  </div>
+
+  <div class="post-info-more">
+    <section class="post-tags"><i class="fa-solid fa-tags fa-fw me-1" aria-hidden="true"></i><a href='https://laurance.eu.org/tags/firebase/' class="post-tag">Firebase</a></section>
+    <section>
+      <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="https://laurance.eu.org/">Home</a></span>
+    </section>
+  </div>
+
+  <div class="post-nav"><a href="https://laurance.eu.org/posts/postgresql-%E5%AE%89%E8%A3%9Dpostgresql-14.7-on-centos7/" class="post-nav-item" rel="prev" title="Postgresql - install postgresql-14.7 on centos7"><i class="fa-solid fa-angle-left fa-fw" aria-hidden="true"></i>Postgresql - install postgresql-14.7 on centos7</a>
+      <a href="https://laurance.eu.org/posts/influxdb-%E5%BB%BA%E7%AB%8B%E4%BD%BF%E7%94%A8%E8%80%85%E5%AF%86%E7%A2%BC/" class="post-nav-item" rel="next" title="InfluxDB - 如何建立使用者密碼及相關權限">InfluxDB - 如何建立使用者密碼及相關權限<i class="fa-solid fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+</article></main><footer class="footer">
+    <div class="footer-container"><div class="footer-line powered">Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreferrer" title="Hugo 0.111.3">Hugo</a> | Theme - <a href="https://github.com/hugo-fixit/FixIt" target="_blank" rel="external" title="FixIt v0.2.18"><img class="fixit-icon" src="https://laurance.eu.org/fixit.min.svg" alt="FixIt logo" />&nbsp;FixIt</a>
+        </div><div class="footer-line copyright" itemscope itemtype="http://schema.org/CreativeWork"><i class="fa-regular fa-copyright fa-fw" aria-hidden="true"></i>
+            <span itemprop="copyrightYear">2021 - 2023</span><span class="author" itemprop="copyrightHolder">
+              <a href="https://laurance.eu.org/">Laurance</a></span></div><div class="footer-line statistics"></div><div class="footer-line visitor">
+          <span id="busuanzi_container_site_uv" title='Total visitors'><i class="fa-regular fa-user fa-fw" aria-hidden="true"></i>&nbsp;<span id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span></span><span id="busuanzi_container_site_pv" class="footer-divider" title='Total visits'><i class="fa-regular fa-eye fa-fw" aria-hidden="true"></i>&nbsp;<span id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span></span>
+        </div></div>
+  </footer></div><div class="widgets"><div class="fixed-buttons animate__faster d-none"><div class="fixed-button back-to-top" role="button" aria-label="Back to Top"><i class="fa-solid fa-arrow-up fa-fw" aria-hidden="true"></i><span class="variant-numeric d-none">0%</span>
+        </div></div><div id="mask"></div><noscript>
+    <div class="noscript-warning">Theme FixIt works best with JavaScript enabled.</div>
+  </noscript>
+</div><link rel="stylesheet" href="https://laurance.eu.org/lib/lightgallery/css/lightgallery-bundle.min.css"><link rel="stylesheet" href="https://laurance.eu.org/lib/katex/katex.min.css"><link rel="stylesheet" href="https://laurance.eu.org/lib/cookieconsent/cookieconsent.min.css"><link rel="stylesheet" href="https://laurance.eu.org/lib/pace/themes/blue/pace-theme-minimal.css"><script src="https://laurance.eu.org/lib/autocomplete/autocomplete.min.js" defer></script><script src="https://laurance.eu.org/lib/lunr/lunr.min.js" defer></script><script src="https://laurance.eu.org/lib/lightgallery/lightgallery.min.js" defer></script><script src="https://laurance.eu.org/lib/lightgallery/plugins/thumbnail/lg-thumbnail.min.js" defer></script><script src="https://laurance.eu.org/lib/lightgallery/plugins/zoom/lg-zoom.min.js" defer></script><script src="https://laurance.eu.org/lib/sharer/sharer.min.js" async defer></script><script src="https://laurance.eu.org/lib/typeit/index.umd.js" defer></script><script src="https://laurance.eu.org/lib/katex/katex.min.js" defer></script><script src="https://laurance.eu.org/lib/katex/auto-render.min.js" defer></script><script src="https://laurance.eu.org/lib/katex/copy-tex.min.js" defer></script><script src="https://laurance.eu.org/lib/katex/mhchem.min.js" defer></script><script src="https://laurance.eu.org/lib/cookieconsent/cookieconsent.min.js" defer></script><script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async defer></script><script src="https://laurance.eu.org/lib/pace/pace.min.js" async defer></script><script>window.config={"autoBookmark":true,"code":{"copyTitle":"Copy to clipboard","editLockTitle":"Lock editable code block","editUnLockTitle":"Unlock editable code block","editable":true,"maxShownLines":10},"comment":{"enable":false},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"data":{"typeit-header-desktop":" Laurance's Note Bloggggg ","typeit-header-title-mobile":" Laurance's Note Bloggggg "},"enablePWA":true,"lightgallery":true,"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":20,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"typeit-header-desktop":["typeit-header-desktop"],"typeit-header-title-mobile":["typeit-header-title-mobile"]},"duration":-1,"loop":false,"speed":100}};</script><script src="https://laurance.eu.org/js/theme.min.js" defer></script></body>
+</html>

@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html itemscope itemtype="http://schema.org/WebPage" lang="">
+  <head>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+    <meta name="robots" content="noodp" />
+    <title>Docker - 建立 Zabbix 分散式監控 語法紀錄 - </title><meta name="author" content="Laurance">
+<meta name="author-link" content="">
+<meta name="description" content="Note 建立 Namesppace &raquo; zabbix-net docker network create --subnet 172.20.0.0/16 --ip-range 172.20.240.0/20 zabbix-net Note 建立 docker 容器工作目錄 mkdir -p /usr/local/docker/mysql Note 建立 mysql 容器 docker run --name mysql-server --hostname=mysql-server -t \ -e MYSQL_DATABASE=&#34;zabbix&#34; \ -e MYSQL_USER=&#34;zabbix&#34; \ -e MYSQL_PASSWORD=&#34;zabbix&#34; \ -e MYSQL_ROOT_PASSWORD=&#34;123456&#34; \ --network=zabbix-net \ -v /usr/local/docker/mysql:/var/lib/mysql \ -v /etc/localtime:/etc/localtime \ -d mysql:5.7 Note 建立 zabbix-server-mysql 容器 docker run --name zabbix-server-mysql --hostname=zabbix-server-mysql -t \ -e DB_SERVER_HOST=&#34;mysql-server&#34; \ -e MYSQL_DATABASE=&#34;zabbix&#34; \ -e MYSQL_USER=&#34;zabbix&#34; \ -e MYSQL_PASSWORD=&#34;zabbix&#34; \ -e MYSQL_ROOT_PASSWORD=&#34;123456&#34; \ --network=zabbix-net \ --link mysql-server:mysql \ -p 10051:10051 \ -d zabbix/zabbix-server-mysql:alpine-4." /><meta name="keywords" content='Zabbix' /><meta itemprop="name" content="Docker - 建立 Zabbix 分散式監控 語法紀錄">
+<meta itemprop="description" content="Note 建立 Namesppace &raquo; zabbix-net docker network create --subnet 172.20.0.0/16 --ip-range 172.20.240.0/20 zabbix-net Note 建立 docker 容器工作目錄 mkdir -p /usr/local/docker/mysql Note 建立 mysql 容器 docker run --name mysql-server --hostname=mysql-server -t \ -e MYSQL_DATABASE=&#34;zabbix&#34; \ -e MYSQL_USER=&#34;zabbix&#34; \ -e MYSQL_PASSWORD=&#34;zabbix&#34; \ -e MYSQL_ROOT_PASSWORD=&#34;123456&#34; \ --network=zabbix-net \ -v /usr/local/docker/mysql:/var/lib/mysql \ -v /etc/localtime:/etc/localtime \ -d mysql:5.7 Note 建立 zabbix-server-mysql 容器 docker run --name zabbix-server-mysql --hostname=zabbix-server-mysql -t \ -e DB_SERVER_HOST=&#34;mysql-server&#34; \ -e MYSQL_DATABASE=&#34;zabbix&#34; \ -e MYSQL_USER=&#34;zabbix&#34; \ -e MYSQL_PASSWORD=&#34;zabbix&#34; \ -e MYSQL_ROOT_PASSWORD=&#34;123456&#34; \ --network=zabbix-net \ --link mysql-server:mysql \ -p 10051:10051 \ -d zabbix/zabbix-server-mysql:alpine-4."><meta itemprop="datePublished" content="2022-08-03T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2022-08-03T00:00:00+00:00" />
+<meta itemprop="wordCount" content="182"><meta itemprop="image" content="https://laurance.eu.org/tan.jpg"/>
+<meta itemprop="keywords" content="Zabbix," /><meta property="og:title" content="Docker - 建立 Zabbix 分散式監控 語法紀錄" />
+<meta property="og:description" content="Note 建立 Namesppace &raquo; zabbix-net docker network create --subnet 172.20.0.0/16 --ip-range 172.20.240.0/20 zabbix-net Note 建立 docker 容器工作目錄 mkdir -p /usr/local/docker/mysql Note 建立 mysql 容器 docker run --name mysql-server --hostname=mysql-server -t \ -e MYSQL_DATABASE=&#34;zabbix&#34; \ -e MYSQL_USER=&#34;zabbix&#34; \ -e MYSQL_PASSWORD=&#34;zabbix&#34; \ -e MYSQL_ROOT_PASSWORD=&#34;123456&#34; \ --network=zabbix-net \ -v /usr/local/docker/mysql:/var/lib/mysql \ -v /etc/localtime:/etc/localtime \ -d mysql:5.7 Note 建立 zabbix-server-mysql 容器 docker run --name zabbix-server-mysql --hostname=zabbix-server-mysql -t \ -e DB_SERVER_HOST=&#34;mysql-server&#34; \ -e MYSQL_DATABASE=&#34;zabbix&#34; \ -e MYSQL_USER=&#34;zabbix&#34; \ -e MYSQL_PASSWORD=&#34;zabbix&#34; \ -e MYSQL_ROOT_PASSWORD=&#34;123456&#34; \ --network=zabbix-net \ --link mysql-server:mysql \ -p 10051:10051 \ -d zabbix/zabbix-server-mysql:alpine-4." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://laurance.eu.org/posts/docker-%E5%BB%BA%E7%AB%8Bzabbix%E5%88%86%E6%95%A3%E5%BC%8F%E7%9B%A3%E6%8E%A7/" /><meta property="og:image" content="https://laurance.eu.org/tan.jpg"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-08-03T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-08-03T00:00:00+00:00" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://laurance.eu.org/tan.jpg"/>
+
+<meta name="twitter:title" content="Docker - 建立 Zabbix 分散式監控 語法紀錄"/>
+<meta name="twitter:description" content="Note 建立 Namesppace &raquo; zabbix-net docker network create --subnet 172.20.0.0/16 --ip-range 172.20.240.0/20 zabbix-net Note 建立 docker 容器工作目錄 mkdir -p /usr/local/docker/mysql Note 建立 mysql 容器 docker run --name mysql-server --hostname=mysql-server -t \ -e MYSQL_DATABASE=&#34;zabbix&#34; \ -e MYSQL_USER=&#34;zabbix&#34; \ -e MYSQL_PASSWORD=&#34;zabbix&#34; \ -e MYSQL_ROOT_PASSWORD=&#34;123456&#34; \ --network=zabbix-net \ -v /usr/local/docker/mysql:/var/lib/mysql \ -v /etc/localtime:/etc/localtime \ -d mysql:5.7 Note 建立 zabbix-server-mysql 容器 docker run --name zabbix-server-mysql --hostname=zabbix-server-mysql -t \ -e DB_SERVER_HOST=&#34;mysql-server&#34; \ -e MYSQL_DATABASE=&#34;zabbix&#34; \ -e MYSQL_USER=&#34;zabbix&#34; \ -e MYSQL_PASSWORD=&#34;zabbix&#34; \ -e MYSQL_ROOT_PASSWORD=&#34;123456&#34; \ --network=zabbix-net \ --link mysql-server:mysql \ -p 10051:10051 \ -d zabbix/zabbix-server-mysql:alpine-4."/>
+<meta name="application-name" content="FixIt">
+<meta name="apple-mobile-web-app-title" content="FixIt"><meta name="theme-color" data-light="#f8f8f8" data-dark="#252627" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="https://laurance.eu.org/favicon.png"><link rel="apple-touch-icon" sizes="180x180" href="https://laurance.eu.org/apple-touch-icon.png"><link rel="mask-icon" href="https://laurance.eu.org/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="https://laurance.eu.org/site.webmanifest"><link rel="canonical" href="https://laurance.eu.org/posts/docker-%E5%BB%BA%E7%AB%8Bzabbix%E5%88%86%E6%95%A3%E5%BC%8F%E7%9B%A3%E6%8E%A7/" /><link rel="prev" href="https://laurance.eu.org/posts/http-%E5%B8%B8%E8%A6%8B%E7%8B%80%E6%85%8B%E9%8C%AF%E8%AA%A4%E7%A2%BC/" /><link rel="next" href="https://laurance.eu.org/posts/docker-%E5%BB%BA%E7%AB%8Bagent-telegraf/" /><link rel="stylesheet" href="https://laurance.eu.org/css/style.min.css"><link rel="stylesheet" href="https://laurance.eu.org/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="https://laurance.eu.org/lib/animate/animate.min.css"><script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Docker - 建立 Zabbix 分散式監控 語法紀錄",
+    "inLanguage": "",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https:\/\/laurance.eu.org\/posts\/docker-%E5%BB%BA%E7%AB%8Bzabbix%E5%88%86%E6%95%A3%E5%BC%8F%E7%9B%A3%E6%8E%A7\/"
+    },"genre": "posts","keywords": "Zabbix","wordcount":  182 ,
+    "url": "https:\/\/laurance.eu.org\/posts\/docker-%E5%BB%BA%E7%AB%8Bzabbix%E5%88%86%E6%95%A3%E5%BC%8F%E7%9B%A3%E6%8E%A7\/","datePublished": "2022-08-03T00:00:00+00:00","dateModified": "2022-08-03T00:00:00+00:00","publisher": {
+      "@type": "Organization",
+      "name": ""},"author": {
+        "@type": "Person",
+        "name": "Laurance"
+      },"description": ""
+  }
+  </script></head>
+  <body data-header-desktop="sticky" data-header-mobile="auto"><script>(window.localStorage?.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('dark' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'dark' === 'dark')) && document.body.setAttribute('data-theme', 'dark');</script><div class="wrapper" data-page-style="wide"><header class="desktop animate__faster" id="header-desktop">
+  <div class="header-wrapper">
+    <div class="header-title">
+      <a href="https://laurance.eu.org/" title=""><img loading="lazy" src="https://laurance.eu.org/fixit.min.svg" srcset="https://laurance.eu.org/fixit.min.svg, https://laurance.eu.org/fixit.min.svg 1.5x, https://laurance.eu.org/fixit.min.svg 2x" sizes="auto" data-title="/fixit.min.svg" data-alt="/fixit.min.svg" class="logo" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/><span id="typeit-header-desktop" class="typeit"></span></a><span class="header-subtitle"></span></div>
+    <nav>
+      <ul class="menu"><li class="menu-item">
+              <a
+                class="menu-link"
+                href="https://laurance.eu.org/categories/"
+                
+                
+              ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> 分類</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="https://laurance.eu.org/tags/"
+                
+                
+              ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 標籤</a></li><li class="menu-item delimiter"></li><li class="menu-item search" id="search-desktop">
+            <input type="text" placeholder="搜索關鍵字" id="search-input-desktop">
+            <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+              <i class="fa-solid fa-search fa-fw" aria-hidden="true"></i>
+            </a>
+            <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+              <i class="fa-solid fa-times-circle fa-fw" aria-hidden="true"></i>
+            </a>
+            <span class="search-button search-loading" id="search-loading-desktop">
+              <i class="fa-solid fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+            </span>
+          </li><li class="menu-item theme-switch" title="Switch Theme">
+          <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
+        </li></ul>
+    </nav>
+  </div>
+</header><header class="mobile animate__faster" id="header-mobile">
+  <div class="header-container">
+    <div class="header-wrapper">
+      <div class="header-title">
+        <a href="https://laurance.eu.org/" title=""><img loading="lazy" src="https://laurance.eu.org/fixit.min.svg" srcset="https://laurance.eu.org/fixit.min.svg, https://laurance.eu.org/fixit.min.svg 1.5x, https://laurance.eu.org/fixit.min.svg 2x" sizes="auto" data-title="/fixit.min.svg" data-alt="/fixit.min.svg" class="logo" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/><span id="typeit-header-title-mobile" class="typeit"></span></a><span class="header-subtitle"></span></div>
+      <div class="menu-toggle" id="menu-toggle-mobile">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+    <nav>
+      <ul class="menu" id="menu-mobile"><li class="search-wrapper">
+            <div class="search mobile" id="search-mobile">
+              <input type="text" placeholder="搜索關鍵字" id="search-input-mobile">
+              <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                <i class="fa-solid fa-search fa-fw" aria-hidden="true"></i>
+              </a>
+              <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                <i class="fa-solid fa-times-circle fa-fw" aria-hidden="true"></i>
+              </a>
+              <span class="search-button search-loading" id="search-loading-mobile">
+                <i class="fa-solid fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+              </span>
+            </div>
+            <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+              Cancel
+            </a>
+          </li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="https://laurance.eu.org/categories/"
+                  
+                  
+                ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> 分類</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="https://laurance.eu.org/tags/"
+                  
+                  
+                ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 標籤</a></li><li class="menu-item menu-system">
+          <span class="menu-system-item theme-switch" title="Switch Theme"><i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i></span></li>
+      </ul>
+    </nav>
+  </div>
+</header><div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+  </div>
+  <div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+  </div><main class="container"><aside class="toc" id="toc-auto"></aside>
+
+  <aside class="aside-custom">
+    </aside>
+
+  <article class="page single">
+    <div class="header"><h1 class="single-title animate__animated animate__flipInX"><span>Docker - 建立 Zabbix 分散式監控 語法紀錄</span>
+      </h1></div><div class="post-meta">
+      <div class="post-meta-line"><span class="post-author"><span class="author"><i class="fa-solid fa-user-circle" aria-hidden="true"></i>
+      Laurance</span></span>
+          <span class="post-category">included in <a href="https://laurance.eu.org/categories/docker/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> Docker</a></span></div>
+      <div class="post-meta-line"><span title="published on 2022-08-03 00:00:00"><i class="fa-regular fa-calendar-alt fa-fw me-1" aria-hidden="true"></i><time datetime="2022-08-03">2022-08-03</time></span>&nbsp;<span title="Updated on 2022-08-03 00:00:00"><i class="fa-regular fa-edit fa-fw me-1" aria-hidden="true"></i><time datetime="2022-08-03">2022-08-03</time></span>&nbsp;<span><i class="fa-solid fa-pencil-alt fa-fw me-1" aria-hidden="true"></i>182 words</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw me-1" aria-hidden="true"></i>One minute</span>&nbsp;<span id="busuanzi_container_page_pv" class="busuanzi_visitors comment-visitors" data-flag-title="Docker - 建立 Zabbix 分散式監控 語法紀錄">
+            <i class="fa-regular fa-eye fa-fw me-1" aria-hidden="true"></i><span id="busuanzi_value_page_pv">-</span>&nbsp;views
+          </span>&nbsp;</div>
+    </div><div class="content" id="content"><div class="details admonition note open">
+    <div class="details-summary admonition-title">
+      <i class="icon fa-solid fa-pencil-alt fa-fw" aria-hidden="true"></i>Note<i class="details-icon fa-solid fa-angle-right fa-fw" aria-hidden="true"></i>
+    </div>
+    <div class="details-content">
+      <div class="admonition-content"><h1 id="建立-namesppace--zabbix-net">建立 Namesppace &raquo; zabbix-net</h1>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>docker network <span style="color:#66d9ef">create</span> <span style="color:#75715e">--subnet 172.20.0.0/16 --ip-range 172.20.240.0/20 zabbix-net
+</span></span></span></code></pre></div></div>
+    </div>
+  </div>
+<div class="details admonition note open">
+    <div class="details-summary admonition-title">
+      <i class="icon fa-solid fa-pencil-alt fa-fw" aria-hidden="true"></i>Note<i class="details-icon fa-solid fa-angle-right fa-fw" aria-hidden="true"></i>
+    </div>
+    <div class="details-content">
+      <div class="admonition-content"><h1 id="建立-docker-容器工作目錄">建立 docker 容器工作目錄</h1>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>mkdir <span style="color:#f92672">-</span>p <span style="color:#f92672">/</span>usr<span style="color:#f92672">/</span><span style="color:#66d9ef">local</span><span style="color:#f92672">/</span>docker<span style="color:#f92672">/</span>mysql
+</span></span></code></pre></div></div>
+    </div>
+  </div>
+<div class="details admonition note open">
+    <div class="details-summary admonition-title">
+      <i class="icon fa-solid fa-pencil-alt fa-fw" aria-hidden="true"></i>Note<i class="details-icon fa-solid fa-angle-right fa-fw" aria-hidden="true"></i>
+    </div>
+    <div class="details-content">
+      <div class="admonition-content"><h1 id="建立-mysql-容器">建立 mysql 容器</h1>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>docker run <span style="color:#75715e">--name mysql-server --hostname=mysql-server -t \
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>          <span style="color:#f92672">-</span>e MYSQL_DATABASE<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;zabbix&#34;</span> <span style="color:#960050;background-color:#1e0010">\</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">-</span>e MYSQL_USER<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;zabbix&#34;</span> <span style="color:#960050;background-color:#1e0010">\</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">-</span>e MYSQL_PASSWORD<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;zabbix&#34;</span> <span style="color:#960050;background-color:#1e0010">\</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">-</span>e MYSQL_ROOT_PASSWORD<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;123456&#34;</span> <span style="color:#960050;background-color:#1e0010">\</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#75715e">--network=zabbix-net \
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>          <span style="color:#f92672">-</span>v <span style="color:#f92672">/</span>usr<span style="color:#f92672">/</span><span style="color:#66d9ef">local</span><span style="color:#f92672">/</span>docker<span style="color:#f92672">/</span>mysql:<span style="color:#f92672">/</span>var<span style="color:#f92672">/</span>lib<span style="color:#f92672">/</span>mysql <span style="color:#960050;background-color:#1e0010">\</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">-</span>v <span style="color:#f92672">/</span>etc<span style="color:#f92672">/</span><span style="color:#66d9ef">localtime</span>:<span style="color:#f92672">/</span>etc<span style="color:#f92672">/</span><span style="color:#66d9ef">localtime</span> <span style="color:#960050;background-color:#1e0010">\</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">-</span>d mysql:<span style="color:#ae81ff">5</span>.<span style="color:#ae81ff">7</span>
+</span></span></code></pre></div></div>
+    </div>
+  </div>
+<div class="details admonition note open">
+    <div class="details-summary admonition-title">
+      <i class="icon fa-solid fa-pencil-alt fa-fw" aria-hidden="true"></i>Note<i class="details-icon fa-solid fa-angle-right fa-fw" aria-hidden="true"></i>
+    </div>
+    <div class="details-content">
+      <div class="admonition-content"><h1 id="建立-zabbix-server-mysql-容器">建立 zabbix-server-mysql 容器</h1>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>docker run <span style="color:#75715e">--name zabbix-server-mysql --hostname=zabbix-server-mysql -t \
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>          <span style="color:#f92672">-</span>e DB_SERVER_HOST<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;mysql-server&#34;</span> <span style="color:#960050;background-color:#1e0010">\</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">-</span>e MYSQL_DATABASE<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;zabbix&#34;</span> <span style="color:#960050;background-color:#1e0010">\</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">-</span>e MYSQL_USER<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;zabbix&#34;</span> <span style="color:#960050;background-color:#1e0010">\</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">-</span>e MYSQL_PASSWORD<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;zabbix&#34;</span> <span style="color:#960050;background-color:#1e0010">\</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">-</span>e MYSQL_ROOT_PASSWORD<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;123456&#34;</span> <span style="color:#960050;background-color:#1e0010">\</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#75715e">--network=zabbix-net \
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>          <span style="color:#75715e">--link mysql-server:mysql \
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>          <span style="color:#f92672">-</span>p <span style="color:#ae81ff">10051</span>:<span style="color:#ae81ff">10051</span> <span style="color:#960050;background-color:#1e0010">\</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">-</span>d zabbix<span style="color:#f92672">/</span>zabbix<span style="color:#f92672">-</span>server<span style="color:#f92672">-</span>mysql:alpine<span style="color:#f92672">-</span><span style="color:#ae81ff">4</span>.<span style="color:#ae81ff">0</span>.<span style="color:#ae81ff">24</span>
+</span></span></code></pre></div></div>
+    </div>
+  </div>
+<div class="details admonition note open">
+    <div class="details-summary admonition-title">
+      <i class="icon fa-solid fa-pencil-alt fa-fw" aria-hidden="true"></i>Note<i class="details-icon fa-solid fa-angle-right fa-fw" aria-hidden="true"></i>
+    </div>
+    <div class="details-content">
+      <div class="admonition-content"><h1 id="建立前端-zabbix-web-nginx-mysql容器">建立前端 zabbix-web-nginx-mysql容器</h1>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>docker run <span style="color:#75715e">--name zabbix-web-nginx-mysql --hostname=zabbix-web-nginx-mysql -t \
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>          <span style="color:#f92672">-</span>e DB_SERVER_HOST<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;mysql-server&#34;</span> <span style="color:#960050;background-color:#1e0010">\</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">-</span>e MYSQL_DATABASE<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;zabbix&#34;</span> <span style="color:#960050;background-color:#1e0010">\</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">-</span>e MYSQL_USER<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;zabbix&#34;</span> <span style="color:#960050;background-color:#1e0010">\</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">-</span>e MYSQL_PASSWORD<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;zabbix&#34;</span> <span style="color:#960050;background-color:#1e0010">\</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">-</span>e MYSQL_ROOT_PASSWORD<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;123456&#34;</span> <span style="color:#960050;background-color:#1e0010">\</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#75715e">--network=zabbix-net \
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>          <span style="color:#75715e">--link mysql-server:mysql \
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>          <span style="color:#75715e">--link zabbix-server-mysql:zabbix-server \
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>          <span style="color:#f92672">-</span>p <span style="color:#ae81ff">85</span>:<span style="color:#ae81ff">8080</span> <span style="color:#960050;background-color:#1e0010">\</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">-</span>d zabbix<span style="color:#f92672">/</span>zabbix<span style="color:#f92672">-</span>web<span style="color:#f92672">-</span>nginx<span style="color:#f92672">-</span>mysql:alpine<span style="color:#f92672">-</span><span style="color:#ae81ff">4</span>.<span style="color:#ae81ff">0</span>.<span style="color:#ae81ff">24</span>
+</span></span></code></pre></div></div>
+    </div>
+  </div>
+<div class="details admonition note open">
+    <div class="details-summary admonition-title">
+      <i class="icon fa-solid fa-pencil-alt fa-fw" aria-hidden="true"></i>Note<i class="details-icon fa-solid fa-angle-right fa-fw" aria-hidden="true"></i>
+    </div>
+    <div class="details-content">
+      <div class="admonition-content"><h1 id="建立client端的控制元件">建立Client端的控制元件</h1>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>docker run <span style="color:#75715e">--name some-zabbix-agent --hostname=some-zabbix-agent \
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    	   <span style="color:#f92672">-</span>e ZBX_HOSTNAME<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;zabbix-server-agent&#34;</span> <span style="color:#960050;background-color:#1e0010">\</span>
+</span></span><span style="display:flex;"><span>    	   <span style="color:#f92672">-</span>e ZBX_SERVER_HOST<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;zabbix-server-mysql&#34;</span> <span style="color:#960050;background-color:#1e0010">\</span>
+</span></span><span style="display:flex;"><span>           <span style="color:#f92672">-</span>e ZBX_METADATA<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;zabbix-server-agent&#34;</span> <span style="color:#960050;background-color:#1e0010">\</span>
+</span></span><span style="display:flex;"><span>    	   <span style="color:#75715e">--network=zabbix-net \
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    	   <span style="color:#75715e">--restart=always \
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    	   <span style="color:#f92672">-</span>p <span style="color:#ae81ff">10050</span>:<span style="color:#ae81ff">10050</span> <span style="color:#960050;background-color:#1e0010">\</span>
+</span></span><span style="display:flex;"><span>    	   <span style="color:#f92672">-</span>d zabbix<span style="color:#f92672">/</span>zabbix<span style="color:#f92672">-</span>agent
+</span></span></code></pre></div></div>
+    </div>
+  </div>
+<div class="details admonition note open">
+    <div class="details-summary admonition-title">
+      <i class="icon fa-solid fa-pencil-alt fa-fw" aria-hidden="true"></i>Note<i class="details-icon fa-solid fa-angle-right fa-fw" aria-hidden="true"></i>
+    </div>
+    <div class="details-content">
+      <div class="admonition-content"><h2 id="登入檢測-預設">登入檢測 預設:</h2>
+<h2 id="賬號admin---密碼zabbix">賬號：Admin   密碼：zabbix</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Configuration <span style="color:#f92672">&gt;</span> Hosts <span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">Create</span> <span style="color:#66d9ef">host</span> 
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">Host</span> name : <span style="color:#66d9ef">some</span><span style="color:#f92672">-</span>zabbix<span style="color:#f92672">-</span>agent
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&gt;</span> Groups : Linux servers
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&gt;</span> IP : <span style="color:#ae81ff">172</span>.<span style="color:#ae81ff">20</span>.<span style="color:#ae81ff">240</span>.<span style="color:#ae81ff">4</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&gt;</span> Port : <span style="color:#ae81ff">10050</span>
+</span></span></code></pre></div></div>
+    </div>
+  </div>
+<hr>
+
+</div><div class="post-footer" id="post-footer">
+  <div class="post-info">
+    <div class="post-info-line">
+      <div class="post-info-mod">
+        <span title="Updated on 2022-08-03 00:00:00">Updated on 2022-08-03&nbsp;</span>
+      </div><div class="post-info-license">
+          <span><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span>
+        </div></div>
+    <div class="post-info-line">
+      <div class="post-info-md"><span><a href="https://laurance.eu.org/posts/docker-%E5%BB%BA%E7%AB%8Bzabbix%E5%88%86%E6%95%A3%E5%BC%8F%E7%9B%A3%E6%8E%A7/index.md" title="Read Markdown" class="link-to-markdown">Read Markdown</a></span></div>
+      <div class="post-info-share">
+        <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://laurance.eu.org/posts/docker-%E5%BB%BA%E7%AB%8Bzabbix%E5%88%86%E6%95%A3%E5%BC%8F%E7%9B%A3%E6%8E%A7/" data-title="Docker - 建立 Zabbix 分散式監控 語法紀錄" data-hashtags="Zabbix"><i class="fa-brands fa-twitter fa-fw" aria-hidden="true"></i></a>
+  <a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://laurance.eu.org/posts/docker-%E5%BB%BA%E7%AB%8Bzabbix%E5%88%86%E6%95%A3%E5%BC%8F%E7%9B%A3%E6%8E%A7/" data-hashtag="Zabbix"><i class="fa-brands fa-facebook-square fa-fw" aria-hidden="true"></i></a>
+  <a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://laurance.eu.org/posts/docker-%E5%BB%BA%E7%AB%8Bzabbix%E5%88%86%E6%95%A3%E5%BC%8F%E7%9B%A3%E6%8E%A7/" data-title="Docker - 建立 Zabbix 分散式監控 語法紀錄"><i class="fa-brands fa-weibo fa-fw" aria-hidden="true"></i></a>
+  </span>
+      </div>
+    </div>
+  </div>
+
+  <div class="post-info-more">
+    <section class="post-tags"><i class="fa-solid fa-tags fa-fw me-1" aria-hidden="true"></i><a href='https://laurance.eu.org/tags/zabbix/' class="post-tag">Zabbix</a></section>
+    <section>
+      <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="https://laurance.eu.org/">Home</a></span>
+    </section>
+  </div>
+
+  <div class="post-nav"><a href="https://laurance.eu.org/posts/http-%E5%B8%B8%E8%A6%8B%E7%8B%80%E6%85%8B%E9%8C%AF%E8%AA%A4%E7%A2%BC/" class="post-nav-item" rel="prev" title="HTTP - 常見狀態錯誤碼"><i class="fa-solid fa-angle-left fa-fw" aria-hidden="true"></i>HTTP - 常見狀態錯誤碼</a>
+      <a href="https://laurance.eu.org/posts/docker-%E5%BB%BA%E7%AB%8Bagent-telegraf/" class="post-nav-item" rel="next" title="Docker - 建立 telegraf 語法紀錄">Docker - 建立 telegraf 語法紀錄<i class="fa-solid fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+</article></main><footer class="footer">
+    <div class="footer-container"><div class="footer-line powered">Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreferrer" title="Hugo 0.111.3">Hugo</a> | Theme - <a href="https://github.com/hugo-fixit/FixIt" target="_blank" rel="external" title="FixIt v0.2.18"><img class="fixit-icon" src="https://laurance.eu.org/fixit.min.svg" alt="FixIt logo" />&nbsp;FixIt</a>
+        </div><div class="footer-line copyright" itemscope itemtype="http://schema.org/CreativeWork"><i class="fa-regular fa-copyright fa-fw" aria-hidden="true"></i>
+            <span itemprop="copyrightYear">2021 - 2023</span><span class="author" itemprop="copyrightHolder">
+              <a href="https://laurance.eu.org/">Laurance</a></span></div><div class="footer-line statistics"></div><div class="footer-line visitor">
+          <span id="busuanzi_container_site_uv" title='Total visitors'><i class="fa-regular fa-user fa-fw" aria-hidden="true"></i>&nbsp;<span id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span></span><span id="busuanzi_container_site_pv" class="footer-divider" title='Total visits'><i class="fa-regular fa-eye fa-fw" aria-hidden="true"></i>&nbsp;<span id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span></span>
+        </div></div>
+  </footer></div><div class="widgets"><div class="fixed-buttons animate__faster d-none"><div class="fixed-button back-to-top" role="button" aria-label="Back to Top"><i class="fa-solid fa-arrow-up fa-fw" aria-hidden="true"></i><span class="variant-numeric d-none">0%</span>
+        </div></div><div id="mask"></div><noscript>
+    <div class="noscript-warning">Theme FixIt works best with JavaScript enabled.</div>
+  </noscript>
+</div><link rel="stylesheet" href="https://laurance.eu.org/lib/lightgallery/css/lightgallery-bundle.min.css"><link rel="stylesheet" href="https://laurance.eu.org/lib/katex/katex.min.css"><link rel="stylesheet" href="https://laurance.eu.org/lib/cookieconsent/cookieconsent.min.css"><link rel="stylesheet" href="https://laurance.eu.org/lib/pace/themes/blue/pace-theme-minimal.css"><script src="https://laurance.eu.org/lib/autocomplete/autocomplete.min.js" defer></script><script src="https://laurance.eu.org/lib/lunr/lunr.min.js" defer></script><script src="https://laurance.eu.org/lib/lightgallery/lightgallery.min.js" defer></script><script src="https://laurance.eu.org/lib/lightgallery/plugins/thumbnail/lg-thumbnail.min.js" defer></script><script src="https://laurance.eu.org/lib/lightgallery/plugins/zoom/lg-zoom.min.js" defer></script><script src="https://laurance.eu.org/lib/sharer/sharer.min.js" async defer></script><script src="https://laurance.eu.org/lib/typeit/index.umd.js" defer></script><script src="https://laurance.eu.org/lib/katex/katex.min.js" defer></script><script src="https://laurance.eu.org/lib/katex/auto-render.min.js" defer></script><script src="https://laurance.eu.org/lib/katex/copy-tex.min.js" defer></script><script src="https://laurance.eu.org/lib/katex/mhchem.min.js" defer></script><script src="https://laurance.eu.org/lib/cookieconsent/cookieconsent.min.js" defer></script><script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async defer></script><script src="https://laurance.eu.org/lib/pace/pace.min.js" async defer></script><script>window.config={"autoBookmark":true,"code":{"copyTitle":"Copy to clipboard","editLockTitle":"Lock editable code block","editUnLockTitle":"Unlock editable code block","editable":true,"maxShownLines":10},"comment":{"enable":false},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"data":{"typeit-header-desktop":" Laurance's Note Bloggggg ","typeit-header-title-mobile":" Laurance's Note Bloggggg "},"enablePWA":true,"lightgallery":true,"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":20,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"typeit-header-desktop":["typeit-header-desktop"],"typeit-header-title-mobile":["typeit-header-title-mobile"]},"duration":-1,"loop":false,"speed":100}};</script><script src="https://laurance.eu.org/js/theme.min.js" defer></script></body>
+</html>

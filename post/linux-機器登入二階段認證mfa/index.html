@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html itemscope itemtype="http://schema.org/WebPage" lang="">
+  <head>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+    <meta name="robots" content="noodp" />
+    <title>Linux - 建立 MFA 二階段認證 - </title><meta name="author" content="Laurance">
+<meta name="author-link" content="">
+<meta name="description" content="手機先下載 APP app store 搜索 : Twilio Authy googleplay store 搜索 : Twilio Authy 2-Factor Authentication 輸入使用要設定的帳號輸入 切換成使用者 laurance su - nadal 執行語法 google-authenticator 按 y 按到結束 &gt; 帳號家目錄下面會有一支 .google_authenticator google-authenticator &gt;&gt; y &gt;&gt; y &gt;&gt; y . . . . . 建立該帳號存 MFA驗證 的目錄 mkdir /home/gauth/laurance/ 將 .google_authenticator 移動到 /home/gauth/laurance/ 下面 mv /home/laurance/.google_authenticator /home/gauth/laurance/ 權限改給 root chown root.root /home/gauth/laurance/.google_authenticator 將上面顯示的網址 輸入到瀏覽器即可得到一張 QR Code 使用 APP 掃瞄那張 QR Code 即可成功加入設定 使用 XShell 登入時 選擇下面的 keyboard Interactive 登入 第一次輸入密碼 第二次輸入 APP顯示的六位數字 即可登入 Example 機器服務安裝教學參考: https://shenyu." /><meta name="keywords" content='MFA' /><meta itemprop="name" content="Linux - 建立 MFA 二階段認證">
+<meta itemprop="description" content="手機先下載 APP app store 搜索 : Twilio Authy googleplay store 搜索 : Twilio Authy 2-Factor Authentication 輸入使用要設定的帳號輸入 切換成使用者 laurance su - nadal 執行語法 google-authenticator 按 y 按到結束 &gt; 帳號家目錄下面會有一支 .google_authenticator google-authenticator &gt;&gt; y &gt;&gt; y &gt;&gt; y . . . . . 建立該帳號存 MFA驗證 的目錄 mkdir /home/gauth/laurance/ 將 .google_authenticator 移動到 /home/gauth/laurance/ 下面 mv /home/laurance/.google_authenticator /home/gauth/laurance/ 權限改給 root chown root.root /home/gauth/laurance/.google_authenticator 將上面顯示的網址 輸入到瀏覽器即可得到一張 QR Code 使用 APP 掃瞄那張 QR Code 即可成功加入設定 使用 XShell 登入時 選擇下面的 keyboard Interactive 登入 第一次輸入密碼 第二次輸入 APP顯示的六位數字 即可登入 Example 機器服務安裝教學參考: https://shenyu."><meta itemprop="datePublished" content="2022-08-03T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2022-08-03T00:00:00+00:00" />
+<meta itemprop="wordCount" content="175"><meta itemprop="image" content="https://laurance.eu.org/tan.jpg"/>
+<meta itemprop="keywords" content="MFA," /><meta property="og:title" content="Linux - 建立 MFA 二階段認證" />
+<meta property="og:description" content="手機先下載 APP app store 搜索 : Twilio Authy googleplay store 搜索 : Twilio Authy 2-Factor Authentication 輸入使用要設定的帳號輸入 切換成使用者 laurance su - nadal 執行語法 google-authenticator 按 y 按到結束 &gt; 帳號家目錄下面會有一支 .google_authenticator google-authenticator &gt;&gt; y &gt;&gt; y &gt;&gt; y . . . . . 建立該帳號存 MFA驗證 的目錄 mkdir /home/gauth/laurance/ 將 .google_authenticator 移動到 /home/gauth/laurance/ 下面 mv /home/laurance/.google_authenticator /home/gauth/laurance/ 權限改給 root chown root.root /home/gauth/laurance/.google_authenticator 將上面顯示的網址 輸入到瀏覽器即可得到一張 QR Code 使用 APP 掃瞄那張 QR Code 即可成功加入設定 使用 XShell 登入時 選擇下面的 keyboard Interactive 登入 第一次輸入密碼 第二次輸入 APP顯示的六位數字 即可登入 Example 機器服務安裝教學參考: https://shenyu." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://laurance.eu.org/posts/linux-%E6%A9%9F%E5%99%A8%E7%99%BB%E5%85%A5%E4%BA%8C%E9%9A%8E%E6%AE%B5%E8%AA%8D%E8%AD%89mfa/" /><meta property="og:image" content="https://laurance.eu.org/tan.jpg"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-08-03T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-08-03T00:00:00+00:00" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://laurance.eu.org/tan.jpg"/>
+
+<meta name="twitter:title" content="Linux - 建立 MFA 二階段認證"/>
+<meta name="twitter:description" content="手機先下載 APP app store 搜索 : Twilio Authy googleplay store 搜索 : Twilio Authy 2-Factor Authentication 輸入使用要設定的帳號輸入 切換成使用者 laurance su - nadal 執行語法 google-authenticator 按 y 按到結束 &gt; 帳號家目錄下面會有一支 .google_authenticator google-authenticator &gt;&gt; y &gt;&gt; y &gt;&gt; y . . . . . 建立該帳號存 MFA驗證 的目錄 mkdir /home/gauth/laurance/ 將 .google_authenticator 移動到 /home/gauth/laurance/ 下面 mv /home/laurance/.google_authenticator /home/gauth/laurance/ 權限改給 root chown root.root /home/gauth/laurance/.google_authenticator 將上面顯示的網址 輸入到瀏覽器即可得到一張 QR Code 使用 APP 掃瞄那張 QR Code 即可成功加入設定 使用 XShell 登入時 選擇下面的 keyboard Interactive 登入 第一次輸入密碼 第二次輸入 APP顯示的六位數字 即可登入 Example 機器服務安裝教學參考: https://shenyu."/>
+<meta name="application-name" content="FixIt">
+<meta name="apple-mobile-web-app-title" content="FixIt"><meta name="theme-color" data-light="#f8f8f8" data-dark="#252627" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="https://laurance.eu.org/favicon.png"><link rel="apple-touch-icon" sizes="180x180" href="https://laurance.eu.org/apple-touch-icon.png"><link rel="mask-icon" href="https://laurance.eu.org/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="https://laurance.eu.org/site.webmanifest"><link rel="canonical" href="https://laurance.eu.org/posts/linux-%E6%A9%9F%E5%99%A8%E7%99%BB%E5%85%A5%E4%BA%8C%E9%9A%8E%E6%AE%B5%E8%AA%8D%E8%AD%89mfa/" /><link rel="prev" href="https://laurance.eu.org/posts/linux-%E6%96%B0%E5%A2%9Eswap%E8%A8%98%E6%86%B6%E9%AB%94/" /><link rel="next" href="https://laurance.eu.org/posts/linux-python2.7-%E5%8D%87%E7%B4%9A%E6%88%90-python3.6/" /><link rel="stylesheet" href="https://laurance.eu.org/css/style.min.css"><link rel="stylesheet" href="https://laurance.eu.org/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="https://laurance.eu.org/lib/animate/animate.min.css"><script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Linux - 建立 MFA 二階段認證",
+    "inLanguage": "",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https:\/\/laurance.eu.org\/posts\/linux-%E6%A9%9F%E5%99%A8%E7%99%BB%E5%85%A5%E4%BA%8C%E9%9A%8E%E6%AE%B5%E8%AA%8D%E8%AD%89mfa\/"
+    },"genre": "posts","keywords": "MFA","wordcount":  175 ,
+    "url": "https:\/\/laurance.eu.org\/posts\/linux-%E6%A9%9F%E5%99%A8%E7%99%BB%E5%85%A5%E4%BA%8C%E9%9A%8E%E6%AE%B5%E8%AA%8D%E8%AD%89mfa\/","datePublished": "2022-08-03T00:00:00+00:00","dateModified": "2022-08-03T00:00:00+00:00","publisher": {
+      "@type": "Organization",
+      "name": ""},"author": {
+        "@type": "Person",
+        "name": "Laurance"
+      },"description": ""
+  }
+  </script></head>
+  <body data-header-desktop="sticky" data-header-mobile="auto"><script>(window.localStorage?.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('dark' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'dark' === 'dark')) && document.body.setAttribute('data-theme', 'dark');</script><div class="wrapper" data-page-style="wide"><header class="desktop animate__faster" id="header-desktop">
+  <div class="header-wrapper">
+    <div class="header-title">
+      <a href="https://laurance.eu.org/" title=""><img loading="lazy" src="https://laurance.eu.org/fixit.min.svg" srcset="https://laurance.eu.org/fixit.min.svg, https://laurance.eu.org/fixit.min.svg 1.5x, https://laurance.eu.org/fixit.min.svg 2x" sizes="auto" data-title="/fixit.min.svg" data-alt="/fixit.min.svg" class="logo" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/><span id="typeit-header-desktop" class="typeit"></span></a><span class="header-subtitle"></span></div>
+    <nav>
+      <ul class="menu"><li class="menu-item">
+              <a
+                class="menu-link"
+                href="https://laurance.eu.org/categories/"
+                
+                
+              ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> 分類</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="https://laurance.eu.org/tags/"
+                
+                
+              ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 標籤</a></li><li class="menu-item delimiter"></li><li class="menu-item search" id="search-desktop">
+            <input type="text" placeholder="搜索關鍵字" id="search-input-desktop">
+            <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+              <i class="fa-solid fa-search fa-fw" aria-hidden="true"></i>
+            </a>
+            <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+              <i class="fa-solid fa-times-circle fa-fw" aria-hidden="true"></i>
+            </a>
+            <span class="search-button search-loading" id="search-loading-desktop">
+              <i class="fa-solid fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+            </span>
+          </li><li class="menu-item theme-switch" title="Switch Theme">
+          <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
+        </li></ul>
+    </nav>
+  </div>
+</header><header class="mobile animate__faster" id="header-mobile">
+  <div class="header-container">
+    <div class="header-wrapper">
+      <div class="header-title">
+        <a href="https://laurance.eu.org/" title=""><img loading="lazy" src="https://laurance.eu.org/fixit.min.svg" srcset="https://laurance.eu.org/fixit.min.svg, https://laurance.eu.org/fixit.min.svg 1.5x, https://laurance.eu.org/fixit.min.svg 2x" sizes="auto" data-title="/fixit.min.svg" data-alt="/fixit.min.svg" class="logo" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/><span id="typeit-header-title-mobile" class="typeit"></span></a><span class="header-subtitle"></span></div>
+      <div class="menu-toggle" id="menu-toggle-mobile">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+    <nav>
+      <ul class="menu" id="menu-mobile"><li class="search-wrapper">
+            <div class="search mobile" id="search-mobile">
+              <input type="text" placeholder="搜索關鍵字" id="search-input-mobile">
+              <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                <i class="fa-solid fa-search fa-fw" aria-hidden="true"></i>
+              </a>
+              <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                <i class="fa-solid fa-times-circle fa-fw" aria-hidden="true"></i>
+              </a>
+              <span class="search-button search-loading" id="search-loading-mobile">
+                <i class="fa-solid fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+              </span>
+            </div>
+            <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+              Cancel
+            </a>
+          </li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="https://laurance.eu.org/categories/"
+                  
+                  
+                ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> 分類</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="https://laurance.eu.org/tags/"
+                  
+                  
+                ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 標籤</a></li><li class="menu-item menu-system">
+          <span class="menu-system-item theme-switch" title="Switch Theme"><i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i></span></li>
+      </ul>
+    </nav>
+  </div>
+</header><div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+  </div>
+  <div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+  </div><main class="container"><aside class="toc" id="toc-auto"><h2 class="toc-title">Contents&nbsp;<i class="toc-icon fa-solid fa-angle-down fa-fw" aria-hidden="true"></i></h2>
+      <div class="toc-content" id="toc-content-auto"></div></aside>
+
+  <aside class="aside-custom">
+    </aside>
+
+  <article class="page single">
+    <div class="header"><h1 class="single-title animate__animated animate__flipInX"><span>Linux - 建立 MFA 二階段認證</span>
+      </h1></div><div class="post-meta">
+      <div class="post-meta-line"><span class="post-author"><span class="author"><i class="fa-solid fa-user-circle" aria-hidden="true"></i>
+      Laurance</span></span>
+          <span class="post-category">included in <a href="https://laurance.eu.org/categories/linux/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> Linux</a></span></div>
+      <div class="post-meta-line"><span title="published on 2022-08-03 00:00:00"><i class="fa-regular fa-calendar-alt fa-fw me-1" aria-hidden="true"></i><time datetime="2022-08-03">2022-08-03</time></span>&nbsp;<span title="Updated on 2022-08-03 00:00:00"><i class="fa-regular fa-edit fa-fw me-1" aria-hidden="true"></i><time datetime="2022-08-03">2022-08-03</time></span>&nbsp;<span><i class="fa-solid fa-pencil-alt fa-fw me-1" aria-hidden="true"></i>175 words</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw me-1" aria-hidden="true"></i>One minute</span>&nbsp;<span id="busuanzi_container_page_pv" class="busuanzi_visitors comment-visitors" data-flag-title="Linux - 建立 MFA 二階段認證">
+            <i class="fa-regular fa-eye fa-fw me-1" aria-hidden="true"></i><span id="busuanzi_value_page_pv">-</span>&nbsp;views
+          </span>&nbsp;</div>
+    </div><div class="details toc" id="toc-static" data-kept="false">
+        <div class="details-summary toc-title">
+          <span>Contents</span>
+          <span><i class="details-icon fa-solid fa-angle-right" aria-hidden="true"></i></span>
+        </div>
+        <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#手機先下載-app">手機先下載 APP</a>
+      <ul>
+        <li><a href="#app-store-搜索--twilio-authy">app store 搜索 : Twilio Authy</a></li>
+        <li><a href="#googleplay-store--搜索--twilio-authy-2-factor-authentication">googleplay store  搜索 : Twilio Authy 2-Factor Authentication</a></li>
+      </ul>
+    </li>
+    <li><a href="#輸入使用要設定的帳號輸入">輸入使用要設定的帳號輸入</a>
+      <ul>
+        <li><a href="#切換成使用者-laurance">切換成使用者 laurance</a></li>
+        <li><a href="#執行語法-google-authenticator">執行語法 <code>google-authenticator</code></a></li>
+        <li><a href="#按-y-按到結束--帳號家目錄下面會有一支-google_authenticator">按 <code>y</code> 按到結束 &gt; 帳號家目錄下面會有一支 <code>.google_authenticator</code></a></li>
+        <li><a href="#建立該帳號存-mfa驗證-的目錄">建立該帳號存 <code>MFA驗證</code> 的目錄</a></li>
+        <li><a href="#將-google_authenticator-移動到-homegauthlaurance-下面">將 <code>.google_authenticator</code> 移動到 <code>/home/gauth/laurance/</code> 下面</a></li>
+        <li><a href="#權限改給-root">權限改給 <code>root</code></a></li>
+      </ul>
+    </li>
+    <li><a href="#將上面顯示的網址-輸入到瀏覽器即可得到一張-qr-code">將上面顯示的網址 輸入到瀏覽器即可得到一張 <code>QR Code</code></a>
+      <ul>
+        <li><a href="#使用-app-掃瞄那張-qr-code-即可成功加入設定">使用 <code>APP</code> 掃瞄那張 <code>QR Code</code> 即可成功加入設定</a></li>
+      </ul>
+    </li>
+    <li><a href="#使用-xshell-登入時">使用 <code>XShell</code> 登入時</a>
+      <ul>
+        <li><a href="#選擇下面的-keyboard-interactive-登入">選擇下面的 keyboard Interactive 登入</a></li>
+        <li><a href="#第一次輸入密碼-第二次輸入-app顯示的六位數字-即可登入">第一次輸入密碼 第二次輸入 APP顯示的六位數字 即可登入</a></li>
+      </ul>
+    </li>
+    <li><a href="#機器服務安裝步驟">機器服務安裝步驟</a>
+      <ul>
+        <li><a href="#安裝依賴套件">安裝依賴套件</a></li>
+        <li><a href="#直接安裝-epel-源-rpm-包">直接安裝 <code>EPEL 源 RPM 包</code></a>
+          <ul>
+            <li><a href="#centos-6">CentOS 6</a></li>
+            <li><a href="#centos-7">CentOS 7</a></li>
+          </ul>
+        </li>
+        <li><a href="#安裝qrencode谷歌身份驗證器需要調用該程序生成二維碼並顯示">安裝Qrencode，谷歌身份驗證器需要調用該程序生成二維碼並顯示</a></li>
+        <li><a href="#安裝谷歌身份驗證器">安裝谷歌身份驗證器</a></li>
+        <li><a href="#編譯並安裝">編譯並安裝</a></li>
+        <li><a href="#複製-google-身份驗證器-pam-模塊到系統下">複製 google 身份驗證器 pam 模塊到系統下</a></li>
+        <li><a href="#建立指令連結到環境變數">建立指令連結到環境變數</a></li>
+        <li><a href="#配置-etcpamdsshd">配置 <code>/etc/pam.d/sshd</code></a></li>
+        <li><a href="#在-auth-------substack-----password-auth-下面">在 auth       substack     password-auth 下面</a></li>
+        <li><a href="#新增">新增</a></li>
+        <li><a href="#配置-ssh服務">配置 <code>SSH服務</code></a></li>
+        <li><a href="#修改以下參數">修改以下參數</a></li>
+        <li><a href="#重啟-ssh服務">重啟 <code>ssh服務</code></a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+      </div><div class="content" id="content"><hr>
+<hr>
+<h2 id="手機先下載-app">手機先下載 APP</h2>
+<h3 id="app-store-搜索--twilio-authy">app store 搜索 : Twilio Authy</h3>
+<h3 id="googleplay-store--搜索--twilio-authy-2-factor-authentication">googleplay store  搜索 : Twilio Authy 2-Factor Authentication</h3>
+<hr>
+<hr>
+<h2 id="輸入使用要設定的帳號輸入">輸入使用要設定的帳號輸入</h2>
+<h3 id="切換成使用者-laurance">切換成使用者 laurance</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span>su <span style="color:#f92672">-</span> nadal
+</span></span></code></pre></div><h3 id="執行語法-google-authenticator">執行語法 <code>google-authenticator</code></h3>
+<h3 id="按-y-按到結束--帳號家目錄下面會有一支-google_authenticator">按 <code>y</code> 按到結束 &gt; 帳號家目錄下面會有一支 <code>.google_authenticator</code></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span>google<span style="color:#f92672">-</span>authenticator
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&gt;&gt;</span> y
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&gt;&gt;</span> y
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&gt;&gt;</span> y
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>. . . . . 
+</span></span></code></pre></div><h3 id="建立該帳號存-mfa驗證-的目錄">建立該帳號存 <code>MFA驗證</code> 的目錄</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span>mkdir <span style="color:#f92672">/</span>home<span style="color:#f92672">/</span>gauth<span style="color:#f92672">/</span>laurance<span style="color:#f92672">/</span>
+</span></span></code></pre></div><h3 id="將-google_authenticator-移動到-homegauthlaurance-下面">將 <code>.google_authenticator</code> 移動到 <code>/home/gauth/laurance/</code> 下面</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span>mv  <span style="color:#f92672">/</span>home<span style="color:#f92672">/</span>laurance<span style="color:#f92672">/</span>.google_authenticator <span style="color:#f92672">/</span>home<span style="color:#f92672">/</span>gauth<span style="color:#f92672">/</span>laurance<span style="color:#f92672">/</span>
+</span></span></code></pre></div><h3 id="權限改給-root">權限改給 <code>root</code></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span>chown root.root <span style="color:#f92672">/</span>home<span style="color:#f92672">/</span>gauth<span style="color:#f92672">/</span>laurance<span style="color:#f92672">/</span>.google_authenticator
+</span></span></code></pre></div><hr>
+<hr>
+<h2 id="將上面顯示的網址-輸入到瀏覽器即可得到一張-qr-code">將上面顯示的網址 輸入到瀏覽器即可得到一張 <code>QR Code</code></h2>
+<hr>
+<h3 id="使用-app-掃瞄那張-qr-code-即可成功加入設定">使用 <code>APP</code> 掃瞄那張 <code>QR Code</code> 即可成功加入設定</h3>
+<hr>
+<hr>
+<h2 id="使用-xshell-登入時">使用 <code>XShell</code> 登入時</h2>
+<hr>
+<h3 id="選擇下面的-keyboard-interactive-登入">選擇下面的 keyboard Interactive 登入</h3>
+<hr>
+<h3 id="第一次輸入密碼-第二次輸入-app顯示的六位數字-即可登入">第一次輸入密碼 第二次輸入 APP顯示的六位數字 即可登入</h3>
+<hr>
+<hr>
+<div class="details admonition example open">
+    <div class="details-summary admonition-title">
+      <i class="icon fa-solid fa-list-ol fa-fw" aria-hidden="true"></i>Example<i class="details-icon fa-solid fa-angle-right fa-fw" aria-hidden="true"></i>
+    </div>
+    <div class="details-content">
+      <div class="admonition-content"><h4 id="機器服務安裝教學參考">機器服務安裝教學參考:</h4>
+<p><a href="https://shenyu.me/2016/09/05/centos-google-authenticator.html"target="_blank" rel="external nofollow noopener noreferrer">https://shenyu.me/2016/09/05/centos-google-authenticator.html<i class="fa-solid fa-external-link-alt fa-fw fa-xs ms-1 text-secondary" aria-hidden="true"></i></a></div>
+    </div>
+  </div>
+<hr>
+<hr>
+<h2 id="機器服務安裝步驟">機器服務安裝步驟</h2>
+<hr>
+<hr>
+<h3 id="安裝依賴套件">安裝依賴套件</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span>yum <span style="color:#f92672">-</span>y install gcc make pam<span style="color:#f92672">-</span>devel libpng<span style="color:#f92672">-</span>devel libtool wget git
+</span></span></code></pre></div><h3 id="直接安裝-epel-源-rpm-包">直接安裝 <code>EPEL 源 RPM 包</code></h3>
+<hr>
+<h4 id="centos-6">CentOS 6</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span>rpm <span style="color:#f92672">-</span>Uvh http:<span style="color:#f92672">//</span>mirrors.ustc.edu.cn<span style="color:#f92672">/</span>fedora<span style="color:#f92672">/</span>epel<span style="color:#f92672">/</span>epel<span style="color:#f92672">-</span>release<span style="color:#f92672">-</span>latest<span style="color:#f92672">-</span><span style="color:#ae81ff">6</span>.noarch.rpm
+</span></span></code></pre></div><h4 id="centos-7">CentOS 7</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span>rpm <span style="color:#f92672">-</span>Uvh http:<span style="color:#f92672">//</span>mirrors.ustc.edu.cn<span style="color:#f92672">/</span>fedora<span style="color:#f92672">/</span>epel<span style="color:#f92672">/</span>epel<span style="color:#f92672">-</span>release<span style="color:#f92672">-</span>latest<span style="color:#f92672">-</span><span style="color:#ae81ff">7</span>.noarch.rpm
+</span></span></code></pre></div><h3 id="安裝qrencode谷歌身份驗證器需要調用該程序生成二維碼並顯示">安裝Qrencode，谷歌身份驗證器需要調用該程序生成二維碼並顯示</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span>yum install <span style="color:#f92672">-</span>y qrencode
+</span></span></code></pre></div><h3 id="安裝谷歌身份驗證器">安裝谷歌身份驗證器</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span>git clone https:<span style="color:#f92672">//</span>github.com<span style="color:#f92672">/</span>google<span style="color:#f92672">/</span>google<span style="color:#f92672">-</span>authenticator<span style="color:#f92672">-</span>libpam.git
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>cd google<span style="color:#f92672">-</span>authenticator<span style="color:#f92672">-</span>libpam<span style="color:#f92672">/</span>
+</span></span></code></pre></div><h3 id="編譯並安裝">編譯並安裝</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span>.<span style="color:#f92672">/</span>bootstrap.sh
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>.<span style="color:#f92672">/</span>configure <span style="color:#75715e">--prefix=/usr/local/google-authenticator
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    
+</span></span><span style="display:flex;"><span>make <span style="color:#f92672">&amp;&amp;</span> make install
+</span></span></code></pre></div><h3 id="複製-google-身份驗證器-pam-模塊到系統下">複製 google 身份驗證器 pam 模塊到系統下</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span>cp <span style="color:#f92672">/</span>usr<span style="color:#f92672">/</span><span style="color:#66d9ef">local</span><span style="color:#f92672">/</span>google<span style="color:#f92672">-</span>authenticator<span style="color:#f92672">/</span>lib<span style="color:#f92672">/</span><span style="color:#66d9ef">security</span><span style="color:#f92672">/</span>pam_google_authenticator.so <span style="color:#f92672">/</span>lib64<span style="color:#f92672">/</span><span style="color:#66d9ef">security</span><span style="color:#f92672">/</span>
+</span></span></code></pre></div><h3 id="建立指令連結到環境變數">建立指令連結到環境變數</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span>ln <span style="color:#f92672">-</span>s <span style="color:#f92672">/</span>usr<span style="color:#f92672">/</span><span style="color:#66d9ef">local</span><span style="color:#f92672">/</span>google<span style="color:#f92672">-</span>authenticator<span style="color:#f92672">/</span>bin<span style="color:#f92672">/</span>google<span style="color:#f92672">-</span>authenticator  <span style="color:#f92672">/</span>usr<span style="color:#f92672">/</span>bin<span style="color:#f92672">/</span>
+</span></span></code></pre></div><h3 id="配置-etcpamdsshd">配置 <code>/etc/pam.d/sshd</code></h3>
+<h3 id="在-auth-------substack-----password-auth-下面">在 auth       substack     password-auth 下面</h3>
+<h3 id="新增">新增</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span>auth       required     pam_google_authenticator.so <span style="color:#66d9ef">user</span><span style="color:#f92672">=</span>root secret<span style="color:#f92672">=/</span>home<span style="color:#f92672">/</span>gauth<span style="color:#f92672">/</span><span style="color:#960050;background-color:#1e0010">${</span><span style="color:#66d9ef">USER</span><span style="color:#960050;background-color:#1e0010">}</span><span style="color:#f92672">/</span>.google_authenticator  nullok
+</span></span></code></pre></div><h3 id="配置-ssh服務">配置 <code>SSH服務</code></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span>vim <span style="color:#f92672">/</span>etc<span style="color:#f92672">/</span>ssh<span style="color:#f92672">/</span>sshd_config
+</span></span></code></pre></div><h3 id="修改以下參數">修改以下參數</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span>ChallengeResponseAuthentication yes
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>PasswordAuthentication <span style="color:#66d9ef">no</span>
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>PubkeyAuthentication yes
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>UsePAM yes
+</span></span></code></pre></div><h3 id="重啟-ssh服務">重啟 <code>ssh服務</code></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span>service sshd <span style="color:#66d9ef">restart</span>
+</span></span></code></pre></div><hr>
+
+</div><div class="post-footer" id="post-footer">
+  <div class="post-info">
+    <div class="post-info-line">
+      <div class="post-info-mod">
+        <span title="Updated on 2022-08-03 00:00:00">Updated on 2022-08-03&nbsp;</span>
+      </div><div class="post-info-license">
+          <span><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span>
+        </div></div>
+    <div class="post-info-line">
+      <div class="post-info-md"><span><a href="https://laurance.eu.org/posts/linux-%E6%A9%9F%E5%99%A8%E7%99%BB%E5%85%A5%E4%BA%8C%E9%9A%8E%E6%AE%B5%E8%AA%8D%E8%AD%89mfa/index.md" title="Read Markdown" class="link-to-markdown">Read Markdown</a></span></div>
+      <div class="post-info-share">
+        <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://laurance.eu.org/posts/linux-%E6%A9%9F%E5%99%A8%E7%99%BB%E5%85%A5%E4%BA%8C%E9%9A%8E%E6%AE%B5%E8%AA%8D%E8%AD%89mfa/" data-title="Linux - 建立 MFA 二階段認證" data-hashtags="MFA"><i class="fa-brands fa-twitter fa-fw" aria-hidden="true"></i></a>
+  <a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://laurance.eu.org/posts/linux-%E6%A9%9F%E5%99%A8%E7%99%BB%E5%85%A5%E4%BA%8C%E9%9A%8E%E6%AE%B5%E8%AA%8D%E8%AD%89mfa/" data-hashtag="MFA"><i class="fa-brands fa-facebook-square fa-fw" aria-hidden="true"></i></a>
+  <a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://laurance.eu.org/posts/linux-%E6%A9%9F%E5%99%A8%E7%99%BB%E5%85%A5%E4%BA%8C%E9%9A%8E%E6%AE%B5%E8%AA%8D%E8%AD%89mfa/" data-title="Linux - 建立 MFA 二階段認證"><i class="fa-brands fa-weibo fa-fw" aria-hidden="true"></i></a>
+  </span>
+      </div>
+    </div>
+  </div>
+
+  <div class="post-info-more">
+    <section class="post-tags"><i class="fa-solid fa-tags fa-fw me-1" aria-hidden="true"></i><a href='https://laurance.eu.org/tags/mfa/' class="post-tag">MFA</a></section>
+    <section>
+      <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="https://laurance.eu.org/">Home</a></span>
+    </section>
+  </div>
+
+  <div class="post-nav"><a href="https://laurance.eu.org/posts/linux-%E6%96%B0%E5%A2%9Eswap%E8%A8%98%E6%86%B6%E9%AB%94/" class="post-nav-item" rel="prev" title="Linux - 新增 SWAP 記憶體"><i class="fa-solid fa-angle-left fa-fw" aria-hidden="true"></i>Linux - 新增 SWAP 記憶體</a>
+      <a href="https://laurance.eu.org/posts/linux-python2.7-%E5%8D%87%E7%B4%9A%E6%88%90-python3.6/" class="post-nav-item" rel="next" title="Linux - 將 Python2.7 升級成 Python3.6 語法紀錄">Linux - 將 Python2.7 升級成 Python3.6 語法紀錄<i class="fa-solid fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+</article></main><footer class="footer">
+    <div class="footer-container"><div class="footer-line powered">Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreferrer" title="Hugo 0.111.3">Hugo</a> | Theme - <a href="https://github.com/hugo-fixit/FixIt" target="_blank" rel="external" title="FixIt v0.2.18"><img class="fixit-icon" src="https://laurance.eu.org/fixit.min.svg" alt="FixIt logo" />&nbsp;FixIt</a>
+        </div><div class="footer-line copyright" itemscope itemtype="http://schema.org/CreativeWork"><i class="fa-regular fa-copyright fa-fw" aria-hidden="true"></i>
+            <span itemprop="copyrightYear">2021 - 2023</span><span class="author" itemprop="copyrightHolder">
+              <a href="https://laurance.eu.org/">Laurance</a></span></div><div class="footer-line statistics"></div><div class="footer-line visitor">
+          <span id="busuanzi_container_site_uv" title='Total visitors'><i class="fa-regular fa-user fa-fw" aria-hidden="true"></i>&nbsp;<span id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span></span><span id="busuanzi_container_site_pv" class="footer-divider" title='Total visits'><i class="fa-regular fa-eye fa-fw" aria-hidden="true"></i>&nbsp;<span id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span></span>
+        </div></div>
+  </footer></div><div class="widgets"><div class="fixed-buttons animate__faster d-none"><div class="fixed-button back-to-top" role="button" aria-label="Back to Top"><i class="fa-solid fa-arrow-up fa-fw" aria-hidden="true"></i><span class="variant-numeric d-none">0%</span>
+        </div></div><div id="mask"></div><noscript>
+    <div class="noscript-warning">Theme FixIt works best with JavaScript enabled.</div>
+  </noscript>
+</div><link rel="stylesheet" href="https://laurance.eu.org/lib/lightgallery/css/lightgallery-bundle.min.css"><link rel="stylesheet" href="https://laurance.eu.org/lib/katex/katex.min.css"><link rel="stylesheet" href="https://laurance.eu.org/lib/cookieconsent/cookieconsent.min.css"><link rel="stylesheet" href="https://laurance.eu.org/lib/pace/themes/blue/pace-theme-minimal.css"><script src="https://laurance.eu.org/lib/autocomplete/autocomplete.min.js" defer></script><script src="https://laurance.eu.org/lib/lunr/lunr.min.js" defer></script><script src="https://laurance.eu.org/lib/lightgallery/lightgallery.min.js" defer></script><script src="https://laurance.eu.org/lib/lightgallery/plugins/thumbnail/lg-thumbnail.min.js" defer></script><script src="https://laurance.eu.org/lib/lightgallery/plugins/zoom/lg-zoom.min.js" defer></script><script src="https://laurance.eu.org/lib/sharer/sharer.min.js" async defer></script><script src="https://laurance.eu.org/lib/typeit/index.umd.js" defer></script><script src="https://laurance.eu.org/lib/katex/katex.min.js" defer></script><script src="https://laurance.eu.org/lib/katex/auto-render.min.js" defer></script><script src="https://laurance.eu.org/lib/katex/copy-tex.min.js" defer></script><script src="https://laurance.eu.org/lib/katex/mhchem.min.js" defer></script><script src="https://laurance.eu.org/lib/cookieconsent/cookieconsent.min.js" defer></script><script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async defer></script><script src="https://laurance.eu.org/lib/pace/pace.min.js" async defer></script><script>window.config={"autoBookmark":true,"code":{"copyTitle":"Copy to clipboard","editLockTitle":"Lock editable code block","editUnLockTitle":"Unlock editable code block","editable":true,"maxShownLines":10},"comment":{"enable":false},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"data":{"typeit-header-desktop":" Laurance's Note Bloggggg ","typeit-header-title-mobile":" Laurance's Note Bloggggg "},"enablePWA":true,"lightgallery":true,"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":20,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"typeit-header-desktop":["typeit-header-desktop"],"typeit-header-title-mobile":["typeit-header-title-mobile"]},"duration":-1,"loop":false,"speed":100}};</script><script src="https://laurance.eu.org/js/theme.min.js" defer></script></body>
+</html>
