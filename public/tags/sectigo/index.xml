@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>SECTIGO on Laurance&#39;s Note</title>
+        <link>https://note.laurance.ml/tags/sectigo/</link>
+        <description>Recent content in SECTIGO on Laurance&#39;s Note</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Mon, 03 Oct 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://note.laurance.ml/tags/sectigo/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>SECTIGO-改簽SSL教學</title>
+        <link>https://note.laurance.ml/p/sectigo-%E6%94%B9%E7%B0%BDssl%E6%95%99%E5%AD%B8/</link>
+        <pubDate>Mon, 03 Oct 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://note.laurance.ml/p/sectigo-%E6%94%B9%E7%B0%BDssl%E6%95%99%E5%AD%B8/</guid>
+        <description>&lt;img src="https://note.laurance.ml/p/sectigo-%E6%94%B9%E7%B0%BDssl%E6%95%99%E5%AD%B8/100.png" alt="Featured image of post SECTIGO-改簽SSL教學" /&gt;&lt;pre&gt;&lt;code&gt;Work搜索SSL簽發日期 		ps.到期日期往前推一年=簽發日期 2022-06-03
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/sectigo-%E6%94%B9%E7%B0%BDssl%E6%95%99%E5%AD%B8/001.png&#34;
+	width=&#34;404&#34;
+	height=&#34;13&#34;
+	srcset=&#34;https://note.laurance.ml/p/sectigo-%E6%94%B9%E7%B0%BDssl%E6%95%99%E5%AD%B8/001_hu15a346d7b12fd1933a191dfcc035477e_7006_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/sectigo-%E6%94%B9%E7%B0%BDssl%E6%95%99%E5%AD%B8/001_hu15a346d7b12fd1933a191dfcc035477e_7006_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;3107&#34;
+		data-flex-basis=&#34;7458px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;進入SECTIGO後台，並點選訂單管理Gaia Information Technology Corp. Reseller
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/sectigo-%E6%94%B9%E7%B0%BDssl%E6%95%99%E5%AD%B8/002.png&#34;
+	width=&#34;405&#34;
+	height=&#34;232&#34;
+	srcset=&#34;https://note.laurance.ml/p/sectigo-%E6%94%B9%E7%B0%BDssl%E6%95%99%E5%AD%B8/002_hu3b3a6bb2ae3ce4318ffe5e3ccbb0e7ba_86532_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/sectigo-%E6%94%B9%E7%B0%BDssl%E6%95%99%E5%AD%B8/002_hu3b3a6bb2ae3ce4318ffe5e3ccbb0e7ba_86532_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;174&#34;
+		data-flex-basis=&#34;418px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;點選訂單報告Report on Your Orders
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/sectigo-%E6%94%B9%E7%B0%BDssl%E6%95%99%E5%AD%B8/003.png&#34;
+	width=&#34;405&#34;
+	height=&#34;313&#34;
+	srcset=&#34;https://note.laurance.ml/p/sectigo-%E6%94%B9%E7%B0%BDssl%E6%95%99%E5%AD%B8/003_hu3148cd7e10f2ef09307a1c5617f0d5dc_124123_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/sectigo-%E6%94%B9%E7%B0%BDssl%E6%95%99%E5%AD%B8/003_hu3148cd7e10f2ef09307a1c5617f0d5dc_124123_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;129&#34;
+		data-flex-basis=&#34;310px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;以簽發日期查詢訂單編號
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/sectigo-%E6%94%B9%E7%B0%BDssl%E6%95%99%E5%AD%B8/004.png&#34;
+	width=&#34;368&#34;
+	height=&#34;273&#34;
+	srcset=&#34;https://note.laurance.ml/p/sectigo-%E6%94%B9%E7%B0%BDssl%E6%95%99%E5%AD%B8/004_hua3f37c5f25ca402e7de50bd6b3c38162_77186_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/sectigo-%E6%94%B9%E7%B0%BDssl%E6%95%99%E5%AD%B8/004_hua3f37c5f25ca402e7de50bd6b3c38162_77186_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;134&#34;
+		data-flex-basis=&#34;323px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;用訂單編號搜索憑證更換CSR
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/sectigo-%E6%94%B9%E7%B0%BDssl%E6%95%99%E5%AD%B8/005.png&#34;
+	width=&#34;368&#34;
+	height=&#34;156&#34;
+	srcset=&#34;https://note.laurance.ml/p/sectigo-%E6%94%B9%E7%B0%BDssl%E6%95%99%E5%AD%B8/005_hu894a6507e293926951759041b53ffaf7_28742_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/sectigo-%E6%94%B9%E7%B0%BDssl%E6%95%99%E5%AD%B8/005_hu894a6507e293926951759041b53ffaf7_28742_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;235&#34;
+		data-flex-basis=&#34;566px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;進入管理層並點選訂單管理操作 Validation Manager Order Search
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/sectigo-%E6%94%B9%E7%B0%BDssl%E6%95%99%E5%AD%B8/006.png&#34;
+	width=&#34;371&#34;
+	height=&#34;226&#34;
+	srcset=&#34;https://note.laurance.ml/p/sectigo-%E6%94%B9%E7%B0%BDssl%E6%95%99%E5%AD%B8/006_hu93f8ab514dac39c966b101ebcc4bc6bb_88250_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/sectigo-%E6%94%B9%E7%B0%BDssl%E6%95%99%E5%AD%B8/006_hu93f8ab514dac39c966b101ebcc4bc6bb_88250_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;164&#34;
+		data-flex-basis=&#34;393px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;輸入剛查詢的訂單編號進入修改
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/sectigo-%E6%94%B9%E7%B0%BDssl%E6%95%99%E5%AD%B8/007.png&#34;
+	width=&#34;387&#34;
+	height=&#34;222&#34;
+	srcset=&#34;https://note.laurance.ml/p/sectigo-%E6%94%B9%E7%B0%BDssl%E6%95%99%E5%AD%B8/007_hu5ed706d2a586b89b13b7f8c6ade0a8ef_42172_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/sectigo-%E6%94%B9%E7%B0%BDssl%E6%95%99%E5%AD%B8/007_hu5ed706d2a586b89b13b7f8c6ade0a8ef_42172_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;174&#34;
+		data-flex-basis=&#34;418px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;點選修改 Submit your CSR ， 並將CSR黏貼進入，後面一直按CONTINUE即可
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/sectigo-%E6%94%B9%E7%B0%BDssl%E6%95%99%E5%AD%B8/008-1.png&#34;
+	width=&#34;387&#34;
+	height=&#34;57&#34;
+	srcset=&#34;https://note.laurance.ml/p/sectigo-%E6%94%B9%E7%B0%BDssl%E6%95%99%E5%AD%B8/008-1_hu04fa4ef05fc5e4eb243f2e359fb3cad5_6525_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/sectigo-%E6%94%B9%E7%B0%BDssl%E6%95%99%E5%AD%B8/008-1_hu04fa4ef05fc5e4eb243f2e359fb3cad5_6525_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;678&#34;
+		data-flex-basis=&#34;1629px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/sectigo-%E6%94%B9%E7%B0%BDssl%E6%95%99%E5%AD%B8/008-2.png&#34;
+	width=&#34;389&#34;
+	height=&#34;281&#34;
+	srcset=&#34;https://note.laurance.ml/p/sectigo-%E6%94%B9%E7%B0%BDssl%E6%95%99%E5%AD%B8/008-2_hu65c68b94da4dca040756486f3a526b7a_96220_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/sectigo-%E6%94%B9%E7%B0%BDssl%E6%95%99%E5%AD%B8/008-2_hu65c68b94da4dca040756486f3a526b7a_96220_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;138&#34;
+		data-flex-basis=&#34;332px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;憑證簽發完後，Mail會收到Sectigo寄來的zip包
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/sectigo-%E6%94%B9%E7%B0%BDssl%E6%95%99%E5%AD%B8/009.png&#34;
+	width=&#34;398&#34;
+	height=&#34;226&#34;
+	srcset=&#34;https://note.laurance.ml/p/sectigo-%E6%94%B9%E7%B0%BDssl%E6%95%99%E5%AD%B8/009_hu02b40f2c6a85c684e5b611965ba3294d_44232_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/sectigo-%E6%94%B9%E7%B0%BDssl%E6%95%99%E5%AD%B8/009_hu02b40f2c6a85c684e5b611965ba3294d_44232_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;176&#34;
+		data-flex-basis=&#34;422px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;下載後會有4之檔案，
+
+將AAA CertificateServices.crt裡面的內容全部貼進STAR_XXX_net.crt的下面，並更名為域名.crt，
+
+再將域名.crt複製到網頁主機裡 
+
+(注意：STAR_XXX_net.crt內容一定要再上方，否則驗證不會過)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/sectigo-%E6%94%B9%E7%B0%BDssl%E6%95%99%E5%AD%B8/010-1.png&#34;
+	width=&#34;409&#34;
+	height=&#34;160&#34;
+	srcset=&#34;https://note.laurance.ml/p/sectigo-%E6%94%B9%E7%B0%BDssl%E6%95%99%E5%AD%B8/010-1_hu5447eae9085e8688c0311fdcf0448a6a_26261_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/sectigo-%E6%94%B9%E7%B0%BDssl%E6%95%99%E5%AD%B8/010-1_hu5447eae9085e8688c0311fdcf0448a6a_26261_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;255&#34;
+		data-flex-basis=&#34;613px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/sectigo-%E6%94%B9%E7%B0%BDssl%E6%95%99%E5%AD%B8/010-2.png&#34;
+	width=&#34;365&#34;
+	height=&#34;360&#34;
+	srcset=&#34;https://note.laurance.ml/p/sectigo-%E6%94%B9%E7%B0%BDssl%E6%95%99%E5%AD%B8/010-2_hu9324aedfd2686ce543857ca5f98e8db0_143824_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/sectigo-%E6%94%B9%E7%B0%BDssl%E6%95%99%E5%AD%B8/010-2_hu9324aedfd2686ce543857ca5f98e8db0_143824_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;101&#34;
+		data-flex-basis=&#34;243px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;hr&gt;
+
+</description>
+        </item>
+        
+    </channel>
+</rss>

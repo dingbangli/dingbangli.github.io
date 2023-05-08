@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>rsync on Laurance&#39;s Note</title>
+        <link>https://note.laurance.ml/categories/rsync/</link>
+        <description>Recent content in rsync on Laurance&#39;s Note</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Thu, 27 Oct 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://note.laurance.ml/categories/rsync/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>CentOS7上使用Rsync不同機器備份</title>
+        <link>https://note.laurance.ml/p/centos7%E4%B8%8A%E4%BD%BF%E7%94%A8rsync%E4%B8%8D%E5%90%8C%E6%A9%9F%E5%99%A8%E5%82%99%E4%BB%BD/</link>
+        <pubDate>Thu, 27 Oct 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://note.laurance.ml/p/centos7%E4%B8%8A%E4%BD%BF%E7%94%A8rsync%E4%B8%8D%E5%90%8C%E6%A9%9F%E5%99%A8%E5%82%99%E4%BB%BD/</guid>
+        <description>&lt;img src="https://note.laurance.ml/p/centos7%E4%B8%8A%E4%BD%BF%E7%94%A8rsync%E4%B8%8D%E5%90%8C%E6%A9%9F%E5%99%A8%E5%82%99%E4%BB%BD/100.png" alt="Featured image of post CentOS7上使用Rsync不同機器備份" /&gt;&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/centos7%E4%B8%8A%E4%BD%BF%E7%94%A8rsync%E4%B8%8D%E5%90%8C%E6%A9%9F%E5%99%A8%E5%82%99%E4%BB%BD/100.jpg&#34;
+	width=&#34;1000&#34;
+	height=&#34;485&#34;
+	srcset=&#34;https://note.laurance.ml/p/centos7%E4%B8%8A%E4%BD%BF%E7%94%A8rsync%E4%B8%8D%E5%90%8C%E6%A9%9F%E5%99%A8%E5%82%99%E4%BB%BD/100_hucded96a92cc4024caa7466c888694fad_208704_480x0_resize_q75_box.jpg 480w, https://note.laurance.ml/p/centos7%E4%B8%8A%E4%BD%BF%E7%94%A8rsync%E4%B8%8D%E5%90%8C%E6%A9%9F%E5%99%A8%E5%82%99%E4%BB%BD/100_hucded96a92cc4024caa7466c888694fad_208704_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;206&#34;
+		data-flex-basis=&#34;494px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;接收方 (目的):
+172.16.0.222
+
+服務需開啟:
+rsync --daemon --config=/etc/rsyncd.conf
+
+設定檔:
+[update]
+path =          /root/iptables 		# (位置寫死)
+auth users =    update
+hosts allow =   172.16.0.223
+uid =           root
+gid =           root
+secrets file =  /etc/rsync5.secrets
+read only =     no
+
+密碼放置及格式:
+vim /etc/rsync5.secrets
+update:qwe999 (格式)
+
+--------------------------------------------
+
+發送方 (來源):
+172.16.0.223
+
+服務不用開啟
+
+需建置密碼
+vim /etc/rsync5.secrets
+qwe999 (格式)
+
+同步語法:
+
+rsync -aHSz --password-file=/etc/rsync5.secrets /root/iptables update@172.16.0.222::update
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+
+</description>
+        </item>
+        
+    </channel>
+</rss>

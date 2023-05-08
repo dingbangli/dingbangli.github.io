@@ -1,0 +1,449 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Cache on Laurance&#39;s Note</title>
+        <link>https://note.laurance.ml/categories/cache/</link>
+        <description>Recent content in Cache on Laurance&#39;s Note</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Fri, 20 Jan 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://note.laurance.ml/categories/cache/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Redis-主從跟隨建立</title>
+        <link>https://note.laurance.ml/p/redis-%E4%B8%BB%E5%BE%9E%E8%B7%9F%E9%9A%A8%E5%BB%BA%E7%AB%8B/</link>
+        <pubDate>Fri, 20 Jan 2023 00:00:00 +0000</pubDate>
+        
+        <guid>https://note.laurance.ml/p/redis-%E4%B8%BB%E5%BE%9E%E8%B7%9F%E9%9A%A8%E5%BB%BA%E7%AB%8B/</guid>
+        <description>&lt;img src="https://note.laurance.ml/p/redis-%E4%B8%BB%E5%BE%9E%E8%B7%9F%E9%9A%A8%E5%BB%BA%E7%AB%8B/100.png" alt="Featured image of post Redis-主從跟隨建立" /&gt;&lt;h1 id=&#34;slave&#34;&gt;Slave:&lt;/h1&gt;
+&lt;p&gt;關閉 Redis-slave
+&lt;img src=&#34;https://note.laurance.ml/p/redis-%E4%B8%BB%E5%BE%9E%E8%B7%9F%E9%9A%A8%E5%BB%BA%E7%AB%8B/101.png&#34;
+	width=&#34;1898&#34;
+	height=&#34;481&#34;
+	srcset=&#34;https://note.laurance.ml/p/redis-%E4%B8%BB%E5%BE%9E%E8%B7%9F%E9%9A%A8%E5%BB%BA%E7%AB%8B/101_hu07fea81f4e099df6af5bfb0af07fdc2e_38724_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/redis-%E4%B8%BB%E5%BE%9E%E8%B7%9F%E9%9A%A8%E5%BB%BA%E7%AB%8B/101_hu07fea81f4e099df6af5bfb0af07fdc2e_38724_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;394&#34;
+		data-flex-basis=&#34;947px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;修改 Redis 設定檔&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;vim /usr/local/redis/etc/redis.conf
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;將 Redis 編號&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;:set nu
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;在設定檔的第 327 行增加設定 ( REPLICATION區塊 )&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;slave-read-only no
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;註解第 326 行設定&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sass&#34; data-lang=&#34;sass&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nn&#34;&gt;#replica-read-only&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;yes&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;再開啟 Redis 服務&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;systemctl start redis
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;登入並將 Slave 資料清空&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;redis-cli -h 127.0.0.1 -p 9736 -a 密碼
+
+127.0.0.1:9736&amp;gt; flushall
+
+127.0.0.1:9736&amp;gt; OK
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;再將服務關閉&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;systemctl stop redis
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;在設定檔的第 313 行增加設定&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;slave-serve-stale-data yes
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;註解第 312 行設定&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sass&#34; data-lang=&#34;sass&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nn&#34;&gt;#replica-serve-stale-data&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;yes&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;在設定檔的第 290 &amp;amp; 291 行增加設定 (Master資訊)&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;slaveof 172.16.0.222 9736
+
+masterauth passwd
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;在設定檔的第 327 行修改設定&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;slave-read-only yes
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;開啟 Redis 服務&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;systemctl start redis
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;進去查看是否已重跟&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;redis-cli -h 127.0.0.1 -p 9736 -a 密碼
+
+127.0.0.1:9736&amp;gt; info Replication
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;以下參數要是這樣 才算正常跟隨&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;master_link_status:up
+
+master_last_io_seconds_ago:0
+
+master_sync_in_progress:0
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/redis-%E4%B8%BB%E5%BE%9E%E8%B7%9F%E9%9A%A8%E5%BB%BA%E7%AB%8B/102.png&#34;
+	width=&#34;1900&#34;
+	height=&#34;444&#34;
+	srcset=&#34;https://note.laurance.ml/p/redis-%E4%B8%BB%E5%BE%9E%E8%B7%9F%E9%9A%A8%E5%BB%BA%E7%AB%8B/102_hu5c4511365e330c01bf2399fc9b31c97b_20168_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/redis-%E4%B8%BB%E5%BE%9E%E8%B7%9F%E9%9A%A8%E5%BB%BA%E7%AB%8B/102_hu5c4511365e330c01bf2399fc9b31c97b_20168_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;427&#34;
+		data-flex-basis=&#34;1027px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;PS:重新跟隨狀態會比較慢更新 (大約要等2分鐘 狀態才會變成up)&lt;/p&gt;
+&lt;hr&gt;
+
+</description>
+        </item>
+        <item>
+        <title>Redis-常用指令</title>
+        <link>https://note.laurance.ml/p/redis-%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/</link>
+        <pubDate>Thu, 19 Jan 2023 00:00:00 +0000</pubDate>
+        
+        <guid>https://note.laurance.ml/p/redis-%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/</guid>
+        <description>&lt;img src="https://note.laurance.ml/p/redis-%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/100.png" alt="Featured image of post Redis-常用指令" /&gt;&lt;h1 id=&#34;常用語法&#34;&gt;常用語法&lt;/h1&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;指令&lt;/th&gt;
+&lt;th&gt;說明&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;keys *&lt;/td&gt;
+&lt;td&gt;查看所有鍵&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;exists &lt;key&gt;&lt;/td&gt;
+&lt;td&gt;判斷某個鍵是否存在&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;type &lt;key&gt;&lt;/td&gt;
+&lt;td&gt;查看鍵的類型&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;del &lt;key&gt;&lt;/td&gt;
+&lt;td&gt;刪除某個鍵&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;expire &lt;key&gt; &lt;seconds&gt;&lt;/td&gt;
+&lt;td&gt;為鍵設置過期時間&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;ttl &lt;key&gt;&lt;/td&gt;
+&lt;td&gt;查看還有多少秒過期&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;dbsize&lt;/td&gt;
+&lt;td&gt;查看當前數據庫的key的數量&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h1 id=&#34;刪除指令&#34;&gt;刪除指令&lt;/h1&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;指令&lt;/th&gt;
+&lt;th&gt;說明&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;flushdb&lt;/td&gt;
+&lt;td&gt;清空當前庫&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;flushall&lt;/td&gt;
+&lt;td&gt;清空所有庫&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;hr&gt;
+
+</description>
+        </item>
+        <item>
+        <title>Redis-安裝reids-dump備份</title>
+        <link>https://note.laurance.ml/p/redis-%E5%AE%89%E8%A3%9Dreids-dump%E5%82%99%E4%BB%BD/</link>
+        <pubDate>Sat, 22 Oct 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://note.laurance.ml/p/redis-%E5%AE%89%E8%A3%9Dreids-dump%E5%82%99%E4%BB%BD/</guid>
+        <description>&lt;img src="https://note.laurance.ml/p/redis-%E5%AE%89%E8%A3%9Dreids-dump%E5%82%99%E4%BB%BD/100.png" alt="Featured image of post Redis-安裝reids-dump備份" /&gt;&lt;p&gt;&lt;strong&gt;需先安裝 redis-cli&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;安裝ruby跟gem&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;yum -y install ruby ruby-devel
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;yum -y install rubygems&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;使用gem裝rvm&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;載入來源及憑證
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;gem sources -a http://mirrors.aliyun.com/rubygems/
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/redis-%E5%AE%89%E8%A3%9Dreids-dump%E5%82%99%E4%BB%BD/201.png&#34;
+	width=&#34;1917&#34;
+	height=&#34;245&#34;
+	srcset=&#34;https://note.laurance.ml/p/redis-%E5%AE%89%E8%A3%9Dreids-dump%E5%82%99%E4%BB%BD/201_hu5f47b647ef20ace1f253ac4555838d4d_27438_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/redis-%E5%AE%89%E8%A3%9Dreids-dump%E5%82%99%E4%BB%BD/201_hu5f47b647ef20ace1f253ac4555838d4d_27438_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;782&#34;
+		data-flex-basis=&#34;1877px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;使用腳本安裝
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;curl -sSL https://get.rvm.io | bash -s stable&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/redis-%E5%AE%89%E8%A3%9Dreids-dump%E5%82%99%E4%BB%BD/202.png&#34;
+	width=&#34;1919&#34;
+	height=&#34;286&#34;
+	srcset=&#34;https://note.laurance.ml/p/redis-%E5%AE%89%E8%A3%9Dreids-dump%E5%82%99%E4%BB%BD/202_huc6a2fbbc9a0e4fd724d5b8510ea259d1_28424_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/redis-%E5%AE%89%E8%A3%9Dreids-dump%E5%82%99%E4%BB%BD/202_huc6a2fbbc9a0e4fd724d5b8510ea259d1_28424_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;670&#34;
+		data-flex-basis=&#34;1610px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;這時會報錯讀不到憑證 再重新載入一次即可
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;curl -sSL https://rvm.io/mpapis.asc | gpg2 --import -
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;curl -sSL https://rvm.io/pkuczynski.asc | gpg2 --import -
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;再重新安裝一次
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;curl -sSL https://get.rvm.io | bash -s stable&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/redis-%E5%AE%89%E8%A3%9Dreids-dump%E5%82%99%E4%BB%BD/203.png&#34;
+	width=&#34;1920&#34;
+	height=&#34;769&#34;
+	srcset=&#34;https://note.laurance.ml/p/redis-%E5%AE%89%E8%A3%9Dreids-dump%E5%82%99%E4%BB%BD/203_huee36ef9a0d25a396f4e785f0c45ee04b_71873_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/redis-%E5%AE%89%E8%A3%9Dreids-dump%E5%82%99%E4%BB%BD/203_huee36ef9a0d25a396f4e785f0c45ee04b_71873_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;249&#34;
+		data-flex-basis=&#34;599px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;載入rvm腳本
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;source /etc/profile.d/rvm.sh
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;rvm版本確認
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;rvm -v&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/redis-%E5%AE%89%E8%A3%9Dreids-dump%E5%82%99%E4%BB%BD/204.png&#34;
+	width=&#34;1920&#34;
+	height=&#34;298&#34;
+	srcset=&#34;https://note.laurance.ml/p/redis-%E5%AE%89%E8%A3%9Dreids-dump%E5%82%99%E4%BB%BD/204_hu2a5f142d4528dd15969d036894306fef_20427_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/redis-%E5%AE%89%E8%A3%9Dreids-dump%E5%82%99%E4%BB%BD/204_hu2a5f142d4528dd15969d036894306fef_20427_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;644&#34;
+		data-flex-basis=&#34;1546px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;再用rvm升級ruby&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;安裝ruby 2.5版
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;rvm install 2.5
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;ruby版本確認
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;ruby --version&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/redis-%E5%AE%89%E8%A3%9Dreids-dump%E5%82%99%E4%BB%BD/205.png&#34;
+	width=&#34;1920&#34;
+	height=&#34;610&#34;
+	srcset=&#34;https://note.laurance.ml/p/redis-%E5%AE%89%E8%A3%9Dreids-dump%E5%82%99%E4%BB%BD/205_hua1b5cfb4ccd2fa1253730cdbbf098a80_51402_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/redis-%E5%AE%89%E8%A3%9Dreids-dump%E5%82%99%E4%BB%BD/205_hua1b5cfb4ccd2fa1253730cdbbf098a80_51402_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;314&#34;
+		data-flex-basis=&#34;755px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;再用gem安裝redis-dump&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;gem install redis-dump&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/redis-%E5%AE%89%E8%A3%9Dreids-dump%E5%82%99%E4%BB%BD/206.png&#34;
+	width=&#34;1918&#34;
+	height=&#34;438&#34;
+	srcset=&#34;https://note.laurance.ml/p/redis-%E5%AE%89%E8%A3%9Dreids-dump%E5%82%99%E4%BB%BD/206_hu8aa6eb3b07492f78dc0cc32994dfd800_36786_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/redis-%E5%AE%89%E8%A3%9Dreids-dump%E5%82%99%E4%BB%BD/206_hu8aa6eb3b07492f78dc0cc32994dfd800_36786_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;437&#34;
+		data-flex-basis=&#34;1050px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;報錯 ERROR 需要再安裝 yajl-ruby&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/redis-%E5%AE%89%E8%A3%9Dreids-dump%E5%82%99%E4%BB%BD/207.png&#34;
+	width=&#34;1919&#34;
+	height=&#34;295&#34;
+	srcset=&#34;https://note.laurance.ml/p/redis-%E5%AE%89%E8%A3%9Dreids-dump%E5%82%99%E4%BB%BD/207_hu32e6358e40cf45ea594408e071fa5ccc_21376_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/redis-%E5%AE%89%E8%A3%9Dreids-dump%E5%82%99%E4%BB%BD/207_hu32e6358e40cf45ea594408e071fa5ccc_21376_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;650&#34;
+		data-flex-basis=&#34;1561px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;gem install yajl-ruby -v 1.4.1
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;gem install redis-dump
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;重新再安裝一次即可&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/redis-%E5%AE%89%E8%A3%9Dreids-dump%E5%82%99%E4%BB%BD/208.png&#34;
+	width=&#34;1919&#34;
+	height=&#34;287&#34;
+	srcset=&#34;https://note.laurance.ml/p/redis-%E5%AE%89%E8%A3%9Dreids-dump%E5%82%99%E4%BB%BD/208_hu7f3c6e629900c631173d2dbb1bb7e546_19514_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/redis-%E5%AE%89%E8%A3%9Dreids-dump%E5%82%99%E4%BB%BD/208_hu7f3c6e629900c631173d2dbb1bb7e546_19514_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;668&#34;
+		data-flex-basis=&#34;1604px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;redis備份及匯入語法 (可以使用別台的IP 遠端備份)&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;EX:
+
+備份語法
+
+redis-dump -u 127.0.0.1:9736 -a &#39;redisPasword&#39; &amp;gt; /root/info-redis-bak.json
+
+匯入語法
+
+&amp;lt;info-redis-bak.json redis-load -u 127.0.0.1:9736
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+
+</description>
+        </item>
+        <item>
+        <title>Redis-安裝及配置教學</title>
+        <link>https://note.laurance.ml/p/redis-%E5%AE%89%E8%A3%9D%E5%8F%8A%E9%85%8D%E7%BD%AE%E6%95%99%E5%AD%B8/</link>
+        <pubDate>Fri, 30 Sep 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://note.laurance.ml/p/redis-%E5%AE%89%E8%A3%9D%E5%8F%8A%E9%85%8D%E7%BD%AE%E6%95%99%E5%AD%B8/</guid>
+        <description>&lt;img src="https://note.laurance.ml/p/redis-%E5%AE%89%E8%A3%9D%E5%8F%8A%E9%85%8D%E7%BD%AE%E6%95%99%E5%AD%B8/100.png" alt="Featured image of post Redis-安裝及配置教學" /&gt;&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;http://download.redis.io/releases/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Index of redis&lt;/a&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;tar zxvf redis-4.0.6.tar.gz
+
+cd /root/redis-4.0.6
+
+make MALLOC=libc
+
+make PREFIX=/usr/local/redis install
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Redis配置&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;mkdir /usr/local/redis/etc/
+
+cp redis.conf /usr/local/redis/etc/
+
+cd /usr/local/redis/bin/
+
+cp redis-benchmark redis-cli redis-server /usr/bin/
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;修改redis配置&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;vim /usr/local/redis/etc/redis.conf
+
+bind 0.0.0.0
+
+daemonize yes
+
+requirepass (password設置)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;redis ( 腳本 )     ps.若有改port或設置密碼 腳本也需要更改&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;vim redis
+&lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-javascript&#34; data-lang=&#34;javascript&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;ch&#34;&gt;#!/bin/bash
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;ch&#34;&gt;&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;#&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;chkconfig&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;2345&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;80&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;90&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;#&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;Simple&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;Redis&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;init&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;d&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;script&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;conceived&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;to&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;work&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;on&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;Linux&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;systems&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;#&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;as&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;it&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;does&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;use&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;of&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;the&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;proc&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;filesystem&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nx&#34;&gt;PATH&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;/usr/local/bin:/sbin:/usr/bin:/bin&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nx&#34;&gt;REDISPORT&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;6379&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nx&#34;&gt;EXEC&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;/usr/local/redis/bin/redis-server&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nx&#34;&gt;REDIS_CLI&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;/usr/local/redis/bin/redis-cli&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nx&#34;&gt;PIDFILE&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;/var/run/redis_6379.pid&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nx&#34;&gt;CONF&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;/usr/local/redis/etc/redis.conf&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;#&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;PW&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;password&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;case&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;$1&amp;#34;&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;in&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nx&#34;&gt;start&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;f&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;$PIDFILE&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nx&#34;&gt;then&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nx&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;$PIDFILE exists, process is already running or crashed&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;else&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nx&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;Starting Redis server...&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nx&#34;&gt;$EXEC&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;$CONF&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nx&#34;&gt;fi&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;$?&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;0&amp;#34;&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nx&#34;&gt;then&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nx&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;Redis is running...&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nx&#34;&gt;fi&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nx&#34;&gt;stop&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;!&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;f&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;$PIDFILE&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nx&#34;&gt;then&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nx&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;$PIDFILE does not exist, process is not running&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;else&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nx&#34;&gt;PID&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;$&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;cat&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;$PIDFILE&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nx&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;Stopping ...&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;#&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;$REDIS_CLI&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;p&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;a&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;password&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;$REDISPORT&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;--&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;no&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;auth&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;warning&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;SHUTDOWN&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nx&#34;&gt;$REDIS_CLI&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;p&lt;/span&gt;  &lt;span class=&#34;nx&#34;&gt;$REDISPORT&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;SHUTDOWN&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;while&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;x&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;$&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;PIDFILE&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;do&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nx&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;Waiting for Redis to shutdown ...&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nx&#34;&gt;sleep&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nx&#34;&gt;done&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nx&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;Redis stopped&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nx&#34;&gt;fi&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nx&#34;&gt;restart&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;|&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;force&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;reload&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nx&#34;&gt;$&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;stop&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nx&#34;&gt;$&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;start&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nx&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;Usage: /etc/init.d/redis {start|stop|restart|force-reload}&amp;#34;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;gt;&amp;amp;&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nx&#34;&gt;exit&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nx&#34;&gt;esac&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;啟動檔&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;cp redis /etc/init.d/
+
+chmod 755 /etc/init.d/redis
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;添加至開機啟動&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;chkconfig --add redis
+
+chkconfig --level 2345 redis on
+
+chkconfig --list |grep redis
+
+OR
+
+systemctl enable redis
+
+systemctl is-enabled redis  檢查redis是否設置為開機啟動
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;開啟服務&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;service redis start
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;ps. 出現 “Warning: Using a password with &amp;lsquo;-a&amp;rsquo; or &amp;lsquo;-u&amp;rsquo; option on the command line interface may not be safe”&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;加上參數即可: --no-auth-warning
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+
+</description>
+        </item>
+        
+    </channel>
+</rss>

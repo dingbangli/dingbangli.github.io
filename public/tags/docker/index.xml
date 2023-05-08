@@ -1,0 +1,348 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Docker on Laurance&#39;s Note</title>
+        <link>https://note.laurance.ml/tags/docker/</link>
+        <description>Recent content in Docker on Laurance&#39;s Note</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Thu, 06 Oct 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://note.laurance.ml/tags/docker/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Docker-Install docker-compose</title>
+        <link>https://note.laurance.ml/p/docker-install-docker-compose/</link>
+        <pubDate>Thu, 06 Oct 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://note.laurance.ml/p/docker-install-docker-compose/</guid>
+        <description>&lt;img src="https://note.laurance.ml/p/docker-install-docker-compose/100.png" alt="Featured image of post Docker-Install docker-compose" /&gt;&lt;p&gt;&lt;strong&gt;下載安裝包&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;sudo curl -L &amp;quot;https://github.com/docker/compose/releases/download/1.27.1/docker-compose-$(uname -s)-$(uname -m)&amp;quot; -o /usr/local/bin/docker-compose
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;對二進製文件應用可執行權限&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;sudo chmod +x /usr/local/bin/docker-compose
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;創建指向 /usr/bin 或路徑中任何其他目錄的符號鏈接&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;測試 docker-compose&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;docker-compose --version
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+
+</description>
+        </item>
+        <item>
+        <title>Docker-Error-requested access to the resource is denied</title>
+        <link>https://note.laurance.ml/p/docker-error-requested-access-to-the-resource-is-denied/</link>
+        <pubDate>Tue, 13 Sep 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://note.laurance.ml/p/docker-error-requested-access-to-the-resource-is-denied/</guid>
+        <description>&lt;img src="https://note.laurance.ml/p/docker-error-requested-access-to-the-resource-is-denied/100.png" alt="Featured image of post Docker-Error-requested access to the resource is denied" /&gt;&lt;pre&gt;&lt;code&gt;上傳 image 報錯
+
+docker push laurance/green
+
+denied: requested access to the resource is denied
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/docker-error-requested-access-to-the-resource-is-denied/000001.png&#34;
+	width=&#34;1920&#34;
+	height=&#34;860&#34;
+	srcset=&#34;https://note.laurance.ml/p/docker-error-requested-access-to-the-resource-is-denied/000001_hu7e0134399cfcac19ac8905c2b5edbdec_92729_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/docker-error-requested-access-to-the-resource-is-denied/000001_hu7e0134399cfcac19ac8905c2b5edbdec_92729_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;223&#34;
+		data-flex-basis=&#34;535px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;解决方案&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;docker tag laurance/green ihatemis/green
+
+ihatemis 為 Docker hub 用戶名
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/docker-error-requested-access-to-the-resource-is-denied/000002.png&#34;
+	width=&#34;1920&#34;
+	height=&#34;860&#34;
+	srcset=&#34;https://note.laurance.ml/p/docker-error-requested-access-to-the-resource-is-denied/000002_hu2dee616c57c045bb76539b4625cac170_93791_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/docker-error-requested-access-to-the-resource-is-denied/000002_hu2dee616c57c045bb76539b4625cac170_93791_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;223&#34;
+		data-flex-basis=&#34;535px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;後台查看已上傳
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/docker-error-requested-access-to-the-resource-is-denied/0000003.png&#34;
+	width=&#34;1917&#34;
+	height=&#34;828&#34;
+	srcset=&#34;https://note.laurance.ml/p/docker-error-requested-access-to-the-resource-is-denied/0000003_hub2fa979e9c2b13b929587d2460575968_81303_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/docker-error-requested-access-to-the-resource-is-denied/0000003_hub2fa979e9c2b13b929587d2460575968_81303_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;231&#34;
+		data-flex-basis=&#34;555px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;hr&gt;
+
+</description>
+        </item>
+        <item>
+        <title>Docker-overlay2佔用大量磁碟空間處理方法</title>
+        <link>https://note.laurance.ml/p/docker-overlay2%E4%BD%94%E7%94%A8%E5%A4%A7%E9%87%8F%E7%A3%81%E7%A2%9F%E7%A9%BA%E9%96%93%E8%99%95%E7%90%86%E6%96%B9%E6%B3%95/</link>
+        <pubDate>Tue, 13 Sep 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://note.laurance.ml/p/docker-overlay2%E4%BD%94%E7%94%A8%E5%A4%A7%E9%87%8F%E7%A3%81%E7%A2%9F%E7%A9%BA%E9%96%93%E8%99%95%E7%90%86%E6%96%B9%E6%B3%95/</guid>
+        <description>&lt;img src="https://note.laurance.ml/p/docker-overlay2%E4%BD%94%E7%94%A8%E5%A4%A7%E9%87%8F%E7%A3%81%E7%A2%9F%E7%A9%BA%E9%96%93%E8%99%95%E7%90%86%E6%96%B9%E6%B3%95/100.png" alt="Featured image of post Docker-overlay2佔用大量磁碟空間處理方法" /&gt;&lt;pre&gt;&lt;code&gt;docker system命令  
+
+docker system df        整體磁區使用狀況
+docker system events    獲取系統即時LOG
+docker system info      查看整體系統基本信息
+docker system prune     清理不常用的docker資源 (包括: 容器 鏡像 磁區 網路)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+
+</description>
+        </item>
+        <item>
+        <title>Docker-官方yum源安裝指定版本流程</title>
+        <link>https://note.laurance.ml/p/docker-%E5%AE%98%E6%96%B9yum%E6%BA%90%E5%AE%89%E8%A3%9D%E6%8C%87%E5%AE%9A%E7%89%88%E6%9C%AC%E6%B5%81%E7%A8%8B/</link>
+        <pubDate>Fri, 19 Aug 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://note.laurance.ml/p/docker-%E5%AE%98%E6%96%B9yum%E6%BA%90%E5%AE%89%E8%A3%9D%E6%8C%87%E5%AE%9A%E7%89%88%E6%9C%AC%E6%B5%81%E7%A8%8B/</guid>
+        <description>&lt;img src="https://note.laurance.ml/p/docker-%E5%AE%98%E6%96%B9yum%E6%BA%90%E5%AE%89%E8%A3%9D%E6%8C%87%E5%AE%9A%E7%89%88%E6%9C%AC%E6%B5%81%E7%A8%8B/100.png" alt="Featured image of post Docker-官方yum源安裝指定版本流程" /&gt;&lt;pre&gt;&lt;code&gt;卸載舊版本
+yum remove docker \
+                  docker-client \
+                  docker-client-latest \
+                  docker-common \
+                  docker-latest \
+                  docker-latest-logrotate \
+                  docker-logrotate \
+                  docker-selinux \
+                  docker-engine-selinux \
+                  docker-engine
+
+rpm -qa |grep docker &amp;amp;&amp;amp; docker -e --nodeps
+
+配置官方yum源
+echo &#39;[docker-ce-stable]
+name=Docker CE Stable - $basearch
+baseurl=https://download.docker.com/linux/centos/7/$basearch/stable
+enabled=1
+gpgcheck=1
+gpgkey=https://download.docker.com/linux/centos/gpg
+
+[docker-ce-stable-debuginfo]
+name=Docker CE Stable - Debuginfo $basearch
+baseurl=https://download.docker.com/linux/centos/7/debug-$basearch/stable
+enabled=0
+gpgcheck=1
+gpgkey=https://download.docker.com/linux/centos/gpg
+
+[docker-ce-stable-source]
+name=Docker CE Stable - Sources
+baseurl=https://download.docker.com/linux/centos/7/source/stable
+enabled=0
+gpgcheck=1
+gpgkey=https://download.docker.com/linux/centos/gpg
+
+[docker-ce-edge]
+name=Docker CE Edge - $basearch
+baseurl=https://download.docker.com/linux/centos/7/$basearch/edge
+enabled=0
+gpgcheck=1
+gpgkey=https://download.docker.com/linux/centos/gpg
+
+[docker-ce-edge-debuginfo]
+name=Docker CE Edge - Debuginfo $basearch
+baseurl=https://download.docker.com/linux/centos/7/debug-$basearch/edge
+enabled=0
+gpgcheck=1
+gpgkey=https://download.docker.com/linux/centos/gpg
+
+[docker-ce-edge-source]
+name=Docker CE Edge - Sources
+baseurl=https://download.docker.com/linux/centos/7/source/edge
+enabled=0
+gpgcheck=1
+gpgkey=https://download.docker.com/linux/centos/gpg
+
+[docker-ce-test]
+name=Docker CE Test - $basearch
+baseurl=https://download.docker.com/linux/centos/7/$basearch/test
+enabled=0
+gpgcheck=1
+gpgkey=https://download.docker.com/linux/centos/gpg
+
+[docker-ce-test-debuginfo]
+name=Docker CE Test - Debuginfo $basearch
+baseurl=https://download.docker.com/linux/centos/7/debug-$basearch/test
+enabled=0
+gpgcheck=1
+gpgkey=https://download.docker.com/linux/centos/gpg
+
+[docker-ce-test-source]
+name=Docker CE Test - Sources
+baseurl=https://download.docker.com/linux/centos/7/source/test
+enabled=0
+gpgcheck=1
+gpgkey=https://download.docker.com/linux/centos/gpg
+
+[docker-ce-nightly]
+name=Docker CE Nightly - $basearch
+baseurl=https://download.docker.com/linux/centos/7/$basearch/nightly
+enabled=0
+gpgcheck=1
+gpgkey=https://download.docker.com/linux/centos/gpg
+
+[docker-ce-nightly-debuginfo]
+name=Docker CE Nightly - Debuginfo $basearch
+baseurl=https://download.docker.com/linux/centos/7/debug-$basearch/nightly
+enabled=0
+gpgcheck=1
+gpgkey=https://download.docker.com/linux/centos/gpg
+
+[docker-ce-nightly-source]
+name=Docker CE Nightly - Sources
+baseurl=https://download.docker.com/linux/centos/7/source/nightly
+enabled=0
+gpgcheck=1
+gpgkey=https://download.docker.com/linux/centos/gpg&#39;&amp;gt;/etc/yum.repos.d/docker-ce.repo
+
+(要启用哪个版本的源就将其下的enable值设置为1，其余设置为0)
+
+查看當前源的可用版本
+yum list docker-ce --showduplicates|grep &amp;quot;^doc&amp;quot;|sort -r
+yum list docker-ce-cli --showduplicates|grep &amp;quot;^doc&amp;quot;|sort -r
+
+指定安裝client跟server一樣的版本 (不指定版本會自動安裝最新版)
+yum install docker-ce-20.10.2-3.el7 docker-ce-cli-20.10.2-3.el7 containerd.io
+
+查看版本
+docker version
+
+設置開機啟動
+systemctl enable docker
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;安裝 docker-compose&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;yum list docker-compose-plugin --showduplicates|grep &amp;quot;^doc&amp;quot;|sort -r
+
+yum install docker-compose-plugin-2.6.0-3.el7
+
+ln -s /usr/libexec/docker/cli-plugins/docker-compose /usr/bin/docker-compose
+
+docker-compose version
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+
+</description>
+        </item>
+        <item>
+        <title>Docker-透過image傳輸至另一台內網機器</title>
+        <link>https://note.laurance.ml/p/docker-%E9%80%8F%E9%81%8Eimage%E5%82%B3%E8%BC%B8%E8%87%B3%E5%8F%A6%E4%B8%80%E5%8F%B0%E5%85%A7%E7%B6%B2%E6%A9%9F%E5%99%A8/</link>
+        <pubDate>Wed, 10 Aug 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://note.laurance.ml/p/docker-%E9%80%8F%E9%81%8Eimage%E5%82%B3%E8%BC%B8%E8%87%B3%E5%8F%A6%E4%B8%80%E5%8F%B0%E5%85%A7%E7%B6%B2%E6%A9%9F%E5%99%A8/</guid>
+        <description>&lt;img src="https://note.laurance.ml/p/docker-%E9%80%8F%E9%81%8Eimage%E5%82%B3%E8%BC%B8%E8%87%B3%E5%8F%A6%E4%B8%80%E5%8F%B0%E5%85%A7%E7%B6%B2%E6%A9%9F%E5%99%A8/100.png" alt="Featured image of post Docker-透過image傳輸至另一台內網機器" /&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;首先將image包成 .tar檔
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;docker save blazingdb/blazingsql &amp;gt; blazingsql.tar
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;再執行docker load指令
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;docker load -i blazingsql.tar&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;hr&gt;
+
+</description>
+        </item>
+        <item>
+        <title>Docker-常用指令&amp;&amp;參數</title>
+        <link>https://note.laurance.ml/p/docker-%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4%E5%8F%83%E6%95%B8/</link>
+        <pubDate>Wed, 03 Aug 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://note.laurance.ml/p/docker-%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4%E5%8F%83%E6%95%B8/</guid>
+        <description>&lt;img src="https://note.laurance.ml/p/docker-%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4%E5%8F%83%E6%95%B8/100.png" alt="Featured image of post Docker-常用指令&amp;&amp;參數" /&gt;&lt;pre&gt;&lt;code&gt;#查看目前使用的服務
+docker system df
+
+#Docker passwd存放位置
+/root/.docker/config.json
+
+#設定docker啟動，容器自動啟動
+docker run 容器  --restart=always 
+
+#使用update參數修改配置 
+docker update --restart=always ***(容器名)  
+
+#重啟Docker後，不啟動該容器
+docker update --restart=no mysqld-exporter
+
+#啟動錯誤查看目錄位置
+/etc/docker/daemon.json
+
+#使用root權限進入容器 exec -u 0
+docker  exec -ti -u 0 779afa4111c2 /bin/bash
+
+#完全停止容器
+docker stop $(docker ps -a -q)
+
+#完全刪除容器
+docker rm $(docker ps -a -q)
+
+#docker默认网段的修改
+&amp;quot;/etc/docker/daemon.json&amp;quot; &amp;gt;&amp;gt; 
+{
+&amp;quot;bip&amp;quot;:&amp;quot;192.168.0.1/24&amp;quot;
+}
+
+#docker network :
+
+#創建network
+docker network create influxdb
+
+#建立自訂義 Network
+docker network create --driver bridge --subnet 172.16.50.0/24 --gateway=172.16.50.1 --ip-range 172.16.50.0/24 &amp;lt;network name&amp;gt;
+
+#查看network細節
+docker network inspect influxdb
+
+#拉取container設定檔
+docker run --rm telegraf telegraf config &amp;gt; telegraf.conf
+
+#運行容器 
+docker run -di
+
+#使得 Container 裡面的檔案路徑Mapping 到實體主機的檔案路徑
+docker -v XXX
+
+#搜尋鏡像
+docker search mariadb 
+
+#拉取鏡像
+docker pull mariadb 
+
+#啟動容器
+docker run -d --name prometheus2022 prom/prometheus 
+
+#複製容器內檔掛載到本機目錄
+docker cp -a prometheus2022:/etc/prometheus/ /root/docker-service/prometheus 
+
+#砍掉容器
+docker rm -f prometheus2020 
+
+#清理掉所有的container
+docker rm -fv $(docker ps -a -q)
+
+#刪除images
+docker stop containerID
+docker rm containerID
+docker rmi imageID
+
+#重新命名容器名稱
+docker rename &amp;lt;my_container&amp;gt; &amp;lt;my_new_container&amp;gt;
+
+#############################################################
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+
+</description>
+        </item>
+        
+    </channel>
+</rss>

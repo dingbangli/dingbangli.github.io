@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>exporter on Laurance&#39;s Note</title>
+        <link>https://note.laurance.ml/tags/exporter/</link>
+        <description>Recent content in exporter on Laurance&#39;s Note</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Wed, 03 Aug 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://note.laurance.ml/tags/exporter/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Docker-建立exporter</title>
+        <link>https://note.laurance.ml/p/docker-%E5%BB%BA%E7%AB%8Bexporter/</link>
+        <pubDate>Wed, 03 Aug 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://note.laurance.ml/p/docker-%E5%BB%BA%E7%AB%8Bexporter/</guid>
+        <description>&lt;img src="https://note.laurance.ml/p/docker-%E5%BB%BA%E7%AB%8Bexporter/100.png" alt="Featured image of post Docker-建立exporter" /&gt;&lt;pre&gt;&lt;code&gt;[Node-exporter]
+docker run -d -p 9100:9100 \
+  -v &amp;quot;/proc:/host/proc&amp;quot; \
+  -v &amp;quot;/sys:/host/sys&amp;quot; \
+  -v &amp;quot;/:/rootfs&amp;quot; \
+  --net=host \
+  prom/node-exporter \
+  --path.procfs /host/proc \
+  --path.sysfs /host/sys \
+  --collector.filesystem.ignored-mount-points &amp;quot;^/(sys|proc|dev|host|etc)($|/)&amp;quot;
+
+[Mysql-exporter]
+ docker run -d  --restart=always  --name mysqld-exporter -p 9104:9104   --net=host  --pid=&amp;quot;host&amp;quot; -e DATA_SOURCE_NAME=&amp;quot;exporter:123456@(172.16.0.222:3307)/&amp;quot;   bitnami/mysqld-exporter
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+
+</description>
+        </item>
+        
+    </channel>
+</rss>

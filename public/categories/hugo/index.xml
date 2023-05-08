@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>HUGO on Laurance&#39;s Note</title>
+        <link>https://note.laurance.ml/categories/hugo/</link>
+        <description>Recent content in HUGO on Laurance&#39;s Note</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Fri, 10 Mar 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://note.laurance.ml/categories/hugo/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>HUGO 添加 Algolia 搜索支持</title>
+        <link>https://note.laurance.ml/p/hugo-%E6%B7%BB%E5%8A%A0-algolia-%E6%90%9C%E7%B4%A2%E6%94%AF%E6%8C%81/</link>
+        <pubDate>Fri, 10 Mar 2023 00:00:00 +0000</pubDate>
+        
+        <guid>https://note.laurance.ml/p/hugo-%E6%B7%BB%E5%8A%A0-algolia-%E6%90%9C%E7%B4%A2%E6%94%AF%E6%8C%81/</guid>
+        <description>&lt;img src="https://note.laurance.ml/p/hugo-%E6%B7%BB%E5%8A%A0-algolia-%E6%90%9C%E7%B4%A2%E6%94%AF%E6%8C%81/100.png" alt="Featured image of post HUGO 添加 Algolia 搜索支持" /&gt;&lt;h1 id=&#34;新增搜索模塊-algolia-配置在-hugo-上實現本地搜索&#34;&gt;新增搜索模塊 &lt;code&gt;Algolia&lt;/code&gt; 配置在 hugo 上,實現本地搜索&lt;/h1&gt;
+&lt;p&gt;Algolia 官方網址: &lt;a class=&#34;link&#34; href=&#34;https://www.algolia.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://www.algolia.com/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;{Step 1} 新建 application 及 index&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/hugo-%E6%B7%BB%E5%8A%A0-algolia-%E6%90%9C%E7%B4%A2%E6%94%AF%E6%8C%81/301.png&#34;
+	width=&#34;1513&#34;
+	height=&#34;776&#34;
+	srcset=&#34;https://note.laurance.ml/p/hugo-%E6%B7%BB%E5%8A%A0-algolia-%E6%90%9C%E7%B4%A2%E6%94%AF%E6%8C%81/301_hu794d8a808feec8e392ef1d392342d884_122427_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/hugo-%E6%B7%BB%E5%8A%A0-algolia-%E6%90%9C%E7%B4%A2%E6%94%AF%E6%8C%81/301_hu794d8a808feec8e392ef1d392342d884_122427_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;194&#34;
+		data-flex-basis=&#34;467px&#34;
+	
+&gt;
+&lt;img src=&#34;https://note.laurance.ml/p/hugo-%E6%B7%BB%E5%8A%A0-algolia-%E6%90%9C%E7%B4%A2%E6%94%AF%E6%8C%81/302.png&#34;
+	width=&#34;1502&#34;
+	height=&#34;777&#34;
+	srcset=&#34;https://note.laurance.ml/p/hugo-%E6%B7%BB%E5%8A%A0-algolia-%E6%90%9C%E7%B4%A2%E6%94%AF%E6%8C%81/302_huc5c5f79584586c753932d5a8a0913c58_93857_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/hugo-%E6%B7%BB%E5%8A%A0-algolia-%E6%90%9C%E7%B4%A2%E6%94%AF%E6%8C%81/302_huc5c5f79584586c753932d5a8a0913c58_93857_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;193&#34;
+		data-flex-basis=&#34;463px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;{Step 2} 紀錄 Keys 等等會用到 ( &lt;code&gt;Application ID&lt;/code&gt;, &lt;code&gt;Search-Only API Key&lt;/code&gt;, &lt;code&gt;Admin API Key&lt;/code&gt; )&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/hugo-%E6%B7%BB%E5%8A%A0-algolia-%E6%90%9C%E7%B4%A2%E6%94%AF%E6%8C%81/303.png&#34;
+	width=&#34;1920&#34;
+	height=&#34;937&#34;
+	srcset=&#34;https://note.laurance.ml/p/hugo-%E6%B7%BB%E5%8A%A0-algolia-%E6%90%9C%E7%B4%A2%E6%94%AF%E6%8C%81/303_hu7d420651dbaf30f02c7dc6e638ed404f_200763_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/hugo-%E6%B7%BB%E5%8A%A0-algolia-%E6%90%9C%E7%B4%A2%E6%94%AF%E6%8C%81/303_hu7d420651dbaf30f02c7dc6e638ed404f_200763_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;204&#34;
+		data-flex-basis=&#34;491px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;{Step 3} 修改 &lt;code&gt;config.yaml&lt;/code&gt; 主要生成 &lt;code&gt;Algolia 索引&lt;/code&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nt&#34;&gt;outputFormats&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;Algolia&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;        &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;baseName&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;l&#34;&gt;algolia&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;        &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;isPlainText&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;kc&#34;&gt;true&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;        &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;mediaType&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;l&#34;&gt;application/json&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;        &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;notAlternative&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;kc&#34;&gt;true&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;outputs&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;home&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;HTML&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;RSS&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;Algolia&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;params.algolia&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;appId&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;Application ID&amp;#34;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;indexName&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;Index name&amp;#34;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;searchOnlyKey&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;Admin API Key&amp;#34;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;{Step 4} 在目錄下 &lt;code&gt;layouts/_default&lt;/code&gt; 新建 &lt;code&gt;list.algolia.json&lt;/code&gt; 文件&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;{{&lt;span class=&#34;l&#34;&gt;/* 生成Algolia搜索索引文件 */}}&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;{{- &lt;span class=&#34;l&#34;&gt;$.Scratch.Add &amp;#34;index&amp;#34; slice -}}&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;{{&lt;span class=&#34;l&#34;&gt;/* content/posts或content/post目錄下的博文才生成索引 */}}&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;{{- &lt;span class=&#34;l&#34;&gt;range where (where .Site.Pages &amp;#34;Type&amp;#34; &amp;#34;in&amp;#34; (slice &amp;#34;posts&amp;#34; &amp;#34;post&amp;#34;)) &amp;#34;IsPage&amp;#34; true -}}&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;  &lt;/span&gt;{{- &lt;span class=&#34;l&#34;&gt;if and (not .Draft) (not .Params.private) -}}&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;{{- &lt;span class=&#34;l&#34;&gt;$.Scratch.Add &amp;#34;index&amp;#34; (dict &amp;#34;objectID&amp;#34; .File.UniqueID &amp;#34;url&amp;#34; .Permalink &amp;#34;content&amp;#34; (.Summary | plainify) &amp;#34;tags&amp;#34; .Params.Tags &amp;#34;lvl0&amp;#34; .Title &amp;#34;lvl1&amp;#34; .Params.Categories &amp;#34;lvl2&amp;#34; &amp;#34;摘要&amp;#34;) -}}&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;  &lt;/span&gt;{{- &lt;span class=&#34;l&#34;&gt;end -}}&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;{{- &lt;span class=&#34;l&#34;&gt;end -}}&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;{{- &lt;span class=&#34;l&#34;&gt;$.Scratch.Get &amp;#34;index&amp;#34; | jsonify -}}&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;{Step 5} 目錄下執行 &lt;code&gt;hugo&lt;/code&gt; 命令後,在 &lt;code&gt;public/&lt;/code&gt; 下會生成 &lt;code&gt;algolia.json&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;{Step 6} 將上述生成的 &lt;code&gt;algolia.json&lt;/code&gt; 上傳至 &lt;code&gt;Algolia&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/hugo-%E6%B7%BB%E5%8A%A0-algolia-%E6%90%9C%E7%B4%A2%E6%94%AF%E6%8C%81/305.png&#34;
+	width=&#34;1920&#34;
+	height=&#34;937&#34;
+	srcset=&#34;https://note.laurance.ml/p/hugo-%E6%B7%BB%E5%8A%A0-algolia-%E6%90%9C%E7%B4%A2%E6%94%AF%E6%8C%81/305_huae73351023c61ec5e3e3e7bd7cbb0608_61234_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/hugo-%E6%B7%BB%E5%8A%A0-algolia-%E6%90%9C%E7%B4%A2%E6%94%AF%E6%8C%81/305_huae73351023c61ec5e3e3e7bd7cbb0608_61234_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;204&#34;
+		data-flex-basis=&#34;491px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;{Step 7} 安裝 &lt;code&gt;Atomic-Algolia&lt;/code&gt; (目的: 自動上傳)&lt;/p&gt;
+&lt;p&gt;在根目錄下語法&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;註：這裡需要用到 npm 套件工具，所以需要安裝 node js&lt;/code&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;npm init  (這裡直接一直 ENTER)
+
+npm install atomic-algolia --save
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;修改根目錄下的 &lt;code&gt;Package.Json&lt;/code&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;scripts&amp;#34;: &lt;/span&gt;{&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;test&amp;#34;: &lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;echo \&amp;#34;Error: no test specified\&amp;#34; &amp;amp;&amp;amp; exit 1&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;#34;algolia&amp;#34;: &lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;atomic-algolia&amp;#34;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;  &lt;/span&gt;}&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;code&gt;到根目錄下的 package.json 內，在 scripts 下添加&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;Json 格式記得要加逗號,不然會跳 ERROR&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/hugo-%E6%B7%BB%E5%8A%A0-algolia-%E6%90%9C%E7%B4%A2%E6%94%AF%E6%8C%81/306.png&#34;
+	width=&#34;1896&#34;
+	height=&#34;161&#34;
+	srcset=&#34;https://note.laurance.ml/p/hugo-%E6%B7%BB%E5%8A%A0-algolia-%E6%90%9C%E7%B4%A2%E6%94%AF%E6%8C%81/306_hu5f89519cf4f177e809e2fad59ea90646_15168_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/hugo-%E6%B7%BB%E5%8A%A0-algolia-%E6%90%9C%E7%B4%A2%E6%94%AF%E6%8C%81/306_hu5f89519cf4f177e809e2fad59ea90646_15168_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;1177&#34;
+		data-flex-basis=&#34;2826px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;建立 .ENV 檔&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;ALGOLIA_APP_ID=你的Application ID
+    
+ALGOLIA_INDEX_NAME=你的索引名字  
+    
+ALGOLIA_INDEX_FILE=public/algolia.json
+    
+ALGOLIA_ADMIN_KEY=你的Admin API Key
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;上傳索引文件&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;可以在 local 端執行 `npm run algolia` 這行指令查看效果
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/hugo-%E6%B7%BB%E5%8A%A0-algolia-%E6%90%9C%E7%B4%A2%E6%94%AF%E6%8C%81/307.png&#34;
+	width=&#34;1896&#34;
+	height=&#34;159&#34;
+	srcset=&#34;https://note.laurance.ml/p/hugo-%E6%B7%BB%E5%8A%A0-algolia-%E6%90%9C%E7%B4%A2%E6%94%AF%E6%8C%81/307_hue757395eb1b02a077e6665ec1ed28c62_9202_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/hugo-%E6%B7%BB%E5%8A%A0-algolia-%E6%90%9C%E7%B4%A2%E6%94%AF%E6%8C%81/307_hue757395eb1b02a077e6665ec1ed28c62_9202_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;1192&#34;
+		data-flex-basis=&#34;2861px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;參考: &lt;a class=&#34;link&#34; href=&#34;https://edward852.github.io/post/hugo%E6%B7%BB%E5%8A%A0algolia%E6%90%9C%E7%B4%A2%E6%94%AF%E6%8C%81/#%E7%94%9F%E6%88%90%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://edward852.github.io/post/hugo%E6%B7%BB%E5%8A%A0algolia%E6%90%9C%E7%B4%A2%E6%94%AF%E6%8C%81/#%E7%94%9F%E6%88%90%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+
+</description>
+        </item>
+        
+    </channel>
+</rss>

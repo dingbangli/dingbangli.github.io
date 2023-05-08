@@ -1,0 +1,469 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>CentOS on Laurance&#39;s Note</title>
+        <link>https://note.laurance.ml/tags/centos/</link>
+        <description>Recent content in CentOS on Laurance&#39;s Note</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Thu, 26 Jan 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://note.laurance.ml/tags/centos/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>CentOS-如何將安裝包及其依賴包下載到本地</title>
+        <link>https://note.laurance.ml/p/centos-%E5%A6%82%E4%BD%95%E5%B0%87%E5%AE%89%E8%A3%9D%E5%8C%85%E5%8F%8A%E5%85%B6%E4%BE%9D%E8%B3%B4%E5%8C%85%E4%B8%8B%E8%BC%89%E5%88%B0%E6%9C%AC%E5%9C%B0/</link>
+        <pubDate>Thu, 26 Jan 2023 00:00:00 +0000</pubDate>
+        
+        <guid>https://note.laurance.ml/p/centos-%E5%A6%82%E4%BD%95%E5%B0%87%E5%AE%89%E8%A3%9D%E5%8C%85%E5%8F%8A%E5%85%B6%E4%BE%9D%E8%B3%B4%E5%8C%85%E4%B8%8B%E8%BC%89%E5%88%B0%E6%9C%AC%E5%9C%B0/</guid>
+        <description>&lt;img src="https://note.laurance.ml/p/centos-%E5%A6%82%E4%BD%95%E5%B0%87%E5%AE%89%E8%A3%9D%E5%8C%85%E5%8F%8A%E5%85%B6%E4%BE%9D%E8%B3%B4%E5%8C%85%E4%B8%8B%E8%BC%89%E5%88%B0%E6%9C%AC%E5%9C%B0/100.png" alt="Featured image of post CentOS-如何將安裝包及其依賴包下載到本地" /&gt;&lt;h1 id=&#34;通過-yum-命令的-downloadonly-插件下載-rpm-軟件包及其所有依賴包&#34;&gt;通過 yum 命令的 Downloadonly 插件下載 RPM 軟件包及其所有依賴包&lt;/h1&gt;
+&lt;p&gt;安裝工具包&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;yum install yum-plugin-downloadonly yum-utils -y
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;將 *.repo 安裝到指定目錄下&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;yum install --downloadonly + --downloaddir=軟件包位置[可選] + 軟件包名(可加上版本號，指定版本)
+
+yum install --downloadonly --downloaddir=/root/mysql517_repo/ mysql-server mysql-client mysql-devel*
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/centos-%E5%A6%82%E4%BD%95%E5%B0%87%E5%AE%89%E8%A3%9D%E5%8C%85%E5%8F%8A%E5%85%B6%E4%BE%9D%E8%B3%B4%E5%8C%85%E4%B8%8B%E8%BC%89%E5%88%B0%E6%9C%AC%E5%9C%B0/101.png&#34;
+	width=&#34;1893&#34;
+	height=&#34;315&#34;
+	srcset=&#34;https://note.laurance.ml/p/centos-%E5%A6%82%E4%BD%95%E5%B0%87%E5%AE%89%E8%A3%9D%E5%8C%85%E5%8F%8A%E5%85%B6%E4%BE%9D%E8%B3%B4%E5%8C%85%E4%B8%8B%E8%BC%89%E5%88%B0%E6%9C%AC%E5%9C%B0/101_hu5328d310b51f9e52871505ca1905498b_33729_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/centos-%E5%A6%82%E4%BD%95%E5%B0%87%E5%AE%89%E8%A3%9D%E5%8C%85%E5%8F%8A%E5%85%B6%E4%BE%9D%E8%B3%B4%E5%8C%85%E4%B8%8B%E8%BC%89%E5%88%B0%E6%9C%AC%E5%9C%B0/101_hu5328d310b51f9e52871505ca1905498b_33729_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;600&#34;
+		data-flex-basis=&#34;1442px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;hr&gt;
+
+</description>
+        </item>
+        <item>
+        <title>CentOS7-使用certbot半自動更新SSL憑證</title>
+        <link>https://note.laurance.ml/p/centos7-%E4%BD%BF%E7%94%A8certbot%E5%8D%8A%E8%87%AA%E5%8B%95%E6%9B%B4%E6%96%B0ssl%E6%86%91%E8%AD%89/</link>
+        <pubDate>Sat, 10 Dec 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://note.laurance.ml/p/centos7-%E4%BD%BF%E7%94%A8certbot%E5%8D%8A%E8%87%AA%E5%8B%95%E6%9B%B4%E6%96%B0ssl%E6%86%91%E8%AD%89/</guid>
+        <description>&lt;img src="https://note.laurance.ml/p/centos7-%E4%BD%BF%E7%94%A8certbot%E5%8D%8A%E8%87%AA%E5%8B%95%E6%9B%B4%E6%96%B0ssl%E6%86%91%E8%AD%89/100.png" alt="Featured image of post CentOS7-使用certbot半自動更新SSL憑證" /&gt;&lt;p&gt;下載 certbot 腳本&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;wget https://raw.githubusercontent.com/certbot/certbot/7f0fa18c570942238a7de73ed99945c3710408b4/letsencrypt-auto-source/letsencrypt-auto -O /root/certbot-auto
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;給予權限&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;chmod 755 /root/certbot-auto
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;使用 certbot-auto 簽發三個月憑證&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;(保護 domain 及 sub domain)
+
+./certbot-auto certonly -d “*.域名”-d “域名” --manual --preferred-challenges dns
+
+(只保護 sub domain) 
+
+./certbot-auto certonly -d *.域名 --manual --preferred-challenges dns
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;驗證解析&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;nslookup -type=TXT _acme-challenge.XXXXX.net 8.8.8.8
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;驗證過後會有4隻pem 路徑: /etc/letsencrypt/archive/&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;cp fullchain1.pem /usr/local/web/nginx/conf/key/las/XXXXX.net.crt
+
+cp privkey1.pem /usr/local/web/nginx/conf/key/las/XXXXX.net.key
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;NGINX 重啟&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;/usr/local/web/nginx/sbin/nginx  -t
+
+/usr/local/web/nginx/sbin/nginx  -s reload
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+
+</description>
+        </item>
+        <item>
+        <title>Centos-啟動網路時出現 bring up interface ip address is already in use for device eth0</title>
+        <link>https://note.laurance.ml/p/centos-%E5%95%9F%E5%8B%95%E7%B6%B2%E8%B7%AF%E6%99%82%E5%87%BA%E7%8F%BE-bring-up-interface-ip-address-is-already-in-use-for-device-eth0/</link>
+        <pubDate>Fri, 07 Oct 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://note.laurance.ml/p/centos-%E5%95%9F%E5%8B%95%E7%B6%B2%E8%B7%AF%E6%99%82%E5%87%BA%E7%8F%BE-bring-up-interface-ip-address-is-already-in-use-for-device-eth0/</guid>
+        <description>&lt;img src="https://note.laurance.ml/p/centos-%E5%95%9F%E5%8B%95%E7%B6%B2%E8%B7%AF%E6%99%82%E5%87%BA%E7%8F%BE-bring-up-interface-ip-address-is-already-in-use-for-device-eth0/100.png" alt="Featured image of post Centos-啟動網路時出現 bring up interface ip address is already in use for device eth0" /&gt;&lt;p&gt;重啟網路報錯
+Bringing up interface eth0:  Determining if ip address 172.16.0.224 is already in use for device eth0&amp;hellip;&lt;/p&gt;
+&lt;p&gt;加上 ARPCHECK=no 重啟網路就好了&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;vi /etc/sysconfig/network-scripts/ifcfg-eth0
+&lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;DEVICE=eth0
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;HWADDR=XX:XX:XX:XX:XX:XX
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;TYPE=Ethernet
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;UUID=5248d5f6-7d7b-42ee-9443-e2f627c73677
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;ONBOOT=yes
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;NM_CONTROLLED=yes
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;BOOTPROTO=static
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;IPADDR=172.16.0.224
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;GATEWAY=172.16.0.1
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;NETMASK=255.255.0.0
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;DNS1=8.8.8.8
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;DNS2=9.9.9.9
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;ARPCHECK=no
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
+
+</description>
+        </item>
+        <item>
+        <title>CentOS8-找不到源</title>
+        <link>https://note.laurance.ml/p/centos8-%E6%89%BE%E4%B8%8D%E5%88%B0%E6%BA%90/</link>
+        <pubDate>Fri, 19 Aug 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://note.laurance.ml/p/centos8-%E6%89%BE%E4%B8%8D%E5%88%B0%E6%BA%90/</guid>
+        <description>&lt;img src="https://note.laurance.ml/p/centos8-%E6%89%BE%E4%B8%8D%E5%88%B0%E6%BA%90/100.png" alt="Featured image of post CentOS8-找不到源" /&gt;&lt;pre&gt;&lt;code&gt;dnf --disablerepo &#39;*&#39; --enablerepo=extras swap centos-linux-repos centos-stream-repos
+dnf distro-sync
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+
+</description>
+        </item>
+        <item>
+        <title>Centos7-更改Yum源(HiNet)</title>
+        <link>https://note.laurance.ml/p/centos7-%E6%9B%B4%E6%94%B9yum%E6%BA%90hinet/</link>
+        <pubDate>Wed, 10 Aug 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://note.laurance.ml/p/centos7-%E6%9B%B4%E6%94%B9yum%E6%BA%90hinet/</guid>
+        <description>&lt;img src="https://note.laurance.ml/p/centos7-%E6%9B%B4%E6%94%B9yum%E6%BA%90hinet/100.png" alt="Featured image of post Centos7-更改Yum源(HiNet)" /&gt;&lt;pre&gt;&lt;code&gt;# CentOS-Base.repo
+#
+# The mirror system uses the connecting IP address of the client and the
+# update status of each mirror to pick mirrors that are updated to and
+# geographically close to the client. You should use this for CentOS updates
+# unless you are manually picking other mirrors.
+#
+# If the mirrorlist= does not work for you, as a fall back you can try the 
+# remarked out baseurl= line instead.
+#
+#
+
+[base]
+name=CentOS-$releasever – Base
+#mirrorlist=http://mirrorlist.centos.org/?release=$releasever&amp;amp;arch=$basearch&amp;amp;repo=os
+baseurl=http://mirror01.idc.hinet.net/CentOS/$releasever/os/$basearch/
+gpgcheck=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7
+
+#released updates 
+[updates]
+name=CentOS-$releasever – Updates
+#mirrorlist=http://mirrorlist.centos.org/?release=$releasever&amp;amp;arch=$basearch&amp;amp;repo=updates
+baseurl=http://mirror01.idc.hinet.net/CentOS/$releasever/updates/$basearch/
+gpgcheck=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7
+
+#additional packages that may be useful
+[extras]
+name=CentOS-$releasever – Extras
+#mirrorlist=http://mirrorlist.centos.org/?release=$releasever&amp;amp;arch=$basearch&amp;amp;repo=extras
+baseurl=http://mirror01.idc.hinet.net/CentOS/$releasever/extras/$basearch/
+gpgcheck=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7
+
+#additional packages that extend functionality of existing packages
+[centosplus]
+name=CentOS-$releasever – Plus
+#mirrorlist=http://mirrorlist.centos.org/?release=$releasever&amp;amp;arch=$basearch&amp;amp;repo=centosplus
+baseurl=http://mirror01.idc.hinet.net/CentOS/$releasever/centosplus/$basearch/
+gpgcheck=1
+enabled=0
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7
+
+#contrib – packages by Centos Users
+[contrib]
+name=CentOS-$releasever – Contrib
+#mirrorlist=http://mirrorlist.centos.org/?release=$releasever&amp;amp;arch=$basearch&amp;amp;repo=contrib
+baseurl=http://mirror01.idc.hinet.net/CentOS/$releasever/contrib/$basearch/
+gpgcheck=1
+enabled=0
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7
+
+
+#按Esc，打入 :wq 即寫入檔案，
+
+#完成後更新資料
+yum clean all
+yum update -y
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+
+</description>
+        </item>
+        <item>
+        <title>Centos-更改系統語言</title>
+        <link>https://note.laurance.ml/p/centos-%E6%9B%B4%E6%94%B9%E7%B3%BB%E7%B5%B1%E8%AA%9E%E8%A8%80/</link>
+        <pubDate>Sun, 07 Aug 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://note.laurance.ml/p/centos-%E6%9B%B4%E6%94%B9%E7%B3%BB%E7%B5%B1%E8%AA%9E%E8%A8%80/</guid>
+        <description>&lt;img src="https://note.laurance.ml/p/centos-%E6%9B%B4%E6%94%B9%E7%B3%BB%E7%B5%B1%E8%AA%9E%E8%A8%80/100.png" alt="Featured image of post Centos-更改系統語言" /&gt;&lt;pre&gt;&lt;code&gt;更改系統引數
+
+vim /etc/locale.conf		# CentOS 7
+LANG=“zh_CN.UTF-8”
+source  /etc/locale.conf
+
+vim /etc/sysconfig/i18n	        # CentOS6
+LANG=“zh_CN.UTF-8”
+source /etc/sysconfig/i18n
+
+重啟系統
+reboot
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+
+</description>
+        </item>
+        <item>
+        <title>CentOS-安装speedtest-cli</title>
+        <link>https://note.laurance.ml/p/centos-%E5%AE%89%E8%A3%85speedtest-cli/</link>
+        <pubDate>Wed, 03 Aug 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://note.laurance.ml/p/centos-%E5%AE%89%E8%A3%85speedtest-cli/</guid>
+        <description>&lt;img src="https://note.laurance.ml/p/centos-%E5%AE%89%E8%A3%85speedtest-cli/100.png" alt="Featured image of post CentOS-安装speedtest-cli" /&gt;&lt;pre&gt;&lt;code&gt;wget https://raw.githubusercontent.com/sivel/speedtest-cli/master/speedtest.py
+
+vim speedtest.py &amp;gt;&amp;gt; (第一行#改python3)
+
+chmod a+rx speedtest.py
+
+mv speedtest.py /usr/local/bin/speedtest-cli
+
+chown root:root /usr/local/bin/speedtest-cli
+
+命令後追加 --share 可以得到測試信息圖片
+speedtest-cli --share
+
+追加 --list 可以得到所有的測試服務器
+speedtest-cli --list
+
+使用 – server 測試指定服務器的下載或上傳速度
+speedtest-cli --server 41009 (站点ID可通過 --list 獲取)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+
+</description>
+        </item>
+        <item>
+        <title>CentOS-根目錄磁區擴充</title>
+        <link>https://note.laurance.ml/p/centos-%E6%A0%B9%E7%9B%AE%E9%8C%84%E7%A3%81%E5%8D%80%E6%93%B4%E5%85%85/</link>
+        <pubDate>Wed, 03 Aug 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://note.laurance.ml/p/centos-%E6%A0%B9%E7%9B%AE%E9%8C%84%E7%A3%81%E5%8D%80%E6%93%B4%E5%85%85/</guid>
+        <description>&lt;img src="https://note.laurance.ml/p/centos-%E6%A0%B9%E7%9B%AE%E9%8C%84%E7%A3%81%E5%8D%80%E6%93%B4%E5%85%85/100.png" alt="Featured image of post CentOS-根目錄磁區擴充" /&gt;&lt;pre&gt;&lt;code&gt;安裝xfsdump工具
+yum install xfsdump -y
+
+備份/home磁區的掛載內容 (一路按ENTER)
+xfsdump -f /home.xfsdump /home
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/centos-%E6%A0%B9%E7%9B%AE%E9%8C%84%E7%A3%81%E5%8D%80%E6%93%B4%E5%85%85/0001.png&#34;
+	width=&#34;1917&#34;
+	height=&#34;834&#34;
+	srcset=&#34;https://note.laurance.ml/p/centos-%E6%A0%B9%E7%9B%AE%E9%8C%84%E7%A3%81%E5%8D%80%E6%93%B4%E5%85%85/0001_hub08483849e95de621bb053a7bd70646e_54183_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/centos-%E6%A0%B9%E7%9B%AE%E9%8C%84%E7%A3%81%E5%8D%80%E6%93%B4%E5%85%85/0001_hub08483849e95de621bb053a7bd70646e_54183_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;229&#34;
+		data-flex-basis=&#34;551px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;這時候會再跟目錄出現剛剛備份的 /home &amp;gt;&amp;gt; home.xfsdump
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/centos-%E6%A0%B9%E7%9B%AE%E9%8C%84%E7%A3%81%E5%8D%80%E6%93%B4%E5%85%85/0002.png&#34;
+	width=&#34;1915&#34;
+	height=&#34;241&#34;
+	srcset=&#34;https://note.laurance.ml/p/centos-%E6%A0%B9%E7%9B%AE%E9%8C%84%E7%A3%81%E5%8D%80%E6%93%B4%E5%85%85/0002_hu96b56a738934441af73b6ef57a30dd5a_16573_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/centos-%E6%A0%B9%E7%9B%AE%E9%8C%84%E7%A3%81%E5%8D%80%E6%93%B4%E5%85%85/0002_hu96b56a738934441af73b6ef57a30dd5a_16573_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;794&#34;
+		data-flex-basis=&#34;1907px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;成功備份後，將/home磁區移除掛載 (必須以root身分登入才能執行)
+umount /home
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/centos-%E6%A0%B9%E7%9B%AE%E9%8C%84%E7%A3%81%E5%8D%80%E6%93%B4%E5%85%85/0003.png&#34;
+	width=&#34;1917&#34;
+	height=&#34;573&#34;
+	srcset=&#34;https://note.laurance.ml/p/centos-%E6%A0%B9%E7%9B%AE%E9%8C%84%E7%A3%81%E5%8D%80%E6%93%B4%E5%85%85/0003_hu3eec93602d7d2b4098a1403407aab693_40697_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/centos-%E6%A0%B9%E7%9B%AE%E9%8C%84%E7%A3%81%E5%8D%80%E6%93%B4%E5%85%85/0003_hu3eec93602d7d2b4098a1403407aab693_40697_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;334&#34;
+		data-flex-basis=&#34;802px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;將/home磁區大小定義為50G
+lvreduce -L 50G /dev/mapper/centos-home
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/centos-%E6%A0%B9%E7%9B%AE%E9%8C%84%E7%A3%81%E5%8D%80%E6%93%B4%E5%85%85/0004.png&#34;
+	width=&#34;1915&#34;
+	height=&#34;289&#34;
+	srcset=&#34;https://note.laurance.ml/p/centos-%E6%A0%B9%E7%9B%AE%E9%8C%84%E7%A3%81%E5%8D%80%E6%93%B4%E5%85%85/0004_hua8835cbf6b7f7fb57d73381ca3b524a7_22391_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/centos-%E6%A0%B9%E7%9B%AE%E9%8C%84%E7%A3%81%E5%8D%80%E6%93%B4%E5%85%85/0004_hua8835cbf6b7f7fb57d73381ca3b524a7_22391_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;662&#34;
+		data-flex-basis=&#34;1590px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;將其餘空間擴充到根目錄底下
+lvextend -l +100%FREE /dev/mapper/centos-root
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/centos-%E6%A0%B9%E7%9B%AE%E9%8C%84%E7%A3%81%E5%8D%80%E6%93%B4%E5%85%85/0005.png&#34;
+	width=&#34;1916&#34;
+	height=&#34;182&#34;
+	srcset=&#34;https://note.laurance.ml/p/centos-%E6%A0%B9%E7%9B%AE%E9%8C%84%E7%A3%81%E5%8D%80%E6%93%B4%E5%85%85/0005_hu985ada5fd73a9124f1b32d9a1c3f3f68_14525_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/centos-%E6%A0%B9%E7%9B%AE%E9%8C%84%E7%A3%81%E5%8D%80%E6%93%B4%E5%85%85/0005_hu985ada5fd73a9124f1b32d9a1c3f3f68_14525_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;1052&#34;
+		data-flex-basis=&#34;2526px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;使根目錄擴充生效
+xfs_growfs /dev/mapper/centos-root
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/centos-%E6%A0%B9%E7%9B%AE%E9%8C%84%E7%A3%81%E5%8D%80%E6%93%B4%E5%85%85/0006.png&#34;
+	width=&#34;1917&#34;
+	height=&#34;462&#34;
+	srcset=&#34;https://note.laurance.ml/p/centos-%E6%A0%B9%E7%9B%AE%E9%8C%84%E7%A3%81%E5%8D%80%E6%93%B4%E5%85%85/0006_hud7d997200f5ff198882a93bf921ea029_33543_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/centos-%E6%A0%B9%E7%9B%AE%E9%8C%84%E7%A3%81%E5%8D%80%E6%93%B4%E5%85%85/0006_hud7d997200f5ff198882a93bf921ea029_33543_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;414&#34;
+		data-flex-basis=&#34;995px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;格式化/home掛載對應的磁區
+mkfs.xfs -f /dev/mapper/centos-home
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/centos-%E6%A0%B9%E7%9B%AE%E9%8C%84%E7%A3%81%E5%8D%80%E6%93%B4%E5%85%85/0007.png&#34;
+	width=&#34;1917&#34;
+	height=&#34;353&#34;
+	srcset=&#34;https://note.laurance.ml/p/centos-%E6%A0%B9%E7%9B%AE%E9%8C%84%E7%A3%81%E5%8D%80%E6%93%B4%E5%85%85/0007_hu403507625d2d680908567b558c8aa7c3_26335_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/centos-%E6%A0%B9%E7%9B%AE%E9%8C%84%E7%A3%81%E5%8D%80%E6%93%B4%E5%85%85/0007_hu403507625d2d680908567b558c8aa7c3_26335_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;543&#34;
+		data-flex-basis=&#34;1303px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;重新掛載/home
+mount /home
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/centos-%E6%A0%B9%E7%9B%AE%E9%8C%84%E7%A3%81%E5%8D%80%E6%93%B4%E5%85%85/0008.png&#34;
+	width=&#34;1917&#34;
+	height=&#34;364&#34;
+	srcset=&#34;https://note.laurance.ml/p/centos-%E6%A0%B9%E7%9B%AE%E9%8C%84%E7%A3%81%E5%8D%80%E6%93%B4%E5%85%85/0008_hua0fe5688704e454d0b602b2df2e9fcc5_25188_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/centos-%E6%A0%B9%E7%9B%AE%E9%8C%84%E7%A3%81%E5%8D%80%E6%93%B4%E5%85%85/0008_hua0fe5688704e454d0b602b2df2e9fcc5_25188_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;526&#34;
+		data-flex-basis=&#34;1263px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;將原本備份的內容寫入/home
+xfsrestore -f /home.xfsdump /home
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/centos-%E6%A0%B9%E7%9B%AE%E9%8C%84%E7%A3%81%E5%8D%80%E6%93%B4%E5%85%85/0009.png&#34;
+	width=&#34;1918&#34;
+	height=&#34;511&#34;
+	srcset=&#34;https://note.laurance.ml/p/centos-%E6%A0%B9%E7%9B%AE%E9%8C%84%E7%A3%81%E5%8D%80%E6%93%B4%E5%85%85/0009_hue3412b3132bca76765f52a8c12347b5d_40541_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/centos-%E6%A0%B9%E7%9B%AE%E9%8C%84%E7%A3%81%E5%8D%80%E6%93%B4%E5%85%85/0009_hue3412b3132bca76765f52a8c12347b5d_40541_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;375&#34;
+		data-flex-basis=&#34;900px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;可以看倒已將磁區容量擴充
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/centos-%E6%A0%B9%E7%9B%AE%E9%8C%84%E7%A3%81%E5%8D%80%E6%93%B4%E5%85%85/00010.png&#34;
+	width=&#34;1914&#34;
+	height=&#34;411&#34;
+	srcset=&#34;https://note.laurance.ml/p/centos-%E6%A0%B9%E7%9B%AE%E9%8C%84%E7%A3%81%E5%8D%80%E6%93%B4%E5%85%85/00010_hu16cea63d6bef484da412835ec0ac8bd0_25358_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/centos-%E6%A0%B9%E7%9B%AE%E9%8C%84%E7%A3%81%E5%8D%80%E6%93%B4%E5%85%85/00010_hu16cea63d6bef484da412835ec0ac8bd0_25358_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;465&#34;
+		data-flex-basis=&#34;1117px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;hr&gt;
+
+</description>
+        </item>
+        <item>
+        <title>CentOS-目錄沒顯示顏色</title>
+        <link>https://note.laurance.ml/p/centos-%E7%9B%AE%E9%8C%84%E6%B2%92%E9%A1%AF%E7%A4%BA%E9%A1%8F%E8%89%B2/</link>
+        <pubDate>Wed, 03 Aug 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://note.laurance.ml/p/centos-%E7%9B%AE%E9%8C%84%E6%B2%92%E9%A1%AF%E7%A4%BA%E9%A1%8F%E8%89%B2/</guid>
+        <description>&lt;img src="https://note.laurance.ml/p/centos-%E7%9B%AE%E9%8C%84%E6%B2%92%E9%A1%AF%E7%A4%BA%E9%A1%8F%E8%89%B2/100.png" alt="Featured image of post CentOS-目錄沒顯示顏色" /&gt;&lt;pre&gt;&lt;code&gt;yum install coreutils --allowerasing &amp;amp;&amp;amp; or dnf install
+scp DIR_COLORS root@172.17.0.2:~
+mv DIR_COLORS ~/.dir_colors
+reboot
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+
+</description>
+        </item>
+        <item>
+        <title>CentOS6-修改yum源</title>
+        <link>https://note.laurance.ml/p/centos6-%E4%BF%AE%E6%94%B9yum%E6%BA%90/</link>
+        <pubDate>Wed, 03 Aug 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://note.laurance.ml/p/centos6-%E4%BF%AE%E6%94%B9yum%E6%BA%90/</guid>
+        <description>&lt;img src="https://note.laurance.ml/p/centos6-%E4%BF%AE%E6%94%B9yum%E6%BA%90/100.png" alt="Featured image of post CentOS6-修改yum源" /&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-javascript&#34; data-lang=&#34;javascript&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nx&#34;&gt;sed&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;i&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;e&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;s/^mirrorlist=http:\/\/mirrorlist.centos.org/#mirrorlist=http:\/\/mirrorlist.centos.org/g&amp;#34;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;etc&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;yum&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;repos&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;d&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;CentOS&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;Base&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;repo&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nx&#34;&gt;sed&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;i&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;e&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;s/^#baseurl=http:\/\/mirror.centos.org/baseurl=http:\/\/vault.centos.org/g&amp;#34;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;etc&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;yum&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;repos&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;d&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;CentOS&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;Base&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;repo&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
+
+</description>
+        </item>
+        <item>
+        <title>CentOS6-安裝socks5代理</title>
+        <link>https://note.laurance.ml/p/centos6-%E5%AE%89%E8%A3%9Dsocks5%E4%BB%A3%E7%90%86/</link>
+        <pubDate>Wed, 03 Aug 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://note.laurance.ml/p/centos6-%E5%AE%89%E8%A3%9Dsocks5%E4%BB%A3%E7%90%86/</guid>
+        <description>&lt;img src="https://note.laurance.ml/p/centos6-%E5%AE%89%E8%A3%9Dsocks5%E4%BB%A3%E7%90%86/100.png" alt="Featured image of post CentOS6-安裝socks5代理" /&gt;&lt;pre&gt;&lt;code&gt;wget https://nchc.dl.sourceforge.net/project/ss5/ss5/3.8.9-8/ss5-3.8.9-8.tar.gz
+
+yum -y install gcc automake make
+yum -y install pam-devel openldap-devel cyrus-sasl-devel openssl-devel
+
+tar xvf ss5-3.8.9-8.tar.gz
+cd ss5-3.8.9
+./configure &amp;amp;&amp;amp; make &amp;amp;&amp;amp; make install
+
+vi /etc/opt/ss5/ss5.conf
+auth    0.0.0.0/0               -              -
+permit -        0.0.0.0/0       -       0.0.0.0/0
+
+加入用戶名及密碼 /etc/opt/ss5/ss5.passwd
+
+修改ss5啟動的port(默認是1080)
+vi /etc/sysconfig/ss5
+#SS5_OPTS=” -u root”
+註解新增
+SS5_OPTS=&amp;quot; -u root -b 0.0.0.0:8080&amp;quot;
+
+bash檔增執行權限 /etc/rc.d/init.d/ss5
+chmod 755 /etc/rc.d/init.d/ss5
+
+service ss5 start
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+
+</description>
+        </item>
+        
+    </channel>
+</rss>

@@ -1,0 +1,1245 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>AWS on Laurance&#39;s Note</title>
+        <link>https://note.laurance.ml/categories/aws/</link>
+        <description>Recent content in AWS on Laurance&#39;s Note</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Tue, 18 Oct 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://note.laurance.ml/categories/aws/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>AWS-連線至 windows-ec2</title>
+        <link>https://note.laurance.ml/p/aws-%E9%80%A3%E7%B7%9A%E8%87%B3-windows-ec2/</link>
+        <pubDate>Tue, 18 Oct 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://note.laurance.ml/p/aws-%E9%80%A3%E7%B7%9A%E8%87%B3-windows-ec2/</guid>
+        <description>&lt;img src="https://note.laurance.ml/p/aws-%E9%80%A3%E7%B7%9A%E8%87%B3-windows-ec2/100.png" alt="Featured image of post AWS-連線至 windows-ec2" /&gt;&lt;pre&gt;&lt;code&gt;在新建立的 Instances 右鍵選擇 Connect
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/aws-%E9%80%A3%E7%B7%9A%E8%87%B3-windows-ec2/001.png&#34;
+	width=&#34;1918&#34;
+	height=&#34;914&#34;
+	srcset=&#34;https://note.laurance.ml/p/aws-%E9%80%A3%E7%B7%9A%E8%87%B3-windows-ec2/001_hu1a324c78169d6e000f529c786399306a_275259_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/aws-%E9%80%A3%E7%B7%9A%E8%87%B3-windows-ec2/001_hu1a324c78169d6e000f529c786399306a_275259_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;209&#34;
+		data-flex-basis=&#34;503px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;選擇 RDP client 並點選 Get password
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/aws-%E9%80%A3%E7%B7%9A%E8%87%B3-windows-ec2/002.png&#34;
+	width=&#34;1918&#34;
+	height=&#34;915&#34;
+	srcset=&#34;https://note.laurance.ml/p/aws-%E9%80%A3%E7%B7%9A%E8%87%B3-windows-ec2/002_hu90b1cda24834852d5b65f92bf0ace5e7_121029_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/aws-%E9%80%A3%E7%B7%9A%E8%87%B3-windows-ec2/002_hu90b1cda24834852d5b65f92bf0ace5e7_121029_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;209&#34;
+		data-flex-basis=&#34;503px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;選擇 Browse (瀏覽) 並選取製作 instance 的金鑰 (.pem) 並選擇 Decrypt Password (解密密碼)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/aws-%E9%80%A3%E7%B7%9A%E8%87%B3-windows-ec2/003.png&#34;
+	width=&#34;1917&#34;
+	height=&#34;917&#34;
+	srcset=&#34;https://note.laurance.ml/p/aws-%E9%80%A3%E7%B7%9A%E8%87%B3-windows-ec2/003_hu7a33709b31e1ffcaa4c2d03d505ce2df_133295_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/aws-%E9%80%A3%E7%B7%9A%E8%87%B3-windows-ec2/003_hu7a33709b31e1ffcaa4c2d03d505ce2df_133295_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;209&#34;
+		data-flex-basis=&#34;501px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;使用後台給的亂數密碼建立遠端桌面連線 (帳號預設都是 Administrator)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/aws-%E9%80%A3%E7%B7%9A%E8%87%B3-windows-ec2/004.png&#34;
+	width=&#34;1918&#34;
+	height=&#34;914&#34;
+	srcset=&#34;https://note.laurance.ml/p/aws-%E9%80%A3%E7%B7%9A%E8%87%B3-windows-ec2/004_hu0fbdde8bc7f88f17ecf6742a8757019b_140790_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/aws-%E9%80%A3%E7%B7%9A%E8%87%B3-windows-ec2/004_hu0fbdde8bc7f88f17ecf6742a8757019b_140790_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;209&#34;
+		data-flex-basis=&#34;503px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://docs.aws.amazon.com/zh_tw/AWSEC2/latest/WindowsGuide/connecting_to_windows_instance.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;官方文件連結&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+
+</description>
+        </item>
+        <item>
+        <title>AWS-Codecommit SSH 金鑰上傳及設置</title>
+        <link>https://note.laurance.ml/p/aws-codecommit-ssh-%E9%87%91%E9%91%B0%E4%B8%8A%E5%82%B3%E5%8F%8A%E8%A8%AD%E7%BD%AE/</link>
+        <pubDate>Fri, 30 Sep 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://note.laurance.ml/p/aws-codecommit-ssh-%E9%87%91%E9%91%B0%E4%B8%8A%E5%82%B3%E5%8F%8A%E8%A8%AD%E7%BD%AE/</guid>
+        <description>&lt;img src="https://note.laurance.ml/p/aws-codecommit-ssh-%E9%87%91%E9%91%B0%E4%B8%8A%E5%82%B3%E5%8F%8A%E8%A8%AD%E7%BD%AE/100.png" alt="Featured image of post AWS-Codecommit SSH 金鑰上傳及設置" /&gt;&lt;pre&gt;&lt;code&gt;先到個人帳號家目錄下的.ssh 製作金鑰
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/aws-codecommit-ssh-%E9%87%91%E9%91%B0%E4%B8%8A%E5%82%B3%E5%8F%8A%E8%A8%AD%E7%BD%AE/001.png&#34;
+	width=&#34;1917&#34;
+	height=&#34;627&#34;
+	srcset=&#34;https://note.laurance.ml/p/aws-codecommit-ssh-%E9%87%91%E9%91%B0%E4%B8%8A%E5%82%B3%E5%8F%8A%E8%A8%AD%E7%BD%AE/001_hud03c8775a2ef0bfc9c4713aaea8e6d66_36373_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/aws-codecommit-ssh-%E9%87%91%E9%91%B0%E4%B8%8A%E5%82%B3%E5%8F%8A%E8%A8%AD%E7%BD%AE/001_hud03c8775a2ef0bfc9c4713aaea8e6d66_36373_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;305&#34;
+		data-flex-basis=&#34;733px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;製作完後會有兩支檔案
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/aws-codecommit-ssh-%E9%87%91%E9%91%B0%E4%B8%8A%E5%82%B3%E5%8F%8A%E8%A8%AD%E7%BD%AE/003.png&#34;
+	width=&#34;1920&#34;
+	height=&#34;860&#34;
+	srcset=&#34;https://note.laurance.ml/p/aws-codecommit-ssh-%E9%87%91%E9%91%B0%E4%B8%8A%E5%82%B3%E5%8F%8A%E8%A8%AD%E7%BD%AE/003_hue4cbce95022f44e9a118346c4c9476fe_40880_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/aws-codecommit-ssh-%E9%87%91%E9%91%B0%E4%B8%8A%E5%82%B3%E5%8F%8A%E8%A8%AD%E7%BD%AE/003_hue4cbce95022f44e9a118346c4c9476fe_40880_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;223&#34;
+		data-flex-basis=&#34;535px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;製作完後將id_rsa.pub 上傳至AWS-IAM個人帳號
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/aws-codecommit-ssh-%E9%87%91%E9%91%B0%E4%B8%8A%E5%82%B3%E5%8F%8A%E8%A8%AD%E7%BD%AE/004.png&#34;
+	width=&#34;1920&#34;
+	height=&#34;937&#34;
+	srcset=&#34;https://note.laurance.ml/p/aws-codecommit-ssh-%E9%87%91%E9%91%B0%E4%B8%8A%E5%82%B3%E5%8F%8A%E8%A8%AD%E7%BD%AE/004_huc89d2172e87f3dd0f4db657e5e7fd266_134475_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/aws-codecommit-ssh-%E9%87%91%E9%91%B0%E4%B8%8A%E5%82%B3%E5%8F%8A%E8%A8%AD%E7%BD%AE/004_huc89d2172e87f3dd0f4db657e5e7fd266_134475_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;204&#34;
+		data-flex-basis=&#34;491px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;上傳後會得到SSH密鑰 ID
+
+將ID複製下來
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/aws-codecommit-ssh-%E9%87%91%E9%91%B0%E4%B8%8A%E5%82%B3%E5%8F%8A%E8%A8%AD%E7%BD%AE/005.png&#34;
+	width=&#34;1920&#34;
+	height=&#34;937&#34;
+	srcset=&#34;https://note.laurance.ml/p/aws-codecommit-ssh-%E9%87%91%E9%91%B0%E4%B8%8A%E5%82%B3%E5%8F%8A%E8%A8%AD%E7%BD%AE/005_hu550ea9608d9509aeda391104641e500f_143704_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/aws-codecommit-ssh-%E9%87%91%E9%91%B0%E4%B8%8A%E5%82%B3%E5%8F%8A%E8%A8%AD%E7%BD%AE/005_hu550ea9608d9509aeda391104641e500f_143704_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;204&#34;
+		data-flex-basis=&#34;491px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;再回到機器帳號跟目錄下的.ssh
+
+vim config
+Host git-codecommit.ap-northeast-2.amazonaws.com &amp;lt; --只需要地區，目錄不用
+User SSH密鑰 ID
+IdentityFile ~/.ssh/id_rsa &amp;lt;--私鑰檔案路徑
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/aws-codecommit-ssh-%E9%87%91%E9%91%B0%E4%B8%8A%E5%82%B3%E5%8F%8A%E8%A8%AD%E7%BD%AE/007.png&#34;
+	width=&#34;1918&#34;
+	height=&#34;245&#34;
+	srcset=&#34;https://note.laurance.ml/p/aws-codecommit-ssh-%E9%87%91%E9%91%B0%E4%B8%8A%E5%82%B3%E5%8F%8A%E8%A8%AD%E7%BD%AE/007_hu2c842958113359c656c7e269ae3afb1b_8539_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/aws-codecommit-ssh-%E9%87%91%E9%91%B0%E4%B8%8A%E5%82%B3%E5%8F%8A%E8%A8%AD%E7%BD%AE/007_hu2c842958113359c656c7e269ae3afb1b_8539_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;782&#34;
+		data-flex-basis=&#34;1878px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Codecommit的位置取得
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/aws-codecommit-ssh-%E9%87%91%E9%91%B0%E4%B8%8A%E5%82%B3%E5%8F%8A%E8%A8%AD%E7%BD%AE/006.png&#34;
+	width=&#34;1920&#34;
+	height=&#34;824&#34;
+	srcset=&#34;https://note.laurance.ml/p/aws-codecommit-ssh-%E9%87%91%E9%91%B0%E4%B8%8A%E5%82%B3%E5%8F%8A%E8%A8%AD%E7%BD%AE/006_hu45f65da6599c87c94b9576eb767a87a1_83414_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/aws-codecommit-ssh-%E9%87%91%E9%91%B0%E4%B8%8A%E5%82%B3%E5%8F%8A%E8%A8%AD%E7%BD%AE/006_hu45f65da6599c87c94b9576eb767a87a1_83414_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;233&#34;
+		data-flex-basis=&#34;559px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;新增完成後將檔案權限改為 600
+chmod 600 config
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/aws-codecommit-ssh-%E9%87%91%E9%91%B0%E4%B8%8A%E5%82%B3%E5%8F%8A%E8%A8%AD%E7%BD%AE/008.png&#34;
+	width=&#34;1918&#34;
+	height=&#34;342&#34;
+	srcset=&#34;https://note.laurance.ml/p/aws-codecommit-ssh-%E9%87%91%E9%91%B0%E4%B8%8A%E5%82%B3%E5%8F%8A%E8%A8%AD%E7%BD%AE/008_huc7da9f16d29884bbff1fcb0dfb39cdf7_30920_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/aws-codecommit-ssh-%E9%87%91%E9%91%B0%E4%B8%8A%E5%82%B3%E5%8F%8A%E8%A8%AD%E7%BD%AE/008_huc7da9f16d29884bbff1fcb0dfb39cdf7_30920_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;560&#34;
+		data-flex-basis=&#34;1345px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;即完成設定
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+
+</description>
+        </item>
+        <item>
+        <title>AWS - WAF &amp; Rules 建置</title>
+        <link>https://note.laurance.ml/p/aws-waf-rules-%E5%BB%BA%E7%BD%AE/</link>
+        <pubDate>Thu, 08 Sep 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://note.laurance.ml/p/aws-waf-rules-%E5%BB%BA%E7%BD%AE/</guid>
+        <description>&lt;img src="https://note.laurance.ml/p/aws-waf-rules-%E5%BB%BA%E7%BD%AE/100.png" alt="Featured image of post AWS - WAF &amp; Rules 建置" /&gt;&lt;p&gt;{Step 1} 建立 &lt;code&gt;IP match conditions&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/aws-waf-rules-%E5%BB%BA%E7%BD%AE/401.png&#34;
+	width=&#34;1920&#34;
+	height=&#34;937&#34;
+	srcset=&#34;https://note.laurance.ml/p/aws-waf-rules-%E5%BB%BA%E7%BD%AE/401_hua4fb2a3dba058f29882e2bc4b1a0368a_56661_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/aws-waf-rules-%E5%BB%BA%E7%BD%AE/401_hua4fb2a3dba058f29882e2bc4b1a0368a_56661_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;204&#34;
+		data-flex-basis=&#34;491px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;{Step 2} 輸入名稱 , 區域 , 要封鎖的 IP&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/aws-waf-rules-%E5%BB%BA%E7%BD%AE/402.png&#34;
+	width=&#34;1920&#34;
+	height=&#34;937&#34;
+	srcset=&#34;https://note.laurance.ml/p/aws-waf-rules-%E5%BB%BA%E7%BD%AE/402_hubee72f268e281551156c8883f5f688cf_46230_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/aws-waf-rules-%E5%BB%BA%E7%BD%AE/402_hubee72f268e281551156c8883f5f688cf_46230_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;204&#34;
+		data-flex-basis=&#34;491px&#34;
+	
+&gt;
+&lt;img src=&#34;https://note.laurance.ml/p/aws-waf-rules-%E5%BB%BA%E7%BD%AE/403.png&#34;
+	width=&#34;1920&#34;
+	height=&#34;937&#34;
+	srcset=&#34;https://note.laurance.ml/p/aws-waf-rules-%E5%BB%BA%E7%BD%AE/403_huc119bc65560eb5660a37466252e2d7fe_62836_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/aws-waf-rules-%E5%BB%BA%E7%BD%AE/403_huc119bc65560eb5660a37466252e2d7fe_62836_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;204&#34;
+		data-flex-basis=&#34;491px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;{Step 3} 建立 &lt;code&gt;Rules&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/aws-waf-rules-%E5%BB%BA%E7%BD%AE/404.png&#34;
+	width=&#34;1920&#34;
+	height=&#34;937&#34;
+	srcset=&#34;https://note.laurance.ml/p/aws-waf-rules-%E5%BB%BA%E7%BD%AE/404_hu884e4409a00ae0a220a7eb423e28815b_54504_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/aws-waf-rules-%E5%BB%BA%E7%BD%AE/404_hu884e4409a00ae0a220a7eb423e28815b_54504_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;204&#34;
+		data-flex-basis=&#34;491px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;{Step 4} 輸入名稱 , 規則 , 掛進剛建立的 &lt;code&gt;IP match conditions&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/aws-waf-rules-%E5%BB%BA%E7%BD%AE/405.png&#34;
+	width=&#34;1920&#34;
+	height=&#34;937&#34;
+	srcset=&#34;https://note.laurance.ml/p/aws-waf-rules-%E5%BB%BA%E7%BD%AE/405_huc60d6093c2f89bebb8015d8c8c832242_56459_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/aws-waf-rules-%E5%BB%BA%E7%BD%AE/405_huc60d6093c2f89bebb8015d8c8c832242_56459_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;204&#34;
+		data-flex-basis=&#34;491px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;{Step 5} 編輯 &lt;code&gt;Web ACL&lt;/code&gt;  將剛建立的 &lt;code&gt;Rules&lt;/code&gt; 掛入&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/aws-waf-rules-%E5%BB%BA%E7%BD%AE/406.png&#34;
+	width=&#34;1920&#34;
+	height=&#34;937&#34;
+	srcset=&#34;https://note.laurance.ml/p/aws-waf-rules-%E5%BB%BA%E7%BD%AE/406_hu7ffeab98a856bf192d45711f77caeef0_86644_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/aws-waf-rules-%E5%BB%BA%E7%BD%AE/406_hu7ffeab98a856bf192d45711f77caeef0_86644_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;204&#34;
+		data-flex-basis=&#34;491px&#34;
+	
+&gt;
+&lt;img src=&#34;https://note.laurance.ml/p/aws-waf-rules-%E5%BB%BA%E7%BD%AE/407.png&#34;
+	width=&#34;1920&#34;
+	height=&#34;937&#34;
+	srcset=&#34;https://note.laurance.ml/p/aws-waf-rules-%E5%BB%BA%E7%BD%AE/407_hu6dde44dc1bc6250bd00af1ca715ba4f7_71581_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/aws-waf-rules-%E5%BB%BA%E7%BD%AE/407_hu6dde44dc1bc6250bd00af1ca715ba4f7_71581_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;204&#34;
+		data-flex-basis=&#34;491px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;web-acl-建置&#34;&gt;Web ACL 建置&lt;/h1&gt;
+&lt;p&gt;點選 &lt;code&gt;Create web ACL&lt;/code&gt; 區域選 &lt;code&gt;Global CloudFront&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/aws-waf-rules-%E5%BB%BA%E7%BD%AE/301.png&#34;
+	width=&#34;1920&#34;
+	height=&#34;937&#34;
+	srcset=&#34;https://note.laurance.ml/p/aws-waf-rules-%E5%BB%BA%E7%BD%AE/301_hu0a1b16c68737bf4c3ef54d284371572d_71184_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/aws-waf-rules-%E5%BB%BA%E7%BD%AE/301_hu0a1b16c68737bf4c3ef54d284371572d_71184_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;204&#34;
+		data-flex-basis=&#34;491px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;輸入名稱 , Cloudwatch metric 名稱 (這兩個名稱之後無法更改)&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/aws-waf-rules-%E5%BB%BA%E7%BD%AE/302.png&#34;
+	width=&#34;1920&#34;
+	height=&#34;937&#34;
+	srcset=&#34;https://note.laurance.ml/p/aws-waf-rules-%E5%BB%BA%E7%BD%AE/302_huaaf902b53d49ad6e819f6b4c3b202c18_46353_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/aws-waf-rules-%E5%BB%BA%E7%BD%AE/302_huaaf902b53d49ad6e819f6b4c3b202c18_46353_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;204&#34;
+		data-flex-basis=&#34;491px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;選擇該 WAF 政策&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/aws-waf-rules-%E5%BB%BA%E7%BD%AE/303.png&#34;
+	width=&#34;1900&#34;
+	height=&#34;1627&#34;
+	srcset=&#34;https://note.laurance.ml/p/aws-waf-rules-%E5%BB%BA%E7%BD%AE/303_hu81d6c32413a0659fa55d83b6a757ff69_146405_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/aws-waf-rules-%E5%BB%BA%E7%BD%AE/303_hu81d6c32413a0659fa55d83b6a757ff69_146405_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;116&#34;
+		data-flex-basis=&#34;280px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;選擇該 WAF 規則&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/aws-waf-rules-%E5%BB%BA%E7%BD%AE/304.png&#34;
+	width=&#34;1920&#34;
+	height=&#34;937&#34;
+	srcset=&#34;https://note.laurance.ml/p/aws-waf-rules-%E5%BB%BA%E7%BD%AE/304_hu98b72e272b272d5379678fdf5234c004_78282_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/aws-waf-rules-%E5%BB%BA%E7%BD%AE/304_hu98b72e272b272d5379678fdf5234c004_78282_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;204&#34;
+		data-flex-basis=&#34;491px&#34;
+	
+&gt;
+&lt;img src=&#34;https://note.laurance.ml/p/aws-waf-rules-%E5%BB%BA%E7%BD%AE/305.png&#34;
+	width=&#34;1920&#34;
+	height=&#34;937&#34;
+	srcset=&#34;https://note.laurance.ml/p/aws-waf-rules-%E5%BB%BA%E7%BD%AE/305_hu19654ce1664352c06669fa1f57b2a713_84720_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/aws-waf-rules-%E5%BB%BA%E7%BD%AE/305_hu19654ce1664352c06669fa1f57b2a713_84720_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;204&#34;
+		data-flex-basis=&#34;491px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;建立&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/aws-waf-rules-%E5%BB%BA%E7%BD%AE/306.png&#34;
+	width=&#34;1920&#34;
+	height=&#34;937&#34;
+	srcset=&#34;https://note.laurance.ml/p/aws-waf-rules-%E5%BB%BA%E7%BD%AE/306_hu5250851c573eef93631e7f968c7f1ea4_72038_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/aws-waf-rules-%E5%BB%BA%E7%BD%AE/306_hu5250851c573eef93631e7f968c7f1ea4_72038_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;204&#34;
+		data-flex-basis=&#34;491px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;hr&gt;
+
+</description>
+        </item>
+        <item>
+        <title>AWS- update-ip-set to block based IP address for WAF</title>
+        <link>https://note.laurance.ml/p/aws-update-ip-set-to-block-based-ip-address-for-waf/</link>
+        <pubDate>Thu, 08 Sep 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://note.laurance.ml/p/aws-update-ip-set-to-block-based-ip-address-for-waf/</guid>
+        <description>&lt;img src="https://note.laurance.ml/p/aws-update-ip-set-to-block-based-ip-address-for-waf/100.png" alt="Featured image of post AWS- update-ip-set to block based IP address for WAF" /&gt;&lt;p&gt;{Step 1} 獲取 &lt;code&gt;Token&lt;/code&gt; [GetChangeToken]&lt;/p&gt;
+&lt;h5 id=&#34;對waf進行操作時需要有一個token以防止衝突的請求&#34;&gt;對WAF進行操作時,需要有一個Token,以防止衝突的請求&lt;/h5&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;l&#34;&gt;/usr/bin/aws waf get-change-token|jq -r &amp;#39;.ChangeToken&amp;#39;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;pre&gt;&lt;code&gt;$Token = c93e119c-607e-43b5-98e3-66d3XXXXXXX
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;{Step 2} 取得 &lt;code&gt;IP address ID&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/aws-update-ip-set-to-block-based-ip-address-for-waf/301.png&#34;
+	width=&#34;1920&#34;
+	height=&#34;937&#34;
+	srcset=&#34;https://note.laurance.ml/p/aws-update-ip-set-to-block-based-ip-address-for-waf/301_hu37ad46424fc18f0c930c1aa1bd39bd1a_63235_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/aws-update-ip-set-to-block-based-ip-address-for-waf/301_hu37ad46424fc18f0c930c1aa1bd39bd1a_63235_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;204&#34;
+		data-flex-basis=&#34;491px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$addressID = XXXXXXXXX791cd453-01ba-46ed-8863
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;API :&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;l&#34;&gt;/usr/bin/aws waf update-ip-set --ip-set-id  $addressID  --change-token $Token --updates Action=&amp;#34;INSERT&amp;#34;,IPSetDescriptor=&amp;#39;{Type=&amp;#34;IPV4&amp;#34;,Value=&amp;#34; XX.XX.XX.XX/32&amp;#34;}&amp;#39;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;參考: &lt;a class=&#34;link&#34; href=&#34;https://docs.aws.amazon.com/cli/latest/reference/waf/update-ip-set.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://docs.aws.amazon.com/cli/latest/reference/waf/update-ip-set.html&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+
+</description>
+        </item>
+        <item>
+        <title>AWS-Cloudfront CDN快取清除</title>
+        <link>https://note.laurance.ml/p/aws-cloudfront-cdn%E5%BF%AB%E5%8F%96%E6%B8%85%E9%99%A4/</link>
+        <pubDate>Thu, 08 Sep 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://note.laurance.ml/p/aws-cloudfront-cdn%E5%BF%AB%E5%8F%96%E6%B8%85%E9%99%A4/</guid>
+        <description>&lt;img src="https://note.laurance.ml/p/aws-cloudfront-cdn%E5%BF%AB%E5%8F%96%E6%B8%85%E9%99%A4/100.png" alt="Featured image of post AWS-Cloudfront CDN快取清除" /&gt;&lt;pre&gt;&lt;code&gt;到AWS-Cloudfront後台 選取要清除暫存的SITE
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/aws-cloudfront-cdn%E5%BF%AB%E5%8F%96%E6%B8%85%E9%99%A4/01.png&#34;
+	width=&#34;1724&#34;
+	height=&#34;896&#34;
+	srcset=&#34;https://note.laurance.ml/p/aws-cloudfront-cdn%E5%BF%AB%E5%8F%96%E6%B8%85%E9%99%A4/01_huc51b3d1afcb9912922be05517b8a9b70_461963_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/aws-cloudfront-cdn%E5%BF%AB%E5%8F%96%E6%B8%85%E9%99%A4/01_huc51b3d1afcb9912922be05517b8a9b70_461963_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;192&#34;
+		data-flex-basis=&#34;461px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;選取Invalidations 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/aws-cloudfront-cdn%E5%BF%AB%E5%8F%96%E6%B8%85%E9%99%A4/02.png&#34;
+	width=&#34;1438&#34;
+	height=&#34;610&#34;
+	srcset=&#34;https://note.laurance.ml/p/aws-cloudfront-cdn%E5%BF%AB%E5%8F%96%E6%B8%85%E9%99%A4/02_hua7d4cb57a33b0b7bef3a3c2f8e0e825d_38094_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/aws-cloudfront-cdn%E5%BF%AB%E5%8F%96%E6%B8%85%E9%99%A4/02_hua7d4cb57a33b0b7bef3a3c2f8e0e825d_38094_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;235&#34;
+		data-flex-basis=&#34;565px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;/* 表示清除所有 再點選Create invalidation即可
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/aws-cloudfront-cdn%E5%BF%AB%E5%8F%96%E6%B8%85%E9%99%A4/03.png&#34;
+	width=&#34;870&#34;
+	height=&#34;422&#34;
+	srcset=&#34;https://note.laurance.ml/p/aws-cloudfront-cdn%E5%BF%AB%E5%8F%96%E6%B8%85%E9%99%A4/03_huec5ee1d0b87bd9262ed93f2d201e287a_25976_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/aws-cloudfront-cdn%E5%BF%AB%E5%8F%96%E6%B8%85%E9%99%A4/03_huec5ee1d0b87bd9262ed93f2d201e287a_25976_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;206&#34;
+		data-flex-basis=&#34;494px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;hr&gt;
+
+</description>
+        </item>
+        <item>
+        <title>AWS-EC2 AMI轉地區&amp;帳號</title>
+        <link>https://note.laurance.ml/p/aws-ec2-ami%E8%BD%89%E5%9C%B0%E5%8D%80%E5%B8%B3%E8%99%9F/</link>
+        <pubDate>Thu, 08 Sep 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://note.laurance.ml/p/aws-ec2-ami%E8%BD%89%E5%9C%B0%E5%8D%80%E5%B8%B3%E8%99%9F/</guid>
+        <description>&lt;img src="https://note.laurance.ml/p/aws-ec2-ami%E8%BD%89%E5%9C%B0%E5%8D%80%E5%B8%B3%E8%99%9F/100.png" alt="Featured image of post AWS-EC2 AMI轉地區&amp;帳號" /&gt;&lt;pre&gt;&lt;code&gt;在ec2→ami底下Actions選Copy AMI
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/aws-ec2-ami%E8%BD%89%E5%9C%B0%E5%8D%80%E5%B8%B3%E8%99%9F/01.png&#34;
+	width=&#34;392&#34;
+	height=&#34;261&#34;
+	srcset=&#34;https://note.laurance.ml/p/aws-ec2-ami%E8%BD%89%E5%9C%B0%E5%8D%80%E5%B8%B3%E8%99%9F/01_hu81a29e4b0703ba5e7465359355b0ca8f_15365_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/aws-ec2-ami%E8%BD%89%E5%9C%B0%E5%8D%80%E5%B8%B3%E8%99%9F/01_hu81a29e4b0703ba5e7465359355b0ca8f_15365_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;150&#34;
+		data-flex-basis=&#34;360px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;在Destination region 選擇要移轉的地區
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/aws-ec2-ami%E8%BD%89%E5%9C%B0%E5%8D%80%E5%B8%B3%E8%99%9F/02.png&#34;
+	width=&#34;754&#34;
+	height=&#34;483&#34;
+	srcset=&#34;https://note.laurance.ml/p/aws-ec2-ami%E8%BD%89%E5%9C%B0%E5%8D%80%E5%B8%B3%E8%99%9F/02_hu860d160c072b0d4f4a6a4acef88a56fd_56680_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/aws-ec2-ami%E8%BD%89%E5%9C%B0%E5%8D%80%E5%B8%B3%E8%99%9F/02_hu860d160c072b0d4f4a6a4acef88a56fd_56680_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;156&#34;
+		data-flex-basis=&#34;374px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;在Pemissions底下按edit
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/aws-ec2-ami%E8%BD%89%E5%9C%B0%E5%8D%80%E5%B8%B3%E8%99%9F/03.png&#34;
+	width=&#34;764&#34;
+	height=&#34;166&#34;
+	srcset=&#34;https://note.laurance.ml/p/aws-ec2-ami%E8%BD%89%E5%9C%B0%E5%8D%80%E5%B8%B3%E8%99%9F/03_hu9e441c479cbb2203d52dbb420785c8de_17115_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/aws-ec2-ami%E8%BD%89%E5%9C%B0%E5%8D%80%E5%B8%B3%E8%99%9F/03_hu9e441c479cbb2203d52dbb420785c8de_17115_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;460&#34;
+		data-flex-basis=&#34;1104px&#34;
+	
+&gt;
+&lt;img src=&#34;https://note.laurance.ml/p/aws-ec2-ami%E8%BD%89%E5%9C%B0%E5%8D%80%E5%B8%B3%E8%99%9F/04.png&#34;
+	width=&#34;419&#34;
+	height=&#34;271&#34;
+	srcset=&#34;https://note.laurance.ml/p/aws-ec2-ami%E8%BD%89%E5%9C%B0%E5%8D%80%E5%B8%B3%E8%99%9F/04_hufcd3dfdabc6692727b7ea3b29aaa8e2a_26402_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/aws-ec2-ami%E8%BD%89%E5%9C%B0%E5%8D%80%E5%B8%B3%E8%99%9F/04_hufcd3dfdabc6692727b7ea3b29aaa8e2a_26402_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;154&#34;
+		data-flex-basis=&#34;371px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;在AWS Account Number 輸入要移轉的帳號
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/aws-ec2-ami%E8%BD%89%E5%9C%B0%E5%8D%80%E5%B8%B3%E8%99%9F/05.png&#34;
+	width=&#34;710&#34;
+	height=&#34;377&#34;
+	srcset=&#34;https://note.laurance.ml/p/aws-ec2-ami%E8%BD%89%E5%9C%B0%E5%8D%80%E5%B8%B3%E8%99%9F/05_hue408912f48cf21e03b4c60a103edd6d0_21998_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/aws-ec2-ami%E8%BD%89%E5%9C%B0%E5%8D%80%E5%B8%B3%E8%99%9F/05_hue408912f48cf21e03b4c60a103edd6d0_21998_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;188&#34;
+		data-flex-basis=&#34;451px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;hr&gt;
+
+</description>
+        </item>
+        <item>
+        <title>AWS-EC2 mysql-slave跟隨RDS教學</title>
+        <link>https://note.laurance.ml/p/aws-ec2-mysql-slave%E8%B7%9F%E9%9A%A8rds%E6%95%99%E5%AD%B8/</link>
+        <pubDate>Thu, 08 Sep 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://note.laurance.ml/p/aws-ec2-mysql-slave%E8%B7%9F%E9%9A%A8rds%E6%95%99%E5%AD%B8/</guid>
+        <description>&lt;img src="https://note.laurance.ml/p/aws-ec2-mysql-slave%E8%B7%9F%E9%9A%A8rds%E6%95%99%E5%AD%B8/100.png" alt="Featured image of post AWS-EC2 mysql-slave跟隨RDS教學" /&gt;&lt;pre&gt;&lt;code&gt;CALL mysql.rds_set_configuration(&#39;binlog retention hours&#39;, 12);
+
+show master status\G;
+
+CALL mysql.rds_stop_replication;
+show slave status\G;
+
+mysql -e &amp;quot;show databases;&amp;quot; -uroot -p -hRDS-master連結位置 | grep -Ev &amp;quot;Database|XXX_mariadb|information_schema|innodb|mysql|performance_schema&amp;quot; | xargs mysqldump -uroot -p -hRDS-master連結位置 --databases &amp;gt; db.sql 
+
+mysqldump -uroot -p mysql rds_configuration rds_global_status_history rds_global_status_history_old rds_heartbeat2 rds_history rds_replication_status rds_sysinfo slow_log_template &amp;gt; RDS_mysql.sql
+
+rm -f /var/lib/mysql/mysql/rds*
+rm -f [大寫英文字母開頭的目錄] [白字檔]
+mysqld_save&amp;amp;
+
+mysql -uking -p &amp;lt; db.sql
+
+mysql -uking -p mysql &amp;lt; RDS_mysql.sql
+
+CHANGE MASTER TO MASTER_HOST=&#39;RDS-master連結位置&#39;, MASTER_USER=&#39;主從帳號&#39;, MASTER_PASSWORD=&#39;主從密碼&#39;;  ----跟隨RDS-master
+CHANGE MASTER TO MASTER_LOG_FILE = &#39;bin-log檔名&#39;,MASTER_LOG_POS =進度;
+start slave;
+show slave status\G;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+
+</description>
+        </item>
+        <item>
+        <title>AWS-變更 Management Console 的語言</title>
+        <link>https://note.laurance.ml/p/aws-%E8%AE%8A%E6%9B%B4-management-console-%E7%9A%84%E8%AA%9E%E8%A8%80/</link>
+        <pubDate>Thu, 08 Sep 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://note.laurance.ml/p/aws-%E8%AE%8A%E6%9B%B4-management-console-%E7%9A%84%E8%AA%9E%E8%A8%80/</guid>
+        <description>&lt;img src="https://note.laurance.ml/p/aws-%E8%AE%8A%E6%9B%B4-management-console-%E7%9A%84%E8%AA%9E%E8%A8%80/100.png" alt="Featured image of post AWS-變更 Management Console 的語言" /&gt;&lt;pre&gt;&lt;code&gt;登入 AWS Management Console
+
+在導覽列上選擇您的帳戶名稱
+
+選擇 Settings (設定)，開啟 Unified Settings (統一設定) 頁面
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/aws-%E8%AE%8A%E6%9B%B4-management-console-%E7%9A%84%E8%AA%9E%E8%A8%80/01.png&#34;
+	width=&#34;323&#34;
+	height=&#34;430&#34;
+	srcset=&#34;https://note.laurance.ml/p/aws-%E8%AE%8A%E6%9B%B4-management-console-%E7%9A%84%E8%AA%9E%E8%A8%80/01_hu1d0b4c661f5f9a3f9f42c01d8f1da766_22953_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/aws-%E8%AE%8A%E6%9B%B4-management-console-%E7%9A%84%E8%AA%9E%E8%A8%80/01_hu1d0b4c661f5f9a3f9f42c01d8f1da766_22953_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;75&#34;
+		data-flex-basis=&#34;180px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;在 Unified Settings (統一設定) 中，選擇位於 Localization and default Region (本地化和預設區域) 旁的 Edit (編輯)
+
+選取您想在主控台使用的語言，然後選擇 Save changes (儲存變更)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/aws-%E8%AE%8A%E6%9B%B4-management-console-%E7%9A%84%E8%AA%9E%E8%A8%80/02.png&#34;
+	width=&#34;1616&#34;
+	height=&#34;270&#34;
+	srcset=&#34;https://note.laurance.ml/p/aws-%E8%AE%8A%E6%9B%B4-management-console-%E7%9A%84%E8%AA%9E%E8%A8%80/02_huad51be6d1263999847d22182add03ff0_20974_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/aws-%E8%AE%8A%E6%9B%B4-management-console-%E7%9A%84%E8%AA%9E%E8%A8%80/02_huad51be6d1263999847d22182add03ff0_20974_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;598&#34;
+		data-flex-basis=&#34;1436px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;hr&gt;
+
+</description>
+        </item>
+        <item>
+        <title>AWS-AMIs授權給其他帳號</title>
+        <link>https://note.laurance.ml/p/aws-amis%E6%8E%88%E6%AC%8A%E7%B5%A6%E5%85%B6%E4%BB%96%E5%B8%B3%E8%99%9F/</link>
+        <pubDate>Fri, 05 Aug 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://note.laurance.ml/p/aws-amis%E6%8E%88%E6%AC%8A%E7%B5%A6%E5%85%B6%E4%BB%96%E5%B8%B3%E8%99%9F/</guid>
+        <description>&lt;img src="https://note.laurance.ml/p/aws-amis%E6%8E%88%E6%AC%8A%E7%B5%A6%E5%85%B6%E4%BB%96%E5%B8%B3%E8%99%9F/100.png" alt="Featured image of post AWS-AMIs授權給其他帳號" /&gt;&lt;pre&gt;&lt;code&gt;到AWS控制台
+
+選擇AMIs &amp;gt; 點選 Modify Image Permissions    
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/aws-amis%E6%8E%88%E6%AC%8A%E7%B5%A6%E5%85%B6%E4%BB%96%E5%B8%B3%E8%99%9F/01.png&#34;
+	width=&#34;722&#34;
+	height=&#34;652&#34;
+	srcset=&#34;https://note.laurance.ml/p/aws-amis%E6%8E%88%E6%AC%8A%E7%B5%A6%E5%85%B6%E4%BB%96%E5%B8%B3%E8%99%9F/01_hu2869c7fa39359f0ea46b527a1903e74a_165554_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/aws-amis%E6%8E%88%E6%AC%8A%E7%B5%A6%E5%85%B6%E4%BB%96%E5%B8%B3%E8%99%9F/01_hu2869c7fa39359f0ea46b527a1903e74a_165554_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;110&#34;
+		data-flex-basis=&#34;265px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;輸入 新帳號的Account Id &amp;gt; Add Permission &amp;gt; 下面的勾勾打勾 &amp;gt; save
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/aws-amis%E6%8E%88%E6%AC%8A%E7%B5%A6%E5%85%B6%E4%BB%96%E5%B8%B3%E8%99%9F/02.png&#34;
+	width=&#34;701&#34;
+	height=&#34;378&#34;
+	srcset=&#34;https://note.laurance.ml/p/aws-amis%E6%8E%88%E6%AC%8A%E7%B5%A6%E5%85%B6%E4%BB%96%E5%B8%B3%E8%99%9F/02_huc724d72bf9f8b9ab347a2c284369f78c_37948_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/aws-amis%E6%8E%88%E6%AC%8A%E7%B5%A6%E5%85%B6%E4%BB%96%E5%B8%B3%E8%99%9F/02_huc724d72bf9f8b9ab347a2c284369f78c_37948_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;185&#34;
+		data-flex-basis=&#34;445px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;再到新帳號的AWS控制台&amp;gt; EC2 &amp;gt; AMIs &amp;gt; private images 即可看到剛剛授權的AMIs
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/aws-amis%E6%8E%88%E6%AC%8A%E7%B5%A6%E5%85%B6%E4%BB%96%E5%B8%B3%E8%99%9F/03.png&#34;
+	width=&#34;707&#34;
+	height=&#34;616&#34;
+	srcset=&#34;https://note.laurance.ml/p/aws-amis%E6%8E%88%E6%AC%8A%E7%B5%A6%E5%85%B6%E4%BB%96%E5%B8%B3%E8%99%9F/03_hub2d878c535fbd624332e5b5855ded909_75103_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/aws-amis%E6%8E%88%E6%AC%8A%E7%B5%A6%E5%85%B6%E4%BB%96%E5%B8%B3%E8%99%9F/03_hub2d878c535fbd624332e5b5855ded909_75103_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;114&#34;
+		data-flex-basis=&#34;275px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://docs.aws.amazon.com/zh_tw/AWSEC2/latest/UserGuide/sharingamis-explicit.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;官方文件&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+
+</description>
+        </item>
+        <item>
+        <title>AWS-How to enable MFA for AWS Root user</title>
+        <link>https://note.laurance.ml/p/aws-how-to-enable-mfa-for-aws-root-user/</link>
+        <pubDate>Fri, 05 Aug 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://note.laurance.ml/p/aws-how-to-enable-mfa-for-aws-root-user/</guid>
+        <description>&lt;img src="https://note.laurance.ml/p/aws-how-to-enable-mfa-for-aws-root-user/100.png" alt="Featured image of post AWS-How to enable MFA for AWS Root user" /&gt;&lt;h1 id=&#34;設置-aws-mfa---二階段認證-authy&#34;&gt;設置 AWS-MFA - 二階段認證 Authy&lt;/h1&gt;
+&lt;p&gt;{Step 1} 搜尋 &lt;code&gt;IAM&lt;/code&gt; 服務&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/aws-how-to-enable-mfa-for-aws-root-user/201.png&#34;
+	width=&#34;1449&#34;
+	height=&#34;906&#34;
+	srcset=&#34;https://note.laurance.ml/p/aws-how-to-enable-mfa-for-aws-root-user/201_hu6d7a1d32a4218bb4f0b1fd0e4ea4da31_129916_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/aws-how-to-enable-mfa-for-aws-root-user/201_hu6d7a1d32a4218bb4f0b1fd0e4ea4da31_129916_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;159&#34;
+		data-flex-basis=&#34;383px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;{Step 2} 選擇 &lt;code&gt;Add MFA&lt;/code&gt; 添加 MFA&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/aws-how-to-enable-mfa-for-aws-root-user/202.png&#34;
+	width=&#34;1453&#34;
+	height=&#34;910&#34;
+	srcset=&#34;https://note.laurance.ml/p/aws-how-to-enable-mfa-for-aws-root-user/202_hue53490e3df69e1b0442391f154a074e8_113474_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/aws-how-to-enable-mfa-for-aws-root-user/202_hue53490e3df69e1b0442391f154a074e8_113474_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;159&#34;
+		data-flex-basis=&#34;383px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;{Step 3} 在選單 &lt;code&gt;Multi-factor authentication (MFA)&lt;/code&gt; 中新增設備 &lt;code&gt;Assign MFA device&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/aws-how-to-enable-mfa-for-aws-root-user/203.png&#34;
+	width=&#34;1854&#34;
+	height=&#34;837&#34;
+	srcset=&#34;https://note.laurance.ml/p/aws-how-to-enable-mfa-for-aws-root-user/203_hu607e024b141149210de7fa6768986952_131793_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/aws-how-to-enable-mfa-for-aws-root-user/203_hu607e024b141149210de7fa6768986952_131793_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;221&#34;
+		data-flex-basis=&#34;531px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;{Step 4} 選擇要驗證MFA的方式 ( 這邊選擇使用APP )&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/aws-how-to-enable-mfa-for-aws-root-user/204.png&#34;
+	width=&#34;1767&#34;
+	height=&#34;908&#34;
+	srcset=&#34;https://note.laurance.ml/p/aws-how-to-enable-mfa-for-aws-root-user/204_hua91d518426d0e7ad1aef2f42f28608bd_76913_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/aws-how-to-enable-mfa-for-aws-root-user/204_hua91d518426d0e7ad1aef2f42f28608bd_76913_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;194&#34;
+		data-flex-basis=&#34;467px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;{Step 5} 點擊 &lt;code&gt;show QR code&lt;/code&gt; 並使用手機APP (Authy) 掃描驗證 &amp;amp; 並將驗證碼依序填入 &lt;code&gt;MFA code1 , MFA code2&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/aws-how-to-enable-mfa-for-aws-root-user/205.png&#34;
+	width=&#34;1844&#34;
+	height=&#34;910&#34;
+	srcset=&#34;https://note.laurance.ml/p/aws-how-to-enable-mfa-for-aws-root-user/205_hu71b5766dff0ef26087659dc7b2557be7_75943_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/aws-how-to-enable-mfa-for-aws-root-user/205_hu71b5766dff0ef26087659dc7b2557be7_75943_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;202&#34;
+		data-flex-basis=&#34;486px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;{Step 6} 添加成功&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/aws-how-to-enable-mfa-for-aws-root-user/206.png&#34;
+	width=&#34;1865&#34;
+	height=&#34;621&#34;
+	srcset=&#34;https://note.laurance.ml/p/aws-how-to-enable-mfa-for-aws-root-user/206_hud69b632d5ea31114325b73dd32f84d61_96722_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/aws-how-to-enable-mfa-for-aws-root-user/206_hud69b632d5ea31114325b73dd32f84d61_96722_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;300&#34;
+		data-flex-basis=&#34;720px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;hr&gt;
+
+</description>
+        </item>
+        <item>
+        <title>AWS-VPC 建置</title>
+        <link>https://note.laurance.ml/p/aws-vpc-%E5%BB%BA%E7%BD%AE/</link>
+        <pubDate>Fri, 05 Aug 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://note.laurance.ml/p/aws-vpc-%E5%BB%BA%E7%BD%AE/</guid>
+        <description>&lt;img src="https://note.laurance.ml/p/aws-vpc-%E5%BB%BA%E7%BD%AE/100.png" alt="Featured image of post AWS-VPC 建置" /&gt;&lt;h1 id=&#34;1-建立1個vpc&#34;&gt;1. 建立1個VPC&lt;/h1&gt;
+&lt;p&gt;點選 Create VPC&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/aws-vpc-%E5%BB%BA%E7%BD%AE/101.png&#34;
+	width=&#34;1920&#34;
+	height=&#34;937&#34;
+	srcset=&#34;https://note.laurance.ml/p/aws-vpc-%E5%BB%BA%E7%BD%AE/101_hu77850275d7b2a908f279e4ce020a9769_100184_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/aws-vpc-%E5%BB%BA%E7%BD%AE/101_hu77850275d7b2a908f279e4ce020a9769_100184_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;204&#34;
+		data-flex-basis=&#34;491px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;輸入名稱及網段 , 這邊設置為 172.25.0.0/16&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/aws-vpc-%E5%BB%BA%E7%BD%AE/102.png&#34;
+	width=&#34;1920&#34;
+	height=&#34;937&#34;
+	srcset=&#34;https://note.laurance.ml/p/aws-vpc-%E5%BB%BA%E7%BD%AE/102_hu11edacf44aecc6a1ae0ac5fd6984ab67_120441_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/aws-vpc-%E5%BB%BA%E7%BD%AE/102_hu11edacf44aecc6a1ae0ac5fd6984ab67_120441_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;204&#34;
+		data-flex-basis=&#34;491px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h1 id=&#34;2-新增4個subnets-2個public2個private&#34;&gt;2. 新增4個subnets (2個Public、2個private)&lt;/h1&gt;
+&lt;p&gt;用途:預防AZ出現故障無法切換&lt;/p&gt;
+&lt;p&gt;點選 Create subnet&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/aws-vpc-%E5%BB%BA%E7%BD%AE/103.png&#34;
+	width=&#34;1920&#34;
+	height=&#34;937&#34;
+	srcset=&#34;https://note.laurance.ml/p/aws-vpc-%E5%BB%BA%E7%BD%AE/103_hud054169d884c97c5264572da275e01a1_117075_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/aws-vpc-%E5%BB%BA%E7%BD%AE/103_hud054169d884c97c5264572da275e01a1_117075_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;204&#34;
+		data-flex-basis=&#34;491px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;確認 CIDR 為目前設置網段 &amp;amp;&amp;amp; 遮罩為 /16&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/aws-vpc-%E5%BB%BA%E7%BD%AE/104.png&#34;
+	width=&#34;750&#34;
+	height=&#34;288&#34;
+	srcset=&#34;https://note.laurance.ml/p/aws-vpc-%E5%BB%BA%E7%BD%AE/104_hu81593c8ac2e1aa590b22e887a8cc8ac6_19411_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/aws-vpc-%E5%BB%BA%E7%BD%AE/104_hu81593c8ac2e1aa590b22e887a8cc8ac6_19411_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;260&#34;
+		data-flex-basis=&#34;625px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;建立 public-a 為 172.25.1.0/24&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/aws-vpc-%E5%BB%BA%E7%BD%AE/105.png&#34;
+	width=&#34;720&#34;
+	height=&#34;505&#34;
+	srcset=&#34;https://note.laurance.ml/p/aws-vpc-%E5%BB%BA%E7%BD%AE/105_hud8614f00e9225f3aa01df64edfc07315_46975_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/aws-vpc-%E5%BB%BA%E7%BD%AE/105_hud8614f00e9225f3aa01df64edfc07315_46975_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;142&#34;
+		data-flex-basis=&#34;342px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;建立 public-c 為 172.25.2.0/24&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/aws-vpc-%E5%BB%BA%E7%BD%AE/106.png&#34;
+	width=&#34;721&#34;
+	height=&#34;503&#34;
+	srcset=&#34;https://note.laurance.ml/p/aws-vpc-%E5%BB%BA%E7%BD%AE/106_hu30c113fb5947d0585b7d9b49a8cb2483_46005_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/aws-vpc-%E5%BB%BA%E7%BD%AE/106_hu30c113fb5947d0585b7d9b49a8cb2483_46005_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;143&#34;
+		data-flex-basis=&#34;344px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;建立 private-a 為 172.25.3.0/24&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/aws-vpc-%E5%BB%BA%E7%BD%AE/107.png&#34;
+	width=&#34;720&#34;
+	height=&#34;502&#34;
+	srcset=&#34;https://note.laurance.ml/p/aws-vpc-%E5%BB%BA%E7%BD%AE/107_hu9e88331a8a52712086ccc3a99c793cae_46556_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/aws-vpc-%E5%BB%BA%E7%BD%AE/107_hu9e88331a8a52712086ccc3a99c793cae_46556_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;143&#34;
+		data-flex-basis=&#34;344px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;建立 private-c 為 172.25.4.0/24&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/aws-vpc-%E5%BB%BA%E7%BD%AE/108.png&#34;
+	width=&#34;730&#34;
+	height=&#34;616&#34;
+	srcset=&#34;https://note.laurance.ml/p/aws-vpc-%E5%BB%BA%E7%BD%AE/108_hufc6b9185fd899f0171eac0eed1a7fd6a_54778_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/aws-vpc-%E5%BB%BA%E7%BD%AE/108_hufc6b9185fd899f0171eac0eed1a7fd6a_54778_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;118&#34;
+		data-flex-basis=&#34;284px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h1 id=&#34;3-新增internet-gateways並將igw掛上vpc&#34;&gt;3. 新增Internet gateways，並將IGW掛上VPC&lt;/h1&gt;
+&lt;p&gt;新增Internet gateways (此步驟要先做完，才能新增 NAT GW)&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/aws-vpc-%E5%BB%BA%E7%BD%AE/109.png&#34;
+	width=&#34;1920&#34;
+	height=&#34;937&#34;
+	srcset=&#34;https://note.laurance.ml/p/aws-vpc-%E5%BB%BA%E7%BD%AE/109_hub3d3941f7fe83123bfe39eab0dfb7388_113800_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/aws-vpc-%E5%BB%BA%E7%BD%AE/109_hub3d3941f7fe83123bfe39eab0dfb7388_113800_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;204&#34;
+		data-flex-basis=&#34;491px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;輸入名稱 &amp;gt; Create internet gateway&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/aws-vpc-%E5%BB%BA%E7%BD%AE/110.png&#34;
+	width=&#34;895&#34;
+	height=&#34;646&#34;
+	srcset=&#34;https://note.laurance.ml/p/aws-vpc-%E5%BB%BA%E7%BD%AE/110_hu9706de85b53330273526a002aa151bb6_57145_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/aws-vpc-%E5%BB%BA%E7%BD%AE/110_hu9706de85b53330273526a002aa151bb6_57145_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;138&#34;
+		data-flex-basis=&#34;332px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;選取剛剛建立的 internet gateway 右鍵點選 attach&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/aws-vpc-%E5%BB%BA%E7%BD%AE/111.png&#34;
+	width=&#34;1920&#34;
+	height=&#34;937&#34;
+	srcset=&#34;https://note.laurance.ml/p/aws-vpc-%E5%BB%BA%E7%BD%AE/111_huebe5c0dcda1fd2623ae1c714e432da84_130829_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/aws-vpc-%E5%BB%BA%E7%BD%AE/111_huebe5c0dcda1fd2623ae1c714e432da84_130829_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;204&#34;
+		data-flex-basis=&#34;491px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;選擇剛剛建立好的 VPC&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/aws-vpc-%E5%BB%BA%E7%BD%AE/112.png&#34;
+	width=&#34;873&#34;
+	height=&#34;691&#34;
+	srcset=&#34;https://note.laurance.ml/p/aws-vpc-%E5%BB%BA%E7%BD%AE/112_hu5103b5a12f630fa931f6fdfc6c2e034e_78541_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/aws-vpc-%E5%BB%BA%E7%BD%AE/112_hu5103b5a12f630fa931f6fdfc6c2e034e_78541_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;126&#34;
+		data-flex-basis=&#34;303px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h1 id=&#34;4新增nat-gateways選擇public-subnet並給一個外網ip&#34;&gt;4.新增NAT gateways，選擇Public subnet，並給一個外網IP&lt;/h1&gt;
+&lt;p&gt;新增 NAT Gateways&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/aws-vpc-%E5%BB%BA%E7%BD%AE/113.png&#34;
+	width=&#34;1920&#34;
+	height=&#34;937&#34;
+	srcset=&#34;https://note.laurance.ml/p/aws-vpc-%E5%BB%BA%E7%BD%AE/113_hu42a807c7f32e07345efccdcae8f70033_96626_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/aws-vpc-%E5%BB%BA%E7%BD%AE/113_hu42a807c7f32e07345efccdcae8f70033_96626_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;204&#34;
+		data-flex-basis=&#34;491px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;設定名稱,subnet,Elastic IP 點選 Create&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/aws-vpc-%E5%BB%BA%E7%BD%AE/114.png&#34;
+	width=&#34;867&#34;
+	height=&#34;784&#34;
+	srcset=&#34;https://note.laurance.ml/p/aws-vpc-%E5%BB%BA%E7%BD%AE/114_hud864ebf6d058dd53bb9702682e24b143_83944_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/aws-vpc-%E5%BB%BA%E7%BD%AE/114_hud864ebf6d058dd53bb9702682e24b143_83944_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;110&#34;
+		data-flex-basis=&#34;265px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h1 id=&#34;5新增2個route-table1個叫igw1個叫nat&#34;&gt;5.新增2個route table，1個叫igw、1個叫nat&lt;/h1&gt;
+&lt;p&gt;新增 route table&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/aws-vpc-%E5%BB%BA%E7%BD%AE/115.png&#34;
+	width=&#34;1920&#34;
+	height=&#34;937&#34;
+	srcset=&#34;https://note.laurance.ml/p/aws-vpc-%E5%BB%BA%E7%BD%AE/115_hu093efcbe19577fcf6902526ea94de17d_133340_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/aws-vpc-%E5%BB%BA%E7%BD%AE/115_hu093efcbe19577fcf6902526ea94de17d_133340_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;204&#34;
+		data-flex-basis=&#34;491px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;建立1個 route for NAT gateway&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/aws-vpc-%E5%BB%BA%E7%BD%AE/116.png&#34;
+	width=&#34;873&#34;
+	height=&#34;725&#34;
+	srcset=&#34;https://note.laurance.ml/p/aws-vpc-%E5%BB%BA%E7%BD%AE/116_hu800f679a4ac0fee87b76c04f14c18574_64511_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/aws-vpc-%E5%BB%BA%E7%BD%AE/116_hu800f679a4ac0fee87b76c04f14c18574_64511_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;120&#34;
+		data-flex-basis=&#34;288px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;點選剛剛建立的 private-route-nat 設定 route 規則&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/aws-vpc-%E5%BB%BA%E7%BD%AE/117.png&#34;
+	width=&#34;1920&#34;
+	height=&#34;937&#34;
+	srcset=&#34;https://note.laurance.ml/p/aws-vpc-%E5%BB%BA%E7%BD%AE/117_hub1c392203226c11d28bede5958dba3a5_141193_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/aws-vpc-%E5%BB%BA%E7%BD%AE/117_hub1c392203226c11d28bede5958dba3a5_141193_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;204&#34;
+		data-flex-basis=&#34;491px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;設定 NAT - route 目的為全通&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/aws-vpc-%E5%BB%BA%E7%BD%AE/118.png&#34;
+	width=&#34;1920&#34;
+	height=&#34;937&#34;
+	srcset=&#34;https://note.laurance.ml/p/aws-vpc-%E5%BB%BA%E7%BD%AE/118_hu80ef2253fee9710ad7bdcd0f180049c4_67658_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/aws-vpc-%E5%BB%BA%E7%BD%AE/118_hu80ef2253fee9710ad7bdcd0f180049c4_67658_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;204&#34;
+		data-flex-basis=&#34;491px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;建立1個 route for Internet gateway&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/aws-vpc-%E5%BB%BA%E7%BD%AE/119.png&#34;
+	width=&#34;1920&#34;
+	height=&#34;937&#34;
+	srcset=&#34;https://note.laurance.ml/p/aws-vpc-%E5%BB%BA%E7%BD%AE/119_hu7f86963b49fa1cbd88153cc37979c29d_89421_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/aws-vpc-%E5%BB%BA%E7%BD%AE/119_hu7f86963b49fa1cbd88153cc37979c29d_89421_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;204&#34;
+		data-flex-basis=&#34;491px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;點選剛剛建立的 public-route-igw 設定 route 規則&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/aws-vpc-%E5%BB%BA%E7%BD%AE/120.png&#34;
+	width=&#34;1920&#34;
+	height=&#34;937&#34;
+	srcset=&#34;https://note.laurance.ml/p/aws-vpc-%E5%BB%BA%E7%BD%AE/120_hucdfc6efa4a278d1af130303f2aeedc68_149217_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/aws-vpc-%E5%BB%BA%E7%BD%AE/120_hucdfc6efa4a278d1af130303f2aeedc68_149217_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;204&#34;
+		data-flex-basis=&#34;491px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;設定 IGW - route 目的為全通&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/aws-vpc-%E5%BB%BA%E7%BD%AE/121.png&#34;
+	width=&#34;1920&#34;
+	height=&#34;937&#34;
+	srcset=&#34;https://note.laurance.ml/p/aws-vpc-%E5%BB%BA%E7%BD%AE/121_huf09a7da875cdf2a964f07a4946ac6a3e_67976_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/aws-vpc-%E5%BB%BA%E7%BD%AE/121_huf09a7da875cdf2a964f07a4946ac6a3e_67976_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;204&#34;
+		data-flex-basis=&#34;491px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h1 id=&#34;6subnets-套用route-talbepublic套用igwprivate套用nat&#34;&gt;6.subnets 套用route talbe，Public套用igw，private套用nat&lt;/h1&gt;
+&lt;p&gt;回到 subnet 選擇 public-a 點選設置 route table&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/aws-vpc-%E5%BB%BA%E7%BD%AE/122.png&#34;
+	width=&#34;1920&#34;
+	height=&#34;937&#34;
+	srcset=&#34;https://note.laurance.ml/p/aws-vpc-%E5%BB%BA%E7%BD%AE/122_hu27ae122f19ba14ad813033568e335661_184112_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/aws-vpc-%E5%BB%BA%E7%BD%AE/122_hu27ae122f19ba14ad813033568e335661_184112_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;204&#34;
+		data-flex-basis=&#34;491px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;public-a 套用 public-route-igw 規則&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/aws-vpc-%E5%BB%BA%E7%BD%AE/123.png&#34;
+	width=&#34;1920&#34;
+	height=&#34;937&#34;
+	srcset=&#34;https://note.laurance.ml/p/aws-vpc-%E5%BB%BA%E7%BD%AE/123_hud91c129c48e61ec9f7dae7a13698f30b_75648_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/aws-vpc-%E5%BB%BA%E7%BD%AE/123_hud91c129c48e61ec9f7dae7a13698f30b_75648_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;204&#34;
+		data-flex-basis=&#34;491px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;回到 subnet 選擇 public-c 點選設置 route table&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/aws-vpc-%E5%BB%BA%E7%BD%AE/124.png&#34;
+	width=&#34;1920&#34;
+	height=&#34;937&#34;
+	srcset=&#34;https://note.laurance.ml/p/aws-vpc-%E5%BB%BA%E7%BD%AE/124_hu66674087e7c11069d5605c86044cb935_192808_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/aws-vpc-%E5%BB%BA%E7%BD%AE/124_hu66674087e7c11069d5605c86044cb935_192808_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;204&#34;
+		data-flex-basis=&#34;491px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;public-c 套用 public-route-igw 規則&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/aws-vpc-%E5%BB%BA%E7%BD%AE/125.png&#34;
+	width=&#34;1920&#34;
+	height=&#34;937&#34;
+	srcset=&#34;https://note.laurance.ml/p/aws-vpc-%E5%BB%BA%E7%BD%AE/125_hu72681c6d7202ded5746ec991e774acc4_76333_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/aws-vpc-%E5%BB%BA%E7%BD%AE/125_hu72681c6d7202ded5746ec991e774acc4_76333_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;204&#34;
+		data-flex-basis=&#34;491px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;回到 subnet 選擇 pricate-a 點選設置 route table&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/aws-vpc-%E5%BB%BA%E7%BD%AE/126.png&#34;
+	width=&#34;1920&#34;
+	height=&#34;937&#34;
+	srcset=&#34;https://note.laurance.ml/p/aws-vpc-%E5%BB%BA%E7%BD%AE/126_huf184241e08700641d19abf40add0b1d1_192431_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/aws-vpc-%E5%BB%BA%E7%BD%AE/126_huf184241e08700641d19abf40add0b1d1_192431_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;204&#34;
+		data-flex-basis=&#34;491px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;private-a 套用 private-route-nat 規則&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/aws-vpc-%E5%BB%BA%E7%BD%AE/127.png&#34;
+	width=&#34;1920&#34;
+	height=&#34;937&#34;
+	srcset=&#34;https://note.laurance.ml/p/aws-vpc-%E5%BB%BA%E7%BD%AE/127_hufdab82ee0b94ec32e33455b6966b0031_75415_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/aws-vpc-%E5%BB%BA%E7%BD%AE/127_hufdab82ee0b94ec32e33455b6966b0031_75415_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;204&#34;
+		data-flex-basis=&#34;491px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;回到 subnet 選擇 pricate-c 點選設置 route table&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/aws-vpc-%E5%BB%BA%E7%BD%AE/128.png&#34;
+	width=&#34;1920&#34;
+	height=&#34;937&#34;
+	srcset=&#34;https://note.laurance.ml/p/aws-vpc-%E5%BB%BA%E7%BD%AE/128_hu42730dccdcfb677c04faceb090afeb4b_194329_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/aws-vpc-%E5%BB%BA%E7%BD%AE/128_hu42730dccdcfb677c04faceb090afeb4b_194329_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;204&#34;
+		data-flex-basis=&#34;491px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;private-c 套用 private-route-nat 規則&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/aws-vpc-%E5%BB%BA%E7%BD%AE/129.png&#34;
+	width=&#34;1920&#34;
+	height=&#34;937&#34;
+	srcset=&#34;https://note.laurance.ml/p/aws-vpc-%E5%BB%BA%E7%BD%AE/129_huf61c2b05e3b09022d0b4b155aabcf13b_75303_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/aws-vpc-%E5%BB%BA%E7%BD%AE/129_huf61c2b05e3b09022d0b4b155aabcf13b_75303_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;204&#34;
+		data-flex-basis=&#34;491px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h1 id=&#34;vpc-設置完成&#34;&gt;VPC 設置完成&lt;/h1&gt;
+&lt;hr&gt;
+
+</description>
+        </item>
+        <item>
+        <title>AWS-下載 aws-cli &amp;&amp; aws configure 設定</title>
+        <link>https://note.laurance.ml/p/aws-%E4%B8%8B%E8%BC%89-aws-cli-aws-configure-%E8%A8%AD%E5%AE%9A/</link>
+        <pubDate>Fri, 05 Aug 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://note.laurance.ml/p/aws-%E4%B8%8B%E8%BC%89-aws-cli-aws-configure-%E8%A8%AD%E5%AE%9A/</guid>
+        <description>&lt;img src="https://note.laurance.ml/p/aws-%E4%B8%8B%E8%BC%89-aws-cli-aws-configure-%E8%A8%AD%E5%AE%9A/100.png" alt="Featured image of post AWS-下載 aws-cli &amp;&amp; aws configure 設定" /&gt;&lt;h1 id=&#34;aws-cli-安裝及更新&#34;&gt;AWS CLI 安裝及更新&lt;/h1&gt;
+&lt;p&gt;[ 官網: https://docs.aws.amazon.com/zh_tw/cli/latest/userguide/getting-started-install.html ]&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;curl &amp;quot;https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip&amp;quot; -o &amp;quot;awscliv2.zip&amp;quot;
+
+unzip awscliv2.zip
+
+sudo ./aws/install
+
+aws --version
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;aws-configure-設定檔設定&#34;&gt;AWS CONFIGURE 設定檔設定&lt;/h1&gt;
+&lt;p&gt;&lt;code&gt;需要先建立 IAM USER 並 create access key&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;設定步驟: (IAM download accesskey.csv)&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;AWS Access Key ID [None]: XXXXXXXXXXXXXXXXXXX
+
+AWS Secret Access Key [None]: XXXXXXXXXXXXXXXXXXX
+
+Default region name [None]: ap-northeast-1
+
+Default output format [None]: 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;設定檔路徑:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;l&#34;&gt;cat ~/.aws/credentials&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;pre&gt;&lt;code&gt;[default]
+
+aws_access_key_id=XXXXXXXXXXXXXXXXXXXXXXXXXXX
+
+aws_secret_access_key=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+&lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;l&#34;&gt;cat ~/.aws/config&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;pre&gt;&lt;code&gt;[default]
+
+region=us-west-2
+
+output=json
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;AWS 憑證原理:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;當您使用指定 AWS Identity and Access Management (IAM) 角色的共用設定檔時，
+
+AWS CLI 會呼叫 AWS STS AssumeRole 操作來擷取臨時憑證。然後會存放這些憑證 (在 ~/.aws/cli/cache 中)。
+
+後續的 AWS CLI 命令會使用快取的臨時憑證，直到過期為止，此時 AWS CLI 會自動重新整理憑證
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+
+</description>
+        </item>
+        <item>
+        <title>AWS-撈出RDS的binlog</title>
+        <link>https://note.laurance.ml/p/aws-%E6%92%88%E5%87%BArds%E7%9A%84binlog/</link>
+        <pubDate>Fri, 05 Aug 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://note.laurance.ml/p/aws-%E6%92%88%E5%87%BArds%E7%9A%84binlog/</guid>
+        <description>&lt;img src="https://note.laurance.ml/p/aws-%E6%92%88%E5%87%BArds%E7%9A%84binlog/100.png" alt="Featured image of post AWS-撈出RDS的binlog" /&gt;&lt;pre&gt;&lt;code&gt;撈出 RDS binlog
+
+cd /home/mariadb/binlog
+
+mysqlbinlog --base64-output=decode-rows -v --set-charset=&amp;quot;utf8&amp;quot; --start-datetime=&amp;quot;2021-11-04 14:06:00&amp;quot; --stop-datetime=&amp;quot;2021-11-04 14:09:00&amp;quot;   mysql-bin-changelog.450599 &amp;gt; /home/laurance/RDS-1104-1405-1410.sql
+
+SCP過去跳板機
+
+scp RDS-1005-1330-1430.sql laurance@admin:~ 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+
+</description>
+        </item>
+        <item>
+        <title>AWS-配置金鑰在LINUX登入</title>
+        <link>https://note.laurance.ml/p/aws-%E9%85%8D%E7%BD%AE%E9%87%91%E9%91%B0%E5%9C%A8linux%E7%99%BB%E5%85%A5/</link>
+        <pubDate>Fri, 05 Aug 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://note.laurance.ml/p/aws-%E9%85%8D%E7%BD%AE%E9%87%91%E9%91%B0%E5%9C%A8linux%E7%99%BB%E5%85%A5/</guid>
+        <description>&lt;img src="https://note.laurance.ml/p/aws-%E9%85%8D%E7%BD%AE%E9%87%91%E9%91%B0%E5%9C%A8linux%E7%99%BB%E5%85%A5/100.png" alt="Featured image of post AWS-配置金鑰在LINUX登入" /&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;aws configure
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;AWS Access Key ID [None]: XXXXXXXXXXXXXXXXXXX
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;AWS Secret Access Key [None]: XXXXXXXXXXXXXXXXXXX
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Default region name [None]: ap-northeast-1
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Default output format [None]: json&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;hr&gt;
+
+</description>
+        </item>
+        
+    </channel>
+</rss>

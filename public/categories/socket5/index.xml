@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>SOCKET5 on Laurance&#39;s Note</title>
+        <link>https://note.laurance.ml/categories/socket5/</link>
+        <description>Recent content in SOCKET5 on Laurance&#39;s Note</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Wed, 03 Aug 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://note.laurance.ml/categories/socket5/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>CentOS6-安裝socks5代理</title>
+        <link>https://note.laurance.ml/p/centos6-%E5%AE%89%E8%A3%9Dsocks5%E4%BB%A3%E7%90%86/</link>
+        <pubDate>Wed, 03 Aug 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://note.laurance.ml/p/centos6-%E5%AE%89%E8%A3%9Dsocks5%E4%BB%A3%E7%90%86/</guid>
+        <description>&lt;img src="https://note.laurance.ml/p/centos6-%E5%AE%89%E8%A3%9Dsocks5%E4%BB%A3%E7%90%86/100.png" alt="Featured image of post CentOS6-安裝socks5代理" /&gt;&lt;pre&gt;&lt;code&gt;wget https://nchc.dl.sourceforge.net/project/ss5/ss5/3.8.9-8/ss5-3.8.9-8.tar.gz
+
+yum -y install gcc automake make
+yum -y install pam-devel openldap-devel cyrus-sasl-devel openssl-devel
+
+tar xvf ss5-3.8.9-8.tar.gz
+cd ss5-3.8.9
+./configure &amp;amp;&amp;amp; make &amp;amp;&amp;amp; make install
+
+vi /etc/opt/ss5/ss5.conf
+auth    0.0.0.0/0               -              -
+permit -        0.0.0.0/0       -       0.0.0.0/0
+
+加入用戶名及密碼 /etc/opt/ss5/ss5.passwd
+
+修改ss5啟動的port(默認是1080)
+vi /etc/sysconfig/ss5
+#SS5_OPTS=” -u root”
+註解新增
+SS5_OPTS=&amp;quot; -u root -b 0.0.0.0:8080&amp;quot;
+
+bash檔增執行權限 /etc/rc.d/init.d/ss5
+chmod 755 /etc/rc.d/init.d/ss5
+
+service ss5 start
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+
+</description>
+        </item>
+        
+    </channel>
+</rss>

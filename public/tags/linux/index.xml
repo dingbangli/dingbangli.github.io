@@ -1,0 +1,367 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Linux on Laurance&#39;s Note</title>
+        <link>https://note.laurance.ml/tags/linux/</link>
+        <description>Recent content in Linux on Laurance&#39;s Note</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Wed, 01 Feb 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://note.laurance.ml/tags/linux/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Linux-開機出現 (or type control -D to continue) 解決辦法</title>
+        <link>https://note.laurance.ml/p/linux-%E9%96%8B%E6%A9%9F%E5%87%BA%E7%8F%BE-or-type-control-d-to-continue-%E8%A7%A3%E6%B1%BA%E8%BE%A6%E6%B3%95/</link>
+        <pubDate>Wed, 01 Feb 2023 00:00:00 +0000</pubDate>
+        
+        <guid>https://note.laurance.ml/p/linux-%E9%96%8B%E6%A9%9F%E5%87%BA%E7%8F%BE-or-type-control-d-to-continue-%E8%A7%A3%E6%B1%BA%E8%BE%A6%E6%B3%95/</guid>
+        <description>&lt;img src="https://note.laurance.ml/p/linux-%E9%96%8B%E6%A9%9F%E5%87%BA%E7%8F%BE-or-type-control-d-to-continue-%E8%A7%A3%E6%B1%BA%E8%BE%A6%E6%B3%95/100.png" alt="Featured image of post Linux-開機出現 (or type control -D to continue) 解決辦法" /&gt;&lt;h1 id=&#34;linux-開機失敗-error-or-type-control--d-to-continue-解決辦法&#34;&gt;Linux 開機失敗 ERROR &amp;ldquo;or type control -D to continue&amp;rdquo; 解決辦法&lt;/h1&gt;
+&lt;p&gt;主要是磁碟問題,秀的 ERROR&lt;/p&gt;
+&lt;p&gt;先使用 &lt;code&gt;root&lt;/code&gt; 進入 &lt;code&gt;修復模式&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/linux-%E9%96%8B%E6%A9%9F%E5%87%BA%E7%8F%BE-or-type-control-d-to-continue-%E8%A7%A3%E6%B1%BA%E8%BE%A6%E6%B3%95/301.png&#34;
+	width=&#34;722&#34;
+	height=&#34;403&#34;
+	srcset=&#34;https://note.laurance.ml/p/linux-%E9%96%8B%E6%A9%9F%E5%87%BA%E7%8F%BE-or-type-control-d-to-continue-%E8%A7%A3%E6%B1%BA%E8%BE%A6%E6%B3%95/301_huad619062c8476774ef6c9fbd11dad5ff_19592_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/linux-%E9%96%8B%E6%A9%9F%E5%87%BA%E7%8F%BE-or-type-control-d-to-continue-%E8%A7%A3%E6%B1%BA%E8%BE%A6%E6%B3%95/301_huad619062c8476774ef6c9fbd11dad5ff_19592_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;179&#34;
+		data-flex-basis=&#34;429px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;輸入完密碼後,進入的模式為 &lt;code&gt;唯讀模式&lt;/code&gt; 使用以下指令更改為 &lt;code&gt;讀寫模式&lt;/code&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;mount -n -o remount,rw /
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/linux-%E9%96%8B%E6%A9%9F%E5%87%BA%E7%8F%BE-or-type-control-d-to-continue-%E8%A7%A3%E6%B1%BA%E8%BE%A6%E6%B3%95/303.png&#34;
+	width=&#34;724&#34;
+	height=&#34;410&#34;
+	srcset=&#34;https://note.laurance.ml/p/linux-%E9%96%8B%E6%A9%9F%E5%87%BA%E7%8F%BE-or-type-control-d-to-continue-%E8%A7%A3%E6%B1%BA%E8%BE%A6%E6%B3%95/303_hu840335b5b6cce7e74e8a58551b0256a2_16645_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/linux-%E9%96%8B%E6%A9%9F%E5%87%BA%E7%8F%BE-or-type-control-d-to-continue-%E8%A7%A3%E6%B1%BA%E8%BE%A6%E6%B3%95/303_hu840335b5b6cce7e74e8a58551b0256a2_16645_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;176&#34;
+		data-flex-basis=&#34;423px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;這邊使用指令 &lt;code&gt;df -h&lt;/code&gt; 可以看到原本磁碟 mount 的位置&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/linux-%E9%96%8B%E6%A9%9F%E5%87%BA%E7%8F%BE-or-type-control-d-to-continue-%E8%A7%A3%E6%B1%BA%E8%BE%A6%E6%B3%95/302.png&#34;
+	width=&#34;727&#34;
+	height=&#34;408&#34;
+	srcset=&#34;https://note.laurance.ml/p/linux-%E9%96%8B%E6%A9%9F%E5%87%BA%E7%8F%BE-or-type-control-d-to-continue-%E8%A7%A3%E6%B1%BA%E8%BE%A6%E6%B3%95/302_hu1b832e1213c9eb53d561637469b57177_17168_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/linux-%E9%96%8B%E6%A9%9F%E5%87%BA%E7%8F%BE-or-type-control-d-to-continue-%E8%A7%A3%E6%B1%BA%E8%BE%A6%E6%B3%95/302_hu1b832e1213c9eb53d561637469b57177_17168_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;178&#34;
+		data-flex-basis=&#34;427px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;將正確位置寫入 &lt;code&gt;/etc/fstab&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/linux-%E9%96%8B%E6%A9%9F%E5%87%BA%E7%8F%BE-or-type-control-d-to-continue-%E8%A7%A3%E6%B1%BA%E8%BE%A6%E6%B3%95/304.png&#34;
+	width=&#34;725&#34;
+	height=&#34;406&#34;
+	srcset=&#34;https://note.laurance.ml/p/linux-%E9%96%8B%E6%A9%9F%E5%87%BA%E7%8F%BE-or-type-control-d-to-continue-%E8%A7%A3%E6%B1%BA%E8%BE%A6%E6%B3%95/304_hu454b15e9fff04a5a790f3c12ce25f32d_14391_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/linux-%E9%96%8B%E6%A9%9F%E5%87%BA%E7%8F%BE-or-type-control-d-to-continue-%E8%A7%A3%E6%B1%BA%E8%BE%A6%E6%B3%95/304_hu454b15e9fff04a5a790f3c12ce25f32d_14391_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;178&#34;
+		data-flex-basis=&#34;428px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;重啟後即可&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;reboot
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+
+</description>
+        </item>
+        <item>
+        <title>Linux-history命令保存的最大數</title>
+        <link>https://note.laurance.ml/p/linux-history%E5%91%BD%E4%BB%A4%E4%BF%9D%E5%AD%98%E7%9A%84%E6%9C%80%E5%A4%A7%E6%95%B8/</link>
+        <pubDate>Sat, 10 Dec 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://note.laurance.ml/p/linux-history%E5%91%BD%E4%BB%A4%E4%BF%9D%E5%AD%98%E7%9A%84%E6%9C%80%E5%A4%A7%E6%95%B8/</guid>
+        <description>&lt;img src="https://note.laurance.ml/p/linux-history%E5%91%BD%E4%BB%A4%E4%BF%9D%E5%AD%98%E7%9A%84%E6%9C%80%E5%A4%A7%E6%95%B8/100.png" alt="Featured image of post Linux-history命令保存的最大數" /&gt;&lt;p&gt;&lt;em&gt;&lt;strong&gt;~/.bash_history 裡面紀錄的是上一次登出的歷史紀錄 (默認保存1000條)&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;查看目前保留配置&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;echo $HISTSIZE
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;修改環境變量 (永久配置)&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;sed -i &#39;s/^HISTSIZE=1000/HISTSIZE=100000/&#39; /etc/profile
+source /etc/profile
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+
+</description>
+        </item>
+        <item>
+        <title>Linux-使用 SSH 配合憑證來遠端複製檔案 (scp)</title>
+        <link>https://note.laurance.ml/p/linux-%E4%BD%BF%E7%94%A8-ssh-%E9%85%8D%E5%90%88%E6%86%91%E8%AD%89%E4%BE%86%E9%81%A0%E7%AB%AF%E8%A4%87%E8%A3%BD%E6%AA%94%E6%A1%88-scp/</link>
+        <pubDate>Sat, 10 Dec 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://note.laurance.ml/p/linux-%E4%BD%BF%E7%94%A8-ssh-%E9%85%8D%E5%90%88%E6%86%91%E8%AD%89%E4%BE%86%E9%81%A0%E7%AB%AF%E8%A4%87%E8%A3%BD%E6%AA%94%E6%A1%88-scp/</guid>
+        <description>&lt;img src="https://note.laurance.ml/p/linux-%E4%BD%BF%E7%94%A8-ssh-%E9%85%8D%E5%90%88%E6%86%91%E8%AD%89%E4%BE%86%E9%81%A0%E7%AB%AF%E8%A4%87%E8%A3%BD%E6%AA%94%E6%A1%88-scp/100.png" alt="Featured image of post Linux-使用 SSH 配合憑證來遠端複製檔案 (scp)" /&gt;&lt;p&gt;來源 A機建立公鑰及私鑰&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;ssh-keygen -t dsa
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;到家目錄的 .ssh裡面看，會多出 id_rsa 和 id_rsa.pub 這兩個檔案&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/linux-%E4%BD%BF%E7%94%A8-ssh-%E9%85%8D%E5%90%88%E6%86%91%E8%AD%89%E4%BE%86%E9%81%A0%E7%AB%AF%E8%A4%87%E8%A3%BD%E6%AA%94%E6%A1%88-scp/005.png&#34;
+	width=&#34;1902&#34;
+	height=&#34;351&#34;
+	srcset=&#34;https://note.laurance.ml/p/linux-%E4%BD%BF%E7%94%A8-ssh-%E9%85%8D%E5%90%88%E6%86%91%E8%AD%89%E4%BE%86%E9%81%A0%E7%AB%AF%E8%A4%87%E8%A3%BD%E6%AA%94%E6%A1%88-scp/005_hu0ed622ea7dfb0c4fc882937b8694ee14_22610_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/linux-%E4%BD%BF%E7%94%A8-ssh-%E9%85%8D%E5%90%88%E6%86%91%E8%AD%89%E4%BE%86%E9%81%A0%E7%AB%AF%E8%A4%87%E8%A3%BD%E6%AA%94%E6%A1%88-scp/005_hu0ed622ea7dfb0c4fc882937b8694ee14_22610_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;541&#34;
+		data-flex-basis=&#34;1300px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;將 id_dsa.pub 的內容複製到 目的B機 並命名為 authorized_keys - 限制600權限&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;cat id_rsa.pub (A機) &amp;gt; authorized_keys (B機)
+
+chmod 600 authorized_keys
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;驗證測試&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;來源到目的使用 ssh , scp 免密碼
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;PS. 若是有多個  id_rsa.pub 需要設定 (注意!!! 需要在第一步選擇路徑)&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;ssh-keygen -t rsa
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;第一步需填寫路徑 其餘 ENTER 即可&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Enter file in which to save the key (/root/.ssh/id_rsa): /root/.ssh/id_rsa_root
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/linux-%E4%BD%BF%E7%94%A8-ssh-%E9%85%8D%E5%90%88%E6%86%91%E8%AD%89%E4%BE%86%E9%81%A0%E7%AB%AF%E8%A4%87%E8%A3%BD%E6%AA%94%E6%A1%88-scp/006.png&#34;
+	width=&#34;940&#34;
+	height=&#34;304&#34;
+	srcset=&#34;https://note.laurance.ml/p/linux-%E4%BD%BF%E7%94%A8-ssh-%E9%85%8D%E5%90%88%E6%86%91%E8%AD%89%E4%BE%86%E9%81%A0%E7%AB%AF%E8%A4%87%E8%A3%BD%E6%AA%94%E6%A1%88-scp/006_hu88a478b89d8e9f7f65391f2959997dac_17975_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/linux-%E4%BD%BF%E7%94%A8-ssh-%E9%85%8D%E5%90%88%E6%86%91%E8%AD%89%E4%BE%86%E9%81%A0%E7%AB%AF%E8%A4%87%E8%A3%BD%E6%AA%94%E6%A1%88-scp/006_hu88a478b89d8e9f7f65391f2959997dac_17975_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;309&#34;
+		data-flex-basis=&#34;742px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;hr&gt;
+
+</description>
+        </item>
+        <item>
+        <title>Linux-History增加時間顯示</title>
+        <link>https://note.laurance.ml/p/linux-history%E5%A2%9E%E5%8A%A0%E6%99%82%E9%96%93%E9%A1%AF%E7%A4%BA/</link>
+        <pubDate>Tue, 16 Aug 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://note.laurance.ml/p/linux-history%E5%A2%9E%E5%8A%A0%E6%99%82%E9%96%93%E9%A1%AF%E7%A4%BA/</guid>
+        <description>&lt;img src="https://note.laurance.ml/p/linux-history%E5%A2%9E%E5%8A%A0%E6%99%82%E9%96%93%E9%A1%AF%E7%A4%BA/100.png" alt="Featured image of post Linux-History增加時間顯示" /&gt;&lt;pre&gt;&lt;code&gt;臨時添加
+exprt HISTTIMEFORMAT=’%F %T ’
+
+永久套用
+vim .bashrc
+HISTTIMEFORMAT=&amp;quot;%F %T &amp;quot;
+source .bashrc
+
+寫入 /etc/profile 達到全體套用
+…
+HISTTIMEFORMAT=&amp;quot;%F %T &amp;quot;
+source /etc/profile
+
+Shell 執行的方法
+echo &#39;HISTTIMEFORMAT=&amp;quot;%F %T &amp;quot;&#39; &amp;gt;&amp;gt; /etc/profile
+source /etc/profile
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+
+</description>
+        </item>
+        <item>
+        <title>Linux-系統重啟 &amp; 檢視日誌及歷史紀錄</title>
+        <link>https://note.laurance.ml/p/linux-%E7%B3%BB%E7%B5%B1%E9%87%8D%E5%95%9F-%E6%AA%A2%E8%A6%96%E6%97%A5%E8%AA%8C%E5%8F%8A%E6%AD%B7%E5%8F%B2%E7%B4%80%E9%8C%84/</link>
+        <pubDate>Thu, 11 Aug 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://note.laurance.ml/p/linux-%E7%B3%BB%E7%B5%B1%E9%87%8D%E5%95%9F-%E6%AA%A2%E8%A6%96%E6%97%A5%E8%AA%8C%E5%8F%8A%E6%AD%B7%E5%8F%B2%E7%B4%80%E9%8C%84/</guid>
+        <description>&lt;img src="https://note.laurance.ml/p/linux-%E7%B3%BB%E7%B5%B1%E9%87%8D%E5%95%9F-%E6%AA%A2%E8%A6%96%E6%97%A5%E8%AA%8C%E5%8F%8A%E6%AD%B7%E5%8F%B2%E7%B4%80%E9%8C%84/100.png" alt="Featured image of post Linux-系統重啟 &amp; 檢視日誌及歷史紀錄" /&gt;&lt;pre&gt;&lt;code&gt;/var/log/message ---------------------------------------系統啟動後的資訊和錯誤日誌
+
+/var/log/secure ------------------------------------------與安全相關的日誌資訊
+
+/var/log/maillog ------------------------------------------與郵件相關的日誌資訊
+
+/var/log/cron ----------------------------------------------與定時任務相關的日誌資訊
+
+/var/log/spooler ------------------------------------------與UUCP和news裝置相關的日誌資訊
+
+/var/log/boot.log -----------------------------------------守護程序啟動和停止相關的日誌訊息
+
+/var/log/wtmp ---------------------------------------------永久記錄每個使用者登入、登出及系統的啟動、停機的事件
+
+/var/run/utmp ---------------------------------------------記錄當前正在登入系統的使用者資訊；
+
+/var/log/btmp ----------------------------------------------記錄失敗的登入嘗試資訊。
+
+####################################################################################################################
+
+Linux 系統查詢機器最近重啟時間命令
+
+last reboot -----------------------------------------------------------檢視所有重啟日誌資訊
+
+last reboot | head -1 -------------------------------------------------檢視最近的一條
+
+####################################################################################################################
+
+last -x|grep shutdown | head -1 ---------------------------------------顯示上次關機的日期和時間
+
+uptime -s -------------------------------------------------------------檢視系統正常的執行時間
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+
+</description>
+        </item>
+        <item>
+        <title>Linux-建立開機畫面motd文字</title>
+        <link>https://note.laurance.ml/p/linux-%E5%BB%BA%E7%AB%8B%E9%96%8B%E6%A9%9F%E7%95%AB%E9%9D%A2motd%E6%96%87%E5%AD%97/</link>
+        <pubDate>Wed, 10 Aug 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://note.laurance.ml/p/linux-%E5%BB%BA%E7%AB%8B%E9%96%8B%E6%A9%9F%E7%95%AB%E9%9D%A2motd%E6%96%87%E5%AD%97/</guid>
+        <description>&lt;img src="https://note.laurance.ml/p/linux-%E5%BB%BA%E7%AB%8B%E9%96%8B%E6%A9%9F%E7%95%AB%E9%9D%A2motd%E6%96%87%E5%AD%97/100.png" alt="Featured image of post Linux-建立開機畫面motd文字" /&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;建立開機畫面motd文字
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;使用 vim, 替換 ^[ 為“轉義”字符
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;在 vim 內按 :
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;輸入以下內容 %s/\^\[/ (不要點擊Enter)
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;輸入 Ctrl+v 然後點擊 Esc 轉換字符
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;最後輸入 /g ，點擊 Enter 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;如果操作正確 ^[ 則從灰色變為藍色，如果沒有點擊 u 返回
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;另一種方法 (使用echo)
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;echo $&amp;#39;\e[1;37m&amp;#39; &amp;gt; myfile&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;pre&gt;&lt;code&gt;各符號意思:
+
+%s	搜索
+
+/	第一項
+
+\^\[	轉義版本^[
+
+/	第二項，使用鍵盤插入實際Esc
+
+/g	重複所有出現
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+
+</description>
+        </item>
+        <item>
+        <title>Linux-刪除殭屍程序</title>
+        <link>https://note.laurance.ml/p/linux-%E5%88%AA%E9%99%A4%E6%AE%AD%E5%B1%8D%E7%A8%8B%E5%BA%8F/</link>
+        <pubDate>Wed, 03 Aug 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://note.laurance.ml/p/linux-%E5%88%AA%E9%99%A4%E6%AE%AD%E5%B1%8D%E7%A8%8B%E5%BA%8F/</guid>
+        <description>&lt;img src="https://note.laurance.ml/p/linux-%E5%88%AA%E9%99%A4%E6%AE%AD%E5%B1%8D%E7%A8%8B%E5%BA%8F/100.png" alt="Featured image of post Linux-刪除殭屍程序" /&gt;&lt;p&gt;找出殭屍程序&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;ps -Al | grep -w Z
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;從找到的程序資訊中，分析出 pid&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;ps -Al | grep -w Z | awk &#39;{print $4}&#39;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;將分析出來的 pid 串連成一個陣列&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;ps -Al | grep -w Z | awk &#39;{print $4}&#39; | xargs
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;將陣列中的每一個 pid 的程序，利用 kill 來終止、刪除它們&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;ps -Al | grep -w Z | awk &#39;{print $4}&#39; | xargs sudo kill -9
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;若再跑一次 ps -Al | grep -w Z 還是看到有 zombie process&lt;/p&gt;
+&lt;p&gt;先確認父程序資訊&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;ps -Al | grep -w Z | awk &#39;{print $5}&#39; | xargs ps -lp
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;再確認相依的子程序資訊&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;ps -Al | grep -w Z | awk &#39;{print $5}&#39; | xargs ps -l --ppid
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;如果其中沒有重要程序或是其他正在執行中程序的話，就可以安心地將父程序給刪除掉&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;ps -Al | grep -w Z | awk &#39;{print $5}&#39; | xargs sudo kill -9
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+
+</description>
+        </item>
+        <item>
+        <title>Linux-新增SWAP記憶體</title>
+        <link>https://note.laurance.ml/p/linux-%E6%96%B0%E5%A2%9Eswap%E8%A8%98%E6%86%B6%E9%AB%94/</link>
+        <pubDate>Wed, 03 Aug 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://note.laurance.ml/p/linux-%E6%96%B0%E5%A2%9Eswap%E8%A8%98%E6%86%B6%E9%AB%94/</guid>
+        <description>&lt;img src="https://note.laurance.ml/p/linux-%E6%96%B0%E5%A2%9Eswap%E8%A8%98%E6%86%B6%E9%AB%94/100.png" alt="Featured image of post Linux-新增SWAP記憶體" /&gt;&lt;pre&gt;&lt;code&gt;解決RAM不足問題 - 在 LINUX 新增 SWAP 虛擬記憶體
+
+以一台 1Gb 記憶體的主機而言，我們在這裡建立 2G的 Swap 虛擬記憶體儲存空間
+
+cd /
+fallocate -l 2G swapfile
+chmod 600 swap-sda1
+
+初始化 Swap 空間
+
+透過 mkswap 將 /swapfile 建立為 Linux 交換區，讓這個資料夾被分割為一個磁碟區
+
+mkswap /swapfile
+
+啟動交換區
+
+swapon /swapfile
+
+開機啟動
+
+swapon -s
+
+如果不使用，可透過以下指令終止：
+
+sudo swapoff /swapfile
+
+如果想先主要以實體記憶體為主，swap 為輔，可以透過 swappiness 來設定分配方式
+
+sysctl vm.swappiness=10 &amp;gt;&amp;gt; 預設通常會是 60 （值越高，表示會越優先使用 swap，範圍 0~100）
+
+開機自動設定
+
+echo &amp;quot;vm.swappiness=10&amp;quot; &amp;gt;&amp;gt; /etc/sysctl.conf&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+
+</description>
+        </item>
+        <item>
+        <title>Linux-查看當前文件目錄大小</title>
+        <link>https://note.laurance.ml/p/linux-%E6%9F%A5%E7%9C%8B%E7%95%B6%E5%89%8D%E6%96%87%E4%BB%B6%E7%9B%AE%E9%8C%84%E5%A4%A7%E5%B0%8F/</link>
+        <pubDate>Wed, 03 Aug 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://note.laurance.ml/p/linux-%E6%9F%A5%E7%9C%8B%E7%95%B6%E5%89%8D%E6%96%87%E4%BB%B6%E7%9B%AE%E9%8C%84%E5%A4%A7%E5%B0%8F/</guid>
+        <description>&lt;img src="https://note.laurance.ml/p/linux-%E6%9F%A5%E7%9C%8B%E7%95%B6%E5%89%8D%E6%96%87%E4%BB%B6%E7%9B%AE%E9%8C%84%E5%A4%A7%E5%B0%8F/100.png" alt="Featured image of post Linux-查看當前文件目錄大小" /&gt;&lt;pre&gt;&lt;code&gt;查看当前文件目录各个文件夹大小
+du -h --max-depth=1 |sort -hr (排序)
+
+查看指定目錄  
+du -h --max-depth=1 /path
+
+查看當層目錄
+du -h - .
+
+深入到第一層目錄
+--max-depth=1
+
+查看當前目錄下user目錄的大小，并不想看其他目錄以及其子目錄
+du -sh user
+
+要通過以1024字節為單位顯示一個目錄樹及其每個子樹的磁盤使用情况
+du -k /home/linux
+
+以MB為單位顯示一個目錄樹及其每個子樹的磁盤使用情况
+du -m /home/linux
+
+以GB為單位顯示一個目錄樹及其每個子樹的磁盤使用情况
+du -g /home/linux
+
+列出當前目錄中的目錄名不包括xyz字符串的目錄的大小
+du -h --exclude=&#39;*xyz*&#39;
+
+只顯示一個目錄樹的全部磁盤使用情况
+du -s /home/linux
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+
+</description>
+        </item>
+        
+    </channel>
+</rss>

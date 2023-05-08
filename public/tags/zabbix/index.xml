@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Zabbix on Laurance&#39;s Note</title>
+        <link>https://note.laurance.ml/tags/zabbix/</link>
+        <description>Recent content in Zabbix on Laurance&#39;s Note</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Wed, 03 Aug 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://note.laurance.ml/tags/zabbix/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Docker-建立Zabbix分散式監控</title>
+        <link>https://note.laurance.ml/p/docker-%E5%BB%BA%E7%AB%8Bzabbix%E5%88%86%E6%95%A3%E5%BC%8F%E7%9B%A3%E6%8E%A7/</link>
+        <pubDate>Wed, 03 Aug 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://note.laurance.ml/p/docker-%E5%BB%BA%E7%AB%8Bzabbix%E5%88%86%E6%95%A3%E5%BC%8F%E7%9B%A3%E6%8E%A7/</guid>
+        <description>&lt;img src="https://note.laurance.ml/p/docker-%E5%BB%BA%E7%AB%8Bzabbix%E5%88%86%E6%95%A3%E5%BC%8F%E7%9B%A3%E6%8E%A7/100.png" alt="Featured image of post Docker-建立Zabbix分散式監控" /&gt;&lt;pre&gt;&lt;code&gt;建立Namesppace &amp;gt;&amp;gt; zabbix-net
+docker network create --subnet 172.20.0.0/16 --ip-range 172.20.240.0/20 zabbix-net
+
+建立docker容器工作目錄
+mkdir -p /usr/local/docker/mysql
+
+建立mysql容器
+docker run --name mysql-server --hostname=mysql-server -t \
+      -e MYSQL_DATABASE=&amp;quot;zabbix&amp;quot; \
+      -e MYSQL_USER=&amp;quot;zabbix&amp;quot; \
+      -e MYSQL_PASSWORD=&amp;quot;zabbix&amp;quot; \
+      -e MYSQL_ROOT_PASSWORD=&amp;quot;123456&amp;quot; \
+      --network=zabbix-net \
+      -v /usr/local/docker/mysql:/var/lib/mysql \
+      -v /etc/localtime:/etc/localtime \
+      -d mysql:5.7
+	 
+建立zabbix-server-mysql容器
+docker run --name zabbix-server-mysql --hostname=zabbix-server-mysql -t \
+      -e DB_SERVER_HOST=&amp;quot;mysql-server&amp;quot; \
+      -e MYSQL_DATABASE=&amp;quot;zabbix&amp;quot; \
+      -e MYSQL_USER=&amp;quot;zabbix&amp;quot; \
+      -e MYSQL_PASSWORD=&amp;quot;zabbix&amp;quot; \
+      -e MYSQL_ROOT_PASSWORD=&amp;quot;123456&amp;quot; \
+      --network=zabbix-net \
+      --link mysql-server:mysql \
+      -p 10051:10051 \
+      -d zabbix/zabbix-server-mysql:alpine-4.0.24
+
+建立前端 zabbix-web-nginx-mysql容器
+docker run --name zabbix-web-nginx-mysql --hostname=zabbix-web-nginx-mysql -t \
+      -e DB_SERVER_HOST=&amp;quot;mysql-server&amp;quot; \
+      -e MYSQL_DATABASE=&amp;quot;zabbix&amp;quot; \
+      -e MYSQL_USER=&amp;quot;zabbix&amp;quot; \
+      -e MYSQL_PASSWORD=&amp;quot;zabbix&amp;quot; \
+      -e MYSQL_ROOT_PASSWORD=&amp;quot;123456&amp;quot; \
+      --network=zabbix-net \
+      --link mysql-server:mysql \
+      --link zabbix-server-mysql:zabbix-server \
+      -p 85:8080 \
+      -d zabbix/zabbix-web-nginx-mysql:alpine-4.0.24
+	
+建立Client端的控制元件
+docker run --name some-zabbix-agent --hostname=some-zabbix-agent \
+	   -e ZBX_HOSTNAME=&amp;quot;zabbix-server-agent&amp;quot; \
+	   -e ZBX_SERVER_HOST=&amp;quot;zabbix-server-mysql&amp;quot; \
+       -e ZBX_METADATA=&amp;quot;zabbix-server-agent&amp;quot; \
+	   --network=zabbix-net \
+	   --restart=always \
+	   -p 10050:10050 \
+	   -d zabbix/zabbix-agent
+	   
+登入檢測 預設:
+賬號：Admin   密碼：zabbix
+
+Configuration &amp;gt; Hosts &amp;gt; Create host 
+&amp;gt; Host name : some-zabbix-agent
+&amp;gt; Groups : Linux servers
+&amp;gt; IP : 172.20.240.4
+&amp;gt; Port : 10050
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+
+</description>
+        </item>
+        
+    </channel>
+</rss>

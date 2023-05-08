@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Locate on Laurance&#39;s Note</title>
+        <link>https://note.laurance.ml/tags/locate/</link>
+        <description>Recent content in Locate on Laurance&#39;s Note</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Wed, 01 Feb 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://note.laurance.ml/tags/locate/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Linux-使用 locate 尋找檔案教學與範例</title>
+        <link>https://note.laurance.ml/p/linux-%E4%BD%BF%E7%94%A8-locate-%E5%B0%8B%E6%89%BE%E6%AA%94%E6%A1%88%E6%95%99%E5%AD%B8%E8%88%87%E7%AF%84%E4%BE%8B/</link>
+        <pubDate>Wed, 01 Feb 2023 00:00:00 +0000</pubDate>
+        
+        <guid>https://note.laurance.ml/p/linux-%E4%BD%BF%E7%94%A8-locate-%E5%B0%8B%E6%89%BE%E6%AA%94%E6%A1%88%E6%95%99%E5%AD%B8%E8%88%87%E7%AF%84%E4%BE%8B/</guid>
+        <description>&lt;img src="https://note.laurance.ml/p/linux-%E4%BD%BF%E7%94%A8-locate-%E5%B0%8B%E6%89%BE%E6%AA%94%E6%A1%88%E6%95%99%E5%AD%B8%E8%88%87%E7%AF%84%E4%BE%8B/100.png" alt="Featured image of post Linux-使用 locate 尋找檔案教學與範例" /&gt;&lt;p&gt;安裝 locate 工具&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;yum install mlocate
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;更新 locate 資料庫&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;updatedb
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;預設的 locate 資料庫檔案位置&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;ls -l /var/lib/mlocate/mlocate.db
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;快速尋找檔案&#34;&gt;快速尋找檔案&lt;/h1&gt;
+&lt;p&gt;尋找含有 .bashrc 關鍵字的檔案&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;locate .bashrc
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;計算含有 .bashrc 關鍵字的檔案數量&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;locate -c .bashrc
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;不分大小寫&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;locate -i my.txt
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;查看 locate 資料庫狀態&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;locate -S
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+
+</description>
+        </item>
+        
+    </channel>
+</rss>

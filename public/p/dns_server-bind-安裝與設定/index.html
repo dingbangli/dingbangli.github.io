@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='安裝相關依賴及Server yum -y install bind bind-chroot bind-utils bind-libs caching-nameserver 複製必要檔案至新路徑並給予權限 cp /var/named/named.* /var/named/chroot/var/named/ chown root.named /var/named/chroot/var/named/named.* cp -r /var/named/data/ /var/named/chroot/var/named/ chown named.named /var/named/chroot/var/named/data/ -R 更改主設定檔 vim /etc/named/named.conf // // named.conf // // Provided by Red Hat bind package to'><title>DNS_SERVER-BIND 安裝與設定</title>
+
+<link rel='canonical' href='https://note.laurance.ml/p/dns_server-bind-%E5%AE%89%E8%A3%9D%E8%88%87%E8%A8%AD%E5%AE%9A/'>
+
+<link rel="stylesheet" href="/scss/style.min.ac77dcf8b111b51da39a92990f431923f210f3876d85798a2125667f96dc33a4.css"><meta property='og:title' content='DNS_SERVER-BIND 安裝與設定'>
+<meta property='og:description' content='安裝相關依賴及Server yum -y install bind bind-chroot bind-utils bind-libs caching-nameserver 複製必要檔案至新路徑並給予權限 cp /var/named/named.* /var/named/chroot/var/named/ chown root.named /var/named/chroot/var/named/named.* cp -r /var/named/data/ /var/named/chroot/var/named/ chown named.named /var/named/chroot/var/named/data/ -R 更改主設定檔 vim /etc/named/named.conf // // named.conf // // Provided by Red Hat bind package to'>
+<meta property='og:url' content='https://note.laurance.ml/p/dns_server-bind-%E5%AE%89%E8%A3%9D%E8%88%87%E8%A8%AD%E5%AE%9A/'>
+<meta property='og:site_name' content='Laurance&#39;s Note'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='DNS' /><meta property='article:published_time' content='2022-12-03T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2022-12-03T00:00:00&#43;00:00'/><meta property='og:image' content='https://note.laurance.ml/p/dns_server-bind-%E5%AE%89%E8%A3%9D%E8%88%87%E8%A8%AD%E5%AE%9A/100.png' />
+<meta name="twitter:title" content="DNS_SERVER-BIND 安裝與設定">
+<meta name="twitter:description" content="安裝相關依賴及Server yum -y install bind bind-chroot bind-utils bind-libs caching-nameserver 複製必要檔案至新路徑並給予權限 cp /var/named/named.* /var/named/chroot/var/named/ chown root.named /var/named/chroot/var/named/named.* cp -r /var/named/data/ /var/named/chroot/var/named/ chown named.named /var/named/chroot/var/named/data/ -R 更改主設定檔 vim /etc/named/named.conf // // named.conf // // Provided by Red Hat bind package to"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://note.laurance.ml/p/dns_server-bind-%E5%AE%89%E8%A3%9D%E8%88%87%E8%A8%AD%E5%AE%9A/100.png' />
+    <link rel="shortcut icon" href="static/favicon.ico" />
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Live2D 看板娘 / Demo</title>
+</head>
+<body>
+<script src="https://cdn.jsdelivr.net/gh/dingbangli/live2d-widget@latest/autoload.js"></script>
+</body>
+</html>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu49eacb73e01f91348578131d7e8658f5_11993_300x0_resize_box_3.png" width="300"
+                            height="301" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🍥</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Laurance&#39;s Note</a></h1>
+            <h2 class="site-description">筆記 記錄美好生活
+</h2>
+        </div>
+    </header><ol class="menu" id="main-menu">
+        
+        
+        
+
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/about/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/links/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>Links</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+            
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>Dark Mode</span>
+                </li>
+            
+        </div>
+    </ol>
+</aside>
+<main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/dns_server-bind-%E5%AE%89%E8%A3%9D%E8%88%87%E8%A8%AD%E5%AE%9A/">
+                <img src="/p/dns_server-bind-%E5%AE%89%E8%A3%9D%E8%88%87%E8%A8%AD%E5%AE%9A/100_hu4f6562e501064fb4525a6459b027d812_33292_800x0_resize_box_3.png"
+                        srcset="/p/dns_server-bind-%E5%AE%89%E8%A3%9D%E8%88%87%E8%A8%AD%E5%AE%9A/100_hu4f6562e501064fb4525a6459b027d812_33292_800x0_resize_box_3.png 800w, /p/dns_server-bind-%E5%AE%89%E8%A3%9D%E8%88%87%E8%A8%AD%E5%AE%9A/100_hu4f6562e501064fb4525a6459b027d812_33292_1600x0_resize_box_3.png 1600w"
+                        width="800" 
+                        height="229" 
+                        loading="lazy"
+                        alt="Featured image of post DNS_SERVER-BIND 安裝與設定" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/web/" >
+                Web
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/dns_server-bind-%E5%AE%89%E8%A3%9D%E8%88%87%E8%A8%AD%E5%AE%9A/">DNS_SERVER-BIND 安裝與設定</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Dec 03, 2022</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    2 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+</header>
+
+    <section class="article-content">
+    
+    
+    <p>安裝相關依賴及Server</p>
+<pre><code>yum -y install bind bind-chroot bind-utils bind-libs caching-nameserver
+</code></pre>
+<p>複製必要檔案至新路徑並給予權限</p>
+<pre><code>cp /var/named/named.*  /var/named/chroot/var/named/
+
+chown root.named /var/named/chroot/var/named/named.*
+
+cp -r /var/named/data/ /var/named/chroot/var/named/
+
+chown named.named /var/named/chroot/var/named/data/ -R
+</code></pre>
+<p>更改主設定檔</p>
+<pre><code>vim /etc/named/named.conf
+</code></pre>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">//
+</span></span></span><span class="line"><span class="cl"><span class="c1">// named.conf
+</span></span></span><span class="line"><span class="cl"><span class="c1">//
+</span></span></span><span class="line"><span class="cl"><span class="c1">// Provided by Red Hat bind package to configure the ISC BIND named(8) DNS
+</span></span></span><span class="line"><span class="cl"><span class="c1">// server as a caching only nameserver (as a localhost DNS resolver only).
+</span></span></span><span class="line"><span class="cl"><span class="c1">//
+</span></span></span><span class="line"><span class="cl"><span class="c1">// See /usr/share/doc/bind*/sample/ for example named configuration files.
+</span></span></span><span class="line"><span class="cl"><span class="c1">//
+</span></span></span><span class="line"><span class="cl"><span class="c1">// See the BIND Administrator&#39;s Reference Manual (ARM) for details about the
+</span></span></span><span class="line"><span class="cl"><span class="c1">// configuration located in /usr/share/doc/bind-{version}/Bv9ARM.html
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="nx">options</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">listen</span><span class="o">-</span><span class="nx">on</span> <span class="nx">port</span> <span class="mi">53</span> <span class="p">{</span> <span class="nx">any</span><span class="p">;</span> <span class="p">};</span> <span class="c1">//監聽多個介面的port53
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">#</span>	<span class="nx">listen</span><span class="o">-</span><span class="nx">on</span><span class="o">-</span><span class="nx">v6</span> <span class="nx">port</span> <span class="mi">53</span> <span class="p">{</span> <span class="p">::</span><span class="mi">1</span><span class="p">;</span> <span class="p">};</span> <span class="c1">//關閉IPV6
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">directory</span> 	<span class="s">&#34;/var/named/chroot/var/named&#34;</span><span class="p">;</span> <span class="c1">//位置改為/chroot/var/named
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">dump</span><span class="o">-</span><span class="nx">file</span> 	<span class="s">&#34;/var/named/data/cache_dump.db&#34;</span><span class="p">;</span> <span class="c1">//統計資料存放路徑
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">statistics</span><span class="o">-</span><span class="nx">file</span> <span class="s">&#34;/var/named/data/named_stats.txt&#34;</span><span class="p">;</span> <span class="c1">//統計資料存放路徑
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">memstatistics</span><span class="o">-</span><span class="nx">file</span> <span class="s">&#34;/var/named/data/named_mem_stats.txt&#34;</span><span class="p">;</span> <span class="c1">//統計資料存放路徑
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">#</span>	<span class="nx">recursing</span><span class="o">-</span><span class="nx">file</span>  <span class="s">&#34;/var/named/data/named.recursing&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="err">#</span>	<span class="nx">secroots</span><span class="o">-</span><span class="nx">file</span>   <span class="s">&#34;/var/named/data/named.secroots&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">allow</span><span class="o">-</span><span class="nx">query</span>     <span class="p">{</span> <span class="nx">any</span><span class="p">;</span> <span class="p">};</span> <span class="c1">//限制有那些用戶可以使用此台DNS
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">forwarders</span> 	<span class="p">{</span><span class="mf">8.8.8.8</span><span class="p">;};</span> <span class="c1">//dns伺服器無法解析時，會由8.8.8.8解析
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl">	<span class="cm">/* 
+</span></span></span><span class="line"><span class="cl"><span class="cm">	 - If you are building an AUTHORITATIVE DNS server, do NOT enable recursion.
+</span></span></span><span class="line"><span class="cl"><span class="cm">	 - If you are building a RECURSIVE (caching) DNS server, you need to enable 
+</span></span></span><span class="line"><span class="cl"><span class="cm">	   recursion. 
+</span></span></span><span class="line"><span class="cl"><span class="cm">	 - If your recursive DNS server has a public IP address, you MUST enable access 
+</span></span></span><span class="line"><span class="cl"><span class="cm">	   control to limit queries to your legitimate users. Failing to do so will
+</span></span></span><span class="line"><span class="cl"><span class="cm">	   cause your server to become part of large scale DNS amplification 
+</span></span></span><span class="line"><span class="cl"><span class="cm">	   attacks. Implementing BCP38 within your network would greatly
+</span></span></span><span class="line"><span class="cl"><span class="cm">	   reduce such attack surface 
+</span></span></span><span class="line"><span class="cl"><span class="cm">	*/</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">recursion</span> <span class="nx">yes</span><span class="p">;</span> <span class="c1">//遞迴式，如果本 DNS server 查不到，會往上層查
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl">	<span class="nx">dnssec</span><span class="o">-</span><span class="nx">enable</span> <span class="nx">no</span><span class="p">;</span> <span class="c1">//設定不回傳 DNS Security Extensions ( DNSSEC ) 相關的 RR
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">dnssec</span><span class="o">-</span><span class="nx">validation</span> <span class="nx">no</span><span class="p">;</span> <span class="c1">//設定RR 不經由 DNSSEC 認證
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl">	<span class="cm">/* Path to ISC DLV key */</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">bindkeys</span><span class="o">-</span><span class="nx">file</span> <span class="s">&#34;/etc/named.root.key&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="nx">managed</span><span class="o">-</span><span class="nx">keys</span><span class="o">-</span><span class="nx">directory</span> <span class="s">&#34;/var/named/dynamic&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="err">#</span>	<span class="nx">pid</span><span class="o">-</span><span class="nx">file</span> <span class="s">&#34;/run/named/named.pid&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="err">#</span>	<span class="nx">session</span><span class="o">-</span><span class="nx">keyfile</span> <span class="s">&#34;/run/named/session.key&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">logging</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">channel</span> <span class="nx">default_debug</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="nx">file</span> <span class="s">&#34;data/named.run&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">                <span class="nx">severity</span> <span class="nx">dynamic</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">};</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">category</span> <span class="nx">lame</span><span class="o">-</span><span class="nx">servers</span> <span class="p">{</span> <span class="nx">null</span><span class="p">;</span> <span class="p">};</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">zone</span> <span class="s">&#34;.&#34;</span> <span class="nx">IN</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="kd">type</span> <span class="nx">hint</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">file</span> <span class="s">&#34;named.ca&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">include</span> <span class="s">&#34;/etc/named.rfc1912.zones&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="nx">include</span> <span class="s">&#34;/etc/named.root.key&#34;</span><span class="p">;</span>
+</span></span></code></pre></div><p>重啟服務</p>
+<pre><code>systemctl restart named
+</code></pre>
+<p>[BIND 新增 zone及解析]</p>
+<p>在主設定檔新增zone</p>
+<pre><code>vim /etc/named.conf
+</code></pre>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">zone &#34;orz&#34; IN {
+</span></span><span class="line"><span class="cl">        type master;
+</span></span><span class="line"><span class="cl">        file &#34;orz.zone&#34;;
+</span></span><span class="line"><span class="cl">};
+</span></span></code></pre></div><p>在新路徑中新增zone紀錄</p>
+<pre><code>vim /var/named/chroot/var/named/orz.zone
+</code></pre>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-dns" data-lang="dns"><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="na">$TTL</span><span class="w"> </span><span class="sc">86400</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nc">@</span><span class="w">       </span><span class="k">IN</span><span class="w">      </span><span class="k">SOA</span><span class="w">     </span><span class="err">@</span><span class="w"> </span><span class="py">rname.invalid. </span><span class="p">(</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                        </span><span class="sc">2017030903</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                        </span><span class="sc">1</span><span class="err">D</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                        </span><span class="sc">1</span><span class="err">H</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                        </span><span class="sc">1</span><span class="err">W</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                        </span><span class="sc">3</span><span class="err">H</span><span class="w"> </span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                        </span><span class="k">NS</span><span class="w">      </span><span class="py">localhost.</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nc">note</span><span class="w">
+</span></span></span></code></pre></div><p>[WINDOWS 驗證:]</p>
+<p>將windows 網卡DNS設定為 DNS-SERVER 172.16.0.222</p>
+<p><img src="/p/dns_server-bind-%E5%AE%89%E8%A3%9D%E8%88%87%E8%A8%AD%E5%AE%9A/01.png"
+	width="1915"
+	height="1009"
+	srcset="/p/dns_server-bind-%E5%AE%89%E8%A3%9D%E8%88%87%E8%A8%AD%E5%AE%9A/01_hub4d28e4628cff7175577e43f27f60c3c_180632_480x0_resize_box_3.png 480w, /p/dns_server-bind-%E5%AE%89%E8%A3%9D%E8%88%87%E8%A8%AD%E5%AE%9A/01_hub4d28e4628cff7175577e43f27f60c3c_180632_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="189"
+		data-flex-basis="455px"
+	
+></p>
+<p>不用綁 hosts 即可訪問</p>
+<p><img src="/p/dns_server-bind-%E5%AE%89%E8%A3%9D%E8%88%87%E8%A8%AD%E5%AE%9A/02.png"
+	width="1919"
+	height="310"
+	srcset="/p/dns_server-bind-%E5%AE%89%E8%A3%9D%E8%88%87%E8%A8%AD%E5%AE%9A/02_hua9416373749567660b3d96bcdec99426_17949_480x0_resize_box_3.png 480w, /p/dns_server-bind-%E5%AE%89%E8%A3%9D%E8%88%87%E8%A8%AD%E5%AE%9A/02_hua9416373749567660b3d96bcdec99426_17949_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="619"
+		data-flex-basis="1485px"
+	
+></p>
+<hr>
+
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/dns/">DNS</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC By Laurance</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">Related content</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/p/dns_server-mydns-%E6%9C%8D%E5%8B%99%E5%99%A8%E7%9A%84%E5%8F%AF%E8%A6%96%E5%8C%96%E7%AE%A1%E7%90%86-by-centos6/">
+        
+        
+            <div class="article-image">
+                <img src="/p/dns_server-mydns-%E6%9C%8D%E5%8B%99%E5%99%A8%E7%9A%84%E5%8F%AF%E8%A6%96%E5%8C%96%E7%AE%A1%E7%90%86-by-centos6/100.7279ee7e06c8e0ec8341e5f4ef2bd78a_hu4f6562e501064fb4525a6459b027d812_33292_250x150_fill_box_smart1_3.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post DNS_SERVER-MyDNS 服務器的可視化管理 by CentOS6"
+                        
+                        data-hash="md5-cnnufgbI4OyDQeX07yvXig==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">DNS_SERVER-MyDNS 服務器的可視化管理 by CentOS6</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/dns-%E6%AD%A3%E8%A7%A3%E8%88%87%E5%8F%8D%E8%A7%A3/">
+        
+        
+            <div class="article-image">
+                <img src="/p/dns-%E6%AD%A3%E8%A7%A3%E8%88%87%E5%8F%8D%E8%A7%A3/100.7279ee7e06c8e0ec8341e5f4ef2bd78a_hu4f6562e501064fb4525a6459b027d812_33292_250x150_fill_box_smart1_3.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post DNS-正解與反解"
+                        
+                        data-hash="md5-cnnufgbI4OyDQeX07yvXig==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">DNS-正解與反解</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/nginx-%E6%B7%BB%E5%8A%A0-echo-%E6%A8%A1%E7%B5%84/">
+        
+        
+            <div class="article-image">
+                <img src="/p/nginx-%E6%B7%BB%E5%8A%A0-echo-%E6%A8%A1%E7%B5%84/100.69f4d4c5fae6d72600f191bb611d9fc1_hud639c4e125de7e8ad17e2519279d4fee_29636_250x150_fill_box_smart1_3.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Nginx-添加 echo 模組"
+                        
+                        data-hash="md5-afTUxfrm1yYA8ZG7YR2fwQ==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Nginx-添加 echo 模組</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/nginx-%E5%8F%83%E6%95%B8%E9%85%8D%E7%BD%AE-tri_files-uri/">
+        
+        
+            <div class="article-image">
+                <img src="/p/nginx-%E5%8F%83%E6%95%B8%E9%85%8D%E7%BD%AE-tri_files-uri/100.69f4d4c5fae6d72600f191bb611d9fc1_hud639c4e125de7e8ad17e2519279d4fee_29636_250x150_fill_box_smart1_3.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Nginx-參數配置 tri_files $uri"
+                        
+                        data-hash="md5-afTUxfrm1yYA8ZG7YR2fwQ==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Nginx-參數配置 tri_files $uri</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/nginx-405-not-allowed/">
+        
+        
+            <div class="article-image">
+                <img src="/p/nginx-405-not-allowed/100.69f4d4c5fae6d72600f191bb611d9fc1_hud639c4e125de7e8ad17e2519279d4fee_29636_250x150_fill_box_smart1_3.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Nginx-405 Not Allowed"
+                        
+                        data-hash="md5-afTUxfrm1yYA8ZG7YR2fwQ==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Nginx-405 Not Allowed</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "hugo-theme-stack" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2022 - 
+        
+        2023 Laurance&#39;s Note
+    </section>
+    
+    <section class="powerby">
+        
+            All rights reserved <br/>
+        
+
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        
+    </section>
+</footer>
+
+<span id="busuanzi_container_site_pv">
+    總瀏覽  <span id="busuanzi_value_site_pv"></span>  次
+</span>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+    
+
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

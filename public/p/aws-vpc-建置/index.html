@@ -1,0 +1,1020 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='1. 建立1個VPC 點選 Create VPC 輸入名稱及網段 , 這邊設置為 172.25.0.0/16 2. 新增4個subnets (2個Public、2個private) 用途:預防AZ出現故障無'><title>AWS-VPC 建置</title>
+
+<link rel='canonical' href='https://note.laurance.ml/p/aws-vpc-%E5%BB%BA%E7%BD%AE/'>
+
+<link rel="stylesheet" href="/scss/style.min.ac77dcf8b111b51da39a92990f431923f210f3876d85798a2125667f96dc33a4.css"><meta property='og:title' content='AWS-VPC 建置'>
+<meta property='og:description' content='1. 建立1個VPC 點選 Create VPC 輸入名稱及網段 , 這邊設置為 172.25.0.0/16 2. 新增4個subnets (2個Public、2個private) 用途:預防AZ出現故障無'>
+<meta property='og:url' content='https://note.laurance.ml/p/aws-vpc-%E5%BB%BA%E7%BD%AE/'>
+<meta property='og:site_name' content='Laurance&#39;s Note'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='AWS' /><meta property='article:published_time' content='2022-08-05T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2022-08-05T00:00:00&#43;00:00'/><meta property='og:image' content='https://note.laurance.ml/p/aws-vpc-%E5%BB%BA%E7%BD%AE/100.png' />
+<meta name="twitter:title" content="AWS-VPC 建置">
+<meta name="twitter:description" content="1. 建立1個VPC 點選 Create VPC 輸入名稱及網段 , 這邊設置為 172.25.0.0/16 2. 新增4個subnets (2個Public、2個private) 用途:預防AZ出現故障無"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://note.laurance.ml/p/aws-vpc-%E5%BB%BA%E7%BD%AE/100.png' />
+    <link rel="shortcut icon" href="static/favicon.ico" />
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Live2D 看板娘 / Demo</title>
+</head>
+<body>
+<script src="https://cdn.jsdelivr.net/gh/dingbangli/live2d-widget@latest/autoload.js"></script>
+</body>
+</html>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu49eacb73e01f91348578131d7e8658f5_11993_300x0_resize_box_3.png" width="300"
+                            height="301" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🍥</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Laurance&#39;s Note</a></h1>
+            <h2 class="site-description">筆記 記錄美好生活
+</h2>
+        </div>
+    </header><ol class="menu" id="main-menu">
+        
+        
+        
+
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/about/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/links/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>Links</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+            
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>Dark Mode</span>
+                </li>
+            
+        </div>
+    </ol>
+</aside>
+<main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/aws-vpc-%E5%BB%BA%E7%BD%AE/">
+                <img src="/p/aws-vpc-%E5%BB%BA%E7%BD%AE/100_hu4977afd0e8455b389e73ed8c78bcad93_31864_800x0_resize_box_3.png"
+                        srcset="/p/aws-vpc-%E5%BB%BA%E7%BD%AE/100_hu4977afd0e8455b389e73ed8c78bcad93_31864_800x0_resize_box_3.png 800w, /p/aws-vpc-%E5%BB%BA%E7%BD%AE/100_hu4977afd0e8455b389e73ed8c78bcad93_31864_1600x0_resize_box_3.png 1600w"
+                        width="800" 
+                        height="250" 
+                        loading="lazy"
+                        alt="Featured image of post AWS-VPC 建置" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/aws/" >
+                AWS
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/aws-vpc-%E5%BB%BA%E7%BD%AE/">AWS-VPC 建置</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Aug 05, 2022</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    1 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+</header>
+
+    <section class="article-content">
+    
+    
+    <h1 id="1-建立1個vpc">1. 建立1個VPC</h1>
+<p>點選 Create VPC</p>
+<p><img src="/p/aws-vpc-%E5%BB%BA%E7%BD%AE/101.png"
+	width="1920"
+	height="937"
+	srcset="/p/aws-vpc-%E5%BB%BA%E7%BD%AE/101_hu77850275d7b2a908f279e4ce020a9769_100184_480x0_resize_box_3.png 480w, /p/aws-vpc-%E5%BB%BA%E7%BD%AE/101_hu77850275d7b2a908f279e4ce020a9769_100184_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="204"
+		data-flex-basis="491px"
+	
+></p>
+<p>輸入名稱及網段 , 這邊設置為 172.25.0.0/16</p>
+<p><img src="/p/aws-vpc-%E5%BB%BA%E7%BD%AE/102.png"
+	width="1920"
+	height="937"
+	srcset="/p/aws-vpc-%E5%BB%BA%E7%BD%AE/102_hu11edacf44aecc6a1ae0ac5fd6984ab67_120441_480x0_resize_box_3.png 480w, /p/aws-vpc-%E5%BB%BA%E7%BD%AE/102_hu11edacf44aecc6a1ae0ac5fd6984ab67_120441_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="204"
+		data-flex-basis="491px"
+	
+></p>
+<h1 id="2-新增4個subnets-2個public2個private">2. 新增4個subnets (2個Public、2個private)</h1>
+<p>用途:預防AZ出現故障無法切換</p>
+<p>點選 Create subnet</p>
+<p><img src="/p/aws-vpc-%E5%BB%BA%E7%BD%AE/103.png"
+	width="1920"
+	height="937"
+	srcset="/p/aws-vpc-%E5%BB%BA%E7%BD%AE/103_hud054169d884c97c5264572da275e01a1_117075_480x0_resize_box_3.png 480w, /p/aws-vpc-%E5%BB%BA%E7%BD%AE/103_hud054169d884c97c5264572da275e01a1_117075_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="204"
+		data-flex-basis="491px"
+	
+></p>
+<p>確認 CIDR 為目前設置網段 &amp;&amp; 遮罩為 /16</p>
+<p><img src="/p/aws-vpc-%E5%BB%BA%E7%BD%AE/104.png"
+	width="750"
+	height="288"
+	srcset="/p/aws-vpc-%E5%BB%BA%E7%BD%AE/104_hu81593c8ac2e1aa590b22e887a8cc8ac6_19411_480x0_resize_box_3.png 480w, /p/aws-vpc-%E5%BB%BA%E7%BD%AE/104_hu81593c8ac2e1aa590b22e887a8cc8ac6_19411_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="260"
+		data-flex-basis="625px"
+	
+></p>
+<p>建立 public-a 為 172.25.1.0/24</p>
+<p><img src="/p/aws-vpc-%E5%BB%BA%E7%BD%AE/105.png"
+	width="720"
+	height="505"
+	srcset="/p/aws-vpc-%E5%BB%BA%E7%BD%AE/105_hud8614f00e9225f3aa01df64edfc07315_46975_480x0_resize_box_3.png 480w, /p/aws-vpc-%E5%BB%BA%E7%BD%AE/105_hud8614f00e9225f3aa01df64edfc07315_46975_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="142"
+		data-flex-basis="342px"
+	
+></p>
+<p>建立 public-c 為 172.25.2.0/24</p>
+<p><img src="/p/aws-vpc-%E5%BB%BA%E7%BD%AE/106.png"
+	width="721"
+	height="503"
+	srcset="/p/aws-vpc-%E5%BB%BA%E7%BD%AE/106_hu30c113fb5947d0585b7d9b49a8cb2483_46005_480x0_resize_box_3.png 480w, /p/aws-vpc-%E5%BB%BA%E7%BD%AE/106_hu30c113fb5947d0585b7d9b49a8cb2483_46005_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="143"
+		data-flex-basis="344px"
+	
+></p>
+<p>建立 private-a 為 172.25.3.0/24</p>
+<p><img src="/p/aws-vpc-%E5%BB%BA%E7%BD%AE/107.png"
+	width="720"
+	height="502"
+	srcset="/p/aws-vpc-%E5%BB%BA%E7%BD%AE/107_hu9e88331a8a52712086ccc3a99c793cae_46556_480x0_resize_box_3.png 480w, /p/aws-vpc-%E5%BB%BA%E7%BD%AE/107_hu9e88331a8a52712086ccc3a99c793cae_46556_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="143"
+		data-flex-basis="344px"
+	
+></p>
+<p>建立 private-c 為 172.25.4.0/24</p>
+<p><img src="/p/aws-vpc-%E5%BB%BA%E7%BD%AE/108.png"
+	width="730"
+	height="616"
+	srcset="/p/aws-vpc-%E5%BB%BA%E7%BD%AE/108_hufc6b9185fd899f0171eac0eed1a7fd6a_54778_480x0_resize_box_3.png 480w, /p/aws-vpc-%E5%BB%BA%E7%BD%AE/108_hufc6b9185fd899f0171eac0eed1a7fd6a_54778_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="118"
+		data-flex-basis="284px"
+	
+></p>
+<h1 id="3-新增internet-gateways並將igw掛上vpc">3. 新增Internet gateways，並將IGW掛上VPC</h1>
+<p>新增Internet gateways (此步驟要先做完，才能新增 NAT GW)</p>
+<p><img src="/p/aws-vpc-%E5%BB%BA%E7%BD%AE/109.png"
+	width="1920"
+	height="937"
+	srcset="/p/aws-vpc-%E5%BB%BA%E7%BD%AE/109_hub3d3941f7fe83123bfe39eab0dfb7388_113800_480x0_resize_box_3.png 480w, /p/aws-vpc-%E5%BB%BA%E7%BD%AE/109_hub3d3941f7fe83123bfe39eab0dfb7388_113800_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="204"
+		data-flex-basis="491px"
+	
+></p>
+<p>輸入名稱 &gt; Create internet gateway</p>
+<p><img src="/p/aws-vpc-%E5%BB%BA%E7%BD%AE/110.png"
+	width="895"
+	height="646"
+	srcset="/p/aws-vpc-%E5%BB%BA%E7%BD%AE/110_hu9706de85b53330273526a002aa151bb6_57145_480x0_resize_box_3.png 480w, /p/aws-vpc-%E5%BB%BA%E7%BD%AE/110_hu9706de85b53330273526a002aa151bb6_57145_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="138"
+		data-flex-basis="332px"
+	
+></p>
+<p>選取剛剛建立的 internet gateway 右鍵點選 attach</p>
+<p><img src="/p/aws-vpc-%E5%BB%BA%E7%BD%AE/111.png"
+	width="1920"
+	height="937"
+	srcset="/p/aws-vpc-%E5%BB%BA%E7%BD%AE/111_huebe5c0dcda1fd2623ae1c714e432da84_130829_480x0_resize_box_3.png 480w, /p/aws-vpc-%E5%BB%BA%E7%BD%AE/111_huebe5c0dcda1fd2623ae1c714e432da84_130829_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="204"
+		data-flex-basis="491px"
+	
+></p>
+<p>選擇剛剛建立好的 VPC</p>
+<p><img src="/p/aws-vpc-%E5%BB%BA%E7%BD%AE/112.png"
+	width="873"
+	height="691"
+	srcset="/p/aws-vpc-%E5%BB%BA%E7%BD%AE/112_hu5103b5a12f630fa931f6fdfc6c2e034e_78541_480x0_resize_box_3.png 480w, /p/aws-vpc-%E5%BB%BA%E7%BD%AE/112_hu5103b5a12f630fa931f6fdfc6c2e034e_78541_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="126"
+		data-flex-basis="303px"
+	
+></p>
+<h1 id="4新增nat-gateways選擇public-subnet並給一個外網ip">4.新增NAT gateways，選擇Public subnet，並給一個外網IP</h1>
+<p>新增 NAT Gateways</p>
+<p><img src="/p/aws-vpc-%E5%BB%BA%E7%BD%AE/113.png"
+	width="1920"
+	height="937"
+	srcset="/p/aws-vpc-%E5%BB%BA%E7%BD%AE/113_hu42a807c7f32e07345efccdcae8f70033_96626_480x0_resize_box_3.png 480w, /p/aws-vpc-%E5%BB%BA%E7%BD%AE/113_hu42a807c7f32e07345efccdcae8f70033_96626_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="204"
+		data-flex-basis="491px"
+	
+></p>
+<p>設定名稱,subnet,Elastic IP 點選 Create</p>
+<p><img src="/p/aws-vpc-%E5%BB%BA%E7%BD%AE/114.png"
+	width="867"
+	height="784"
+	srcset="/p/aws-vpc-%E5%BB%BA%E7%BD%AE/114_hud864ebf6d058dd53bb9702682e24b143_83944_480x0_resize_box_3.png 480w, /p/aws-vpc-%E5%BB%BA%E7%BD%AE/114_hud864ebf6d058dd53bb9702682e24b143_83944_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="110"
+		data-flex-basis="265px"
+	
+></p>
+<h1 id="5新增2個route-table1個叫igw1個叫nat">5.新增2個route table，1個叫igw、1個叫nat</h1>
+<p>新增 route table</p>
+<p><img src="/p/aws-vpc-%E5%BB%BA%E7%BD%AE/115.png"
+	width="1920"
+	height="937"
+	srcset="/p/aws-vpc-%E5%BB%BA%E7%BD%AE/115_hu093efcbe19577fcf6902526ea94de17d_133340_480x0_resize_box_3.png 480w, /p/aws-vpc-%E5%BB%BA%E7%BD%AE/115_hu093efcbe19577fcf6902526ea94de17d_133340_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="204"
+		data-flex-basis="491px"
+	
+></p>
+<p>建立1個 route for NAT gateway</p>
+<p><img src="/p/aws-vpc-%E5%BB%BA%E7%BD%AE/116.png"
+	width="873"
+	height="725"
+	srcset="/p/aws-vpc-%E5%BB%BA%E7%BD%AE/116_hu800f679a4ac0fee87b76c04f14c18574_64511_480x0_resize_box_3.png 480w, /p/aws-vpc-%E5%BB%BA%E7%BD%AE/116_hu800f679a4ac0fee87b76c04f14c18574_64511_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="120"
+		data-flex-basis="288px"
+	
+></p>
+<p>點選剛剛建立的 private-route-nat 設定 route 規則</p>
+<p><img src="/p/aws-vpc-%E5%BB%BA%E7%BD%AE/117.png"
+	width="1920"
+	height="937"
+	srcset="/p/aws-vpc-%E5%BB%BA%E7%BD%AE/117_hub1c392203226c11d28bede5958dba3a5_141193_480x0_resize_box_3.png 480w, /p/aws-vpc-%E5%BB%BA%E7%BD%AE/117_hub1c392203226c11d28bede5958dba3a5_141193_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="204"
+		data-flex-basis="491px"
+	
+></p>
+<p>設定 NAT - route 目的為全通</p>
+<p><img src="/p/aws-vpc-%E5%BB%BA%E7%BD%AE/118.png"
+	width="1920"
+	height="937"
+	srcset="/p/aws-vpc-%E5%BB%BA%E7%BD%AE/118_hu80ef2253fee9710ad7bdcd0f180049c4_67658_480x0_resize_box_3.png 480w, /p/aws-vpc-%E5%BB%BA%E7%BD%AE/118_hu80ef2253fee9710ad7bdcd0f180049c4_67658_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="204"
+		data-flex-basis="491px"
+	
+></p>
+<p>建立1個 route for Internet gateway</p>
+<p><img src="/p/aws-vpc-%E5%BB%BA%E7%BD%AE/119.png"
+	width="1920"
+	height="937"
+	srcset="/p/aws-vpc-%E5%BB%BA%E7%BD%AE/119_hu7f86963b49fa1cbd88153cc37979c29d_89421_480x0_resize_box_3.png 480w, /p/aws-vpc-%E5%BB%BA%E7%BD%AE/119_hu7f86963b49fa1cbd88153cc37979c29d_89421_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="204"
+		data-flex-basis="491px"
+	
+></p>
+<p>點選剛剛建立的 public-route-igw 設定 route 規則</p>
+<p><img src="/p/aws-vpc-%E5%BB%BA%E7%BD%AE/120.png"
+	width="1920"
+	height="937"
+	srcset="/p/aws-vpc-%E5%BB%BA%E7%BD%AE/120_hucdfc6efa4a278d1af130303f2aeedc68_149217_480x0_resize_box_3.png 480w, /p/aws-vpc-%E5%BB%BA%E7%BD%AE/120_hucdfc6efa4a278d1af130303f2aeedc68_149217_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="204"
+		data-flex-basis="491px"
+	
+></p>
+<p>設定 IGW - route 目的為全通</p>
+<p><img src="/p/aws-vpc-%E5%BB%BA%E7%BD%AE/121.png"
+	width="1920"
+	height="937"
+	srcset="/p/aws-vpc-%E5%BB%BA%E7%BD%AE/121_huf09a7da875cdf2a964f07a4946ac6a3e_67976_480x0_resize_box_3.png 480w, /p/aws-vpc-%E5%BB%BA%E7%BD%AE/121_huf09a7da875cdf2a964f07a4946ac6a3e_67976_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="204"
+		data-flex-basis="491px"
+	
+></p>
+<h1 id="6subnets-套用route-talbepublic套用igwprivate套用nat">6.subnets 套用route talbe，Public套用igw，private套用nat</h1>
+<p>回到 subnet 選擇 public-a 點選設置 route table</p>
+<p><img src="/p/aws-vpc-%E5%BB%BA%E7%BD%AE/122.png"
+	width="1920"
+	height="937"
+	srcset="/p/aws-vpc-%E5%BB%BA%E7%BD%AE/122_hu27ae122f19ba14ad813033568e335661_184112_480x0_resize_box_3.png 480w, /p/aws-vpc-%E5%BB%BA%E7%BD%AE/122_hu27ae122f19ba14ad813033568e335661_184112_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="204"
+		data-flex-basis="491px"
+	
+></p>
+<p>public-a 套用 public-route-igw 規則</p>
+<p><img src="/p/aws-vpc-%E5%BB%BA%E7%BD%AE/123.png"
+	width="1920"
+	height="937"
+	srcset="/p/aws-vpc-%E5%BB%BA%E7%BD%AE/123_hud91c129c48e61ec9f7dae7a13698f30b_75648_480x0_resize_box_3.png 480w, /p/aws-vpc-%E5%BB%BA%E7%BD%AE/123_hud91c129c48e61ec9f7dae7a13698f30b_75648_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="204"
+		data-flex-basis="491px"
+	
+></p>
+<p>回到 subnet 選擇 public-c 點選設置 route table</p>
+<p><img src="/p/aws-vpc-%E5%BB%BA%E7%BD%AE/124.png"
+	width="1920"
+	height="937"
+	srcset="/p/aws-vpc-%E5%BB%BA%E7%BD%AE/124_hu66674087e7c11069d5605c86044cb935_192808_480x0_resize_box_3.png 480w, /p/aws-vpc-%E5%BB%BA%E7%BD%AE/124_hu66674087e7c11069d5605c86044cb935_192808_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="204"
+		data-flex-basis="491px"
+	
+></p>
+<p>public-c 套用 public-route-igw 規則</p>
+<p><img src="/p/aws-vpc-%E5%BB%BA%E7%BD%AE/125.png"
+	width="1920"
+	height="937"
+	srcset="/p/aws-vpc-%E5%BB%BA%E7%BD%AE/125_hu72681c6d7202ded5746ec991e774acc4_76333_480x0_resize_box_3.png 480w, /p/aws-vpc-%E5%BB%BA%E7%BD%AE/125_hu72681c6d7202ded5746ec991e774acc4_76333_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="204"
+		data-flex-basis="491px"
+	
+></p>
+<p>回到 subnet 選擇 pricate-a 點選設置 route table</p>
+<p><img src="/p/aws-vpc-%E5%BB%BA%E7%BD%AE/126.png"
+	width="1920"
+	height="937"
+	srcset="/p/aws-vpc-%E5%BB%BA%E7%BD%AE/126_huf184241e08700641d19abf40add0b1d1_192431_480x0_resize_box_3.png 480w, /p/aws-vpc-%E5%BB%BA%E7%BD%AE/126_huf184241e08700641d19abf40add0b1d1_192431_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="204"
+		data-flex-basis="491px"
+	
+></p>
+<p>private-a 套用 private-route-nat 規則</p>
+<p><img src="/p/aws-vpc-%E5%BB%BA%E7%BD%AE/127.png"
+	width="1920"
+	height="937"
+	srcset="/p/aws-vpc-%E5%BB%BA%E7%BD%AE/127_hufdab82ee0b94ec32e33455b6966b0031_75415_480x0_resize_box_3.png 480w, /p/aws-vpc-%E5%BB%BA%E7%BD%AE/127_hufdab82ee0b94ec32e33455b6966b0031_75415_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="204"
+		data-flex-basis="491px"
+	
+></p>
+<p>回到 subnet 選擇 pricate-c 點選設置 route table</p>
+<p><img src="/p/aws-vpc-%E5%BB%BA%E7%BD%AE/128.png"
+	width="1920"
+	height="937"
+	srcset="/p/aws-vpc-%E5%BB%BA%E7%BD%AE/128_hu42730dccdcfb677c04faceb090afeb4b_194329_480x0_resize_box_3.png 480w, /p/aws-vpc-%E5%BB%BA%E7%BD%AE/128_hu42730dccdcfb677c04faceb090afeb4b_194329_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="204"
+		data-flex-basis="491px"
+	
+></p>
+<p>private-c 套用 private-route-nat 規則</p>
+<p><img src="/p/aws-vpc-%E5%BB%BA%E7%BD%AE/129.png"
+	width="1920"
+	height="937"
+	srcset="/p/aws-vpc-%E5%BB%BA%E7%BD%AE/129_huf61c2b05e3b09022d0b4b155aabcf13b_75303_480x0_resize_box_3.png 480w, /p/aws-vpc-%E5%BB%BA%E7%BD%AE/129_huf61c2b05e3b09022d0b4b155aabcf13b_75303_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="204"
+		data-flex-basis="491px"
+	
+></p>
+<h1 id="vpc-設置完成">VPC 設置完成</h1>
+<hr>
+
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/aws/">AWS</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC By Laurance</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">Related content</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/p/aws-%E9%80%A3%E7%B7%9A%E8%87%B3-windows-ec2/">
+        
+        
+            <div class="article-image">
+                <img src="/p/aws-%E9%80%A3%E7%B7%9A%E8%87%B3-windows-ec2/100.640a3557d943a0069e1cee50e7db5545_hu4977afd0e8455b389e73ed8c78bcad93_31864_250x150_fill_box_smart1_3.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post AWS-連線至 windows-ec2"
+                        
+                        data-hash="md5-ZAo1V9lDoAaeHO5Q59tVRQ==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">AWS-連線至 windows-ec2</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/aws-codecommit-ssh-%E9%87%91%E9%91%B0%E4%B8%8A%E5%82%B3%E5%8F%8A%E8%A8%AD%E7%BD%AE/">
+        
+        
+            <div class="article-image">
+                <img src="/p/aws-codecommit-ssh-%E9%87%91%E9%91%B0%E4%B8%8A%E5%82%B3%E5%8F%8A%E8%A8%AD%E7%BD%AE/100.640a3557d943a0069e1cee50e7db5545_hu4977afd0e8455b389e73ed8c78bcad93_31864_250x150_fill_box_smart1_3.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post AWS-Codecommit SSH 金鑰上傳及設置"
+                        
+                        data-hash="md5-ZAo1V9lDoAaeHO5Q59tVRQ==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">AWS-Codecommit SSH 金鑰上傳及設置</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/aws-waf-rules-%E5%BB%BA%E7%BD%AE/">
+        
+        
+            <div class="article-image">
+                <img src="/p/aws-waf-rules-%E5%BB%BA%E7%BD%AE/100.640a3557d943a0069e1cee50e7db5545_hu4977afd0e8455b389e73ed8c78bcad93_31864_250x150_fill_box_smart1_3.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post AWS - WAF &amp; Rules 建置"
+                        
+                        data-hash="md5-ZAo1V9lDoAaeHO5Q59tVRQ==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">AWS - WAF &amp; Rules 建置</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/aws-update-ip-set-to-block-based-ip-address-for-waf/">
+        
+        
+            <div class="article-image">
+                <img src="/p/aws-update-ip-set-to-block-based-ip-address-for-waf/100.640a3557d943a0069e1cee50e7db5545_hu4977afd0e8455b389e73ed8c78bcad93_31864_250x150_fill_box_smart1_3.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post AWS- update-ip-set to block based IP address for WAF"
+                        
+                        data-hash="md5-ZAo1V9lDoAaeHO5Q59tVRQ==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">AWS- update-ip-set to block based IP address for WAF</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/aws-cloudfront-cdn%E5%BF%AB%E5%8F%96%E6%B8%85%E9%99%A4/">
+        
+        
+            <div class="article-image">
+                <img src="/p/aws-cloudfront-cdn%E5%BF%AB%E5%8F%96%E6%B8%85%E9%99%A4/100.640a3557d943a0069e1cee50e7db5545_hu4977afd0e8455b389e73ed8c78bcad93_31864_250x150_fill_box_smart1_3.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post AWS-Cloudfront CDN快取清除"
+                        
+                        data-hash="md5-ZAo1V9lDoAaeHO5Q59tVRQ==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">AWS-Cloudfront CDN快取清除</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "hugo-theme-stack" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2022 - 
+        
+        2023 Laurance&#39;s Note
+    </section>
+    
+    <section class="powerby">
+        
+            All rights reserved <br/>
+        
+
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        
+    </section>
+</footer>
+
+<span id="busuanzi_container_site_pv">
+    總瀏覽  <span id="busuanzi_value_site_pv"></span>  次
+</span>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+    
+
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

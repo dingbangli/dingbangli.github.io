@@ -1,0 +1,411 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Windows on Laurance&#39;s Note</title>
+        <link>https://note.laurance.ml/tags/windows/</link>
+        <description>Recent content in Windows on Laurance&#39;s Note</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Mon, 20 Mar 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://note.laurance.ml/tags/windows/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Windows-win10專業版金鑰</title>
+        <link>https://note.laurance.ml/p/windows-win10%E5%B0%88%E6%A5%AD%E7%89%88%E9%87%91%E9%91%B0/</link>
+        <pubDate>Mon, 20 Mar 2023 00:00:00 +0000</pubDate>
+        
+        <guid>https://note.laurance.ml/p/windows-win10%E5%B0%88%E6%A5%AD%E7%89%88%E9%87%91%E9%91%B0/</guid>
+        <description>&lt;img src="https://note.laurance.ml/p/windows-win10%E5%B0%88%E6%A5%AD%E7%89%88%E9%87%91%E9%91%B0/100.png" alt="Featured image of post Windows-win10專業版金鑰" /&gt;&lt;h1 id=&#34;windows-10-專業版金鑰啟用方法&#34;&gt;Windows 10 專業版金鑰啟用方法&lt;/h1&gt;
+&lt;p&gt;{Step 1} 叫出 &lt;code&gt;PSW&lt;/code&gt; (使用管理者身分)&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;WIN + X + A
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;{Step 2} 輸入已下指令&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; slmgr /ipk W269N-WFGWX-YVC9B-4J6C9-T83GX
+ 
+ slmgr /skms kms.03k.org
+ 
+ slmgr /ato
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;啟用成功&#34;&gt;啟用成功&lt;/h1&gt;
+&lt;hr&gt;
+
+</description>
+        </item>
+        <item>
+        <title>Windows-bat批處理腳本中文亂碼問題解決</title>
+        <link>https://note.laurance.ml/p/windows-bat%E6%89%B9%E8%99%95%E7%90%86%E8%85%B3%E6%9C%AC%E4%B8%AD%E6%96%87%E4%BA%82%E7%A2%BC%E5%95%8F%E9%A1%8C%E8%A7%A3%E6%B1%BA/</link>
+        <pubDate>Thu, 02 Mar 2023 00:00:00 +0000</pubDate>
+        
+        <guid>https://note.laurance.ml/p/windows-bat%E6%89%B9%E8%99%95%E7%90%86%E8%85%B3%E6%9C%AC%E4%B8%AD%E6%96%87%E4%BA%82%E7%A2%BC%E5%95%8F%E9%A1%8C%E8%A7%A3%E6%B1%BA/</guid>
+        <description>&lt;img src="https://note.laurance.ml/p/windows-bat%E6%89%B9%E8%99%95%E7%90%86%E8%85%B3%E6%9C%AC%E4%B8%AD%E6%96%87%E4%BA%82%E7%A2%BC%E5%95%8F%E9%A1%8C%E8%A7%A3%E6%B1%BA/100.png" alt="Featured image of post Windows-bat批處理腳本中文亂碼問題解決" /&gt;&lt;h1 id=&#34;bat-處理腳本如下&#34;&gt;bat 處理腳本如下&lt;/h1&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;@&lt;span class=&#34;l&#34;&gt;echo off&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;l&#34;&gt;ECHO 正在重置 Studio 3T 的使用日期...&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;l&#34;&gt;FOR /f &amp;#34;tokens=1,2,* &amp;#34; %%i IN (&amp;#39;reg query &amp;#34;HKEY_CURRENT_USER\Software\JavaSoft\Prefs\3t\mongochef\enterprise&amp;#34; ^| find /V &amp;#34;installation&amp;#34; ^| find /V &amp;#34;HKEY&amp;#34;&amp;#39;) DO ECHO yes | reg add &amp;#34;HKEY_CURRENT_USER\Software\JavaSoft\Prefs\3t\mongochef\enterprise&amp;#34; /v %%i /t REG_SZ /d &amp;#34;&amp;#34;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;l&#34;&gt;ECHO 重置完成, 按任意键退出......&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;l&#34;&gt;pause&amp;gt;nul&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;l&#34;&gt;exit&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;CMD 執行腳本時出現亂碼&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/windows-bat%E6%89%B9%E8%99%95%E7%90%86%E8%85%B3%E6%9C%AC%E4%B8%AD%E6%96%87%E4%BA%82%E7%A2%BC%E5%95%8F%E9%A1%8C%E8%A7%A3%E6%B1%BA/301.png&#34;
+	width=&#34;1008&#34;
+	height=&#34;733&#34;
+	srcset=&#34;https://note.laurance.ml/p/windows-bat%E6%89%B9%E8%99%95%E7%90%86%E8%85%B3%E6%9C%AC%E4%B8%AD%E6%96%87%E4%BA%82%E7%A2%BC%E5%95%8F%E9%A1%8C%E8%A7%A3%E6%B1%BA/301_hu9e9b1ccacb556af98b74ccd1b45d03ca_18196_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/windows-bat%E6%89%B9%E8%99%95%E7%90%86%E8%85%B3%E6%9C%AC%E4%B8%AD%E6%96%87%E4%BA%82%E7%A2%BC%E5%95%8F%E9%A1%8C%E8%A7%A3%E6%B1%BA/301_hu9e9b1ccacb556af98b74ccd1b45d03ca_18196_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;137&#34;
+		data-flex-basis=&#34;330px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h1 id=&#34;解決方法&#34;&gt;解決方法&lt;/h1&gt;
+&lt;p&gt;將 &lt;code&gt;bat執行檔&lt;/code&gt; 另存為 &lt;code&gt;ANSI編碼格式&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/windows-bat%E6%89%B9%E8%99%95%E7%90%86%E8%85%B3%E6%9C%AC%E4%B8%AD%E6%96%87%E4%BA%82%E7%A2%BC%E5%95%8F%E9%A1%8C%E8%A7%A3%E6%B1%BA/303.png&#34;
+	width=&#34;942&#34;
+	height=&#34;116&#34;
+	srcset=&#34;https://note.laurance.ml/p/windows-bat%E6%89%B9%E8%99%95%E7%90%86%E8%85%B3%E6%9C%AC%E4%B8%AD%E6%96%87%E4%BA%82%E7%A2%BC%E5%95%8F%E9%A1%8C%E8%A7%A3%E6%B1%BA/303_hu63e3af0955a393f1ce70f372a1863175_9204_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/windows-bat%E6%89%B9%E8%99%95%E7%90%86%E8%85%B3%E6%9C%AC%E4%B8%AD%E6%96%87%E4%BA%82%E7%A2%BC%E5%95%8F%E9%A1%8C%E8%A7%A3%E6%B1%BA/303_hu63e3af0955a393f1ce70f372a1863175_9204_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;812&#34;
+		data-flex-basis=&#34;1948px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;再次運行,亂碼問題已解決&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/windows-bat%E6%89%B9%E8%99%95%E7%90%86%E8%85%B3%E6%9C%AC%E4%B8%AD%E6%96%87%E4%BA%82%E7%A2%BC%E5%95%8F%E9%A1%8C%E8%A7%A3%E6%B1%BA/302.png&#34;
+	width=&#34;999&#34;
+	height=&#34;734&#34;
+	srcset=&#34;https://note.laurance.ml/p/windows-bat%E6%89%B9%E8%99%95%E7%90%86%E8%85%B3%E6%9C%AC%E4%B8%AD%E6%96%87%E4%BA%82%E7%A2%BC%E5%95%8F%E9%A1%8C%E8%A7%A3%E6%B1%BA/302_hue87f12ef063e6c8c30517cd932effaf3_14965_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/windows-bat%E6%89%B9%E8%99%95%E7%90%86%E8%85%B3%E6%9C%AC%E4%B8%AD%E6%96%87%E4%BA%82%E7%A2%BC%E5%95%8F%E9%A1%8C%E8%A7%A3%E6%B1%BA/302_hue87f12ef063e6c8c30517cd932effaf3_14965_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;136&#34;
+		data-flex-basis=&#34;326px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;hr&gt;
+
+</description>
+        </item>
+        <item>
+        <title>Windows-安裝程式--Chocolatey (安裝 yt-dlp)</title>
+        <link>https://note.laurance.ml/p/windows-%E5%AE%89%E8%A3%9D%E7%A8%8B%E5%BC%8F--chocolatey-%E5%AE%89%E8%A3%9D-yt-dlp/</link>
+        <pubDate>Thu, 02 Mar 2023 00:00:00 +0000</pubDate>
+        
+        <guid>https://note.laurance.ml/p/windows-%E5%AE%89%E8%A3%9D%E7%A8%8B%E5%BC%8F--chocolatey-%E5%AE%89%E8%A3%9D-yt-dlp/</guid>
+        <description>&lt;img src="https://note.laurance.ml/p/windows-%E5%AE%89%E8%A3%9D%E7%A8%8B%E5%BC%8F--chocolatey-%E5%AE%89%E8%A3%9D-yt-dlp/100.png" alt="Featured image of post Windows-安裝程式--Chocolatey (安裝 yt-dlp)" /&gt;&lt;h1 id=&#34;環境-win10--powershell-版本-51190411682&#34;&gt;環境: Win10 , Powershell 版本: 5.1.19041.1682&lt;/h1&gt;
+&lt;p&gt;&lt;code&gt;Powershell&lt;/code&gt; 查看 &lt;code&gt;PSVersion&lt;/code&gt; 版本&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$psversiontable
+&lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-javascript&#34; data-lang=&#34;javascript&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nx&#34;&gt;Name&lt;/span&gt;                           &lt;span class=&#34;nx&#34;&gt;Value&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;----&lt;/span&gt;                           &lt;span class=&#34;o&#34;&gt;-----&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nx&#34;&gt;PSVersion&lt;/span&gt;                      &lt;span class=&#34;mf&#34;&gt;5.1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;mf&#34;&gt;19041.1682&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nx&#34;&gt;PSEdition&lt;/span&gt;                      &lt;span class=&#34;nx&#34;&gt;Desktop&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nx&#34;&gt;PSCompatibleVersions&lt;/span&gt;           &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;mf&#34;&gt;1.0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mf&#34;&gt;2.0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mf&#34;&gt;3.0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mf&#34;&gt;4.0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;...}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nx&#34;&gt;BuildVersion&lt;/span&gt;                   &lt;span class=&#34;mf&#34;&gt;10.0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;mf&#34;&gt;19041.1682&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nx&#34;&gt;CLRVersion&lt;/span&gt;                     &lt;span class=&#34;mf&#34;&gt;4.0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;mf&#34;&gt;30319.42000&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nx&#34;&gt;WSManStackVersion&lt;/span&gt;              &lt;span class=&#34;mf&#34;&gt;3.0&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nx&#34;&gt;PSRemotingProtocolVersion&lt;/span&gt;      &lt;span class=&#34;mf&#34;&gt;2.3&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nx&#34;&gt;SerializationVersion&lt;/span&gt;           &lt;span class=&#34;mf&#34;&gt;1.1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;mf&#34;&gt;0.1&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;在 &lt;code&gt;powershell&lt;/code&gt; 中輸入以下指令下載 &lt;code&gt;Chocolatey&lt;/code&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString(&#39;https://chocolatey.org/install.ps1&#39;))
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/windows-%E5%AE%89%E8%A3%9D%E7%A8%8B%E5%BC%8F--chocolatey-%E5%AE%89%E8%A3%9D-yt-dlp/301.png&#34;
+	width=&#34;1207&#34;
+	height=&#34;792&#34;
+	srcset=&#34;https://note.laurance.ml/p/windows-%E5%AE%89%E8%A3%9D%E7%A8%8B%E5%BC%8F--chocolatey-%E5%AE%89%E8%A3%9D-yt-dlp/301_huedddb6fa3b6fcd09ec8272ab51574ab0_27598_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/windows-%E5%AE%89%E8%A3%9D%E7%A8%8B%E5%BC%8F--chocolatey-%E5%AE%89%E8%A3%9D-yt-dlp/301_huedddb6fa3b6fcd09ec8272ab51574ab0_27598_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;152&#34;
+		data-flex-basis=&#34;365px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;下載完成可用指令查看 &lt;code&gt;help&lt;/code&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;choco -?
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/windows-%E5%AE%89%E8%A3%9D%E7%A8%8B%E5%BC%8F--chocolatey-%E5%AE%89%E8%A3%9D-yt-dlp/302.png&#34;
+	width=&#34;1207&#34;
+	height=&#34;792&#34;
+	srcset=&#34;https://note.laurance.ml/p/windows-%E5%AE%89%E8%A3%9D%E7%A8%8B%E5%BC%8F--chocolatey-%E5%AE%89%E8%A3%9D-yt-dlp/302_hua7bfcef9761dbb8ea04d66639e007549_82193_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/windows-%E5%AE%89%E8%A3%9D%E7%A8%8B%E5%BC%8F--chocolatey-%E5%AE%89%E8%A3%9D-yt-dlp/302_hua7bfcef9761dbb8ea04d66639e007549_82193_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;152&#34;
+		data-flex-basis=&#34;365px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;使用 &lt;code&gt;choco&lt;/code&gt; 下載 &lt;code&gt;yt-dlp&lt;/code&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;choco install yt-dlp
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/windows-%E5%AE%89%E8%A3%9D%E7%A8%8B%E5%BC%8F--chocolatey-%E5%AE%89%E8%A3%9D-yt-dlp/303.png&#34;
+	width=&#34;1207&#34;
+	height=&#34;792&#34;
+	srcset=&#34;https://note.laurance.ml/p/windows-%E5%AE%89%E8%A3%9D%E7%A8%8B%E5%BC%8F--chocolatey-%E5%AE%89%E8%A3%9D-yt-dlp/303_hu13e4cb935f3bc87af0aaf2a4ff7033d3_87293_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/windows-%E5%AE%89%E8%A3%9D%E7%A8%8B%E5%BC%8F--chocolatey-%E5%AE%89%E8%A3%9D-yt-dlp/303_hu13e4cb935f3bc87af0aaf2a4ff7033d3_87293_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;152&#34;
+		data-flex-basis=&#34;365px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;hr&gt;
+
+</description>
+        </item>
+        <item>
+        <title>Windows 10 無法建立VPN連線</title>
+        <link>https://note.laurance.ml/p/windows-10-%E7%84%A1%E6%B3%95%E5%BB%BA%E7%AB%8Bvpn%E9%80%A3%E7%B7%9A/</link>
+        <pubDate>Tue, 27 Sep 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://note.laurance.ml/p/windows-10-%E7%84%A1%E6%B3%95%E5%BB%BA%E7%AB%8Bvpn%E9%80%A3%E7%B7%9A/</guid>
+        <description>&lt;img src="https://note.laurance.ml/p/windows-10-%E7%84%A1%E6%B3%95%E5%BB%BA%E7%AB%8Bvpn%E9%80%A3%E7%B7%9A/100.png" alt="Featured image of post Windows 10 無法建立VPN連線" /&gt;&lt;pre&gt;&lt;code&gt;出現以下錯誤訊息
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/windows-10-%E7%84%A1%E6%B3%95%E5%BB%BA%E7%AB%8Bvpn%E9%80%A3%E7%B7%9A/0001.png&#34;
+	width=&#34;320&#34;
+	height=&#34;183&#34;
+	srcset=&#34;https://note.laurance.ml/p/windows-10-%E7%84%A1%E6%B3%95%E5%BB%BA%E7%AB%8Bvpn%E9%80%A3%E7%B7%9A/0001_hu00351c6859f044de1b30a7e482910ec5_68136_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/windows-10-%E7%84%A1%E6%B3%95%E5%BB%BA%E7%AB%8Bvpn%E9%80%A3%E7%B7%9A/0001_hu00351c6859f044de1b30a7e482910ec5_68136_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;174&#34;
+		data-flex-basis=&#34;419px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;1.Win + R 輸入 regedit
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/windows-10-%E7%84%A1%E6%B3%95%E5%BB%BA%E7%AB%8Bvpn%E9%80%A3%E7%B7%9A/001.png&#34;
+	width=&#34;399&#34;
+	height=&#34;206&#34;
+	srcset=&#34;https://note.laurance.ml/p/windows-10-%E7%84%A1%E6%B3%95%E5%BB%BA%E7%AB%8Bvpn%E9%80%A3%E7%B7%9A/001_hu31b8e7384ac4ce7f70e78ee3b281830f_9196_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/windows-10-%E7%84%A1%E6%B3%95%E5%BB%BA%E7%AB%8Bvpn%E9%80%A3%E7%B7%9A/001_hu31b8e7384ac4ce7f70e78ee3b281830f_9196_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;193&#34;
+		data-flex-basis=&#34;464px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;2.尋找此路徑 HKEYLOCALMACHINE\SYSTEM\CurrentControlSet\Services\PolicyAgent
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/windows-10-%E7%84%A1%E6%B3%95%E5%BB%BA%E7%AB%8Bvpn%E9%80%A3%E7%B7%9A/002.png&#34;
+	width=&#34;1920&#34;
+	height=&#34;1040&#34;
+	srcset=&#34;https://note.laurance.ml/p/windows-10-%E7%84%A1%E6%B3%95%E5%BB%BA%E7%AB%8Bvpn%E9%80%A3%E7%B7%9A/002_huf0dbf686193811e63fd0fac70227fcb4_100449_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/windows-10-%E7%84%A1%E6%B3%95%E5%BB%BA%E7%AB%8Bvpn%E9%80%A3%E7%B7%9A/002_huf0dbf686193811e63fd0fac70227fcb4_100449_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;184&#34;
+		data-flex-basis=&#34;443px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;3.新增一組機碼 
+
+類型:DWORD (32-bit) 
+
+名稱:AssumeUDPEncapsulationContextOnSendRule
+
+4.並且將值設定為2
+
+5.重開機
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+
+</description>
+        </item>
+        <item>
+        <title>Windows-Chrome長截圖教學</title>
+        <link>https://note.laurance.ml/p/windows-chrome%E9%95%B7%E6%88%AA%E5%9C%96%E6%95%99%E5%AD%B8/</link>
+        <pubDate>Wed, 14 Sep 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://note.laurance.ml/p/windows-chrome%E9%95%B7%E6%88%AA%E5%9C%96%E6%95%99%E5%AD%B8/</guid>
+        <description>&lt;img src="https://note.laurance.ml/p/windows-chrome%E9%95%B7%E6%88%AA%E5%9C%96%E6%95%99%E5%AD%B8/100.png" alt="Featured image of post Windows-Chrome長截圖教學" /&gt;&lt;p&gt;方法1. 透過內建Chrome截圖實驗功能&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;步驟 1. 開啟 Google Chrome 網頁後，直接在網址列輸入「chrome://flags/」會立即打開 Chrome實驗性功能
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/windows-chrome%E9%95%B7%E6%88%AA%E5%9C%96%E6%95%99%E5%AD%B8/001.png&#34;
+	width=&#34;1138&#34;
+	height=&#34;809&#34;
+	srcset=&#34;https://note.laurance.ml/p/windows-chrome%E9%95%B7%E6%88%AA%E5%9C%96%E6%95%99%E5%AD%B8/001_hued4e788af4ff01ee8fdbe452b863cd44_81570_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/windows-chrome%E9%95%B7%E6%88%AA%E5%9C%96%E6%95%99%E5%AD%B8/001_hued4e788af4ff01ee8fdbe452b863cd44_81570_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;140&#34;
+		data-flex-basis=&#34;337px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;步驟 2. 直接搜尋「Desktop Screenshots」、「Desktop Sharing Hub in Omnibox」、「Desktop Sharing Hub in App Menu」三項功能，全改為「Enabled」後，按下「Relaunch」重啟 Google Chrome 瀏覽器，就會啟用內建Chrome截圖快捷鍵隱藏功能
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/windows-chrome%E9%95%B7%E6%88%AA%E5%9C%96%E6%95%99%E5%AD%B8/002.png&#34;
+	width=&#34;1142&#34;
+	height=&#34;812&#34;
+	srcset=&#34;https://note.laurance.ml/p/windows-chrome%E9%95%B7%E6%88%AA%E5%9C%96%E6%95%99%E5%AD%B8/002_hu3ef07fa9ba6a3596966546021d8032af_83944_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/windows-chrome%E9%95%B7%E6%88%AA%E5%9C%96%E6%95%99%E5%AD%B8/002_hu3ef07fa9ba6a3596966546021d8032af_83944_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;140&#34;
+		data-flex-basis=&#34;337px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;步驟 3. 如果要截圖時，直接點擊 Chrome 網址列右側的「分享圖示」，再點選「螢幕截圖」功能
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/windows-chrome%E9%95%B7%E6%88%AA%E5%9C%96%E6%95%99%E5%AD%B8/003.png&#34;
+	width=&#34;1139&#34;
+	height=&#34;811&#34;
+	srcset=&#34;https://note.laurance.ml/p/windows-chrome%E9%95%B7%E6%88%AA%E5%9C%96%E6%95%99%E5%AD%B8/003_hueac62ab1b58fde4179c19e6fd7497a9e_45762_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/windows-chrome%E9%95%B7%E6%88%AA%E5%9C%96%E6%95%99%E5%AD%B8/003_hueac62ab1b58fde4179c19e6fd7497a9e_45762_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;140&#34;
+		data-flex-basis=&#34;337px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;方法2. 用內建Chrome 長截圖功能&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;步驟1. 開啟 Google Chrome 瀏覽器後，先進入想要長截圖網頁，直接利用鍵盤按下F12快捷鍵，顯示開發人員資訊畫面
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/windows-chrome%E9%95%B7%E6%88%AA%E5%9C%96%E6%95%99%E5%AD%B8/004.png&#34;
+	width=&#34;1144&#34;
+	height=&#34;1009&#34;
+	srcset=&#34;https://note.laurance.ml/p/windows-chrome%E9%95%B7%E6%88%AA%E5%9C%96%E6%95%99%E5%AD%B8/004_hu1cb7eeb365a57ccdd97d35094f1a0494_191321_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/windows-chrome%E9%95%B7%E6%88%AA%E5%9C%96%E6%95%99%E5%AD%B8/004_hu1cb7eeb365a57ccdd97d35094f1a0494_191321_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;113&#34;
+		data-flex-basis=&#34;272px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;步驟2. 接下來再利用快捷鍵呼叫Chrome瀏覽器指令選單：  
+       並輸入長截圖指令
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/windows-chrome%E9%95%B7%E6%88%AA%E5%9C%96%E6%95%99%E5%AD%B8/005.png&#34;
+	width=&#34;1145&#34;
+	height=&#34;1011&#34;
+	srcset=&#34;https://note.laurance.ml/p/windows-chrome%E9%95%B7%E6%88%AA%E5%9C%96%E6%95%99%E5%AD%B8/005_hu5920601e238b00a87f2adc1e66df8a4f_194366_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/windows-chrome%E9%95%B7%E6%88%AA%E5%9C%96%E6%95%99%E5%AD%B8/005_hu5920601e238b00a87f2adc1e66df8a4f_194366_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;113&#34;
+		data-flex-basis=&#34;271px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Capture full size screenshot：長截圖
+Capture screenshot：一般截圖
+Capture node screenshot：預覽截圖
+Capture area screenshot：自選區域截圖
+&lt;/code&gt;&lt;/pre&gt;
+
+</description>
+        </item>
+        <item>
+        <title>Windows-BIOS透過內顯與獨顯做多螢幕輸出</title>
+        <link>https://note.laurance.ml/p/windows-bios%E9%80%8F%E9%81%8E%E5%85%A7%E9%A1%AF%E8%88%87%E7%8D%A8%E9%A1%AF%E5%81%9A%E5%A4%9A%E8%9E%A2%E5%B9%95%E8%BC%B8%E5%87%BA/</link>
+        <pubDate>Wed, 10 Aug 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://note.laurance.ml/p/windows-bios%E9%80%8F%E9%81%8E%E5%85%A7%E9%A1%AF%E8%88%87%E7%8D%A8%E9%A1%AF%E5%81%9A%E5%A4%9A%E8%9E%A2%E5%B9%95%E8%BC%B8%E5%87%BA/</guid>
+        <description>&lt;img src="https://note.laurance.ml/p/windows-bios%E9%80%8F%E9%81%8E%E5%85%A7%E9%A1%AF%E8%88%87%E7%8D%A8%E9%A1%AF%E5%81%9A%E5%A4%9A%E8%9E%A2%E5%B9%95%E8%BC%B8%E5%87%BA/100.png" alt="Featured image of post Windows-BIOS透過內顯與獨顯做多螢幕輸出" /&gt;&lt;p&gt;進入BIOS&lt;/p&gt;
+&lt;p&gt;按F7進入進階模式&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/windows-bios%E9%80%8F%E9%81%8E%E5%85%A7%E9%A1%AF%E8%88%87%E7%8D%A8%E9%A1%AF%E5%81%9A%E5%A4%9A%E8%9E%A2%E5%B9%95%E8%BC%B8%E5%87%BA/%E6%8C%89F7%E9%80%B2%E5%85%A5%E9%80%B2%E9%9A%8E%E6%A8%A1%E5%BC%8F.png&#34;
+	width=&#34;677&#34;
+	height=&#34;494&#34;
+	srcset=&#34;https://note.laurance.ml/p/windows-bios%E9%80%8F%E9%81%8E%E5%85%A7%E9%A1%AF%E8%88%87%E7%8D%A8%E9%A1%AF%E5%81%9A%E5%A4%9A%E8%9E%A2%E5%B9%95%E8%BC%B8%E5%87%BA/%E6%8C%89F7%E9%80%B2%E5%85%A5%E9%80%B2%E9%9A%8E%E6%A8%A1%E5%BC%8F_hue3223654654b90fde0d71d702acf12f6_328470_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/windows-bios%E9%80%8F%E9%81%8E%E5%85%A7%E9%A1%AF%E8%88%87%E7%8D%A8%E9%A1%AF%E5%81%9A%E5%A4%9A%E8%9E%A2%E5%B9%95%E8%BC%B8%E5%87%BA/%E6%8C%89F7%E9%80%B2%E5%85%A5%E9%80%B2%E9%9A%8E%E6%A8%A1%E5%BC%8F_hue3223654654b90fde0d71d702acf12f6_328470_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;137&#34;
+		data-flex-basis=&#34;328px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;點選Advanced 頁面，進入System Agent (SA) Configuration&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/windows-bios%E9%80%8F%E9%81%8E%E5%85%A7%E9%A1%AF%E8%88%87%E7%8D%A8%E9%A1%AF%E5%81%9A%E5%A4%9A%E8%9E%A2%E5%B9%95%E8%BC%B8%E5%87%BA/System-Agent.png&#34;
+	width=&#34;682&#34;
+	height=&#34;506&#34;
+	srcset=&#34;https://note.laurance.ml/p/windows-bios%E9%80%8F%E9%81%8E%E5%85%A7%E9%A1%AF%E8%88%87%E7%8D%A8%E9%A1%AF%E5%81%9A%E5%A4%9A%E8%9E%A2%E5%B9%95%E8%BC%B8%E5%87%BA/System-Agent_hu40be5b9f0945485530dff85d80806cd0_293246_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/windows-bios%E9%80%8F%E9%81%8E%E5%85%A7%E9%A1%AF%E8%88%87%E7%8D%A8%E9%A1%AF%E5%81%9A%E5%A4%9A%E8%9E%A2%E5%B9%95%E8%BC%B8%E5%87%BA/System-Agent_hu40be5b9f0945485530dff85d80806cd0_293246_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;134&#34;
+		data-flex-basis=&#34;323px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;在System Agent (SA) Configuration底下點選Graphics Configuration&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/windows-bios%E9%80%8F%E9%81%8E%E5%85%A7%E9%A1%AF%E8%88%87%E7%8D%A8%E9%A1%AF%E5%81%9A%E5%A4%9A%E8%9E%A2%E5%B9%95%E8%BC%B8%E5%87%BA/Graphics-Configuration.png&#34;
+	width=&#34;682&#34;
+	height=&#34;509&#34;
+	srcset=&#34;https://note.laurance.ml/p/windows-bios%E9%80%8F%E9%81%8E%E5%85%A7%E9%A1%AF%E8%88%87%E7%8D%A8%E9%A1%AF%E5%81%9A%E5%A4%9A%E8%9E%A2%E5%B9%95%E8%BC%B8%E5%87%BA/Graphics-Configuration_hu7c9c607cdc86701eb60535533c6b0054_289679_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/windows-bios%E9%80%8F%E9%81%8E%E5%85%A7%E9%A1%AF%E8%88%87%E7%8D%A8%E9%A1%AF%E5%81%9A%E5%A4%9A%E8%9E%A2%E5%B9%95%E8%BC%B8%E5%87%BA/Graphics-Configuration_hu7c9c607cdc86701eb60535533c6b0054_289679_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;133&#34;
+		data-flex-basis=&#34;321px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;進入Graphics Configuration項目後，把iGPU Multi-Monitor選項設定為Enable&lt;/p&gt;
+&lt;p&gt;(Primary Display可以設定螢幕顯示方式:  1.為自動偵測(Auto)或 2. 獨立顯示卡(PCIE)輸出或  3. 內建顯示(iGPU) 輸出)&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/windows-bios%E9%80%8F%E9%81%8E%E5%85%A7%E9%A1%AF%E8%88%87%E7%8D%A8%E9%A1%AF%E5%81%9A%E5%A4%9A%E8%9E%A2%E5%B9%95%E8%BC%B8%E5%87%BA/Multi-Monitor.png&#34;
+	width=&#34;706&#34;
+	height=&#34;525&#34;
+	srcset=&#34;https://note.laurance.ml/p/windows-bios%E9%80%8F%E9%81%8E%E5%85%A7%E9%A1%AF%E8%88%87%E7%8D%A8%E9%A1%AF%E5%81%9A%E5%A4%9A%E8%9E%A2%E5%B9%95%E8%BC%B8%E5%87%BA/Multi-Monitor_hu22808831841fe1433a19829e3b97835c_308359_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/windows-bios%E9%80%8F%E9%81%8E%E5%85%A7%E9%A1%AF%E8%88%87%E7%8D%A8%E9%A1%AF%E5%81%9A%E5%A4%9A%E8%9E%A2%E5%B9%95%E8%BC%B8%E5%87%BA/Multi-Monitor_hu22808831841fe1433a19829e3b97835c_308359_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;134&#34;
+		data-flex-basis=&#34;322px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;按F10儲存後重新開機&lt;/p&gt;
+&lt;p&gt;WIN+X+M 進入裝置管理員&lt;/p&gt;
+&lt;p&gt;在裝置管理員，可以看到內建顯示晶片和外接獨立顯示卡兩個顯示卡輸出裝置&lt;/p&gt;
+&lt;hr&gt;
+
+</description>
+        </item>
+        <item>
+        <title>Windows-CMD常用指令</title>
+        <link>https://note.laurance.ml/p/windows-cmd%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/</link>
+        <pubDate>Wed, 10 Aug 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://note.laurance.ml/p/windows-cmd%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/</guid>
+        <description>&lt;img src="https://note.laurance.ml/p/windows-cmd%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/100.png" alt="Featured image of post Windows-CMD常用指令" /&gt;&lt;pre&gt;&lt;code&gt;動作	                LINUX		            WINDOWS	
+
+進入目錄	                  cd		               cd		
+
+創建目錄	                 mkdir		               md		
+
+當前目錄	                  pwd		               cd		
+
+展示目錄	                   ls		               dir		
+
+移除目錄	                   rm		               del		
+
+打印文件	                   lp		               print		
+
+複製文件	                   cp		               copy		
+
+移動文件	                   mv		               ren		
+
+指令查詢	                   man		               help		
+
+顯示環境變數	           env		               set		
+
+設置環境變數	           setenv		       set		
+
+打印文件	                   lp		               print		  
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+
+</description>
+        </item>
+        
+    </channel>
+</rss>

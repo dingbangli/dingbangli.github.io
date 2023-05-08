@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>FFmpeg on Laurance&#39;s Note</title>
+        <link>https://note.laurance.ml/tags/ffmpeg/</link>
+        <description>Recent content in FFmpeg on Laurance&#39;s Note</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Wed, 15 Feb 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://note.laurance.ml/tags/ffmpeg/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Windows-安裝轉檔工具 FFmpeg</title>
+        <link>https://note.laurance.ml/p/windows-%E5%AE%89%E8%A3%9D%E8%BD%89%E6%AA%94%E5%B7%A5%E5%85%B7-ffmpeg/</link>
+        <pubDate>Wed, 15 Feb 2023 00:00:00 +0000</pubDate>
+        
+        <guid>https://note.laurance.ml/p/windows-%E5%AE%89%E8%A3%9D%E8%BD%89%E6%AA%94%E5%B7%A5%E5%85%B7-ffmpeg/</guid>
+        <description>&lt;img src="https://note.laurance.ml/p/windows-%E5%AE%89%E8%A3%9D%E8%BD%89%E6%AA%94%E5%B7%A5%E5%85%B7-ffmpeg/100.png" alt="Featured image of post Windows-安裝轉檔工具 FFmpeg" /&gt;&lt;h1 id=&#34;windows--ffmpeg-安裝紀錄&#34;&gt;Windows  FFmpeg 安裝紀錄&lt;/h1&gt;
+&lt;p&gt;官方網站 &lt;a class=&#34;link&#34; href=&#34;https://ffmpeg.org/download.html#build-windows&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://ffmpeg.org/download.html#build-windows&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;〔Step 1〕先去官網下載 FFmpeg&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/windows-%E5%AE%89%E8%A3%9D%E8%BD%89%E6%AA%94%E5%B7%A5%E5%85%B7-ffmpeg/201.png&#34;
+	width=&#34;1920&#34;
+	height=&#34;937&#34;
+	srcset=&#34;https://note.laurance.ml/p/windows-%E5%AE%89%E8%A3%9D%E8%BD%89%E6%AA%94%E5%B7%A5%E5%85%B7-ffmpeg/201_hu1514f978ec4890ec524a73b894558d0f_58050_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/windows-%E5%AE%89%E8%A3%9D%E8%BD%89%E6%AA%94%E5%B7%A5%E5%85%B7-ffmpeg/201_hu1514f978ec4890ec524a73b894558d0f_58050_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;204&#34;
+		data-flex-basis=&#34;491px&#34;
+	
+&gt;
+&lt;img src=&#34;https://note.laurance.ml/p/windows-%E5%AE%89%E8%A3%9D%E8%BD%89%E6%AA%94%E5%B7%A5%E5%85%B7-ffmpeg/202.png&#34;
+	width=&#34;1920&#34;
+	height=&#34;937&#34;
+	srcset=&#34;https://note.laurance.ml/p/windows-%E5%AE%89%E8%A3%9D%E8%BD%89%E6%AA%94%E5%B7%A5%E5%85%B7-ffmpeg/202_hu02af50a9b29e2f35fe98cb2e64bab4b4_97560_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/windows-%E5%AE%89%E8%A3%9D%E8%BD%89%E6%AA%94%E5%B7%A5%E5%85%B7-ffmpeg/202_hu02af50a9b29e2f35fe98cb2e64bab4b4_97560_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;204&#34;
+		data-flex-basis=&#34;491px&#34;
+	
+&gt;
+&lt;img src=&#34;https://note.laurance.ml/p/windows-%E5%AE%89%E8%A3%9D%E8%BD%89%E6%AA%94%E5%B7%A5%E5%85%B7-ffmpeg/203.png&#34;
+	width=&#34;1920&#34;
+	height=&#34;937&#34;
+	srcset=&#34;https://note.laurance.ml/p/windows-%E5%AE%89%E8%A3%9D%E8%BD%89%E6%AA%94%E5%B7%A5%E5%85%B7-ffmpeg/203_hu356173ec594a6ea7f8078082e33aea65_1052149_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/windows-%E5%AE%89%E8%A3%9D%E8%BD%89%E6%AA%94%E5%B7%A5%E5%85%B7-ffmpeg/203_hu356173ec594a6ea7f8078082e33aea65_1052149_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;204&#34;
+		data-flex-basis=&#34;491px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;〔Step 2〕將載好的 zip包解壓縮&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/windows-%E5%AE%89%E8%A3%9D%E8%BD%89%E6%AA%94%E5%B7%A5%E5%85%B7-ffmpeg/204.png&#34;
+	width=&#34;1227&#34;
+	height=&#34;521&#34;
+	srcset=&#34;https://note.laurance.ml/p/windows-%E5%AE%89%E8%A3%9D%E8%BD%89%E6%AA%94%E5%B7%A5%E5%85%B7-ffmpeg/204_hu921acbccc02c02ac428247d8325b22e9_8081_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/windows-%E5%AE%89%E8%A3%9D%E8%BD%89%E6%AA%94%E5%B7%A5%E5%85%B7-ffmpeg/204_hu921acbccc02c02ac428247d8325b22e9_8081_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;235&#34;
+		data-flex-basis=&#34;565px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;裡面應該要有這些檔案
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/windows-%E5%AE%89%E8%A3%9D%E8%BD%89%E6%AA%94%E5%B7%A5%E5%85%B7-ffmpeg/205.png&#34;
+	width=&#34;1227&#34;
+	height=&#34;521&#34;
+	srcset=&#34;https://note.laurance.ml/p/windows-%E5%AE%89%E8%A3%9D%E8%BD%89%E6%AA%94%E5%B7%A5%E5%85%B7-ffmpeg/205_hue75d934aeaea4770b09dc0f0dae661b9_13343_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/windows-%E5%AE%89%E8%A3%9D%E8%BD%89%E6%AA%94%E5%B7%A5%E5%85%B7-ffmpeg/205_hue75d934aeaea4770b09dc0f0dae661b9_13343_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;235&#34;
+		data-flex-basis=&#34;565px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;〔Step 3〕進去到 ./bin 這層目錄並將路徑複製到環境變數中&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/windows-%E5%AE%89%E8%A3%9D%E8%BD%89%E6%AA%94%E5%B7%A5%E5%85%B7-ffmpeg/206.png&#34;
+	width=&#34;1229&#34;
+	height=&#34;620&#34;
+	srcset=&#34;https://note.laurance.ml/p/windows-%E5%AE%89%E8%A3%9D%E8%BD%89%E6%AA%94%E5%B7%A5%E5%85%B7-ffmpeg/206_hu1596a4fcf7fa4e16e371815ce39f8f47_22014_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/windows-%E5%AE%89%E8%A3%9D%E8%BD%89%E6%AA%94%E5%B7%A5%E5%85%B7-ffmpeg/206_hu1596a4fcf7fa4e16e371815ce39f8f47_22014_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;198&#34;
+		data-flex-basis=&#34;475px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;〔Step 4〕打開控制台 &amp;gt; 系統及安全性 &amp;gt; 系統 &amp;gt; 進階系統設定&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/windows-%E5%AE%89%E8%A3%9D%E8%BD%89%E6%AA%94%E5%B7%A5%E5%85%B7-ffmpeg/207.png&#34;
+	width=&#34;1246&#34;
+	height=&#34;732&#34;
+	srcset=&#34;https://note.laurance.ml/p/windows-%E5%AE%89%E8%A3%9D%E8%BD%89%E6%AA%94%E5%B7%A5%E5%85%B7-ffmpeg/207_hu2a8a6c683d34fef28a84b17428703d11_56309_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/windows-%E5%AE%89%E8%A3%9D%E8%BD%89%E6%AA%94%E5%B7%A5%E5%85%B7-ffmpeg/207_hu2a8a6c683d34fef28a84b17428703d11_56309_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;170&#34;
+		data-flex-basis=&#34;408px&#34;
+	
+&gt;
+&lt;img src=&#34;https://note.laurance.ml/p/windows-%E5%AE%89%E8%A3%9D%E8%BD%89%E6%AA%94%E5%B7%A5%E5%85%B7-ffmpeg/208.png&#34;
+	width=&#34;1246&#34;
+	height=&#34;732&#34;
+	srcset=&#34;https://note.laurance.ml/p/windows-%E5%AE%89%E8%A3%9D%E8%BD%89%E6%AA%94%E5%B7%A5%E5%85%B7-ffmpeg/208_hu18742ddca829ae15fb7b6dd5080f2983_70369_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/windows-%E5%AE%89%E8%A3%9D%E8%BD%89%E6%AA%94%E5%B7%A5%E5%85%B7-ffmpeg/208_hu18742ddca829ae15fb7b6dd5080f2983_70369_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;170&#34;
+		data-flex-basis=&#34;408px&#34;
+	
+&gt;
+&lt;img src=&#34;https://note.laurance.ml/p/windows-%E5%AE%89%E8%A3%9D%E8%BD%89%E6%AA%94%E5%B7%A5%E5%85%B7-ffmpeg/209.png&#34;
+	width=&#34;1004&#34;
+	height=&#34;1008&#34;
+	srcset=&#34;https://note.laurance.ml/p/windows-%E5%AE%89%E8%A3%9D%E8%BD%89%E6%AA%94%E5%B7%A5%E5%85%B7-ffmpeg/209_hue3f52b9d3c4209953f1ef526f8662e83_334277_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/windows-%E5%AE%89%E8%A3%9D%E8%BD%89%E6%AA%94%E5%B7%A5%E5%85%B7-ffmpeg/209_hue3f52b9d3c4209953f1ef526f8662e83_334277_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;99&#34;
+		data-flex-basis=&#34;239px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;〔Step 5〕打開環境變數 &amp;gt; 系統變數 &amp;gt; Path &amp;gt; 編輯 &amp;gt; 新增&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/windows-%E5%AE%89%E8%A3%9D%E8%BD%89%E6%AA%94%E5%B7%A5%E5%85%B7-ffmpeg/210.png&#34;
+	width=&#34;479&#34;
+	height=&#34;533&#34;
+	srcset=&#34;https://note.laurance.ml/p/windows-%E5%AE%89%E8%A3%9D%E8%BD%89%E6%AA%94%E5%B7%A5%E5%85%B7-ffmpeg/210_hue897965f690f42b3089fbf028e333449_18779_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/windows-%E5%AE%89%E8%A3%9D%E8%BD%89%E6%AA%94%E5%B7%A5%E5%85%B7-ffmpeg/210_hue897965f690f42b3089fbf028e333449_18779_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;89&#34;
+		data-flex-basis=&#34;215px&#34;
+	
+&gt;
+&lt;img src=&#34;https://note.laurance.ml/p/windows-%E5%AE%89%E8%A3%9D%E8%BD%89%E6%AA%94%E5%B7%A5%E5%85%B7-ffmpeg/211.png&#34;
+	width=&#34;618&#34;
+	height=&#34;585&#34;
+	srcset=&#34;https://note.laurance.ml/p/windows-%E5%AE%89%E8%A3%9D%E8%BD%89%E6%AA%94%E5%B7%A5%E5%85%B7-ffmpeg/211_hu50fe46c3135e493a6d8b41d820433729_37606_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/windows-%E5%AE%89%E8%A3%9D%E8%BD%89%E6%AA%94%E5%B7%A5%E5%85%B7-ffmpeg/211_hu50fe46c3135e493a6d8b41d820433729_37606_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;105&#34;
+		data-flex-basis=&#34;253px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;將 〔Step 3〕 複製的路徑貼入
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/windows-%E5%AE%89%E8%A3%9D%E8%BD%89%E6%AA%94%E5%B7%A5%E5%85%B7-ffmpeg/212.png&#34;
+	width=&#34;527&#34;
+	height=&#34;501&#34;
+	srcset=&#34;https://note.laurance.ml/p/windows-%E5%AE%89%E8%A3%9D%E8%BD%89%E6%AA%94%E5%B7%A5%E5%85%B7-ffmpeg/212_hu18fab7cd92f70e3c08580860468f740a_52585_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/windows-%E5%AE%89%E8%A3%9D%E8%BD%89%E6%AA%94%E5%B7%A5%E5%85%B7-ffmpeg/212_hu18fab7cd92f70e3c08580860468f740a_52585_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;105&#34;
+		data-flex-basis=&#34;252px&#34;
+	
+&gt;
+&lt;img src=&#34;https://note.laurance.ml/p/windows-%E5%AE%89%E8%A3%9D%E8%BD%89%E6%AA%94%E5%B7%A5%E5%85%B7-ffmpeg/213.png&#34;
+	width=&#34;618&#34;
+	height=&#34;585&#34;
+	srcset=&#34;https://note.laurance.ml/p/windows-%E5%AE%89%E8%A3%9D%E8%BD%89%E6%AA%94%E5%B7%A5%E5%85%B7-ffmpeg/213_hudb938a75bf2a963401eb0579a02edf7f_24768_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/windows-%E5%AE%89%E8%A3%9D%E8%BD%89%E6%AA%94%E5%B7%A5%E5%85%B7-ffmpeg/213_hudb938a75bf2a963401eb0579a02edf7f_24768_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;105&#34;
+		data-flex-basis=&#34;253px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;〔Step 6〕驗證: 打開 CMD 輸入: ffmpeg -version&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/windows-%E5%AE%89%E8%A3%9D%E8%BD%89%E6%AA%94%E5%B7%A5%E5%85%B7-ffmpeg/214.png&#34;
+	width=&#34;979&#34;
+	height=&#34;512&#34;
+	srcset=&#34;https://note.laurance.ml/p/windows-%E5%AE%89%E8%A3%9D%E8%BD%89%E6%AA%94%E5%B7%A5%E5%85%B7-ffmpeg/214_hu0325f25cb446211b61eeabd6e8b58935_35737_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/windows-%E5%AE%89%E8%A3%9D%E8%BD%89%E6%AA%94%E5%B7%A5%E5%85%B7-ffmpeg/214_hu0325f25cb446211b61eeabd6e8b58935_35737_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;191&#34;
+		data-flex-basis=&#34;458px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;〔Step 7〕將 mp4 轉成 mov&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/windows-%E5%AE%89%E8%A3%9D%E8%BD%89%E6%AA%94%E5%B7%A5%E5%85%B7-ffmpeg/215.png&#34;
+	width=&#34;1920&#34;
+	height=&#34;1040&#34;
+	srcset=&#34;https://note.laurance.ml/p/windows-%E5%AE%89%E8%A3%9D%E8%BD%89%E6%AA%94%E5%B7%A5%E5%85%B7-ffmpeg/215_hu3cca3a50a4df774ebfac8efef126b13d_98199_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/windows-%E5%AE%89%E8%A3%9D%E8%BD%89%E6%AA%94%E5%B7%A5%E5%85%B7-ffmpeg/215_hu3cca3a50a4df774ebfac8efef126b13d_98199_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;184&#34;
+		data-flex-basis=&#34;443px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;hr&gt;
+
+</description>
+        </item>
+        
+    </channel>
+</rss>

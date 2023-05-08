@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='k8s dashboard 報錯: (404) the server could not find the requested resource'><title>Kubernetes-ERROR-Metric client health check failed</title>
+
+<link rel='canonical' href='https://note.laurance.ml/p/kubernetes-error-metric-client-health-check-failed/'>
+
+<link rel="stylesheet" href="/scss/style.min.ac77dcf8b111b51da39a92990f431923f210f3876d85798a2125667f96dc33a4.css"><meta property='og:title' content='Kubernetes-ERROR-Metric client health check failed'>
+<meta property='og:description' content='k8s dashboard 報錯: (404) the server could not find the requested resource'>
+<meta property='og:url' content='https://note.laurance.ml/p/kubernetes-error-metric-client-health-check-failed/'>
+<meta property='og:site_name' content='Laurance&#39;s Note'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Kubernetes' /><meta property='article:published_time' content='2022-10-10T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2022-10-10T00:00:00&#43;00:00'/><meta property='og:image' content='https://note.laurance.ml/p/kubernetes-error-metric-client-health-check-failed/100.png' />
+<meta name="twitter:title" content="Kubernetes-ERROR-Metric client health check failed">
+<meta name="twitter:description" content="k8s dashboard 報錯: (404) the server could not find the requested resource"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://note.laurance.ml/p/kubernetes-error-metric-client-health-check-failed/100.png' />
+    <link rel="shortcut icon" href="static/favicon.ico" />
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Live2D 看板娘 / Demo</title>
+</head>
+<body>
+<script src="https://cdn.jsdelivr.net/gh/dingbangli/live2d-widget@latest/autoload.js"></script>
+</body>
+</html>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu49eacb73e01f91348578131d7e8658f5_11993_300x0_resize_box_3.png" width="300"
+                            height="301" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🍥</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Laurance&#39;s Note</a></h1>
+            <h2 class="site-description">筆記 記錄美好生活
+</h2>
+        </div>
+    </header><ol class="menu" id="main-menu">
+        
+        
+        
+
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/about/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/links/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>Links</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+            
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>Dark Mode</span>
+                </li>
+            
+        </div>
+    </ol>
+</aside>
+<main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/kubernetes-error-metric-client-health-check-failed/">
+                <img src="/p/kubernetes-error-metric-client-health-check-failed/100_hu011eff4eb1029f53348717cab0d2cf5f_19415_800x0_resize_box_3.png"
+                        srcset="/p/kubernetes-error-metric-client-health-check-failed/100_hu011eff4eb1029f53348717cab0d2cf5f_19415_800x0_resize_box_3.png 800w, /p/kubernetes-error-metric-client-health-check-failed/100_hu011eff4eb1029f53348717cab0d2cf5f_19415_1600x0_resize_box_3.png 1600w"
+                        width="800" 
+                        height="444" 
+                        loading="lazy"
+                        alt="Featured image of post Kubernetes-ERROR-Metric client health check failed" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/kubernetes/" >
+                Kubernetes
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/kubernetes-error-metric-client-health-check-failed/">Kubernetes-ERROR-Metric client health check failed</a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            k8s dashboard 報錯: (404) the server could not find the requested resource
+        </h3>
+        
+    </div>
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Oct 10, 2022</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    2 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+</header>
+
+    <section class="article-content">
+    
+    
+    <p><strong>dashboard 出現以下畫面</strong></p>
+<p><img src="/p/kubernetes-error-metric-client-health-check-failed/001.png"
+	width="1919"
+	height="936"
+	srcset="/p/kubernetes-error-metric-client-health-check-failed/001_hu9f61d24b4be35c155a8c6ec92e52e9f3_50830_480x0_resize_box_3.png 480w, /p/kubernetes-error-metric-client-health-check-failed/001_hu9f61d24b4be35c155a8c6ec92e52e9f3_50830_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="205"
+		data-flex-basis="492px"
+	
+></p>
+<p><strong>查看 dashboard pod 的 LOG</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"># kubectl get pods -n kube-system|grep dash
+</span></span><span class="line"><span class="cl">kubernetes-dashboard-6ff6454fdc-78fnx   1/1     Running   0          4h8m</span></span></code></pre></div>
+<p><strong>K8s LOG 報錯 Metric client health check failed: the server could not find the requested resource (get services heapster). Retrying in 30 seconds</strong></p>
+<p><img src="/p/kubernetes-error-metric-client-health-check-failed/00001.png"
+	width="1920"
+	height="860"
+	srcset="/p/kubernetes-error-metric-client-health-check-failed/00001_hude3041db836dbb55b87e4f9232c77ac0_188703_480x0_resize_box_3.png 480w, /p/kubernetes-error-metric-client-health-check-failed/00001_hude3041db836dbb55b87e4f9232c77ac0_188703_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="223"
+		data-flex-basis="535px"
+	
+></p>
+<p><strong>原因: kubernets用的比较高的版本，但dashboard版本用的比较低，因此報錯</strong></p>
+<p><strong>解決: 重新安裝 dashboard 版本</strong></p>
+<pre><code>先將舊的版本刪除 (將 dashboard 的 NS 刪除即可)
+</code></pre>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl">kubectl delete ns kubernetes-dashboard</span></span></code></pre></div>
+<pre><code>查看 kubernetes 版本
+</code></pre>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl">$ kubectl version --short
+</span></span><span class="line"><span class="cl">Flag --short has been deprecated, and will be removed in the future. The --short output will become the default.
+</span></span><span class="line"><span class="cl">Client Version: v1.25.2
+</span></span><span class="line"><span class="cl">Kustomize Version: v4.5.7
+</span></span><span class="line"><span class="cl">Server Version: v1.25.0</span></span></code></pre></div>
+<pre><code>根據 kubernetes 版本 下載相對應的 dashboard 版本
+</code></pre>
+<p><a class="link" href="https://github.com/kubernetes/dashboard/releases"  target="_blank" rel="noopener"
+    >下載網址連結</a></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl">dashboard v2.0.0-beta5 —&gt; kubernetes 1.16
+</span></span><span class="line"><span class="cl">dashboard v2.0.0 —&gt; kubernetes 1.18
+</span></span><span class="line"><span class="cl">dashboard v2.0.1 —&gt; kubernetes 1.18
+</span></span><span class="line"><span class="cl">dashboard v2.0.2 —&gt; kubernetes 1.18
+</span></span><span class="line"><span class="cl">dashboard v2.0.3 —&gt; kubernetes 1.18
+</span></span><span class="line"><span class="cl">dashboard v2.0.4 —&gt; kubernetes 1.19
+</span></span><span class="line"><span class="cl">dashboard v2.0.5 —&gt; kubernetes 1.19
+</span></span><span class="line"><span class="cl">dashboard v2.1.0 —&gt; kubernetes 1.20
+</span></span><span class="line"><span class="cl">dashboard v2.2.0 —&gt; kubernetes 1.20
+</span></span><span class="line"><span class="cl">dashboard v2.3.0 —&gt; kubernetes 1.21
+</span></span><span class="line"><span class="cl">dashboard v2.3.1 —&gt; kubernetes 1.21
+</span></span><span class="line"><span class="cl">    </span></span></code></pre></div>
+<pre><code>wget 下來修改 Service 的部分
+</code></pre>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl">wget https://raw.githubusercontent.com/kubernetes/dashboard/v2.7.0/aio/deploy/recommended.yaml</span></span></code></pre></div>
+<pre><code>修改為 Nodeport 方式訪問
+</code></pre>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl">kind: Service
+</span></span><span class="line"><span class="cl">apiVersion: v1
+</span></span><span class="line"><span class="cl">metadata:
+</span></span><span class="line"><span class="cl">  labels:
+</span></span><span class="line"><span class="cl">    k8s-app: kubernetes-dashboard
+</span></span><span class="line"><span class="cl">  name: kubernetes-dashboard
+</span></span><span class="line"><span class="cl">  namespace: kubernetes-dashboard
+</span></span><span class="line"><span class="cl">spec:
+</span></span><span class="line"><span class="cl">  type: NodePort #新添加的
+</span></span><span class="line"><span class="cl">  ports:
+</span></span><span class="line"><span class="cl">    - port: 443
+</span></span><span class="line"><span class="cl">      targetPort: 8443
+</span></span><span class="line"><span class="cl">      nodePort: 30003 #新添加的（可以改成其它的端口号，要大于30000）
+</span></span><span class="line"><span class="cl">  selector:
+</span></span><span class="line"><span class="cl">    k8s-app: kubernetes-dashboard
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">---</span></span></code></pre></div>
+<pre><code>執行 yaml 文件
+</code></pre>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"># kubectl apply -f recommended.yaml
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">namespace/kubernetes-dashboard created
+</span></span><span class="line"><span class="cl">serviceaccount/kubernetes-dashboard created
+</span></span><span class="line"><span class="cl">service/kubernetes-dashboard created
+</span></span><span class="line"><span class="cl">secret/kubernetes-dashboard-certs created
+</span></span><span class="line"><span class="cl">secret/kubernetes-dashboard-csrf created
+</span></span><span class="line"><span class="cl">secret/kubernetes-dashboard-key-holder created
+</span></span><span class="line"><span class="cl">configmap/kubernetes-dashboard-settings created
+</span></span><span class="line"><span class="cl">role.rbac.authorization.k8s.io/kubernetes-dashboard created
+</span></span><span class="line"><span class="cl">clusterrole.rbac.authorization.k8s.io/kubernetes-dashboard created
+</span></span><span class="line"><span class="cl">rolebinding.rbac.authorization.k8s.io/kubernetes-dashboard created
+</span></span><span class="line"><span class="cl">clusterrolebinding.rbac.authorization.k8s.io/kubernetes-dashboard created
+</span></span><span class="line"><span class="cl">deployment.apps/kubernetes-dashboard created
+</span></span><span class="line"><span class="cl">service/dashboard-metrics-scraper created
+</span></span><span class="line"><span class="cl">deployment.apps/dashboard-metrics-scraper created</span></span></code></pre></div>
+<pre><code>建立 dashboard 管理員
+
+vim dashboard-admin.yaml
+
+kubectl create -f dashboard-admin.yaml
+</code></pre>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl">apiVersion: v1
+</span></span><span class="line"><span class="cl">kind: ServiceAccount
+</span></span><span class="line"><span class="cl">metadata:
+</span></span><span class="line"><span class="cl">  labels:
+</span></span><span class="line"><span class="cl">    k8s-app: kubernetes-dashboard
+</span></span><span class="line"><span class="cl">  name: dashboard-admin
+</span></span><span class="line"><span class="cl">  namespace: kubernetes-dashboard
+</span></span><span class="line"><span class="cl">  </span></span></code></pre></div>
+<pre><code>建立 RBAC 分配權限
+
+vim dashboard-admin-role.yaml
+
+kubectl create -f dashboard-admin-role.yaml
+</code></pre>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl">apiVersion: rbac.authorization.k8s.io/v1
+</span></span><span class="line"><span class="cl">kind: ClusterRoleBinding
+</span></span><span class="line"><span class="cl">metadata:
+</span></span><span class="line"><span class="cl">  name: dashboard-admin-role
+</span></span><span class="line"><span class="cl">  labels:
+</span></span><span class="line"><span class="cl">    k8s-app: kubernetes-dashboard
+</span></span><span class="line"><span class="cl">roleRef:
+</span></span><span class="line"><span class="cl">  apiGroup: rbac.authorization.k8s.io
+</span></span><span class="line"><span class="cl">  kind: ClusterRole
+</span></span><span class="line"><span class="cl">  name: cluster-admin
+</span></span><span class="line"><span class="cl">subjects:
+</span></span><span class="line"><span class="cl">- kind: ServiceAccount
+</span></span><span class="line"><span class="cl">  name: dashboard-admin
+</span></span><span class="line"><span class="cl">  namespace: kubernetes-dashboard
+</span></span><span class="line"><span class="cl">  </span></span></code></pre></div>
+<pre><code>kubectl get secret -n kubernetes-dashboard
+</code></pre>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl">NAME                               TYPE                                  DATA   AGE
+</span></span><span class="line"><span class="cl">dashboard-admin-token-fj9v6        kubernetes.io/service-account-token   3      95s
+</span></span><span class="line"><span class="cl">default-token-lj7xg                kubernetes.io/service-account-token   3      33m
+</span></span><span class="line"><span class="cl">kubernetes-dashboard-certs         Opaque                                0      33m
+</span></span><span class="line"><span class="cl">kubernetes-dashboard-csrf          Opaque                                1      33m
+</span></span><span class="line"><span class="cl">kubernetes-dashboard-key-holder    Opaque                                2      33m
+</span></span><span class="line"><span class="cl">kubernetes-dashboard-token-cdkzc   kubernetes.io/service-account-token   3      33m</span></span></code></pre></div>
+<pre><code>dashboard-admin-token 是剛剛創建的，再篩出 TOKEN 即可
+</code></pre>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl">kubectl describe -n kubernetes-dashboard secret/dashboard-admin-token-fj9v6|grep token:
+</span></span><span class="line"><span class="cl">token:      eyJhbGciOiJSUzI1NiIsImtpZCI6ImJyYjJDR18tMDQtdkc3MzBBN0RwQU8zTlVjV01PM2w0dGRBWVh5UXhPN3MifQ.eyJpc3MiOiJrdWJlcm5ldGVz</span></span></code></pre></div>
+<pre><code>輸入 https://172.16.0.223:30003 即可訪問 Dashboard ， 並輸入剛剛篩出的 TOKEN 
+</code></pre>
+<p><img src="/p/kubernetes-error-metric-client-health-check-failed/00002.png"
+	width="1917"
+	height="939"
+	srcset="/p/kubernetes-error-metric-client-health-check-failed/00002_huaf5b3c5b467b73a16a1f0c3cd2938917_43270_480x0_resize_box_3.png 480w, /p/kubernetes-error-metric-client-health-check-failed/00002_huaf5b3c5b467b73a16a1f0c3cd2938917_43270_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="204"
+		data-flex-basis="489px"
+	
+></p>
+
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/kubernetes/">Kubernetes</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC By Laurance</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">Related content</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/p/kubernetes-error-unable-to-create-new-content-is-being-terminated/">
+        
+        
+            <div class="article-image">
+                <img src="/p/kubernetes-error-unable-to-create-new-content-is-being-terminated/100.d27d0e79e8e035b6ffb21d002a690ca2_hu011eff4eb1029f53348717cab0d2cf5f_19415_250x150_fill_box_smart1_3.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Kubernetes-ERROR-unable to create new content is being terminated"
+                        
+                        data-hash="md5-0n0OeejgNbb/sh0AKmkMog==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Kubernetes-ERROR-unable to create new content is being terminated</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/kubernetes-ingress/">
+        
+        
+            <div class="article-image">
+                <img src="/p/kubernetes-ingress/100.d27d0e79e8e035b6ffb21d002a690ca2_hu011eff4eb1029f53348717cab0d2cf5f_19415_250x150_fill_box_smart1_3.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Kubernetes-Ingress"
+                        
+                        data-hash="md5-0n0OeejgNbb/sh0AKmkMog==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Kubernetes-Ingress</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/kubernetes-lens-%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97-%E9%80%9A%E9%81%8E-ide-%E7%AE%A1%E7%90%86-minikube/">
+        
+        
+            <div class="article-image">
+                <img src="/p/kubernetes-lens-%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97-%E9%80%9A%E9%81%8E-ide-%E7%AE%A1%E7%90%86-minikube/100.d27d0e79e8e035b6ffb21d002a690ca2_hu011eff4eb1029f53348717cab0d2cf5f_19415_250x150_fill_box_smart1_3.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Kubernetes-Lens 使用指南 通過 IDE 管理 minikube"
+                        
+                        data-hash="md5-0n0OeejgNbb/sh0AKmkMog==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Kubernetes-Lens 使用指南 通過 IDE 管理 minikube</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/kubernetes-install-cri-dockerd-on-linux/">
+        
+        
+            <div class="article-image">
+                <img src="/p/kubernetes-install-cri-dockerd-on-linux/100.d27d0e79e8e035b6ffb21d002a690ca2_hu011eff4eb1029f53348717cab0d2cf5f_19415_250x150_fill_box_smart1_3.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Kubernetes-install cri-dockerd on Linux"
+                        
+                        data-hash="md5-0n0OeejgNbb/sh0AKmkMog==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Kubernetes-install cri-dockerd on Linux</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/kubernetes-%E5%9C%A8%E6%9C%AC%E5%9C%B0%E7%AB%AF%E4%B8%8A%E5%BB%BA%E7%AB%8B-dashboard/">
+        
+        
+            <div class="article-image">
+                <img src="/p/kubernetes-%E5%9C%A8%E6%9C%AC%E5%9C%B0%E7%AB%AF%E4%B8%8A%E5%BB%BA%E7%AB%8B-dashboard/100.d27d0e79e8e035b6ffb21d002a690ca2_hu011eff4eb1029f53348717cab0d2cf5f_19415_250x150_fill_box_smart1_3.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Kubernetes-在本地端上建立 Dashboard"
+                        
+                        data-hash="md5-0n0OeejgNbb/sh0AKmkMog==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Kubernetes-在本地端上建立 Dashboard</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "hugo-theme-stack" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2022 - 
+        
+        2023 Laurance&#39;s Note
+    </section>
+    
+    <section class="powerby">
+        
+            All rights reserved <br/>
+        
+
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        
+    </section>
+</footer>
+
+<span id="busuanzi_container_site_pv">
+    總瀏覽  <span id="busuanzi_value_site_pv"></span>  次
+</span>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+    
+
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

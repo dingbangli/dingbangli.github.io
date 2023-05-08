@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Crontab on Laurance&#39;s Note</title>
+        <link>https://note.laurance.ml/tags/crontab/</link>
+        <description>Recent content in Crontab on Laurance&#39;s Note</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Wed, 03 Aug 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://note.laurance.ml/tags/crontab/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Linux-Crontab實現以秒為單位排程</title>
+        <link>https://note.laurance.ml/p/linux-crontab%E5%AF%A6%E7%8F%BE%E4%BB%A5%E7%A7%92%E7%82%BA%E5%96%AE%E4%BD%8D%E6%8E%92%E7%A8%8B/</link>
+        <pubDate>Wed, 03 Aug 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://note.laurance.ml/p/linux-crontab%E5%AF%A6%E7%8F%BE%E4%BB%A5%E7%A7%92%E7%82%BA%E5%96%AE%E4%BD%8D%E6%8E%92%E7%A8%8B/</guid>
+        <description>&lt;img src="https://note.laurance.ml/p/linux-crontab%E5%AF%A6%E7%8F%BE%E4%BB%A5%E7%A7%92%E7%82%BA%E5%96%AE%E4%BD%8D%E6%8E%92%E7%A8%8B/100.png" alt="Featured image of post Linux-Crontab實現以秒為單位排程" /&gt;&lt;pre&gt;&lt;code&gt;方法一	(設置crontab)
+
+EX:	(每10秒執行一次)
+#* * * * * php /root/test/php/crontab/tolog.php
+#* * * * * sleep 10; php /root/test/php/crontab/tolog.php
+#* * * * * sleep 20; php /root/test/php/crontab/tolog.php
+#* * * * * sleep 30; php /root/test/php/crontab/tolog.php
+#* * * * * sleep 40; php /root/test/php/crontab/tolog.php
+#* * * * * sleep 50; php /root/test/php/crontab/tolog.php
+
+方法二 	(設置腳本shell)
+
+EX:	(最多每2秒執行)
+
+#/bin/bash
+
+step=2 #間隔的秒數
+for (( i=0; i &amp;lt; 60; i=(i+step) )); do
+
+XXX
+
+sleep $step
+done
+
+exit 0
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+
+</description>
+        </item>
+        
+    </channel>
+</rss>

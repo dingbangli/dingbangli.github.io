@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Memcache on Laurance&#39;s Note</title>
+        <link>https://note.laurance.ml/tags/memcache/</link>
+        <description>Recent content in Memcache on Laurance&#39;s Note</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Tue, 16 Aug 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://note.laurance.ml/tags/memcache/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Memcache-參數</title>
+        <link>https://note.laurance.ml/p/memcache-%E5%8F%83%E6%95%B8/</link>
+        <pubDate>Tue, 16 Aug 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://note.laurance.ml/p/memcache-%E5%8F%83%E6%95%B8/</guid>
+        <description>&lt;img src="https://note.laurance.ml/p/memcache-%E5%8F%83%E6%95%B8/100.jpeg" alt="Featured image of post Memcache-參數" /&gt;&lt;pre&gt;&lt;code&gt;-d是啟動一個守護程序；
+
+-m是分配給Memcache使用的記憶體數量，單位是MB；
+
+-u是執行Memcache的使用者；
+
+-l是監聽的伺服器IP地址，可以有多個地址；
+
+-p是設定Memcache監聽的埠，，最好是1024以上的埠；
+
+-c是最大執行的併發連線數，預設是1024；
+
+-P是設定儲存Memcache的pid檔案。
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+
+</description>
+        </item>
+        <item>
+        <title>Memcache-安裝-CentOS7</title>
+        <link>https://note.laurance.ml/p/memcache-%E5%AE%89%E8%A3%9D-centos7/</link>
+        <pubDate>Tue, 16 Aug 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://note.laurance.ml/p/memcache-%E5%AE%89%E8%A3%9D-centos7/</guid>
+        <description>&lt;img src="https://note.laurance.ml/p/memcache-%E5%AE%89%E8%A3%9D-centos7/100.jpeg" alt="Featured image of post Memcache-安裝-CentOS7" /&gt;&lt;pre&gt;&lt;code&gt;依賴
+yum install libevent libevent-devel
+yum install perl-Test* (make test報錯)
+
+wget http://memcached.googlecode.com/files/memcached-1.4.8.tar.gz
+tar zxvf memcached-1.4.8.tar.gz
+cd memcached-1.4.8
+make &amp;amp;&amp;amp; make test
+make install
+
+./memcached -d -m 2048 -u nobody  -p 12000 -c 2048 -P /tmp/memcached.pid	啟動服務
+pkill memcached									停止服務
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+
+</description>
+        </item>
+        <item>
+        <title>Memcache-常用語法</title>
+        <link>https://note.laurance.ml/p/memcache-%E5%B8%B8%E7%94%A8%E8%AA%9E%E6%B3%95/</link>
+        <pubDate>Tue, 16 Aug 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://note.laurance.ml/p/memcache-%E5%B8%B8%E7%94%A8%E8%AA%9E%E6%B3%95/</guid>
+        <description>&lt;img src="https://note.laurance.ml/p/memcache-%E5%B8%B8%E7%94%A8%E8%AA%9E%E6%B3%95/100.jpeg" alt="Featured image of post Memcache-常用語法" /&gt;&lt;pre&gt;&lt;code&gt;連接memcache
+telnet 127.0.0.1 12000
+
+添加緩存
+add kk 1 0 4  	        #Enter
+1234  		        #Enter
+STORED
+
+修改緩存
+replace kk 1 0 2        #Enter
+11  		        #Enter
+STORED  
+
+設置緩存
+set kk 1 0 4  	        #Enter
+1234 		        #Enter
+STORED
+
+讀取
+get kk
+VALUE kk 1 4
+1234
+
+刪除
+delete kk 	        #Enter
+DELETED
+
+清空所有缓存
+flush_all  
+OK
+
+查看缓存服務器狀態
+stats
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;命令格式
+&lt;command&gt; &lt;key&gt; &lt;flags&gt; &lt;exptime&gt; &lt;bytes&gt;\r\n
+&lt;data block&gt;\r\n&lt;/p&gt;
+&lt;p&gt;參數名稱 | 作用
+&amp;mdash;&amp;mdash;&amp;ndash;|&amp;mdash;&amp;mdash;
+command | add， set或 replace
+key | 缓存的名字
+flag | 16位无符号整数，和key要存储的数据一起存储，并在程序get缓存时，返回。
+exptime | 过去时间，0 表示永远不过期，如果非零，表示unix时间或距此秒数
+bytes | 存储数据的字节数
+\r\n | 換行Enter&lt;/p&gt;
+&lt;hr&gt;
+
+</description>
+        </item>
+        
+    </channel>
+</rss>

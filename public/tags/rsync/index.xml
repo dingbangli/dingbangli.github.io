@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>rsync on Laurance&#39;s Note</title>
+        <link>https://note.laurance.ml/tags/rsync/</link>
+        <description>Recent content in rsync on Laurance&#39;s Note</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Fri, 03 Feb 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://note.laurance.ml/tags/rsync/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Linux-Rsync 基本設定教學</title>
+        <link>https://note.laurance.ml/p/linux-rsync-%E5%9F%BA%E6%9C%AC%E8%A8%AD%E5%AE%9A%E6%95%99%E5%AD%B8/</link>
+        <pubDate>Fri, 03 Feb 2023 00:00:00 +0000</pubDate>
+        
+        <guid>https://note.laurance.ml/p/linux-rsync-%E5%9F%BA%E6%9C%AC%E8%A8%AD%E5%AE%9A%E6%95%99%E5%AD%B8/</guid>
+        <description>&lt;img src="https://note.laurance.ml/p/linux-rsync-%E5%9F%BA%E6%9C%AC%E8%A8%AD%E5%AE%9A%E6%95%99%E5%AD%B8/100.png" alt="Featured image of post Linux-Rsync 基本設定教學" /&gt;&lt;h1 id=&#34;環境-a--b&#34;&gt;環境: A &amp;raquo;&amp;gt; B&lt;/h1&gt;
+&lt;pre&gt;&lt;code&gt;A主機( Server端 ) IP :192.168.1.222
+
+B主機( Clinet端 ) IP :192.168.1.122
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;b主機-clinet端--設定&#34;&gt;B主機( Clinet端 ) 設定&lt;/h1&gt;
+&lt;p&gt;安裝服務&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;yim install xinetd rsync
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;修改服務設定 xinetd.conf&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;vim /etc/xinetd.d/rsync
+&lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-http&#34; data-lang=&#34;http&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;service rsync
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;{
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;        disable         = no
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;        socket_type     = stream
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;        wait            = no
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;        user            = root
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;        server          = /usr/bin/rsync
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;        server_args     = --daemon
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;        log_on_failure  += USERID
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;修改服務設定 rsyncd.conf&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;vim /etc/rsyncd.conf
+&lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-http&#34; data-lang=&#34;http&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;[update]
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;path =          /
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;auth users =    update
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;hosts allow =   XX.XX.XX.XX  //來源IP
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;uid =           root
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;gid =           root
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;secrets file =  /etc/rsync.secrets
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;read only =     no
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;設定帳號密碼&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;vim /etc/rsync.secrets
+&lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-http&#34; data-lang=&#34;http&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;update:123abc
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;啟動服務&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;systemctl start xinetd
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;a主機-server端-設定&#34;&gt;A主機 (Server端) 設定&lt;/h1&gt;
+&lt;p&gt;設定密碼即可&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;vim rsync.secrets
+&lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-http&#34; data-lang=&#34;http&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;123abc
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;語法:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;rsync -aHSz  --delete --contimeout=5 --password-file=/etc/rsync.secrets /hugoserver update@XX.XX.XX.XX::update
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+
+</description>
+        </item>
+        <item>
+        <title>CentOS7上使用Rsync不同機器備份</title>
+        <link>https://note.laurance.ml/p/centos7%E4%B8%8A%E4%BD%BF%E7%94%A8rsync%E4%B8%8D%E5%90%8C%E6%A9%9F%E5%99%A8%E5%82%99%E4%BB%BD/</link>
+        <pubDate>Thu, 27 Oct 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://note.laurance.ml/p/centos7%E4%B8%8A%E4%BD%BF%E7%94%A8rsync%E4%B8%8D%E5%90%8C%E6%A9%9F%E5%99%A8%E5%82%99%E4%BB%BD/</guid>
+        <description>&lt;img src="https://note.laurance.ml/p/centos7%E4%B8%8A%E4%BD%BF%E7%94%A8rsync%E4%B8%8D%E5%90%8C%E6%A9%9F%E5%99%A8%E5%82%99%E4%BB%BD/100.png" alt="Featured image of post CentOS7上使用Rsync不同機器備份" /&gt;&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/centos7%E4%B8%8A%E4%BD%BF%E7%94%A8rsync%E4%B8%8D%E5%90%8C%E6%A9%9F%E5%99%A8%E5%82%99%E4%BB%BD/100.jpg&#34;
+	width=&#34;1000&#34;
+	height=&#34;485&#34;
+	srcset=&#34;https://note.laurance.ml/p/centos7%E4%B8%8A%E4%BD%BF%E7%94%A8rsync%E4%B8%8D%E5%90%8C%E6%A9%9F%E5%99%A8%E5%82%99%E4%BB%BD/100_hucded96a92cc4024caa7466c888694fad_208704_480x0_resize_q75_box.jpg 480w, https://note.laurance.ml/p/centos7%E4%B8%8A%E4%BD%BF%E7%94%A8rsync%E4%B8%8D%E5%90%8C%E6%A9%9F%E5%99%A8%E5%82%99%E4%BB%BD/100_hucded96a92cc4024caa7466c888694fad_208704_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;206&#34;
+		data-flex-basis=&#34;494px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;接收方 (目的):
+172.16.0.222
+
+服務需開啟:
+rsync --daemon --config=/etc/rsyncd.conf
+
+設定檔:
+[update]
+path =          /root/iptables 		# (位置寫死)
+auth users =    update
+hosts allow =   172.16.0.223
+uid =           root
+gid =           root
+secrets file =  /etc/rsync5.secrets
+read only =     no
+
+密碼放置及格式:
+vim /etc/rsync5.secrets
+update:qwe999 (格式)
+
+--------------------------------------------
+
+發送方 (來源):
+172.16.0.223
+
+服務不用開啟
+
+需建置密碼
+vim /etc/rsync5.secrets
+qwe999 (格式)
+
+同步語法:
+
+rsync -aHSz --password-file=/etc/rsync5.secrets /root/iptables update@172.16.0.222::update
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+
+</description>
+        </item>
+        
+    </channel>
+</rss>

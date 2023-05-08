@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='(將home磁區分割為50G並將其餘空間擴充到根目錄底下)'><title>CentOS-根目錄磁區擴充</title>
+
+<link rel='canonical' href='https://note.laurance.ml/p/centos-%E6%A0%B9%E7%9B%AE%E9%8C%84%E7%A3%81%E5%8D%80%E6%93%B4%E5%85%85/'>
+
+<link rel="stylesheet" href="/scss/style.min.ac77dcf8b111b51da39a92990f431923f210f3876d85798a2125667f96dc33a4.css"><meta property='og:title' content='CentOS-根目錄磁區擴充'>
+<meta property='og:description' content='(將home磁區分割為50G並將其餘空間擴充到根目錄底下)'>
+<meta property='og:url' content='https://note.laurance.ml/p/centos-%E6%A0%B9%E7%9B%AE%E9%8C%84%E7%A3%81%E5%8D%80%E6%93%B4%E5%85%85/'>
+<meta property='og:site_name' content='Laurance&#39;s Note'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='CentOS' /><meta property='article:published_time' content='2022-08-03T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2022-08-03T00:00:00&#43;00:00'/><meta property='og:image' content='https://note.laurance.ml/p/centos-%E6%A0%B9%E7%9B%AE%E9%8C%84%E7%A3%81%E5%8D%80%E6%93%B4%E5%85%85/100.png' />
+<meta name="twitter:title" content="CentOS-根目錄磁區擴充">
+<meta name="twitter:description" content="(將home磁區分割為50G並將其餘空間擴充到根目錄底下)"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://note.laurance.ml/p/centos-%E6%A0%B9%E7%9B%AE%E9%8C%84%E7%A3%81%E5%8D%80%E6%93%B4%E5%85%85/100.png' />
+    <link rel="shortcut icon" href="static/favicon.ico" />
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Live2D 看板娘 / Demo</title>
+</head>
+<body>
+<script src="https://cdn.jsdelivr.net/gh/dingbangli/live2d-widget@latest/autoload.js"></script>
+</body>
+</html>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu49eacb73e01f91348578131d7e8658f5_11993_300x0_resize_box_3.png" width="300"
+                            height="301" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🍥</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Laurance&#39;s Note</a></h1>
+            <h2 class="site-description">筆記 記錄美好生活
+</h2>
+        </div>
+    </header><ol class="menu" id="main-menu">
+        
+        
+        
+
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/about/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/links/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>Links</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+            
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>Dark Mode</span>
+                </li>
+            
+        </div>
+    </ol>
+</aside>
+<main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/centos-%E6%A0%B9%E7%9B%AE%E9%8C%84%E7%A3%81%E5%8D%80%E6%93%B4%E5%85%85/">
+                <img src="/p/centos-%E6%A0%B9%E7%9B%AE%E9%8C%84%E7%A3%81%E5%8D%80%E6%93%B4%E5%85%85/100_huc03b46b7f8bda3b0ed1195c88ee7f533_13486_800x0_resize_box_3.png"
+                        srcset="/p/centos-%E6%A0%B9%E7%9B%AE%E9%8C%84%E7%A3%81%E5%8D%80%E6%93%B4%E5%85%85/100_huc03b46b7f8bda3b0ed1195c88ee7f533_13486_800x0_resize_box_3.png 800w, /p/centos-%E6%A0%B9%E7%9B%AE%E9%8C%84%E7%A3%81%E5%8D%80%E6%93%B4%E5%85%85/100_huc03b46b7f8bda3b0ed1195c88ee7f533_13486_1600x0_resize_box_3.png 1600w"
+                        width="800" 
+                        height="233" 
+                        loading="lazy"
+                        alt="Featured image of post CentOS-根目錄磁區擴充" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/linux/" >
+                Linux
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/centos-%E6%A0%B9%E7%9B%AE%E9%8C%84%E7%A3%81%E5%8D%80%E6%93%B4%E5%85%85/">CentOS-根目錄磁區擴充</a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            (將home磁區分割為50G並將其餘空間擴充到根目錄底下)
+        </h3>
+        
+    </div>
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Aug 03, 2022</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    1 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+</header>
+
+    <section class="article-content">
+    
+    
+    <pre><code>安裝xfsdump工具
+yum install xfsdump -y
+
+備份/home磁區的掛載內容 (一路按ENTER)
+xfsdump -f /home.xfsdump /home
+</code></pre>
+<p><img src="/p/centos-%E6%A0%B9%E7%9B%AE%E9%8C%84%E7%A3%81%E5%8D%80%E6%93%B4%E5%85%85/0001.png"
+	width="1917"
+	height="834"
+	srcset="/p/centos-%E6%A0%B9%E7%9B%AE%E9%8C%84%E7%A3%81%E5%8D%80%E6%93%B4%E5%85%85/0001_hub08483849e95de621bb053a7bd70646e_54183_480x0_resize_box_3.png 480w, /p/centos-%E6%A0%B9%E7%9B%AE%E9%8C%84%E7%A3%81%E5%8D%80%E6%93%B4%E5%85%85/0001_hub08483849e95de621bb053a7bd70646e_54183_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="229"
+		data-flex-basis="551px"
+	
+></p>
+<pre><code>這時候會再跟目錄出現剛剛備份的 /home &gt;&gt; home.xfsdump
+</code></pre>
+<p><img src="/p/centos-%E6%A0%B9%E7%9B%AE%E9%8C%84%E7%A3%81%E5%8D%80%E6%93%B4%E5%85%85/0002.png"
+	width="1915"
+	height="241"
+	srcset="/p/centos-%E6%A0%B9%E7%9B%AE%E9%8C%84%E7%A3%81%E5%8D%80%E6%93%B4%E5%85%85/0002_hu96b56a738934441af73b6ef57a30dd5a_16573_480x0_resize_box_3.png 480w, /p/centos-%E6%A0%B9%E7%9B%AE%E9%8C%84%E7%A3%81%E5%8D%80%E6%93%B4%E5%85%85/0002_hu96b56a738934441af73b6ef57a30dd5a_16573_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="794"
+		data-flex-basis="1907px"
+	
+></p>
+<pre><code>成功備份後，將/home磁區移除掛載 (必須以root身分登入才能執行)
+umount /home
+</code></pre>
+<p><img src="/p/centos-%E6%A0%B9%E7%9B%AE%E9%8C%84%E7%A3%81%E5%8D%80%E6%93%B4%E5%85%85/0003.png"
+	width="1917"
+	height="573"
+	srcset="/p/centos-%E6%A0%B9%E7%9B%AE%E9%8C%84%E7%A3%81%E5%8D%80%E6%93%B4%E5%85%85/0003_hu3eec93602d7d2b4098a1403407aab693_40697_480x0_resize_box_3.png 480w, /p/centos-%E6%A0%B9%E7%9B%AE%E9%8C%84%E7%A3%81%E5%8D%80%E6%93%B4%E5%85%85/0003_hu3eec93602d7d2b4098a1403407aab693_40697_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="334"
+		data-flex-basis="802px"
+	
+></p>
+<pre><code>將/home磁區大小定義為50G
+lvreduce -L 50G /dev/mapper/centos-home
+</code></pre>
+<p><img src="/p/centos-%E6%A0%B9%E7%9B%AE%E9%8C%84%E7%A3%81%E5%8D%80%E6%93%B4%E5%85%85/0004.png"
+	width="1915"
+	height="289"
+	srcset="/p/centos-%E6%A0%B9%E7%9B%AE%E9%8C%84%E7%A3%81%E5%8D%80%E6%93%B4%E5%85%85/0004_hua8835cbf6b7f7fb57d73381ca3b524a7_22391_480x0_resize_box_3.png 480w, /p/centos-%E6%A0%B9%E7%9B%AE%E9%8C%84%E7%A3%81%E5%8D%80%E6%93%B4%E5%85%85/0004_hua8835cbf6b7f7fb57d73381ca3b524a7_22391_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="662"
+		data-flex-basis="1590px"
+	
+></p>
+<pre><code>將其餘空間擴充到根目錄底下
+lvextend -l +100%FREE /dev/mapper/centos-root
+</code></pre>
+<p><img src="/p/centos-%E6%A0%B9%E7%9B%AE%E9%8C%84%E7%A3%81%E5%8D%80%E6%93%B4%E5%85%85/0005.png"
+	width="1916"
+	height="182"
+	srcset="/p/centos-%E6%A0%B9%E7%9B%AE%E9%8C%84%E7%A3%81%E5%8D%80%E6%93%B4%E5%85%85/0005_hu985ada5fd73a9124f1b32d9a1c3f3f68_14525_480x0_resize_box_3.png 480w, /p/centos-%E6%A0%B9%E7%9B%AE%E9%8C%84%E7%A3%81%E5%8D%80%E6%93%B4%E5%85%85/0005_hu985ada5fd73a9124f1b32d9a1c3f3f68_14525_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="1052"
+		data-flex-basis="2526px"
+	
+></p>
+<pre><code>使根目錄擴充生效
+xfs_growfs /dev/mapper/centos-root
+</code></pre>
+<p><img src="/p/centos-%E6%A0%B9%E7%9B%AE%E9%8C%84%E7%A3%81%E5%8D%80%E6%93%B4%E5%85%85/0006.png"
+	width="1917"
+	height="462"
+	srcset="/p/centos-%E6%A0%B9%E7%9B%AE%E9%8C%84%E7%A3%81%E5%8D%80%E6%93%B4%E5%85%85/0006_hud7d997200f5ff198882a93bf921ea029_33543_480x0_resize_box_3.png 480w, /p/centos-%E6%A0%B9%E7%9B%AE%E9%8C%84%E7%A3%81%E5%8D%80%E6%93%B4%E5%85%85/0006_hud7d997200f5ff198882a93bf921ea029_33543_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="414"
+		data-flex-basis="995px"
+	
+></p>
+<pre><code>格式化/home掛載對應的磁區
+mkfs.xfs -f /dev/mapper/centos-home
+</code></pre>
+<p><img src="/p/centos-%E6%A0%B9%E7%9B%AE%E9%8C%84%E7%A3%81%E5%8D%80%E6%93%B4%E5%85%85/0007.png"
+	width="1917"
+	height="353"
+	srcset="/p/centos-%E6%A0%B9%E7%9B%AE%E9%8C%84%E7%A3%81%E5%8D%80%E6%93%B4%E5%85%85/0007_hu403507625d2d680908567b558c8aa7c3_26335_480x0_resize_box_3.png 480w, /p/centos-%E6%A0%B9%E7%9B%AE%E9%8C%84%E7%A3%81%E5%8D%80%E6%93%B4%E5%85%85/0007_hu403507625d2d680908567b558c8aa7c3_26335_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="543"
+		data-flex-basis="1303px"
+	
+></p>
+<pre><code>重新掛載/home
+mount /home
+</code></pre>
+<p><img src="/p/centos-%E6%A0%B9%E7%9B%AE%E9%8C%84%E7%A3%81%E5%8D%80%E6%93%B4%E5%85%85/0008.png"
+	width="1917"
+	height="364"
+	srcset="/p/centos-%E6%A0%B9%E7%9B%AE%E9%8C%84%E7%A3%81%E5%8D%80%E6%93%B4%E5%85%85/0008_hua0fe5688704e454d0b602b2df2e9fcc5_25188_480x0_resize_box_3.png 480w, /p/centos-%E6%A0%B9%E7%9B%AE%E9%8C%84%E7%A3%81%E5%8D%80%E6%93%B4%E5%85%85/0008_hua0fe5688704e454d0b602b2df2e9fcc5_25188_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="526"
+		data-flex-basis="1263px"
+	
+></p>
+<pre><code>將原本備份的內容寫入/home
+xfsrestore -f /home.xfsdump /home
+</code></pre>
+<p><img src="/p/centos-%E6%A0%B9%E7%9B%AE%E9%8C%84%E7%A3%81%E5%8D%80%E6%93%B4%E5%85%85/0009.png"
+	width="1918"
+	height="511"
+	srcset="/p/centos-%E6%A0%B9%E7%9B%AE%E9%8C%84%E7%A3%81%E5%8D%80%E6%93%B4%E5%85%85/0009_hue3412b3132bca76765f52a8c12347b5d_40541_480x0_resize_box_3.png 480w, /p/centos-%E6%A0%B9%E7%9B%AE%E9%8C%84%E7%A3%81%E5%8D%80%E6%93%B4%E5%85%85/0009_hue3412b3132bca76765f52a8c12347b5d_40541_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="375"
+		data-flex-basis="900px"
+	
+></p>
+<pre><code>可以看倒已將磁區容量擴充
+</code></pre>
+<p><img src="/p/centos-%E6%A0%B9%E7%9B%AE%E9%8C%84%E7%A3%81%E5%8D%80%E6%93%B4%E5%85%85/00010.png"
+	width="1914"
+	height="411"
+	srcset="/p/centos-%E6%A0%B9%E7%9B%AE%E9%8C%84%E7%A3%81%E5%8D%80%E6%93%B4%E5%85%85/00010_hu16cea63d6bef484da412835ec0ac8bd0_25358_480x0_resize_box_3.png 480w, /p/centos-%E6%A0%B9%E7%9B%AE%E9%8C%84%E7%A3%81%E5%8D%80%E6%93%B4%E5%85%85/00010_hu16cea63d6bef484da412835ec0ac8bd0_25358_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="465"
+		data-flex-basis="1117px"
+	
+></p>
+<hr>
+
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/centos/">CentOS</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC By Laurance</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">Related content</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/p/centos-%E5%A6%82%E4%BD%95%E5%B0%87%E5%AE%89%E8%A3%9D%E5%8C%85%E5%8F%8A%E5%85%B6%E4%BE%9D%E8%B3%B4%E5%8C%85%E4%B8%8B%E8%BC%89%E5%88%B0%E6%9C%AC%E5%9C%B0/">
+        
+        
+            <div class="article-image">
+                <img src="/p/centos-%E5%A6%82%E4%BD%95%E5%B0%87%E5%AE%89%E8%A3%9D%E5%8C%85%E5%8F%8A%E5%85%B6%E4%BE%9D%E8%B3%B4%E5%8C%85%E4%B8%8B%E8%BC%89%E5%88%B0%E6%9C%AC%E5%9C%B0/100.00ed164dc614a54054ec6f3f9b397e52_huc03b46b7f8bda3b0ed1195c88ee7f533_13486_250x150_fill_box_smart1_3.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post CentOS-如何將安裝包及其依賴包下載到本地"
+                        
+                        data-hash="md5-AO0WTcYUpUBU7G8/mzl&#43;Ug==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">CentOS-如何將安裝包及其依賴包下載到本地</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/centos7-%E4%BD%BF%E7%94%A8certbot%E5%8D%8A%E8%87%AA%E5%8B%95%E6%9B%B4%E6%96%B0ssl%E6%86%91%E8%AD%89/">
+        
+        
+            <div class="article-image">
+                <img src="/p/centos7-%E4%BD%BF%E7%94%A8certbot%E5%8D%8A%E8%87%AA%E5%8B%95%E6%9B%B4%E6%96%B0ssl%E6%86%91%E8%AD%89/100.00ed164dc614a54054ec6f3f9b397e52_huc03b46b7f8bda3b0ed1195c88ee7f533_13486_250x150_fill_box_smart1_3.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post CentOS7-使用certbot半自動更新SSL憑證"
+                        
+                        data-hash="md5-AO0WTcYUpUBU7G8/mzl&#43;Ug==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">CentOS7-使用certbot半自動更新SSL憑證</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/centos-%E5%95%9F%E5%8B%95%E7%B6%B2%E8%B7%AF%E6%99%82%E5%87%BA%E7%8F%BE-bring-up-interface-ip-address-is-already-in-use-for-device-eth0/">
+        
+        
+            <div class="article-image">
+                <img src="/p/centos-%E5%95%9F%E5%8B%95%E7%B6%B2%E8%B7%AF%E6%99%82%E5%87%BA%E7%8F%BE-bring-up-interface-ip-address-is-already-in-use-for-device-eth0/100.00ed164dc614a54054ec6f3f9b397e52_huc03b46b7f8bda3b0ed1195c88ee7f533_13486_250x150_fill_box_smart1_3.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Centos-啟動網路時出現 bring up interface ip address is already in use for device eth0"
+                        
+                        data-hash="md5-AO0WTcYUpUBU7G8/mzl&#43;Ug==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Centos-啟動網路時出現 bring up interface ip address is already in use for device eth0</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/centos8-%E6%89%BE%E4%B8%8D%E5%88%B0%E6%BA%90/">
+        
+        
+            <div class="article-image">
+                <img src="/p/centos8-%E6%89%BE%E4%B8%8D%E5%88%B0%E6%BA%90/100.00ed164dc614a54054ec6f3f9b397e52_huc03b46b7f8bda3b0ed1195c88ee7f533_13486_250x150_fill_box_smart1_3.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post CentOS8-找不到源"
+                        
+                        data-hash="md5-AO0WTcYUpUBU7G8/mzl&#43;Ug==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">CentOS8-找不到源</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/centos7-%E6%9B%B4%E6%94%B9yum%E6%BA%90hinet/">
+        
+        
+            <div class="article-image">
+                <img src="/p/centos7-%E6%9B%B4%E6%94%B9yum%E6%BA%90hinet/100.00ed164dc614a54054ec6f3f9b397e52_huc03b46b7f8bda3b0ed1195c88ee7f533_13486_250x150_fill_box_smart1_3.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Centos7-更改Yum源(HiNet)"
+                        
+                        data-hash="md5-AO0WTcYUpUBU7G8/mzl&#43;Ug==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Centos7-更改Yum源(HiNet)</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "hugo-theme-stack" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2022 - 
+        
+        2023 Laurance&#39;s Note
+    </section>
+    
+    <section class="powerby">
+        
+            All rights reserved <br/>
+        
+
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        
+    </section>
+</footer>
+
+<span id="busuanzi_container_site_pv">
+    總瀏覽  <span id="busuanzi_value_site_pv"></span>  次
+</span>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+    
+
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>PHPstorm on Laurance&#39;s Note</title>
+        <link>https://note.laurance.ml/categories/phpstorm/</link>
+        <description>Recent content in PHPstorm on Laurance&#39;s Note</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Mon, 17 Oct 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://note.laurance.ml/categories/phpstorm/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>PHPstorm-IDEKEY 連接方式</title>
+        <link>https://note.laurance.ml/p/phpstorm-idekey-%E9%80%A3%E6%8E%A5%E6%96%B9%E5%BC%8F/</link>
+        <pubDate>Mon, 17 Oct 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://note.laurance.ml/p/phpstorm-idekey-%E9%80%A3%E6%8E%A5%E6%96%B9%E5%BC%8F/</guid>
+        <description>&lt;img src="https://note.laurance.ml/p/phpstorm-idekey-%E9%80%A3%E6%8E%A5%E6%96%B9%E5%BC%8F/100.png" alt="Featured image of post PHPstorm-IDEKEY 連接方式" /&gt;&lt;pre&gt;&lt;code&gt;1.	新增一個New Project
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/phpstorm-idekey-%E9%80%A3%E6%8E%A5%E6%96%B9%E5%BC%8F/000001.png&#34;
+	width=&#34;1920&#34;
+	height=&#34;1040&#34;
+	srcset=&#34;https://note.laurance.ml/p/phpstorm-idekey-%E9%80%A3%E6%8E%A5%E6%96%B9%E5%BC%8F/000001_huc1bd01082f02a8bb22aecaa3c355c6e8_58967_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/phpstorm-idekey-%E9%80%A3%E6%8E%A5%E6%96%B9%E5%BC%8F/000001_huc1bd01082f02a8bb22aecaa3c355c6e8_58967_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;184&#34;
+		data-flex-basis=&#34;443px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;2.	直接按下 Create &amp;gt;&amp;gt; Open in new window &amp;gt;&amp;gt; OK
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/phpstorm-idekey-%E9%80%A3%E6%8E%A5%E6%96%B9%E5%BC%8F/000002.png&#34;
+	width=&#34;779&#34;
+	height=&#34;492&#34;
+	srcset=&#34;https://note.laurance.ml/p/phpstorm-idekey-%E9%80%A3%E6%8E%A5%E6%96%B9%E5%BC%8F/000002_hue3bdbd4433fb6315a92c5671eae6b1d3_27299_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/phpstorm-idekey-%E9%80%A3%E6%8E%A5%E6%96%B9%E5%BC%8F/000002_hue3bdbd4433fb6315a92c5671eae6b1d3_27299_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;158&#34;
+		data-flex-basis=&#34;380px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;3.	打開遠端部署（Development）設定介面
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/phpstorm-idekey-%E9%80%A3%E6%8E%A5%E6%96%B9%E5%BC%8F/000003.png&#34;
+	width=&#34;1920&#34;
+	height=&#34;1040&#34;
+	srcset=&#34;https://note.laurance.ml/p/phpstorm-idekey-%E9%80%A3%E6%8E%A5%E6%96%B9%E5%BC%8F/000003_hu2d466a53fe0f66b7413c449b1df61a46_66982_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/phpstorm-idekey-%E9%80%A3%E6%8E%A5%E6%96%B9%E5%BC%8F/000003_hu2d466a53fe0f66b7413c449b1df61a46_66982_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;184&#34;
+		data-flex-basis=&#34;443px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;4.	按下 + &amp;gt;&amp;gt; Name &amp;gt;&amp;gt; Type: SFTP
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/phpstorm-idekey-%E9%80%A3%E6%8E%A5%E6%96%B9%E5%BC%8F/000004.png&#34;
+	width=&#34;1339&#34;
+	height=&#34;761&#34;
+	srcset=&#34;https://note.laurance.ml/p/phpstorm-idekey-%E9%80%A3%E6%8E%A5%E6%96%B9%E5%BC%8F/000004_hu2228dc1471d414b220094274081bf561_32905_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/phpstorm-idekey-%E9%80%A3%E6%8E%A5%E6%96%B9%E5%BC%8F/000004_hu2228dc1471d414b220094274081bf561_32905_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;175&#34;
+		data-flex-basis=&#34;422px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;5.	測試IDE登入 再按Test SFTP connection 即可
+
+        SFTP host: IP
+        Port : 22
+        Root path: /
+        User name: jimide
+        Auth type: OpenSSH or Putty
+        Private key file: admin-jimide.pem
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/phpstorm-idekey-%E9%80%A3%E6%8E%A5%E6%96%B9%E5%BC%8F/000005.png&#34;
+	width=&#34;1339&#34;
+	height=&#34;761&#34;
+	srcset=&#34;https://note.laurance.ml/p/phpstorm-idekey-%E9%80%A3%E6%8E%A5%E6%96%B9%E5%BC%8F/000005_hu37493cf14100cd070f299cc3e7591819_52345_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/phpstorm-idekey-%E9%80%A3%E6%8E%A5%E6%96%B9%E5%BC%8F/000005_hu37493cf14100cd070f299cc3e7591819_52345_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;175&#34;
+		data-flex-basis=&#34;422px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/phpstorm-idekey-%E9%80%A3%E6%8E%A5%E6%96%B9%E5%BC%8F/000006.png&#34;
+	width=&#34;315&#34;
+	height=&#34;126&#34;
+	srcset=&#34;https://note.laurance.ml/p/phpstorm-idekey-%E9%80%A3%E6%8E%A5%E6%96%B9%E5%BC%8F/000006_huf1006d06aefe0fec736e5c22c8fadccb_4595_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/phpstorm-idekey-%E9%80%A3%E6%8E%A5%E6%96%B9%E5%BC%8F/000006_huf1006d06aefe0fec736e5c22c8fadccb_4595_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;250&#34;
+		data-flex-basis=&#34;600px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;hr&gt;
+
+</description>
+        </item>
+        
+    </channel>
+</rss>

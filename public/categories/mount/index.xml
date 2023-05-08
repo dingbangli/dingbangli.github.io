@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Mount on Laurance&#39;s Note</title>
+        <link>https://note.laurance.ml/categories/mount/</link>
+        <description>Recent content in Mount on Laurance&#39;s Note</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Wed, 01 Feb 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://note.laurance.ml/categories/mount/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Linux-開機出現 (or type control -D to continue) 解決辦法</title>
+        <link>https://note.laurance.ml/p/linux-%E9%96%8B%E6%A9%9F%E5%87%BA%E7%8F%BE-or-type-control-d-to-continue-%E8%A7%A3%E6%B1%BA%E8%BE%A6%E6%B3%95/</link>
+        <pubDate>Wed, 01 Feb 2023 00:00:00 +0000</pubDate>
+        
+        <guid>https://note.laurance.ml/p/linux-%E9%96%8B%E6%A9%9F%E5%87%BA%E7%8F%BE-or-type-control-d-to-continue-%E8%A7%A3%E6%B1%BA%E8%BE%A6%E6%B3%95/</guid>
+        <description>&lt;img src="https://note.laurance.ml/p/linux-%E9%96%8B%E6%A9%9F%E5%87%BA%E7%8F%BE-or-type-control-d-to-continue-%E8%A7%A3%E6%B1%BA%E8%BE%A6%E6%B3%95/100.png" alt="Featured image of post Linux-開機出現 (or type control -D to continue) 解決辦法" /&gt;&lt;h1 id=&#34;linux-開機失敗-error-or-type-control--d-to-continue-解決辦法&#34;&gt;Linux 開機失敗 ERROR &amp;ldquo;or type control -D to continue&amp;rdquo; 解決辦法&lt;/h1&gt;
+&lt;p&gt;主要是磁碟問題,秀的 ERROR&lt;/p&gt;
+&lt;p&gt;先使用 &lt;code&gt;root&lt;/code&gt; 進入 &lt;code&gt;修復模式&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/linux-%E9%96%8B%E6%A9%9F%E5%87%BA%E7%8F%BE-or-type-control-d-to-continue-%E8%A7%A3%E6%B1%BA%E8%BE%A6%E6%B3%95/301.png&#34;
+	width=&#34;722&#34;
+	height=&#34;403&#34;
+	srcset=&#34;https://note.laurance.ml/p/linux-%E9%96%8B%E6%A9%9F%E5%87%BA%E7%8F%BE-or-type-control-d-to-continue-%E8%A7%A3%E6%B1%BA%E8%BE%A6%E6%B3%95/301_huad619062c8476774ef6c9fbd11dad5ff_19592_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/linux-%E9%96%8B%E6%A9%9F%E5%87%BA%E7%8F%BE-or-type-control-d-to-continue-%E8%A7%A3%E6%B1%BA%E8%BE%A6%E6%B3%95/301_huad619062c8476774ef6c9fbd11dad5ff_19592_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;179&#34;
+		data-flex-basis=&#34;429px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;輸入完密碼後,進入的模式為 &lt;code&gt;唯讀模式&lt;/code&gt; 使用以下指令更改為 &lt;code&gt;讀寫模式&lt;/code&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;mount -n -o remount,rw /
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/linux-%E9%96%8B%E6%A9%9F%E5%87%BA%E7%8F%BE-or-type-control-d-to-continue-%E8%A7%A3%E6%B1%BA%E8%BE%A6%E6%B3%95/303.png&#34;
+	width=&#34;724&#34;
+	height=&#34;410&#34;
+	srcset=&#34;https://note.laurance.ml/p/linux-%E9%96%8B%E6%A9%9F%E5%87%BA%E7%8F%BE-or-type-control-d-to-continue-%E8%A7%A3%E6%B1%BA%E8%BE%A6%E6%B3%95/303_hu840335b5b6cce7e74e8a58551b0256a2_16645_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/linux-%E9%96%8B%E6%A9%9F%E5%87%BA%E7%8F%BE-or-type-control-d-to-continue-%E8%A7%A3%E6%B1%BA%E8%BE%A6%E6%B3%95/303_hu840335b5b6cce7e74e8a58551b0256a2_16645_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;176&#34;
+		data-flex-basis=&#34;423px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;這邊使用指令 &lt;code&gt;df -h&lt;/code&gt; 可以看到原本磁碟 mount 的位置&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/linux-%E9%96%8B%E6%A9%9F%E5%87%BA%E7%8F%BE-or-type-control-d-to-continue-%E8%A7%A3%E6%B1%BA%E8%BE%A6%E6%B3%95/302.png&#34;
+	width=&#34;727&#34;
+	height=&#34;408&#34;
+	srcset=&#34;https://note.laurance.ml/p/linux-%E9%96%8B%E6%A9%9F%E5%87%BA%E7%8F%BE-or-type-control-d-to-continue-%E8%A7%A3%E6%B1%BA%E8%BE%A6%E6%B3%95/302_hu1b832e1213c9eb53d561637469b57177_17168_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/linux-%E9%96%8B%E6%A9%9F%E5%87%BA%E7%8F%BE-or-type-control-d-to-continue-%E8%A7%A3%E6%B1%BA%E8%BE%A6%E6%B3%95/302_hu1b832e1213c9eb53d561637469b57177_17168_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;178&#34;
+		data-flex-basis=&#34;427px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;將正確位置寫入 &lt;code&gt;/etc/fstab&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/linux-%E9%96%8B%E6%A9%9F%E5%87%BA%E7%8F%BE-or-type-control-d-to-continue-%E8%A7%A3%E6%B1%BA%E8%BE%A6%E6%B3%95/304.png&#34;
+	width=&#34;725&#34;
+	height=&#34;406&#34;
+	srcset=&#34;https://note.laurance.ml/p/linux-%E9%96%8B%E6%A9%9F%E5%87%BA%E7%8F%BE-or-type-control-d-to-continue-%E8%A7%A3%E6%B1%BA%E8%BE%A6%E6%B3%95/304_hu454b15e9fff04a5a790f3c12ce25f32d_14391_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/linux-%E9%96%8B%E6%A9%9F%E5%87%BA%E7%8F%BE-or-type-control-d-to-continue-%E8%A7%A3%E6%B1%BA%E8%BE%A6%E6%B3%95/304_hu454b15e9fff04a5a790f3c12ce25f32d_14391_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;178&#34;
+		data-flex-basis=&#34;428px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;重啟後即可&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;reboot
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+
+</description>
+        </item>
+        
+    </channel>
+</rss>

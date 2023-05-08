@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='global 設定 (全域) global log 127.0.0.1 local5 chroot /usr/local/haproxy pidfile /var/run/haproxy.pid maxconn 5000 user haproxy group haproxy daemon stats socket /etc/haproxy/haproxy.sock mode 600 level admin stats timeout 2m #----------------------------------------------------------------------------------------------- log 設定至本機 syslog 預設位置 (級別為 local5 notice) chroot 設定為 haproxy 主要運行位置 pidfile 設定為 haproxy 進程 maxconn 設'><title>haproxy 設定檔解析</title>
+
+<link rel='canonical' href='https://note.laurance.ml/p/haproxy-%E8%A8%AD%E5%AE%9A%E6%AA%94%E8%A7%A3%E6%9E%90/'>
+
+<link rel="stylesheet" href="/scss/style.min.ac77dcf8b111b51da39a92990f431923f210f3876d85798a2125667f96dc33a4.css"><meta property='og:title' content='haproxy 設定檔解析'>
+<meta property='og:description' content='global 設定 (全域) global log 127.0.0.1 local5 chroot /usr/local/haproxy pidfile /var/run/haproxy.pid maxconn 5000 user haproxy group haproxy daemon stats socket /etc/haproxy/haproxy.sock mode 600 level admin stats timeout 2m #----------------------------------------------------------------------------------------------- log 設定至本機 syslog 預設位置 (級別為 local5 notice) chroot 設定為 haproxy 主要運行位置 pidfile 設定為 haproxy 進程 maxconn 設'>
+<meta property='og:url' content='https://note.laurance.ml/p/haproxy-%E8%A8%AD%E5%AE%9A%E6%AA%94%E8%A7%A3%E6%9E%90/'>
+<meta property='og:site_name' content='Laurance&#39;s Note'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Haproxy' /><meta property='article:published_time' content='2023-03-09T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2023-03-09T00:00:00&#43;00:00'/><meta property='og:image' content='https://note.laurance.ml/p/haproxy-%E8%A8%AD%E5%AE%9A%E6%AA%94%E8%A7%A3%E6%9E%90/100.png' />
+<meta name="twitter:title" content="haproxy 設定檔解析">
+<meta name="twitter:description" content="global 設定 (全域) global log 127.0.0.1 local5 chroot /usr/local/haproxy pidfile /var/run/haproxy.pid maxconn 5000 user haproxy group haproxy daemon stats socket /etc/haproxy/haproxy.sock mode 600 level admin stats timeout 2m #----------------------------------------------------------------------------------------------- log 設定至本機 syslog 預設位置 (級別為 local5 notice) chroot 設定為 haproxy 主要運行位置 pidfile 設定為 haproxy 進程 maxconn 設"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://note.laurance.ml/p/haproxy-%E8%A8%AD%E5%AE%9A%E6%AA%94%E8%A7%A3%E6%9E%90/100.png' />
+    <link rel="shortcut icon" href="static/favicon.ico" />
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Live2D 看板娘 / Demo</title>
+</head>
+<body>
+<script src="https://cdn.jsdelivr.net/gh/dingbangli/live2d-widget@latest/autoload.js"></script>
+</body>
+</html>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu49eacb73e01f91348578131d7e8658f5_11993_300x0_resize_box_3.png" width="300"
+                            height="301" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🍥</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Laurance&#39;s Note</a></h1>
+            <h2 class="site-description">筆記 記錄美好生活
+</h2>
+        </div>
+    </header><ol class="menu" id="main-menu">
+        
+        
+        
+
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/about/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/links/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>Links</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+            
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>Dark Mode</span>
+                </li>
+            
+        </div>
+    </ol>
+</aside>
+<main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/haproxy-%E8%A8%AD%E5%AE%9A%E6%AA%94%E8%A7%A3%E6%9E%90/">
+                <img src="/p/haproxy-%E8%A8%AD%E5%AE%9A%E6%AA%94%E8%A7%A3%E6%9E%90/100_hud764e26bdedecaeaa848d66344e0dcef_67009_800x0_resize_box_3.png"
+                        srcset="/p/haproxy-%E8%A8%AD%E5%AE%9A%E6%AA%94%E8%A7%A3%E6%9E%90/100_hud764e26bdedecaeaa848d66344e0dcef_67009_800x0_resize_box_3.png 800w, /p/haproxy-%E8%A8%AD%E5%AE%9A%E6%AA%94%E8%A7%A3%E6%9E%90/100_hud764e26bdedecaeaa848d66344e0dcef_67009_1600x0_resize_box_3.png 1600w"
+                        width="800" 
+                        height="400" 
+                        loading="lazy"
+                        alt="Featured image of post haproxy 設定檔解析" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/haproxy/" >
+                Haproxy
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/haproxy-%E8%A8%AD%E5%AE%9A%E6%AA%94%E8%A7%A3%E6%9E%90/">haproxy 設定檔解析</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Mar 09, 2023</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    3 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+</header>
+
+    <section class="article-content">
+    
+    
+    <h1 id="global-設定-全域">global 設定 (全域)</h1>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="l">global</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="l">log 127.0.0.1 local5</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="l">chroot /usr/local/haproxy</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="l">pidfile /var/run/haproxy.pid</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="l">maxconn 5000</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="l">user haproxy</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="l">group haproxy</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="l">daemon</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="l">stats socket /etc/haproxy/haproxy.sock mode 600 level admin</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="l">stats timeout 2m</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c">#-----------------------------------------------------------------------------------------------</span><span class="w">
+</span></span></span></code></pre></div><p><code>log</code>       設定至本機 syslog 預設位置 (級別為 local5 <code>notice</code>)</p>
+<p><code>chroot</code>    設定為 haproxy 主要運行位置</p>
+<p><code>pidfile</code>   設定為 haproxy 進程</p>
+<p><code>maxconn</code>   設定每個 haproxy 進程可以接受的最大併發連接數</p>
+<p><code>daemon</code>    設定為背景執行</p>
+<h1 id="default-設定-設定能用來配置套用到-frontendbackendlisten-等配置">default 設定 (設定能用來配置套用到 frontend、backend、listen 等配置)</h1>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="l">defaults</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="l">mode tcp</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="l">log global</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="l">option httplog</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="l">option dontlognull</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="l">option log-health-checks</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="l">retries 3</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="l">timeout http-request 30s</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="l">timeout queue 300s</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="l">timeout connect 600s</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="l">timeout client 10m</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="l">timeout server 10m</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="l">timeout http-keep-alive 30s</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="l">timeout check 600s</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="l">maxconn 4000</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c">#-----------------------------------------------------------------------------------------------</span><span class="w">
+</span></span></span></code></pre></div><p><code>mode</code>  指定了 HAProxy instance 所使用的通訊協定</p>
+<p><code>log</code>   指定 LOG 將寫入的位址 global 值參照了 global 一節中的 log 參數中所指定的 HAProxy instance</p>
+<p><code>option httplog</code>    能紀錄 HTTP session 的多種值，包括 HTTP 請求、session 狀態、連線數、來源位址、以及連線計數器等等</p>
+<p><code>option dontlognull</code>    停用了對 null 連線之記錄，表示 HAProxy 不會記錄未傳遞任何資料的連線</p>
+<p><code>option log-health-checks</code>  記錄健康檢查日誌</p>
+<p><code>retries</code>   指定了在無法第一次就連上時，真實伺服器會重試連線的次數</p>
+<p><code>timeout http-request</code>  http請求超時時間</p>
+<p><code>timeout queue</code>     排隊超時</p>
+<p><code>timeout connect</code>   設置成功連接到一臺服務器的最長等待時間，默認單位是毫秒</p>
+<p><code>timeout client</code>    設置連接客戶端發送數據時的成功連接最長等待時間，默認單位是毫秒</p>
+<p><code>timeout server</code>    設置服務器端迴應客戶度數據發送的最長等待時間，默認單位是毫秒</p>
+<p><code>timeout http-keep-alive </code>  設置長連接時間</p>
+<p><code>timeout check</code>     設置超時時間</p>
+<p><code>maxconn</code>       最大連接數</p>
+<h1 id="listen-stats-設定-監聽狀態">listen stats 設定 (監聽狀態)</h1>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="l">listen stats</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="l">bind  XX:XX:XX:XX:8080 (內網IP)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="l">mode    http</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="l">log     127.0.0.1 local0 err</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="l">stats   uri     /hastats</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="l">stats auth    admin:admin</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="l">stats refresh 10s</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="l">stats hide-version</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="l">stats admin if TRUE</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c">#-----------------------------------------------------------------------------------------------        </span><span class="w">
+</span></span></span></code></pre></div><p><code>bind</code>  設定 IP , PORT</p>
+<h1 id="frontend-設定-設定會配置伺服器聆聽來自用戶端連線請求的聆聽-socket">frontend 設定 (設定會配置伺服器聆聽來自用戶端連線請求的聆聽 socket)</h1>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="l">frontend ha86</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="l">bind *:3386</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="l">mode tcp</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="l">option tcplog</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="l">default_backend mysqlha86</span><span class="w">
+</span></span></span></code></pre></div><p><code>option tcplog</code>  允許記錄tcp連接的狀態和時間</p>
+<h1 id="backend-設定-設定會指定真實伺服器的-ip-位址以及負載平衡程式的排程演算法">backend 設定 (設定會指定真實伺服器的 IP 位址，以及負載平衡程式的排程演算法)</h1>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="l">backend mysqlha86</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="l">balance leastconn</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="l">server db86 XX:XX:XX:XX:3306 check port 3306 rise 1 fall 2 maxconn 2000 weight 100</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c">#-----------------------------------------------------------------------------------------------        </span><span class="w">
+</span></span></span></code></pre></div><p><code>balance</code>   指定負載平衡程式的排程演算法，此範例中使用的乃最少連線排程法 <code>leastconn</code></p>
+<p><code>server</code>    指定了後端可以使用的伺服器 db86</p>
+<p><code>check</code>     設置定期「健康檢查」的伺服器，以確保伺服器的可用性</p>
+<p><code>rise 1</code>    表示 1 次檢查結果正確則認爲服務器可用</p>
+<p><code>fall 2</code>    表示檢測結果失敗 2 次則認爲服務器不可用</p>
+<p><code>weight</code>    權重</p>
+<hr>
+<h1 id="演算法說明">演算法說明</h1>
+<div class="table-wrapper"><table>
+<thead>
+<tr>
+<th>演算法名稱</th>
+<th>設置參數</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>循環法</td>
+<td>roundrobin</td>
+<td>將請求依序發給集區中的伺服器。使用此演算法則時，所有真實伺服器不管能力為何，都會被視為平等</td>
+</tr>
+<tr>
+<td>靜態循環法</td>
+<td>static-rr</td>
+<td>一般地在一組伺服器之間循序性地分散各項請求，不過不允許動態式配置伺服器的權重。然而，基於伺服器權重的靜態本質，後端中不會有伺服器啟用數量上的限制</td>
+</tr>
+<tr>
+<td>最少連線排程法</td>
+<td>leastconn</td>
+<td>將請求分散至連線數較少的真實伺服器。當處於一個動態式且包含各種 session 或是連線長度的環境中，對管理員來說這個排程器可能會較適合其環境</td>
+</tr>
+<tr>
+<td>來源</td>
+<td>source</td>
+<td>透過雜湊請求的來源 IP 位址，並除以所有運作中的伺服器的權重，以判斷哪個伺服器將會收到請求</td>
+</tr>
+<tr>
+<td>URI</td>
+<td>uri</td>
+<td>透過雜湊整個 URI（或是 URI 的可配置部分）並除以所有運作中的伺服器的權重，以判斷哪個伺服器將會收到請求</td>
+</tr>
+<tr>
+<td>URL 參數</td>
+<td>url_param</td>
+<td>藉由在來源 URL 請求中找尋特定參數字串，並執行一項雜湊計算除以所有運作中的伺服器的權重，以將請求分散至伺服器上</td>
+</tr>
+<tr>
+<td>表頭名稱</td>
+<td>hdr</td>
+<td>透過選取各個來源 HTTP 請求中的特定表頭名稱來將請求發佈至伺服器上，並進行一項雜湊計算然後除以所有運作中伺服器的權重</td>
+</tr>
+<tr>
+<td>RDP Cookie</td>
+<td>rdp-cookie</td>
+<td>透過查詢每項 TCP 請求的 RDP cookie 來將請求發佈至伺服器上，並執行一項雜湊計算然後除以所有運作中伺服器的權重</td>
+</tr>
+</tbody>
+</table></div>
+<p>參考: <a class="link" href="https://access.redhat.com/documentation/zh-tw/red_hat_enterprise_linux/7/html/load_balancer_administration/s1-haproxy-setup-global"  target="_blank" rel="noopener"
+    >https://access.redhat.com/documentation/zh-tw/red_hat_enterprise_linux/7/html/load_balancer_administration/s1-haproxy-setup-global</a></p>
+<hr>
+
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/haproxy/">Haproxy</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC By Laurance</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+     
+    
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "hugo-theme-stack" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2022 - 
+        
+        2023 Laurance&#39;s Note
+    </section>
+    
+    <section class="powerby">
+        
+            All rights reserved <br/>
+        
+
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        
+    </section>
+</footer>
+
+<span id="busuanzi_container_site_pv">
+    總瀏覽  <span id="busuanzi_value_site_pv"></span>  次
+</span>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+    
+
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

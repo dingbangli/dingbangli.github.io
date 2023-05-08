@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>telegraf on Laurance&#39;s Note</title>
+        <link>https://note.laurance.ml/categories/telegraf/</link>
+        <description>Recent content in telegraf on Laurance&#39;s Note</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Thu, 03 Nov 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://note.laurance.ml/categories/telegraf/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Grafana-Polystat panel使用</title>
+        <link>https://note.laurance.ml/p/grafana-polystat-panel%E4%BD%BF%E7%94%A8/</link>
+        <pubDate>Thu, 03 Nov 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://note.laurance.ml/p/grafana-polystat-panel%E4%BD%BF%E7%94%A8/</guid>
+        <description>&lt;img src="https://note.laurance.ml/p/grafana-polystat-panel%E4%BD%BF%E7%94%A8/100.png" alt="Featured image of post Grafana-Polystat panel使用" /&gt;&lt;p&gt;&lt;strong&gt;安裝Grafana套件&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;grafana-cli plugins install grafana-polystat-panel
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;服務重啟&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;service grafana-server restart
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;查看telegraf的PID&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;ps aux |grep telegraf |grep -v &#39;grep&#39;|awk &#39;{print $2}&#39;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;建立監控並寫入InfluDB的 Shell，並給予權限&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;vim live.sh &amp;amp;&amp;amp; chmod 755 live.sh
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/grafana-polystat-panel%E4%BD%BF%E7%94%A8/404.png&#34;
+	width=&#34;1920&#34;
+	height=&#34;860&#34;
+	srcset=&#34;https://note.laurance.ml/p/grafana-polystat-panel%E4%BD%BF%E7%94%A8/404_huba3b87971acd506b655a513f59f3c960_42751_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/grafana-polystat-panel%E4%BD%BF%E7%94%A8/404_huba3b87971acd506b655a513f59f3c960_42751_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;223&#34;
+		data-flex-basis=&#34;535px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;建立排程 (SHELL:每2秒執行一次)&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;crontab -e
+
+* * * * * sh /home/grafana/crontab-live.sh
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;Grafana後台-建立新panel並設置&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/grafana-polystat-panel%E4%BD%BF%E7%94%A8/401.png&#34;
+	width=&#34;1920&#34;
+	height=&#34;937&#34;
+	srcset=&#34;https://note.laurance.ml/p/grafana-polystat-panel%E4%BD%BF%E7%94%A8/401_hu3fef5ce992d222518d4c12056dbeb1a9_162182_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/grafana-polystat-panel%E4%BD%BF%E7%94%A8/401_hu3fef5ce992d222518d4c12056dbeb1a9_162182_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;204&#34;
+		data-flex-basis=&#34;491px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/grafana-polystat-panel%E4%BD%BF%E7%94%A8/402.png&#34;
+	width=&#34;1920&#34;
+	height=&#34;937&#34;
+	srcset=&#34;https://note.laurance.ml/p/grafana-polystat-panel%E4%BD%BF%E7%94%A8/402_hu15d5b357040ba3fe7b8e1405aa9c6343_179984_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/grafana-polystat-panel%E4%BD%BF%E7%94%A8/402_hu15d5b357040ba3fe7b8e1405aa9c6343_179984_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;204&#34;
+		data-flex-basis=&#34;491px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;最後記得要SAVE，不然得重頭在來&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/grafana-polystat-panel%E4%BD%BF%E7%94%A8/403.png&#34;
+	width=&#34;1920&#34;
+	height=&#34;937&#34;
+	srcset=&#34;https://note.laurance.ml/p/grafana-polystat-panel%E4%BD%BF%E7%94%A8/403_hu752c4020fcc0c9a83e6de1da58aadb54_158030_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/grafana-polystat-panel%E4%BD%BF%E7%94%A8/403_hu752c4020fcc0c9a83e6de1da58aadb54_158030_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;204&#34;
+		data-flex-basis=&#34;491px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;hr&gt;
+
+</description>
+        </item>
+        <item>
+        <title>Grafana &#43; influxdb &#43; telegraf , 構建Linux效能監控</title>
+        <link>https://note.laurance.ml/p/grafana--influxdb--telegraf-%E6%A7%8B%E5%BB%BAlinux%E6%95%88%E8%83%BD%E7%9B%A3%E6%8E%A7/</link>
+        <pubDate>Tue, 27 Sep 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://note.laurance.ml/p/grafana--influxdb--telegraf-%E6%A7%8B%E5%BB%BAlinux%E6%95%88%E8%83%BD%E7%9B%A3%E6%8E%A7/</guid>
+        <description>&lt;img src="https://note.laurance.ml/p/grafana--influxdb--telegraf-%E6%A7%8B%E5%BB%BAlinux%E6%95%88%E8%83%BD%E7%9B%A3%E6%8E%A7/100.png" alt="Featured image of post Grafana &#43; influxdb &#43; telegraf , 構建Linux效能監控" /&gt;&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://grafana.com/grafana/download&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Grafana 官方載點&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;以下用YUM方式安裝 Grafanae-8.2.3-1&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;wget https://dl.grafana.com/enterprise/release/grafana-enterprise-8.2.3-1.x86_64.rpm
+
+yum localinstall grafana-enterprise-8.2.3-1.x86_64.rpm
+
+#啟動服務
+systemctl start grafana-server
+
+#檢視服務狀態
+systemctl status grafana-server
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://portal.influxdata.com/downloads/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;InfluxDB 官方載點&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;以下用YUM方式安裝 InfluxDB v1.8.0&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# influxdb.key GPG Fingerprint: 05CE15085FC09D18E99EFB22684A14CF2582E0C5
+cat &amp;lt;&amp;lt;EOF | sudo tee /etc/yum.repos.d/influxdb.repo
+[influxdb]
+name = InfluxDB Repository - RHEL \$releasever
+baseurl = https://repos.influxdata.com/rhel/\$releasever/\$basearch/stable
+enabled = 1
+gpgcheck = 1
+gpgkey = https://repos.influxdata.com/influxdb.key
+EOF
+   
+sudo yum install influxdb
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://portal.influxdata.com/downloads/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Telegraf 官方載點&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;以下用YUM方式安裝 Telegraf v1.24.1&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# influxdb.key GPG Fingerprint: 05CE15085FC09D18E99EFB22684A14CF2582E0C5
+cat &amp;lt;&amp;lt;EOF | tee /etc/yum.repos.d/influxdata.repo
+[influxdata]
+name = InfluxData Repository - Stable
+baseurl = https://repos.influxdata.com/stable/\$basearch/main
+enabled = 1
+gpgcheck = 1
+gpgkey = https://repos.influxdata.com/influxdata-archive_compat.key
+EOF
+
+sudo yum install telegraf
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Step.1 修改Telegraf的設定檔並啟動:&lt;/p&gt;
+&lt;p&gt;(將output-influxdb打開並指向database-telegraf,及打開network參數,及新增使用者)&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/grafana--influxdb--telegraf-%E6%A7%8B%E5%BB%BAlinux%E6%95%88%E8%83%BD%E7%9B%A3%E6%8E%A7/0001.png&#34;
+	width=&#34;1920&#34;
+	height=&#34;860&#34;
+	srcset=&#34;https://note.laurance.ml/p/grafana--influxdb--telegraf-%E6%A7%8B%E5%BB%BAlinux%E6%95%88%E8%83%BD%E7%9B%A3%E6%8E%A7/0001_hua61d4dae43158f1736d52df4eee600ee_65765_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/grafana--influxdb--telegraf-%E6%A7%8B%E5%BB%BAlinux%E6%95%88%E8%83%BD%E7%9B%A3%E6%8E%A7/0001_hua61d4dae43158f1736d52df4eee600ee_65765_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;223&#34;
+		data-flex-basis=&#34;535px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/grafana--influxdb--telegraf-%E6%A7%8B%E5%BB%BAlinux%E6%95%88%E8%83%BD%E7%9B%A3%E6%8E%A7/0002.png&#34;
+	width=&#34;1920&#34;
+	height=&#34;860&#34;
+	srcset=&#34;https://note.laurance.ml/p/grafana--influxdb--telegraf-%E6%A7%8B%E5%BB%BAlinux%E6%95%88%E8%83%BD%E7%9B%A3%E6%8E%A7/0002_huf032e6401be391f44b18b285f97e21e5_67091_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/grafana--influxdb--telegraf-%E6%A7%8B%E5%BB%BAlinux%E6%95%88%E8%83%BD%E7%9B%A3%E6%8E%A7/0002_huf032e6401be391f44b18b285f97e21e5_67091_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;223&#34;
+		data-flex-basis=&#34;535px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;service telegraf start
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Step.2 啟動influxdb,並查看資料有沒有正確寫進去DB&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;service influxdb start
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/grafana--influxdb--telegraf-%E6%A7%8B%E5%BB%BAlinux%E6%95%88%E8%83%BD%E7%9B%A3%E6%8E%A7/0003.png&#34;
+	width=&#34;1916&#34;
+	height=&#34;799&#34;
+	srcset=&#34;https://note.laurance.ml/p/grafana--influxdb--telegraf-%E6%A7%8B%E5%BB%BAlinux%E6%95%88%E8%83%BD%E7%9B%A3%E6%8E%A7/0003_hu848837aa5689473ae2b56431f3982569_27639_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/grafana--influxdb--telegraf-%E6%A7%8B%E5%BB%BAlinux%E6%95%88%E8%83%BD%E7%9B%A3%E6%8E%A7/0003_hu848837aa5689473ae2b56431f3982569_27639_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;239&#34;
+		data-flex-basis=&#34;575px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Step.3 建立telegraf使用者,並給予權限&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;create user telegraf with password &#39;telegraf&#39;
+
+grant all on telegraf to telegraf
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Step.4 啟動grafana&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;systemctl start grafana-server
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Step.5 開啟後台 http://localhost:3000 並建立datasource&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/grafana--influxdb--telegraf-%E6%A7%8B%E5%BB%BAlinux%E6%95%88%E8%83%BD%E7%9B%A3%E6%8E%A7/0004.png&#34;
+	width=&#34;1920&#34;
+	height=&#34;881&#34;
+	srcset=&#34;https://note.laurance.ml/p/grafana--influxdb--telegraf-%E6%A7%8B%E5%BB%BAlinux%E6%95%88%E8%83%BD%E7%9B%A3%E6%8E%A7/0004_hu9cc4ef22b24b42651de902aad7c86c12_179633_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/grafana--influxdb--telegraf-%E6%A7%8B%E5%BB%BAlinux%E6%95%88%E8%83%BD%E7%9B%A3%E6%8E%A7/0004_hu9cc4ef22b24b42651de902aad7c86c12_179633_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;217&#34;
+		data-flex-basis=&#34;523px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/grafana--influxdb--telegraf-%E6%A7%8B%E5%BB%BAlinux%E6%95%88%E8%83%BD%E7%9B%A3%E6%8E%A7/0005.png&#34;
+	width=&#34;1920&#34;
+	height=&#34;881&#34;
+	srcset=&#34;https://note.laurance.ml/p/grafana--influxdb--telegraf-%E6%A7%8B%E5%BB%BAlinux%E6%95%88%E8%83%BD%E7%9B%A3%E6%8E%A7/0005_hu1b667cf9568ad453c1c1b05fd617f227_47001_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/grafana--influxdb--telegraf-%E6%A7%8B%E5%BB%BAlinux%E6%95%88%E8%83%BD%E7%9B%A3%E6%8E%A7/0005_hu1b667cf9568ad453c1c1b05fd617f227_47001_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;217&#34;
+		data-flex-basis=&#34;523px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/grafana--influxdb--telegraf-%E6%A7%8B%E5%BB%BAlinux%E6%95%88%E8%83%BD%E7%9B%A3%E6%8E%A7/0006.png&#34;
+	width=&#34;1920&#34;
+	height=&#34;881&#34;
+	srcset=&#34;https://note.laurance.ml/p/grafana--influxdb--telegraf-%E6%A7%8B%E5%BB%BAlinux%E6%95%88%E8%83%BD%E7%9B%A3%E6%8E%A7/0006_hube365ffccd40ec7d4b2972d3106582e0_75757_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/grafana--influxdb--telegraf-%E6%A7%8B%E5%BB%BAlinux%E6%95%88%E8%83%BD%E7%9B%A3%E6%8E%A7/0006_hube365ffccd40ec7d4b2972d3106582e0_75757_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;217&#34;
+		data-flex-basis=&#34;523px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/grafana--influxdb--telegraf-%E6%A7%8B%E5%BB%BAlinux%E6%95%88%E8%83%BD%E7%9B%A3%E6%8E%A7/0007.png&#34;
+	width=&#34;1900&#34;
+	height=&#34;1537&#34;
+	srcset=&#34;https://note.laurance.ml/p/grafana--influxdb--telegraf-%E6%A7%8B%E5%BB%BAlinux%E6%95%88%E8%83%BD%E7%9B%A3%E6%8E%A7/0007_huc7ba08c76a0091ea7a032fe14451383a_128998_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/grafana--influxdb--telegraf-%E6%A7%8B%E5%BB%BAlinux%E6%95%88%E8%83%BD%E7%9B%A3%E6%8E%A7/0007_huc7ba08c76a0091ea7a032fe14451383a_128998_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;123&#34;
+		data-flex-basis=&#34;296px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Step.6 匯入Grafana官方模板&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/grafana--influxdb--telegraf-%E6%A7%8B%E5%BB%BAlinux%E6%95%88%E8%83%BD%E7%9B%A3%E6%8E%A7/0008.png&#34;
+	width=&#34;1920&#34;
+	height=&#34;937&#34;
+	srcset=&#34;https://note.laurance.ml/p/grafana--influxdb--telegraf-%E6%A7%8B%E5%BB%BAlinux%E6%95%88%E8%83%BD%E7%9B%A3%E6%8E%A7/0008_hu113cab58a2d27b3f7fe37975bb3cffbf_72500_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/grafana--influxdb--telegraf-%E6%A7%8B%E5%BB%BAlinux%E6%95%88%E8%83%BD%E7%9B%A3%E6%8E%A7/0008_hu113cab58a2d27b3f7fe37975bb3cffbf_72500_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;204&#34;
+		data-flex-basis=&#34;491px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/grafana--influxdb--telegraf-%E6%A7%8B%E5%BB%BAlinux%E6%95%88%E8%83%BD%E7%9B%A3%E6%8E%A7/0009.png&#34;
+	width=&#34;1920&#34;
+	height=&#34;937&#34;
+	srcset=&#34;https://note.laurance.ml/p/grafana--influxdb--telegraf-%E6%A7%8B%E5%BB%BAlinux%E6%95%88%E8%83%BD%E7%9B%A3%E6%8E%A7/0009_hu3054193818599584e7f978d715fe14ea_39740_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/grafana--influxdb--telegraf-%E6%A7%8B%E5%BB%BAlinux%E6%95%88%E8%83%BD%E7%9B%A3%E6%8E%A7/0009_hu3054193818599584e7f978d715fe14ea_39740_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;204&#34;
+		data-flex-basis=&#34;491px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/grafana--influxdb--telegraf-%E6%A7%8B%E5%BB%BAlinux%E6%95%88%E8%83%BD%E7%9B%A3%E6%8E%A7/0010.png&#34;
+	width=&#34;1920&#34;
+	height=&#34;937&#34;
+	srcset=&#34;https://note.laurance.ml/p/grafana--influxdb--telegraf-%E6%A7%8B%E5%BB%BAlinux%E6%95%88%E8%83%BD%E7%9B%A3%E6%8E%A7/0010_huae8487e7c0f3776f4b3671eeef9d2e90_65758_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/grafana--influxdb--telegraf-%E6%A7%8B%E5%BB%BAlinux%E6%95%88%E8%83%BD%E7%9B%A3%E6%8E%A7/0010_huae8487e7c0f3776f4b3671eeef9d2e90_65758_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;204&#34;
+		data-flex-basis=&#34;491px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Step.7 驗證: 打開本機3000port&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/grafana--influxdb--telegraf-%E6%A7%8B%E5%BB%BAlinux%E6%95%88%E8%83%BD%E7%9B%A3%E6%8E%A7/0011.png&#34;
+	width=&#34;1900&#34;
+	height=&#34;1337&#34;
+	srcset=&#34;https://note.laurance.ml/p/grafana--influxdb--telegraf-%E6%A7%8B%E5%BB%BAlinux%E6%95%88%E8%83%BD%E7%9B%A3%E6%8E%A7/0011_hudce4b82fbd088cb564b6239d0b623ed3_299822_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/grafana--influxdb--telegraf-%E6%A7%8B%E5%BB%BAlinux%E6%95%88%E8%83%BD%E7%9B%A3%E6%8E%A7/0011_hudce4b82fbd088cb564b6239d0b623ed3_299822_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;142&#34;
+		data-flex-basis=&#34;341px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;hr&gt;
+
+</description>
+        </item>
+        
+    </channel>
+</rss>

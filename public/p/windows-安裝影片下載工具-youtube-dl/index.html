@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Windows 安裝 youtube-dl 紀錄 官方網站 http://ytdl-org.github.io/youtube-dl/download.html 〔Step 1〕官網安裝套件 Windows 需安裝 Microsoft Visual C&#43;&#43; 2010 Service Pack 1 Redistributable Package (x86) 、 Windows exe (youtube-dl for windows) 〔Step 2〕將 &amp;ldquo;youtube-dl.exe&amp;rdquo; 移至路徑 %USERPROFILE%\AppData\Local\Microsoft\WindowsApps 裡 %USERPROFILE%\AppData\Local\Microsoft\WindowsApps Windows 預設環境變數路徑 〔'><title>Windows-安裝影片下載工具 youtube-dl</title>
+
+<link rel='canonical' href='https://note.laurance.ml/p/windows-%E5%AE%89%E8%A3%9D%E5%BD%B1%E7%89%87%E4%B8%8B%E8%BC%89%E5%B7%A5%E5%85%B7-youtube-dl/'>
+
+<link rel="stylesheet" href="/scss/style.min.ac77dcf8b111b51da39a92990f431923f210f3876d85798a2125667f96dc33a4.css"><meta property='og:title' content='Windows-安裝影片下載工具 youtube-dl'>
+<meta property='og:description' content='Windows 安裝 youtube-dl 紀錄 官方網站 http://ytdl-org.github.io/youtube-dl/download.html 〔Step 1〕官網安裝套件 Windows 需安裝 Microsoft Visual C&#43;&#43; 2010 Service Pack 1 Redistributable Package (x86) 、 Windows exe (youtube-dl for windows) 〔Step 2〕將 &amp;ldquo;youtube-dl.exe&amp;rdquo; 移至路徑 %USERPROFILE%\AppData\Local\Microsoft\WindowsApps 裡 %USERPROFILE%\AppData\Local\Microsoft\WindowsApps Windows 預設環境變數路徑 〔'>
+<meta property='og:url' content='https://note.laurance.ml/p/windows-%E5%AE%89%E8%A3%9D%E5%BD%B1%E7%89%87%E4%B8%8B%E8%BC%89%E5%B7%A5%E5%85%B7-youtube-dl/'>
+<meta property='og:site_name' content='Laurance&#39;s Note'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='youtube-dl' /><meta property='article:published_time' content='2023-02-15T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2023-02-15T00:00:00&#43;00:00'/><meta property='og:image' content='https://note.laurance.ml/p/windows-%E5%AE%89%E8%A3%9D%E5%BD%B1%E7%89%87%E4%B8%8B%E8%BC%89%E5%B7%A5%E5%85%B7-youtube-dl/100.png' />
+<meta name="twitter:title" content="Windows-安裝影片下載工具 youtube-dl">
+<meta name="twitter:description" content="Windows 安裝 youtube-dl 紀錄 官方網站 http://ytdl-org.github.io/youtube-dl/download.html 〔Step 1〕官網安裝套件 Windows 需安裝 Microsoft Visual C&#43;&#43; 2010 Service Pack 1 Redistributable Package (x86) 、 Windows exe (youtube-dl for windows) 〔Step 2〕將 &amp;ldquo;youtube-dl.exe&amp;rdquo; 移至路徑 %USERPROFILE%\AppData\Local\Microsoft\WindowsApps 裡 %USERPROFILE%\AppData\Local\Microsoft\WindowsApps Windows 預設環境變數路徑 〔"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://note.laurance.ml/p/windows-%E5%AE%89%E8%A3%9D%E5%BD%B1%E7%89%87%E4%B8%8B%E8%BC%89%E5%B7%A5%E5%85%B7-youtube-dl/100.png' />
+    <link rel="shortcut icon" href="static/favicon.ico" />
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Live2D 看板娘 / Demo</title>
+</head>
+<body>
+<script src="https://cdn.jsdelivr.net/gh/dingbangli/live2d-widget@latest/autoload.js"></script>
+</body>
+</html>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu49eacb73e01f91348578131d7e8658f5_11993_300x0_resize_box_3.png" width="300"
+                            height="301" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🍥</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Laurance&#39;s Note</a></h1>
+            <h2 class="site-description">筆記 記錄美好生活
+</h2>
+        </div>
+    </header><ol class="menu" id="main-menu">
+        
+        
+        
+
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/about/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/links/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>Links</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+            
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>Dark Mode</span>
+                </li>
+            
+        </div>
+    </ol>
+</aside>
+<main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/windows-%E5%AE%89%E8%A3%9D%E5%BD%B1%E7%89%87%E4%B8%8B%E8%BC%89%E5%B7%A5%E5%85%B7-youtube-dl/">
+                <img src="/p/windows-%E5%AE%89%E8%A3%9D%E5%BD%B1%E7%89%87%E4%B8%8B%E8%BC%89%E5%B7%A5%E5%85%B7-youtube-dl/100_hue86d16e89f42e1cd25cf83156a3f9032_45736_800x0_resize_box_3.png"
+                        srcset="/p/windows-%E5%AE%89%E8%A3%9D%E5%BD%B1%E7%89%87%E4%B8%8B%E8%BC%89%E5%B7%A5%E5%85%B7-youtube-dl/100_hue86d16e89f42e1cd25cf83156a3f9032_45736_800x0_resize_box_3.png 800w, /p/windows-%E5%AE%89%E8%A3%9D%E5%BD%B1%E7%89%87%E4%B8%8B%E8%BC%89%E5%B7%A5%E5%85%B7-youtube-dl/100_hue86d16e89f42e1cd25cf83156a3f9032_45736_1600x0_resize_box_3.png 1600w"
+                        width="800" 
+                        height="579" 
+                        loading="lazy"
+                        alt="Featured image of post Windows-安裝影片下載工具 youtube-dl" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/windows/" >
+                Windows
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/windows-%E5%AE%89%E8%A3%9D%E5%BD%B1%E7%89%87%E4%B8%8B%E8%BC%89%E5%B7%A5%E5%85%B7-youtube-dl/">Windows-安裝影片下載工具 youtube-dl</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Feb 15, 2023</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    1 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+</header>
+
+    <section class="article-content">
+    
+    
+    <h1 id="windows-安裝-youtube-dl-紀錄">Windows 安裝 youtube-dl 紀錄</h1>
+<p>官方網站 <a class="link" href="http://ytdl-org.github.io/youtube-dl/download.html"  target="_blank" rel="noopener"
+    >http://ytdl-org.github.io/youtube-dl/download.html</a></p>
+<p>〔Step 1〕官網安裝套件</p>
+<p>Windows 需安裝
+<a class="link" href="https://download.microsoft.com/download/1/6/5/165255E7-1014-4D0A-B094-B6A430A6BFFC/vcredist_x86.exe"  target="_blank" rel="noopener"
+    >Microsoft Visual C++ 2010 Service Pack 1 Redistributable Package (x86)</a>
+、 <a class="link" href="https://yt-dl.org/downloads/2021.12.17/youtube-dl.exe"  target="_blank" rel="noopener"
+    >Windows exe (youtube-dl for windows)</a></p>
+<p><img src="/p/windows-%E5%AE%89%E8%A3%9D%E5%BD%B1%E7%89%87%E4%B8%8B%E8%BC%89%E5%B7%A5%E5%85%B7-youtube-dl/201.png"
+	width="1920"
+	height="881"
+	srcset="/p/windows-%E5%AE%89%E8%A3%9D%E5%BD%B1%E7%89%87%E4%B8%8B%E8%BC%89%E5%B7%A5%E5%85%B7-youtube-dl/201_huec337f9fd8f49cd458e2599a823d0655_87108_480x0_resize_box_3.png 480w, /p/windows-%E5%AE%89%E8%A3%9D%E5%BD%B1%E7%89%87%E4%B8%8B%E8%BC%89%E5%B7%A5%E5%85%B7-youtube-dl/201_huec337f9fd8f49cd458e2599a823d0655_87108_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="217"
+		data-flex-basis="523px"
+	
+></p>
+<p>〔Step 2〕將 &ldquo;youtube-dl.exe&rdquo; 移至路徑 <code>%USERPROFILE%\AppData\Local\Microsoft\WindowsApps</code> 裡</p>
+<pre><code>%USERPROFILE%\AppData\Local\Microsoft\WindowsApps   
+
+Windows 預設環境變數路徑
+</code></pre>
+<p><img src="/p/windows-%E5%AE%89%E8%A3%9D%E5%BD%B1%E7%89%87%E4%B8%8B%E8%BC%89%E5%B7%A5%E5%85%B7-youtube-dl/203.png"
+	width="1111"
+	height="609"
+	srcset="/p/windows-%E5%AE%89%E8%A3%9D%E5%BD%B1%E7%89%87%E4%B8%8B%E8%BC%89%E5%B7%A5%E5%85%B7-youtube-dl/203_hu9229c29c00ef376899cd24b80890759b_47117_480x0_resize_box_3.png 480w, /p/windows-%E5%AE%89%E8%A3%9D%E5%BD%B1%E7%89%87%E4%B8%8B%E8%BC%89%E5%B7%A5%E5%85%B7-youtube-dl/203_hu9229c29c00ef376899cd24b80890759b_47117_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="182"
+		data-flex-basis="437px"
+	
+></p>
+<p>〔Step 3〕確認上述路徑有在 PATH 中</p>
+<p><img src="/p/windows-%E5%AE%89%E8%A3%9D%E5%BD%B1%E7%89%87%E4%B8%8B%E8%BC%89%E5%B7%A5%E5%85%B7-youtube-dl/204.png"
+	width="1246"
+	height="732"
+	srcset="/p/windows-%E5%AE%89%E8%A3%9D%E5%BD%B1%E7%89%87%E4%B8%8B%E8%BC%89%E5%B7%A5%E5%85%B7-youtube-dl/204_hu2a8a6c683d34fef28a84b17428703d11_56309_480x0_resize_box_3.png 480w, /p/windows-%E5%AE%89%E8%A3%9D%E5%BD%B1%E7%89%87%E4%B8%8B%E8%BC%89%E5%B7%A5%E5%85%B7-youtube-dl/204_hu2a8a6c683d34fef28a84b17428703d11_56309_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="170"
+		data-flex-basis="408px"
+	
+>
+<img src="/p/windows-%E5%AE%89%E8%A3%9D%E5%BD%B1%E7%89%87%E4%B8%8B%E8%BC%89%E5%B7%A5%E5%85%B7-youtube-dl/205.png"
+	width="1246"
+	height="732"
+	srcset="/p/windows-%E5%AE%89%E8%A3%9D%E5%BD%B1%E7%89%87%E4%B8%8B%E8%BC%89%E5%B7%A5%E5%85%B7-youtube-dl/205_hu18742ddca829ae15fb7b6dd5080f2983_70369_480x0_resize_box_3.png 480w, /p/windows-%E5%AE%89%E8%A3%9D%E5%BD%B1%E7%89%87%E4%B8%8B%E8%BC%89%E5%B7%A5%E5%85%B7-youtube-dl/205_hu18742ddca829ae15fb7b6dd5080f2983_70369_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="170"
+		data-flex-basis="408px"
+	
+>
+<img src="/p/windows-%E5%AE%89%E8%A3%9D%E5%BD%B1%E7%89%87%E4%B8%8B%E8%BC%89%E5%B7%A5%E5%85%B7-youtube-dl/206.png"
+	width="1004"
+	height="1008"
+	srcset="/p/windows-%E5%AE%89%E8%A3%9D%E5%BD%B1%E7%89%87%E4%B8%8B%E8%BC%89%E5%B7%A5%E5%85%B7-youtube-dl/206_hue3f52b9d3c4209953f1ef526f8662e83_334277_480x0_resize_box_3.png 480w, /p/windows-%E5%AE%89%E8%A3%9D%E5%BD%B1%E7%89%87%E4%B8%8B%E8%BC%89%E5%B7%A5%E5%85%B7-youtube-dl/206_hue3f52b9d3c4209953f1ef526f8662e83_334277_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="99"
+		data-flex-basis="239px"
+	
+></p>
+<p><img src="/p/windows-%E5%AE%89%E8%A3%9D%E5%BD%B1%E7%89%87%E4%B8%8B%E8%BC%89%E5%B7%A5%E5%85%B7-youtube-dl/207.png"
+	width="479"
+	height="533"
+	srcset="/p/windows-%E5%AE%89%E8%A3%9D%E5%BD%B1%E7%89%87%E4%B8%8B%E8%BC%89%E5%B7%A5%E5%85%B7-youtube-dl/207_hue897965f690f42b3089fbf028e333449_18779_480x0_resize_box_3.png 480w, /p/windows-%E5%AE%89%E8%A3%9D%E5%BD%B1%E7%89%87%E4%B8%8B%E8%BC%89%E5%B7%A5%E5%85%B7-youtube-dl/207_hue897965f690f42b3089fbf028e333449_18779_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="89"
+		data-flex-basis="215px"
+	
+>
+<img src="/p/windows-%E5%AE%89%E8%A3%9D%E5%BD%B1%E7%89%87%E4%B8%8B%E8%BC%89%E5%B7%A5%E5%85%B7-youtube-dl/208.png"
+	width="618"
+	height="585"
+	srcset="/p/windows-%E5%AE%89%E8%A3%9D%E5%BD%B1%E7%89%87%E4%B8%8B%E8%BC%89%E5%B7%A5%E5%85%B7-youtube-dl/208_hu50fe46c3135e493a6d8b41d820433729_37606_480x0_resize_box_3.png 480w, /p/windows-%E5%AE%89%E8%A3%9D%E5%BD%B1%E7%89%87%E4%B8%8B%E8%BC%89%E5%B7%A5%E5%85%B7-youtube-dl/208_hu50fe46c3135e493a6d8b41d820433729_37606_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="105"
+		data-flex-basis="253px"
+	
+>
+<img src="/p/windows-%E5%AE%89%E8%A3%9D%E5%BD%B1%E7%89%87%E4%B8%8B%E8%BC%89%E5%B7%A5%E5%85%B7-youtube-dl/209.png"
+	width="527"
+	height="501"
+	srcset="/p/windows-%E5%AE%89%E8%A3%9D%E5%BD%B1%E7%89%87%E4%B8%8B%E8%BC%89%E5%B7%A5%E5%85%B7-youtube-dl/209_huab2a88b438ffb6f864c54db2809b8465_44252_480x0_resize_box_3.png 480w, /p/windows-%E5%AE%89%E8%A3%9D%E5%BD%B1%E7%89%87%E4%B8%8B%E8%BC%89%E5%B7%A5%E5%85%B7-youtube-dl/209_huab2a88b438ffb6f864c54db2809b8465_44252_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="105"
+		data-flex-basis="252px"
+	
+></p>
+<p>〔Step 4〕驗證: 打開 CMD 輸入 youtube-dl &ndash;version</p>
+<p><img src="/p/windows-%E5%AE%89%E8%A3%9D%E5%BD%B1%E7%89%87%E4%B8%8B%E8%BC%89%E5%B7%A5%E5%85%B7-youtube-dl/210.png"
+	width="979"
+	height="512"
+	srcset="/p/windows-%E5%AE%89%E8%A3%9D%E5%BD%B1%E7%89%87%E4%B8%8B%E8%BC%89%E5%B7%A5%E5%85%B7-youtube-dl/210_hub18ca5c03c0bec28b24e73b5ab02b50d_18883_480x0_resize_box_3.png 480w, /p/windows-%E5%AE%89%E8%A3%9D%E5%BD%B1%E7%89%87%E4%B8%8B%E8%BC%89%E5%B7%A5%E5%85%B7-youtube-dl/210_hub18ca5c03c0bec28b24e73b5ab02b50d_18883_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="191"
+		data-flex-basis="458px"
+	
+></p>
+<p>〔Step 5〕下載影片:</p>
+<p>直接下載</p>
+<pre><code>youtube-dl u5ZsoP8FZUQ
+</code></pre>
+<p>查詢影片可下載的畫質清單</p>
+<pre><code>youtube-dl -F u5ZsoP8FZUQ
+</code></pre>
+<p><img src="/p/windows-%E5%AE%89%E8%A3%9D%E5%BD%B1%E7%89%87%E4%B8%8B%E8%BC%89%E5%B7%A5%E5%85%B7-youtube-dl/211.png"
+	width="1170"
+	height="632"
+	srcset="/p/windows-%E5%AE%89%E8%A3%9D%E5%BD%B1%E7%89%87%E4%B8%8B%E8%BC%89%E5%B7%A5%E5%85%B7-youtube-dl/211_hu3e25f6d10a60ef6b4b875e677b5b8c7e_70610_480x0_resize_box_3.png 480w, /p/windows-%E5%AE%89%E8%A3%9D%E5%BD%B1%E7%89%87%E4%B8%8B%E8%BC%89%E5%B7%A5%E5%85%B7-youtube-dl/211_hu3e25f6d10a60ef6b4b875e677b5b8c7e_70610_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="185"
+		data-flex-basis="444px"
+	
+></p>
+<p>上述指令找到 <code>format code</code> 後，使用下列指令下載指定的畫質影片</p>
+<pre><code>youtube-dl -f 401 u5ZsoP8FZUQ
+</code></pre>
+<p>下載成音樂 <code>--audio-format</code> 指定輸出格式，預設值為 <code>best</code></p>
+<pre><code>youtube-dl -x --audio-format mp4 u5ZsoP8FZUQ
+</code></pre>
+<hr>
+
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/youtube-dl/">youtube-dl</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC By Laurance</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">Related content</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/p/windows-win10%E5%B0%88%E6%A5%AD%E7%89%88%E9%87%91%E9%91%B0/">
+        
+        
+            <div class="article-image">
+                <img src="/p/windows-win10%E5%B0%88%E6%A5%AD%E7%89%88%E9%87%91%E9%91%B0/100.9707bef7aef0923ddf302f1dfc1281df_hue86d16e89f42e1cd25cf83156a3f9032_45736_250x150_fill_box_smart1_3.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Windows-win10專業版金鑰"
+                        
+                        data-hash="md5-lwe&#43;967wkj3fMC8d/BKB3w==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Windows-win10專業版金鑰</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/windows-bat%E6%89%B9%E8%99%95%E7%90%86%E8%85%B3%E6%9C%AC%E4%B8%AD%E6%96%87%E4%BA%82%E7%A2%BC%E5%95%8F%E9%A1%8C%E8%A7%A3%E6%B1%BA/">
+        
+        
+            <div class="article-image">
+                <img src="/p/windows-bat%E6%89%B9%E8%99%95%E7%90%86%E8%85%B3%E6%9C%AC%E4%B8%AD%E6%96%87%E4%BA%82%E7%A2%BC%E5%95%8F%E9%A1%8C%E8%A7%A3%E6%B1%BA/100.9707bef7aef0923ddf302f1dfc1281df_hue86d16e89f42e1cd25cf83156a3f9032_45736_250x150_fill_box_smart1_3.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Windows-bat批處理腳本中文亂碼問題解決"
+                        
+                        data-hash="md5-lwe&#43;967wkj3fMC8d/BKB3w==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Windows-bat批處理腳本中文亂碼問題解決</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/windows-%E5%AE%89%E8%A3%9D%E7%A8%8B%E5%BC%8F--chocolatey-%E5%AE%89%E8%A3%9D-yt-dlp/">
+        
+        
+            <div class="article-image">
+                <img src="/p/windows-%E5%AE%89%E8%A3%9D%E7%A8%8B%E5%BC%8F--chocolatey-%E5%AE%89%E8%A3%9D-yt-dlp/100.9707bef7aef0923ddf302f1dfc1281df_hue86d16e89f42e1cd25cf83156a3f9032_45736_250x150_fill_box_smart1_3.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Windows-安裝程式--Chocolatey (安裝 yt-dlp)"
+                        
+                        data-hash="md5-lwe&#43;967wkj3fMC8d/BKB3w==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Windows-安裝程式--Chocolatey (安裝 yt-dlp)</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/windows-%E5%AE%89%E8%A3%9D%E8%BD%89%E6%AA%94%E5%B7%A5%E5%85%B7-ffmpeg/">
+        
+        
+            <div class="article-image">
+                <img src="/p/windows-%E5%AE%89%E8%A3%9D%E8%BD%89%E6%AA%94%E5%B7%A5%E5%85%B7-ffmpeg/100.9707bef7aef0923ddf302f1dfc1281df_hue86d16e89f42e1cd25cf83156a3f9032_45736_250x150_fill_box_smart1_3.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Windows-安裝轉檔工具 FFmpeg"
+                        
+                        data-hash="md5-lwe&#43;967wkj3fMC8d/BKB3w==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Windows-安裝轉檔工具 FFmpeg</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/windows-10-%E7%84%A1%E6%B3%95%E5%BB%BA%E7%AB%8Bvpn%E9%80%A3%E7%B7%9A/">
+        
+        
+            <div class="article-image">
+                <img src="/p/windows-10-%E7%84%A1%E6%B3%95%E5%BB%BA%E7%AB%8Bvpn%E9%80%A3%E7%B7%9A/100.9707bef7aef0923ddf302f1dfc1281df_hue86d16e89f42e1cd25cf83156a3f9032_45736_250x150_fill_box_smart1_3.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Windows 10 無法建立VPN連線"
+                        
+                        data-hash="md5-lwe&#43;967wkj3fMC8d/BKB3w==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Windows 10 無法建立VPN連線</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "hugo-theme-stack" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2022 - 
+        
+        2023 Laurance&#39;s Note
+    </section>
+    
+    <section class="powerby">
+        
+            All rights reserved <br/>
+        
+
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        
+    </section>
+</footer>
+
+<span id="busuanzi_container_site_pv">
+    總瀏覽  <span id="busuanzi_value_site_pv"></span>  次
+</span>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+    
+
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

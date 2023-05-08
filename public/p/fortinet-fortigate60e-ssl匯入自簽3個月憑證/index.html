@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='(SSL-VPN匯入PKCS12憑證)'><title>Fortinet-FortiGate60E SSL匯入自簽3個月憑證</title>
+
+<link rel='canonical' href='https://note.laurance.ml/p/fortinet-fortigate60e-ssl%E5%8C%AF%E5%85%A5%E8%87%AA%E7%B0%BD3%E5%80%8B%E6%9C%88%E6%86%91%E8%AD%89/'>
+
+<link rel="stylesheet" href="/scss/style.min.ac77dcf8b111b51da39a92990f431923f210f3876d85798a2125667f96dc33a4.css"><meta property='og:title' content='Fortinet-FortiGate60E SSL匯入自簽3個月憑證'>
+<meta property='og:description' content='(SSL-VPN匯入PKCS12憑證)'>
+<meta property='og:url' content='https://note.laurance.ml/p/fortinet-fortigate60e-ssl%E5%8C%AF%E5%85%A5%E8%87%AA%E7%B0%BD3%E5%80%8B%E6%9C%88%E6%86%91%E8%AD%89/'>
+<meta property='og:site_name' content='Laurance&#39;s Note'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='FortiGate' /><meta property='article:published_time' content='2022-09-20T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2022-09-20T00:00:00&#43;00:00'/><meta property='og:image' content='https://note.laurance.ml/p/fortinet-fortigate60e-ssl%E5%8C%AF%E5%85%A5%E8%87%AA%E7%B0%BD3%E5%80%8B%E6%9C%88%E6%86%91%E8%AD%89/100.png' />
+<meta name="twitter:title" content="Fortinet-FortiGate60E SSL匯入自簽3個月憑證">
+<meta name="twitter:description" content="(SSL-VPN匯入PKCS12憑證)"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://note.laurance.ml/p/fortinet-fortigate60e-ssl%E5%8C%AF%E5%85%A5%E8%87%AA%E7%B0%BD3%E5%80%8B%E6%9C%88%E6%86%91%E8%AD%89/100.png' />
+    <link rel="shortcut icon" href="static/favicon.ico" />
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Live2D 看板娘 / Demo</title>
+</head>
+<body>
+<script src="https://cdn.jsdelivr.net/gh/dingbangli/live2d-widget@latest/autoload.js"></script>
+</body>
+</html>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu49eacb73e01f91348578131d7e8658f5_11993_300x0_resize_box_3.png" width="300"
+                            height="301" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🍥</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Laurance&#39;s Note</a></h1>
+            <h2 class="site-description">筆記 記錄美好生活
+</h2>
+        </div>
+    </header><ol class="menu" id="main-menu">
+        
+        
+        
+
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/about/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/links/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>Links</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+            
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>Dark Mode</span>
+                </li>
+            
+        </div>
+    </ol>
+</aside>
+<main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/fortinet-fortigate60e-ssl%E5%8C%AF%E5%85%A5%E8%87%AA%E7%B0%BD3%E5%80%8B%E6%9C%88%E6%86%91%E8%AD%89/">
+                <img src="/p/fortinet-fortigate60e-ssl%E5%8C%AF%E5%85%A5%E8%87%AA%E7%B0%BD3%E5%80%8B%E6%9C%88%E6%86%91%E8%AD%89/100_hu34e33e709cfe1953b88f412f1a715a07_5414_800x0_resize_box_3.png"
+                        srcset="/p/fortinet-fortigate60e-ssl%E5%8C%AF%E5%85%A5%E8%87%AA%E7%B0%BD3%E5%80%8B%E6%9C%88%E6%86%91%E8%AD%89/100_hu34e33e709cfe1953b88f412f1a715a07_5414_800x0_resize_box_3.png 800w, /p/fortinet-fortigate60e-ssl%E5%8C%AF%E5%85%A5%E8%87%AA%E7%B0%BD3%E5%80%8B%E6%9C%88%E6%86%91%E8%AD%89/100_hu34e33e709cfe1953b88f412f1a715a07_5414_1600x0_resize_box_3.png 1600w"
+                        width="800" 
+                        height="246" 
+                        loading="lazy"
+                        alt="Featured image of post Fortinet-FortiGate60E SSL匯入自簽3個月憑證" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/fortigate/" >
+                FortiGate
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/fortinet-fortigate60e-ssl%E5%8C%AF%E5%85%A5%E8%87%AA%E7%B0%BD3%E5%80%8B%E6%9C%88%E6%86%91%E8%AD%89/">Fortinet-FortiGate60E SSL匯入自簽3個月憑證</a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            (SSL-VPN匯入PKCS12憑證)
+        </h3>
+        
+    </div>
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Sep 20, 2022</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    1 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+</header>
+
+    <section class="article-content">
+    
+    
+    <pre><code>1. 使用certbot-auto簽發三個月憑證,並驗證TXT
+</code></pre>
+<p><img src="/p/fortinet-fortigate60e-ssl%E5%8C%AF%E5%85%A5%E8%87%AA%E7%B0%BD3%E5%80%8B%E6%9C%88%E6%86%91%E8%AD%89/001.png"
+	width="976"
+	height="384"
+	srcset="/p/fortinet-fortigate60e-ssl%E5%8C%AF%E5%85%A5%E8%87%AA%E7%B0%BD3%E5%80%8B%E6%9C%88%E6%86%91%E8%AD%89/001_hue3e5b346148b2c939f3f4bd52aba895d_24602_480x0_resize_box_3.png 480w, /p/fortinet-fortigate60e-ssl%E5%8C%AF%E5%85%A5%E8%87%AA%E7%B0%BD3%E5%80%8B%E6%9C%88%E6%86%91%E8%AD%89/001_hue3e5b346148b2c939f3f4bd52aba895d_24602_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="254"
+		data-flex-basis="610px"
+	
+></p>
+<pre><code>2. 將兩隻key丟到nginx目錄測試(fullchain1.pem &gt;&gt; XXX.crt , privkey1.pem &gt;&gt; XXX.key)
+</code></pre>
+<p><img src="/p/fortinet-fortigate60e-ssl%E5%8C%AF%E5%85%A5%E8%87%AA%E7%B0%BD3%E5%80%8B%E6%9C%88%E6%86%91%E8%AD%89/003.png"
+	width="1897"
+	height="437"
+	srcset="/p/fortinet-fortigate60e-ssl%E5%8C%AF%E5%85%A5%E8%87%AA%E7%B0%BD3%E5%80%8B%E6%9C%88%E6%86%91%E8%AD%89/003_hu76a2aafff31235d740a4c447c19fa8a4_45568_480x0_resize_box_3.png 480w, /p/fortinet-fortigate60e-ssl%E5%8C%AF%E5%85%A5%E8%87%AA%E7%B0%BD3%E5%80%8B%E6%9C%88%E6%86%91%E8%AD%89/003_hu76a2aafff31235d740a4c447c19fa8a4_45568_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="434"
+		data-flex-basis="1041px"
+	
+></p>
+<pre><code>3. Nginx重啟reload
+</code></pre>
+<p><img src="/p/fortinet-fortigate60e-ssl%E5%8C%AF%E5%85%A5%E8%87%AA%E7%B0%BD3%E5%80%8B%E6%9C%88%E6%86%91%E8%AD%89/004.png"
+	width="1071"
+	height="68"
+	srcset="/p/fortinet-fortigate60e-ssl%E5%8C%AF%E5%85%A5%E8%87%AA%E7%B0%BD3%E5%80%8B%E6%9C%88%E6%86%91%E8%AD%89/004_hu23c41bae41f95ac0cc3399f4f73a89ce_8306_480x0_resize_box_3.png 480w, /p/fortinet-fortigate60e-ssl%E5%8C%AF%E5%85%A5%E8%87%AA%E7%B0%BD3%E5%80%8B%E6%9C%88%E6%86%91%E8%AD%89/004_hu23c41bae41f95ac0cc3399f4f73a89ce_8306_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="1575"
+		data-flex-basis="3780px"
+	
+></p>
+<pre><code>4. 將解析綁到本機hosts
+</code></pre>
+<p><img src="/p/fortinet-fortigate60e-ssl%E5%8C%AF%E5%85%A5%E8%87%AA%E7%B0%BD3%E5%80%8B%E6%9C%88%E6%86%91%E8%AD%89/005.png"
+	width="1287"
+	height="534"
+	srcset="/p/fortinet-fortigate60e-ssl%E5%8C%AF%E5%85%A5%E8%87%AA%E7%B0%BD3%E5%80%8B%E6%9C%88%E6%86%91%E8%AD%89/005_huf43ef0b429d708eb6801345e776031d5_28653_480x0_resize_box_3.png 480w, /p/fortinet-fortigate60e-ssl%E5%8C%AF%E5%85%A5%E8%87%AA%E7%B0%BD3%E5%80%8B%E6%9C%88%E6%86%91%E8%AD%89/005_huf43ef0b429d708eb6801345e776031d5_28653_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="241"
+		data-flex-basis="578px"
+	
+></p>
+<pre><code>5. 開啟剛剛設置的域名,查看憑證是否設定正確
+</code></pre>
+<p><img src="/p/fortinet-fortigate60e-ssl%E5%8C%AF%E5%85%A5%E8%87%AA%E7%B0%BD3%E5%80%8B%E6%9C%88%E6%86%91%E8%AD%89/006.png"
+	width="1920"
+	height="1040"
+	srcset="/p/fortinet-fortigate60e-ssl%E5%8C%AF%E5%85%A5%E8%87%AA%E7%B0%BD3%E5%80%8B%E6%9C%88%E6%86%91%E8%AD%89/006_huf6605a71279ba1ee9b110031b708150b_104947_480x0_resize_box_3.png 480w, /p/fortinet-fortigate60e-ssl%E5%8C%AF%E5%85%A5%E8%87%AA%E7%B0%BD3%E5%80%8B%E6%9C%88%E6%86%91%E8%AD%89/006_huf6605a71279ba1ee9b110031b708150b_104947_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="184"
+		data-flex-basis="443px"
+	
+></p>
+<pre><code>6. 使用openssl將兩隻key合併生成XXX.pfx (fortigate支援的格式) ps.會強制設定密碼
+</code></pre>
+<p><img src="/p/fortinet-fortigate60e-ssl%E5%8C%AF%E5%85%A5%E8%87%AA%E7%B0%BD3%E5%80%8B%E6%9C%88%E6%86%91%E8%AD%89/007.png"
+	width="1431"
+	height="467"
+	srcset="/p/fortinet-fortigate60e-ssl%E5%8C%AF%E5%85%A5%E8%87%AA%E7%B0%BD3%E5%80%8B%E6%9C%88%E6%86%91%E8%AD%89/007_hu788246343d7d5a80fcd8c2a514b78621_32622_480x0_resize_box_3.png 480w, /p/fortinet-fortigate60e-ssl%E5%8C%AF%E5%85%A5%E8%87%AA%E7%B0%BD3%E5%80%8B%E6%9C%88%E6%86%91%E8%AD%89/007_hu788246343d7d5a80fcd8c2a514b78621_32622_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="306"
+		data-flex-basis="735px"
+	
+></p>
+<pre><code>7. 將剛剛製作的憑證XXX.pfx上傳至fortigate後台,並輸入剛剛設置的密碼
+</code></pre>
+<p><img src="/p/fortinet-fortigate60e-ssl%E5%8C%AF%E5%85%A5%E8%87%AA%E7%B0%BD3%E5%80%8B%E6%9C%88%E6%86%91%E8%AD%89/009.png"
+	width="1920"
+	height="937"
+	srcset="/p/fortinet-fortigate60e-ssl%E5%8C%AF%E5%85%A5%E8%87%AA%E7%B0%BD3%E5%80%8B%E6%9C%88%E6%86%91%E8%AD%89/009_hu4370eef0f32662709b961a5a0f3cb5a0_120188_480x0_resize_box_3.png 480w, /p/fortinet-fortigate60e-ssl%E5%8C%AF%E5%85%A5%E8%87%AA%E7%B0%BD3%E5%80%8B%E6%9C%88%E6%86%91%E8%AD%89/009_hu4370eef0f32662709b961a5a0f3cb5a0_120188_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="204"
+		data-flex-basis="491px"
+	
+></p>
+<pre><code>8. Fotigate後台,SSL-VPN設定這邊的伺服器憑證選單裡就會出現剛剛設置的三個月憑證
+</code></pre>
+<p><img src="/p/fortinet-fortigate60e-ssl%E5%8C%AF%E5%85%A5%E8%87%AA%E7%B0%BD3%E5%80%8B%E6%9C%88%E6%86%91%E8%AD%89/010.png"
+	width="1914"
+	height="936"
+	srcset="/p/fortinet-fortigate60e-ssl%E5%8C%AF%E5%85%A5%E8%87%AA%E7%B0%BD3%E5%80%8B%E6%9C%88%E6%86%91%E8%AD%89/010_hu2d2fd9ba9b532dc7e67c14dc31fe0645_78139_480x0_resize_box_3.png 480w, /p/fortinet-fortigate60e-ssl%E5%8C%AF%E5%85%A5%E8%87%AA%E7%B0%BD3%E5%80%8B%E6%9C%88%E6%86%91%E8%AD%89/010_hu2d2fd9ba9b532dc7e67c14dc31fe0645_78139_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="204"
+		data-flex-basis="490px"
+	
+></p>
+<pre><code>9. 驗證查看 &gt;&gt; 已出現剛剛製作的憑證
+</code></pre>
+<p><img src="/p/fortinet-fortigate60e-ssl%E5%8C%AF%E5%85%A5%E8%87%AA%E7%B0%BD3%E5%80%8B%E6%9C%88%E6%86%91%E8%AD%89/011.png"
+	width="1920"
+	height="1040"
+	srcset="/p/fortinet-fortigate60e-ssl%E5%8C%AF%E5%85%A5%E8%87%AA%E7%B0%BD3%E5%80%8B%E6%9C%88%E6%86%91%E8%AD%89/011_hua1fe6c8def0f1d159934464d02800436_45567_480x0_resize_box_3.png 480w, /p/fortinet-fortigate60e-ssl%E5%8C%AF%E5%85%A5%E8%87%AA%E7%B0%BD3%E5%80%8B%E6%9C%88%E6%86%91%E8%AD%89/011_hua1fe6c8def0f1d159934464d02800436_45567_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="184"
+		data-flex-basis="443px"
+	
+></p>
+<hr>
+
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/fortigate/">FortiGate</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC By Laurance</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">Related content</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/p/fortinet-fortigate60e-%E5%BB%B6%E9%81%B2%E8%87%AA%E5%8B%95%E7%99%BB%E5%87%BA%E8%A8%AD%E5%AE%9A/">
+        
+        
+            <div class="article-image">
+                <img src="/p/fortinet-fortigate60e-%E5%BB%B6%E9%81%B2%E8%87%AA%E5%8B%95%E7%99%BB%E5%87%BA%E8%A8%AD%E5%AE%9A/100.e9bcfada57eac615fde831552d00c01c_hu34e33e709cfe1953b88f412f1a715a07_5414_250x150_fill_box_smart1_3.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Fortinet-FortiGate60E 延遲自動登出設定"
+                        
+                        data-hash="md5-6bz62lfqxhX96DFVLQDAHA==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Fortinet-FortiGate60E 延遲自動登出設定</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/fortinet-fortigate60e-ssl-vpn%E8%A8%AD%E7%BD%AE/">
+        
+        
+            <div class="article-image">
+                <img src="/p/fortinet-fortigate60e-ssl-vpn%E8%A8%AD%E7%BD%AE/100.e9bcfada57eac615fde831552d00c01c_hu34e33e709cfe1953b88f412f1a715a07_5414_250x150_fill_box_smart1_3.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Fortinet-FortiGate60E SSL-VPN設置"
+                        
+                        data-hash="md5-6bz62lfqxhX96DFVLQDAHA==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Fortinet-FortiGate60E SSL-VPN設置</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/fortinet-fortigate-%E5%B8%B8%E7%94%A8%E9%98%B2%E7%81%AB%E7%89%86cli%E6%8C%87%E4%BB%A4/">
+        
+        
+            <div class="article-image">
+                <img src="/p/fortinet-fortigate-%E5%B8%B8%E7%94%A8%E9%98%B2%E7%81%AB%E7%89%86cli%E6%8C%87%E4%BB%A4/100.e9bcfada57eac615fde831552d00c01c_hu34e33e709cfe1953b88f412f1a715a07_5414_250x150_fill_box_smart1_3.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Fortinet-FortiGate 常用防火牆CLI指令"
+                        
+                        data-hash="md5-6bz62lfqxhX96DFVLQDAHA==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Fortinet-FortiGate 常用防火牆CLI指令</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "hugo-theme-stack" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2022 - 
+        
+        2023 Laurance&#39;s Note
+    </section>
+    
+    <section class="powerby">
+        
+            All rights reserved <br/>
+        
+
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        
+    </section>
+</footer>
+
+<span id="busuanzi_container_site_pv">
+    總瀏覽  <span id="busuanzi_value_site_pv"></span>  次
+</span>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+    
+
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

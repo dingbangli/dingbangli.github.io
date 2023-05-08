@@ -1,0 +1,1039 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>GCP on Laurance&#39;s Note</title>
+        <link>https://note.laurance.ml/tags/gcp/</link>
+        <description>Recent content in GCP on Laurance&#39;s Note</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Mon, 06 Mar 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://note.laurance.ml/tags/gcp/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>GCP-Google Cloud Monitoring by Grafana</title>
+        <link>https://note.laurance.ml/p/gcp-google-cloud-monitoring-by-grafana/</link>
+        <pubDate>Mon, 06 Mar 2023 00:00:00 +0000</pubDate>
+        
+        <guid>https://note.laurance.ml/p/gcp-google-cloud-monitoring-by-grafana/</guid>
+        <description>&lt;img src="https://note.laurance.ml/p/gcp-google-cloud-monitoring-by-grafana/100.png" alt="Featured image of post GCP-Google Cloud Monitoring by Grafana" /&gt;&lt;h1 id=&#34;grafana系統搭配gcp-monitoring資訊做監控&#34;&gt;Grafana系統搭配GCP Monitoring資訊做監控&lt;/h1&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;gcp&#34;&gt;GCP&lt;/h1&gt;
+&lt;p&gt;{STEP 1} 啟用API服務 &lt;code&gt;Stackdriver Monitoring API&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/gcp-google-cloud-monitoring-by-grafana/302.png&#34;
+	width=&#34;661&#34;
+	height=&#34;236&#34;
+	srcset=&#34;https://note.laurance.ml/p/gcp-google-cloud-monitoring-by-grafana/302_hua19df751282794a6473b072d3c56cb3c_17245_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/gcp-google-cloud-monitoring-by-grafana/302_hua19df751282794a6473b072d3c56cb3c_17245_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;280&#34;
+		data-flex-basis=&#34;672px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;{STEP 2} 啟用API服務 &lt;code&gt;Cloud Resource Manager API&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/gcp-google-cloud-monitoring-by-grafana/303.png&#34;
+	width=&#34;709&#34;
+	height=&#34;257&#34;
+	srcset=&#34;https://note.laurance.ml/p/gcp-google-cloud-monitoring-by-grafana/303_hubae38f32cb601f6f99e05971ff1907dd_15322_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/gcp-google-cloud-monitoring-by-grafana/303_hubae38f32cb601f6f99e05971ff1907dd_15322_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;275&#34;
+		data-flex-basis=&#34;662px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;{STEP 3} 點選 &lt;code&gt;API和服務&lt;/code&gt; 建立服務帳號憑證&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/gcp-google-cloud-monitoring-by-grafana/304.png&#34;
+	width=&#34;1920&#34;
+	height=&#34;937&#34;
+	srcset=&#34;https://note.laurance.ml/p/gcp-google-cloud-monitoring-by-grafana/304_huda11bd20909fddac9182748c34e71876_90655_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/gcp-google-cloud-monitoring-by-grafana/304_huda11bd20909fddac9182748c34e71876_90655_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;204&#34;
+		data-flex-basis=&#34;491px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;{STEP 4} 設定&lt;code&gt;服務帳號名稱&lt;/code&gt;及&lt;code&gt;設定該帳號權限&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/gcp-google-cloud-monitoring-by-grafana/305.png&#34;
+	width=&#34;1134&#34;
+	height=&#34;718&#34;
+	srcset=&#34;https://note.laurance.ml/p/gcp-google-cloud-monitoring-by-grafana/305_hu12c47b373ad386dd5d570e5a6d6ebb75_57863_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/gcp-google-cloud-monitoring-by-grafana/305_hu12c47b373ad386dd5d570e5a6d6ebb75_57863_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;157&#34;
+		data-flex-basis=&#34;379px&#34;
+	
+&gt;
+&lt;img src=&#34;https://note.laurance.ml/p/gcp-google-cloud-monitoring-by-grafana/306.png&#34;
+	width=&#34;1087&#34;
+	height=&#34;717&#34;
+	srcset=&#34;https://note.laurance.ml/p/gcp-google-cloud-monitoring-by-grafana/306_huf315793d7a1d5f21f9d7cf0b202608d9_46876_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/gcp-google-cloud-monitoring-by-grafana/306_huf315793d7a1d5f21f9d7cf0b202608d9_46876_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;151&#34;
+		data-flex-basis=&#34;363px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;{STEP 5} 設定 &lt;code&gt;授權此帳號的使用者&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/gcp-google-cloud-monitoring-by-grafana/307.png&#34;
+	width=&#34;1328&#34;
+	height=&#34;717&#34;
+	srcset=&#34;https://note.laurance.ml/p/gcp-google-cloud-monitoring-by-grafana/307_hue1a5481e6511ee19f2c9f0222f32ac97_49820_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/gcp-google-cloud-monitoring-by-grafana/307_hue1a5481e6511ee19f2c9f0222f32ac97_49820_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;185&#34;
+		data-flex-basis=&#34;444px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;{STEP 6} 點選剛建立的監控服務帳號 monitor-grafana 並建立 &lt;code&gt;JSON 金鑰&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/gcp-google-cloud-monitoring-by-grafana/308.png&#34;
+	width=&#34;1345&#34;
+	height=&#34;760&#34;
+	srcset=&#34;https://note.laurance.ml/p/gcp-google-cloud-monitoring-by-grafana/308_hu3b8a960683f0695cee252e7d92eab60e_60179_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/gcp-google-cloud-monitoring-by-grafana/308_hu3b8a960683f0695cee252e7d92eab60e_60179_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;176&#34;
+		data-flex-basis=&#34;424px&#34;
+	
+&gt;
+&lt;img src=&#34;https://note.laurance.ml/p/gcp-google-cloud-monitoring-by-grafana/309.png&#34;
+	width=&#34;551&#34;
+	height=&#34;357&#34;
+	srcset=&#34;https://note.laurance.ml/p/gcp-google-cloud-monitoring-by-grafana/309_hub41dea3895349e6609f6a37b34aea577_21650_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/gcp-google-cloud-monitoring-by-grafana/309_hub41dea3895349e6609f6a37b34aea577_21650_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;154&#34;
+		data-flex-basis=&#34;370px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;{STEP 7} 添加監控權限 &lt;code&gt;For Monitor&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/gcp-google-cloud-monitoring-by-grafana/313.png&#34;
+	width=&#34;1920&#34;
+	height=&#34;937&#34;
+	srcset=&#34;https://note.laurance.ml/p/gcp-google-cloud-monitoring-by-grafana/313_hu5e70b2861c1edbb346f406780b45e85a_121696_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/gcp-google-cloud-monitoring-by-grafana/313_hu5e70b2861c1edbb346f406780b45e85a_121696_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;204&#34;
+		data-flex-basis=&#34;491px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;添加 &lt;code&gt;授權使用者&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/gcp-google-cloud-monitoring-by-grafana/314.png&#34;
+	width=&#34;1920&#34;
+	height=&#34;937&#34;
+	srcset=&#34;https://note.laurance.ml/p/gcp-google-cloud-monitoring-by-grafana/314_hu9ebba9b76a0ae7f26191f655110f9187_126706_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/gcp-google-cloud-monitoring-by-grafana/314_hu9ebba9b76a0ae7f26191f655110f9187_126706_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;204&#34;
+		data-flex-basis=&#34;491px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;新增主體: &lt;code&gt;剛建立的監控服務帳號 XXX.gmail&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;指派角色: &lt;code&gt;監控檢視者&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/gcp-google-cloud-monitoring-by-grafana/315.png&#34;
+	width=&#34;1920&#34;
+	height=&#34;937&#34;
+	srcset=&#34;https://note.laurance.ml/p/gcp-google-cloud-monitoring-by-grafana/315_hue958d75b4271a12c5945bdca3e1195fb_139334_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/gcp-google-cloud-monitoring-by-grafana/315_hue958d75b4271a12c5945bdca3e1195fb_139334_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;204&#34;
+		data-flex-basis=&#34;491px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h1 id=&#34;grafana&#34;&gt;Grafana&lt;/h1&gt;
+&lt;p&gt;{STEP 8} 新增 &lt;code&gt;Data source&lt;/code&gt; 資料來源 &lt;code&gt;Google Cloud Monitoring&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/gcp-google-cloud-monitoring-by-grafana/310.png&#34;
+	width=&#34;1920&#34;
+	height=&#34;937&#34;
+	srcset=&#34;https://note.laurance.ml/p/gcp-google-cloud-monitoring-by-grafana/310_hua812585772f62ef284e3da389ac48e35_294171_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/gcp-google-cloud-monitoring-by-grafana/310_hua812585772f62ef284e3da389ac48e35_294171_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;204&#34;
+		data-flex-basis=&#34;491px&#34;
+	
+&gt;
+&lt;img src=&#34;https://note.laurance.ml/p/gcp-google-cloud-monitoring-by-grafana/311.png&#34;
+	width=&#34;1920&#34;
+	height=&#34;937&#34;
+	srcset=&#34;https://note.laurance.ml/p/gcp-google-cloud-monitoring-by-grafana/311_huf773df8bbfb1e34fa679f89a4dfd89a4_38672_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/gcp-google-cloud-monitoring-by-grafana/311_huf773df8bbfb1e34fa679f89a4dfd89a4_38672_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;204&#34;
+		data-flex-basis=&#34;491px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;{STEP 9} 將 &lt;code&gt;STEP 6&lt;/code&gt; 新增的 &lt;code&gt;JSON 金鑰&lt;/code&gt; 上傳 &amp;amp;&amp;amp; &lt;code&gt;Save &amp;amp; test&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;選擇 &lt;code&gt;Google JWT File&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;點選 &lt;code&gt;Upload service account key file&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/gcp-google-cloud-monitoring-by-grafana/312.png&#34;
+	width=&#34;1920&#34;
+	height=&#34;937&#34;
+	srcset=&#34;https://note.laurance.ml/p/gcp-google-cloud-monitoring-by-grafana/312_hu54cfc0425f7f812eaaabfa1588016c5d_80654_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/gcp-google-cloud-monitoring-by-grafana/312_hu54cfc0425f7f812eaaabfa1588016c5d_80654_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;204&#34;
+		data-flex-basis=&#34;491px&#34;
+	
+&gt;
+&lt;img src=&#34;https://note.laurance.ml/p/gcp-google-cloud-monitoring-by-grafana/316.png&#34;
+	width=&#34;1920&#34;
+	height=&#34;937&#34;
+	srcset=&#34;https://note.laurance.ml/p/gcp-google-cloud-monitoring-by-grafana/316_hu023c3bb688b2cbfecb4b37cb4e94cdac_101102_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/gcp-google-cloud-monitoring-by-grafana/316_hu023c3bb688b2cbfecb4b37cb4e94cdac_101102_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;204&#34;
+		data-flex-basis=&#34;491px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;{STEP 10} 成果驗收&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/gcp-google-cloud-monitoring-by-grafana/317.png&#34;
+	width=&#34;1920&#34;
+	height=&#34;937&#34;
+	srcset=&#34;https://note.laurance.ml/p/gcp-google-cloud-monitoring-by-grafana/317_hu2d2c46678be3febaf8460117fbfeacd3_187322_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/gcp-google-cloud-monitoring-by-grafana/317_hu2d2c46678be3febaf8460117fbfeacd3_187322_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;204&#34;
+		data-flex-basis=&#34;491px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;hr&gt;
+
+</description>
+        </item>
+        <item>
+        <title>GCP-Cloud Functions 部屬 LINE BOT &#43; OpenAI</title>
+        <link>https://note.laurance.ml/p/gcp-cloud-functions-%E9%83%A8%E5%B1%AC-line-bot--openai/</link>
+        <pubDate>Thu, 16 Feb 2023 00:00:00 +0000</pubDate>
+        
+        <guid>https://note.laurance.ml/p/gcp-cloud-functions-%E9%83%A8%E5%B1%AC-line-bot--openai/</guid>
+        <description>&lt;img src="https://note.laurance.ml/p/gcp-cloud-functions-%E9%83%A8%E5%B1%AC-line-bot--openai/100.png" alt="Featured image of post GCP-Cloud Functions 部屬 LINE BOT &#43; OpenAI" /&gt;&lt;h1 id=&#34;line-bot--openai-程式讓-ai-回覆訊息&#34;&gt;LINE BOT + OpenAI 程式，讓 AI 回覆訊息&lt;/h1&gt;
+&lt;p&gt;&lt;strong&gt;讓程式判斷「Hi AI:」開頭的文字，當文字的開頭出現「Hi AI:」的字串時，就讓 OpenAI 進行回覆，否則就仍然回傳相同的字串。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;{Step 1} 到 OpenAI 申請一組&lt;code&gt;帳號&lt;/code&gt;及&lt;code&gt;API keys&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Open AI API KEY : &lt;a class=&#34;link&#34; href=&#34;https://platform.openai.com/account/api-keys&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://platform.openai.com/account/api-keys&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/gcp-cloud-functions-%E9%83%A8%E5%B1%AC-line-bot--openai/2100.png&#34;
+	width=&#34;1197&#34;
+	height=&#34;680&#34;
+	srcset=&#34;https://note.laurance.ml/p/gcp-cloud-functions-%E9%83%A8%E5%B1%AC-line-bot--openai/2100_huc6ab93f4a4c697f42c8711e65c09c7f6_29416_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/gcp-cloud-functions-%E9%83%A8%E5%B1%AC-line-bot--openai/2100_huc6ab93f4a4c697f42c8711e65c09c7f6_29416_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;176&#34;
+		data-flex-basis=&#34;422px&#34;
+	
+&gt;
+&lt;img src=&#34;https://note.laurance.ml/p/gcp-cloud-functions-%E9%83%A8%E5%B1%AC-line-bot--openai/210.png&#34;
+	width=&#34;1920&#34;
+	height=&#34;937&#34;
+	srcset=&#34;https://note.laurance.ml/p/gcp-cloud-functions-%E9%83%A8%E5%B1%AC-line-bot--openai/210_hu06efae35da6368ca64f57588ea05de62_91410_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/gcp-cloud-functions-%E9%83%A8%E5%B1%AC-line-bot--openai/210_hu06efae35da6368ca64f57588ea05de62_91410_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;204&#34;
+		data-flex-basis=&#34;491px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;{Step 2} 登入GCP選取專案 (這邊使用新專案測試)&lt;/p&gt;
+&lt;p&gt;右側選取 &lt;code&gt;API和服務&lt;/code&gt; &amp;gt; &lt;code&gt;程式庫&lt;/code&gt; 程式庫搜尋 &lt;code&gt;build api&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/gcp-cloud-functions-%E9%83%A8%E5%B1%AC-line-bot--openai/201.png&#34;
+	width=&#34;1920&#34;
+	height=&#34;937&#34;
+	srcset=&#34;https://note.laurance.ml/p/gcp-cloud-functions-%E9%83%A8%E5%B1%AC-line-bot--openai/201_huab6adab714c3dac68406e26629035fab_166567_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/gcp-cloud-functions-%E9%83%A8%E5%B1%AC-line-bot--openai/201_huab6adab714c3dac68406e26629035fab_166567_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;204&#34;
+		data-flex-basis=&#34;491px&#34;
+	
+&gt;
+&lt;img src=&#34;https://note.laurance.ml/p/gcp-cloud-functions-%E9%83%A8%E5%B1%AC-line-bot--openai/202.png&#34;
+	width=&#34;1920&#34;
+	height=&#34;937&#34;
+	srcset=&#34;https://note.laurance.ml/p/gcp-cloud-functions-%E9%83%A8%E5%B1%AC-line-bot--openai/202_hufa20b73ee40c55940050361dbab565fd_210337_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/gcp-cloud-functions-%E9%83%A8%E5%B1%AC-line-bot--openai/202_hufa20b73ee40c55940050361dbab565fd_210337_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;204&#34;
+		data-flex-basis=&#34;491px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/gcp-cloud-functions-%E9%83%A8%E5%B1%AC-line-bot--openai/203.png&#34;
+	width=&#34;552&#34;
+	height=&#34;234&#34;
+	srcset=&#34;https://note.laurance.ml/p/gcp-cloud-functions-%E9%83%A8%E5%B1%AC-line-bot--openai/203_hu12845be848f488944b6717063ebca6a4_13990_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/gcp-cloud-functions-%E9%83%A8%E5%B1%AC-line-bot--openai/203_hu12845be848f488944b6717063ebca6a4_13990_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;235&#34;
+		data-flex-basis=&#34;566px&#34;
+	
+&gt;
+&lt;img src=&#34;https://note.laurance.ml/p/gcp-cloud-functions-%E9%83%A8%E5%B1%AC-line-bot--openai/204.png&#34;
+	width=&#34;1920&#34;
+	height=&#34;937&#34;
+	srcset=&#34;https://note.laurance.ml/p/gcp-cloud-functions-%E9%83%A8%E5%B1%AC-line-bot--openai/204_huee57a07d24cfb22466060b98f1cd7ba6_99209_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/gcp-cloud-functions-%E9%83%A8%E5%B1%AC-line-bot--openai/204_huee57a07d24cfb22466060b98f1cd7ba6_99209_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;204&#34;
+		data-flex-basis=&#34;491px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;點選 &lt;code&gt;啟用API&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/gcp-cloud-functions-%E9%83%A8%E5%B1%AC-line-bot--openai/205.png&#34;
+	width=&#34;531&#34;
+	height=&#34;365&#34;
+	srcset=&#34;https://note.laurance.ml/p/gcp-cloud-functions-%E9%83%A8%E5%B1%AC-line-bot--openai/205_huc632fc25d4ccf82515412c2166b9e51e_24040_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/gcp-cloud-functions-%E9%83%A8%E5%B1%AC-line-bot--openai/205_huc632fc25d4ccf82515412c2166b9e51e_24040_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;145&#34;
+		data-flex-basis=&#34;349px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;點選 &lt;code&gt;建立函式&lt;/code&gt; 就能開始建立第一支 Cloud Functions 的程式&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/gcp-cloud-functions-%E9%83%A8%E5%B1%AC-line-bot--openai/2066.png&#34;
+	width=&#34;504&#34;
+	height=&#34;174&#34;
+	srcset=&#34;https://note.laurance.ml/p/gcp-cloud-functions-%E9%83%A8%E5%B1%AC-line-bot--openai/2066_huc8aee75c2c1217673f97cc8dcdf512ab_33323_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/gcp-cloud-functions-%E9%83%A8%E5%B1%AC-line-bot--openai/2066_huc8aee75c2c1217673f97cc8dcdf512ab_33323_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;289&#34;
+		data-flex-basis=&#34;695px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;點選建立函式後，設定基本資訊，環境選擇 &lt;code&gt;第一代&lt;/code&gt; &lt;code&gt;asia-east1 (台灣)&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/gcp-cloud-functions-%E9%83%A8%E5%B1%AC-line-bot--openai/206.png&#34;
+	width=&#34;496&#34;
+	height=&#34;317&#34;
+	srcset=&#34;https://note.laurance.ml/p/gcp-cloud-functions-%E9%83%A8%E5%B1%AC-line-bot--openai/206_hu4b66290d0914c4d5d1d07b560e08d737_14801_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/gcp-cloud-functions-%E9%83%A8%E5%B1%AC-line-bot--openai/206_hu4b66290d0914c4d5d1d07b560e08d737_14801_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;156&#34;
+		data-flex-basis=&#34;375px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;觸發條件選擇 &lt;code&gt;HTTP&lt;/code&gt; 勾選 &lt;code&gt;允許未經驗證的叫用&lt;/code&gt; 透過 request POST 或 GET 的方法進行叫用&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/gcp-cloud-functions-%E9%83%A8%E5%B1%AC-line-bot--openai/207.png&#34;
+	width=&#34;486&#34;
+	height=&#34;416&#34;
+	srcset=&#34;https://note.laurance.ml/p/gcp-cloud-functions-%E9%83%A8%E5%B1%AC-line-bot--openai/207_hu0249612b9aa0794badd69445439cbe61_20404_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/gcp-cloud-functions-%E9%83%A8%E5%B1%AC-line-bot--openai/207_hu0249612b9aa0794badd69445439cbe61_20404_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;116&#34;
+		data-flex-basis=&#34;280px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;其他保留預設值即可&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;編輯 &lt;code&gt;main.py&lt;/code&gt; &lt;code&gt;requiements.txt&lt;/code&gt; 加入 LINE BOT 和 OpenAI 函式庫&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/gcp-cloud-functions-%E9%83%A8%E5%B1%AC-line-bot--openai/208.png&#34;
+	width=&#34;1647&#34;
+	height=&#34;847&#34;
+	srcset=&#34;https://note.laurance.ml/p/gcp-cloud-functions-%E9%83%A8%E5%B1%AC-line-bot--openai/208_hua3ad588326a57a70833bb4f276c8b084_96200_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/gcp-cloud-functions-%E9%83%A8%E5%B1%AC-line-bot--openai/208_hua3ad588326a57a70833bb4f276c8b084_96200_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;194&#34;
+		data-flex-basis=&#34;466px&#34;
+	
+&gt;
+&lt;img src=&#34;https://note.laurance.ml/p/gcp-cloud-functions-%E9%83%A8%E5%B1%AC-line-bot--openai/209.png&#34;
+	width=&#34;1650&#34;
+	height=&#34;848&#34;
+	srcset=&#34;https://note.laurance.ml/p/gcp-cloud-functions-%E9%83%A8%E5%B1%AC-line-bot--openai/209_hu7b58ab547a777fc9acbc954cc3d8a92f_40979_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/gcp-cloud-functions-%E9%83%A8%E5%B1%AC-line-bot--openai/209_hu7b58ab547a777fc9acbc954cc3d8a92f_40979_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;194&#34;
+		data-flex-basis=&#34;466px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;{Step 3} 完成後部署程式，專案名稱前方出現綠色勾勾表示部署完成，複製觸發的網址&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/gcp-cloud-functions-%E9%83%A8%E5%B1%AC-line-bot--openai/211.png&#34;
+	width=&#34;1920&#34;
+	height=&#34;937&#34;
+	srcset=&#34;https://note.laurance.ml/p/gcp-cloud-functions-%E9%83%A8%E5%B1%AC-line-bot--openai/211_hua003df7ea106dc152a5039ab1a8ac106_108200_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/gcp-cloud-functions-%E9%83%A8%E5%B1%AC-line-bot--openai/211_hua003df7ea106dc152a5039ab1a8ac106_108200_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;204&#34;
+		data-flex-basis=&#34;491px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;將網址填入 LINE BOT 的 Message API 裡 Webhook URL，點擊 &lt;code&gt;Edit&lt;/code&gt; 貼上剛剛觸發網址&lt;/p&gt;
+&lt;p&gt;接者按 &lt;code&gt;Verify&lt;/code&gt; 驗證，出現 Success 表示 Webhook URL 已經順利串接&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/gcp-cloud-functions-%E9%83%A8%E5%B1%AC-line-bot--openai/212.png&#34;
+	width=&#34;1920&#34;
+	height=&#34;937&#34;
+	srcset=&#34;https://note.laurance.ml/p/gcp-cloud-functions-%E9%83%A8%E5%B1%AC-line-bot--openai/212_hu787d64b5b13b1538073e448fd7cfac18_141410_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/gcp-cloud-functions-%E9%83%A8%E5%B1%AC-line-bot--openai/212_hu787d64b5b13b1538073e448fd7cfac18_141410_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;204&#34;
+		data-flex-basis=&#34;491px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;若出現 ERROR-403 則是沒有給予呼叫的權限&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/gcp-cloud-functions-%E9%83%A8%E5%B1%AC-line-bot--openai/215.png&#34;
+	width=&#34;969&#34;
+	height=&#34;247&#34;
+	srcset=&#34;https://note.laurance.ml/p/gcp-cloud-functions-%E9%83%A8%E5%B1%AC-line-bot--openai/215_hu02f0e84941645fd5aef9026d5cf13a9a_20242_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/gcp-cloud-functions-%E9%83%A8%E5%B1%AC-line-bot--openai/215_hu02f0e84941645fd5aef9026d5cf13a9a_20242_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;392&#34;
+		data-flex-basis=&#34;941px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;解決方法:&lt;/p&gt;
+&lt;p&gt;選取剛建立的 function 編輯權限 選取 &lt;code&gt;新增主體&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/gcp-cloud-functions-%E9%83%A8%E5%B1%AC-line-bot--openai/213.png&#34;
+	width=&#34;1920&#34;
+	height=&#34;937&#34;
+	srcset=&#34;https://note.laurance.ml/p/gcp-cloud-functions-%E9%83%A8%E5%B1%AC-line-bot--openai/213_hu658a3326500131fd9e2b45896beddc4e_66764_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/gcp-cloud-functions-%E9%83%A8%E5%B1%AC-line-bot--openai/213_hu658a3326500131fd9e2b45896beddc4e_66764_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;204&#34;
+		data-flex-basis=&#34;491px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;主體選擇 &lt;code&gt;allUsers&lt;/code&gt; 泛指匿名使用者&lt;/p&gt;
+&lt;p&gt;指派角色選擇 &lt;code&gt;Cloud Functions&lt;/code&gt; &amp;gt; &lt;code&gt;Cloud Functions 叫用者&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/gcp-cloud-functions-%E9%83%A8%E5%B1%AC-line-bot--openai/214.png&#34;
+	width=&#34;765&#34;
+	height=&#34;936&#34;
+	srcset=&#34;https://note.laurance.ml/p/gcp-cloud-functions-%E9%83%A8%E5%B1%AC-line-bot--openai/214_hu3597cd1a98c122d81adc7f19185572b3_49875_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/gcp-cloud-functions-%E9%83%A8%E5%B1%AC-line-bot--openai/214_hu3597cd1a98c122d81adc7f19185572b3_49875_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;81&#34;
+		data-flex-basis=&#34;196px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;{Step 4} 驗收 Line bot&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/gcp-cloud-functions-%E9%83%A8%E5%B1%AC-line-bot--openai/216.png&#34;
+	width=&#34;420&#34;
+	height=&#34;332&#34;
+	srcset=&#34;https://note.laurance.ml/p/gcp-cloud-functions-%E9%83%A8%E5%B1%AC-line-bot--openai/216_hu96a940390b1e586c88a41ff6c17d97fb_13783_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/gcp-cloud-functions-%E9%83%A8%E5%B1%AC-line-bot--openai/216_hu96a940390b1e586c88a41ff6c17d97fb_13783_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;126&#34;
+		data-flex-basis=&#34;303px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;參考:&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://steam.oxxostudio.tw/category/python/example/line-bot-openai-2.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://steam.oxxostudio.tw/category/python/example/line-bot-openai-2.html&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://blog.wawajohn.net/11369.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://blog.wawajohn.net/11369.html&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+
+</description>
+        </item>
+        <item>
+        <title>GCE-內存過小導致無法編譯PHP</title>
+        <link>https://note.laurance.ml/p/gce-%E5%85%A7%E5%AD%98%E9%81%8E%E5%B0%8F%E5%B0%8E%E8%87%B4%E7%84%A1%E6%B3%95%E7%B7%A8%E8%AD%AFphp/</link>
+        <pubDate>Tue, 06 Dec 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://note.laurance.ml/p/gce-%E5%85%A7%E5%AD%98%E9%81%8E%E5%B0%8F%E5%B0%8E%E8%87%B4%E7%84%A1%E6%B3%95%E7%B7%A8%E8%AD%AFphp/</guid>
+        <description>&lt;img src="https://note.laurance.ml/p/gce-%E5%85%A7%E5%AD%98%E9%81%8E%E5%B0%8F%E5%B0%8E%E8%87%B4%E7%84%A1%E6%B3%95%E7%B7%A8%E8%AD%AFphp/100.png" alt="Featured image of post GCE-內存過小導致無法編譯PHP" /&gt;&lt;h1 id=&#34;編譯php時秀-error-virtual-memory-exhausted-cannot-allocate-memory&#34;&gt;編譯PHP時,秀 ERROR: virtual memory exhausted: Cannot allocate memory&lt;/h1&gt;
+&lt;p&gt;[因為用的是免費方案,內存小的可憐,故先調大再縮小]&lt;/p&gt;
+&lt;p&gt;GCP後台查看機器內存只有 614M&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/gce-%E5%85%A7%E5%AD%98%E9%81%8E%E5%B0%8F%E5%B0%8E%E8%87%B4%E7%84%A1%E6%B3%95%E7%B7%A8%E8%AD%AFphp/001.png&#34;
+	width=&#34;1917&#34;
+	height=&#34;802&#34;
+	srcset=&#34;https://note.laurance.ml/p/gce-%E5%85%A7%E5%AD%98%E9%81%8E%E5%B0%8F%E5%B0%8E%E8%87%B4%E7%84%A1%E6%B3%95%E7%B7%A8%E8%AD%AFphp/001_hu997a87fa00ce8c48c1b1c548bdfbe375_55753_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/gce-%E5%85%A7%E5%AD%98%E9%81%8E%E5%B0%8F%E5%B0%8E%E8%87%B4%E7%84%A1%E6%B3%95%E7%B7%A8%E8%AD%AFphp/001_hu997a87fa00ce8c48c1b1c548bdfbe375_55753_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;239&#34;
+		data-flex-basis=&#34;573px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;機器上看也是 583M&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/gce-%E5%85%A7%E5%AD%98%E9%81%8E%E5%B0%8F%E5%B0%8E%E8%87%B4%E7%84%A1%E6%B3%95%E7%B7%A8%E8%AD%AFphp/002.png&#34;
+	width=&#34;656&#34;
+	height=&#34;67&#34;
+	srcset=&#34;https://note.laurance.ml/p/gce-%E5%85%A7%E5%AD%98%E9%81%8E%E5%B0%8F%E5%B0%8E%E8%87%B4%E7%84%A1%E6%B3%95%E7%B7%A8%E8%AD%AFphp/002_hu48a400ab9163f24cf1908db64d785022_5254_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/gce-%E5%85%A7%E5%AD%98%E9%81%8E%E5%B0%8F%E5%B0%8E%E8%87%B4%E7%84%A1%E6%B3%95%E7%B7%A8%E8%AD%AFphp/002_hu48a400ab9163f24cf1908db64d785022_5254_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;979&#34;
+		data-flex-basis=&#34;2349px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;先將機器關機 (要關機才能調)&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;init 0
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;到GCP後台調成 g1-small&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/gce-%E5%85%A7%E5%AD%98%E9%81%8E%E5%B0%8F%E5%B0%8E%E8%87%B4%E7%84%A1%E6%B3%95%E7%B7%A8%E8%AD%AFphp/003.png&#34;
+	width=&#34;1915&#34;
+	height=&#34;846&#34;
+	srcset=&#34;https://note.laurance.ml/p/gce-%E5%85%A7%E5%AD%98%E9%81%8E%E5%B0%8F%E5%B0%8E%E8%87%B4%E7%84%A1%E6%B3%95%E7%B7%A8%E8%AD%AFphp/003_huc962a176bc9c216ec57133789e3b1771_65275_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/gce-%E5%85%A7%E5%AD%98%E9%81%8E%E5%B0%8F%E5%B0%8E%E8%87%B4%E7%84%A1%E6%B3%95%E7%B7%A8%E8%AD%AFphp/003_huc962a176bc9c216ec57133789e3b1771_65275_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;226&#34;
+		data-flex-basis=&#34;543px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;開機後就能看到已調成 1.6G&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/gce-%E5%85%A7%E5%AD%98%E9%81%8E%E5%B0%8F%E5%B0%8E%E8%87%B4%E7%84%A1%E6%B3%95%E7%B7%A8%E8%AD%AFphp/004.png&#34;
+	width=&#34;722&#34;
+	height=&#34;83&#34;
+	srcset=&#34;https://note.laurance.ml/p/gce-%E5%85%A7%E5%AD%98%E9%81%8E%E5%B0%8F%E5%B0%8E%E8%87%B4%E7%84%A1%E6%B3%95%E7%B7%A8%E8%AD%AFphp/004_hu11b63b67464ba21e76383e835803d12a_6518_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/gce-%E5%85%A7%E5%AD%98%E9%81%8E%E5%B0%8F%E5%B0%8E%E8%87%B4%E7%84%A1%E6%B3%95%E7%B7%A8%E8%AD%AFphp/004_hu11b63b67464ba21e76383e835803d12a_6518_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;869&#34;
+		data-flex-basis=&#34;2087px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;hr&gt;
+
+</description>
+        </item>
+        <item>
+        <title>GCP-google 啟用兩步驟驗證 再設定應用程式專用密碼</title>
+        <link>https://note.laurance.ml/p/gcp-google-%E5%95%9F%E7%94%A8%E5%85%A9%E6%AD%A5%E9%A9%9F%E9%A9%97%E8%AD%89-%E5%86%8D%E8%A8%AD%E5%AE%9A%E6%87%89%E7%94%A8%E7%A8%8B%E5%BC%8F%E5%B0%88%E7%94%A8%E5%AF%86%E7%A2%BC/</link>
+        <pubDate>Tue, 06 Dec 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://note.laurance.ml/p/gcp-google-%E5%95%9F%E7%94%A8%E5%85%A9%E6%AD%A5%E9%A9%9F%E9%A9%97%E8%AD%89-%E5%86%8D%E8%A8%AD%E5%AE%9A%E6%87%89%E7%94%A8%E7%A8%8B%E5%BC%8F%E5%B0%88%E7%94%A8%E5%AF%86%E7%A2%BC/</guid>
+        <description>&lt;img src="https://note.laurance.ml/p/gcp-google-%E5%95%9F%E7%94%A8%E5%85%A9%E6%AD%A5%E9%A9%9F%E9%A9%97%E8%AD%89-%E5%86%8D%E8%A8%AD%E5%AE%9A%E6%87%89%E7%94%A8%E7%A8%8B%E5%BC%8F%E5%B0%88%E7%94%A8%E5%AF%86%E7%A2%BC/100.png" alt="Featured image of post GCP-google 啟用兩步驟驗證 再設定應用程式專用密碼" /&gt;&lt;p&gt;點選右上角頭像，管理你的帳戶
+左邊 安全性 找到 &amp;ldquo;登入 Google&amp;rdquo; 並點選 &amp;ldquo;兩步驟驗證&amp;rdquo;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/gcp-google-%E5%95%9F%E7%94%A8%E5%85%A9%E6%AD%A5%E9%A9%9F%E9%A9%97%E8%AD%89-%E5%86%8D%E8%A8%AD%E5%AE%9A%E6%87%89%E7%94%A8%E7%A8%8B%E5%BC%8F%E5%B0%88%E7%94%A8%E5%AF%86%E7%A2%BC/102.png&#34;
+	width=&#34;915&#34;
+	height=&#34;343&#34;
+	srcset=&#34;https://note.laurance.ml/p/gcp-google-%E5%95%9F%E7%94%A8%E5%85%A9%E6%AD%A5%E9%A9%9F%E9%A9%97%E8%AD%89-%E5%86%8D%E8%A8%AD%E5%AE%9A%E6%87%89%E7%94%A8%E7%A8%8B%E5%BC%8F%E5%B0%88%E7%94%A8%E5%AF%86%E7%A2%BC/102_hu73f6b53d96eef83408de033b5b29b581_19751_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/gcp-google-%E5%95%9F%E7%94%A8%E5%85%A9%E6%AD%A5%E9%A9%9F%E9%A9%97%E8%AD%89-%E5%86%8D%E8%A8%AD%E5%AE%9A%E6%87%89%E7%94%A8%E7%A8%8B%E5%BC%8F%E5%B0%88%E7%94%A8%E5%AF%86%E7%A2%BC/102_hu73f6b53d96eef83408de033b5b29b581_19751_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;266&#34;
+		data-flex-basis=&#34;640px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;會列出有綁帳號的手機，點選繼續
+接著輸入 &amp;ldquo;驗證碼&amp;rdquo;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/gcp-google-%E5%95%9F%E7%94%A8%E5%85%A9%E6%AD%A5%E9%A9%9F%E9%A9%97%E8%AD%89-%E5%86%8D%E8%A8%AD%E5%AE%9A%E6%87%89%E7%94%A8%E7%A8%8B%E5%BC%8F%E5%B0%88%E7%94%A8%E5%AF%86%E7%A2%BC/103.png&#34;
+	width=&#34;853&#34;
+	height=&#34;735&#34;
+	srcset=&#34;https://note.laurance.ml/p/gcp-google-%E5%95%9F%E7%94%A8%E5%85%A9%E6%AD%A5%E9%A9%9F%E9%A9%97%E8%AD%89-%E5%86%8D%E8%A8%AD%E5%AE%9A%E6%87%89%E7%94%A8%E7%A8%8B%E5%BC%8F%E5%B0%88%E7%94%A8%E5%AF%86%E7%A2%BC/103_hu88a8aa689c7d1fa1c073b3043cd4232d_44234_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/gcp-google-%E5%95%9F%E7%94%A8%E5%85%A9%E6%AD%A5%E9%A9%9F%E9%A9%97%E8%AD%89-%E5%86%8D%E8%A8%AD%E5%AE%9A%E6%87%89%E7%94%A8%E7%A8%8B%E5%BC%8F%E5%B0%88%E7%94%A8%E5%AF%86%E7%A2%BC/103_hu88a8aa689c7d1fa1c073b3043cd4232d_44234_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;116&#34;
+		data-flex-basis=&#34;278px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;都完成後退出到首頁，並點選 &amp;ldquo;應用程式密碼&amp;rdquo;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/gcp-google-%E5%95%9F%E7%94%A8%E5%85%A9%E6%AD%A5%E9%A9%9F%E9%A9%97%E8%AD%89-%E5%86%8D%E8%A8%AD%E5%AE%9A%E6%87%89%E7%94%A8%E7%A8%8B%E5%BC%8F%E5%B0%88%E7%94%A8%E5%AF%86%E7%A2%BC/104.png&#34;
+	width=&#34;924&#34;
+	height=&#34;341&#34;
+	srcset=&#34;https://note.laurance.ml/p/gcp-google-%E5%95%9F%E7%94%A8%E5%85%A9%E6%AD%A5%E9%A9%9F%E9%A9%97%E8%AD%89-%E5%86%8D%E8%A8%AD%E5%AE%9A%E6%87%89%E7%94%A8%E7%A8%8B%E5%BC%8F%E5%B0%88%E7%94%A8%E5%AF%86%E7%A2%BC/104_hu6bf4c1f9b9740c44e916ae91f83cbbae_18894_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/gcp-google-%E5%95%9F%E7%94%A8%E5%85%A9%E6%AD%A5%E9%A9%9F%E9%A9%97%E8%AD%89-%E5%86%8D%E8%A8%AD%E5%AE%9A%E6%87%89%E7%94%A8%E7%A8%8B%E5%BC%8F%E5%B0%88%E7%94%A8%E5%AF%86%E7%A2%BC/104_hu6bf4c1f9b9740c44e916ae91f83cbbae_18894_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;270&#34;
+		data-flex-basis=&#34;650px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;接著系統會產生一組隨機密碼
+這組應用程式專用密碼只能登入一個地方&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/gcp-google-%E5%95%9F%E7%94%A8%E5%85%A9%E6%AD%A5%E9%A9%9F%E9%A9%97%E8%AD%89-%E5%86%8D%E8%A8%AD%E5%AE%9A%E6%87%89%E7%94%A8%E7%A8%8B%E5%BC%8F%E5%B0%88%E7%94%A8%E5%AF%86%E7%A2%BC/105.png&#34;
+	width=&#34;956&#34;
+	height=&#34;588&#34;
+	srcset=&#34;https://note.laurance.ml/p/gcp-google-%E5%95%9F%E7%94%A8%E5%85%A9%E6%AD%A5%E9%A9%9F%E9%A9%97%E8%AD%89-%E5%86%8D%E8%A8%AD%E5%AE%9A%E6%87%89%E7%94%A8%E7%A8%8B%E5%BC%8F%E5%B0%88%E7%94%A8%E5%AF%86%E7%A2%BC/105_hu9947168e40658579b79637882b356d33_47713_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/gcp-google-%E5%95%9F%E7%94%A8%E5%85%A9%E6%AD%A5%E9%A9%9F%E9%A9%97%E8%AD%89-%E5%86%8D%E8%A8%AD%E5%AE%9A%E6%87%89%E7%94%A8%E7%A8%8B%E5%BC%8F%E5%B0%88%E7%94%A8%E5%AF%86%E7%A2%BC/105_hu9947168e40658579b79637882b356d33_47713_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;162&#34;
+		data-flex-basis=&#34;390px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;hr&gt;
+
+</description>
+        </item>
+        <item>
+        <title>GCP-硬碟擴容</title>
+        <link>https://note.laurance.ml/p/gcp-%E7%A1%AC%E7%A2%9F%E6%93%B4%E5%AE%B9/</link>
+        <pubDate>Thu, 06 Oct 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://note.laurance.ml/p/gcp-%E7%A1%AC%E7%A2%9F%E6%93%B4%E5%AE%B9/</guid>
+        <description>&lt;img src="https://note.laurance.ml/p/gcp-%E7%A1%AC%E7%A2%9F%E6%93%B4%E5%AE%B9/100.png" alt="Featured image of post GCP-硬碟擴容" /&gt;&lt;pre&gt;&lt;code&gt;GCP上，點選硬盤，直接修改想要的硬盤大小(只能擴大、不能縮小)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/gcp-%E7%A1%AC%E7%A2%9F%E6%93%B4%E5%AE%B9/001.png&#34;
+	width=&#34;842&#34;
+	height=&#34;347&#34;
+	srcset=&#34;https://note.laurance.ml/p/gcp-%E7%A1%AC%E7%A2%9F%E6%93%B4%E5%AE%B9/001_hub555f3ca9dd65f98a12f248c9c541f13_58628_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/gcp-%E7%A1%AC%E7%A2%9F%E6%93%B4%E5%AE%B9/001_hub555f3ca9dd65f98a12f248c9c541f13_58628_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;242&#34;
+		data-flex-basis=&#34;582px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;看一下目前的硬碟空間 lsblk
+
+會發現從 1.3T 變成 1.5T，但是用 df -h 卻沒看到空間增加
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;擴大分割區&lt;/p&gt;
+&lt;p&gt;以下是針對 sda 的第一個分割區擴大&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;yum install cloud-utils-growpart
+
+growpart /dev/sda 2
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;擴大檔案系統空間&lt;/p&gt;
+&lt;p&gt;如果是 ext2, ext3, ext4 的 file system，則用 resize2fs，如果是 xfs，則用 xfs_growfs&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;xfs
+
+xfs_growfs /dev/sda2
+
+ext4
+
+resize2fs /dev/sda2
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+
+</description>
+        </item>
+        <item>
+        <title>GCP- ASG執行範本建立與更新</title>
+        <link>https://note.laurance.ml/p/gcp-asg%E5%9F%B7%E8%A1%8C%E7%AF%84%E6%9C%AC%E5%BB%BA%E7%AB%8B%E8%88%87%E6%9B%B4%E6%96%B0/</link>
+        <pubDate>Mon, 03 Oct 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://note.laurance.ml/p/gcp-asg%E5%9F%B7%E8%A1%8C%E7%AF%84%E6%9C%AC%E5%BB%BA%E7%AB%8B%E8%88%87%E6%9B%B4%E6%96%B0/</guid>
+        <description>&lt;img src="https://note.laurance.ml/p/gcp-asg%E5%9F%B7%E8%A1%8C%E7%AF%84%E6%9C%AC%E5%BB%BA%E7%AB%8B%E8%88%87%E6%9B%B4%E6%96%B0/100.png" alt="Featured image of post GCP- ASG執行範本建立與更新" /&gt;&lt;pre&gt;&lt;code&gt;模板機先建立快照 &amp;gt;&amp;gt; 再轉映像檔  
+
+區域選台灣 &amp;gt;&amp;gt; 按建立
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/gcp-asg%E5%9F%B7%E8%A1%8C%E7%AF%84%E6%9C%AC%E5%BB%BA%E7%AB%8B%E8%88%87%E6%9B%B4%E6%96%B0/001.png&#34;
+	width=&#34;852&#34;
+	height=&#34;1494&#34;
+	srcset=&#34;https://note.laurance.ml/p/gcp-asg%E5%9F%B7%E8%A1%8C%E7%AF%84%E6%9C%AC%E5%BB%BA%E7%AB%8B%E8%88%87%E6%9B%B4%E6%96%B0/001_hu26bdb4a18bfdd5f1fc33a3bf7ef9204f_223972_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/gcp-asg%E5%9F%B7%E8%A1%8C%E7%AF%84%E6%9C%AC%E5%BB%BA%E7%AB%8B%E8%88%87%E6%9B%B4%E6%96%B0/001_hu26bdb4a18bfdd5f1fc33a3bf7ef9204f_223972_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;57&#34;
+		data-flex-basis=&#34;136px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;建立執行個體範本
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/gcp-asg%E5%9F%B7%E8%A1%8C%E7%AF%84%E6%9C%AC%E5%BB%BA%E7%AB%8B%E8%88%87%E6%9B%B4%E6%96%B0/002.png&#34;
+	width=&#34;732&#34;
+	height=&#34;1266&#34;
+	srcset=&#34;https://note.laurance.ml/p/gcp-asg%E5%9F%B7%E8%A1%8C%E7%AF%84%E6%9C%AC%E5%BB%BA%E7%AB%8B%E8%88%87%E6%9B%B4%E6%96%B0/002_huc975e6ab7bda5d11627e85f58688d5f7_367820_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/gcp-asg%E5%9F%B7%E8%A1%8C%E7%AF%84%E6%9C%AC%E5%BB%BA%E7%AB%8B%E8%88%87%E6%9B%B4%E6%96%B0/002_huc975e6ab7bda5d11627e85f58688d5f7_367820_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;57&#34;
+		data-flex-basis=&#34;138px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;建立執行個體範本 網路分頁將外部IP 更改成無；勾選允許HTTP、HTTPS流量
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/gcp-asg%E5%9F%B7%E8%A1%8C%E7%AF%84%E6%9C%AC%E5%BB%BA%E7%AB%8B%E8%88%87%E6%9B%B4%E6%96%B0/003.png&#34;
+	width=&#34;735&#34;
+	height=&#34;1269&#34;
+	srcset=&#34;https://note.laurance.ml/p/gcp-asg%E5%9F%B7%E8%A1%8C%E7%AF%84%E6%9C%AC%E5%BB%BA%E7%AB%8B%E8%88%87%E6%9B%B4%E6%96%B0/003_hu188bb1049297aee0abca11fadf2a1e29_166833_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/gcp-asg%E5%9F%B7%E8%A1%8C%E7%AF%84%E6%9C%AC%E5%BB%BA%E7%AB%8B%E8%88%87%E6%9B%B4%E6%96%B0/003_hu188bb1049297aee0abca11fadf2a1e29_166833_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;57&#34;
+		data-flex-basis=&#34;139px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;建立完畢後 編輯執行個體群組 套用新的 執行個體範本 確認有出現後
+
+再開始進行web滾動更新
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/gcp-asg%E5%9F%B7%E8%A1%8C%E7%AF%84%E6%9C%AC%E5%BB%BA%E7%AB%8B%E8%88%87%E6%9B%B4%E6%96%B0/004.png&#34;
+	width=&#34;996&#34;
+	height=&#34;1155&#34;
+	srcset=&#34;https://note.laurance.ml/p/gcp-asg%E5%9F%B7%E8%A1%8C%E7%AF%84%E6%9C%AC%E5%BB%BA%E7%AB%8B%E8%88%87%E6%9B%B4%E6%96%B0/004_hu840e3a10dfecad0bd4b416759b0bca72_145493_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/gcp-asg%E5%9F%B7%E8%A1%8C%E7%AF%84%E6%9C%AC%E5%BB%BA%E7%AB%8B%E8%88%87%E6%9B%B4%E6%96%B0/004_hu840e3a10dfecad0bd4b416759b0bca72_145493_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;86&#34;
+		data-flex-basis=&#34;206px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;GCP ASG-web滾動更新
+
+選擇執行各體群組 &amp;gt; 輪動式重新啟動/取代
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/gcp-asg%E5%9F%B7%E8%A1%8C%E7%AF%84%E6%9C%AC%E5%BB%BA%E7%AB%8B%E8%88%87%E6%9B%B4%E6%96%B0/005.png&#34;
+	width=&#34;1104&#34;
+	height=&#34;468&#34;
+	srcset=&#34;https://note.laurance.ml/p/gcp-asg%E5%9F%B7%E8%A1%8C%E7%AF%84%E6%9C%AC%E5%BB%BA%E7%AB%8B%E8%88%87%E6%9B%B4%E6%96%B0/005_hu961c2bca58f44f0ffa85d162be71a018_155476_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/gcp-asg%E5%9F%B7%E8%A1%8C%E7%AF%84%E6%9C%AC%E5%BB%BA%E7%AB%8B%E8%88%87%E6%9B%B4%E6%96%B0/005_hu961c2bca58f44f0ffa85d162be71a018_155476_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;235&#34;
+		data-flex-basis=&#34;566px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;點選取代 &amp;gt; 供應過度數量上限填1 &amp;gt; 無法使用的數量寫0  &amp;gt; 取代
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/gcp-asg%E5%9F%B7%E8%A1%8C%E7%AF%84%E6%9C%AC%E5%BB%BA%E7%AB%8B%E8%88%87%E6%9B%B4%E6%96%B0/006.png&#34;
+	width=&#34;706&#34;
+	height=&#34;762&#34;
+	srcset=&#34;https://note.laurance.ml/p/gcp-asg%E5%9F%B7%E8%A1%8C%E7%AF%84%E6%9C%AC%E5%BB%BA%E7%AB%8B%E8%88%87%E6%9B%B4%E6%96%B0/006_huad63704e3f35935caa5ef9b219e5d8bd_188629_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/gcp-asg%E5%9F%B7%E8%A1%8C%E7%AF%84%E6%9C%AC%E5%BB%BA%E7%AB%8B%E8%88%87%E6%9B%B4%E6%96%B0/006_huad63704e3f35935caa5ef9b219e5d8bd_188629_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;92&#34;
+		data-flex-basis=&#34;222px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;PS:供應過度的數量上限: 是指滾動時，可超過當下存在的機器數量的上限
+如果原本上限是8台，填1時，滾動時上限可為9台
+如果是上班時段，建議填寫目前機器數量，滾動速度會比較快一點
+如果是維護其間，可填寫1 讓它慢慢替換
+
+-----------------------------------------------------------------------------------------------------------------
+
+無法使用的執行個體數量上限: 是指滾動時，群組裡面能有幾台無法使用
+這邊不管是上班或是維護期間 都應填寫0
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+
+</description>
+        </item>
+        <item>
+        <title>GCP-將MySQL-DB及BINLOG備份至Cloudstorage</title>
+        <link>https://note.laurance.ml/p/gcp-%E5%B0%87mysql-db%E5%8F%8Abinlog%E5%82%99%E4%BB%BD%E8%87%B3cloudstorage/</link>
+        <pubDate>Wed, 21 Sep 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://note.laurance.ml/p/gcp-%E5%B0%87mysql-db%E5%8F%8Abinlog%E5%82%99%E4%BB%BD%E8%87%B3cloudstorage/</guid>
+        <description>&lt;img src="https://note.laurance.ml/p/gcp-%E5%B0%87mysql-db%E5%8F%8Abinlog%E5%82%99%E4%BB%BD%E8%87%B3cloudstorage/100.png" alt="Featured image of post GCP-將MySQL-DB及BINLOG備份至Cloudstorage" /&gt;&lt;pre&gt;&lt;code&gt;1. 使用 nohup+&amp;amp; 背景執行資料庫壓縮 (除掉binlog)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/gcp-%E5%B0%87mysql-db%E5%8F%8Abinlog%E5%82%99%E4%BB%BD%E8%87%B3cloudstorage/001.png&#34;
+	width=&#34;1916&#34;
+	height=&#34;240&#34;
+	srcset=&#34;https://note.laurance.ml/p/gcp-%E5%B0%87mysql-db%E5%8F%8Abinlog%E5%82%99%E4%BB%BD%E8%87%B3cloudstorage/001_hu153bb9e1103ba1e5c0c77634ab96d5a4_34461_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/gcp-%E5%B0%87mysql-db%E5%8F%8Abinlog%E5%82%99%E4%BB%BD%E8%87%B3cloudstorage/001_hu153bb9e1103ba1e5c0c77634ab96d5a4_34461_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;798&#34;
+		data-flex-basis=&#34;1916px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;2. 取第一支binlog跟最後一隻binlog的日期 (當作到時候壓縮的檔名)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/gcp-%E5%B0%87mysql-db%E5%8F%8Abinlog%E5%82%99%E4%BB%BD%E8%87%B3cloudstorage/002.png&#34;
+	width=&#34;1892&#34;
+	height=&#34;958&#34;
+	srcset=&#34;https://note.laurance.ml/p/gcp-%E5%B0%87mysql-db%E5%8F%8Abinlog%E5%82%99%E4%BB%BD%E8%87%B3cloudstorage/002_hu29e15822d5311654c73473ab50e4c026_87562_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/gcp-%E5%B0%87mysql-db%E5%8F%8Abinlog%E5%82%99%E4%BB%BD%E8%87%B3cloudstorage/002_hu29e15822d5311654c73473ab50e4c026_87562_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;197&#34;
+		data-flex-basis=&#34;473px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;3. 使用 nohup+&amp;amp; 背景執行binlog壓縮
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/gcp-%E5%B0%87mysql-db%E5%8F%8Abinlog%E5%82%99%E4%BB%BD%E8%87%B3cloudstorage/003.png&#34;
+	width=&#34;1872&#34;
+	height=&#34;316&#34;
+	srcset=&#34;https://note.laurance.ml/p/gcp-%E5%B0%87mysql-db%E5%8F%8Abinlog%E5%82%99%E4%BB%BD%E8%87%B3cloudstorage/003_hud0eec7e8172a0d8ece65ef3efb8a178f_10773_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/gcp-%E5%B0%87mysql-db%E5%8F%8Abinlog%E5%82%99%E4%BB%BD%E8%87%B3cloudstorage/003_hud0eec7e8172a0d8ece65ef3efb8a178f_10773_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;592&#34;
+		data-flex-basis=&#34;1421px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;4. 原本的驗證機制被刪除了 (gcloud auth login)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/gcp-%E5%B0%87mysql-db%E5%8F%8Abinlog%E5%82%99%E4%BB%BD%E8%87%B3cloudstorage/004.png&#34;
+	width=&#34;1916&#34;
+	height=&#34;576&#34;
+	srcset=&#34;https://note.laurance.ml/p/gcp-%E5%B0%87mysql-db%E5%8F%8Abinlog%E5%82%99%E4%BB%BD%E8%87%B3cloudstorage/004_hu2d9bae668c55ff20a67688f31526c574_98788_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/gcp-%E5%B0%87mysql-db%E5%8F%8Abinlog%E5%82%99%E4%BB%BD%E8%87%B3cloudstorage/004_hu2d9bae668c55ff20a67688f31526c574_98788_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;332&#34;
+		data-flex-basis=&#34;798px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/gcp-%E5%B0%87mysql-db%E5%8F%8Abinlog%E5%82%99%E4%BB%BD%E8%87%B3cloudstorage/005.png&#34;
+	width=&#34;1920&#34;
+	height=&#34;937&#34;
+	srcset=&#34;https://note.laurance.ml/p/gcp-%E5%B0%87mysql-db%E5%8F%8Abinlog%E5%82%99%E4%BB%BD%E8%87%B3cloudstorage/005_hu5c254e3ed29c4014dc55348ea3c6c23d_74674_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/gcp-%E5%B0%87mysql-db%E5%8F%8Abinlog%E5%82%99%E4%BB%BD%E8%87%B3cloudstorage/005_hu5c254e3ed29c4014dc55348ea3c6c23d_74674_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;204&#34;
+		data-flex-basis=&#34;491px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;5. 將壓縮好的TAR包傳到中繼機 (之前跟GCP驗證過的機器)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/gcp-%E5%B0%87mysql-db%E5%8F%8Abinlog%E5%82%99%E4%BB%BD%E8%87%B3cloudstorage/006.png&#34;
+	width=&#34;1870&#34;
+	height=&#34;306&#34;
+	srcset=&#34;https://note.laurance.ml/p/gcp-%E5%B0%87mysql-db%E5%8F%8Abinlog%E5%82%99%E4%BB%BD%E8%87%B3cloudstorage/006_hu4f746d53c6c23301e2d16a65c8615c6a_18343_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/gcp-%E5%B0%87mysql-db%E5%8F%8Abinlog%E5%82%99%E4%BB%BD%E8%87%B3cloudstorage/006_hu4f746d53c6c23301e2d16a65c8615c6a_18343_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;611&#34;
+		data-flex-basis=&#34;1466px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;6. 上傳到GCP對應的目錄
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/gcp-%E5%B0%87mysql-db%E5%8F%8Abinlog%E5%82%99%E4%BB%BD%E8%87%B3cloudstorage/007.png&#34;
+	width=&#34;1874&#34;
+	height=&#34;345&#34;
+	srcset=&#34;https://note.laurance.ml/p/gcp-%E5%B0%87mysql-db%E5%8F%8Abinlog%E5%82%99%E4%BB%BD%E8%87%B3cloudstorage/007_hu8d6c9d615a4825675ca1fc1c98892618_18317_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/gcp-%E5%B0%87mysql-db%E5%8F%8Abinlog%E5%82%99%E4%BB%BD%E8%87%B3cloudstorage/007_hu8d6c9d615a4825675ca1fc1c98892618_18317_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;543&#34;
+		data-flex-basis=&#34;1303px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;hr&gt;
+
+</description>
+        </item>
+        <item>
+        <title>GCP-無痛轉移帳單免費額度</title>
+        <link>https://note.laurance.ml/p/gcp-%E7%84%A1%E7%97%9B%E8%BD%89%E7%A7%BB%E5%B8%B3%E5%96%AE%E5%85%8D%E8%B2%BB%E9%A1%8D%E5%BA%A6/</link>
+        <pubDate>Wed, 16 Feb 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://note.laurance.ml/p/gcp-%E7%84%A1%E7%97%9B%E8%BD%89%E7%A7%BB%E5%B8%B3%E5%96%AE%E5%85%8D%E8%B2%BB%E9%A1%8D%E5%BA%A6/</guid>
+        <description>&lt;img src="https://note.laurance.ml/p/gcp-%E7%84%A1%E7%97%9B%E8%BD%89%E7%A7%BB%E5%B8%B3%E5%96%AE%E5%85%8D%E8%B2%BB%E9%A1%8D%E5%BA%A6/100.png" alt="Featured image of post GCP-無痛轉移帳單免費額度" /&gt;&lt;h1 id=&#34;gcp-剩餘時間&#34;&gt;GCP 剩餘時間&lt;/h1&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/gcp-%E7%84%A1%E7%97%9B%E8%BD%89%E7%A7%BB%E5%B8%B3%E5%96%AE%E5%85%8D%E8%B2%BB%E9%A1%8D%E5%BA%A6/201.png&#34;
+	width=&#34;1920&#34;
+	height=&#34;937&#34;
+	srcset=&#34;https://note.laurance.ml/p/gcp-%E7%84%A1%E7%97%9B%E8%BD%89%E7%A7%BB%E5%B8%B3%E5%96%AE%E5%85%8D%E8%B2%BB%E9%A1%8D%E5%BA%A6/201_hu73354c0c069b22cce687fc7e23830a9e_97174_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/gcp-%E7%84%A1%E7%97%9B%E8%BD%89%E7%A7%BB%E5%B8%B3%E5%96%AE%E5%85%8D%E8%B2%BB%E9%A1%8D%E5%BA%A6/201_hu73354c0c069b22cce687fc7e23830a9e_97174_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;204&#34;
+		data-flex-basis=&#34;491px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;在 [帳單 &amp;gt; 帳戶管理] 可以看到有帳單帳戶管理員&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;我們可以先用新 email 註冊一個新 GCP&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/gcp-%E7%84%A1%E7%97%9B%E8%BD%89%E7%A7%BB%E5%B8%B3%E5%96%AE%E5%85%8D%E8%B2%BB%E9%A1%8D%E5%BA%A6/202.png&#34;
+	width=&#34;1920&#34;
+	height=&#34;937&#34;
+	srcset=&#34;https://note.laurance.ml/p/gcp-%E7%84%A1%E7%97%9B%E8%BD%89%E7%A7%BB%E5%B8%B3%E5%96%AE%E5%85%8D%E8%B2%BB%E9%A1%8D%E5%BA%A6/202_hu3162c63b4612a695b85b42a32496cd33_74217_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/gcp-%E7%84%A1%E7%97%9B%E8%BD%89%E7%A7%BB%E5%B8%B3%E5%96%AE%E5%85%8D%E8%B2%BB%E9%A1%8D%E5%BA%A6/202_hu3162c63b4612a695b85b42a32496cd33_74217_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;204&#34;
+		data-flex-basis=&#34;491px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;建立一個新的 email 並綁定同一張信用卡,領取300美抵免額&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/gcp-%E7%84%A1%E7%97%9B%E8%BD%89%E7%A7%BB%E5%B8%B3%E5%96%AE%E5%85%8D%E8%B2%BB%E9%A1%8D%E5%BA%A6/203.png&#34;
+	width=&#34;1920&#34;
+	height=&#34;937&#34;
+	srcset=&#34;https://note.laurance.ml/p/gcp-%E7%84%A1%E7%97%9B%E8%BD%89%E7%A7%BB%E5%B8%B3%E5%96%AE%E5%85%8D%E8%B2%BB%E9%A1%8D%E5%BA%A6/203_hu02538f729a04a555dc499a283760dfcf_111770_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/gcp-%E7%84%A1%E7%97%9B%E8%BD%89%E7%A7%BB%E5%B8%B3%E5%96%AE%E5%85%8D%E8%B2%BB%E9%A1%8D%E5%BA%A6/203_hu02538f729a04a555dc499a283760dfcf_111770_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;204&#34;
+		data-flex-basis=&#34;491px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;ps. 這時會出現卡&lt;code&gt;被扣40塊&lt;/code&gt;,&lt;code&gt;放心後面會退刷的&lt;/code&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;在&lt;code&gt;舊 GCP帳號&lt;/code&gt;裡新增剛剛新創立的&lt;code&gt;新 GCP帳號&lt;/code&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;帳單 &amp;gt; 帳戶管理 &amp;gt; 新增主體
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/gcp-%E7%84%A1%E7%97%9B%E8%BD%89%E7%A7%BB%E5%B8%B3%E5%96%AE%E5%85%8D%E8%B2%BB%E9%A1%8D%E5%BA%A6/204.png&#34;
+	width=&#34;1920&#34;
+	height=&#34;937&#34;
+	srcset=&#34;https://note.laurance.ml/p/gcp-%E7%84%A1%E7%97%9B%E8%BD%89%E7%A7%BB%E5%B8%B3%E5%96%AE%E5%85%8D%E8%B2%BB%E9%A1%8D%E5%BA%A6/204_hu2e0ccc8bf2e66ae02dcfdb4ed7f245a7_73523_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/gcp-%E7%84%A1%E7%97%9B%E8%BD%89%E7%A7%BB%E5%B8%B3%E5%96%AE%E5%85%8D%E8%B2%BB%E9%A1%8D%E5%BA%A6/204_hu2e0ccc8bf2e66ae02dcfdb4ed7f245a7_73523_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;204&#34;
+		data-flex-basis=&#34;491px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;將&lt;code&gt;新的 gmail&lt;/code&gt;填入並選擇&lt;code&gt;帳單帳戶管理員&lt;/code&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/gcp-%E7%84%A1%E7%97%9B%E8%BD%89%E7%A7%BB%E5%B8%B3%E5%96%AE%E5%85%8D%E8%B2%BB%E9%A1%8D%E5%BA%A6/205.png&#34;
+	width=&#34;1920&#34;
+	height=&#34;937&#34;
+	srcset=&#34;https://note.laurance.ml/p/gcp-%E7%84%A1%E7%97%9B%E8%BD%89%E7%A7%BB%E5%B8%B3%E5%96%AE%E5%85%8D%E8%B2%BB%E9%A1%8D%E5%BA%A6/205_hu75bc55d8d73d41f2899065eb7ce480ee_83477_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/gcp-%E7%84%A1%E7%97%9B%E8%BD%89%E7%A7%BB%E5%B8%B3%E5%96%AE%E5%85%8D%E8%B2%BB%E9%A1%8D%E5%BA%A6/205_hu75bc55d8d73d41f2899065eb7ce480ee_83477_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;204&#34;
+		data-flex-basis=&#34;491px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;儲存後可以看到帳單帳戶管理員多了 &lt;code&gt;新的GCP帳號&lt;/code&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/gcp-%E7%84%A1%E7%97%9B%E8%BD%89%E7%A7%BB%E5%B8%B3%E5%96%AE%E5%85%8D%E8%B2%BB%E9%A1%8D%E5%BA%A6/206.png&#34;
+	width=&#34;1920&#34;
+	height=&#34;937&#34;
+	srcset=&#34;https://note.laurance.ml/p/gcp-%E7%84%A1%E7%97%9B%E8%BD%89%E7%A7%BB%E5%B8%B3%E5%96%AE%E5%85%8D%E8%B2%BB%E9%A1%8D%E5%BA%A6/206_hu2707f1b4b7f47f0ab3efcd18ba591c50_74163_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/gcp-%E7%84%A1%E7%97%9B%E8%BD%89%E7%A7%BB%E5%B8%B3%E5%96%AE%E5%85%8D%E8%B2%BB%E9%A1%8D%E5%BA%A6/206_hu2707f1b4b7f47f0ab3efcd18ba591c50_74163_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;204&#34;
+		data-flex-basis=&#34;491px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;接著到新的GCP帳號選擇&lt;code&gt;管理帳單帳戶&lt;/code&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/gcp-%E7%84%A1%E7%97%9B%E8%BD%89%E7%A7%BB%E5%B8%B3%E5%96%AE%E5%85%8D%E8%B2%BB%E9%A1%8D%E5%BA%A6/207.png&#34;
+	width=&#34;1920&#34;
+	height=&#34;937&#34;
+	srcset=&#34;https://note.laurance.ml/p/gcp-%E7%84%A1%E7%97%9B%E8%BD%89%E7%A7%BB%E5%B8%B3%E5%96%AE%E5%85%8D%E8%B2%BB%E9%A1%8D%E5%BA%A6/207_hu869925b65b1fe759dc1e230a465af80f_26960_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/gcp-%E7%84%A1%E7%97%9B%E8%BD%89%E7%A7%BB%E5%B8%B3%E5%96%AE%E5%85%8D%E8%B2%BB%E9%A1%8D%E5%BA%A6/207_hu869925b65b1fe759dc1e230a465af80f_26960_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;204&#34;
+		data-flex-basis=&#34;491px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;在&lt;code&gt;新 GCP帳號&lt;/code&gt;裡新增&lt;code&gt;舊 GCP帳號&lt;/code&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/gcp-%E7%84%A1%E7%97%9B%E8%BD%89%E7%A7%BB%E5%B8%B3%E5%96%AE%E5%85%8D%E8%B2%BB%E9%A1%8D%E5%BA%A6/208.png&#34;
+	width=&#34;1920&#34;
+	height=&#34;937&#34;
+	srcset=&#34;https://note.laurance.ml/p/gcp-%E7%84%A1%E7%97%9B%E8%BD%89%E7%A7%BB%E5%B8%B3%E5%96%AE%E5%85%8D%E8%B2%BB%E9%A1%8D%E5%BA%A6/208_huc098cc4e442cdb1994f3a753bc3a27b7_69746_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/gcp-%E7%84%A1%E7%97%9B%E8%BD%89%E7%A7%BB%E5%B8%B3%E5%96%AE%E5%85%8D%E8%B2%BB%E9%A1%8D%E5%BA%A6/208_huc098cc4e442cdb1994f3a753bc3a27b7_69746_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;204&#34;
+		data-flex-basis=&#34;491px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;將&lt;code&gt;舊的 gmail&lt;/code&gt;填入並選擇&lt;code&gt;帳單帳戶管理員&lt;/code&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/gcp-%E7%84%A1%E7%97%9B%E8%BD%89%E7%A7%BB%E5%B8%B3%E5%96%AE%E5%85%8D%E8%B2%BB%E9%A1%8D%E5%BA%A6/209.png&#34;
+	width=&#34;1920&#34;
+	height=&#34;937&#34;
+	srcset=&#34;https://note.laurance.ml/p/gcp-%E7%84%A1%E7%97%9B%E8%BD%89%E7%A7%BB%E5%B8%B3%E5%96%AE%E5%85%8D%E8%B2%BB%E9%A1%8D%E5%BA%A6/209_hu79919ff30b0603576616d298aa4e2cba_80398_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/gcp-%E7%84%A1%E7%97%9B%E8%BD%89%E7%A7%BB%E5%B8%B3%E5%96%AE%E5%85%8D%E8%B2%BB%E9%A1%8D%E5%BA%A6/209_hu79919ff30b0603576616d298aa4e2cba_80398_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;204&#34;
+		data-flex-basis=&#34;491px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;儲存後可以看到帳單帳戶管理員多了 &lt;code&gt;舊的GCP帳號&lt;/code&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/gcp-%E7%84%A1%E7%97%9B%E8%BD%89%E7%A7%BB%E5%B8%B3%E5%96%AE%E5%85%8D%E8%B2%BB%E9%A1%8D%E5%BA%A6/210.png&#34;
+	width=&#34;1920&#34;
+	height=&#34;937&#34;
+	srcset=&#34;https://note.laurance.ml/p/gcp-%E7%84%A1%E7%97%9B%E8%BD%89%E7%A7%BB%E5%B8%B3%E5%96%AE%E5%85%8D%E8%B2%BB%E9%A1%8D%E5%BA%A6/210_hu74c8f82e76ccd3362caccfbf2335e24c_72215_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/gcp-%E7%84%A1%E7%97%9B%E8%BD%89%E7%A7%BB%E5%B8%B3%E5%96%AE%E5%85%8D%E8%B2%BB%E9%A1%8D%E5%BA%A6/210_hu74c8f82e76ccd3362caccfbf2335e24c_72215_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;204&#34;
+		data-flex-basis=&#34;491px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;重新開啟後可以看到舊帳號已延續新帳號的抵免額及天數&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/gcp-%E7%84%A1%E7%97%9B%E8%BD%89%E7%A7%BB%E5%B8%B3%E5%96%AE%E5%85%8D%E8%B2%BB%E9%A1%8D%E5%BA%A6/211.png&#34;
+	width=&#34;1920&#34;
+	height=&#34;937&#34;
+	srcset=&#34;https://note.laurance.ml/p/gcp-%E7%84%A1%E7%97%9B%E8%BD%89%E7%A7%BB%E5%B8%B3%E5%96%AE%E5%85%8D%E8%B2%BB%E9%A1%8D%E5%BA%A6/211_hu9fbee1b5b174c3d7c16de9039b28b46b_98502_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/gcp-%E7%84%A1%E7%97%9B%E8%BD%89%E7%A7%BB%E5%B8%B3%E5%96%AE%E5%85%8D%E8%B2%BB%E9%A1%8D%E5%BA%A6/211_hu9fbee1b5b174c3d7c16de9039b28b46b_98502_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;204&#34;
+		data-flex-basis=&#34;491px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h1 id=&#34;最後一步&#34;&gt;最後一步:&lt;/h1&gt;
+&lt;h1 id=&#34;將舊帳號gcp裡面保留新帳號的帳單--將舊的gmail砍掉&#34;&gt;將舊帳號GCP裡面&lt;code&gt;保留新帳號的帳單&lt;/code&gt;  (將舊的gmail砍掉)&lt;/h1&gt;
+&lt;h1 id=&#34;從新帳號gcp裡面保留舊帳號的帳單-將新的gmail砍掉&#34;&gt;從新帳號GCP裡面&lt;code&gt;保留舊帳號的帳單&lt;/code&gt; (將新的gmail砍掉)&lt;/h1&gt;
+&lt;h1 id=&#34;新的gcp沒有跑機器不會產生費用&#34;&gt;新的GCP沒有跑機器,不會產生費用&lt;/h1&gt;
+&lt;h1 id=&#34;用新的抵免額延續舊帳號裡的機器&#34;&gt;用新的抵免額延續舊帳號裡的機器&lt;/h1&gt;
+&lt;hr&gt;
+
+</description>
+        </item>
+        
+    </channel>
+</rss>

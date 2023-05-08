@@ -1,0 +1,388 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Rsyslog on Laurance&#39;s Note</title>
+        <link>https://note.laurance.ml/tags/rsyslog/</link>
+        <description>Recent content in Rsyslog on Laurance&#39;s Note</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Wed, 21 Dec 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://note.laurance.ml/tags/rsyslog/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Rsyslog日誌遠端集中式管理</title>
+        <link>https://note.laurance.ml/p/rsyslog%E6%97%A5%E8%AA%8C%E9%81%A0%E7%AB%AF%E9%9B%86%E4%B8%AD%E5%BC%8F%E7%AE%A1%E7%90%86/</link>
+        <pubDate>Wed, 21 Dec 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://note.laurance.ml/p/rsyslog%E6%97%A5%E8%AA%8C%E9%81%A0%E7%AB%AF%E9%9B%86%E4%B8%AD%E5%BC%8F%E7%AE%A1%E7%90%86/</guid>
+        <description>&lt;img src="https://note.laurance.ml/p/rsyslog%E6%97%A5%E8%AA%8C%E9%81%A0%E7%AB%AF%E9%9B%86%E4%B8%AD%E5%BC%8F%E7%AE%A1%E7%90%86/100.png" alt="Featured image of post Rsyslog日誌遠端集中式管理" /&gt;&lt;p&gt;查看相關配置&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;rpm -qc rsyslog
+&lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   /etc/logrotate.d/syslog
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   /etc/rsyslog.conf
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   /etc/sysconfig/rsyslog
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;查看版本&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;rsyslogd -v
+&lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;rsyslogd 8.24.0-57.el7_9.3, compiled with:
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;	PLATFORM:				x86_64-redhat-linux-gnu
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;	PLATFORM (lsb_release -d):		
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;	FEATURE_REGEXP:				Yes
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;	GSSAPI Kerberos 5 support:		Yes
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;	FEATURE_DEBUG (debug build, slow code):	No
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;	32bit Atomic operations supported:	Yes
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;	64bit Atomic operations supported:	Yes
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;	memory allocator:			system default
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;	Runtime Instrumentation (slow code):	No
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;	uuid support:				Yes
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;	Number of Bits in RainerScript integers: 64
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;更改 rsyslog 參數 (-c 後為版本號 , -r 為開啟遠端接收)&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;vim /etc/sysconfig/rsyslog
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/rsyslog%E6%97%A5%E8%AA%8C%E9%81%A0%E7%AB%AF%E9%9B%86%E4%B8%AD%E5%BC%8F%E7%AE%A1%E7%90%86/0001.png&#34;
+	width=&#34;853&#34;
+	height=&#34;136&#34;
+	srcset=&#34;https://note.laurance.ml/p/rsyslog%E6%97%A5%E8%AA%8C%E9%81%A0%E7%AB%AF%E9%9B%86%E4%B8%AD%E5%BC%8F%E7%AE%A1%E7%90%86/0001_hu97d3ce02cec2e47fbf39b2a9e3c0feff_7020_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/rsyslog%E6%97%A5%E8%AA%8C%E9%81%A0%E7%AB%AF%E9%9B%86%E4%B8%AD%E5%BC%8F%E7%AE%A1%E7%90%86/0001_hu97d3ce02cec2e47fbf39b2a9e3c0feff_7020_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;627&#34;
+		data-flex-basis=&#34;1505px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;##CLIENT&lt;/p&gt;
+&lt;p&gt;RSYSLOG設定檔配置&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;vim /etc/rsyslog.conf
+&lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-v&#34; data-lang=&#34;v&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;#&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;rsyslog&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;configuration&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;file&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;#&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;For&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;more&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;information&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;see&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;usr&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;share&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;doc&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;rsyslog&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-*/&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;rsyslog_conf&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;html&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;#&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;If&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;you&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;experience&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;problems&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;see&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;http&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;//www.rsyslog.com/doc/troubleshoot.html
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;####&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;MODULES&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;####&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;#&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;The&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;imjournal&lt;/span&gt; &lt;span class=&#34;kn&#34;&gt;module&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;bellow&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;is&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;now&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;used&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;as&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;a&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;message&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;source&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;instead&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;of&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;imuxsock&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;$&lt;/span&gt;&lt;span class=&#34;nc&#34;&gt;ModLoad&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;imuxsock&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;#&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;provides&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;support&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;local&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;system&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;logging&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;e&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;g&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;via&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;logger&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;command&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;$&lt;/span&gt;&lt;span class=&#34;nc&#34;&gt;ModLoad&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;imjournal&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;#&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;provides&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;access&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;to&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;the&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;systemd&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;journal&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;#$&lt;/span&gt;&lt;span class=&#34;nc&#34;&gt;ModLoad&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;imklog&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;#&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;reads&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;kernel&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;messages&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;the&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;same&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;are&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;read&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;from&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;journald&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;#$&lt;/span&gt;&lt;span class=&#34;nc&#34;&gt;ModLoad&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;immark&lt;/span&gt;  &lt;span class=&#34;o&#34;&gt;#&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;provides&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;--&lt;/span&gt;&lt;span class=&#34;nc&#34;&gt;MARK&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;--&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;message&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;capability&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;#$&lt;/span&gt;&lt;span class=&#34;nc&#34;&gt;ModLoad&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;imfile&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;#&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;Provides&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;UDP&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;syslog&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;reception&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;#$&lt;/span&gt;&lt;span class=&#34;nc&#34;&gt;ModLoad&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;imudp&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;#$&lt;/span&gt;&lt;span class=&#34;nc&#34;&gt;UDPServerRun&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;514&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;#&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;Provides&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;TCP&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;syslog&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;reception&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;#$&lt;/span&gt;&lt;span class=&#34;nc&#34;&gt;ModLoad&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;imtcp&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;#$&lt;/span&gt;&lt;span class=&#34;nc&#34;&gt;InputTCPServerRun&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;514&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;####&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;GLOBAL&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;DIRECTIVES&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;####&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;#&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;Where&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;to&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;place&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;auxiliary&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;files&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;$&lt;/span&gt;&lt;span class=&#34;nc&#34;&gt;WorkDirectory&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;var&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;lib&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;rsyslog&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;#&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;Use&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;default&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;timestamp&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;format&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;$&lt;/span&gt;&lt;span class=&#34;nc&#34;&gt;ActionFileDefaultTemplate&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;RSYSLOG_TraditionalFileFormat&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;#&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;File&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;syncing&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;capability&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;is&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;disabled&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;by&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;default&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;This&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;feature&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;is&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;usually&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;not&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;required&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;#&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;not&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;useful&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;and&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;an&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;extreme&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;performance&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;hit&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;#$&lt;/span&gt;&lt;span class=&#34;nc&#34;&gt;ActionFileEnableSync&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;on&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;#&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;Include&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;all&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;config&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;files&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;in&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;etc&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;rsyslog&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;d&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;$&lt;/span&gt;&lt;span class=&#34;nc&#34;&gt;IncludeConfig&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;etc&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;rsyslog&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;d&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/*&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;conf&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;#&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;Turn&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;off&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;message&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;reception&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;via&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;local&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;log&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;socket&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;#&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;local&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;messages&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;are&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;retrieved&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;through&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;imjournal&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;now&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;$&lt;/span&gt;&lt;span class=&#34;nc&#34;&gt;OmitLocalLogging&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;on&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;#&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;File&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;to&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;store&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;the&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;position&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;in&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;the&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;journal&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;$&lt;/span&gt;&lt;span class=&#34;nc&#34;&gt;IMJournalStateFile&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;imjournal&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;state&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;####&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;RULES&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;####&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;#&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;Log&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;all&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;kernel&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;messages&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;to&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;the&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;console&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;#&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;Logging&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;much&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;else&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;clutters&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;up&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;the&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;screen&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;cp&#34;&gt;#kern.*                                                 /dev/console&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;#&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;Log&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;anything&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;except&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;mail&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;of&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;level&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;info&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;or&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;higher&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;#&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;Don&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;t log private authentication messages!
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s1&#34;&gt;*.info;mail.none;authpriv.none;cron.none                /var/log/messages
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s1&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s1&#34;&gt;# The authpriv file has restricted access.
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s1&#34;&gt;authpriv.*                                              /var/log/secure.log
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s1&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s1&#34;&gt;# Log all the mail messages in one place.
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s1&#34;&gt;mail.*                                                  -/var/log/maillog.log
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s1&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s1&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s1&#34;&gt;# Log cron stuff
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s1&#34;&gt;cron.*                                                  /var/log/cron.log
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s1&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s1&#34;&gt;# Everybody gets emergency messages
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s1&#34;&gt;*.emerg                                                 :omusrmsg:*
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s1&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s1&#34;&gt;# Save news errors of level crit and higher in a special file.
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s1&#34;&gt;uucp,news.crit                                          /var/log/spooler.log
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s1&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s1&#34;&gt;# Save boot messages also to boot.log
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s1&#34;&gt;local7.*                                                /var/log/boot.log
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s1&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s1&#34;&gt;#*.* 							                        @@172.16.0.223:514
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s1&#34;&gt;:msg, contains, &amp;#34;PHP&amp;#34;					                @172.16.0.223       #紀錄在messages裡有&amp;#34;PHP&amp;#34;關鍵字的LOG
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s1&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s1&#34;&gt;#include(file=&amp;#34;/etc/rsyslog.d/*.conf&amp;#34;)
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s1&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s1&#34;&gt;#:programname,isequal,&amp;#34;dhclient&amp;#34;                         /var/log/dhclient.log
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s1&#34;&gt;#:programname,isequal,&amp;#34;ec2net&amp;#34;                           /var/log/dhclient.log
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s1&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s1&#34;&gt;# ### begin forwarding rule ###
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s1&#34;&gt;# The statement between the begin ... end define a SINGLE forwarding
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s1&#34;&gt;# rule. They belong together, do NOT split them. If you create multiple
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s1&#34;&gt;# forwarding rules, duplicate the whole block!
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s1&#34;&gt;# Remote Logging (we use TCP for reliable delivery)
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s1&#34;&gt;#
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s1&#34;&gt;# An on-disk queue is created for this action. If the remote host is
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s1&#34;&gt;# down, messages are spooled to disk and sent when it is up again.
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s1&#34;&gt;#&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;$&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;ActionQueueFileName&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt; fwdRule1 # unique name prefix for spool files
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s1&#34;&gt;#&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;$&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;ActionQueueMaxDiskSpace&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt; 1g   # 1gb space limit (use as much as possible)
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;$&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;ActionQueueSaveOnShutdown&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt; on # save messages to disk on shutdown
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s1&#34;&gt;#&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;$&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;ActionQueueType&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt; LinkedList   # run asynchronously
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s1&#34;&gt;#&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;$&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;ActionResumeRetryCount&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt; -1    # infinite retries if host is down
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s1&#34;&gt;# remote host is: name/ip:port, e.g. 192.168.0.1:514, port optional
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s1&#34;&gt;#*.* @@remote-host:514
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s1&#34;&gt;# ### end of the forwarding rule ###
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;$&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;IncludeConfig&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt; /etc/rsyslog.d/*.conf
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;RSYSLOG 服務重啟&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;systemctl restart rsyslog
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;NGINX 設定檔配置 (web-server-log)&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;server {
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    listen 1515;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    listen [::]:1515;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    server_name note.laurance.com;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        location  / {
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;#       auth_basic      &amp;#34;authentication&amp;#34;;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;#       auth_basic_user_file conf/mypasswords/.hugopass.dev;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        proxy_set_header X-Real-IP $remote_addr;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        proxy_redirect off;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        proxy_http_version 1.1;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        proxy_pass http://127.0.0.1:1313;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        proxy_set_header X_FORWARDED_HOST $host;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        proxy_set_header Host $http_host;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        proxy_ignore_client_abort on;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        proxy_read_timeout 300;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        proxy_ignore_headers &amp;#34;Cache-Control&amp;#34;;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        add_header X-Cache &amp;#34;$upstream_cache_status from $server_addr&amp;#34;;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        add_header Cache-Control  max-age=60;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        proxy_cache_valid  304 1m;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;#       proxy_cache two;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        proxy_cache_key $host$uri$is_args$args;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  }
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;#    auth_basic      &amp;#34;authentication&amp;#34;;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;#    auth_basic_user_file conf/mypasswords/.hugopass.dev;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    access_log logs/hugo-server/hugo-server.acc access;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    access_log  syslog:server=172.16.0.223:514,tag=note_laurance_orz  access;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;NGINX 服務重啟&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;/usr/local/web/nginx/sbin/nginx -t
+
+/usr/local/web/nginx/sbin/nginx -s reload
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;PHP設定檔配置 (定義 error_log 位置及層級)&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;vim /usr/local/web/php/etc/php-fpm.conf
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/rsyslog%E6%97%A5%E8%AA%8C%E9%81%A0%E7%AB%AF%E9%9B%86%E4%B8%AD%E5%BC%8F%E7%AE%A1%E7%90%86/0002.png&#34;
+	width=&#34;1907&#34;
+	height=&#34;835&#34;
+	srcset=&#34;https://note.laurance.ml/p/rsyslog%E6%97%A5%E8%AA%8C%E9%81%A0%E7%AB%AF%E9%9B%86%E4%B8%AD%E5%BC%8F%E7%AE%A1%E7%90%86/0002_hu7cf8313bc3f1c050dc1ee18f476eb5df_57002_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/rsyslog%E6%97%A5%E8%AA%8C%E9%81%A0%E7%AB%AF%E9%9B%86%E4%B8%AD%E5%BC%8F%E7%AE%A1%E7%90%86/0002_hu7cf8313bc3f1c050dc1ee18f476eb5df_57002_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;228&#34;
+		data-flex-basis=&#34;548px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;##SERVER&lt;/p&gt;
+&lt;p&gt;RSYSLOG設定檔配置&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;vim /etc/rsyslog.conf
+&lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-v&#34; data-lang=&#34;v&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;#&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;rsyslog&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;configuration&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;file&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;#&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;For&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;more&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;information&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;see&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;usr&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;share&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;doc&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;rsyslog&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-*/&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;rsyslog_conf&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;html&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;#&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;If&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;you&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;experience&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;problems&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;see&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;http&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;//www.rsyslog.com/doc/troubleshoot.html
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;####&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;MODULES&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;####&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;#&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;The&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;imjournal&lt;/span&gt; &lt;span class=&#34;kn&#34;&gt;module&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;bellow&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;is&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;now&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;used&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;as&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;a&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;message&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;source&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;instead&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;of&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;imuxsock&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;$&lt;/span&gt;&lt;span class=&#34;nc&#34;&gt;ModLoad&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;imuxsock&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;#&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;provides&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;support&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;local&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;system&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;logging&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;e&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;g&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;via&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;logger&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;command&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;$&lt;/span&gt;&lt;span class=&#34;nc&#34;&gt;ModLoad&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;imjournal&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;#&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;provides&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;access&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;to&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;the&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;systemd&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;journal&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;#$&lt;/span&gt;&lt;span class=&#34;nc&#34;&gt;ModLoad&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;imklog&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;#&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;reads&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;kernel&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;messages&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;the&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;same&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;are&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;read&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;from&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;journald&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;#$&lt;/span&gt;&lt;span class=&#34;nc&#34;&gt;ModLoad&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;immark&lt;/span&gt;  &lt;span class=&#34;o&#34;&gt;#&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;provides&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;--&lt;/span&gt;&lt;span class=&#34;nc&#34;&gt;MARK&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;--&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;message&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;capability&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;#&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;Provides&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;UDP&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;syslog&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;reception&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;$&lt;/span&gt;&lt;span class=&#34;nc&#34;&gt;ModLoad&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;imudp&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;$&lt;/span&gt;&lt;span class=&#34;nc&#34;&gt;UDPServerRun&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;514&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;#&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;Provides&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;TCP&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;syslog&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;reception&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;$&lt;/span&gt;&lt;span class=&#34;nc&#34;&gt;ModLoad&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;imtcp&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;$&lt;/span&gt;&lt;span class=&#34;nc&#34;&gt;InputTCPServerRun&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;514&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;####&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;GLOBAL&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;DIRECTIVES&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;####&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;#&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;Where&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;to&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;place&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;auxiliary&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;files&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;$&lt;/span&gt;&lt;span class=&#34;nc&#34;&gt;WorkDirectory&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;var&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;lib&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;rsyslog&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;#&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;Use&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;default&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;timestamp&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;format&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;$&lt;/span&gt;&lt;span class=&#34;nc&#34;&gt;ActionFileDefaultTemplate&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;RSYSLOG_TraditionalFileFormat&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;#&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;File&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;syncing&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;capability&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;is&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;disabled&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;by&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;default&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;This&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;feature&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;is&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;usually&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;not&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;required&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;#&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;not&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;useful&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;and&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;an&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;extreme&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;performance&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;hit&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;#$&lt;/span&gt;&lt;span class=&#34;nc&#34;&gt;ActionFileEnableSync&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;on&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;#&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;Include&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;all&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;config&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;files&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;in&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;etc&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;rsyslog&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;d&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;$&lt;/span&gt;&lt;span class=&#34;nc&#34;&gt;IncludeConfig&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;etc&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;rsyslog&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;d&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/*&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;conf&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;#&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;Turn&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;off&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;message&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;reception&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;via&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;local&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;log&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;socket&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;#&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;local&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;messages&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;are&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;retrieved&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;through&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;imjournal&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;now&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;$&lt;/span&gt;&lt;span class=&#34;nc&#34;&gt;OmitLocalLogging&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;on&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;#&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;File&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;to&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;store&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;the&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;position&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;in&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;the&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;journal&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;$&lt;/span&gt;&lt;span class=&#34;nc&#34;&gt;IMJournalStateFile&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;imjournal&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;state&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;####&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;RULES&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;####&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;#&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;Log&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;all&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;kernel&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;messages&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;to&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;the&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;console&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;#&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;Logging&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;much&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;else&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;clutters&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;up&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;the&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;screen&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;cp&#34;&gt;#kern.*                                                 /dev/console&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;#&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;Log&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;anything&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;except&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;mail&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;of&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;level&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;info&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;or&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;higher&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;#&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;Don&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;t log private authentication messages!
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s1&#34;&gt;*.info;mail.none;authpriv.none;cron.none                /var/log/messages
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s1&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s1&#34;&gt;# The authpriv file has restricted access.
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s1&#34;&gt;authpriv.*                                              /var/log/secure
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s1&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s1&#34;&gt;# Log all the mail messages in one place.
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s1&#34;&gt;mail.*                                                  -/var/log/maillog
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s1&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s1&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s1&#34;&gt;# Log cron stuff
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s1&#34;&gt;cron.*                                                  /var/log/cron
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s1&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s1&#34;&gt;# Everybody gets emergency messages
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s1&#34;&gt;*.emerg                                                 :omusrmsg:*
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s1&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s1&#34;&gt;# Save news errors of level crit and higher in a special file.
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s1&#34;&gt;uucp,news.crit                                          /var/log/spooler
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s1&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s1&#34;&gt;# Save boot messages also to boot.log
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s1&#34;&gt;#local7.*                                                /var/log/boot.log
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s1&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s1&#34;&gt;#:programname,isequal,&amp;#34;dhclient&amp;#34;                         /var/log/dhclient.log
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s1&#34;&gt;#:programname,isequal,&amp;#34;ec2net&amp;#34;                           /var/log/dhclient.log
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s1&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s1&#34;&gt;# ### begin forwarding rule ###
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s1&#34;&gt;# The statement between the begin ... end define a SINGLE forwarding
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s1&#34;&gt;# rule. They belong together, do NOT split them. If you create multiple
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s1&#34;&gt;# forwarding rules, duplicate the whole block!
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s1&#34;&gt;# Remote Logging (we use TCP for reliable delivery)
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s1&#34;&gt;#
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s1&#34;&gt;# An on-disk queue is created for this action. If the remote host is
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s1&#34;&gt;# down, messages are spooled to disk and sent when it is up again.
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s1&#34;&gt;#&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;$&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;ActionQueueFileName&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt; fwdRule1 # unique name prefix for spool files
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s1&#34;&gt;#&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;$&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;ActionQueueMaxDiskSpace&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt; 1g   # 1gb space limit (use as much as possible)
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s1&#34;&gt;#&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;$&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;ActionQueueSaveOnShutdown&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt; on # save messages to disk on shutdown
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s1&#34;&gt;#&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;$&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;ActionQueueType&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt; LinkedList   # run asynchronously
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s1&#34;&gt;#&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;$&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;ActionResumeRetryCount&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt; -1    # infinite retries if host is down
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s1&#34;&gt;# remote host is: name/ip:port, e.g. 192.168.0.1:514, port optional
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s1&#34;&gt;#*.* @@remote-host:514
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s1&#34;&gt;# ### end of the forwarding rule ###
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;$&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;IncludeConfig&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt; /etc/rsyslog.d/*.conf
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;##在rsyslog.d目錄下建立 xxx.conf 定義 Client 端 log 的標籤及路徑&lt;/p&gt;
+&lt;p&gt;vim /etc/rsyslog.d/note_laurance.conf&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;:syslogtag, contains, &amp;quot;note_laurance_orz&amp;quot; /home/note-laurance-log/note.laurance.log
+&amp;amp; stop
+.
+.
+.
+.
+.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;vim /etc/rsyslog.d/php_error.conf&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;if  $msg contains &#39;PHP&#39;  then /home/note-laurance-log/php_errors.acc
+&amp;amp; stop
+.
+.
+.
+.
+.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;RSYSLOG 服務重啟&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;systemctl restart rsyslog
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;##驗證:&lt;/p&gt;
+&lt;p&gt;訪問 note.laurance.com:1515 可以看到 LOG 被同步寫進指定位置了&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/rsyslog%E6%97%A5%E8%AA%8C%E9%81%A0%E7%AB%AF%E9%9B%86%E4%B8%AD%E5%BC%8F%E7%AE%A1%E7%90%86/0003.png&#34;
+	width=&#34;1901&#34;
+	height=&#34;836&#34;
+	srcset=&#34;https://note.laurance.ml/p/rsyslog%E6%97%A5%E8%AA%8C%E9%81%A0%E7%AB%AF%E9%9B%86%E4%B8%AD%E5%BC%8F%E7%AE%A1%E7%90%86/0003_hub0b268acf61b4225420db1a0076db6ea_113326_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/rsyslog%E6%97%A5%E8%AA%8C%E9%81%A0%E7%AB%AF%E9%9B%86%E4%B8%AD%E5%BC%8F%E7%AE%A1%E7%90%86/0003_hub0b268acf61b4225420db1a0076db6ea_113326_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;227&#34;
+		data-flex-basis=&#34;545px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;##建立每天排程LOG輪詢&lt;/p&gt;
+&lt;p&gt;建立排程 shell&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;vim /root/logrotate/logrotate.sh
+&lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;cp&#34;&gt;#!/bin/bash
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;cp&#34;&gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;/usr/sbin/logrotate -f /root/logrotate/weblog
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;pre&gt;&lt;code&gt;vim /root/logrotate/weblog
+&lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;/home/note-laurance-log/*.log {
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;           daily
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;           rotate 30
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;           create
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;           sharedscripts
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;           postrotate
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;           /bin/systemctl restart rsyslog.service
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;           endscript
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;/home/note-laurance-log/*.acc {
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;           daily
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;           rotate 30
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;           create
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;           sharedscripts
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;           postrotate
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;           /bin/systemctl restart rsyslog.service
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;           endscript
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;pre&gt;&lt;code&gt;crontab -e
+
+10 05 * * * sh /root/logrotate/logrotate.sh
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;crontab -l 確認&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.rsyslog.com/doc/v8-stable/index.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Rsyslog 官方文件&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+
+</description>
+        </item>
+        
+    </channel>
+</rss>

@@ -1,0 +1,597 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Iptables on Laurance&#39;s Note</title>
+        <link>https://note.laurance.ml/tags/iptables/</link>
+        <description>Recent content in Iptables on Laurance&#39;s Note</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Mon, 05 Dec 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://note.laurance.ml/tags/iptables/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Linux-利用ipset建立iptables集合 [實現封鎖國家IP] </title>
+        <link>https://note.laurance.ml/p/linux-%E5%88%A9%E7%94%A8ipset%E5%BB%BA%E7%AB%8Biptables%E9%9B%86%E5%90%88-%E5%AF%A6%E7%8F%BE%E5%B0%81%E9%8E%96%E5%9C%8B%E5%AE%B6ip/</link>
+        <pubDate>Mon, 05 Dec 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://note.laurance.ml/p/linux-%E5%88%A9%E7%94%A8ipset%E5%BB%BA%E7%AB%8Biptables%E9%9B%86%E5%90%88-%E5%AF%A6%E7%8F%BE%E5%B0%81%E9%8E%96%E5%9C%8B%E5%AE%B6ip/</guid>
+        <description>&lt;img src="https://note.laurance.ml/p/linux-%E5%88%A9%E7%94%A8ipset%E5%BB%BA%E7%AB%8Biptables%E9%9B%86%E5%90%88-%E5%AF%A6%E7%8F%BE%E5%B0%81%E9%8E%96%E5%9C%8B%E5%AE%B6ip/100.jpg" alt="Featured image of post Linux-利用ipset建立iptables集合 [實現封鎖國家IP] " /&gt;&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.ipdeny.com/ipblocks/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;DENY - 國家IP&lt;/a&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;yum -y install ipset
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;下載日本IP文件檔&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;wget http://www.ipdeny.com/ipblocks/data/aggregated/jp-aggregated.zone
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;建立一個放日本IP的集合&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;ipset create jpip hash:net maxelem 65536
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;建立一支shell來抓取文件檔中的IP&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;vim jpip.sh
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/linux-%E5%88%A9%E7%94%A8ipset%E5%BB%BA%E7%AB%8Biptables%E9%9B%86%E5%90%88-%E5%AF%A6%E7%8F%BE%E5%B0%81%E9%8E%96%E5%9C%8B%E5%AE%B6ip/001.png&#34;
+	width=&#34;669&#34;
+	height=&#34;313&#34;
+	srcset=&#34;https://note.laurance.ml/p/linux-%E5%88%A9%E7%94%A8ipset%E5%BB%BA%E7%AB%8Biptables%E9%9B%86%E5%90%88-%E5%AF%A6%E7%8F%BE%E5%B0%81%E9%8E%96%E5%9C%8B%E5%AE%B6ip/001_huc001fa32ffad83dd0c2afb80b19d0cb3_9744_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/linux-%E5%88%A9%E7%94%A8ipset%E5%BB%BA%E7%AB%8Biptables%E9%9B%86%E5%90%88-%E5%AF%A6%E7%8F%BE%E5%B0%81%E9%8E%96%E5%9C%8B%E5%AE%B6ip/001_huc001fa32ffad83dd0c2afb80b19d0cb3_9744_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;213&#34;
+		data-flex-basis=&#34;512px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;查看目前集合中IP為0&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;ipset list jpip
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/linux-%E5%88%A9%E7%94%A8ipset%E5%BB%BA%E7%AB%8Biptables%E9%9B%86%E5%90%88-%E5%AF%A6%E7%8F%BE%E5%B0%81%E9%8E%96%E5%9C%8B%E5%AE%B6ip/002.png&#34;
+	width=&#34;1901&#34;
+	height=&#34;423&#34;
+	srcset=&#34;https://note.laurance.ml/p/linux-%E5%88%A9%E7%94%A8ipset%E5%BB%BA%E7%AB%8Biptables%E9%9B%86%E5%90%88-%E5%AF%A6%E7%8F%BE%E5%B0%81%E9%8E%96%E5%9C%8B%E5%AE%B6ip/002_hu285a36b630b12aff3bc1cdf8cf2003e7_27663_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/linux-%E5%88%A9%E7%94%A8ipset%E5%BB%BA%E7%AB%8Biptables%E9%9B%86%E5%90%88-%E5%AF%A6%E7%8F%BE%E5%B0%81%E9%8E%96%E5%9C%8B%E5%AE%B6ip/002_hu285a36b630b12aff3bc1cdf8cf2003e7_27663_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;449&#34;
+		data-flex-basis=&#34;1078px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;執行shell之後集合中的IP為2946&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;ipset list jpip |head -n 8
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/linux-%E5%88%A9%E7%94%A8ipset%E5%BB%BA%E7%AB%8Biptables%E9%9B%86%E5%90%88-%E5%AF%A6%E7%8F%BE%E5%B0%81%E9%8E%96%E5%9C%8B%E5%AE%B6ip/003.png&#34;
+	width=&#34;1901&#34;
+	height=&#34;430&#34;
+	srcset=&#34;https://note.laurance.ml/p/linux-%E5%88%A9%E7%94%A8ipset%E5%BB%BA%E7%AB%8Biptables%E9%9B%86%E5%90%88-%E5%AF%A6%E7%8F%BE%E5%B0%81%E9%8E%96%E5%9C%8B%E5%AE%B6ip/003_hu054f40f57982834dbe83eef72986c690_28984_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/linux-%E5%88%A9%E7%94%A8ipset%E5%BB%BA%E7%AB%8Biptables%E9%9B%86%E5%90%88-%E5%AF%A6%E7%8F%BE%E5%B0%81%E9%8E%96%E5%9C%8B%E5%AE%B6ip/003_hu054f40f57982834dbe83eef72986c690_28984_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;442&#34;
+		data-flex-basis=&#34;1061px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;查看list-jpip中有多少個IP (從第九行開始算)&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;ipset list jpip |tail -n +9 |wc -l
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;對照文檔中的IP數量是否一致&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;cat jp-aggregated.zone |wc -l
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;最後使用iptables將此集合中IP進來的封包 DROP掉&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;iptables -I INPUT -m set --match-set jpip src -j DROP 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/linux-%E5%88%A9%E7%94%A8ipset%E5%BB%BA%E7%AB%8Biptables%E9%9B%86%E5%90%88-%E5%AF%A6%E7%8F%BE%E5%B0%81%E9%8E%96%E5%9C%8B%E5%AE%B6ip/004.png&#34;
+	width=&#34;1903&#34;
+	height=&#34;445&#34;
+	srcset=&#34;https://note.laurance.ml/p/linux-%E5%88%A9%E7%94%A8ipset%E5%BB%BA%E7%AB%8Biptables%E9%9B%86%E5%90%88-%E5%AF%A6%E7%8F%BE%E5%B0%81%E9%8E%96%E5%9C%8B%E5%AE%B6ip/004_hud7aabbc837f38049541c2cc4c763bd2a_28331_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/linux-%E5%88%A9%E7%94%A8ipset%E5%BB%BA%E7%AB%8Biptables%E9%9B%86%E5%90%88-%E5%AF%A6%E7%8F%BE%E5%B0%81%E9%8E%96%E5%9C%8B%E5%AE%B6ip/004_hud7aabbc837f38049541c2cc4c763bd2a_28331_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;427&#34;
+		data-flex-basis=&#34;1026px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.ipdeny.com/ipblocks/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;IPSET 官網&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;src 表示源地址，dst表示目標地址&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;hash:net 用什麼進行hash ，也可以是hash:ip 就只能ip不能網段 hash:ip,port ip+port進行hash&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;也可以有timeout 數字 這種參數，指定這個集合裏默認的超時時間單位s，超時後會自動把裏面的對象刪除&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;[常用語法]&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;ipset del yoda x.x.x.x    # 從 yoda 集合中刪除內容  
+
+ipset list yoda           # 查看 yoda 集合內容  
+
+ipset list                # 查看所有集合的內容  
+
+ipset flush yoda          # 清空 yoda 集合  
+
+ipset flush               # 清空所有集合  
+
+ipset destroy yoda        # 銷毀 yoda 集合  
+
+ipset destroy             # 銷毀所有集合  
+
+ipset save yoda           # 輸出 yoda 集合內容到標準輸出  
+
+ipset save                # 輸出所有集合內容到標準輸出  
+
+ipset restore             # 根據輸入內容恢復集合內容  
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+
+</description>
+        </item>
+        <item>
+        <title>Linux-Iptables-清除所有規則</title>
+        <link>https://note.laurance.ml/p/linux-iptables-%E6%B8%85%E9%99%A4%E6%89%80%E6%9C%89%E8%A6%8F%E5%89%87/</link>
+        <pubDate>Fri, 18 Nov 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://note.laurance.ml/p/linux-iptables-%E6%B8%85%E9%99%A4%E6%89%80%E6%9C%89%E8%A6%8F%E5%89%87/</guid>
+        <description>&lt;img src="https://note.laurance.ml/p/linux-iptables-%E6%B8%85%E9%99%A4%E6%89%80%E6%9C%89%E8%A6%8F%E5%89%87/100.jpg" alt="Featured image of post Linux-Iptables-清除所有規則" /&gt;&lt;pre&gt;&lt;code&gt;# 清除預設表 filter 中，所有規則鏈中的規則    
+iptables -F
+
+# 清除預設表 filter 中，使用者自訂鏈中的規則   
+iptables -X
+
+# 將所有的 chain 的計數與流量統計都歸零 
+iptables -Z
+
+# 允許所有輸入的封包
+iptables -P INPUT  ACCEPT
+
+# 允許所有輸出的封包
+iptables -P OUTPUT  ACCEPT
+
+# 允許所有轉發的封包
+iptables -P FORWARD  ACCEPT
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+
+</description>
+        </item>
+        <item>
+        <title>Linux-Iptables-移除某一條規則</title>
+        <link>https://note.laurance.ml/p/linux-iptables-%E7%A7%BB%E9%99%A4%E6%9F%90%E4%B8%80%E6%A2%9D%E8%A6%8F%E5%89%87/</link>
+        <pubDate>Fri, 18 Nov 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://note.laurance.ml/p/linux-iptables-%E7%A7%BB%E9%99%A4%E6%9F%90%E4%B8%80%E6%A2%9D%E8%A6%8F%E5%89%87/</guid>
+        <description>&lt;img src="https://note.laurance.ml/p/linux-iptables-%E7%A7%BB%E9%99%A4%E6%9F%90%E4%B8%80%E6%A2%9D%E8%A6%8F%E5%89%87/100.jpg" alt="Featured image of post Linux-Iptables-移除某一條規則" /&gt;&lt;pre&gt;&lt;code&gt;將規則用號碼列出,並篩出該IP
+iptables -nL --line-number |grep 52.52.52.52
+
+將該chain裡的第41行砍掉
+iptables -D deny 41
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+
+</description>
+        </item>
+        <item>
+        <title>Linux-Iptables-轉發PORT</title>
+        <link>https://note.laurance.ml/p/linux-iptables-%E8%BD%89%E7%99%BCport/</link>
+        <pubDate>Thu, 20 Oct 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://note.laurance.ml/p/linux-iptables-%E8%BD%89%E7%99%BCport/</guid>
+        <description>&lt;img src="https://note.laurance.ml/p/linux-iptables-%E8%BD%89%E7%99%BCport/100.jpg" alt="Featured image of post Linux-Iptables-轉發PORT" /&gt;&lt;p&gt;&lt;strong&gt;將 80 PROT 轉向 8000 PORT&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;iptables -t nat -A PREROUTING -p tcp --dport 80 -j REDIRECT --to-ports 8000
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;利用 OUTPUT 的規則，從本機連到自己&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;iptables -t nat -A OUTPUT -p tcp -d localhost --dport 80 -j REDIRECT --to-ports 8000
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+
+</description>
+        </item>
+        <item>
+        <title>centos7 內核3.10.0-957 iptables 使用geoip過濾國家</title>
+        <link>https://note.laurance.ml/p/centos7-%E5%85%A7%E6%A0%B83.10.0-957-iptables-%E4%BD%BF%E7%94%A8geoip%E9%81%8E%E6%BF%BE%E5%9C%8B%E5%AE%B6/</link>
+        <pubDate>Thu, 08 Sep 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://note.laurance.ml/p/centos7-%E5%85%A7%E6%A0%B83.10.0-957-iptables-%E4%BD%BF%E7%94%A8geoip%E9%81%8E%E6%BF%BE%E5%9C%8B%E5%AE%B6/</guid>
+        <description>&lt;img src="https://note.laurance.ml/p/centos7-%E5%85%A7%E6%A0%B83.10.0-957-iptables-%E4%BD%BF%E7%94%A8geoip%E9%81%8E%E6%BF%BE%E5%9C%8B%E5%AE%B6/100.jpg" alt="Featured image of post centos7 內核3.10.0-957 iptables 使用geoip過濾國家" /&gt;&lt;pre&gt;&lt;code&gt;安裝必要套件
+yum install xz gcc make wget unzip kernel-devel-$(uname -r) iptablesdevel.$(uname -p) perl-Text-CSV_XS
+
+確認目前的kernel版本
+uname -r
+
+確認底下的目錄名稱必須要跟上個步驟的版號完全相同，若不同時請確認yum安裝的kerneldevel套件版本，對不上時有下列幾種做法
+ls /usr/src/kernels/
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/centos7-%E5%85%A7%E6%A0%B83.10.0-957-iptables-%E4%BD%BF%E7%94%A8geoip%E9%81%8E%E6%BF%BE%E5%9C%8B%E5%AE%B6/01.png&#34;
+	width=&#34;622&#34;
+	height=&#34;143&#34;
+	srcset=&#34;https://note.laurance.ml/p/centos7-%E5%85%A7%E6%A0%B83.10.0-957-iptables-%E4%BD%BF%E7%94%A8geoip%E9%81%8E%E6%BF%BE%E5%9C%8B%E5%AE%B6/01_hu7728b59a0f89a7c2cd75280faf811204_7623_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/centos7-%E5%85%A7%E6%A0%B83.10.0-957-iptables-%E4%BD%BF%E7%94%A8geoip%E9%81%8E%E6%BF%BE%E5%9C%8B%E5%AE%B6/01_hu7728b59a0f89a7c2cd75280faf811204_7623_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;434&#34;
+		data-flex-basis=&#34;1043px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;1) 一般、非客制化Linux版本，請參照下述
+
+移除目前裝的版本
+rpm -e kernel-devel
+
+至 rpm包網站 http://rpm.pbone.net 下載與kernel相同版號的 kernel-devel
+wget *.rpm
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/centos7-%E5%85%A7%E6%A0%B83.10.0-957-iptables-%E4%BD%BF%E7%94%A8geoip%E9%81%8E%E6%BF%BE%E5%9C%8B%E5%AE%B6/02.png&#34;
+	width=&#34;903&#34;
+	height=&#34;509&#34;
+	srcset=&#34;https://note.laurance.ml/p/centos7-%E5%85%A7%E6%A0%B83.10.0-957-iptables-%E4%BD%BF%E7%94%A8geoip%E9%81%8E%E6%BF%BE%E5%9C%8B%E5%AE%B6/02_huf269c4bc051504ca1d92d556515a4667_46140_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/centos7-%E5%85%A7%E6%A0%B83.10.0-957-iptables-%E4%BD%BF%E7%94%A8geoip%E9%81%8E%E6%BF%BE%E5%9C%8B%E5%AE%B6/02_huf269c4bc051504ca1d92d556515a4667_46140_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;177&#34;
+		data-flex-basis=&#34;425px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;解壓kernel-devel套件
+rpm -hiv *.rpm
+
+確認目前的kernel版本
+ls /usr/src/kernels/
+
+確認套件版本
+uname -r
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;pre&gt;&lt;code&gt;2) Aamzon EC2請參照下述
+
+移除目前裝的版本
+rpm -e kernel-devel
+
+kernel版本升級
+yum install kernel
+
+重開機
+reboot
+
+確認目前的kernel版本
+uname -r
+
+再次yum安裝kernel-devel套件
+yum install kernel-devel-$(uname -r)
+
+確認套件版本
+ls /usr/src/kernels/
+
+確認iptables版本
+iptables -V
+
+下載與iptables相對應的套件版本
+wget xtables-addons-*.tar.xz
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://sourceforge.net/projects/xtables-addons/files/Xtablesaddons/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Iptables套件載點&lt;/a&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;#iptables 1.47請用 xtables-addons-1.47.tar.xz
+#aws-ec2 請用 xtables-addons-3.0.tar.xz
+
+tar Jxf xtables-addons-1.47.tar.xz
+cd xtables-addons-1.47
+./configure
+make
+make install
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;pre&gt;&lt;code&gt;編譯遇到以下錯誤
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/centos7-%E5%85%A7%E6%A0%B83.10.0-957-iptables-%E4%BD%BF%E7%94%A8geoip%E9%81%8E%E6%BF%BE%E5%9C%8B%E5%AE%B6/03.png&#34;
+	width=&#34;635&#34;
+	height=&#34;61&#34;
+	srcset=&#34;https://note.laurance.ml/p/centos7-%E5%85%A7%E6%A0%B83.10.0-957-iptables-%E4%BD%BF%E7%94%A8geoip%E9%81%8E%E6%BF%BE%E5%9C%8B%E5%AE%B6/03_huc86695b5205f7d13779edf61321cfcf5_4459_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/centos7-%E5%85%A7%E6%A0%B83.10.0-957-iptables-%E4%BD%BF%E7%94%A8geoip%E9%81%8E%E6%BF%BE%E5%9C%8B%E5%AE%B6/03_huc86695b5205f7d13779edf61321cfcf5_4459_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;1040&#34;
+		data-flex-basis=&#34;2498px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;yum -y install iptables-devel
+
+其中若有遇到問題，可調整mconfig中的模組留geoip即可。
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;pre&gt;&lt;code&gt;若遇到 xtnu_ipv6_find_hdr&#39; 錯誤處理程序如下
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/centos7-%E5%85%A7%E6%A0%B83.10.0-957-iptables-%E4%BD%BF%E7%94%A8geoip%E9%81%8E%E6%BF%BE%E5%9C%8B%E5%AE%B6/04.png&#34;
+	width=&#34;1099&#34;
+	height=&#34;390&#34;
+	srcset=&#34;https://note.laurance.ml/p/centos7-%E5%85%A7%E6%A0%B83.10.0-957-iptables-%E4%BD%BF%E7%94%A8geoip%E9%81%8E%E6%BF%BE%E5%9C%8B%E5%AE%B6/04_hu662da645d3a70b261e54ae9d4a07b6e3_225698_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/centos7-%E5%85%A7%E6%A0%B83.10.0-957-iptables-%E4%BD%BF%E7%94%A8geoip%E9%81%8E%E6%BF%BE%E5%9C%8B%E5%AE%B6/04_hu662da645d3a70b261e54ae9d4a07b6e3_225698_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;281&#34;
+		data-flex-basis=&#34;676px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;使用/* */注解此行
+vim /lib/modules/`uname -r`/build/include/linux/autoconf.h
+#define CONFIG_IP6_NF_IPTABLES_MODULE 1 #
+
+或是進入extensions資料夾執行
+sed -i &#39;/define WITH_IPV6/d&#39; compat_xtables.c xt_psd.c xt_length2.c xt_TARPIT.c xt_SYSRQ.c xt_RAWNAT.c
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/centos7-%E5%85%A7%E6%A0%B83.10.0-957-iptables-%E4%BD%BF%E7%94%A8geoip%E9%81%8E%E6%BF%BE%E5%9C%8B%E5%AE%B6/05.png&#34;
+	width=&#34;1059&#34;
+	height=&#34;358&#34;
+	srcset=&#34;https://note.laurance.ml/p/centos7-%E5%85%A7%E6%A0%B83.10.0-957-iptables-%E4%BD%BF%E7%94%A8geoip%E9%81%8E%E6%BF%BE%E5%9C%8B%E5%AE%B6/05_hu10076990fd8f0b4d445ab908313f56ef_241181_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/centos7-%E5%85%A7%E6%A0%B83.10.0-957-iptables-%E4%BD%BF%E7%94%A8geoip%E9%81%8E%E6%BF%BE%E5%9C%8B%E5%AE%B6/05_hu10076990fd8f0b4d445ab908313f56ef_241181_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;295&#34;
+		data-flex-basis=&#34;709px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;若鍽譯時遇到 /lib/modules/XXXX.x86_64/build/ 路徑錯誤時
+重新連結到正確的目錄
+
+cd /lib/modules/XXXX.x86_64/
+rm -rf build
+ln -s ../../../usr/src/kernels/XXX.x86_64/ build  
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;pre&gt;&lt;code&gt;開始建立IP資料庫
+cd geoip
+
+若是使用付費版的GeoIP2 Databases源
+./xt_geoip_dl
+./xt_geoip_build GeoIPCountryWhois.csv
+
+若是使用免費版的GeoLite2 Databases源
+
+需要先注冊一個 maxmind.com 帳號後即可生成一個 License Key
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.maxmind.com/en/geolite2/signup?lang=en&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;註冊maxmind.com帳號&lt;/a&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;下載轉格式工具程式GeoLite2xtables
+wget https://github.com/mschmitt/GeoLite2xtables/archive/master.zip
+
+unzip master.zip
+
+cd GeoLite2xtables-master
+
+echo &amp;quot;YOUR_LICENSE_KEY=&#39;你的金鑰&#39;&amp;quot; &amp;gt;&amp;gt; geolite2.license
+
+echo &amp;quot;YOUR_LICENSE_KEY=&#39;tBobMt3HrPTWVJKP&#39;&amp;quot; &amp;gt;&amp;gt; geolite2.license
+
+./00_download_geolite2
+
+./10_download_countryinfo
+
+cat /tmp/GeoLite2-Country-Blocks-IPv4.csv | ./20_convert_geolite2 /tmp/CountryInfo.txt &amp;gt; ../GeoIPCountryWhois.csv
+
+cd ..
+
+./xt_geoip_build GeoIPCountryWhois.csv   
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;pre&gt;&lt;code&gt;若是遇到下圖錯誤表示perl缺少模組
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/centos7-%E5%85%A7%E6%A0%B83.10.0-957-iptables-%E4%BD%BF%E7%94%A8geoip%E9%81%8E%E6%BF%BE%E5%9C%8B%E5%AE%B6/06.png&#34;
+	width=&#34;1379&#34;
+	height=&#34;399&#34;
+	srcset=&#34;https://note.laurance.ml/p/centos7-%E5%85%A7%E6%A0%B83.10.0-957-iptables-%E4%BD%BF%E7%94%A8geoip%E9%81%8E%E6%BF%BE%E5%9C%8B%E5%AE%B6/06_hu5f171235978fd8f2acaa07e1d6afa820_298286_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/centos7-%E5%85%A7%E6%A0%B83.10.0-957-iptables-%E4%BD%BF%E7%94%A8geoip%E9%81%8E%E6%BF%BE%E5%9C%8B%E5%AE%B6/06_hu5f171235978fd8f2acaa07e1d6afa820_298286_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;345&#34;
+		data-flex-basis=&#34;829px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;yum install *YAML* perl-CPAN
+
+perl -MCPAN -e shell
+
+#預設回答yes即可
+
+cpan[1]&amp;gt; install NetAddr::IP
+
+cpan[1]&amp;gt; exit   
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;pre&gt;&lt;code&gt;mkdir /usr/share/xt_geoip
+
+mv BE LE /usr/share/xt_geoip/
+
+確認是否有安裝成功
+lsmod|grep geoip
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/centos7-%E5%85%A7%E6%A0%B83.10.0-957-iptables-%E4%BD%BF%E7%94%A8geoip%E9%81%8E%E6%BF%BE%E5%9C%8B%E5%AE%B6/07.png&#34;
+	width=&#34;1068&#34;
+	height=&#34;73&#34;
+	srcset=&#34;https://note.laurance.ml/p/centos7-%E5%85%A7%E6%A0%B83.10.0-957-iptables-%E4%BD%BF%E7%94%A8geoip%E9%81%8E%E6%BF%BE%E5%9C%8B%E5%AE%B6/07_hu830e06e2b630e52252ded4e9f4896f42_40290_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/centos7-%E5%85%A7%E6%A0%B83.10.0-957-iptables-%E4%BD%BF%E7%94%A8geoip%E9%81%8E%E6%BF%BE%E5%9C%8B%E5%AE%B6/07_hu830e06e2b630e52252ded4e9f4896f42_40290_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;1463&#34;
+		data-flex-basis=&#34;3511px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;一行命令中最多可以使用10個國家
+iptables -I INPUT -m geoip --src-cc PH,KR -j DROP
+
+只允許中國IP的TCP80連線
+iptables -A except -p TCP --dport 80 -m geoip --src-cc CN -j ACCEPT
+
+只允許中國IP的TCP80、443連線
+iptables -A except -p TCP -m multiport --dports 80,443 -m geoip --src-cc CN -j ACCEPT
+
+若是要加進火牆shell請用這組
+iptables -A pig -m geoip --src-cc tw -j DROP
+
+確認規則是不是有吃到
+iptables -n --list INPUT
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/centos7-%E5%85%A7%E6%A0%B83.10.0-957-iptables-%E4%BD%BF%E7%94%A8geoip%E9%81%8E%E6%BF%BE%E5%9C%8B%E5%AE%B6/08.png&#34;
+	width=&#34;910&#34;
+	height=&#34;157&#34;
+	srcset=&#34;https://note.laurance.ml/p/centos7-%E5%85%A7%E6%A0%B83.10.0-957-iptables-%E4%BD%BF%E7%94%A8geoip%E9%81%8E%E6%BF%BE%E5%9C%8B%E5%AE%B6/08_hu2d70219d79b450cdb3aab81d51a95067_76664_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/centos7-%E5%85%A7%E6%A0%B83.10.0-957-iptables-%E4%BD%BF%E7%94%A8geoip%E9%81%8E%E6%BF%BE%E5%9C%8B%E5%AE%B6/08_hu2d70219d79b450cdb3aab81d51a95067_76664_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;579&#34;
+		data-flex-basis=&#34;1391px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;hr&gt;
+
+</description>
+        </item>
+        <item>
+        <title>Linux-Iptables-永久關閉指令</title>
+        <link>https://note.laurance.ml/p/linux-iptables-%E6%B0%B8%E4%B9%85%E9%97%9C%E9%96%89%E6%8C%87%E4%BB%A4/</link>
+        <pubDate>Thu, 08 Sep 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://note.laurance.ml/p/linux-iptables-%E6%B0%B8%E4%B9%85%E9%97%9C%E9%96%89%E6%8C%87%E4%BB%A4/</guid>
+        <description>&lt;img src="https://note.laurance.ml/p/linux-iptables-%E6%B0%B8%E4%B9%85%E9%97%9C%E9%96%89%E6%8C%87%E4%BB%A4/100.jpg" alt="Featured image of post Linux-Iptables-永久關閉指令" /&gt;&lt;pre&gt;&lt;code&gt;查看防火牆狀態
+service iptables status
+
+永久性生效 (重啟不復原)
+chkconfig iptables on   (開啟)
+chkconfig iptables off  (關閉)
+
+即時性生效 (重啟後復原)
+service iptables start  (開啟)
+service iptables stop   (關閉)
+
+設置後重啟
+reboot
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+
+</description>
+        </item>
+        <item>
+        <title>Linux-Iptables參數</title>
+        <link>https://note.laurance.ml/p/linux-iptables%E5%8F%83%E6%95%B8/</link>
+        <pubDate>Wed, 03 Aug 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://note.laurance.ml/p/linux-iptables%E5%8F%83%E6%95%B8/</guid>
+        <description>&lt;img src="https://note.laurance.ml/p/linux-iptables%E5%8F%83%E6%95%B8/100.jpg" alt="Featured image of post Linux-Iptables參數" /&gt;&lt;pre&gt;&lt;code&gt;參數說明：
+
+-F ：清除所有的已訂定的規則；
+
+-X ：殺掉所有使用者建立的 tables ；
+
+-Z ：將所有的 chain 的計數與流量統計都歸零 
+
+-N ：建立新的規則鏈(chain)
+
+-E ：更改指定的規則鏈(chain)名稱
+
+-A ：追加規則:新增規則到某個規則鏈中，該規則將會成為規則鏈中的最後一條規則
+
+-R ：修改規則--&amp;gt;iptables -R INPUT 1 -s 192.168.12.0 -j DROP 取代現行規則，順序不變(1是位置)
+
+-I ：插入規則--&amp;gt;iptables -I INPUT 1 --dport 80 -j ACCEPT 插入一條規則，原本位置上的規則將會往後移動一個順位
+
+-L ：查看規則--&amp;gt;iptables -L INPUT 列出規則鏈中的所有規則
+
+-P ：policy , 定義過濾政策。 也就是未符合過濾條件之封包，預設的處理方式
+
+-t ：參數後跟上要單獨查看的表名 $IPTABLES -F -t nat (清空nat表)
+
+-p ：協定：tcp、upd、icmp...
+
+-m ：模組：state、mac、limit、owner、multiport...
+
+-m state --state :
+
+新的（NEW） — 某個封包請求開啟新的連線，例如 HTTP 請求。
+
+已建立（ESTABLISHED） — 屬於某個現有連線的封包。
+
+相關的（RELATED） — 屬於現有連線的封包，請求開啟一個新的連線，例如被動式 FTP 的連線，其連接埠為 20；但資料傳輸埠則是 1024 以上，未使用的連接埠。
+
+無效的（INVALID） — 在連結追蹤表中，不屬於任何連線的封包。
+
+lo  : 只要是本机进程内相互访问的，都会去到lo这张网卡上，所以在外部IP时对于iptables选择的是eth0这样的网卡，要捕获本机时是lo这个网卡
+
+-o ：網路介面：-o 為 out 網路介面就填 eth0... (用於 POSTROUTING、OUTPUT、FORWARD)
+
+-i ：網路介面：-i 為 in 網路介面就填 eth0... (用於 PREROUTING、INPUT、FORWARD)
+
+-s ：來源：可為 IP Address、IP 網段、網域名稱
+
+--sport：指定封包來源 Port、Port Range (配合 -p tcp、-p udp)
+
+-d ：目的地：可為 IP、IP 網段、網域名稱
+
+--dport：指定封包目的地 Port、Port Range (配合 -p tcp、-p udp)
+
+-j ：政策 / 目標：ACCEPT、DROP、REJECT、SNAT、DNAT、MASQUERADE、REDIRECT、RETURN...
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+
+</description>
+        </item>
+        <item>
+        <title>Linux-Iptables常用語法</title>
+        <link>https://note.laurance.ml/p/linux-iptables%E5%B8%B8%E7%94%A8%E8%AA%9E%E6%B3%95/</link>
+        <pubDate>Wed, 03 Aug 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://note.laurance.ml/p/linux-iptables%E5%B8%B8%E7%94%A8%E8%AA%9E%E6%B3%95/</guid>
+        <description>&lt;img src="https://note.laurance.ml/p/linux-iptables%E5%B8%B8%E7%94%A8%E8%AA%9E%E6%B3%95/100.jpg" alt="Featured image of post Linux-Iptables常用語法" /&gt;&lt;pre&gt;&lt;code&gt;iptables -A [規則] [-s 要動作的IP] [-d 目的地IP] [-p 協定] [-j 動作]
+
+查看目前設定
+iptables -nL
+
+清除所有規則鏈中的規則
+iptables -F	(不能透過SSH操作,不然會鎖住)
+
+清除使用者自訂鏈中的規則
+iptables -X	(不能透過SSH操作,不然會鎖住)
+
+清除mangle表中，所有規則鏈中的規則
+iptables -F -t mangle	(不能透過SSH操作,不然會鎖住)
+
+
+查看IP鎖了幾個
+iptables -n --list pig|wc -l
+
+查看此IP有沒有被鎖在裡面
+iptables -nL |grep XXX
+
+增加規則except允許此IP 80 port通過
+iptables -A except -p tcp -s XXX/32 --dport 80 -j ACCEPT
+
+刪除規則pig此IP
+iptables -D pig -s XXX -j DROP
+
+查看INPUT裡的規則此IP
+iptables -L INPUT -n --line-numbers |grep &amp;quot;XXX&amp;quot;
+
+以數字的方式顯示pig的總數
+iptables -n --list pig|wc -l
+
+新建機器執行增加火牆規則
+./root/iptables/ipfish.sh
+
+iptables 刪除某行規則
+增加此行規則
+
+iptables -A INPUT -s 123.123.123.123 -j DROP # 將 123.123.123.123 全部擋掉
+列出所有規則，前面加上行號
+
+iptables -L INPUT -n --line-numbers
+要刪除某一行的規則
+
+iptables -D INPUT 1 # 若只有上述那行，那就是 1
+iptables -D INPUT 3 # 若有多行，只要刪除第三行
+
+保存iptables規則
+iptables-save &amp;gt;rules-0
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+
+</description>
+        </item>
+        
+    </channel>
+</rss>

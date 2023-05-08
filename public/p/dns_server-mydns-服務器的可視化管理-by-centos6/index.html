@@ -1,0 +1,1299 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='(MySQL -5.0.77 &#43; Apache-2.2.27 &#43; PHP-5.2.5 &#43; MyDNSConfig-1.1.0 &#43; mydns-1.2.8.31)'><title>DNS_SERVER-MyDNS 服務器的可視化管理 by CentOS6</title>
+
+<link rel='canonical' href='https://note.laurance.ml/p/dns_server-mydns-%E6%9C%8D%E5%8B%99%E5%99%A8%E7%9A%84%E5%8F%AF%E8%A6%96%E5%8C%96%E7%AE%A1%E7%90%86-by-centos6/'>
+
+<link rel="stylesheet" href="/scss/style.min.ac77dcf8b111b51da39a92990f431923f210f3876d85798a2125667f96dc33a4.css"><meta property='og:title' content='DNS_SERVER-MyDNS 服務器的可視化管理 by CentOS6'>
+<meta property='og:description' content='(MySQL -5.0.77 &#43; Apache-2.2.27 &#43; PHP-5.2.5 &#43; MyDNSConfig-1.1.0 &#43; mydns-1.2.8.31)'>
+<meta property='og:url' content='https://note.laurance.ml/p/dns_server-mydns-%E6%9C%8D%E5%8B%99%E5%99%A8%E7%9A%84%E5%8F%AF%E8%A6%96%E5%8C%96%E7%AE%A1%E7%90%86-by-centos6/'>
+<meta property='og:site_name' content='Laurance&#39;s Note'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='DNS' /><meta property='article:published_time' content='2022-12-30T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2022-12-30T00:00:00&#43;00:00'/><meta property='og:image' content='https://note.laurance.ml/p/dns_server-mydns-%E6%9C%8D%E5%8B%99%E5%99%A8%E7%9A%84%E5%8F%AF%E8%A6%96%E5%8C%96%E7%AE%A1%E7%90%86-by-centos6/100.png' />
+<meta name="twitter:title" content="DNS_SERVER-MyDNS 服務器的可視化管理 by CentOS6">
+<meta name="twitter:description" content="(MySQL -5.0.77 &#43; Apache-2.2.27 &#43; PHP-5.2.5 &#43; MyDNSConfig-1.1.0 &#43; mydns-1.2.8.31)"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://note.laurance.ml/p/dns_server-mydns-%E6%9C%8D%E5%8B%99%E5%99%A8%E7%9A%84%E5%8F%AF%E8%A6%96%E5%8C%96%E7%AE%A1%E7%90%86-by-centos6/100.png' />
+    <link rel="shortcut icon" href="static/favicon.ico" />
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Live2D 看板娘 / Demo</title>
+</head>
+<body>
+<script src="https://cdn.jsdelivr.net/gh/dingbangli/live2d-widget@latest/autoload.js"></script>
+</body>
+</html>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu49eacb73e01f91348578131d7e8658f5_11993_300x0_resize_box_3.png" width="300"
+                            height="301" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🍥</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Laurance&#39;s Note</a></h1>
+            <h2 class="site-description">筆記 記錄美好生活
+</h2>
+        </div>
+    </header><ol class="menu" id="main-menu">
+        
+        
+        
+
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/about/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/links/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>Links</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+            
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>Dark Mode</span>
+                </li>
+            
+        </div>
+    </ol>
+</aside>
+<main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/dns_server-mydns-%E6%9C%8D%E5%8B%99%E5%99%A8%E7%9A%84%E5%8F%AF%E8%A6%96%E5%8C%96%E7%AE%A1%E7%90%86-by-centos6/">
+                <img src="/p/dns_server-mydns-%E6%9C%8D%E5%8B%99%E5%99%A8%E7%9A%84%E5%8F%AF%E8%A6%96%E5%8C%96%E7%AE%A1%E7%90%86-by-centos6/100_hu4f6562e501064fb4525a6459b027d812_33292_800x0_resize_box_3.png"
+                        srcset="/p/dns_server-mydns-%E6%9C%8D%E5%8B%99%E5%99%A8%E7%9A%84%E5%8F%AF%E8%A6%96%E5%8C%96%E7%AE%A1%E7%90%86-by-centos6/100_hu4f6562e501064fb4525a6459b027d812_33292_800x0_resize_box_3.png 800w, /p/dns_server-mydns-%E6%9C%8D%E5%8B%99%E5%99%A8%E7%9A%84%E5%8F%AF%E8%A6%96%E5%8C%96%E7%AE%A1%E7%90%86-by-centos6/100_hu4f6562e501064fb4525a6459b027d812_33292_1600x0_resize_box_3.png 1600w"
+                        width="800" 
+                        height="229" 
+                        loading="lazy"
+                        alt="Featured image of post DNS_SERVER-MyDNS 服務器的可視化管理 by CentOS6" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/web/" >
+                Web
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/dns_server-mydns-%E6%9C%8D%E5%8B%99%E5%99%A8%E7%9A%84%E5%8F%AF%E8%A6%96%E5%8C%96%E7%AE%A1%E7%90%86-by-centos6/">DNS_SERVER-MyDNS 服務器的可視化管理 by CentOS6</a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            (MySQL -5.0.77 &#43; Apache-2.2.27 &#43; PHP-5.2.5 &#43; MyDNSConfig-1.1.0 &#43; mydns-1.2.8.31)
+        </h3>
+        
+    </div>
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Dec 30, 2022</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    6 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+</header>
+
+    <section class="article-content">
+    
+    
+    <h1 id="安裝順序為-mysql--apache--php--mydnsconfig--mydns">安裝順序為 MySQL &gt; Apache &gt; PHP &gt; MyDNSConfig &gt; mydns</h1>
+<h1 id="安裝以下套件所需依賴包">安裝以下套件所需依賴包</h1>
+<pre><code>yum -y install gcc gcc-c++  make cmake automake autoconf kernel-devel ncurses-devel libxml2-devel openssl-devel curl-devel libjpeg-devel libpng-devel  pcre-devel libtool libtool-libs freetype-devel gd zlib-devel file bison patch mlocate flex diffutils   readline-devel glibc-devel glib2-devel bzip2-devel gettext-devel libcap-devel openldap openldap-devel libxslt-devel sqlite-devel  libevent libevent-devel
+</code></pre>
+<h1 id="mysql--5077-">MySQL -5.0.77 :</h1>
+<p>[MySQL官網安裝包] <a class="link" href="https://downloads.mysql.com/archives/community/"  target="_blank" rel="noopener"
+    >https://downloads.mysql.com/archives/community/</a></p>
+<p>下載安裝包</p>
+<pre><code>wget https://downloads.mysql.com/archives/get/p/23/file/MySQL-server-community-5.0.77-0.rhel5.x86_64.rpm
+
+wget https://downloads.mysql.com/archives/get/p/23/file/MySQL-client-community-5.0.77-0.rhel5.x86_64.rpm
+
+wget https://downloads.mysql.com/archives/get/p/23/file/MySQL-devel-community-5.0.77-0.rhel5.x86_64.rpm
+
+wget https://downloads.mysql.com/archives/get/p/23/file/MySQL-shared-compat-5.0.77-0.rhel5.x86_64.rpm
+</code></pre>
+<p>解壓</p>
+<pre><code>rpm -ivh MySQL-devel-community-5.0.77-0.rhel5.x86_64.rpm
+
+rpm -ivh MySQL-shared-compat-5.0.77-0.rhel5.x86_64.rpm
+
+rpm -ivh MySQL-server-community-5.0.77-0.rhel5.x86_64.rpm
+
+rpm -ivh MySQL-client-community-5.0.77-0.rhel5.x86_64.rpm
+</code></pre>
+<p>查看版本</p>
+<pre><code>mysql -V
+</code></pre>
+<p>啟動服務</p>
+<pre><code>mysqld_safe &amp;
+</code></pre>
+<p>設置root密碼</p>
+<pre><code>mysqladmin -u root password '123456'
+</code></pre>
+<p>建立使用者及權限</p>
+<pre><code>mysql&gt;  GRANT all privileges ON mydns.* TO mydns@localhost IDENTIFIED BY '123456';
+
+mysql&gt;  flush privileges;
+</code></pre>
+<p>建立database存放mydns</p>
+<pre><code>mysql&gt; create database mydns;
+</code></pre>
+<hr>
+<h1 id="apache-2227-">Apache-2.2.27 :</h1>
+<p>下載依賴包</p>
+<pre><code>wget http://archive.apache.org/dist/apr/apr-1.4.5.tar.gz  
+
+tar -zxf apr-1.4.5.tar.gz  
+
+cd  apr-1.4.5  
+
+./configure --prefix=/usr/local/apr  
+
+make &amp;&amp; make install 
+</code></pre>
+<hr>
+<pre><code>wget http://archive.apache.org/dist/apr/apr-util-1.3.12.tar.gz  
+
+tar -zxf apr-util-1.3.12.tar.gz  
+
+cd apr-util-1.3.12  
+
+./configure --prefix=/usr/local/apr-util -with-apr=/usr/local/apr/bin/apr-1-config  
+
+make &amp;&amp; make install
+</code></pre>
+<hr>
+<pre><code>wget http://jaist.dl.sourceforge.net/project/pcre/pcre/8.10/pcre-8.10.zip  
+
+unzip -o pcre-8.10.zip  
+
+cd pcre-8.10  
+
+./configure --prefix=/usr/local/pcre  
+
+make &amp;&amp; make install
+</code></pre>
+<p>解壓 Apache</p>
+<pre><code>tar zxvf httpd-2.2.27.kiwi.tar.gz
+
+cd httpd-2.2.27/
+
+./configure --prefix=/usr/local/web/apache2 --enable-ssl --enable-so  --enable-vhost-alias  --with-mpm=prefork --with-apr=/usr/local/apr/ --with-apr-util=/usr/local/apr-util/ --with-z --enable-proxy --enable-rewrite --with-pcre
+
+make &amp;&amp; make install
+</code></pre>
+<p>查看版本</p>
+<pre><code>/usr/local/web/apache2/bin/apachectl -v
+</code></pre>
+<p>更改 apache 主設定檔</p>
+<pre><code>mv /usr/local/web/apache2/conf/httpd.conf /usr/local/web/apache2/conf/httpd.conf.bak
+
+vi /usr/local/web/apache2/conf/httpd.conf
+</code></pre>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="err">#</span>
+</span></span><span class="line"><span class="cl"><span class="err">#</span> <span class="nx">This</span> <span class="nx">is</span> <span class="nx">the</span> <span class="nx">main</span> <span class="nx">Apache</span> <span class="nx">HTTP</span> <span class="nx">server</span> <span class="nx">configuration</span> <span class="nx">file</span><span class="p">.</span>  <span class="nx">It</span> <span class="nx">contains</span> <span class="nx">the</span>
+</span></span><span class="line"><span class="cl"><span class="err">#</span> <span class="nx">configuration</span> <span class="nx">directives</span> <span class="nx">that</span> <span class="nx">give</span> <span class="nx">the</span> <span class="nx">server</span> <span class="nx">its</span> <span class="nx">instructions</span><span class="p">.</span>
+</span></span><span class="line"><span class="cl"><span class="err">#</span> <span class="nx">See</span> <span class="o">&lt;</span><span class="nx">URL</span><span class="o">:</span><span class="nx">http</span><span class="o">:</span><span class="c1">//httpd.apache.org/docs/2.2&gt; for detailed information.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">#</span> <span class="nx">In</span> <span class="nx">particular</span><span class="p">,</span> <span class="nx">see</span> 
+</span></span><span class="line"><span class="cl"><span class="err">#</span> <span class="o">&lt;</span><span class="nx">URL</span><span class="o">:</span><span class="nx">http</span><span class="o">:</span><span class="c1">//httpd.apache.org/docs/2.2/mod/directives.html&gt;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">#</span> <span class="k">for</span> <span class="nx">a</span> <span class="nx">discussion</span> <span class="k">of</span> <span class="nx">each</span> <span class="nx">configuration</span> <span class="nx">directive</span><span class="p">.</span>
+</span></span><span class="line"><span class="cl"><span class="err">#</span>
+</span></span><span class="line"><span class="cl"><span class="err">#</span> <span class="nx">Do</span> <span class="nx">NOT</span> <span class="nx">simply</span> <span class="nx">read</span> <span class="nx">the</span> <span class="nx">instructions</span> <span class="k">in</span> <span class="nx">here</span> <span class="nx">without</span> <span class="nx">understanding</span>
+</span></span><span class="line"><span class="cl"><span class="err">#</span> <span class="nx">what</span> <span class="nx">they</span> <span class="k">do</span><span class="p">.</span>  <span class="nx">They</span><span class="s1">&#39;re here only as hints or reminders.  If you are unsure
+</span></span></span><span class="line"><span class="cl"><span class="s1"># consult the online docs. You have been warned.  
+</span></span></span><span class="line"><span class="cl"><span class="s1">#
+</span></span></span><span class="line"><span class="cl"><span class="s1"># Configuration and logfile names: If the filenames you specify for many
+</span></span></span><span class="line"><span class="cl"><span class="s1"># of the server&#39;</span><span class="nx">s</span> <span class="nx">control</span> <span class="nx">files</span> <span class="nx">begin</span> <span class="kd">with</span> <span class="s2">&#34;/&#34;</span> <span class="p">(</span><span class="nx">or</span> <span class="s2">&#34;drive:/&#34;</span> <span class="k">for</span> <span class="nx">Win32</span><span class="p">),</span> <span class="nx">the</span>
+</span></span><span class="line"><span class="cl"><span class="err">#</span> <span class="nx">server</span> <span class="nx">will</span> <span class="nx">use</span> <span class="nx">that</span> <span class="nx">explicit</span> <span class="nx">path</span><span class="p">.</span>  <span class="nx">If</span> <span class="nx">the</span> <span class="nx">filenames</span> <span class="k">do</span> <span class="o">*</span><span class="nx">not</span><span class="o">*</span> <span class="nx">begin</span>
+</span></span><span class="line"><span class="cl"><span class="err">#</span> <span class="kd">with</span> <span class="s2">&#34;/&#34;</span><span class="p">,</span> <span class="nx">the</span> <span class="nx">value</span> <span class="k">of</span> <span class="nx">ServerRoot</span> <span class="nx">is</span> <span class="nx">prepended</span> <span class="o">--</span> <span class="nx">so</span> <span class="s2">&#34;logs/foo_log&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="err">#</span> <span class="kd">with</span> <span class="nx">ServerRoot</span> <span class="nx">set</span> <span class="nx">to</span> <span class="s2">&#34;/usr/local/web/apache2&#34;</span> <span class="nx">will</span> <span class="nx">be</span> <span class="nx">interpreted</span> <span class="nx">by</span> <span class="nx">the</span>
+</span></span><span class="line"><span class="cl"><span class="err">#</span> <span class="nx">server</span> <span class="nx">as</span> <span class="s2">&#34;/usr/local/web/apache2/logs/foo_log&#34;</span><span class="p">.</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="err">#</span>
+</span></span><span class="line"><span class="cl"><span class="err">#</span> <span class="nx">ServerRoot</span><span class="o">:</span> <span class="nx">The</span> <span class="nx">top</span> <span class="k">of</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">tree</span> <span class="nx">under</span> <span class="nx">which</span> <span class="nx">the</span> <span class="nx">server</span><span class="s1">&#39;s
+</span></span></span><span class="line"><span class="cl"><span class="s1"># configuration, error, and log files are kept.
+</span></span></span><span class="line"><span class="cl"><span class="s1">#
+</span></span></span><span class="line"><span class="cl"><span class="s1"># Do not add a slash at the end of the directory path.  If you point
+</span></span></span><span class="line"><span class="cl"><span class="s1"># ServerRoot at a non-local disk, be sure to point the LockFile directive
+</span></span></span><span class="line"><span class="cl"><span class="s1"># at a local disk.  If you wish to share the same ServerRoot for multiple
+</span></span></span><span class="line"><span class="cl"><span class="s1"># httpd daemons, you will need to change at least LockFile and PidFile.
+</span></span></span><span class="line"><span class="cl"><span class="s1">#
+</span></span></span><span class="line"><span class="cl"><span class="s1">ServerRoot &#34;/usr/local/web/apache2&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s1">
+</span></span></span><span class="line"><span class="cl"><span class="s1">#
+</span></span></span><span class="line"><span class="cl"><span class="s1"># Listen: Allows you to bind Apache to specific IP addresses and/or
+</span></span></span><span class="line"><span class="cl"><span class="s1"># ports, instead of the default. See also the &lt;VirtualHost&gt;
+</span></span></span><span class="line"><span class="cl"><span class="s1"># directive.
+</span></span></span><span class="line"><span class="cl"><span class="s1">#
+</span></span></span><span class="line"><span class="cl"><span class="s1"># Change this to Listen on specific IP addresses as shown below to 
+</span></span></span><span class="line"><span class="cl"><span class="s1"># prevent Apache from glomming onto all bound IP addresses.
+</span></span></span><span class="line"><span class="cl"><span class="s1">#
+</span></span></span><span class="line"><span class="cl"><span class="s1">#Listen 12.34.56.78:80
+</span></span></span><span class="line"><span class="cl"><span class="s1">Listen 80
+</span></span></span><span class="line"><span class="cl"><span class="s1">
+</span></span></span><span class="line"><span class="cl"><span class="s1">#
+</span></span></span><span class="line"><span class="cl"><span class="s1"># Dynamic Shared Object (DSO) Support
+</span></span></span><span class="line"><span class="cl"><span class="s1">#
+</span></span></span><span class="line"><span class="cl"><span class="s1"># To be able to use the functionality of a module which was built as a DSO you
+</span></span></span><span class="line"><span class="cl"><span class="s1"># have to place corresponding `LoadModule&#39;</span> <span class="nx">lines</span> <span class="nx">at</span> <span class="k">this</span> <span class="nx">location</span> <span class="nx">so</span> <span class="nx">the</span>
+</span></span><span class="line"><span class="cl"><span class="err">#</span> <span class="nx">directives</span> <span class="nx">contained</span> <span class="k">in</span> <span class="nx">it</span> <span class="nx">are</span> <span class="nx">actually</span> <span class="nx">available</span> <span class="nx">_before_</span> <span class="nx">they</span> <span class="nx">are</span> <span class="nx">used</span><span class="p">.</span>
+</span></span><span class="line"><span class="cl"><span class="err">#</span> <span class="nx">Statically</span> <span class="nx">compiled</span> <span class="nx">modules</span> <span class="p">(</span><span class="nx">those</span> <span class="nx">listed</span> <span class="nx">by</span> <span class="sb">`httpd -l&#39;) do not need
+</span></span></span><span class="line"><span class="cl"><span class="sb"># to be loaded here.
+</span></span></span><span class="line"><span class="cl"><span class="sb">#
+</span></span></span><span class="line"><span class="cl"><span class="sb"># Example:
+</span></span></span><span class="line"><span class="cl"><span class="sb"># LoadModule foo_module modules/mod_foo.so
+</span></span></span><span class="line"><span class="cl"><span class="sb">LoadModule php5_module        modules/libphp5.so
+</span></span></span><span class="line"><span class="cl"><span class="sb">#
+</span></span></span><span class="line"><span class="cl"><span class="sb">
+</span></span></span><span class="line"><span class="cl"><span class="sb">&lt;IfModule !mpm_netware_module&gt;
+</span></span></span><span class="line"><span class="cl"><span class="sb">&lt;IfModule !mpm_winnt_module&gt;
+</span></span></span><span class="line"><span class="cl"><span class="sb">#
+</span></span></span><span class="line"><span class="cl"><span class="sb"># If you wish httpd to run as a different user or group, you must run
+</span></span></span><span class="line"><span class="cl"><span class="sb"># httpd as root initially and it will switch.  
+</span></span></span><span class="line"><span class="cl"><span class="sb">#
+</span></span></span><span class="line"><span class="cl"><span class="sb"># User/Group: The name (or #number) of the user/group to run httpd as.
+</span></span></span><span class="line"><span class="cl"><span class="sb"># It is usually good practice to create a dedicated user and group for
+</span></span></span><span class="line"><span class="cl"><span class="sb"># running httpd, as with most system services.
+</span></span></span><span class="line"><span class="cl"><span class="sb">#
+</span></span></span><span class="line"><span class="cl"><span class="sb">User daemon
+</span></span></span><span class="line"><span class="cl"><span class="sb">Group daemon
+</span></span></span><span class="line"><span class="cl"><span class="sb">
+</span></span></span><span class="line"><span class="cl"><span class="sb">&lt;/IfModule&gt;
+</span></span></span><span class="line"><span class="cl"><span class="sb">&lt;/IfModule&gt;
+</span></span></span><span class="line"><span class="cl"><span class="sb">
+</span></span></span><span class="line"><span class="cl"><span class="sb"># &#39;Main&#39; server configuration
+</span></span></span><span class="line"><span class="cl"><span class="sb">#
+</span></span></span><span class="line"><span class="cl"><span class="sb"># The directives in this section set up the values used by the &#39;main&#39;
+</span></span></span><span class="line"><span class="cl"><span class="sb"># server, which responds to any requests that aren&#39;t handled by a
+</span></span></span><span class="line"><span class="cl"><span class="sb"># &lt;VirtualHost&gt; definition.  These values also provide defaults for
+</span></span></span><span class="line"><span class="cl"><span class="sb"># any &lt;VirtualHost&gt; containers you may define later in the file.
+</span></span></span><span class="line"><span class="cl"><span class="sb">#
+</span></span></span><span class="line"><span class="cl"><span class="sb"># All of these directives may appear inside &lt;VirtualHost&gt; containers,
+</span></span></span><span class="line"><span class="cl"><span class="sb"># in which case these default settings will be overridden for the
+</span></span></span><span class="line"><span class="cl"><span class="sb"># virtual host being defined.
+</span></span></span><span class="line"><span class="cl"><span class="sb">#
+</span></span></span><span class="line"><span class="cl"><span class="sb">
+</span></span></span><span class="line"><span class="cl"><span class="sb">#
+</span></span></span><span class="line"><span class="cl"><span class="sb"># ServerAdmin: Your address, where problems with the server should be
+</span></span></span><span class="line"><span class="cl"><span class="sb"># e-mailed.  This address appears on some server-generated pages, such
+</span></span></span><span class="line"><span class="cl"><span class="sb"># as error documents.  e.g. admin@your-domain.com
+</span></span></span><span class="line"><span class="cl"><span class="sb">#
+</span></span></span><span class="line"><span class="cl"><span class="sb">ServerAdmin you@example.com
+</span></span></span><span class="line"><span class="cl"><span class="sb">
+</span></span></span><span class="line"><span class="cl"><span class="sb">#
+</span></span></span><span class="line"><span class="cl"><span class="sb"># ServerName gives the name and port that the server uses to identify itself.
+</span></span></span><span class="line"><span class="cl"><span class="sb"># This can often be determined automatically, but we recommend you specify
+</span></span></span><span class="line"><span class="cl"><span class="sb"># it explicitly to prevent problems during startup.
+</span></span></span><span class="line"><span class="cl"><span class="sb">#
+</span></span></span><span class="line"><span class="cl"><span class="sb"># If your host doesn&#39;t have a registered DNS name, enter its IP address here.
+</span></span></span><span class="line"><span class="cl"><span class="sb">#
+</span></span></span><span class="line"><span class="cl"><span class="sb">ServerName www.example.com:80
+</span></span></span><span class="line"><span class="cl"><span class="sb">
+</span></span></span><span class="line"><span class="cl"><span class="sb">#
+</span></span></span><span class="line"><span class="cl"><span class="sb"># DocumentRoot: The directory out of which you will serve your
+</span></span></span><span class="line"><span class="cl"><span class="sb"># documents. By default, all requests are taken from this directory, but
+</span></span></span><span class="line"><span class="cl"><span class="sb"># symbolic links and aliases may be used to point to other locations.
+</span></span></span><span class="line"><span class="cl"><span class="sb">#
+</span></span></span><span class="line"><span class="cl"><span class="sb">DocumentRoot &#34;/usr/local/web/apache2//htdocs&#34;
+</span></span></span><span class="line"><span class="cl"><span class="sb">
+</span></span></span><span class="line"><span class="cl"><span class="sb">#
+</span></span></span><span class="line"><span class="cl"><span class="sb"># Each directory to which Apache has access can be configured with respect
+</span></span></span><span class="line"><span class="cl"><span class="sb"># to which services and features are allowed and/or disabled in that
+</span></span></span><span class="line"><span class="cl"><span class="sb"># directory (and its subdirectories). 
+</span></span></span><span class="line"><span class="cl"><span class="sb">#
+</span></span></span><span class="line"><span class="cl"><span class="sb"># First, we configure the &#34;default&#34; to be a very restrictive set of 
+</span></span></span><span class="line"><span class="cl"><span class="sb"># features.  
+</span></span></span><span class="line"><span class="cl"><span class="sb">#
+</span></span></span><span class="line"><span class="cl"><span class="sb">&lt;Directory /&gt;
+</span></span></span><span class="line"><span class="cl"><span class="sb">    Options FollowSymLinks
+</span></span></span><span class="line"><span class="cl"><span class="sb">    AllowOverride None
+</span></span></span><span class="line"><span class="cl"><span class="sb">    Order allow,deny
+</span></span></span><span class="line"><span class="cl"><span class="sb">    allow from all
+</span></span></span><span class="line"><span class="cl"><span class="sb">&lt;/Directory&gt;
+</span></span></span><span class="line"><span class="cl"><span class="sb">
+</span></span></span><span class="line"><span class="cl"><span class="sb">#
+</span></span></span><span class="line"><span class="cl"><span class="sb"># Note that from this point forward you must specifically allow
+</span></span></span><span class="line"><span class="cl"><span class="sb"># particular features to be enabled - so if something&#39;s not working as
+</span></span></span><span class="line"><span class="cl"><span class="sb"># you might expect, make sure that you have specifically enabled it
+</span></span></span><span class="line"><span class="cl"><span class="sb"># below.
+</span></span></span><span class="line"><span class="cl"><span class="sb">#
+</span></span></span><span class="line"><span class="cl"><span class="sb">
+</span></span></span><span class="line"><span class="cl"><span class="sb">#
+</span></span></span><span class="line"><span class="cl"><span class="sb"># This should be changed to whatever you set DocumentRoot to.
+</span></span></span><span class="line"><span class="cl"><span class="sb">#
+</span></span></span><span class="line"><span class="cl"><span class="sb">&lt;Directory &#34;/usr/local/web/apache2//htdocs&#34;&gt;
+</span></span></span><span class="line"><span class="cl"><span class="sb">    #
+</span></span></span><span class="line"><span class="cl"><span class="sb">    # Possible values for the Options directive are &#34;None&#34;, &#34;All&#34;,
+</span></span></span><span class="line"><span class="cl"><span class="sb">    # or any combination of:
+</span></span></span><span class="line"><span class="cl"><span class="sb">    #   Indexes Includes FollowSymLinks SymLinksifOwnerMatch ExecCGI MultiViews
+</span></span></span><span class="line"><span class="cl"><span class="sb">    #
+</span></span></span><span class="line"><span class="cl"><span class="sb">    # Note that &#34;MultiViews&#34; must be named *explicitly* --- &#34;Options All&#34;
+</span></span></span><span class="line"><span class="cl"><span class="sb">    # doesn&#39;t give it to you.
+</span></span></span><span class="line"><span class="cl"><span class="sb">    #
+</span></span></span><span class="line"><span class="cl"><span class="sb">    # The Options directive is both complicated and important.  Please see
+</span></span></span><span class="line"><span class="cl"><span class="sb">    # http://httpd.apache.org/docs/2.2/mod/core.html#options
+</span></span></span><span class="line"><span class="cl"><span class="sb">    # for more information.
+</span></span></span><span class="line"><span class="cl"><span class="sb">    #
+</span></span></span><span class="line"><span class="cl"><span class="sb">    Options Indexes FollowSymLinks
+</span></span></span><span class="line"><span class="cl"><span class="sb">
+</span></span></span><span class="line"><span class="cl"><span class="sb">    #
+</span></span></span><span class="line"><span class="cl"><span class="sb">    # AllowOverride controls what directives may be placed in .htaccess files.
+</span></span></span><span class="line"><span class="cl"><span class="sb">    # It can be &#34;All&#34;, &#34;None&#34;, or any combination of the keywords:
+</span></span></span><span class="line"><span class="cl"><span class="sb">    #   Options FileInfo AuthConfig Limit
+</span></span></span><span class="line"><span class="cl"><span class="sb">    #
+</span></span></span><span class="line"><span class="cl"><span class="sb">    AllowOverride None
+</span></span></span><span class="line"><span class="cl"><span class="sb">
+</span></span></span><span class="line"><span class="cl"><span class="sb">    #
+</span></span></span><span class="line"><span class="cl"><span class="sb">    # Controls who can get stuff from this server.
+</span></span></span><span class="line"><span class="cl"><span class="sb">    #
+</span></span></span><span class="line"><span class="cl"><span class="sb">    Order allow,deny
+</span></span></span><span class="line"><span class="cl"><span class="sb">    Allow from all
+</span></span></span><span class="line"><span class="cl"><span class="sb">
+</span></span></span><span class="line"><span class="cl"><span class="sb">&lt;/Directory&gt;
+</span></span></span><span class="line"><span class="cl"><span class="sb">
+</span></span></span><span class="line"><span class="cl"><span class="sb">#
+</span></span></span><span class="line"><span class="cl"><span class="sb"># DirectoryIndex: sets the file that Apache will serve if a directory
+</span></span></span><span class="line"><span class="cl"><span class="sb"># is requested.
+</span></span></span><span class="line"><span class="cl"><span class="sb">#
+</span></span></span><span class="line"><span class="cl"><span class="sb">&lt;IfModule dir_module&gt;
+</span></span></span><span class="line"><span class="cl"><span class="sb">    DirectoryIndex index.html index.php indexs.php
+</span></span></span><span class="line"><span class="cl"><span class="sb">&lt;/IfModule&gt;
+</span></span></span><span class="line"><span class="cl"><span class="sb">
+</span></span></span><span class="line"><span class="cl"><span class="sb">#
+</span></span></span><span class="line"><span class="cl"><span class="sb"># The following lines prevent .htaccess and .htpasswd files from being 
+</span></span></span><span class="line"><span class="cl"><span class="sb"># viewed by Web clients. 
+</span></span></span><span class="line"><span class="cl"><span class="sb">#
+</span></span></span><span class="line"><span class="cl"><span class="sb">&lt;FilesMatch &#34;^\.ht&#34;&gt;
+</span></span></span><span class="line"><span class="cl"><span class="sb">    Order allow,deny
+</span></span></span><span class="line"><span class="cl"><span class="sb">    Deny from all
+</span></span></span><span class="line"><span class="cl"><span class="sb">    Satisfy All
+</span></span></span><span class="line"><span class="cl"><span class="sb">&lt;/FilesMatch&gt;
+</span></span></span><span class="line"><span class="cl"><span class="sb">
+</span></span></span><span class="line"><span class="cl"><span class="sb">#
+</span></span></span><span class="line"><span class="cl"><span class="sb"># ErrorLog: The location of the error log file.
+</span></span></span><span class="line"><span class="cl"><span class="sb"># If you do not specify an ErrorLog directive within a &lt;VirtualHost&gt;
+</span></span></span><span class="line"><span class="cl"><span class="sb"># container, error messages relating to that virtual host will be
+</span></span></span><span class="line"><span class="cl"><span class="sb"># logged here.  If you *do* define an error logfile for a &lt;VirtualHost&gt;
+</span></span></span><span class="line"><span class="cl"><span class="sb"># container, that host&#39;s errors will be logged there and not here.
+</span></span></span><span class="line"><span class="cl"><span class="sb">#
+</span></span></span><span class="line"><span class="cl"><span class="sb">ErrorLog &#34;logs/error_log&#34;
+</span></span></span><span class="line"><span class="cl"><span class="sb">
+</span></span></span><span class="line"><span class="cl"><span class="sb">#
+</span></span></span><span class="line"><span class="cl"><span class="sb"># LogLevel: Control the number of messages logged to the error_log.
+</span></span></span><span class="line"><span class="cl"><span class="sb"># Possible values include: debug, info, notice, warn, error, crit,
+</span></span></span><span class="line"><span class="cl"><span class="sb"># alert, emerg.
+</span></span></span><span class="line"><span class="cl"><span class="sb">#
+</span></span></span><span class="line"><span class="cl"><span class="sb">LogLevel warn
+</span></span></span><span class="line"><span class="cl"><span class="sb">
+</span></span></span><span class="line"><span class="cl"><span class="sb">&lt;IfModule log_config_module&gt;
+</span></span></span><span class="line"><span class="cl"><span class="sb">    #
+</span></span></span><span class="line"><span class="cl"><span class="sb">    # The following directives define some format nicknames for use with
+</span></span></span><span class="line"><span class="cl"><span class="sb">    # a CustomLog directive (see below).
+</span></span></span><span class="line"><span class="cl"><span class="sb">    #
+</span></span></span><span class="line"><span class="cl"><span class="sb">    LogFormat &#34;%h \&#34;%{x-forwarded-for}i\&#34; %l %u %t \&#34;%r\&#34; %&gt;s %b \&#34;%{Referer}i\&#34; \&#34;%{User-Agent}i\&#34;&#34; combined
+</span></span></span><span class="line"><span class="cl"><span class="sb">    LogFormat &#34;%h %l %u %t \&#34;%r\&#34; %&gt;s %b&#34; common
+</span></span></span><span class="line"><span class="cl"><span class="sb">
+</span></span></span><span class="line"><span class="cl"><span class="sb">    &lt;IfModule logio_module&gt;
+</span></span></span><span class="line"><span class="cl"><span class="sb">      # You need to enable mod_logio.c to use %I and %O
+</span></span></span><span class="line"><span class="cl"><span class="sb">      LogFormat &#34;%h %l %u %t \&#34;%r\&#34; %&gt;s %b \&#34;%{Referer}i\&#34; \&#34;%{User-Agent}i\&#34; %I %O&#34; combinedio
+</span></span></span><span class="line"><span class="cl"><span class="sb">    &lt;/IfModule&gt;
+</span></span></span><span class="line"><span class="cl"><span class="sb">
+</span></span></span><span class="line"><span class="cl"><span class="sb">    #
+</span></span></span><span class="line"><span class="cl"><span class="sb">    # The location and format of the access logfile (Common Logfile Format).
+</span></span></span><span class="line"><span class="cl"><span class="sb">    # If you do not define any access logfiles within a &lt;VirtualHost&gt;
+</span></span></span><span class="line"><span class="cl"><span class="sb">    # container, they will be logged here.  Contrariwise, if you *do*
+</span></span></span><span class="line"><span class="cl"><span class="sb">    # define per-&lt;VirtualHost&gt; access logfiles, transactions will be
+</span></span></span><span class="line"><span class="cl"><span class="sb">    # logged therein and *not* in this file.
+</span></span></span><span class="line"><span class="cl"><span class="sb">    #
+</span></span></span><span class="line"><span class="cl"><span class="sb">    CustomLog &#34;logs/access_log&#34; common
+</span></span></span><span class="line"><span class="cl"><span class="sb">
+</span></span></span><span class="line"><span class="cl"><span class="sb">    #
+</span></span></span><span class="line"><span class="cl"><span class="sb">    # If you prefer a logfile with access, agent, and referer information
+</span></span></span><span class="line"><span class="cl"><span class="sb">    # (Combined Logfile Format) you can use the following directive.
+</span></span></span><span class="line"><span class="cl"><span class="sb">    #
+</span></span></span><span class="line"><span class="cl"><span class="sb">    #CustomLog &#34;logs/access_log&#34; combined
+</span></span></span><span class="line"><span class="cl"><span class="sb">&lt;/IfModule&gt;
+</span></span></span><span class="line"><span class="cl"><span class="sb">
+</span></span></span><span class="line"><span class="cl"><span class="sb">&lt;IfModule alias_module&gt;
+</span></span></span><span class="line"><span class="cl"><span class="sb">    #
+</span></span></span><span class="line"><span class="cl"><span class="sb">    # Redirect: Allows you to tell clients about documents that used to 
+</span></span></span><span class="line"><span class="cl"><span class="sb">    # exist in your server&#39;s namespace, but do not anymore. The client 
+</span></span></span><span class="line"><span class="cl"><span class="sb">    # will make a new request for the document at its new location.
+</span></span></span><span class="line"><span class="cl"><span class="sb">    # Example:
+</span></span></span><span class="line"><span class="cl"><span class="sb">    # Redirect permanent /foo http://www.example.com/bar
+</span></span></span><span class="line"><span class="cl"><span class="sb">
+</span></span></span><span class="line"><span class="cl"><span class="sb">    #
+</span></span></span><span class="line"><span class="cl"><span class="sb">    # Alias: Maps web paths into filesystem paths and is used to
+</span></span></span><span class="line"><span class="cl"><span class="sb">    # access content that does not live under the DocumentRoot.
+</span></span></span><span class="line"><span class="cl"><span class="sb">    # Example:
+</span></span></span><span class="line"><span class="cl"><span class="sb">    # Alias /webpath /full/filesystem/path
+</span></span></span><span class="line"><span class="cl"><span class="sb">    #
+</span></span></span><span class="line"><span class="cl"><span class="sb">    # If you include a trailing / on /webpath then the server will
+</span></span></span><span class="line"><span class="cl"><span class="sb">    # require it to be present in the URL.  You will also likely
+</span></span></span><span class="line"><span class="cl"><span class="sb">    # need to provide a &lt;Directory&gt; section to allow access to
+</span></span></span><span class="line"><span class="cl"><span class="sb">    # the filesystem path.
+</span></span></span><span class="line"><span class="cl"><span class="sb">
+</span></span></span><span class="line"><span class="cl"><span class="sb">    #
+</span></span></span><span class="line"><span class="cl"><span class="sb">    # ScriptAlias: This controls which directories contain server scripts. 
+</span></span></span><span class="line"><span class="cl"><span class="sb">    # ScriptAliases are essentially the same as Aliases, except that
+</span></span></span><span class="line"><span class="cl"><span class="sb">    # documents in the target directory are treated as applications and
+</span></span></span><span class="line"><span class="cl"><span class="sb">    # run by the server when requested rather than as documents sent to the
+</span></span></span><span class="line"><span class="cl"><span class="sb">    # client.  The same rules about trailing &#34;/&#34; apply to ScriptAlias
+</span></span></span><span class="line"><span class="cl"><span class="sb">    # directives as to Alias.
+</span></span></span><span class="line"><span class="cl"><span class="sb">    #
+</span></span></span><span class="line"><span class="cl"><span class="sb">    ScriptAlias /cgi-bin/ &#34;/usr/local/web/apache2//cgi-bin/&#34;
+</span></span></span><span class="line"><span class="cl"><span class="sb">
+</span></span></span><span class="line"><span class="cl"><span class="sb">&lt;/IfModule&gt;
+</span></span></span><span class="line"><span class="cl"><span class="sb">
+</span></span></span><span class="line"><span class="cl"><span class="sb">&lt;IfModule cgid_module&gt;
+</span></span></span><span class="line"><span class="cl"><span class="sb">    #
+</span></span></span><span class="line"><span class="cl"><span class="sb">    # ScriptSock: On threaded servers, designate the path to the UNIX
+</span></span></span><span class="line"><span class="cl"><span class="sb">    # socket used to communicate with the CGI daemon of mod_cgid.
+</span></span></span><span class="line"><span class="cl"><span class="sb">    #
+</span></span></span><span class="line"><span class="cl"><span class="sb">    #Scriptsock logs/cgisock
+</span></span></span><span class="line"><span class="cl"><span class="sb">&lt;/IfModule&gt;
+</span></span></span><span class="line"><span class="cl"><span class="sb">
+</span></span></span><span class="line"><span class="cl"><span class="sb">#
+</span></span></span><span class="line"><span class="cl"><span class="sb"># &#34;/usr/local/web/apache2/cgi-bin&#34; should be changed to whatever your ScriptAliased
+</span></span></span><span class="line"><span class="cl"><span class="sb"># CGI directory exists, if you have that configured.
+</span></span></span><span class="line"><span class="cl"><span class="sb">#
+</span></span></span><span class="line"><span class="cl"><span class="sb">&lt;Directory &#34;/usr/local/web/apache2//cgi-bin&#34;&gt;
+</span></span></span><span class="line"><span class="cl"><span class="sb">    AllowOverride None
+</span></span></span><span class="line"><span class="cl"><span class="sb">    Options None
+</span></span></span><span class="line"><span class="cl"><span class="sb">    Order allow,deny
+</span></span></span><span class="line"><span class="cl"><span class="sb">    Allow from all
+</span></span></span><span class="line"><span class="cl"><span class="sb">&lt;/Directory&gt;
+</span></span></span><span class="line"><span class="cl"><span class="sb">
+</span></span></span><span class="line"><span class="cl"><span class="sb">#
+</span></span></span><span class="line"><span class="cl"><span class="sb"># DefaultType: the default MIME type the server will use for a document
+</span></span></span><span class="line"><span class="cl"><span class="sb"># if it cannot otherwise determine one, such as from filename extensions.
+</span></span></span><span class="line"><span class="cl"><span class="sb"># If your server contains mostly text or HTML documents, &#34;text/plain&#34; is
+</span></span></span><span class="line"><span class="cl"><span class="sb"># a good value.  If most of your content is binary, such as applications
+</span></span></span><span class="line"><span class="cl"><span class="sb"># or images, you may want to use &#34;application/octet-stream&#34; instead to
+</span></span></span><span class="line"><span class="cl"><span class="sb"># keep browsers from trying to display binary files as though they are
+</span></span></span><span class="line"><span class="cl"><span class="sb"># text.
+</span></span></span><span class="line"><span class="cl"><span class="sb">#
+</span></span></span><span class="line"><span class="cl"><span class="sb">DefaultType text/plain
+</span></span></span><span class="line"><span class="cl"><span class="sb">
+</span></span></span><span class="line"><span class="cl"><span class="sb">&lt;IfModule mime_module&gt;
+</span></span></span><span class="line"><span class="cl"><span class="sb">    #
+</span></span></span><span class="line"><span class="cl"><span class="sb">    # TypesConfig points to the file containing the list of mappings from
+</span></span></span><span class="line"><span class="cl"><span class="sb">    # filename extension to MIME-type.
+</span></span></span><span class="line"><span class="cl"><span class="sb">    #
+</span></span></span><span class="line"><span class="cl"><span class="sb">    TypesConfig conf/mime.types
+</span></span></span><span class="line"><span class="cl"><span class="sb">
+</span></span></span><span class="line"><span class="cl"><span class="sb">    #
+</span></span></span><span class="line"><span class="cl"><span class="sb">    # AddType allows you to add to or override the MIME configuration
+</span></span></span><span class="line"><span class="cl"><span class="sb">    # file specified in TypesConfig for specific file types.
+</span></span></span><span class="line"><span class="cl"><span class="sb">    #
+</span></span></span><span class="line"><span class="cl"><span class="sb">    #AddType application/x-gzip .tgz
+</span></span></span><span class="line"><span class="cl"><span class="sb">    #
+</span></span></span><span class="line"><span class="cl"><span class="sb">    # AddEncoding allows you to have certain browsers uncompress
+</span></span></span><span class="line"><span class="cl"><span class="sb">    # information on the fly. Note: Not all browsers support this.
+</span></span></span><span class="line"><span class="cl"><span class="sb">    #
+</span></span></span><span class="line"><span class="cl"><span class="sb">    #AddEncoding x-compress .Z
+</span></span></span><span class="line"><span class="cl"><span class="sb">    #AddEncoding x-gzip .gz .tgz
+</span></span></span><span class="line"><span class="cl"><span class="sb">    #
+</span></span></span><span class="line"><span class="cl"><span class="sb">    # If the AddEncoding directives above are commented-out, then you
+</span></span></span><span class="line"><span class="cl"><span class="sb">    # probably should define those extensions to indicate media types:
+</span></span></span><span class="line"><span class="cl"><span class="sb">    #
+</span></span></span><span class="line"><span class="cl"><span class="sb">    AddType application/x-compress .Z
+</span></span></span><span class="line"><span class="cl"><span class="sb">    AddType application/x-gzip .gz .tgz
+</span></span></span><span class="line"><span class="cl"><span class="sb">    AddType application/x-httpd-php .php .phtml
+</span></span></span><span class="line"><span class="cl"><span class="sb">    AddType application/x-httpd-php-source .phps
+</span></span></span><span class="line"><span class="cl"><span class="sb">
+</span></span></span><span class="line"><span class="cl"><span class="sb">    #
+</span></span></span><span class="line"><span class="cl"><span class="sb">    # AddHandler allows you to map certain file extensions to &#34;handlers&#34;:
+</span></span></span><span class="line"><span class="cl"><span class="sb">    # actions unrelated to filetype. These can be either built into the server
+</span></span></span><span class="line"><span class="cl"><span class="sb">    # or added with the Action directive (see below)
+</span></span></span><span class="line"><span class="cl"><span class="sb">    #
+</span></span></span><span class="line"><span class="cl"><span class="sb">    # To use CGI scripts outside of ScriptAliased directories:
+</span></span></span><span class="line"><span class="cl"><span class="sb">    # (You will also need to add &#34;ExecCGI&#34; to the &#34;Options&#34; directive.)
+</span></span></span><span class="line"><span class="cl"><span class="sb">    #
+</span></span></span><span class="line"><span class="cl"><span class="sb">    #AddHandler cgi-script .cgi
+</span></span></span><span class="line"><span class="cl"><span class="sb">
+</span></span></span><span class="line"><span class="cl"><span class="sb">    # For type maps (negotiated resources):
+</span></span></span><span class="line"><span class="cl"><span class="sb">    #AddHandler type-map var
+</span></span></span><span class="line"><span class="cl"><span class="sb">
+</span></span></span><span class="line"><span class="cl"><span class="sb">    #
+</span></span></span><span class="line"><span class="cl"><span class="sb">    # Filters allow you to process content before it is sent to the client.
+</span></span></span><span class="line"><span class="cl"><span class="sb">    #
+</span></span></span><span class="line"><span class="cl"><span class="sb">    # To parse .shtml files for server-side includes (SSI):
+</span></span></span><span class="line"><span class="cl"><span class="sb">    # (You will also need to add &#34;Includes&#34; to the &#34;Options&#34; directive.)
+</span></span></span><span class="line"><span class="cl"><span class="sb">    #
+</span></span></span><span class="line"><span class="cl"><span class="sb">    #AddType text/html .shtml
+</span></span></span><span class="line"><span class="cl"><span class="sb">    #AddOutputFilter INCLUDES .shtml
+</span></span></span><span class="line"><span class="cl"><span class="sb">&lt;/IfModule&gt;
+</span></span></span><span class="line"><span class="cl"><span class="sb">
+</span></span></span><span class="line"><span class="cl"><span class="sb">#
+</span></span></span><span class="line"><span class="cl"><span class="sb"># The mod_mime_magic module allows the server to use various hints from the
+</span></span></span><span class="line"><span class="cl"><span class="sb"># contents of the file itself to determine its type.  The MIMEMagicFile
+</span></span></span><span class="line"><span class="cl"><span class="sb"># directive tells the module where the hint definitions are located.
+</span></span></span><span class="line"><span class="cl"><span class="sb">#
+</span></span></span><span class="line"><span class="cl"><span class="sb">#MIMEMagicFile conf/magic
+</span></span></span><span class="line"><span class="cl"><span class="sb">
+</span></span></span><span class="line"><span class="cl"><span class="sb">#
+</span></span></span><span class="line"><span class="cl"><span class="sb"># Customizable error responses come in three flavors:
+</span></span></span><span class="line"><span class="cl"><span class="sb"># 1) plain text 2) local redirects 3) external redirects
+</span></span></span><span class="line"><span class="cl"><span class="sb">#
+</span></span></span><span class="line"><span class="cl"><span class="sb"># Some examples:
+</span></span></span><span class="line"><span class="cl"><span class="sb">#ErrorDocument 500 &#34;The server made a boo boo.&#34;
+</span></span></span><span class="line"><span class="cl"><span class="sb">#ErrorDocument 404 /missing.html
+</span></span></span><span class="line"><span class="cl"><span class="sb">#ErrorDocument 404 &#34;/cgi-bin/missing_handler.pl&#34;
+</span></span></span><span class="line"><span class="cl"><span class="sb">#ErrorDocument 402 http://www.example.com/subscription_info.html
+</span></span></span><span class="line"><span class="cl"><span class="sb">#
+</span></span></span><span class="line"><span class="cl"><span class="sb">
+</span></span></span><span class="line"><span class="cl"><span class="sb">#
+</span></span></span><span class="line"><span class="cl"><span class="sb"># MaxRanges: Maximum number of Ranges in a request before
+</span></span></span><span class="line"><span class="cl"><span class="sb"># returning the entire resource, or one of the special
+</span></span></span><span class="line"><span class="cl"><span class="sb"># values &#39;default&#39;, &#39;none&#39; or &#39;unlimited&#39;.
+</span></span></span><span class="line"><span class="cl"><span class="sb"># Default setting is to accept 200 Ranges.
+</span></span></span><span class="line"><span class="cl"><span class="sb">#MaxRanges unlimited
+</span></span></span><span class="line"><span class="cl"><span class="sb">
+</span></span></span><span class="line"><span class="cl"><span class="sb">#
+</span></span></span><span class="line"><span class="cl"><span class="sb"># EnableMMAP and EnableSendfile: On systems that support it, 
+</span></span></span><span class="line"><span class="cl"><span class="sb"># memory-mapping or the sendfile syscall is used to deliver
+</span></span></span><span class="line"><span class="cl"><span class="sb"># files.  This usually improves server performance, but must
+</span></span></span><span class="line"><span class="cl"><span class="sb"># be turned off when serving from networked-mounted 
+</span></span></span><span class="line"><span class="cl"><span class="sb"># filesystems or if support for these functions is otherwise
+</span></span></span><span class="line"><span class="cl"><span class="sb"># broken on your system.
+</span></span></span><span class="line"><span class="cl"><span class="sb">#
+</span></span></span><span class="line"><span class="cl"><span class="sb">#EnableMMAP off
+</span></span></span><span class="line"><span class="cl"><span class="sb">#EnableSendfile off
+</span></span></span><span class="line"><span class="cl"><span class="sb">
+</span></span></span><span class="line"><span class="cl"><span class="sb"># Supplemental configuration
+</span></span></span><span class="line"><span class="cl"><span class="sb">#
+</span></span></span><span class="line"><span class="cl"><span class="sb"># The configuration files in the conf/extra/ directory can be 
+</span></span></span><span class="line"><span class="cl"><span class="sb"># included to add extra features or to modify the default configuration of 
+</span></span></span><span class="line"><span class="cl"><span class="sb"># the server, or you may simply copy their contents here and change as 
+</span></span></span><span class="line"><span class="cl"><span class="sb"># necessary.
+</span></span></span><span class="line"><span class="cl"><span class="sb">
+</span></span></span><span class="line"><span class="cl"><span class="sb"># Server-pool management (MPM specific)
+</span></span></span><span class="line"><span class="cl"><span class="sb">Include conf/extra/httpd-mpm.conf
+</span></span></span><span class="line"><span class="cl"><span class="sb">
+</span></span></span><span class="line"><span class="cl"><span class="sb"># Multi-language error messages
+</span></span></span><span class="line"><span class="cl"><span class="sb">Include conf/extra/httpd-multilang-errordoc.conf
+</span></span></span><span class="line"><span class="cl"><span class="sb">
+</span></span></span><span class="line"><span class="cl"><span class="sb"># Fancy directory listings
+</span></span></span><span class="line"><span class="cl"><span class="sb">#Include conf/extra/httpd-autoindex.conf
+</span></span></span><span class="line"><span class="cl"><span class="sb">
+</span></span></span><span class="line"><span class="cl"><span class="sb"># Language settings
+</span></span></span><span class="line"><span class="cl"><span class="sb">Include conf/extra/httpd-languages.conf
+</span></span></span><span class="line"><span class="cl"><span class="sb">
+</span></span></span><span class="line"><span class="cl"><span class="sb"># User home directories
+</span></span></span><span class="line"><span class="cl"><span class="sb">#Include conf/extra/httpd-userdir.conf
+</span></span></span><span class="line"><span class="cl"><span class="sb">
+</span></span></span><span class="line"><span class="cl"><span class="sb"># Real-time info on requests and configuration
+</span></span></span><span class="line"><span class="cl"><span class="sb">#Include conf/extra/httpd-info.conf
+</span></span></span><span class="line"><span class="cl"><span class="sb">
+</span></span></span><span class="line"><span class="cl"><span class="sb"># Virtual hosts
+</span></span></span><span class="line"><span class="cl"><span class="sb">Include conf/extra/httpd-vhosts.conf
+</span></span></span><span class="line"><span class="cl"><span class="sb">
+</span></span></span><span class="line"><span class="cl"><span class="sb"># Local access to the Apache HTTP Server Manual
+</span></span></span><span class="line"><span class="cl"><span class="sb">Include conf/extra/httpd-manual.conf
+</span></span></span><span class="line"><span class="cl"><span class="sb">
+</span></span></span><span class="line"><span class="cl"><span class="sb"># Distributed authoring and versioning (WebDAV)
+</span></span></span><span class="line"><span class="cl"><span class="sb">#Include conf/extra/httpd-dav.conf
+</span></span></span><span class="line"><span class="cl"><span class="sb">
+</span></span></span><span class="line"><span class="cl"><span class="sb"># Various default settings
+</span></span></span><span class="line"><span class="cl"><span class="sb">Include conf/extra/httpd-default.conf
+</span></span></span><span class="line"><span class="cl"><span class="sb">
+</span></span></span><span class="line"><span class="cl"><span class="sb"># Secure (SSL/TLS) connections
+</span></span></span><span class="line"><span class="cl"><span class="sb">#Include conf/extra/httpd-ssl.conf
+</span></span></span><span class="line"><span class="cl"><span class="sb">#
+</span></span></span><span class="line"><span class="cl"><span class="sb"># Note: The following must must be present to support
+</span></span></span><span class="line"><span class="cl"><span class="sb">#       starting without SSL on platforms with no /dev/random equivalent
+</span></span></span><span class="line"><span class="cl"><span class="sb">#       but a statically compiled-in mod_ssl.
+</span></span></span><span class="line"><span class="cl"><span class="sb">#
+</span></span></span><span class="line"><span class="cl"><span class="sb">&lt;IfModule ssl_module&gt;
+</span></span></span><span class="line"><span class="cl"><span class="sb">SSLRandomSeed startup builtin
+</span></span></span><span class="line"><span class="cl"><span class="sb">SSLRandomSeed connect builtin
+</span></span></span><span class="line"><span class="cl"><span class="sb">&lt;/IfModule&gt;
+</span></span></span><span class="line"><span class="cl"><span class="sb">
+</span></span></span><span class="line"><span class="cl"><span class="sb"># Virtual dir for programmer use
+</span></span></span><span class="line"><span class="cl"><span class="sb">#Include conf/httpd-vdir.conf
+</span></span></span><span class="line"><span class="cl"><span class="sb">
+</span></span></span><span class="line"><span class="cl"><span class="sb">AddDefaultCharset utf-8
+</span></span></span></code></pre></div><p>建立 vhost 設定</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="err">#</span>
+</span></span><span class="line"><span class="cl"><span class="err">#</span> <span class="nx">Virtual</span> <span class="nx">Hosts</span>
+</span></span><span class="line"><span class="cl"><span class="err">#</span>
+</span></span><span class="line"><span class="cl"><span class="err">#</span> <span class="nx">If</span> <span class="nx">you</span> <span class="nx">want</span> <span class="nx">to</span> <span class="nx">maintain</span> <span class="nx">multiple</span> <span class="nx">domains</span><span class="o">/</span><span class="nx">hostnames</span> <span class="nx">on</span> <span class="nx">your</span>
+</span></span><span class="line"><span class="cl"><span class="err">#</span> <span class="nx">machine</span> <span class="nx">you</span> <span class="nx">can</span> <span class="nx">setup</span> <span class="nx">VirtualHost</span> <span class="nx">containers</span> <span class="k">for</span> <span class="nx">them</span><span class="p">.</span> <span class="nx">Most</span> <span class="nx">configurations</span>
+</span></span><span class="line"><span class="cl"><span class="err">#</span> <span class="nx">use</span> <span class="nx">only</span> <span class="nx">name</span><span class="o">-</span><span class="nx">based</span> <span class="nx">virtual</span> <span class="nx">hosts</span> <span class="nx">so</span> <span class="nx">the</span> <span class="nx">server</span> <span class="nx">doesn</span><span class="s1">&#39;t need to worry about
+</span></span></span><span class="line"><span class="cl"><span class="s1"># IP addresses. This is indicated by the asterisks in the directives below.
+</span></span></span><span class="line"><span class="cl"><span class="s1">#
+</span></span></span><span class="line"><span class="cl"><span class="s1"># Please see the documentation at 
+</span></span></span><span class="line"><span class="cl"><span class="s1"># &lt;URL:http://httpd.apache.org/docs/2.2/vhosts/&gt;
+</span></span></span><span class="line"><span class="cl"><span class="s1"># for further details before you try to setup virtual hosts.
+</span></span></span><span class="line"><span class="cl"><span class="s1">#
+</span></span></span><span class="line"><span class="cl"><span class="s1"># You may use the command line option &#39;</span><span class="o">-</span><span class="nx">S</span><span class="err">&#39;</span> <span class="nx">to</span> <span class="nx">verify</span> <span class="nx">your</span> <span class="nx">virtual</span> <span class="nx">host</span>
+</span></span><span class="line"><span class="cl"><span class="err">#</span> <span class="nx">configuration</span><span class="p">.</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="err">#</span>
+</span></span><span class="line"><span class="cl"><span class="err">#</span> <span class="nx">Use</span> <span class="nx">name</span><span class="o">-</span><span class="nx">based</span> <span class="nx">virtual</span> <span class="nx">hosting</span><span class="p">.</span>
+</span></span><span class="line"><span class="cl"><span class="err">#</span>
+</span></span><span class="line"><span class="cl"><span class="nx">NameVirtualHost</span> <span class="o">*:</span><span class="mi">80</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="err">#</span>
+</span></span><span class="line"><span class="cl"><span class="err">#</span> <span class="nx">VirtualHost</span> <span class="nx">example</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl"><span class="err">#</span> <span class="nx">Almost</span> <span class="nx">any</span> <span class="nx">Apache</span> <span class="nx">directive</span> <span class="nx">may</span> <span class="nx">go</span> <span class="nx">into</span> <span class="nx">a</span> <span class="nx">VirtualHost</span> <span class="nx">container</span><span class="p">.</span>
+</span></span><span class="line"><span class="cl"><span class="err">#</span> <span class="nx">The</span> <span class="nx">first</span> <span class="nx">VirtualHost</span> <span class="nx">section</span> <span class="nx">is</span> <span class="nx">used</span> <span class="k">for</span> <span class="nx">all</span> <span class="nx">requests</span> <span class="nx">that</span> <span class="k">do</span> <span class="nx">not</span>
+</span></span><span class="line"><span class="cl"><span class="err">#</span> <span class="nx">match</span> <span class="nx">a</span> <span class="nx">ServerName</span> <span class="nx">or</span> <span class="nx">ServerAlias</span> <span class="k">in</span> <span class="nx">any</span> <span class="o">&lt;</span><span class="nx">VirtualHost</span><span class="o">&gt;</span> <span class="nx">block</span><span class="p">.</span>
+</span></span><span class="line"><span class="cl"><span class="err">#</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">&lt;</span><span class="nx">VirtualHost</span> <span class="o">*:</span><span class="mi">80</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">ServerAdmin</span> <span class="nx">root</span><span class="err">@</span><span class="nx">localhost</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">DocumentRoot</span> <span class="s2">&#34;/usr/share/mydnsconfig/web/&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">ServerName</span> <span class="nx">mydns</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">ServerAlias</span> <span class="nx">mydns2022</span><span class="p">.</span><span class="nx">mis</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">ServerAlias</span> <span class="nx">mydns2022</span><span class="p">.</span><span class="nx">mis</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">ErrorLog</span> <span class="s2">&#34;logs/mydns.err&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">CustomLog</span> <span class="s2">&#34;logs/mydns.acc&#34;</span> <span class="nx">common</span>
+</span></span><span class="line"><span class="cl"><span class="o">&lt;</span><span class="err">/VirtualHost&gt;</span>
+</span></span></code></pre></div><p>Apache 啟動命令</p>
+<pre><code>/usr/local/web/apache2/bin/apachectl start
+</code></pre>
+<p>Apache 重啟命令</p>
+<pre><code>/usr/local/web/apache2/bin/apachectl graceful
+</code></pre>
+<hr>
+<h1 id="php-525-">PHP-5.2.5 :</h1>
+<p>建立 lib link</p>
+<pre><code>echo &quot;/usr/local/lib&quot; &gt; /home/local.conf
+
+echo &quot;/usr/local/lib64&quot; &gt;&gt; /home/local.conf
+
+ldconfig -v
+
+cp -frp /usr/lib64/libldap* /usr/lib/
+
+ln -s /usr/lib64/liblber* /usr/lib/
+</code></pre>
+<p>解壓 &amp;&amp; 編譯</p>
+<pre><code>tar zxvf php-5.2.5.tar.gz
+
+cd php-5.2.5/
+
+'./configure'  '--prefix=/usr/local/web/php' '--with-apxs2=/usr/local/web/apache2/bin/apxs' '--with-mysql' '--with-mysqli=/usr/bin/mysql_config' '--disable-cgi' '--with-iconv' '--disable-inline-optimization' '--enable-mbstring=tw' '--enable-sysvshm' '--enable-sysvsem' '--enable-sockets' '--with-jpeg-dir' '--with-png-dir' '--with-gd' '--with-zlib' '--with-curl' '--enable-zip' '--enable-opcache'
+
+make &amp;&amp; make install
+</code></pre>
+<p>建立設定檔 link</p>
+<pre><code>cp php.ini.kiwi /usr/local/web/php/etc/php.ini
+
+ln -s /usr/local/web/php/etc/php.ini /etc/php.ini
+</code></pre>
+<hr>
+<h1 id="mydnsconfig-110">MyDNSConfig-1.1.0:</h1>
+<p>建立資料夾存放 mydnsconfig data</p>
+<pre><code>mkdir  /usr/share/mydnsconfig/
+</code></pre>
+<p>解壓至 mydnsconfig 下並給予權限777</p>
+<pre><code>tar zxvf MyDNSConfig-1.1.0.tar.gz
+
+cp -r MyDNSConfig-1.1.0/interface/* /usr/share/mydnsconfig/
+
+chmod 777  /usr/share/mydnsconfig/* -R
+</code></pre>
+<p>把 table 資料灌到 mydns</p>
+<pre><code>mysql -uroot mydns &lt; mydnsconfig.sql
+</code></pre>
+<p>更改設定</p>
+<pre><code>vim /usr/share/mydnsconfig/interface/lib/config.inc.php
+</code></pre>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="nx">$conf</span><span class="p">[</span><span class="s2">&#34;db_type&#34;</span><span class="p">]</span>                <span class="o">=</span> <span class="s1">&#39;mysql&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="nx">$conf</span><span class="p">[</span><span class="s2">&#34;db_host&#34;</span><span class="p">]</span>                <span class="o">=</span> <span class="s1">&#39;localhost&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="nx">$conf</span><span class="p">[</span><span class="s2">&#34;db_database&#34;</span><span class="p">]</span>            <span class="o">=</span> <span class="s1">&#39;mydns&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="nx">$conf</span><span class="p">[</span><span class="s2">&#34;db_user&#34;</span><span class="p">]</span>                <span class="o">=</span> <span class="s1">&#39;mydns&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="nx">$conf</span><span class="p">[</span><span class="s2">&#34;db_password&#34;</span><span class="p">]</span>            <span class="o">=</span> <span class="s1">&#39;123456&#39;</span><span class="p">;</span>
+</span></span></code></pre></div><hr>
+<h1 id="mydns-12831">Mydns-1.2.8.31:</h1>
+<p>解壓 &amp;&amp; 編譯</p>
+<pre><code>tar zxvf mydns-1.2.8.31.tar.gz
+
+./configure --prefix=/usr/local/mydns --with-mysql-lib=/usr/lib64/mysql --with-zlib=/usr/lib64
+
+make &amp;&amp; make install
+</code></pre>
+<p>建立 link</p>
+<pre><code>mv mydns.conf /etc/mydns.conf
+
+ln -s /usr/local/mydns/sbin/mydns  /usr/sbin/mydns
+</code></pre>
+<p>更改設定</p>
+<pre><code>vim /etc/mydns.conf
+</code></pre>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">db</span><span class="o">-</span><span class="nx">host</span> <span class="o">=</span> <span class="nx">localhost</span>             <span class="err">#</span> <span class="nx">SQL</span> <span class="nx">server</span> <span class="nx">hostname</span>
+</span></span><span class="line"><span class="cl"><span class="nx">db</span><span class="o">-</span><span class="nx">user</span> <span class="o">=</span> <span class="nx">mydns</span>                 <span class="err">#</span> <span class="nx">SQL</span> <span class="nx">server</span> <span class="nx">username</span>
+</span></span><span class="line"><span class="cl"><span class="nx">db</span><span class="o">-</span><span class="nx">password</span> <span class="o">=</span> <span class="mi">123456</span>            <span class="err">#</span> <span class="nx">SQL</span> <span class="nx">server</span> <span class="nx">password</span>
+</span></span><span class="line"><span class="cl"><span class="nx">database</span> <span class="o">=</span> <span class="nx">mydns</span>                <span class="err">#</span> <span class="nx">MyDNS</span> <span class="nx">database</span> <span class="nx">name</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">recursive</span> <span class="o">=</span>                     <span class="err">#</span> <span class="nx">Location</span> <span class="k">of</span> <span class="nx">recursive</span> <span class="nx">resolver</span>
+</span></span><span class="line"><span class="cl"><span class="nx">allow</span><span class="o">-</span><span class="nx">axfr</span> <span class="o">=</span> <span class="nx">yes</span>                <span class="err">#</span> <span class="nx">Should</span> <span class="nx">AXFR</span> <span class="nx">be</span> <span class="nx">enabled</span><span class="o">?</span>
+</span></span><span class="line"><span class="cl"><span class="nx">allow</span><span class="o">-</span><span class="nx">tcp</span> <span class="o">=</span> <span class="nx">yes</span>                 <span class="err">#</span> <span class="nx">Should</span> <span class="nx">TCP</span> <span class="nx">be</span> <span class="nx">enabled</span><span class="o">?</span>
+</span></span></code></pre></div><p>啟動服務</p>
+<pre><code>mydns -c /etc/mydns.conf -b
+</code></pre>
+<hr>
+<h1 id="驗證">驗證</h1>
+<p>WINDOWS 綁本機 HOSTS</p>
+<pre><code>172.16.0.224	mydns2022.mis
+</code></pre>
+<p>本機打開網址 <a class="link" href="http://mydns2022.mis/"  target="_blank" rel="noopener"
+    >http://mydns2022.mis/</a></p>
+<p><img src="/p/dns_server-mydns-%E6%9C%8D%E5%8B%99%E5%99%A8%E7%9A%84%E5%8F%AF%E8%A6%96%E5%8C%96%E7%AE%A1%E7%90%86-by-centos6/00001.png"
+	width="1920"
+	height="1040"
+	srcset="/p/dns_server-mydns-%E6%9C%8D%E5%8B%99%E5%99%A8%E7%9A%84%E5%8F%AF%E8%A6%96%E5%8C%96%E7%AE%A1%E7%90%86-by-centos6/00001_hu31bfc21441e01a7fa968c2dd75ee8f4e_35296_480x0_resize_box_3.png 480w, /p/dns_server-mydns-%E6%9C%8D%E5%8B%99%E5%99%A8%E7%9A%84%E5%8F%AF%E8%A6%96%E5%8C%96%E7%AE%A1%E7%90%86-by-centos6/00001_hu31bfc21441e01a7fa968c2dd75ee8f4e_35296_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="184"
+		data-flex-basis="443px"
+	
+></p>
+<p>預設帳密為: admin/admin</p>
+<hr>
+
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/dns/">DNS</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC By Laurance</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">Related content</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/p/dns_server-bind-%E5%AE%89%E8%A3%9D%E8%88%87%E8%A8%AD%E5%AE%9A/">
+        
+        
+            <div class="article-image">
+                <img src="/p/dns_server-bind-%E5%AE%89%E8%A3%9D%E8%88%87%E8%A8%AD%E5%AE%9A/100.7279ee7e06c8e0ec8341e5f4ef2bd78a_hu4f6562e501064fb4525a6459b027d812_33292_250x150_fill_box_smart1_3.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post DNS_SERVER-BIND 安裝與設定"
+                        
+                        data-hash="md5-cnnufgbI4OyDQeX07yvXig==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">DNS_SERVER-BIND 安裝與設定</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/dns-%E6%AD%A3%E8%A7%A3%E8%88%87%E5%8F%8D%E8%A7%A3/">
+        
+        
+            <div class="article-image">
+                <img src="/p/dns-%E6%AD%A3%E8%A7%A3%E8%88%87%E5%8F%8D%E8%A7%A3/100.7279ee7e06c8e0ec8341e5f4ef2bd78a_hu4f6562e501064fb4525a6459b027d812_33292_250x150_fill_box_smart1_3.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post DNS-正解與反解"
+                        
+                        data-hash="md5-cnnufgbI4OyDQeX07yvXig==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">DNS-正解與反解</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/nginx-%E6%B7%BB%E5%8A%A0-echo-%E6%A8%A1%E7%B5%84/">
+        
+        
+            <div class="article-image">
+                <img src="/p/nginx-%E6%B7%BB%E5%8A%A0-echo-%E6%A8%A1%E7%B5%84/100.69f4d4c5fae6d72600f191bb611d9fc1_hud639c4e125de7e8ad17e2519279d4fee_29636_250x150_fill_box_smart1_3.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Nginx-添加 echo 模組"
+                        
+                        data-hash="md5-afTUxfrm1yYA8ZG7YR2fwQ==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Nginx-添加 echo 模組</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/nginx-%E5%8F%83%E6%95%B8%E9%85%8D%E7%BD%AE-tri_files-uri/">
+        
+        
+            <div class="article-image">
+                <img src="/p/nginx-%E5%8F%83%E6%95%B8%E9%85%8D%E7%BD%AE-tri_files-uri/100.69f4d4c5fae6d72600f191bb611d9fc1_hud639c4e125de7e8ad17e2519279d4fee_29636_250x150_fill_box_smart1_3.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Nginx-參數配置 tri_files $uri"
+                        
+                        data-hash="md5-afTUxfrm1yYA8ZG7YR2fwQ==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Nginx-參數配置 tri_files $uri</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/nginx-405-not-allowed/">
+        
+        
+            <div class="article-image">
+                <img src="/p/nginx-405-not-allowed/100.69f4d4c5fae6d72600f191bb611d9fc1_hud639c4e125de7e8ad17e2519279d4fee_29636_250x150_fill_box_smart1_3.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Nginx-405 Not Allowed"
+                        
+                        data-hash="md5-afTUxfrm1yYA8ZG7YR2fwQ==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Nginx-405 Not Allowed</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "hugo-theme-stack" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2022 - 
+        
+        2023 Laurance&#39;s Note
+    </section>
+    
+    <section class="powerby">
+        
+            All rights reserved <br/>
+        
+
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        
+    </section>
+</footer>
+
+<span id="busuanzi_container_site_pv">
+    總瀏覽  <span id="busuanzi_value_site_pv"></span>  次
+</span>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+    
+
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

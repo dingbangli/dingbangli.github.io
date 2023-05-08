@@ -1,0 +1,1145 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Nginx on Laurance&#39;s Note</title>
+        <link>https://note.laurance.ml/tags/nginx/</link>
+        <description>Recent content in Nginx on Laurance&#39;s Note</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Mon, 13 Mar 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://note.laurance.ml/tags/nginx/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Nginx-添加 echo 模組</title>
+        <link>https://note.laurance.ml/p/nginx-%E6%B7%BB%E5%8A%A0-echo-%E6%A8%A1%E7%B5%84/</link>
+        <pubDate>Mon, 13 Mar 2023 00:00:00 +0000</pubDate>
+        
+        <guid>https://note.laurance.ml/p/nginx-%E6%B7%BB%E5%8A%A0-echo-%E6%A8%A1%E7%B5%84/</guid>
+        <description>&lt;img src="https://note.laurance.ml/p/nginx-%E6%B7%BB%E5%8A%A0-echo-%E6%A8%A1%E7%B5%84/100.png" alt="Featured image of post Nginx-添加 echo 模組" /&gt;&lt;p&gt;安裝編譯環境&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-javascript&#34; data-lang=&#34;javascript&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nx&#34;&gt;yum&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;y&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;install&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;pcre&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;pcre&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;devel&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;openssl&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;openssl&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;devel&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;gcc&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;gcc&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;c&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;++&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;zlib&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;zlib&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;devel&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;在 &lt;code&gt;Nginx&lt;/code&gt; 安裝包裡 下載 &lt;code&gt;echo模組安裝包&lt;/code&gt; &amp;amp;&amp;amp; 解壓縮&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-javascript&#34; data-lang=&#34;javascript&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nx&#34;&gt;cd&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;root&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;installation&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;nginx&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;mf&#34;&gt;1.21&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;6&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nx&#34;&gt;wget&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;https&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;//github.com/openresty/echo-nginx-module/archive/v0.61.tar.gz
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nx&#34;&gt;tar&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;zxvf&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;v0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;mf&#34;&gt;61.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;tar&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;gz&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;查看原本的編譯參數&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-javascript&#34; data-lang=&#34;javascript&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;/usr/local/web/nginx/sbin/nginx -V&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;重新編譯一次&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-javascript&#34; data-lang=&#34;javascript&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;configure&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;--&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;user&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;nginx&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;--&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;group&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;nginx&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;--&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;prefix&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;/usr/local/web/nginx --sbin-path=/usr/local/web/nginx/sbin/nginx --conf-path=/usr/local/web/nginx/conf/nginx.conf --error-log-path=/usr/local/web/nginx/logs/error.log --http-log-path=/usr/local/web/nginx/logs/access.log --pid-path=/var/run/nginx.pid --lock-path=/var/lock/subsys/nginx --with-http_stub_status_module --with-http_ssl_module --with-http_gzip_static_module --with-pcre --with-http_realip_module --with-http_flv_module --with-http_mp4_module --with-http_gunzip_module --with-http_gzip_static_module --with-http_secure_link_module --with-http_v2_module --with-http_stub_status_module --with-http_sub_module --add-module=/usr/local/incubator-pagespeed-ngx-1.13.35.2-stable/ --add-module=/usr/local/nginx-http-concat/ --with-http_geoip_module --add-module=/root/installation/nginx-1.21.6/echo-nginx-module-0.61&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nx&#34;&gt;make&lt;/span&gt;  &lt;span class=&#34;err&#34;&gt;#&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;不要&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;make&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;install&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;會重複安裝&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;停 nginx 服務&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-javascript&#34; data-lang=&#34;javascript&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;/usr/local/web/nginx/sbin/nginx -s stop&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;將原本的執行檔備份為 nginx.bak&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-javascript&#34; data-lang=&#34;javascript&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nx&#34;&gt;cp&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;usr&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;local&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;web&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;nginx&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;sbin&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;nginx&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;usr&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;local&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;web&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;nginx&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;sbin&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;nginx&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;bak&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;將新的執行檔複製到執行路徑裡&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-javascript&#34; data-lang=&#34;javascript&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nx&#34;&gt;cp&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;root&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;installation&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;nginx&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;mf&#34;&gt;1.21&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;6&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;objs&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;nginx&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;usr&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;local&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;web&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;nginx&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;sbin&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;nginx&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;再次查看已編譯進去了&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-javascript&#34; data-lang=&#34;javascript&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;/usr/local/web/nginx/sbin/nginx -V&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
+&lt;h1 id=&#34;echo-模組用法&#34;&gt;echo 模組用法:&lt;/h1&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-javascript&#34; data-lang=&#34;javascript&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nx&#34;&gt;location&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;test&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;  
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nx&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;uri = $uri&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;  
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nx&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;request_uri = $request_uri&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;  
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
+
+</description>
+        </item>
+        <item>
+        <title>Nginx-參數配置 tri_files $uri</title>
+        <link>https://note.laurance.ml/p/nginx-%E5%8F%83%E6%95%B8%E9%85%8D%E7%BD%AE-tri_files-uri/</link>
+        <pubDate>Sun, 19 Feb 2023 00:00:00 +0000</pubDate>
+        
+        <guid>https://note.laurance.ml/p/nginx-%E5%8F%83%E6%95%B8%E9%85%8D%E7%BD%AE-tri_files-uri/</guid>
+        <description>&lt;img src="https://note.laurance.ml/p/nginx-%E5%8F%83%E6%95%B8%E9%85%8D%E7%BD%AE-tri_files-uri/100.png" alt="Featured image of post Nginx-參數配置 tri_files $uri" /&gt;&lt;h1 id=&#34;按指定順序檢查文件是否存在並使用第一個找到的文件進行請求處理&#34;&gt;按指定順序檢查文件是否存在，並使用第一個找到的文件進行請求處理&lt;/h1&gt;
+&lt;p&gt;配置&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;try_files $uri  $uri/ /index.html;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;code&gt;$uri&lt;/code&gt;  這個是nginx的一個變量，存放著用戶訪問的地址,&lt;/p&gt;
+&lt;p&gt;EX： &lt;code&gt;http://www.xxx.com/index.html&lt;/code&gt; 那麼 &lt;code&gt;$uri&lt;/code&gt; 就是 &lt;code&gt;/index.html&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;$uri/&lt;/code&gt; 代表訪問的是一個目錄&lt;/p&gt;
+&lt;p&gt;EX： &lt;code&gt;http://www.xxx.com/hello/test/&lt;/code&gt; 那麼 &lt;code&gt;$uri/&lt;/code&gt; 就是 &lt;code&gt;/hello/test/&lt;/code&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;比如用戶訪問這個網地址     http://www.xxx.com/test.html
+    
+try_files 首先會判斷他是文件，還是一個目錄，結果發現他是文件，與第一個參數 $uri 變量匹配
+    
+然後去到網站目錄下去查找 test.html 文件是否存在，如果存在直接讀取返回。如果不存在就跳去匹配 $uri/
+
+如果 $uri/ 不存在則匹配原路徑底下 /index.html
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+
+</description>
+        </item>
+        <item>
+        <title>Nginx-405 Not Allowed</title>
+        <link>https://note.laurance.ml/p/nginx-405-not-allowed/</link>
+        <pubDate>Sun, 29 Jan 2023 00:00:00 +0000</pubDate>
+        
+        <guid>https://note.laurance.ml/p/nginx-405-not-allowed/</guid>
+        <description>&lt;img src="https://note.laurance.ml/p/nginx-405-not-allowed/100.png" alt="Featured image of post Nginx-405 Not Allowed" /&gt;&lt;h1 id=&#34;跨域存取錯誤--405--not-allowed&#34;&gt;跨域存取錯誤  405 : Not Allowed&lt;/h1&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/nginx-405-not-allowed/201.png&#34;
+	width=&#34;1920&#34;
+	height=&#34;937&#34;
+	srcset=&#34;https://note.laurance.ml/p/nginx-405-not-allowed/201_hu757ed7ab6fd2f4779f912702dc76875c_10437_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/nginx-405-not-allowed/201_hu757ed7ab6fd2f4779f912702dc76875c_10437_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;204&#34;
+		data-flex-basis=&#34;491px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;解決方法 :&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-javascript&#34; data-lang=&#34;javascript&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;err&#34;&gt;#&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;To&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;allow&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;POST&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;on&lt;/span&gt; &lt;span class=&#34;kr&#34;&gt;static&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;pages&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;允許靜態頁使用POST方法&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nx&#34;&gt;error_page&lt;/span&gt;  &lt;span class=&#34;mi&#34;&gt;405&lt;/span&gt;     &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;200&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;$uri&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
+
+</description>
+        </item>
+        <item>
+        <title>Nginx-添加白名單 &amp; 封鎖國家 IP 方式</title>
+        <link>https://note.laurance.ml/p/nginx-%E6%B7%BB%E5%8A%A0%E7%99%BD%E5%90%8D%E5%96%AE-%E5%B0%81%E9%8E%96%E5%9C%8B%E5%AE%B6-ip-%E6%96%B9%E5%BC%8F/</link>
+        <pubDate>Sun, 25 Dec 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://note.laurance.ml/p/nginx-%E6%B7%BB%E5%8A%A0%E7%99%BD%E5%90%8D%E5%96%AE-%E5%B0%81%E9%8E%96%E5%9C%8B%E5%AE%B6-ip-%E6%96%B9%E5%BC%8F/</guid>
+        <description>&lt;img src="https://note.laurance.ml/p/nginx-%E6%B7%BB%E5%8A%A0%E7%99%BD%E5%90%8D%E5%96%AE-%E5%B0%81%E9%8E%96%E5%9C%8B%E5%AE%B6-ip-%E6%96%B9%E5%BC%8F/100.png" alt="Featured image of post Nginx-添加白名單 &amp; 封鎖國家 IP 方式" /&gt;&lt;h1 id=&#34;1-ip白名單文件讀取&#34;&gt;1. IP白名單文件讀取&lt;/h1&gt;
+&lt;p&gt;建立白名單文件&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;vim /usr/local/web/nginx/conf/vhost/hugo/whitelist.conf
+&lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-javascript&#34; data-lang=&#34;javascript&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nx&#34;&gt;allow&lt;/span&gt; &lt;span class=&#34;mf&#34;&gt;172.16&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;mf&#34;&gt;0.6&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;配置設定檔引入白名單文件&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;vim /usr/local/web/nginx/conf/vhost/hugo/hugo.conf
+&lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;location  / {
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;.
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;.
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;.
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;.
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    include /usr/local/web/nginx/conf/vhost/hugo/whitelist.conf;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    deny all;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    }
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;pre&gt;&lt;code&gt;cat /usr/local/web/nginx/conf/vhost/hugo/whitelist.conf
+
+allow 172.16.0.6;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;2國家ip封鎖&#34;&gt;2.國家IP封鎖&lt;/h1&gt;
+&lt;p&gt;Nginx 主設定檔的&lt;strong&gt;http 區塊&lt;/strong&gt;加入GEO模塊並引用&lt;strong&gt;dat 文件&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;從 $remote_addr 這個變數, 來定義 $ip_whitelist 這個變數&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;vim /usr/local/web/nginx/conf/nginx.conf
+&lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-javascript&#34; data-lang=&#34;javascript&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nx&#34;&gt;geoip_country&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;usr&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;local&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;web&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;nginx&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;conf&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;vhost&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;hugo&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;GeoCountry&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;country&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;maxmind&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;dat&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nx&#34;&gt;geo&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;$remote_addr&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;$ip_whitelist&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;default&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;建立一支定義GEO規則的設定檔&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;vim /usr/local/web/nginx/conf/vhost/geoblock.conf
+&lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-javascript&#34; data-lang=&#34;javascript&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;$ip_whitelist&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;break&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;$geoip_country_code&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;~&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;JP&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;|&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;TW&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;403&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;在配置的設定檔上&lt;strong&gt;server 區塊&lt;/strong&gt;引用GEO規則的設定檔&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;vim /usr/local/web/nginx/conf/vhost/hugo/hugo.conf
+&lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-javascript&#34; data-lang=&#34;javascript&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nx&#34;&gt;server&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nx&#34;&gt;listen&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1515&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;#&lt;/span&gt;    &lt;span class=&#34;nx&#34;&gt;listen&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1515&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nx&#34;&gt;server_name&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;note&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;laurance&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;com&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nx&#34;&gt;include&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;vhost&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;geoblock&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;conf&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;     &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
+&lt;h1 id=&#34;使用-nginx-阻擋國家ip需要編譯模塊-http_geoip_module&#34;&gt;使用 Nginx 阻擋國家IP,需要編譯模塊 http_geoip_module&lt;/h1&gt;
+&lt;p&gt;下載 geoip 安裝包&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;yum install geoip-devel
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;ps. 若找不到安裝包,可先安裝 epel 倉庫&lt;br&gt;
+yum install epel-release -y&lt;/p&gt;
+&lt;p&gt;檢查庫是否安裝成功&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;ldconfig -v | grep GeoIP        
+&lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-javascript&#34; data-lang=&#34;javascript&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nx&#34;&gt;libGeoIPUpdate&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;so&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;libGeoIPUpdate&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;so&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;mf&#34;&gt;0.0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nx&#34;&gt;libGeoIP&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;so&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;libGeoIP&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;so&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;mf&#34;&gt;1.4&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;8&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nx&#34;&gt;libGeoIPUpdate&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;so&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;libGeoIPUpdate&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;so&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;mf&#34;&gt;0.0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nx&#34;&gt;libGeoIP&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;so&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;libGeoIP&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;so&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;mf&#34;&gt;1.5&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;將 GeoIP 模塊重新編譯到 Nginx 中 (原有的編譯參數可用 nginx -V 查看)&lt;/p&gt;
+&lt;p&gt;( 不要 make install 否則覆蓋安裝就麻煩了 )&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;./configure --user=nginx --group=nginx --prefix=/usr/local/web/nginx --sbin-path=/usr/local/web/nginx/sbin/nginx --conf-path=/usr/local/web/nginx/conf/nginx.conf --error-log-path=/usr/local/web/nginx/logs/error.log --http-log-path=/usr/local/web/nginx/logs/access.log --pid-path=/var/run/nginx.pid --lock-path=/var/lock/subsys/nginx --with-http_stub_status_module --with-http_ssl_module --with-http_gzip_static_module --with-pcre --with-http_realip_module --with-http_flv_module --with-http_mp4_module --with-http_gunzip_module --with-http_gzip_static_module --with-http_secure_link_module --with-http_v2_module --with-http_stub_status_module --with-http_sub_module --add-module=/usr/local/incubator-pagespeed-ngx-1.13.35.2-stable/ --add-module=/usr/local/nginx-http-concat/ --with-http_geoip_module
+
+make
+
+unlink /usr/sbin/nginx 
+
+mv /usr/local/web/nginx/sbin/nginx /usr/local/web/nginx/sbin/nginx-2023-01-01.bak
+
+cp objs/nginx /usr/local/web/nginx/sbin/nginx
+
+/usr/local/web/nginx/sbin/nginx -V
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;查看 GEO 模塊是否已編入&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;/usr/local/web/nginx/sbin/nginx -V 2&amp;gt;&amp;amp;1 | grep -o with-http_geoip_module
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;下載-ip-數據庫-dat-格式&#34;&gt;下載 IP 數據庫 (dat 格式)&lt;/h1&gt;
+&lt;p&gt;[ 第三方下載地址 ] &lt;a class=&#34;link&#34; href=&#34;https://www.miyuru.lk/geoiplegacy&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://www.miyuru.lk/geoiplegacy&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;下載同時包括Ipv4和Ipv6的country、city版本。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;wget https://dl.miyuru.lk/geoip/maxmind/country/maxmind.dat.gz
+
+gunzip maxmind.dat.gz
+
+wget https://dl.miyuru.lk/geoip/maxmind/city/maxmind.dat.gz
+
+gunzip maxmind.dat.gz
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;配置請看上面&lt;/p&gt;
+&lt;hr&gt;
+&lt;pre&gt;&lt;code&gt;國家相關參數：
+    
+$geoip_country_code #兩位字符的英文國家碼。如：CN, US
+
+$geoip_country_code3 #三位字符的英文國家碼。如：CHN, USA
+
+$geoip_country_name #國家英文全稱。如：China, United States
+
+城市相關參數：    
+
+$geoip_city_country_code #也是兩位字符的英文國家碼。
+
+$geoip_city_country_code3 #上同
+
+$geoip_city_country_name #上同.
+
+$geoip_region #這個經測試是兩位數的數字，如杭州是02, 上海是 23。但是沒有搜到相關資料，希望知道的朋友留言告之。
+
+$geoip_city #城市的英文名稱。如：Hangzhou
+
+$geoip_postal_code #城市的郵政編碼。經測試，國內這字段為空
+
+$geoip_city_continent_code #不知什麼用途，國內好像都是AS
+
+$geoip_latitude #緯度
+
+$geoip_longitude #經度
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;[參考] &lt;a class=&#34;link&#34; href=&#34;https://www.ywbj.cc/?p=787&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://www.ywbj.cc/?p=787&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+
+</description>
+        </item>
+        <item>
+        <title>Nginx-Proxypass (HUGO)</title>
+        <link>https://note.laurance.ml/p/nginx-proxypass-hugo/</link>
+        <pubDate>Tue, 13 Dec 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://note.laurance.ml/p/nginx-proxypass-hugo/</guid>
+        <description>&lt;img src="https://note.laurance.ml/p/nginx-proxypass-hugo/100.png" alt="Featured image of post Nginx-Proxypass (HUGO)" /&gt;&lt;p&gt;NGINX 開 port:1515 導向 HUGO-localhost:1313 範例&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;server {
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    listen 1515;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    listen [::]:1515;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;#    server_name ;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        location  / {
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        proxy_set_header X-Real-IP $remote_addr;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        proxy_redirect off;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        proxy_http_version 1.1;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        proxy_pass http://127.0.0.1:1313;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        proxy_set_header X_FORWARDED_HOST $host;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        proxy_set_header Host $http_host;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        proxy_ignore_client_abort on;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        proxy_read_timeout 300;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        proxy_ignore_headers &amp;#34;Cache-Control&amp;#34;;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        add_header X-Cache &amp;#34;$upstream_cache_status from $server_addr&amp;#34;;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        add_header Cache-Control  max-age=60;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        proxy_cache_valid  304 1m;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;#       proxy_cache two;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        proxy_cache_key $host$uri$is_args$args;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  }
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    access_log logs/hugo-server/hugo-server.acc access;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;hr&gt;
+
+</description>
+        </item>
+        <item>
+        <title>Nginx-配置 Nginx auth_basic 身分驗證</title>
+        <link>https://note.laurance.ml/p/nginx-%E9%85%8D%E7%BD%AE-nginx-auth_basic-%E8%BA%AB%E5%88%86%E9%A9%97%E8%AD%89/</link>
+        <pubDate>Sat, 10 Dec 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://note.laurance.ml/p/nginx-%E9%85%8D%E7%BD%AE-nginx-auth_basic-%E8%BA%AB%E5%88%86%E9%A9%97%E8%AD%89/</guid>
+        <description>&lt;img src="https://note.laurance.ml/p/nginx-%E9%85%8D%E7%BD%AE-nginx-auth_basic-%E8%BA%AB%E5%88%86%E9%A9%97%E8%AD%89/100.png" alt="Featured image of post Nginx-配置 Nginx auth_basic 身分驗證" /&gt;&lt;p&gt;&lt;em&gt;&lt;strong&gt;NGINX 默認就有安裝 ngx_http_auth_basic_module 模塊 (不用特別編譯)&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;生成帳號 &amp;amp;&amp;amp; 密碼&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;echo -n &#39;root:&#39; &amp;gt;&amp;gt; /usr/local/web/nginx/conf/mypasswords/.testpass.dav
+
+openssl passwd -apr1 123456 &amp;gt;&amp;gt; /usr/local/web/nginx/conf/mypasswords/.testpass.dav
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/nginx-%E9%85%8D%E7%BD%AE-nginx-auth_basic-%E8%BA%AB%E5%88%86%E9%A9%97%E8%AD%89/00001.png&#34;
+	width=&#34;1902&#34;
+	height=&#34;564&#34;
+	srcset=&#34;https://note.laurance.ml/p/nginx-%E9%85%8D%E7%BD%AE-nginx-auth_basic-%E8%BA%AB%E5%88%86%E9%A9%97%E8%AD%89/00001_hu090df50696b28552e5ffa22d4078c834_42544_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/nginx-%E9%85%8D%E7%BD%AE-nginx-auth_basic-%E8%BA%AB%E5%88%86%E9%A9%97%E8%AD%89/00001_hu090df50696b28552e5ffa22d4078c834_42544_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;337&#34;
+		data-flex-basis=&#34;809px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;配置 Nginx&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;server {
+
+        listen          80;
+        server_name     php-test.net;
+        index           index.php index.html;
+        root            /home/test/php;
+        include         vhost/file.conf;
+        access_log      logs/test/test.acc access;
+        auth_basic      &amp;quot;authentication&amp;quot;;
+        auth_basic_user_file /usr/local/web/nginx/conf/mypasswords/.testpass.dav;
+
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;file.conf (PHP)&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;location ~ \.php$ {
+        try_files $uri =404;
+        fastcgi_split_path_info ^(.+\.php)(/.+)$;
+        include fastcgi_params;
+        #fastcgi_index index.php;
+        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+        #fastcgi_intercept_errors on;
+        fastcgi_pass 127.0.0.1:9000;
+    }
+
+    location ~ \.wav$ {
+        add_header Content-Disposition &amp;quot;inline&amp;quot;;
+    }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;NGINX 重啟&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;/usr/local/web/nginx/sbin/nginx -t
+
+/usr/local/web/nginx/sbin/nginx -s reload
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;驗證:  WINDOWS 本機綁 HOST&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;172.16.0.222 	php-test.net
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/nginx-%E9%85%8D%E7%BD%AE-nginx-auth_basic-%E8%BA%AB%E5%88%86%E9%A9%97%E8%AD%89/00002.png&#34;
+	width=&#34;997&#34;
+	height=&#34;726&#34;
+	srcset=&#34;https://note.laurance.ml/p/nginx-%E9%85%8D%E7%BD%AE-nginx-auth_basic-%E8%BA%AB%E5%88%86%E9%A9%97%E8%AD%89/00002_hu72015206e615b9813348daf0bb6d07fb_59308_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/nginx-%E9%85%8D%E7%BD%AE-nginx-auth_basic-%E8%BA%AB%E5%88%86%E9%A9%97%E8%AD%89/00002_hu72015206e615b9813348daf0bb6d07fb_59308_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;137&#34;
+		data-flex-basis=&#34;329px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;hr&gt;
+
+</description>
+        </item>
+        <item>
+        <title>Nginx-proxy常用配置</title>
+        <link>https://note.laurance.ml/p/nginx-proxy%E5%B8%B8%E7%94%A8%E9%85%8D%E7%BD%AE/</link>
+        <pubDate>Thu, 17 Nov 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://note.laurance.ml/p/nginx-proxy%E5%B8%B8%E7%94%A8%E9%85%8D%E7%BD%AE/</guid>
+        <description>&lt;img src="https://note.laurance.ml/p/nginx-proxy%E5%B8%B8%E7%94%A8%E9%85%8D%E7%BD%AE/100.png" alt="Featured image of post Nginx-proxy常用配置" /&gt;&lt;pre&gt;&lt;code&gt;server
+  {
+    listen       80;
+    server_name aaa.abc.com;
+
+      location  /
+    {
+
+
+      proxy_set_header X-Real-IP $remote_addr;						# 定義header記錄使用者真实IP
+      proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;	                # 讓後端的Web伺服器可以取得使用者真實IP
+      proxy_redirect off;								# 重新定向url-OFF
+      proxy_http_version 1.1;								# 默认http版本为1.0,开启对http1.1支持
+      proxy_pass http://127.0.0.1:3001;
+      proxy_set_header X_FORWARDED_HOST $host;						# 客戶端調用服務端所使用的 host-ip
+      #proxy_set_header X_FORWARDED_PORT 90;						# 用於連接到負載均衡器的端口號
+      proxy_set_header Host $http_host;							# 反向代理後標頭為HOST原始字段
+      proxy_ignore_client_abort on;							# 默認是關閉的，即請求過程中如果客戶端主動關閉請求或者客戶端網絡斷掉，那麼Nginx會記錄499 
+      proxy_read_timeout 300;								# 定義一個nginx等待real server響應數據的超時時間
+
+      proxy_ignore_headers &amp;quot;Cache-Control&amp;quot;;						#忽略被代理伺服器設定的&amp;quot;Cache-Control&amp;quot;頭資訊
+      add_header X-Cache &amp;quot;$upstream_cache_status from $server_addr&amp;quot;; #顯示緩存是否命中
+      add_header    Cache-Control  max-age=60;					        # 客戶端本地的緩存，在配置的生存時間內的，客戶端可以直接使用
+      proxy_cache_valid  304 1m;							# 對響應狀態碼為304的響應快取1m
+      #proxy_cache_valid  301 302 1m;
+      proxy_cache two;
+      #proxy_cache_valid any 1m;
+      proxy_cache_key $host$uri$is_args$args;						# 每筆快取儲存的鍵值方式
+    }
+    access_log  logs/aaa.abc.acc  access;
+  }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+
+</description>
+        </item>
+        <item>
+        <title>Nginx-Config配置</title>
+        <link>https://note.laurance.ml/p/nginx-config%E9%85%8D%E7%BD%AE/</link>
+        <pubDate>Wed, 03 Aug 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://note.laurance.ml/p/nginx-config%E9%85%8D%E7%BD%AE/</guid>
+        <description>&lt;img src="https://note.laurance.ml/p/nginx-config%E9%85%8D%E7%BD%AE/100.png" alt="Featured image of post Nginx-Config配置" /&gt;&lt;pre&gt;&lt;code&gt;#定義Nginx運行的用戶和用戶組
+
+user www www;
+
+#nginx進程數，建議設置為等於CPU總核心數。
+
+worker_processes 8;
+
+#全局錯誤日誌定義類型，[ debug | info | notice | warn | error | crit ]
+
+error_log /var/log/nginx/error.log info;
+
+#進程文件
+
+pid /var/run/nginx.pid;
+
+#一個nginx進程打開的最多文件描述符數目，理論值應該是最多打開文件數（系統的值ulimit -n）與nginx進程數相除，但是nginx分配請求並不均勻，所以建議與ulimit -n的值保持一致。
+
+worker_rlimit_nofile 65535;
+
+#工作模式與連接數上限
+
+events
+
+{
+
+#參考事件模型，use [ kqueue | rtsig | epoll | /dev/poll | select | poll ]; epoll模型是Linux 2.6以上版本內核中的高性能網絡I/O模型，如果跑在FreeBSD上面，就用kqueue模型。
+
+
+ 
+use epoll;
+
+#單個進程最大連接數（最大連接數=連接數*進程數）
+
+worker_connections 65535;
+
+}
+
+#設定http伺服器
+
+http
+
+{
+
+include mime.types; #文件擴展名與文件類型映射表
+
+default_type application/octet-stream; #默認文件類型
+
+#charset utf-8; #默認編碼
+
+server_names_hash_bucket_size 128; #伺服器名字的hash表大小
+
+client_header_buffer_size 32k; #上傳文件大小限制
+
+large_client_header_buffers 4 64k; #設定請求緩
+
+client_max_body_size 8m; #設定請求緩
+
+sendfile on; #開啟高效文件傳輸模式，sendfile指令指定nginx是否調用sendfile函數來輸出文件，對於普通應用設為 on，如果用來進行下載等應用磁碟IO重負載應用，可設置為off，以平衡磁碟與網絡I/O處理速度，降低系統的負載。注意：如果圖片顯示不正常把這個改成off。
+
+
+ 
+autoindex on; #開啟目錄列表訪問，合適下載伺服器，默認關閉。
+
+tcp_nopush on; #防止網絡阻塞
+
+tcp_nodelay on; #防止網絡阻塞
+
+keepalive_timeout 120; #長連接超時時間，單位是秒
+
+#FastCGI相關參數是為了改善網站的性能：減少資源占用，提高訪問速度。下面參數看字面意思都能理解。
+
+fastcgi_connect_timeout 300;
+
+fastcgi_send_timeout 300;
+
+fastcgi_read_timeout 300;
+
+fastcgi_buffer_size 64k;
+
+fastcgi_buffers 4 64k;
+
+fastcgi_busy_buffers_size 128k;
+
+fastcgi_temp_file_write_size 128k;
+
+#gzip模塊設置
+
+gzip on; #開啟gzip壓縮輸出
+
+
+ 
+gzip_min_length 1k; #最小壓縮文件大小
+
+gzip_buffers 4 16k; #壓縮緩衝區
+
+gzip_http_version 1.0; #壓縮版本（默認1.1，前端如果是squid2.5請使用1.0）
+
+gzip_comp_level 2; #壓縮等級
+
+gzip_types text/plain application/x-javascript text/css application/xml;
+
+#壓縮類型，默認就已經包含text/html，所以下面就不用再寫了，寫上去也不會有問題，但是會有一個warn。
+
+gzip_vary on;
+
+#limit_zone crawler $binary_remote_addr 10m; #開啟限制IP連接數的時候需要使用
+
+upstream blog.ha97.com {
+
+#upstream的負載均衡，weight是權重，可以根據機器配置定義權重。weigth參數表示權值，權值越高被分配到的機率越大。
+
+
+ 
+server 192.168.80.121:80 weight=3;
+
+server 192.168.80.122:80 weight=2;
+
+server 192.168.80.123:80 weight=3;
+
+}
+
+#虛擬主機的配置
+
+server
+
+{
+
+#監聽埠
+
+listen 80;
+
+#域名可以有多個，用空格隔開
+
+server_name www.ha97.com ha97.com;
+
+index index.html index.htm index.php;
+
+root /data/www/ha97;
+
+location ~ .*\.(php|php5)?$
+
+{
+
+fastcgi_pass 127.0.0.1:9000;
+
+fastcgi_index index.php;
+
+include fastcgi.conf;
+
+}
+
+#圖片緩存時間設置
+
+location ~ .*\.(gif|jpg|jpeg|png|bmp|swf)$
+
+
+ 
+{
+
+expires 10d;
+
+}
+
+#JS和CSS緩存時間設置
+
+location ~ .*\.(js|css)?$
+
+{
+
+expires 1h;
+
+}
+
+#日誌格式設定
+
+log_format access &#39;$remote_addr - $remote_user [$time_local] &amp;quot;$request&amp;quot; &#39;
+
+&#39;$status $body_bytes_sent &amp;quot;$http_referer&amp;quot; &#39;
+
+&#39;&amp;quot;$http_user_agent&amp;quot; $http_x_forwarded_for&#39;;
+
+#定義本虛擬主機的訪問日誌
+
+access_log /var/log/nginx/ha97access.log access;
+
+#對 &amp;quot;/&amp;quot; 啟用反向代理
+
+location / {
+
+proxy_pass http://127.0.0.1:88;
+
+proxy_redirect off;
+
+proxy_set_header X-Real-IP $remote_addr;
+
+
+ 
+#後端的Web伺服器可以通過X-Forwarded-For獲取用戶真實IP
+
+proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+
+#以下是一些反向代理的配置，可選。
+
+proxy_set_header Host $host;
+
+client_max_body_size 10m; #允許客戶端請求的最大單文件字節數
+
+client_body_buffer_size 128k; #緩衝區代理緩衝用戶端請求的最大字節數，
+
+proxy_connect_timeout 90; #nginx跟後端伺服器連接超時時間(代理連接超時)
+
+proxy_send_timeout 90; #後端伺服器數據回傳時間(代理髮送超時)
+
+proxy_read_timeout 90; #連接成功後，後端伺服器響應時間(代理接收超時)
+
+proxy_buffer_size 4k; #設置代理伺服器（nginx）保存用戶頭信息的緩衝區大小
+
+proxy_buffers 4 32k; #proxy_buffers緩衝區，網頁平均在32k以下的設置
+
+proxy_busy_buffers_size 64k; #高負荷下緩衝大小（proxy_buffers*2）
+
+proxy_temp_file_write_size 64k;
+
+#設定緩存文件夾大小，大於這個值，將從upstream伺服器傳
+
+}
+
+#設定查看Nginx狀態的地址
+
+location /NginxStatus {
+
+stub_status on;
+
+access_log on;
+
+auth_basic &amp;quot;NginxStatus&amp;quot;;
+
+auth_basic_user_file conf/htpasswd;
+
+#htpasswd文件的內容可以用apache提供的htpasswd工具來產生。
+
+}
+
+#本地動靜分離反向代理配置
+
+#所有jsp的頁面均交由tomcat或resin處理
+
+location ~ .(jsp|jspx|do)?$ {
+
+proxy_set_header Host $host;
+
+proxy_set_header X-Real-IP $remote_addr;
+
+proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+
+proxy_pass http://127.0.0.1:8080;
+
+}
+
+#所有靜態文件由nginx直接讀取不經過tomcat或resin
+
+location ~ .*.(htm|html|gif|jpg|jpeg|png|bmp|swf|ioc|rar|zip|txt|flv|mid|doc|ppt|pdf|xls|mp3|wma)$
+
+{ expires 15d; }
+
+location ~ .*.(js|css)?$
+
+{ expires 1h; }
+
+}
+
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+
+</description>
+        </item>
+        <item>
+        <title>Nginx-Location參數</title>
+        <link>https://note.laurance.ml/p/nginx-location%E5%8F%83%E6%95%B8/</link>
+        <pubDate>Wed, 03 Aug 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://note.laurance.ml/p/nginx-location%E5%8F%83%E6%95%B8/</guid>
+        <description>&lt;img src="https://note.laurance.ml/p/nginx-location%E5%8F%83%E6%95%B8/100.png" alt="Featured image of post Nginx-Location參數" /&gt;&lt;pre&gt;&lt;code&gt;#############################################################################
+
+Location可以有以下几种形式 :
+
+	=		精确匹配
+	
+	～		正则匹配,大小写敏感
+	
+	～*		正则匹配, 大小写不敏感
+	
+	^~		忽略正则表达式的前缀匹配
+	
+			没有修饰符,前缀匹配
+	
+	@		命名location,可用来做内部重定向
+	
+	其中=和^~修饰符都可以認為是特殊形式的前缀匹配
+
+#############################################################################
+
+location{
+
+default_type text/html ;	# return 輸出為文字
+
+}
+
+#############################################################################
+
+Location Example * :
+
+    server {
+        listen 80 default_server;
+        server_name _;
+        # A
+        location = / {
+                return 200 &amp;quot;A&amp;quot;;
+        }
+
+        # B
+        location / {
+                return 200 &amp;quot;B&amp;quot;;
+        }
+
+        # C
+        location /docs {
+                return 200 &amp;quot;C&amp;quot;;
+        }
+
+        # D
+        location ^~ /imgs {
+                return 200 &amp;quot;D&amp;quot;;
+        }
+        
+        # E
+        location ~* \.(gif|jpg|png)$ {
+                return 200 &amp;quot;E&amp;quot;;
+        }
+
+        # F
+        location ~ /a/.*$ {
+                return 200 &amp;quot;F&amp;quot;;
+        }
+    }
+
+#############################################################################
+
+	input		      		output			说明
+
+	http://127.0.0.1		      A		匹配到A跟B,精确匹配优先级较高
+
+	http://127.0.0.1/test		  B		只匹配到B
+
+	http://127.0.0.1/docs/1		  C		匹配到B跟C,C前缀比B长
+
+	http://127.0.0.1/docs/2.jpg	  E		匹配到B、C、E，正则匹配比普通前缀匹配优先级高
+
+	http://127.0.0.1/imgs/1		  D		只匹配到B、D,D前缀比B长
+
+	http://127.0.0.1/imgs/1.jpg	  D		匹配到B、D、E，由于D是最长匹配且有^~修饰符，
+							            所以不会再检查正则匹配
+	
+	http://127.0.0.1/docs/a/1	  F		匹配到B、C、F
+	
+#############################################################################
+
+	Location @name的用法
+
+  @前缀可以用来定义一个命名的location,该location不处理正常的外部请求,一般用来供内部重定向使用。
+
+  它们不能嵌套,也不能包含嵌套的location。
+
+	Location Example *
+
+location /try {
+    try_files $uri $uri/ @name;
+}
+
+location /error {
+    error_page 404 = @name;
+    return 404;
+}
+
+location @name {
+    return 200 &amp;quot;@name&amp;quot;;
+}
+
+# 这时访问/try或者/error都会返回&amp;quot;@name&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+
+</description>
+        </item>
+        <item>
+        <title>Nginx-log_format配置</title>
+        <link>https://note.laurance.ml/p/nginx-log_format%E9%85%8D%E7%BD%AE/</link>
+        <pubDate>Wed, 03 Aug 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://note.laurance.ml/p/nginx-log_format%E9%85%8D%E7%BD%AE/</guid>
+        <description>&lt;img src="https://note.laurance.ml/p/nginx-log_format%E9%85%8D%E7%BD%AE/100.png" alt="Featured image of post Nginx-log_format配置" /&gt;&lt;pre&gt;&lt;code&gt;引數                      說明                                          示例
+
+$remote_addr             客戶端地址                                     192.168.122.1
+
+$remote_user             客戶端使用者名稱稱                             --
+
+$time_local              訪問時間和時區                                 17/Dec/2018:10:47:58 +0800
+
+$request                 請求的URI和HTTP協議                            &amp;quot;GET / HTTP/1.1&amp;quot;
+
+$status                  HTTP請求狀態                                     304
+
+$upstream_status         upstream狀態                                     0
+
+$body_bytes_sent         傳送給客戶端檔案內容大小                         -
+
+$http_referer            url跳轉來源,用於記錄是從哪個頁面連結訪問過來的                                   
+
+$http_user_agent         使用者終端瀏覽器等資訊,即客戶瀏覽器的相關資訊     &amp;quot;Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101 Firefox/52.0&amp;quot;
+
+
+$http_host               請求地址，即瀏覽器中你輸入的地址（IP或域名）       www.wang.com 192.168.100.100
+
+$ssl_protocol            SSL協議版本                                        TLSv1
+
+$ssl_cipher              交換資料中的演算法                                 RC4-SHA
+
+$upstream_addr           後臺upstream的地址，即真正提供服務的主機地址       10.10.10.100:80
+
+$request_time            整個請求的總時間                                   0.205
+
+$upstream_response_time  請求過程中，upstream響應時間                       0.002
+
+$http_x_forwarded_for	客户端的真实ip 如果包含多個IP 
+[ X-Forwarded-For: client1, proxy1, proxy2, ... ]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+
+</description>
+        </item>
+        <item>
+        <title>Nginx-加入PageSpeed模組及nginx-http-concat</title>
+        <link>https://note.laurance.ml/p/nginx-%E5%8A%A0%E5%85%A5pagespeed%E6%A8%A1%E7%B5%84%E5%8F%8Anginx-http-concat/</link>
+        <pubDate>Wed, 03 Aug 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://note.laurance.ml/p/nginx-%E5%8A%A0%E5%85%A5pagespeed%E6%A8%A1%E7%B5%84%E5%8F%8Anginx-http-concat/</guid>
+        <description>&lt;img src="https://note.laurance.ml/p/nginx-%E5%8A%A0%E5%85%A5pagespeed%E6%A8%A1%E7%B5%84%E5%8F%8Anginx-http-concat/100.png" alt="Featured image of post Nginx-加入PageSpeed模組及nginx-http-concat" /&gt;&lt;pre&gt;&lt;code&gt;PageSpeed模組(自動優化網站動態)下載
+
+wget https://github.com/apache/incubator-pagespeed-ngx/archive/v1.13.35.2-stable.tar.gz
+
+tar zxvf v1.13.35.2-stable.tar.gz
+
+cd incubator-pagespeed-ngx-1.13.35.2-stable
+
+#這一步一定要做 不然nginx會無法加入模組 解壓縮會在根目錄下生成一個psol的資料夾 (解壓後將psol/放到incubator-pagespeed-ngx-1.13.35.2-stable/裡)
+
+cat PSOL_BINARY_URL
+
+wget https://dl.google.com/dl/page-speed/psol/1.13.35.2-x64.tar.gz
+
+tar zxvf 1.13.35.2-x64.tar.gz
+
+cd ../
+
+mv incubator-pagespeed-ngx-1.13.35.2-stable /usr/local/incubator-pagespeed-ngx-1.13.35.2-stable/
+
+nginx-http-concat模組(合併HTTP請求)下載
+
+wget https://github.com/alibaba/nginx-http-concat/archive/1.2.2.tar.gz
+
+tar zxvf 1.2.2.tar.gz
+
+mv nginx-http-concat-1.2.2/ /usr/local/nginx-http-concat/
+
+nginx編譯安裝
+
+cd nginx-1.21.6/
+
+./configure --user=nginx --group=nginx --prefix=/usr/local/web/nginx --sbin-path=/usr/local/web/nginx/sbin/nginx --conf-path=/usr/local/web/nginx/conf/nginx.conf --error-log-path=/usr/local/web/nginx/logs/error.log --http-log-path=/usr/local/web/nginx/logs/access.log --pid-path=/var/run/nginx.pid --lock-path=/var/lock/subsys/nginx --with-http_stub_status_module --with-http_ssl_module --with-http_gzip_static_module --with-pcre --with-http_realip_module --with-http_flv_module --with-http_mp4_module --with-http_gunzip_module --with-http_gzip_static_module --with-http_secure_link_module --with-http_v2_module --with-http_stub_status_module --with-http_sub_module --add-module=/usr/local/incubator-pagespeed-ngx-1.13.35.2-stable/ --add-module=/usr/local/nginx-http-concat/
+
+make &amp;amp;&amp;amp; make install (重新編譯的話不需要make install)
+
+[重新編譯執行以下步驟]
+
+/usr/local/web/nginx/sbin/nginx -s stop
+
+cp /usr/local/nginx/sbin/nginx/ /usr/local/nginx/sbin/nginx.bak
+
+cp /root/installation/nginx-1.21.6/objs/nginx /usr/local/nginx/sbin/nginx
+
+檢查是否有加入模組
+
+/usr/local/web/nginx/sbin/nginx -V
+
+nginx.conf設定檔新增pagespeed配置
+
+http區段加入
+
+pagespeed on;
+pagespeed FileCachePath /var/cache/nginx/ngx_pagespeed_cache;
+server區段加入
+
+# Rewrite Level
+pagespeed RewriteLevel CoreFilters;
+
+# Minimize and optimize HTTP requests
+pagespeed EnableFilters rewrite_css;
+pagespeed EnableFilters rewrite_javascript;
+pagespeed EnableFilters combine_css;
+pagespeed EnableFilters combine_javascript;
+pagespeed EnableFilters inline_css;
+pagespeed CssInlineMaxBytes 4096;
+pagespeed EnableFilters inline_javascript;
+pagespeed JsInlineMaxBytes 4096;
+
+# Image Optimization and lazy load
+pagespeed EnableFilters rewrite_images;
+pagespeed EnableFilters inline_images;
+pagespeed EnableFilters resize_images;
+pagespeed EnableFilters recompress_images;
+
+# Controlling the use of beacons
+pagespeed AvoidRenamingIntrospectiveJavascript off;
+pagespeed CriticalImagesBeaconEnabled false;
+
+
+location ~ &amp;quot;\.pagespeed\.([a-z]\.)?[a-z]{2}\.[^.]{10}\.[^.]+&amp;quot; {
+        add_header &amp;quot;&amp;quot; &amp;quot;&amp;quot;;
+        }
+    location ~ &amp;quot;^/pagespeed_static/&amp;quot; { }
+    location ~ &amp;quot;^/ngx_pagespeed_beacon$&amp;quot; { }
+
+重啟nginx
+
+/usr/local/web/nginx/sbin/nginx -s reload
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+
+</description>
+        </item>
+        <item>
+        <title>Nginx-常用的LOG搜索指令</title>
+        <link>https://note.laurance.ml/p/nginx-%E5%B8%B8%E7%94%A8%E7%9A%84log%E6%90%9C%E7%B4%A2%E6%8C%87%E4%BB%A4/</link>
+        <pubDate>Wed, 03 Aug 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://note.laurance.ml/p/nginx-%E5%B8%B8%E7%94%A8%E7%9A%84log%E6%90%9C%E7%B4%A2%E6%8C%87%E4%BB%A4/</guid>
+        <description>&lt;img src="https://note.laurance.ml/p/nginx-%E5%B8%B8%E7%94%A8%E7%9A%84log%E6%90%9C%E7%B4%A2%E6%8C%87%E4%BB%A4/100.png" alt="Featured image of post Nginx-常用的LOG搜索指令" /&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;###########################################################################
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;統計IP訪問量
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;awk &amp;#39;{print $l}&amp;#39; /var/log/nginx-access.log | sort -n | uniq | wc -l
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;查看某一時間段IP的訪問量
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;grep &amp;#34;14/Jul/2021:0[2-10]&amp;#34; /var/log/nginx-access.log | awk &amp;#39;{print $l}&amp;#39; | sort | uniq -c | sort -nr | wc -l
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;查看訪問次數最頻繁的前100個IP
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;awk &amp;#39;{print $l}&amp;#39; /var/log/nginx-access.log | sort -n | uniq -c | sort -rn | head -n 100
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;查看訪問次數100以上的IP
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;awk &amp;#39;{print $l}&amp;#39; /var/log/nginx-access.log |sort -n |uniq -c |awk &amp;#39;{if($l &amp;gt;100) print $0 } &amp;#39; | sort -rn
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;查詢某個IP的詳細訪問情況,按訪問頻率排序
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;grep &amp;#39;172.16.0.6&amp;#39; /var/log/nginx-access.log |awk &amp;#39;{print $7}&amp;#39;|sort |uniq -c |sort -rn |head -n 100
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;###########################################################################
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;頁面訪問統計
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;###########################################################################
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;查看訪問最頻繁的頁面
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;awk &amp;#39;{print $7}&amp;#39; /var/log/nginx-access.log | sort | uniq -c | sort -rn | head -n 100
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;查看訪問最頻繁的頁面(排除PHP頁面)
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;grep -v &amp;#34;.php&amp;#34; /var/log/nginx-access.log |awk &amp;#39;{print $7}&amp;#39;|sort|uniq -c|sort -rn|head -n 100
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;查看頁面訪問次數超過100的頁面
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;cat /var/log/nginx-access.log | cut -d &amp;#39;&amp;#39; -f 7 | sort | uniq -c | awk &amp;#39;(if ($l &amp;gt;100) print $0}&amp;#39; | less
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;查看最近1000條紀錄,訪問量最高的頁面
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;tail -1000 /var/log/nginx-access.log | awk &amp;#39;{print $7} &amp;#39; |sort|uniq -c|sort -nr|less
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;###########################################################################
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;每秒請求量統計
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;awk &amp;#39;{print $4}&amp;#39; /var/log/nginx-access.log |cut -c 14-21|sort|uniq -c|sort -nr|head -n 100
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;每分鐘請求統計
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;awk &amp;#39;{print $4}&amp;#39; /var/log/nginx-access.log|cut -c 14-18|sort|uniq -c|sort -nr|head -n 100
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;每小時請求統計
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;awk &amp;#39;{print $4}&amp;#39; /var/log/nginx-access.log |cut -c 14-15|sort|uniq -c|sort -nr|head -n 100
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;###########################################################################
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;性能分析
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;###########################################################################
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;列出傳輸時間超過3秒的頁面,顯示前20條
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;cat /var/log/nginx-access.log |awk &amp;#39;($NF &amp;gt; 3){print $7}&amp;#39;|sort -n|uniq -c|sort -nr|head -20
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;列出PHP頁面請求時間超過3秒的頁面,並統計其出現的次數,顯示前100條
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;cat /var/log/nginx-access.log|awk &amp;#39;($NF &amp;gt; 1 &lt;span class=&#34;err&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt;  $7~/\.php/){print $7}&amp;#39;|sort -n|uniq -c|sort -nr|head -100
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;###########################################################################
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;蜘蛛抓取統計
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;###########################################################################
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;統計蜘蛛抓取次數
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;grep &amp;#39;Baiduspider&amp;#39; /var/log/nginx-access.log |wc -l
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;統計蜘蛛抓取404的次數
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;grep &amp;#39;Baiduspider&amp;#39; /var/log/nginx-access.log | grep &amp;#39;404&amp;#39; |wc -l
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;###########################################################################
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;TCP連接統計
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;###########################################################################
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;查看當前TCP連接數
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;netstat -tan | grep &amp;#34;ESTABLISHED&amp;#34; | grep &amp;#34;:80&amp;#34; | wc -l
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;用 Tcpdump 嗅探80端口的訪問看誰高
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;tcpdump -i enp0s3 -tnn dst port 80 -c 1000 | awk -F&amp;#34;.&amp;#34; &amp;#39;{print $1&amp;#34;.&amp;#34;$2&amp;#34;.&amp;#34;$3&amp;#34;.&amp;#34;$4}&amp;#39; | sort | uniq -c | sort -nr
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;###########################################################################
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;head -5  		# 前五行LOG 數據
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sort -k 1nr		# 按照第一個字段 , 數值排序 , 且為逆序&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;hr&gt;
+
+</description>
+        </item>
+        <item>
+        <title>Nginx-設定目錄密碼保護</title>
+        <link>https://note.laurance.ml/p/nginx-%E8%A8%AD%E5%AE%9A%E7%9B%AE%E9%8C%84%E5%AF%86%E7%A2%BC%E4%BF%9D%E8%AD%B7/</link>
+        <pubDate>Wed, 03 Aug 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://note.laurance.ml/p/nginx-%E8%A8%AD%E5%AE%9A%E7%9B%AE%E9%8C%84%E5%AF%86%E7%A2%BC%E4%BF%9D%E8%AD%B7/</guid>
+        <description>&lt;img src="https://note.laurance.ml/p/nginx-%E8%A8%AD%E5%AE%9A%E7%9B%AE%E9%8C%84%E5%AF%86%E7%A2%BC%E4%BF%9D%E8%AD%B7/100.png" alt="Featured image of post Nginx-設定目錄密碼保護" /&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;首先需要建立一個密碼檔, 裡面包含了使用者名稱, 以及加密了的密碼, 如果系統有安裝 Apache, 可以用以下語法建立密碼檔:
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;htpasswd -c /path/to/file/.htpasswd username
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;但如果沒有 htpasswd 指令可以使用, 那便要手動建立密碼檔, 但也是很簡單的。密碼檔的格式如下:
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;username 是使用者名稱, 可以自行定義, 而 encrypted-password 則是加密的密碼,
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;username:encrypted-password:comment
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;建立密碼檔:
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;vim /home/opencli/.htpasswd
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;將要設定的使用者名稱及上面的加密密碼複製到檔案, 即以下格式:
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;username:saoYYKpu2QSsA
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;現在開啟 Nginx 的設定檔設定, 以下假設檔案在 /etc/nginx/conf.d/default.conf:
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;vim /etc/nginx/conf.d/default.conf
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    假設我要設定密碼保護的目錄是 /usr/share/nginx/html/admin, 在 server 段落加入以下幾行:
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    location /admin/ {
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        auth_basic &amp;#34;Restricted&amp;#34;;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        auth_basic_user_file /home/opencli/.htpasswd;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    }
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;儲存檔案後需要重新啟動 Nginx:
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;systemctl restart nginx&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;hr&gt;
+
+</description>
+        </item>
+        <item>
+        <title>Nginx-重新編譯</title>
+        <link>https://note.laurance.ml/p/nginx-%E9%87%8D%E6%96%B0%E7%B7%A8%E8%AD%AF/</link>
+        <pubDate>Wed, 03 Aug 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://note.laurance.ml/p/nginx-%E9%87%8D%E6%96%B0%E7%B7%A8%E8%AD%AF/</guid>
+        <description>&lt;img src="https://note.laurance.ml/p/nginx-%E9%87%8D%E6%96%B0%E7%B7%A8%E8%AD%AF/100.png" alt="Featured image of post Nginx-重新編譯" /&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;##########################################################################
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;重新編譯
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;cd nginx-1.21.6/
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;./configure --user=nginx --group=nginx --prefix=/usr/local/nginx --sbin-path=/usr/local/nginx/sbin/nginx --conf-path=/usr/local/nginx/conf/nginx.conf --error-log-path=/usr/local/nginx/logs/error.log --http-log-path=/usr/local/nginx/logs/access.log --pid-path=/var/run/nginx.pid --lock-path=/var/lock/subsys/nginx --with-http_stub_status_module --with-http_ssl_module --with-http_gzip_static_module --with-pcre --with-debug
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;make
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;不要做 make install
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;##########################################################################
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;停 Nginx
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;/usr/local/web/nginx/sbin/nginx -s stop
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;備份舊的nginx程式
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;cp /usr/local/web/nginx/sbin/nginx/ /usr/local/web/nginx/sbin/nginx.bak
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;把新的nginx程式覆蓋舊的
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;cp /root/installation/nginx-1.21.6/objs/nginx /usr/local/web/nginx/sbin/nginx
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;檢視ngixn版本極其編譯引數
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;/usr/local/web/nginx/sbin/nginx -V
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;測試新的nginx程式是否正確
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;/usr/local/web/nginx/sbin/nginx -t
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;平滑重啟nginx
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;/usr/local/web/nginx/sbin/nginx -s reload&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;hr&gt;
+
+</description>
+        </item>
+        
+    </channel>
+</rss>

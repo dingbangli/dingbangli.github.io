@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Promtail on Laurance&#39;s Note</title>
+        <link>https://note.laurance.ml/categories/promtail/</link>
+        <description>Recent content in Promtail on Laurance&#39;s Note</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Fri, 16 Dec 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://note.laurance.ml/categories/promtail/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Grafana-Loki 查詢語言 LogQL</title>
+        <link>https://note.laurance.ml/p/grafana-loki-%E6%9F%A5%E8%A9%A2%E8%AA%9E%E8%A8%80-logql/</link>
+        <pubDate>Fri, 16 Dec 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://note.laurance.ml/p/grafana-loki-%E6%9F%A5%E8%A9%A2%E8%AA%9E%E8%A8%80-logql/</guid>
+        <description>&lt;img src="https://note.laurance.ml/p/grafana-loki-%E6%9F%A5%E8%A9%A2%E8%AA%9E%E8%A8%80-logql/100.png" alt="Featured image of post Grafana-Loki 查詢語言 LogQL" /&gt;&lt;p&gt;查詢關鍵字 &amp;ldquo;ERROR&amp;rdquo;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;{job=&amp;quot;my1log&amp;quot;,filename=&amp;quot;/var/lib/mysql/master01/mysql.err&amp;quot;} |= &amp;quot;ERROR&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/grafana-loki-%E6%9F%A5%E8%A9%A2%E8%AA%9E%E8%A8%80-logql/00001.png&#34;
+	width=&#34;1223&#34;
+	height=&#34;387&#34;
+	srcset=&#34;https://note.laurance.ml/p/grafana-loki-%E6%9F%A5%E8%A9%A2%E8%AA%9E%E8%A8%80-logql/00001_huebda8d1e850657d60e5731240a56daa4_103654_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/grafana-loki-%E6%9F%A5%E8%A9%A2%E8%AA%9E%E8%A8%80-logql/00001_huebda8d1e850657d60e5731240a56daa4_103654_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;316&#34;
+		data-flex-basis=&#34;758px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;hr&gt;
+
+</description>
+        </item>
+        <item>
+        <title>Grafana-搭建Loki、Promtail 多套即時性日誌</title>
+        <link>https://note.laurance.ml/p/grafana-%E6%90%AD%E5%BB%BAlokipromtail-%E5%A4%9A%E5%A5%97%E5%8D%B3%E6%99%82%E6%80%A7%E6%97%A5%E8%AA%8C/</link>
+        <pubDate>Fri, 16 Dec 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://note.laurance.ml/p/grafana-%E6%90%AD%E5%BB%BAlokipromtail-%E5%A4%9A%E5%A5%97%E5%8D%B3%E6%99%82%E6%80%A7%E6%97%A5%E8%AA%8C/</guid>
+        <description>&lt;img src="https://note.laurance.ml/p/grafana-%E6%90%AD%E5%BB%BAlokipromtail-%E5%A4%9A%E5%A5%97%E5%8D%B3%E6%99%82%E6%80%A7%E6%97%A5%E8%AA%8C/100.png" alt="Featured image of post Grafana-搭建Loki、Promtail 多套即時性日誌" /&gt;&lt;p&gt;修改 Promtail 設定檔配置&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;vim /etc/promtail/config.yml
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/grafana-%E6%90%AD%E5%BB%BAlokipromtail-%E5%A4%9A%E5%A5%97%E5%8D%B3%E6%99%82%E6%80%A7%E6%97%A5%E8%AA%8C/00001.png&#34;
+	width=&#34;1901&#34;
+	height=&#34;836&#34;
+	srcset=&#34;https://note.laurance.ml/p/grafana-%E6%90%AD%E5%BB%BAlokipromtail-%E5%A4%9A%E5%A5%97%E5%8D%B3%E6%99%82%E6%80%A7%E6%97%A5%E8%AA%8C/00001_hu274a6039aa48344dea763d4edb2a6804_36444_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/grafana-%E6%90%AD%E5%BB%BAlokipromtail-%E5%A4%9A%E5%A5%97%E5%8D%B3%E6%99%82%E6%80%A7%E6%97%A5%E8%AA%8C/00001_hu274a6039aa48344dea763d4edb2a6804_36444_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;227&#34;
+		data-flex-basis=&#34;545px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;重啟服務&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;systemctl restart promtail
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;查看 tmp 下 positions 有沒有寫進去&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;vim /tmp/positions.yaml
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/grafana-%E6%90%AD%E5%BB%BAlokipromtail-%E5%A4%9A%E5%A5%97%E5%8D%B3%E6%99%82%E6%80%A7%E6%97%A5%E8%AA%8C/00002.png&#34;
+	width=&#34;1902&#34;
+	height=&#34;835&#34;
+	srcset=&#34;https://note.laurance.ml/p/grafana-%E6%90%AD%E5%BB%BAlokipromtail-%E5%A4%9A%E5%A5%97%E5%8D%B3%E6%99%82%E6%80%A7%E6%97%A5%E8%AA%8C/00002_hud2899d0bc072e751b74d150477564708_49787_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/grafana-%E6%90%AD%E5%BB%BAlokipromtail-%E5%A4%9A%E5%A5%97%E5%8D%B3%E6%99%82%E6%80%A7%E6%97%A5%E8%AA%8C/00002_hud2899d0bc072e751b74d150477564708_49787_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;227&#34;
+		data-flex-basis=&#34;546px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;修改 grafana 後台 panel 設置&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;{job=&amp;quot;message&amp;quot;,filename=&amp;quot;/var/log/messages&amp;quot;}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/grafana-%E6%90%AD%E5%BB%BAlokipromtail-%E5%A4%9A%E5%A5%97%E5%8D%B3%E6%99%82%E6%80%A7%E6%97%A5%E8%AA%8C/00003.png&#34;
+	width=&#34;1920&#34;
+	height=&#34;937&#34;
+	srcset=&#34;https://note.laurance.ml/p/grafana-%E6%90%AD%E5%BB%BAlokipromtail-%E5%A4%9A%E5%A5%97%E5%8D%B3%E6%99%82%E6%80%A7%E6%97%A5%E8%AA%8C/00003_hu55e0ea724cbaa5751993776ca96cc03f_191468_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/grafana-%E6%90%AD%E5%BB%BAlokipromtail-%E5%A4%9A%E5%A5%97%E5%8D%B3%E6%99%82%E6%80%A7%E6%97%A5%E8%AA%8C/00003_hu55e0ea724cbaa5751993776ca96cc03f_191468_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;204&#34;
+		data-flex-basis=&#34;491px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;成果 :&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/grafana-%E6%90%AD%E5%BB%BAlokipromtail-%E5%A4%9A%E5%A5%97%E5%8D%B3%E6%99%82%E6%80%A7%E6%97%A5%E8%AA%8C/00004.png&#34;
+	width=&#34;1920&#34;
+	height=&#34;937&#34;
+	srcset=&#34;https://note.laurance.ml/p/grafana-%E6%90%AD%E5%BB%BAlokipromtail-%E5%A4%9A%E5%A5%97%E5%8D%B3%E6%99%82%E6%80%A7%E6%97%A5%E8%AA%8C/00004_hu2d600462f6631b90e594be29f849fee6_356522_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/grafana-%E6%90%AD%E5%BB%BAlokipromtail-%E5%A4%9A%E5%A5%97%E5%8D%B3%E6%99%82%E6%80%A7%E6%97%A5%E8%AA%8C/00004_hu2d600462f6631b90e594be29f849fee6_356522_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;204&#34;
+		data-flex-basis=&#34;491px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;##套用模板##&lt;/p&gt;
+&lt;p&gt;Grafana 後台點選 import (ID: 13639)&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/grafana-%E6%90%AD%E5%BB%BAlokipromtail-%E5%A4%9A%E5%A5%97%E5%8D%B3%E6%99%82%E6%80%A7%E6%97%A5%E8%AA%8C/00005.png&#34;
+	width=&#34;1920&#34;
+	height=&#34;937&#34;
+	srcset=&#34;https://note.laurance.ml/p/grafana-%E6%90%AD%E5%BB%BAlokipromtail-%E5%A4%9A%E5%A5%97%E5%8D%B3%E6%99%82%E6%80%A7%E6%97%A5%E8%AA%8C/00005_huc08ac4897f5ceef60e1147a313e8dca8_43060_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/grafana-%E6%90%AD%E5%BB%BAlokipromtail-%E5%A4%9A%E5%A5%97%E5%8D%B3%E6%99%82%E6%80%A7%E6%97%A5%E8%AA%8C/00005_huc08ac4897f5ceef60e1147a313e8dca8_43060_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;204&#34;
+		data-flex-basis=&#34;491px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;成果 :&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/grafana-%E6%90%AD%E5%BB%BAlokipromtail-%E5%A4%9A%E5%A5%97%E5%8D%B3%E6%99%82%E6%80%A7%E6%97%A5%E8%AA%8C/00006.png&#34;
+	width=&#34;1920&#34;
+	height=&#34;937&#34;
+	srcset=&#34;https://note.laurance.ml/p/grafana-%E6%90%AD%E5%BB%BAlokipromtail-%E5%A4%9A%E5%A5%97%E5%8D%B3%E6%99%82%E6%80%A7%E6%97%A5%E8%AA%8C/00006_hud4a1adb6a8745606fd552a817da13595_377674_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/grafana-%E6%90%AD%E5%BB%BAlokipromtail-%E5%A4%9A%E5%A5%97%E5%8D%B3%E6%99%82%E6%80%A7%E6%97%A5%E8%AA%8C/00006_hud4a1adb6a8745606fd552a817da13595_377674_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;204&#34;
+		data-flex-basis=&#34;491px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;hr&gt;
+
+</description>
+        </item>
+        <item>
+        <title>Grafana-搭建Loki、Promtail、Grafana輕量級日誌系統</title>
+        <link>https://note.laurance.ml/p/grafana-%E6%90%AD%E5%BB%BAlokipromtailgrafana%E8%BC%95%E9%87%8F%E7%B4%9A%E6%97%A5%E8%AA%8C%E7%B3%BB%E7%B5%B1/</link>
+        <pubDate>Fri, 16 Dec 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://note.laurance.ml/p/grafana-%E6%90%AD%E5%BB%BAlokipromtailgrafana%E8%BC%95%E9%87%8F%E7%B4%9A%E6%97%A5%E8%AA%8C%E7%B3%BB%E7%B5%B1/</guid>
+        <description>&lt;img src="https://note.laurance.ml/p/grafana-%E6%90%AD%E5%BB%BAlokipromtailgrafana%E8%BC%95%E9%87%8F%E7%B4%9A%E6%97%A5%E8%AA%8C%E7%B3%BB%E7%B5%B1/100.png" alt="Featured image of post Grafana-搭建Loki、Promtail、Grafana輕量級日誌系統" /&gt;&lt;p&gt;下載安裝啟動 &lt;a class=&#34;link&#34; href=&#34;https://grafana.com/grafana/download&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Grafana 官方載點&lt;/a&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;wget https://dl.grafana.com/enterprise/release/grafana-enterprise-9.3.2-1.x86_64.rpm
+
+yum localinstall grafana-enterprise-9.3.2-1.x86_64.rpm
+
+systemctl start grafana-server &amp;amp;&amp;amp; systemctl status grafana-server
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;下載安裝啟動 &lt;a class=&#34;link&#34; href=&#34;https://grafana.com/docs/loki/latest/installation/local/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Promtail &amp;amp; Loki 官方載點&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;PROMTAIL :&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;wget https://github.com/grafana/loki/releases/download/v2.7.1/promtail-2.7.1.x86_64.rpm
+
+yum localinstall promtail-2.7.1.x86_64.rpm
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;LOKI :&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;wget https://github.com/grafana/loki/releases/download/v2.7.1/loki-2.7.1.x86_64.rpm
+    
+yum localinstall loki-2.7.1.x86_64.rpm
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;設定檔配置:&lt;/p&gt;
+&lt;p&gt;vim /etc/loki/config.yml&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/grafana-%E6%90%AD%E5%BB%BAlokipromtailgrafana%E8%BC%95%E9%87%8F%E7%B4%9A%E6%97%A5%E8%AA%8C%E7%B3%BB%E7%B5%B1/00006.png&#34;
+	width=&#34;1902&#34;
+	height=&#34;832&#34;
+	srcset=&#34;https://note.laurance.ml/p/grafana-%E6%90%AD%E5%BB%BAlokipromtailgrafana%E8%BC%95%E9%87%8F%E7%B4%9A%E6%97%A5%E8%AA%8C%E7%B3%BB%E7%B5%B1/00006_hu3777b8544a96acc4018e62855f193a09_45496_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/grafana-%E6%90%AD%E5%BB%BAlokipromtailgrafana%E8%BC%95%E9%87%8F%E7%B4%9A%E6%97%A5%E8%AA%8C%E7%B3%BB%E7%B5%B1/00006_hu3777b8544a96acc4018e62855f193a09_45496_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;228&#34;
+		data-flex-basis=&#34;548px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;vim /etc/promtail/config.yml&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/grafana-%E6%90%AD%E5%BB%BAlokipromtailgrafana%E8%BC%95%E9%87%8F%E7%B4%9A%E6%97%A5%E8%AA%8C%E7%B3%BB%E7%B5%B1/00007.png&#34;
+	width=&#34;1902&#34;
+	height=&#34;834&#34;
+	srcset=&#34;https://note.laurance.ml/p/grafana-%E6%90%AD%E5%BB%BAlokipromtailgrafana%E8%BC%95%E9%87%8F%E7%B4%9A%E6%97%A5%E8%AA%8C%E7%B3%BB%E7%B5%B1/00007_huc8f4f45654989e09f9f67098c406f9cc_22460_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/grafana-%E6%90%AD%E5%BB%BAlokipromtailgrafana%E8%BC%95%E9%87%8F%E7%B4%9A%E6%97%A5%E8%AA%8C%E7%B3%BB%E7%B5%B1/00007_huc8f4f45654989e09f9f67098c406f9cc_22460_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;228&#34;
+		data-flex-basis=&#34;547px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;systemctl start loki &amp;amp;&amp;amp; systemctl start promtail
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;訪問 GRAFANA :&lt;/p&gt;
+&lt;p&gt;建立 Datasorce for loki&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/grafana-%E6%90%AD%E5%BB%BAlokipromtailgrafana%E8%BC%95%E9%87%8F%E7%B4%9A%E6%97%A5%E8%AA%8C%E7%B3%BB%E7%B5%B1/00001.png&#34;
+	width=&#34;1920&#34;
+	height=&#34;937&#34;
+	srcset=&#34;https://note.laurance.ml/p/grafana-%E6%90%AD%E5%BB%BAlokipromtailgrafana%E8%BC%95%E9%87%8F%E7%B4%9A%E6%97%A5%E8%AA%8C%E7%B3%BB%E7%B5%B1/00001_hufe9f5ff81ee9b3f8d28f622755b1ec52_42682_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/grafana-%E6%90%AD%E5%BB%BAlokipromtailgrafana%E8%BC%95%E9%87%8F%E7%B4%9A%E6%97%A5%E8%AA%8C%E7%B3%BB%E7%B5%B1/00001_hufe9f5ff81ee9b3f8d28f622755b1ec52_42682_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;204&#34;
+		data-flex-basis=&#34;491px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;選擇 LOKI - Database&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/grafana-%E6%90%AD%E5%BB%BAlokipromtailgrafana%E8%BC%95%E9%87%8F%E7%B4%9A%E6%97%A5%E8%AA%8C%E7%B3%BB%E7%B5%B1/00002.png&#34;
+	width=&#34;1920&#34;
+	height=&#34;937&#34;
+	srcset=&#34;https://note.laurance.ml/p/grafana-%E6%90%AD%E5%BB%BAlokipromtailgrafana%E8%BC%95%E9%87%8F%E7%B4%9A%E6%97%A5%E8%AA%8C%E7%B3%BB%E7%B5%B1/00002_hu014926dc16af7f4b727b899de1e098ac_76300_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/grafana-%E6%90%AD%E5%BB%BAlokipromtailgrafana%E8%BC%95%E9%87%8F%E7%B4%9A%E6%97%A5%E8%AA%8C%E7%B3%BB%E7%B5%B1/00002_hu014926dc16af7f4b727b899de1e098ac_76300_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;204&#34;
+		data-flex-basis=&#34;491px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;填寫資料來源 之後按 save &amp;amp;&amp;amp; explore&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/grafana-%E6%90%AD%E5%BB%BAlokipromtailgrafana%E8%BC%95%E9%87%8F%E7%B4%9A%E6%97%A5%E8%AA%8C%E7%B3%BB%E7%B5%B1/00003.png&#34;
+	width=&#34;1920&#34;
+	height=&#34;937&#34;
+	srcset=&#34;https://note.laurance.ml/p/grafana-%E6%90%AD%E5%BB%BAlokipromtailgrafana%E8%BC%95%E9%87%8F%E7%B4%9A%E6%97%A5%E8%AA%8C%E7%B3%BB%E7%B5%B1/00003_huff61319bef8ee9a64a19a7ffa90fe7e4_66767_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/grafana-%E6%90%AD%E5%BB%BAlokipromtailgrafana%E8%BC%95%E9%87%8F%E7%B4%9A%E6%97%A5%E8%AA%8C%E7%B3%BB%E7%B5%B1/00003_huff61319bef8ee9a64a19a7ffa90fe7e4_66767_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;204&#34;
+		data-flex-basis=&#34;491px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;填寫 Log browser job &amp;amp; filename 即可&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/grafana-%E6%90%AD%E5%BB%BAlokipromtailgrafana%E8%BC%95%E9%87%8F%E7%B4%9A%E6%97%A5%E8%AA%8C%E7%B3%BB%E7%B5%B1/00004.png&#34;
+	width=&#34;1920&#34;
+	height=&#34;937&#34;
+	srcset=&#34;https://note.laurance.ml/p/grafana-%E6%90%AD%E5%BB%BAlokipromtailgrafana%E8%BC%95%E9%87%8F%E7%B4%9A%E6%97%A5%E8%AA%8C%E7%B3%BB%E7%B5%B1/00004_hu9f3fb2b03f0921715e84860e875831c3_311796_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/grafana-%E6%90%AD%E5%BB%BAlokipromtailgrafana%E8%BC%95%E9%87%8F%E7%B4%9A%E6%97%A5%E8%AA%8C%E7%B3%BB%E7%B5%B1/00004_hu9f3fb2b03f0921715e84860e875831c3_311796_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;204&#34;
+		data-flex-basis=&#34;491px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;驗證:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;curl http://172.16.0.222:3100/metrics
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;Loki 整體架構&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/grafana-%E6%90%AD%E5%BB%BAlokipromtailgrafana%E8%BC%95%E9%87%8F%E7%B4%9A%E6%97%A5%E8%AA%8C%E7%B3%BB%E7%B5%B1/00005.png&#34;
+	width=&#34;1008&#34;
+	height=&#34;294&#34;
+	srcset=&#34;https://note.laurance.ml/p/grafana-%E6%90%AD%E5%BB%BAlokipromtailgrafana%E8%BC%95%E9%87%8F%E7%B4%9A%E6%97%A5%E8%AA%8C%E7%B3%BB%E7%B5%B1/00005_hub4c7374960a3089278a70a765a6374f0_83093_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/grafana-%E6%90%AD%E5%BB%BAlokipromtailgrafana%E8%BC%95%E9%87%8F%E7%B4%9A%E6%97%A5%E8%AA%8C%E7%B3%BB%E7%B5%B1/00005_hub4c7374960a3089278a70a765a6374f0_83093_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;342&#34;
+		data-flex-basis=&#34;822px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;hr&gt;
+
+</description>
+        </item>
+        
+    </channel>
+</rss>

@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>PHP on Laurance&#39;s Note</title>
+        <link>https://note.laurance.ml/tags/php/</link>
+        <description>Recent content in PHP on Laurance&#39;s Note</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Sat, 03 Dec 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://note.laurance.ml/tags/php/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>PHP-開啟及關閉錯誤訊息輸出</title>
+        <link>https://note.laurance.ml/p/php-%E9%96%8B%E5%95%9F%E5%8F%8A%E9%97%9C%E9%96%89%E9%8C%AF%E8%AA%A4%E8%A8%8A%E6%81%AF%E8%BC%B8%E5%87%BA/</link>
+        <pubDate>Sat, 03 Dec 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://note.laurance.ml/p/php-%E9%96%8B%E5%95%9F%E5%8F%8A%E9%97%9C%E9%96%89%E9%8C%AF%E8%AA%A4%E8%A8%8A%E6%81%AF%E8%BC%B8%E5%87%BA/</guid>
+        <description>&lt;img src="https://note.laurance.ml/p/php-%E9%96%8B%E5%95%9F%E5%8F%8A%E9%97%9C%E9%96%89%E9%8C%AF%E8%AA%A4%E8%A8%8A%E6%81%AF%E8%BC%B8%E5%87%BA/100.png" alt="Featured image of post PHP-開啟及關閉錯誤訊息輸出" /&gt;&lt;p&gt;開啟錯誤提示&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;display_errors = On
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;關閉錯誤提示&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;display_errors = Off
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;輸出全部錯誤&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;error_reporting E_ALL
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;除了 Notice 外，全部錯誤輸出&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;error_reporting E_ALL &amp;amp; ~E_NOTICE
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;不輸出任何錯誤&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;error_reporting 0 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+
+</description>
+        </item>
+        <item>
+        <title>PHP-查看擴展服務版本</title>
+        <link>https://note.laurance.ml/p/php-%E6%9F%A5%E7%9C%8B%E6%93%B4%E5%B1%95%E6%9C%8D%E5%8B%99%E7%89%88%E6%9C%AC/</link>
+        <pubDate>Fri, 21 Oct 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://note.laurance.ml/p/php-%E6%9F%A5%E7%9C%8B%E6%93%B4%E5%B1%95%E6%9C%8D%E5%8B%99%E7%89%88%E6%9C%AC/</guid>
+        <description>&lt;img src="https://note.laurance.ml/p/php-%E6%9F%A5%E7%9C%8B%E6%93%B4%E5%B1%95%E6%9C%8D%E5%8B%99%E7%89%88%E6%9C%AC/100.png" alt="Featured image of post PHP-查看擴展服務版本" /&gt;&lt;pre&gt;&lt;code&gt;EX: 
+
+查看是否安裝該套件
+
+php -m |grep mongodb
+
+查看該套件版本
+
+php --ri mongodb
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+
+</description>
+        </item>
+        <item>
+        <title>PHP-安裝memcached擴展</title>
+        <link>https://note.laurance.ml/p/php-%E5%AE%89%E8%A3%9Dmemcached%E6%93%B4%E5%B1%95/</link>
+        <pubDate>Fri, 30 Sep 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://note.laurance.ml/p/php-%E5%AE%89%E8%A3%9Dmemcached%E6%93%B4%E5%B1%95/</guid>
+        <description>&lt;img src="https://note.laurance.ml/p/php-%E5%AE%89%E8%A3%9Dmemcached%E6%93%B4%E5%B1%95/100.png" alt="Featured image of post PHP-安裝memcached擴展" /&gt;&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://pecl.php.net/package/memcached&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;REDIS&lt;/a&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;wget https://pecl.php.net/get/memcached-3.0.3.tgz   
+tar zxvf memcached-3.0.3.tgz  
+cd memcached-3.0.3
+/usr/local/web/php/bin/phpize
+./configure -with-php-config=/usr/local/web/php/bin/php-config
+make &amp;amp;&amp;amp; make install    
+
+vim /usr/local/php/etc/php.ini    
+extension=memcached.so
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+
+</description>
+        </item>
+        <item>
+        <title>PHP-安裝MongoDB擴展</title>
+        <link>https://note.laurance.ml/p/php-%E5%AE%89%E8%A3%9Dmongodb%E6%93%B4%E5%B1%95/</link>
+        <pubDate>Mon, 15 Aug 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://note.laurance.ml/p/php-%E5%AE%89%E8%A3%9Dmongodb%E6%93%B4%E5%B1%95/</guid>
+        <description>&lt;img src="https://note.laurance.ml/p/php-%E5%AE%89%E8%A3%9Dmongodb%E6%93%B4%E5%B1%95/100.png" alt="Featured image of post PHP-安裝MongoDB擴展" /&gt;&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://pecl.php.net/package/mongodb&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;MongoDB&lt;/a&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;wget http://pecl.php.net/get/mongodb-1.3.4.tgz    
+tar -zxvf mongodb-1.3.4.tgz    
+cd mongodb-1.3.4.tgz    
+/usr/local/web/php/bin/phpize    
+./configure -with-php-config=/usr/local/web/php/bin/php-config    
+make &amp;amp; make test &amp;amp; make install
+
+vim /usr/local/php/etc/php.ini    
+extension=mongodb.so
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+
+</description>
+        </item>
+        <item>
+        <title>PHP-安裝Redis擴展</title>
+        <link>https://note.laurance.ml/p/php-%E5%AE%89%E8%A3%9Dredis%E6%93%B4%E5%B1%95/</link>
+        <pubDate>Mon, 15 Aug 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://note.laurance.ml/p/php-%E5%AE%89%E8%A3%9Dredis%E6%93%B4%E5%B1%95/</guid>
+        <description>&lt;img src="https://note.laurance.ml/p/php-%E5%AE%89%E8%A3%9Dredis%E6%93%B4%E5%B1%95/100.png" alt="Featured image of post PHP-安裝Redis擴展" /&gt;&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://pecl.php.net/package/redis&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;REDIS&lt;/a&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;wget http://pecl.php.net/get/redis-4.0.0RC2.tgz    
+tar zxvf redis-4.0.0RC2.tgz    
+cd redis-4.0.0RC2
+/usr/local/web/php/bin/phpize
+./configure -with-php-config=/usr/local/web/php/bin/php-config
+make &amp;amp;&amp;amp; make install    
+
+vim /usr/local/php/etc/php.ini    
+extension=redis.so
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+
+</description>
+        </item>
+        <item>
+        <title>PHP-使用TARBALL安裝</title>
+        <link>https://note.laurance.ml/p/php-%E4%BD%BF%E7%94%A8tarball%E5%AE%89%E8%A3%9D/</link>
+        <pubDate>Wed, 03 Aug 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://note.laurance.ml/p/php-%E4%BD%BF%E7%94%A8tarball%E5%AE%89%E8%A3%9D/</guid>
+        <description>&lt;img src="https://note.laurance.ml/p/php-%E4%BD%BF%E7%94%A8tarball%E5%AE%89%E8%A3%9D/100.png" alt="Featured image of post PHP-使用TARBALL安裝" /&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;安裝依賴
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;wget ftp://mcrypt.hellug.gr/pub/crypto/mcrypt/attic/libmcrypt/libmcrypt-2.5.7.tar.gz
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;tar -zxvf libmcrypt-2.5.7.tar.gz
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;cd libmcrypt-2.5.7
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;./configure  --prefix=/usr/local
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;make &lt;span class=&#34;err&#34;&gt;&amp;amp;&lt;/span&gt; make install
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;yum -y install gcc gcc-c++  make cmake automake autoconf kernel-devel ncurses-devel libxml2-devel openssl-devel curl-devel libjpeg-devel libpng-devel  pcre-devel libtool libtool-libs freetype-devel gd zlib-devel file bison patch mlocate flex diffutils   readline-devel glibc-devel glib2-devel bzip2-devel gettext-devel libcap-devel openldap openldap-devel libxslt-devel sqlite-devel 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;yum install mysql-devel
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;[官網安裝tar包](https://www.php.net/releases/index.php)
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;vim /etc/ld.so.conf.d/local.conf
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;/usr/local/lib  # 添加该行 , 如果不行 , 则用/usr/local/lib64
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;:wq
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;ldconfig -v     # 使之生效
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;########################################
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;cp -frp /usr/lib64/libldap* /usr/lib/
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;ln -s /usr/lib64/liblber* /usr/lib/
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;########################################
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;tar -zxvf php-7.0.1.tar.gz
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&amp;#39;./configure&amp;#39; &amp;#39;--prefix=/usr/local/web/php&amp;#39; &amp;#39;--with-config-file-path=/usr/local/web/php/etc&amp;#39; &amp;#39;--with-mysqli=/usr/bin/mysql_config&amp;#39; &amp;#39;--with-iconv-dir=/usr/local&amp;#39; &amp;#39;--with-freetype-dir&amp;#39; &amp;#39;--with-jpeg-dir&amp;#39; &amp;#39;--with-png-dir&amp;#39; &amp;#39;--with-zlib&amp;#39; &amp;#39;--with-libxml-dir=/usr&amp;#39; &amp;#39;--enable-xml&amp;#39; &amp;#39;--disable-rpath&amp;#39; &amp;#39;--enable-bcmath&amp;#39; &amp;#39;--enable-shmop&amp;#39; &amp;#39;--enable-sysvsem&amp;#39; &amp;#39;--enable-inline-optimization&amp;#39; &amp;#39;--with-curl&amp;#39; &amp;#39;--enable-mbregex&amp;#39; &amp;#39;--enable-fpm&amp;#39; &amp;#39;--enable-mbstring&amp;#39; &amp;#39;--with-mcrypt&amp;#39; &amp;#39;--with-gd&amp;#39; &amp;#39;--enable-gd-native-ttf&amp;#39; &amp;#39;--with-openssl&amp;#39; &amp;#39;--with-mhash&amp;#39; &amp;#39;--enable-pcntl&amp;#39; &amp;#39;--enable-sockets&amp;#39; &amp;#39;--with-ldap&amp;#39; &amp;#39;--with-ldap-sasl&amp;#39; &amp;#39;--with-xmlrpc&amp;#39; &amp;#39;--enable-zip&amp;#39; &amp;#39;--enable-soap&amp;#39; &amp;#39;--enable-opcache&amp;#39; &amp;#39;--enable-ftp&amp;#39;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;vim Makefile
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&amp;gt;&amp;gt;&amp;gt;EXTRA_LIBS = ... -lcrypt -llber -liconv
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;make &lt;span class=&#34;err&#34;&gt;&amp;amp;&lt;/span&gt; make test &lt;span class=&#34;err&#34;&gt;&amp;amp;&lt;/span&gt; make install
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;########################################
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;cp php.ini-production /usr/local/web/php/etc/php.ini
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;cp sapi/fpm/php-fpm.service /usr/lib/systemd/system/
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;cp /usr/local/web/php/etc/php-fpm.conf.default /usr/local/web/php/etc/php-fpm.conf
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;cp /usr/local/web/php/etc/php-fpm.d/www.conf.default /usr/local/web/php/etc/php-fpm.d/www.conf&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;hr&gt;
+
+</description>
+        </item>
+        <item>
+        <title>PHP-使用YUM安裝</title>
+        <link>https://note.laurance.ml/p/php-%E4%BD%BF%E7%94%A8yum%E5%AE%89%E8%A3%9D/</link>
+        <pubDate>Wed, 03 Aug 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://note.laurance.ml/p/php-%E4%BD%BF%E7%94%A8yum%E5%AE%89%E8%A3%9D/</guid>
+        <description>&lt;img src="https://note.laurance.ml/p/php-%E4%BD%BF%E7%94%A8yum%E5%AE%89%E8%A3%9D/100.png" alt="Featured image of post PHP-使用YUM安裝" /&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;安装必要
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;yum -y install gcc gcc-c++
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;要安装PHP 7，使用以下命令在CentOS 7系统上安装和启用EPEL和Remi存储库。
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;yum install https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;yum install http://rpms.remirepo.net/enterprise/remi-release-7.rpm
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;安装yum-utils，这是一组用于管理yum存储库和包的有用程序。它有基本上扩展yum默认功能的工具。
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;它可用于管理（启用或禁用）yum存储库以及包，无需任何手动配置等等#yum -y install yum-utils
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;yum-utils提供的程序之一是yum-config-manager，使用它来启用Remi存储库作为安装不同PHP版本的默认存储库
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;yum-config-manager --enable remi-php71 [ 安装PHP 7.1 ]
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;yum-config-manager --enable remi-php72 [ 安装PHP 7.2 ]
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;yum-config-manager --enable remi-php73 [ 安装PHP 7.3 ]
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;使用以下命令安装PHP 7以及所有必需的模块。
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;yum -y install php php-mcrypt php-devel php-cli php-gd php-pear php-curl php-fpm php-mysql php-ldap php-zi
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;查看php版本
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;[root@VM_159_140_centos lnmp]# php -v&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;hr&gt;
+
+</description>
+        </item>
+        <item>
+        <title>PHP-添加到LINUX系統啟動</title>
+        <link>https://note.laurance.ml/p/php-%E6%B7%BB%E5%8A%A0%E5%88%B0linux%E7%B3%BB%E7%B5%B1%E5%95%9F%E5%8B%95/</link>
+        <pubDate>Wed, 03 Aug 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://note.laurance.ml/p/php-%E6%B7%BB%E5%8A%A0%E5%88%B0linux%E7%B3%BB%E7%B5%B1%E5%95%9F%E5%8B%95/</guid>
+        <description>&lt;img src="https://note.laurance.ml/p/php-%E6%B7%BB%E5%8A%A0%E5%88%B0linux%E7%B3%BB%E7%B5%B1%E5%95%9F%E5%8B%95/100.png" alt="Featured image of post PHP-添加到LINUX系統啟動" /&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;###################################
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Centos7 配置php-fpm服务到systemctl
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;###################################
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;vim /usr/local/php/etc/php-fpm.conf
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;###################################
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;; Pid file
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;; Note: the default prefix is /usr/local/php/var
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;; Default Value: none
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;pid = /var/run/php-fpm.pid
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;###################################
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;touch /usr/lib/systemd/system/php-fpm.service
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;###################################
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;vim /usr/lib/systemd/system/php-fpm.service
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;###################################
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;[Unit]
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Description=The PHP FastCGI Process Manager
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;After=syslog.target network.target
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;[Service]
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Type=forking
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;PIDFile=/var/run/php-fpm.pid
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;ExecStart=/usr/local/php/sbin/php-fpm
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;ExecReload=/bin/kill -USR2 $MAINPID
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;PrivateTmp=true
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;[Install]
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;WantedBy=multi-user.target
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;###################################
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;systemctl daemon-reload
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;###################################
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;ps aux|grep php-fpm
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;###################################
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;kill -9 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;###################################
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;systemctl start php-fpm
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;###################################&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;hr&gt;
+
+</description>
+        </item>
+        
+    </channel>
+</rss>

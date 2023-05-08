@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Python on Laurance&#39;s Note</title>
+        <link>https://note.laurance.ml/categories/python/</link>
+        <description>Recent content in Python on Laurance&#39;s Note</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Wed, 03 Aug 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://note.laurance.ml/categories/python/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Python2.7 升級成 Python3.6</title>
+        <link>https://note.laurance.ml/p/python2.7-%E5%8D%87%E7%B4%9A%E6%88%90-python3.6/</link>
+        <pubDate>Wed, 03 Aug 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://note.laurance.ml/p/python2.7-%E5%8D%87%E7%B4%9A%E6%88%90-python3.6/</guid>
+        <description>&lt;img src="https://note.laurance.ml/p/python2.7-%E5%8D%87%E7%B4%9A%E6%88%90-python3.6/100.png" alt="Featured image of post Python2.7 升級成 Python3.6" /&gt;&lt;pre&gt;&lt;code&gt;# yum -y update
+# yum -y install vim wget
+# yum -y install python-setuptools
+# easy_install pip
+# yum -y install make gcc gcc-c++
+# yum -y install zlib-devel
+# yum -y install readline*
+# yum -y install openssl-devel
+# yum -y install tk-devel
+# yum -y install sqlite-devel
+
+$ wget https://www.python.org/ftp/python/3.6.3/Python-3.6.3.tgz
+$ tar -zxvf Python-3.6.3.tgz
+$ cd Python-3.6.3
+$ ./configure --enable-loadable-sqlite-extensions
+$ make
+$ sudo make install
+
+# mv /usr/bin/python /usr/bin/python.bak
+# ln -s /usr/local/bin/python3 /usr/bin/python
+
+# vim /usr/bin/yum
+# vim /usr/libexec/urlgrabber-ext-down
+# vim /usr/bin/firewall-cmd
+# vim /usr/sbin/firewalld
+註：被​將每個文件的第一句話 #!/usr/bin/python 改為 #!/usr/bin/python2.7，保存退出即可
+
+# service firewalld restart
+# service firewalld status
+
+# pip install [packages]
+   ex: numpy、scipy、matplotlib、scikit-learn...
+
+ERR:
+
+Command &amp;quot;python setup.py egg_info&amp;quot; failed with error code 1 in /tmp/pip-build-j_ho_m/setuptools/
+pip3 install --upgrade setuptools
+
+載不下來可以添加參數
+XXX --use-deprecated=backtrack-on-build-failures
+
+curl https://bootstrap.pypa.io/get-pip.py &amp;gt; get-pip.py
+python get-pip.py
+
+pip -V , pip3 -V
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+
+</description>
+        </item>
+        
+    </channel>
+</rss>

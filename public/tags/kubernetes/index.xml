@@ -1,0 +1,942 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Kubernetes on Laurance&#39;s Note</title>
+        <link>https://note.laurance.ml/tags/kubernetes/</link>
+        <description>Recent content in Kubernetes on Laurance&#39;s Note</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Wed, 12 Oct 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://note.laurance.ml/tags/kubernetes/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Kubernetes-ERROR-unable to create new content is being terminated</title>
+        <link>https://note.laurance.ml/p/kubernetes-error-unable-to-create-new-content-is-being-terminated/</link>
+        <pubDate>Wed, 12 Oct 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://note.laurance.ml/p/kubernetes-error-unable-to-create-new-content-is-being-terminated/</guid>
+        <description>&lt;img src="https://note.laurance.ml/p/kubernetes-error-unable-to-create-new-content-is-being-terminated/100.png" alt="Featured image of post Kubernetes-ERROR-unable to create new content is being terminated" /&gt;&lt;p&gt;&lt;strong&gt;查看 namespace&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;kubectl get ns
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/kubernetes-error-unable-to-create-new-content-is-being-terminated/00001.png&#34;
+	width=&#34;1917&#34;
+	height=&#34;414&#34;
+	srcset=&#34;https://note.laurance.ml/p/kubernetes-error-unable-to-create-new-content-is-being-terminated/00001_hu8113c9742c1bfa5e68d4247f41b1acfe_34872_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/kubernetes-error-unable-to-create-new-content-is-being-terminated/00001_hu8113c9742c1bfa5e68d4247f41b1acfe_34872_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;463&#34;
+		data-flex-basis=&#34;1111px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;查看 kubernetes-dashboard 的 namespace&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;kubectl get ns kubernetes-dashboard  -o json &amp;gt; kubernetes-dashboard.json
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;編輯 kubernetes-dashboard.json 檔&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;vim kubernetes-dashboard.json
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;刪除前&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/kubernetes-error-unable-to-create-new-content-is-being-terminated/00002.png&#34;
+	width=&#34;690&#34;
+	height=&#34;89&#34;
+	srcset=&#34;https://note.laurance.ml/p/kubernetes-error-unable-to-create-new-content-is-being-terminated/00002_hu288ee4b63a59adbdd9be6a680af8cf90_2089_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/kubernetes-error-unable-to-create-new-content-is-being-terminated/00002_hu288ee4b63a59adbdd9be6a680af8cf90_2089_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;775&#34;
+		data-flex-basis=&#34;1860px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;刪除後&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/kubernetes-error-unable-to-create-new-content-is-being-terminated/00003.png&#34;
+	width=&#34;721&#34;
+	height=&#34;59&#34;
+	srcset=&#34;https://note.laurance.ml/p/kubernetes-error-unable-to-create-new-content-is-being-terminated/00003_hu903655c4bd5f0b9e08a6241080bad77a_1066_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/kubernetes-error-unable-to-create-new-content-is-being-terminated/00003_hu903655c4bd5f0b9e08a6241080bad77a_1066_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;1222&#34;
+		data-flex-basis=&#34;2932px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;重新掛起 Proxy&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;kubectl proxy --address=&#39;0.0.0.0&#39; &amp;amp;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;curl刪除&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;curl -k -H &amp;quot;Content-Type:application/json&amp;quot; -X PUT --data-binary @kubernetes-dashboard.json http://127.0.0.1:8001/api/v1/namespaces/kubernetes-dashboard/finalize
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;kubernetes-dashboard 已刪除&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/kubernetes-error-unable-to-create-new-content-is-being-terminated/00005.png&#34;
+	width=&#34;589&#34;
+	height=&#34;182&#34;
+	srcset=&#34;https://note.laurance.ml/p/kubernetes-error-unable-to-create-new-content-is-being-terminated/00005_hue275175115f82ccc28d60537da7ad7ff_9924_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/kubernetes-error-unable-to-create-new-content-is-being-terminated/00005_hue275175115f82ccc28d60537da7ad7ff_9924_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;323&#34;
+		data-flex-basis=&#34;776px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;hr&gt;
+
+</description>
+        </item>
+        <item>
+        <title>Kubernetes-Ingress</title>
+        <link>https://note.laurance.ml/p/kubernetes-ingress/</link>
+        <pubDate>Wed, 12 Oct 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://note.laurance.ml/p/kubernetes-ingress/</guid>
+        <description>&lt;img src="https://note.laurance.ml/p/kubernetes-ingress/100.png" alt="Featured image of post Kubernetes-Ingress" /&gt;&lt;p&gt;&lt;strong&gt;Docker file包製作&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;mkdir dockerfile/ &amp;amp;&amp;amp; cd dockerfile/
+
+vim Dockerfile
+&lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;#/bin/bash
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;FROM nginx
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;ARG HTML
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; #Change nginx config
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;RUN rm /usr/share/nginx/html/index.html
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;COPY ./$HTML /usr/share/nginx/html/index.html&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;pre&gt;&lt;code&gt;vim green.html
+&lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   &lt;span class=&#34;cp&#34;&gt;&amp;lt;!DOCTYPE html&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   &lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;head&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;       &lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;meta&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;http-equiv&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;Content-Type&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;content&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;text/html; charset=utf-8&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   &lt;span class=&#34;p&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;head&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   &lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;body&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;style&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;background-color: green; color:#fff&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;     &lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;h1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;2022/10/12 ---Ingress-test&lt;span class=&#34;p&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;h1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;     &lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;table&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;         &lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;tbody&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;               &lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;tr&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                   &lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;td&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;Author&lt;span class=&#34;p&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;td&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                   &lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;td&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;: Laurance&lt;span class=&#34;p&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;td&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;               &lt;span class=&#34;p&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;tr&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;               &lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;tr&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                   &lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;td&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;Article Link&lt;span class=&#34;p&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;td&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                   &lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;td&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;: &lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;a&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;href&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;https://note.laurance.ml&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;target&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;_blank&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;2022/10/12 ---Ingress-test&lt;span class=&#34;p&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;a&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;td&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;               &lt;span class=&#34;p&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;tr&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;               &lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;tr&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                   &lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;td&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;Topic&lt;span class=&#34;p&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;td&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                   &lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;td&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;: &lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;a&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;href&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;https://note.laurance.ml&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;target&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;_blank&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;2022/10/12 ---Ingress-test&lt;span class=&#34;p&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;a&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;td&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;               &lt;span class=&#34;p&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;tr&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;         &lt;span class=&#34;p&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;tbody&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;     &lt;span class=&#34;p&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;table&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   &lt;span class=&#34;p&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;body&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   &lt;span class=&#34;p&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;html&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;pre&gt;&lt;code&gt;vim red.html
+&lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   &lt;span class=&#34;cp&#34;&gt;&amp;lt;!DOCTYPE html&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   &lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;head&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;       &lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;meta&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;http-equiv&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;Content-Type&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;content&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;text/html; charset=utf-8&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   &lt;span class=&#34;p&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;head&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   &lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;body&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;style&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;background-color: red; color:#fff&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;     &lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;h1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;2022/10/12 ---Ingress-test&lt;span class=&#34;p&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;h1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;     &lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;table&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;         &lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;tbody&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;               &lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;tr&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                   &lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;td&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;Author&lt;span class=&#34;p&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;td&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                   &lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;td&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;: Laurance&lt;span class=&#34;p&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;td&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;               &lt;span class=&#34;p&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;tr&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;               &lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;tr&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                   &lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;td&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;Article Link&lt;span class=&#34;p&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;td&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                   &lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;td&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;: &lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;a&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;href&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;https://note.laurance.ml&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;target&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;_blank&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;2022/10/12 ---Ingress-test&lt;span class=&#34;p&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;a&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;td&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;               &lt;span class=&#34;p&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;tr&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;               &lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;tr&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                   &lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;td&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;Topic&lt;span class=&#34;p&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;td&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                   &lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;td&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;: &lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;a&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;href&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;https://note.laurance.ml&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;target&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;_blank&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;2022/10/12 ---Ingress-test&lt;span class=&#34;p&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;a&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;td&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;               &lt;span class=&#34;p&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;tr&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;         &lt;span class=&#34;p&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;tbody&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;     &lt;span class=&#34;p&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;table&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   &lt;span class=&#34;p&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;body&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   &lt;span class=&#34;p&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;html&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;pre&gt;&lt;code&gt;使用 docker build 建立 image 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   $ docker build --build-arg HTML=green.html -t laurance/green .
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   $ docker build --build-arg HTML=red.html -t laurance/red .
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;pre&gt;&lt;code&gt;更改 TAG 名稱為 docker 用戶名 / image 名稱
+&lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   $ docker tag laurance/red ihatemis/red
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   $ docker tag laurance/green ihatemis/green&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;pre&gt;&lt;code&gt;上傳至 Docker hub ，需要先 docker login
+&lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   $ docker push ihatemis/red:latest
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   $ docker push ihatemis/green:latest&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;Deplyment&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;vim ingress.deployment.yaml
+&lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  #apiVersion: extensions/v1beta1
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  apiVersion: apps/v1
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  kind: Deployment
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  metadata:
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      name: red-nginx
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      namespace: simple2
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  spec:
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    selector:
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      matchLabels:
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        app: red-nginx
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    replicas: 4
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    template:
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      metadata:
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        labels:
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;          app: red-nginx
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      spec:
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        containers:
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        - name: nginx
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;          image: ihatemis/red:latest
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;          ports:
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;          - containerPort: 80
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;---   
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  #apiVersion: extensions/v1beta1
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  apiVersion: apps/v1
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  kind: Deployment
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  metadata:
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      name: green-nginx
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      namespace: simple2
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  spec:
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    selector:
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      matchLabels:
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        app: green-nginx
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    replicas: 2
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    template:
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      metadata:
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        labels:
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;          app: green-nginx
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      spec:
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        containers:
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        - name: nginx
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;          image: ihatemis/green:latest
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;          ports:
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;          - containerPort: 80&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;pre&gt;&lt;code&gt;kubectl apply -f ingress.deployment.yaml 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;service&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;vim ingress.service.yaml
+&lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   apiVersion: v1
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   kind: Service
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   metadata:
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;     name: green-service
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;     namespace: simple2
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   spec:
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;     type: NodePort
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;     selector:
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;       app: green-nginx
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;     ports:
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;       - protocol: TCP
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;         port: 80    
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    ---
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   apiVersion: v1
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   kind: Service
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   metadata:
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;     name: red-service
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;     namespace: simple2
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   spec:
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;     type: NodePort
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;     selector:
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;       app: red-nginx
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;     ports:
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;       - protocol: TCP
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;         port: 80
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;pre&gt;&lt;code&gt;kubectl apply -f ingress.service.yaml
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;Ingress&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;vim ingress.yaml
+&lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   #apiVersion: extensions/v1beta1
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   apiVersion: networking.k8s.io/v1
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   kind: Ingress
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   metadata:
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;     name: web
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;     namespace: simple2
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;     annotations:
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;       nginx.ingress.kubernetes.io/rewrite-target: /
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   spec:
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;     rules:
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;     - host: green.ingress.com
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;       http:
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;         paths:
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;           - path: /
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;             pathType: Prefix
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;             backend:
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;               service:
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                 name: green-service
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                 port:
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                   number: 80
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;     - host: red.ingress.com
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;       http:
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;         paths:
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;           - path: /
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;             pathType: Prefix
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;             backend:
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;               service:
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                 name: red-service
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                 port:
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                   number: 80
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;pre&gt;&lt;code&gt;kubectl apply -f ingress.yaml 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;將域名綁至 HOSTS&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;172.16.0.223 red.ingress.com green.ingress.com
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;訪問 &lt;a class=&#34;link&#34; href=&#34;http://red.ingress.com&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;http://red.ingress.com&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/kubernetes-ingress/008.png&#34;
+	width=&#34;1213&#34;
+	height=&#34;699&#34;
+	srcset=&#34;https://note.laurance.ml/p/kubernetes-ingress/008_hu78c50eac694cad47cc88e3b28d416eb5_12093_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/kubernetes-ingress/008_hu78c50eac694cad47cc88e3b28d416eb5_12093_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;173&#34;
+		data-flex-basis=&#34;416px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;訪問 &lt;a class=&#34;link&#34; href=&#34;http://green.ingress.com&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;http://green.ingress.com&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/kubernetes-ingress/009.png&#34;
+	width=&#34;1213&#34;
+	height=&#34;699&#34;
+	srcset=&#34;https://note.laurance.ml/p/kubernetes-ingress/009_hu40272a0325b1edf8ccfc30b5725b1d86_12566_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/kubernetes-ingress/009_hu40272a0325b1edf8ccfc30b5725b1d86_12566_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;173&#34;
+		data-flex-basis=&#34;416px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;hr&gt;
+
+</description>
+        </item>
+        <item>
+        <title>Kubernetes-ERROR-Metric client health check failed</title>
+        <link>https://note.laurance.ml/p/kubernetes-error-metric-client-health-check-failed/</link>
+        <pubDate>Mon, 10 Oct 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://note.laurance.ml/p/kubernetes-error-metric-client-health-check-failed/</guid>
+        <description>&lt;img src="https://note.laurance.ml/p/kubernetes-error-metric-client-health-check-failed/100.png" alt="Featured image of post Kubernetes-ERROR-Metric client health check failed" /&gt;&lt;p&gt;&lt;strong&gt;dashboard 出現以下畫面&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/kubernetes-error-metric-client-health-check-failed/001.png&#34;
+	width=&#34;1919&#34;
+	height=&#34;936&#34;
+	srcset=&#34;https://note.laurance.ml/p/kubernetes-error-metric-client-health-check-failed/001_hu9f61d24b4be35c155a8c6ec92e52e9f3_50830_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/kubernetes-error-metric-client-health-check-failed/001_hu9f61d24b4be35c155a8c6ec92e52e9f3_50830_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;205&#34;
+		data-flex-basis=&#34;492px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;查看 dashboard pod 的 LOG&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;# kubectl get pods -n kube-system|grep dash
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;kubernetes-dashboard-6ff6454fdc-78fnx   1/1     Running   0          4h8m&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;K8s LOG 報錯 Metric client health check failed: the server could not find the requested resource (get services heapster). Retrying in 30 seconds&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/kubernetes-error-metric-client-health-check-failed/00001.png&#34;
+	width=&#34;1920&#34;
+	height=&#34;860&#34;
+	srcset=&#34;https://note.laurance.ml/p/kubernetes-error-metric-client-health-check-failed/00001_hude3041db836dbb55b87e4f9232c77ac0_188703_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/kubernetes-error-metric-client-health-check-failed/00001_hude3041db836dbb55b87e4f9232c77ac0_188703_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;223&#34;
+		data-flex-basis=&#34;535px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;原因: kubernets用的比较高的版本，但dashboard版本用的比较低，因此報錯&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;解決: 重新安裝 dashboard 版本&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;先將舊的版本刪除 (將 dashboard 的 NS 刪除即可)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;kubectl delete ns kubernetes-dashboard&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;pre&gt;&lt;code&gt;查看 kubernetes 版本
+&lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;$ kubectl version --short
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Flag --short has been deprecated, and will be removed in the future. The --short output will become the default.
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Client Version: v1.25.2
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Kustomize Version: v4.5.7
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Server Version: v1.25.0&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;pre&gt;&lt;code&gt;根據 kubernetes 版本 下載相對應的 dashboard 版本
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/kubernetes/dashboard/releases&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;下載網址連結&lt;/a&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;dashboard v2.0.0-beta5 —&amp;gt; kubernetes 1.16
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;dashboard v2.0.0 —&amp;gt; kubernetes 1.18
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;dashboard v2.0.1 —&amp;gt; kubernetes 1.18
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;dashboard v2.0.2 —&amp;gt; kubernetes 1.18
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;dashboard v2.0.3 —&amp;gt; kubernetes 1.18
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;dashboard v2.0.4 —&amp;gt; kubernetes 1.19
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;dashboard v2.0.5 —&amp;gt; kubernetes 1.19
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;dashboard v2.1.0 —&amp;gt; kubernetes 1.20
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;dashboard v2.2.0 —&amp;gt; kubernetes 1.20
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;dashboard v2.3.0 —&amp;gt; kubernetes 1.21
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;dashboard v2.3.1 —&amp;gt; kubernetes 1.21
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;pre&gt;&lt;code&gt;wget 下來修改 Service 的部分
+&lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;wget https://raw.githubusercontent.com/kubernetes/dashboard/v2.7.0/aio/deploy/recommended.yaml&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;pre&gt;&lt;code&gt;修改為 Nodeport 方式訪問
+&lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;kind: Service
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;apiVersion: v1
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;metadata:
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  labels:
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    k8s-app: kubernetes-dashboard
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  name: kubernetes-dashboard
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  namespace: kubernetes-dashboard
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;spec:
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  type: NodePort #新添加的
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  ports:
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    - port: 443
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      targetPort: 8443
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      nodePort: 30003 #新添加的（可以改成其它的端口号，要大于30000）
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  selector:
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    k8s-app: kubernetes-dashboard
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;---&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;pre&gt;&lt;code&gt;執行 yaml 文件
+&lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;# kubectl apply -f recommended.yaml
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;namespace/kubernetes-dashboard created
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;serviceaccount/kubernetes-dashboard created
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;service/kubernetes-dashboard created
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;secret/kubernetes-dashboard-certs created
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;secret/kubernetes-dashboard-csrf created
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;secret/kubernetes-dashboard-key-holder created
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;configmap/kubernetes-dashboard-settings created
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;role.rbac.authorization.k8s.io/kubernetes-dashboard created
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;clusterrole.rbac.authorization.k8s.io/kubernetes-dashboard created
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;rolebinding.rbac.authorization.k8s.io/kubernetes-dashboard created
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;clusterrolebinding.rbac.authorization.k8s.io/kubernetes-dashboard created
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;deployment.apps/kubernetes-dashboard created
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;service/dashboard-metrics-scraper created
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;deployment.apps/dashboard-metrics-scraper created&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;pre&gt;&lt;code&gt;建立 dashboard 管理員
+
+vim dashboard-admin.yaml
+
+kubectl create -f dashboard-admin.yaml
+&lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;apiVersion: v1
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;kind: ServiceAccount
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;metadata:
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  labels:
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    k8s-app: kubernetes-dashboard
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  name: dashboard-admin
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  namespace: kubernetes-dashboard
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;pre&gt;&lt;code&gt;建立 RBAC 分配權限
+
+vim dashboard-admin-role.yaml
+
+kubectl create -f dashboard-admin-role.yaml
+&lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;apiVersion: rbac.authorization.k8s.io/v1
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;kind: ClusterRoleBinding
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;metadata:
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  name: dashboard-admin-role
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  labels:
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    k8s-app: kubernetes-dashboard
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;roleRef:
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  apiGroup: rbac.authorization.k8s.io
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  kind: ClusterRole
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  name: cluster-admin
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;subjects:
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;- kind: ServiceAccount
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  name: dashboard-admin
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  namespace: kubernetes-dashboard
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;pre&gt;&lt;code&gt;kubectl get secret -n kubernetes-dashboard
+&lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;NAME                               TYPE                                  DATA   AGE
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;dashboard-admin-token-fj9v6        kubernetes.io/service-account-token   3      95s
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;default-token-lj7xg                kubernetes.io/service-account-token   3      33m
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;kubernetes-dashboard-certs         Opaque                                0      33m
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;kubernetes-dashboard-csrf          Opaque                                1      33m
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;kubernetes-dashboard-key-holder    Opaque                                2      33m
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;kubernetes-dashboard-token-cdkzc   kubernetes.io/service-account-token   3      33m&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;pre&gt;&lt;code&gt;dashboard-admin-token 是剛剛創建的，再篩出 TOKEN 即可
+&lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;kubectl describe -n kubernetes-dashboard secret/dashboard-admin-token-fj9v6|grep token:
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;token:      eyJhbGciOiJSUzI1NiIsImtpZCI6ImJyYjJDR18tMDQtdkc3MzBBN0RwQU8zTlVjV01PM2w0dGRBWVh5UXhPN3MifQ.eyJpc3MiOiJrdWJlcm5ldGVz&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;pre&gt;&lt;code&gt;輸入 https://172.16.0.223:30003 即可訪問 Dashboard ， 並輸入剛剛篩出的 TOKEN 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/kubernetes-error-metric-client-health-check-failed/00002.png&#34;
+	width=&#34;1917&#34;
+	height=&#34;939&#34;
+	srcset=&#34;https://note.laurance.ml/p/kubernetes-error-metric-client-health-check-failed/00002_huaf5b3c5b467b73a16a1f0c3cd2938917_43270_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/kubernetes-error-metric-client-health-check-failed/00002_huaf5b3c5b467b73a16a1f0c3cd2938917_43270_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;204&#34;
+		data-flex-basis=&#34;489px&#34;
+	
+&gt;&lt;/p&gt;
+
+</description>
+        </item>
+        <item>
+        <title>Kubernetes-install cri-dockerd on Linux</title>
+        <link>https://note.laurance.ml/p/kubernetes-install-cri-dockerd-on-linux/</link>
+        <pubDate>Mon, 10 Oct 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://note.laurance.ml/p/kubernetes-install-cri-dockerd-on-linux/</guid>
+        <description>&lt;img src="https://note.laurance.ml/p/kubernetes-install-cri-dockerd-on-linux/100.png" alt="Featured image of post Kubernetes-install cri-dockerd on Linux" /&gt;&lt;p&gt;&lt;strong&gt;從&lt;a class=&#34;link&#34; href=&#34;https://github.com/Mirantis/cri-dockerd/releases&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;cri-dockerd GitHub&lt;/a&gt; 頁面下載適當的二進制包&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ wget https://github.com/Mirantis/cri-dockerd/releases/download/v0.2.0/cri-dockerd-v0.2.0-linux-amd64.tar.gz
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;解壓縮包&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ tar xvf cri-dockerd-v0.2.0-linux-amd64.tar.gz
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;將 cri-dockerd 二進製文件移動到 usr/local/bin 目錄&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;mv ./cri-dockerd /usr/local/bin/ 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;配置 systemd&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ wget https://raw.githubusercontent.com/Mirantis/cri-dockerd/master/packaging/systemd/cri-docker.service
+
+$ wget https://raw.githubusercontent.com/Mirantis/cri-dockerd/master/packaging/systemd/cri-docker.socket
+
+$ mv cri-docker.socket cri-docker.service /etc/systemd/system/
+
+$ sed -i -e &#39;s,/usr/bin/cri-dockerd,/usr/local/bin/cri-dockerd,&#39; /etc/systemd/system/cri-docker.service
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;啟用 cri-dockerd&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ systemctl daemon-reload
+
+$ systemctl enable cri-docker.service
+
+$ systemctl enable --now cri-docker.socket
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;驗證該服務是否正在運行&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ systemctl status cri-docker.socket
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+
+</description>
+        </item>
+        <item>
+        <title>Kubernetes-Lens 使用指南 通過 IDE 管理 minikube</title>
+        <link>https://note.laurance.ml/p/kubernetes-lens-%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97-%E9%80%9A%E9%81%8E-ide-%E7%AE%A1%E7%90%86-minikube/</link>
+        <pubDate>Mon, 10 Oct 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://note.laurance.ml/p/kubernetes-lens-%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97-%E9%80%9A%E9%81%8E-ide-%E7%AE%A1%E7%90%86-minikube/</guid>
+        <description>&lt;img src="https://note.laurance.ml/p/kubernetes-lens-%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97-%E9%80%9A%E9%81%8E-ide-%E7%AE%A1%E7%90%86-minikube/100.png" alt="Featured image of post Kubernetes-Lens 使用指南 通過 IDE 管理 minikube" /&gt;&lt;p&gt;&lt;strong&gt;安装 LENS on Windows x64&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;a class=&#34;link&#34; href=&#34;https://k8slens.dev/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;LENS 官方載點&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/kubernetes-lens-%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97-%E9%80%9A%E9%81%8E-ide-%E7%AE%A1%E7%90%86-minikube/001.png&#34;
+	width=&#34;1920&#34;
+	height=&#34;1040&#34;
+	srcset=&#34;https://note.laurance.ml/p/kubernetes-lens-%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97-%E9%80%9A%E9%81%8E-ide-%E7%AE%A1%E7%90%86-minikube/001_hua8b601871c67a43192c8a0bc7b57a942_259108_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/kubernetes-lens-%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97-%E9%80%9A%E9%81%8E-ide-%E7%AE%A1%E7%90%86-minikube/001_hua8b601871c67a43192c8a0bc7b57a942_259108_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;184&#34;
+		data-flex-basis=&#34;443px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;右上三條線點選 File &amp;raquo; Add Cluster 新增集群&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/kubernetes-lens-%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97-%E9%80%9A%E9%81%8E-ide-%E7%AE%A1%E7%90%86-minikube/002.png&#34;
+	width=&#34;1920&#34;
+	height=&#34;1040&#34;
+	srcset=&#34;https://note.laurance.ml/p/kubernetes-lens-%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97-%E9%80%9A%E9%81%8E-ide-%E7%AE%A1%E7%90%86-minikube/002_hu0df494ed4cc16e14d19725dc1a3feae7_71656_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/kubernetes-lens-%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97-%E9%80%9A%E9%81%8E-ide-%E7%AE%A1%E7%90%86-minikube/002_hu0df494ed4cc16e14d19725dc1a3feae7_71656_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;184&#34;
+		data-flex-basis=&#34;443px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;回到測試機上查看 minikube 設定檔&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;kubectl config view 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/kubernetes-lens-%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97-%E9%80%9A%E9%81%8E-ide-%E7%AE%A1%E7%90%86-minikube/003.png&#34;
+	width=&#34;1917&#34;
+	height=&#34;682&#34;
+	srcset=&#34;https://note.laurance.ml/p/kubernetes-lens-%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97-%E9%80%9A%E9%81%8E-ide-%E7%AE%A1%E7%90%86-minikube/003_hu8a5fd73dabaf99867b8ce12c5ad9b634_37701_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/kubernetes-lens-%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97-%E9%80%9A%E9%81%8E-ide-%E7%AE%A1%E7%90%86-minikube/003_hu8a5fd73dabaf99867b8ce12c5ad9b634_37701_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;281&#34;
+		data-flex-basis=&#34;674px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;將測試機裡的 .minikube 隱藏檔資料夾 winscp 取出放到對應位置&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;PWD: /root/.minikube
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/kubernetes-lens-%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97-%E9%80%9A%E9%81%8E-ide-%E7%AE%A1%E7%90%86-minikube/004.png&#34;
+	width=&#34;1917&#34;
+	height=&#34;892&#34;
+	srcset=&#34;https://note.laurance.ml/p/kubernetes-lens-%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97-%E9%80%9A%E9%81%8E-ide-%E7%AE%A1%E7%90%86-minikube/004_hu4c3e486a31edf917dde5a5c647054074_127602_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/kubernetes-lens-%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97-%E9%80%9A%E9%81%8E-ide-%E7%AE%A1%E7%90%86-minikube/004_hu4c3e486a31edf917dde5a5c647054074_127602_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;214&#34;
+		data-flex-basis=&#34;515px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;將測試機裡的 .kube 隱藏檔資料夾 winscp 取出放到對應位置，並修改路徑&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;PWD: /root/.kube
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/kubernetes-lens-%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97-%E9%80%9A%E9%81%8E-ide-%E7%AE%A1%E7%90%86-minikube/005.png&#34;
+	width=&#34;1912&#34;
+	height=&#34;918&#34;
+	srcset=&#34;https://note.laurance.ml/p/kubernetes-lens-%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97-%E9%80%9A%E9%81%8E-ide-%E7%AE%A1%E7%90%86-minikube/005_hu012e16dda0ea625d2aaa8ccb24d851d2_67711_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/kubernetes-lens-%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97-%E9%80%9A%E9%81%8E-ide-%E7%AE%A1%E7%90%86-minikube/005_hu012e16dda0ea625d2aaa8ccb24d851d2_67711_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;208&#34;
+		data-flex-basis=&#34;499px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;將 .kube 下的 config 內容貼至 LENS &amp;raquo; File &amp;raquo; Add Cluster 新增集群&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/kubernetes-lens-%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97-%E9%80%9A%E9%81%8E-ide-%E7%AE%A1%E7%90%86-minikube/006.png&#34;
+	width=&#34;1920&#34;
+	height=&#34;1040&#34;
+	srcset=&#34;https://note.laurance.ml/p/kubernetes-lens-%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97-%E9%80%9A%E9%81%8E-ide-%E7%AE%A1%E7%90%86-minikube/006_hue3928bae746fd5fc612570e171ee737a_90322_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/kubernetes-lens-%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97-%E9%80%9A%E9%81%8E-ide-%E7%AE%A1%E7%90%86-minikube/006_hue3928bae746fd5fc612570e171ee737a_90322_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;184&#34;
+		data-flex-basis=&#34;443px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;雙擊連接即可&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/kubernetes-lens-%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97-%E9%80%9A%E9%81%8E-ide-%E7%AE%A1%E7%90%86-minikube/007.png&#34;
+	width=&#34;1920&#34;
+	height=&#34;1040&#34;
+	srcset=&#34;https://note.laurance.ml/p/kubernetes-lens-%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97-%E9%80%9A%E9%81%8E-ide-%E7%AE%A1%E7%90%86-minikube/007_huf817bcd7d8a17617160611bad3a9537e_147898_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/kubernetes-lens-%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97-%E9%80%9A%E9%81%8E-ide-%E7%AE%A1%E7%90%86-minikube/007_huf817bcd7d8a17617160611bad3a9537e_147898_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;184&#34;
+		data-flex-basis=&#34;443px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;hr&gt;
+
+</description>
+        </item>
+        <item>
+        <title>Kubernetes-在本地端上建立 Dashboard</title>
+        <link>https://note.laurance.ml/p/kubernetes-%E5%9C%A8%E6%9C%AC%E5%9C%B0%E7%AB%AF%E4%B8%8A%E5%BB%BA%E7%AB%8B-dashboard/</link>
+        <pubDate>Mon, 10 Oct 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://note.laurance.ml/p/kubernetes-%E5%9C%A8%E6%9C%AC%E5%9C%B0%E7%AB%AF%E4%B8%8A%E5%BB%BA%E7%AB%8B-dashboard/</guid>
+        <description>&lt;img src="https://note.laurance.ml/p/kubernetes-%E5%9C%A8%E6%9C%AC%E5%9C%B0%E7%AB%AF%E4%B8%8A%E5%BB%BA%E7%AB%8B-dashboard/100.png" alt="Featured image of post Kubernetes-在本地端上建立 Dashboard" /&gt;&lt;p&gt;&lt;strong&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/kubernetes/dashboard&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt; Github Kubernetes Dashboard&lt;/a&gt; 這裡記錄一下安裝的過程&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v1.10.1/src/deploy/recommended/kubernetes-dashboard.yaml
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/kubernetes-%E5%9C%A8%E6%9C%AC%E5%9C%B0%E7%AB%AF%E4%B8%8A%E5%BB%BA%E7%AB%8B-dashboard/001.png&#34;
+	width=&#34;1916&#34;
+	height=&#34;271&#34;
+	srcset=&#34;https://note.laurance.ml/p/kubernetes-%E5%9C%A8%E6%9C%AC%E5%9C%B0%E7%AB%AF%E4%B8%8A%E5%BB%BA%E7%AB%8B-dashboard/001_hu6eb686ad938761e23fe32afac8260db1_19706_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/kubernetes-%E5%9C%A8%E6%9C%AC%E5%9C%B0%E7%AB%AF%E4%B8%8A%E5%BB%BA%E7%AB%8B-dashboard/001_hu6eb686ad938761e23fe32afac8260db1_19706_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;707&#34;
+		data-flex-basis=&#34;1696px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;這樣就安裝好了，然後看一下正在運行的容器&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;kubectl get all -n kube-system -l k8s-app=kubernetes-dashboard
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/kubernetes-%E5%9C%A8%E6%9C%AC%E5%9C%B0%E7%AB%AF%E4%B8%8A%E5%BB%BA%E7%AB%8B-dashboard/002.png&#34;
+	width=&#34;1915&#34;
+	height=&#34;322&#34;
+	srcset=&#34;https://note.laurance.ml/p/kubernetes-%E5%9C%A8%E6%9C%AC%E5%9C%B0%E7%AB%AF%E4%B8%8A%E5%BB%BA%E7%AB%8B-dashboard/002_hud03f50521ab30adedc854d74d354b6d1_22797_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/kubernetes-%E5%9C%A8%E6%9C%AC%E5%9C%B0%E7%AB%AF%E4%B8%8A%E5%BB%BA%E7%AB%8B-dashboard/002_hud03f50521ab30adedc854d74d354b6d1_22797_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;594&#34;
+		data-flex-basis=&#34;1427px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;先把Iptables規則打開 (預設FORWARD是關閉的)&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;iptables -P FORWARD ACCEPT
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;確認火牆都關閉 firewalld &amp;amp;&amp;amp; selinux&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;systemctl stop firewalld
+
+getenforce &amp;gt;&amp;gt; disabled
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;設置一層代理讓外部訪問 dashboard&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;kubectl proxy --address=&#39;0.0.0.0&#39; --disable-filter=true &amp;amp;
+
+PS. disable-filter=true表示禁用請求過濾功能，否則我們的請求會被拒絕，並提示 Forbidden (403) Unauthorized
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/kubernetes-%E5%9C%A8%E6%9C%AC%E5%9C%B0%E7%AB%AF%E4%B8%8A%E5%BB%BA%E7%AB%8B-dashboard/004.png&#34;
+	width=&#34;1917&#34;
+	height=&#34;615&#34;
+	srcset=&#34;https://note.laurance.ml/p/kubernetes-%E5%9C%A8%E6%9C%AC%E5%9C%B0%E7%AB%AF%E4%B8%8A%E5%BB%BA%E7%AB%8B-dashboard/004_hu55338b69f5059cd50003f8480620b26a_31665_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/kubernetes-%E5%9C%A8%E6%9C%AC%E5%9C%B0%E7%AB%AF%E4%B8%8A%E5%BB%BA%E7%AB%8B-dashboard/004_hu55338b69f5059cd50003f8480620b26a_31665_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;311&#34;
+		data-flex-basis=&#34;748px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;訪問 dashboard&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;http://172.16.0.223:8001/api/v1/namespaces/kubernetes-dashboard/services/http:kubernetes-dashboard:/proxy/#/service?namespace=default
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/kubernetes-%E5%9C%A8%E6%9C%AC%E5%9C%B0%E7%AB%AF%E4%B8%8A%E5%BB%BA%E7%AB%8B-dashboard/003.png&#34;
+	width=&#34;1928&#34;
+	height=&#34;939&#34;
+	srcset=&#34;https://note.laurance.ml/p/kubernetes-%E5%9C%A8%E6%9C%AC%E5%9C%B0%E7%AB%AF%E4%B8%8A%E5%BB%BA%E7%AB%8B-dashboard/003_hu3b4eea86a3d446d3931d1f0f779aeb84_69890_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/kubernetes-%E5%9C%A8%E6%9C%AC%E5%9C%B0%E7%AB%AF%E4%B8%8A%E5%BB%BA%E7%AB%8B-dashboard/003_hu3b4eea86a3d446d3931d1f0f779aeb84_69890_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;205&#34;
+		data-flex-basis=&#34;492px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;hr&gt;
+
+</description>
+        </item>
+        <item>
+        <title>Kubernetes-常見 kubectl 指令</title>
+        <link>https://note.laurance.ml/p/kubernetes-%E5%B8%B8%E8%A6%8B-kubectl-%E6%8C%87%E4%BB%A4/</link>
+        <pubDate>Mon, 10 Oct 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://note.laurance.ml/p/kubernetes-%E5%B8%B8%E8%A6%8B-kubectl-%E6%8C%87%E4%BB%A4/</guid>
+        <description>&lt;img src="https://note.laurance.ml/p/kubernetes-%E5%B8%B8%E8%A6%8B-kubectl-%E6%8C%87%E4%BB%A4/100.png" alt="Featured image of post Kubernetes-常見 kubectl 指令" /&gt;&lt;p&gt;&lt;strong&gt;取得所有 Pods 的資訊&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;kubectl get pods -o wide
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;取得某 Pod 的詳細資料&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;kubectl describe pod &amp;lt;pod Name&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;修改 Pods 的資訊&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;kubectl edit pods -n &amp;lt;namespace&amp;gt; &amp;lt;pod Name&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;查看 Pods 事件&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;kubectl describe pod &amp;lt;pod Name&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;查看 Pods 日志文件&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;kubectl logs -f &amp;lt;pod Name&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;刪除這個 pod&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;kubectl delete -f pod-demo.yaml
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;使用 yaml 創建 Pods&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;kubectl apply -f laurance-test.yaml
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;進入 Pods 內部&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;kubectl exec -it &amp;lt;pod Name&amp;gt; /bin/bash
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;查看各節點狀態&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;kubectl get node &amp;lt;node name&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;查看各節點事件&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;kubectl describe node &amp;lt;node name&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;查看系统 Kubelet 日志 1000行&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;journalctl -l -u kubelet -n 1000
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;將 YAML 導出&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;kubectl get service &amp;lt;serviceName&amp;gt; -o yaml &amp;gt; backup.yaml
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;檢查叢集狀態&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;kubectl get all
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+
+</description>
+        </item>
+        <item>
+        <title>Kubernetes-常見 minikube 指令</title>
+        <link>https://note.laurance.ml/p/kubernetes-%E5%B8%B8%E8%A6%8B-minikube-%E6%8C%87%E4%BB%A4/</link>
+        <pubDate>Mon, 10 Oct 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://note.laurance.ml/p/kubernetes-%E5%B8%B8%E8%A6%8B-minikube-%E6%8C%87%E4%BB%A4/</guid>
+        <description>&lt;img src="https://note.laurance.ml/p/kubernetes-%E5%B8%B8%E8%A6%8B-minikube-%E6%8C%87%E4%BB%A4/100.png" alt="Featured image of post Kubernetes-常見 minikube 指令" /&gt;&lt;p&gt;&lt;strong&gt;插件列表&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;minikube addons list
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;插件啟用&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;minikube addons enable ADDON_NAME
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;插件禁用&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;minikube addons disable ADDON_NAME
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;不使用任何驅動開啟集群&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;minikube start --driver=none
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;停止集群&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;minikube stop
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;删除集群&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;minikube delete
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;不影响已部署应用情况下暂停 Kubernetes&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;minikube pause
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;取消暂停的instance&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;minikube unpause
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;增加默认内存限制（需重启）&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;minikube config set memory 16384
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;各節點操作&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;minikube node [add|start|stop|delete|list]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;額外啟動參數&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;--image-mirror-country=cn # 镜像所在国家
+
+--image-repository=registry.cn-hangzhou.aliyuncs.com/google_containers # 镜像仓库地址
+
+--cpus=2 # 设置minikube虚拟机分配CPU核数
+
+--memory=2000mb # 设置minikube虚拟机分配内存
+
+--kubernetes-version=version # 使用的kubernetes版本
+
+--docker-env http_proxy=http://IP:7890 http_proxy=https://IP:7890 # minikube虚拟机内部docker使用代理地址
+
+# 指定驱动
+
+--vm-driver=none 在主机上运行Kubernetes组件，而不是在VM中,该方式驱动依赖Docker
+
+--vm-driver=virtualbox 表示用虚拟机,默认
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;PS. 不通过&amp;ndash;vm-driver=none参数启动，则创建的Pod、Service均不能通过外网访问，只能minikube ssh 进入集群访问操作&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://juejin.cn/post/7081256561280024606&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;參考文獻&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+
+</description>
+        </item>
+        <item>
+        <title>Kubernetes-Install and Set Up kubectl on Linux</title>
+        <link>https://note.laurance.ml/p/kubernetes-install-and-set-up-kubectl-on-linux/</link>
+        <pubDate>Thu, 06 Oct 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://note.laurance.ml/p/kubernetes-install-and-set-up-kubectl-on-linux/</guid>
+        <description>&lt;img src="https://note.laurance.ml/p/kubernetes-install-and-set-up-kubectl-on-linux/100.png" alt="Featured image of post Kubernetes-Install and Set Up kubectl on Linux" /&gt;&lt;p&gt;&lt;strong&gt;(1) 在 Linux 上安裝帶有 curl 的 kubectl 二進位檔 (最新)&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;curl -LO &amp;quot;https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;注意：
+要下載特定版本，請將命令部分替換為特定版本。  $(curl -L -s &lt;a class=&#34;link&#34; href=&#34;https://dl.k8s.io/release/stable.txt&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://dl.k8s.io/release/stable.txt&lt;/a&gt;)&lt;/p&gt;
+&lt;p&gt;例如，要在Linux上下載 v1.25.0 版本，請鍵入：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;curl -LO https://dl.k8s.io/release/v1.25.0/bin/linux/amd64/kubectl
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;(2) 驗證二進位檔 (選擇)&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;下載 kubectl 校驗和檔：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;curl -LO &amp;quot;https://dl.k8s.io/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl.sha256&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;根據校驗和文件驗證 kubectl 二進位檔：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;echo &amp;quot;$(cat kubectl.sha256)  kubectl&amp;quot; | sha256sum --check
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;如果有效，則輸出為：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;kubectl: OK
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;如果檢查失敗，則以非零狀態退出並列印類似於以下內容的輸出：sha256&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;kubectl: FAILED
+sha256sum: WARNING: 1 computed checksum did NOT match
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;注意：下載相同版本的二進位檔和校驗和。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;(3) 安裝 kubectl&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;font color=#FF0000&gt;注意：&lt;br&gt;
+如果您在目標系統上沒有根訪問許可權，您仍然可以將 kubectl 安裝到該目錄：~/.local/bin&lt;/font&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;chmod +x kubectl
+mkdir -p ~/.local/bin
+mv ./kubectl ~/.local/bin/kubectl
+# and then append (or prepend) ~/.local/bin to $PATH
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;(4) 測試以確保您安裝的版本是最新的：&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;kubectl version --client
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;或者使用以下內容檢視：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;kubectl version --client --output=yaml
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+
+</description>
+        </item>
+        <item>
+        <title>Kubernetes-Install kubectl on Linux by yum</title>
+        <link>https://note.laurance.ml/p/kubernetes-install-kubectl-on-linux-by-yum/</link>
+        <pubDate>Thu, 06 Oct 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://note.laurance.ml/p/kubernetes-install-kubectl-on-linux-by-yum/</guid>
+        <description>&lt;img src="https://note.laurance.ml/p/kubernetes-install-kubectl-on-linux-by-yum/100.png" alt="Featured image of post Kubernetes-Install kubectl on Linux by yum" /&gt;&lt;p&gt;新增官方YUM源&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;cat &amp;lt;&amp;lt;EOF | sudo tee /etc/yum.repos.d/kubernetes.repo
+[kubernetes]
+name=Kubernetes
+baseurl=https://packages.cloud.google.com/yum/repos/kubernetes-el7-\$basearch
+enabled=1
+gpgcheck=1
+gpgkey=https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg
+EOF
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;使用YUM安裝&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;sudo yum install -y kubectl kubelet kubeadm
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;開機啟動&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;systemctl enable kubelet
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+
+</description>
+        </item>
+        <item>
+        <title>Kubernetes-install minikube on Linux</title>
+        <link>https://note.laurance.ml/p/kubernetes-install-minikube-on-linux/</link>
+        <pubDate>Thu, 06 Oct 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://note.laurance.ml/p/kubernetes-install-minikube-on-linux/</guid>
+        <description>&lt;img src="https://note.laurance.ml/p/kubernetes-install-minikube-on-linux/100.png" alt="Featured image of post Kubernetes-install minikube on Linux" /&gt;&lt;p&gt;&lt;strong&gt;PS:安装Minikube 之前需要先把docker安装好&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;依賴&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;yum install conntrack
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;&lt;a class=&#34;link&#34; href=&#34;https://minikube.sigs.k8s.io/docs/start/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;官方載點&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
+sudo install minikube-linux-amd64 /usr/local/bin/minikube
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;啟動集群&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;minikube start --driver=none
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;啟動時想要指定resource&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;minikube start --cpus=4 --memory=4096
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+
+</description>
+        </item>
+        
+    </channel>
+</rss>

@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='建立與設定線上即時性資料庫 Firebase Realtime database https://console.firebase.google.com/u/0/ 點選 Go to console 點選 建立專案 輸入 專案名稱及打勾協議 取消勾選與 Google Analytics 建立關聯，可以直接建立專案 ( 建立關聯可以透過 Google Analytics'><title>GCP-ChatGPT 串接 Firebase及Linebot</title>
+
+<link rel='canonical' href='https://note.laurance.ml/p/gcp-chatgpt-%E4%B8%B2%E6%8E%A5-firebase%E5%8F%8Alinebot/'>
+
+<link rel="stylesheet" href="/scss/style.min.ac77dcf8b111b51da39a92990f431923f210f3876d85798a2125667f96dc33a4.css"><meta property='og:title' content='GCP-ChatGPT 串接 Firebase及Linebot'>
+<meta property='og:description' content='建立與設定線上即時性資料庫 Firebase Realtime database https://console.firebase.google.com/u/0/ 點選 Go to console 點選 建立專案 輸入 專案名稱及打勾協議 取消勾選與 Google Analytics 建立關聯，可以直接建立專案 ( 建立關聯可以透過 Google Analytics'>
+<meta property='og:url' content='https://note.laurance.ml/p/gcp-chatgpt-%E4%B8%B2%E6%8E%A5-firebase%E5%8F%8Alinebot/'>
+<meta property='og:site_name' content='Laurance&#39;s Note'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Firebase' /><meta property='article:published_time' content='2023-03-22T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2023-03-22T00:00:00&#43;00:00'/><meta property='og:image' content='https://note.laurance.ml/p/gcp-chatgpt-%E4%B8%B2%E6%8E%A5-firebase%E5%8F%8Alinebot/100.png' />
+<meta name="twitter:title" content="GCP-ChatGPT 串接 Firebase及Linebot">
+<meta name="twitter:description" content="建立與設定線上即時性資料庫 Firebase Realtime database https://console.firebase.google.com/u/0/ 點選 Go to console 點選 建立專案 輸入 專案名稱及打勾協議 取消勾選與 Google Analytics 建立關聯，可以直接建立專案 ( 建立關聯可以透過 Google Analytics"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://note.laurance.ml/p/gcp-chatgpt-%E4%B8%B2%E6%8E%A5-firebase%E5%8F%8Alinebot/100.png' />
+    <link rel="shortcut icon" href="static/favicon.ico" />
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Live2D 看板娘 / Demo</title>
+</head>
+<body>
+<script src="https://cdn.jsdelivr.net/gh/dingbangli/live2d-widget@latest/autoload.js"></script>
+</body>
+</html>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu49eacb73e01f91348578131d7e8658f5_11993_300x0_resize_box_3.png" width="300"
+                            height="301" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🍥</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Laurance&#39;s Note</a></h1>
+            <h2 class="site-description">筆記 記錄美好生活
+</h2>
+        </div>
+    </header><ol class="menu" id="main-menu">
+        
+        
+        
+
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/about/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/links/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>Links</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+            
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>Dark Mode</span>
+                </li>
+            
+        </div>
+    </ol>
+</aside>
+<main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/gcp-chatgpt-%E4%B8%B2%E6%8E%A5-firebase%E5%8F%8Alinebot/">
+                <img src="/p/gcp-chatgpt-%E4%B8%B2%E6%8E%A5-firebase%E5%8F%8Alinebot/100_hu955ca03f846527c7d15132e3291bde7f_39307_800x0_resize_box_3.png"
+                        srcset="/p/gcp-chatgpt-%E4%B8%B2%E6%8E%A5-firebase%E5%8F%8Alinebot/100_hu955ca03f846527c7d15132e3291bde7f_39307_800x0_resize_box_3.png 800w, /p/gcp-chatgpt-%E4%B8%B2%E6%8E%A5-firebase%E5%8F%8Alinebot/100_hu955ca03f846527c7d15132e3291bde7f_39307_1600x0_resize_box_3.png 1600w"
+                        width="800" 
+                        height="230" 
+                        loading="lazy"
+                        alt="Featured image of post GCP-ChatGPT 串接 Firebase及Linebot" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/gcp/" >
+                GCP
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/gcp-chatgpt-%E4%B8%B2%E6%8E%A5-firebase%E5%8F%8Alinebot/">GCP-ChatGPT 串接 Firebase及Linebot</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Mar 22, 2023</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    2 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+</header>
+
+    <section class="article-content">
+    
+    
+    <h1 id="建立與設定線上即時性資料庫-firebase-realtime-database">建立與設定線上即時性資料庫 <code>Firebase Realtime database</code></h1>
+<p><a class="link" href="https://console.firebase.google.com/u/0/"  target="_blank" rel="noopener"
+    >https://console.firebase.google.com/u/0/</a></p>
+<p>點選 <code>Go to console</code></p>
+<p><img src="/p/gcp-chatgpt-%E4%B8%B2%E6%8E%A5-firebase%E5%8F%8Alinebot/301.png"
+	width="1920"
+	height="937"
+	srcset="/p/gcp-chatgpt-%E4%B8%B2%E6%8E%A5-firebase%E5%8F%8Alinebot/301_hu38e914cba5d80f90ebdc5523538729eb_324851_480x0_resize_box_3.png 480w, /p/gcp-chatgpt-%E4%B8%B2%E6%8E%A5-firebase%E5%8F%8Alinebot/301_hu38e914cba5d80f90ebdc5523538729eb_324851_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="204"
+		data-flex-basis="491px"
+	
+></p>
+<p>點選 <code>建立專案</code></p>
+<p><img src="/p/gcp-chatgpt-%E4%B8%B2%E6%8E%A5-firebase%E5%8F%8Alinebot/302.png"
+	width="1903"
+	height="598"
+	srcset="/p/gcp-chatgpt-%E4%B8%B2%E6%8E%A5-firebase%E5%8F%8Alinebot/302_hu3349ff9cfb2af37f1921a245b02d5000_193769_480x0_resize_box_3.png 480w, /p/gcp-chatgpt-%E4%B8%B2%E6%8E%A5-firebase%E5%8F%8Alinebot/302_hu3349ff9cfb2af37f1921a245b02d5000_193769_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="318"
+		data-flex-basis="763px"
+	
+></p>
+<p>輸入 <code>專案名稱</code>及<code>打勾協議</code></p>
+<p><img src="/p/gcp-chatgpt-%E4%B8%B2%E6%8E%A5-firebase%E5%8F%8Alinebot/303.png"
+	width="1920"
+	height="937"
+	srcset="/p/gcp-chatgpt-%E4%B8%B2%E6%8E%A5-firebase%E5%8F%8Alinebot/303_hud494ed3d202575c00912a2a77ba4e5e3_239049_480x0_resize_box_3.png 480w, /p/gcp-chatgpt-%E4%B8%B2%E6%8E%A5-firebase%E5%8F%8Alinebot/303_hud494ed3d202575c00912a2a77ba4e5e3_239049_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="204"
+		data-flex-basis="491px"
+	
+></p>
+<p>取消勾選與 <code>Google Analytics</code> 建立關聯，可以直接建立專案</p>
+<p>( 建立關聯可以透過 Google Analytics 進行數據分析統計，但如果只是要單純使用資料庫，可以不必建立關聯 )</p>
+<p><img src="/p/gcp-chatgpt-%E4%B8%B2%E6%8E%A5-firebase%E5%8F%8Alinebot/304.png"
+	width="1920"
+	height="937"
+	srcset="/p/gcp-chatgpt-%E4%B8%B2%E6%8E%A5-firebase%E5%8F%8Alinebot/304_hued85209fe57718ad613c0d9b40f27f35_233968_480x0_resize_box_3.png 480w, /p/gcp-chatgpt-%E4%B8%B2%E6%8E%A5-firebase%E5%8F%8Alinebot/304_hued85209fe57718ad613c0d9b40f27f35_233968_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="204"
+		data-flex-basis="491px"
+	
+></p>
+<h1 id="建立-realtime-database-資料庫">建立 Realtime Database 資料庫</h1>
+<p>專案建立完成後就會進入專案畫面，從左側選擇 <code>建構</code> &gt; <code>Realtime Database</code></p>
+<p><img src="/p/gcp-chatgpt-%E4%B8%B2%E6%8E%A5-firebase%E5%8F%8Alinebot/305.png"
+	width="1920"
+	height="937"
+	srcset="/p/gcp-chatgpt-%E4%B8%B2%E6%8E%A5-firebase%E5%8F%8Alinebot/305_hub3b4977aa4f4ecc25d707c07ff3c42bb_308388_480x0_resize_box_3.png 480w, /p/gcp-chatgpt-%E4%B8%B2%E6%8E%A5-firebase%E5%8F%8Alinebot/305_hub3b4977aa4f4ecc25d707c07ff3c42bb_308388_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="204"
+		data-flex-basis="491px"
+	
+></p>
+<p>選擇後，點擊<code>建立資料庫</code></p>
+<p><img src="/p/gcp-chatgpt-%E4%B8%B2%E6%8E%A5-firebase%E5%8F%8Alinebot/306.png"
+	width="1920"
+	height="937"
+	srcset="/p/gcp-chatgpt-%E4%B8%B2%E6%8E%A5-firebase%E5%8F%8Alinebot/306_hudc7e814727e20232417d83c63c50a354_458249_480x0_resize_box_3.png 480w, /p/gcp-chatgpt-%E4%B8%B2%E6%8E%A5-firebase%E5%8F%8Alinebot/306_hudc7e814727e20232417d83c63c50a354_458249_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="204"
+		data-flex-basis="491px"
+	
+></p>
+<p>資料庫的位置選擇<code>美國</code> 繼續下一步</p>
+<p><img src="/p/gcp-chatgpt-%E4%B8%B2%E6%8E%A5-firebase%E5%8F%8Alinebot/307.png"
+	width="1920"
+	height="937"
+	srcset="/p/gcp-chatgpt-%E4%B8%B2%E6%8E%A5-firebase%E5%8F%8Alinebot/307_hu18e2d29a47e8bb80d009b5d534c2dbbc_334124_480x0_resize_box_3.png 480w, /p/gcp-chatgpt-%E4%B8%B2%E6%8E%A5-firebase%E5%8F%8Alinebot/307_hu18e2d29a47e8bb80d009b5d534c2dbbc_334124_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="204"
+		data-flex-basis="491px"
+	
+></p>
+<p>使用<code>鎖定模式</code>啟用 ( 鎖定模式表示這個資料庫禁止存取，啟用後會再修改設定使資料庫可以存取資料 )</p>
+<p><img src="/p/gcp-chatgpt-%E4%B8%B2%E6%8E%A5-firebase%E5%8F%8Alinebot/308.png"
+	width="1920"
+	height="937"
+	srcset="/p/gcp-chatgpt-%E4%B8%B2%E6%8E%A5-firebase%E5%8F%8Alinebot/308_hu18e2d29a47e8bb80d009b5d534c2dbbc_325486_480x0_resize_box_3.png 480w, /p/gcp-chatgpt-%E4%B8%B2%E6%8E%A5-firebase%E5%8F%8Alinebot/308_hu18e2d29a47e8bb80d009b5d534c2dbbc_325486_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="204"
+		data-flex-basis="491px"
+	
+></p>
+<p><code>建立好的畫面</code></p>
+<p><img src="/p/gcp-chatgpt-%E4%B8%B2%E6%8E%A5-firebase%E5%8F%8Alinebot/309.png"
+	width="1920"
+	height="937"
+	srcset="/p/gcp-chatgpt-%E4%B8%B2%E6%8E%A5-firebase%E5%8F%8Alinebot/309_hucc18697bb52e1d18a2a26c57b7f79504_69743_480x0_resize_box_3.png 480w, /p/gcp-chatgpt-%E4%B8%B2%E6%8E%A5-firebase%E5%8F%8Alinebot/309_hucc18697bb52e1d18a2a26c57b7f79504_69743_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="204"
+		data-flex-basis="491px"
+	
+></p>
+<h1 id="修改-realtime-database-存取權限">修改 Realtime Database 存取權限</h1>
+<p>進入<code>規則</code>頁籤，將規則從 <code>false</code> 修改為 <code>ture</code> 點擊<code>發布</code>，就能將資料庫改成<code>所有人都可以存取</code>的狀態</p>
+<p><img src="/p/gcp-chatgpt-%E4%B8%B2%E6%8E%A5-firebase%E5%8F%8Alinebot/310.png"
+	width="1920"
+	height="937"
+	srcset="/p/gcp-chatgpt-%E4%B8%B2%E6%8E%A5-firebase%E5%8F%8Alinebot/310_hu15e128b3b07b25ec57a0bb8d65a58cb2_88867_480x0_resize_box_3.png 480w, /p/gcp-chatgpt-%E4%B8%B2%E6%8E%A5-firebase%E5%8F%8Alinebot/310_hu15e128b3b07b25ec57a0bb8d65a58cb2_88867_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="204"
+		data-flex-basis="491px"
+	
+>
+<img src="/p/gcp-chatgpt-%E4%B8%B2%E6%8E%A5-firebase%E5%8F%8Alinebot/311.png"
+	width="1920"
+	height="937"
+	srcset="/p/gcp-chatgpt-%E4%B8%B2%E6%8E%A5-firebase%E5%8F%8Alinebot/311_hu2c6498a139d90c4a859856d2719d3d4a_67872_480x0_resize_box_3.png 480w, /p/gcp-chatgpt-%E4%B8%B2%E6%8E%A5-firebase%E5%8F%8Alinebot/311_hu2c6498a139d90c4a859856d2719d3d4a_67872_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="204"
+		data-flex-basis="491px"
+	
+></p>
+<h1 id="建立-gcp-cloud-functions">建立 <code>GCP-Cloud Functions</code></h1>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="err">#</span> <span class="nx">requirements</span><span class="p">.</span><span class="nx">txt</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="err">#</span> <span class="nb">Function</span> <span class="nx">dependencies</span><span class="p">,</span> <span class="k">for</span> <span class="nx">example</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl"><span class="err">#</span> <span class="kr">package</span><span class="o">&gt;=</span><span class="nx">version</span>
+</span></span><span class="line"><span class="cl"><span class="nx">line</span><span class="o">-</span><span class="nx">bot</span><span class="o">-</span><span class="nx">sdk</span>
+</span></span><span class="line"><span class="cl"><span class="nx">requests</span>
+</span></span><span class="line"><span class="cl"><span class="nx">openai</span>
+</span></span><span class="line"><span class="cl"><span class="nx">git</span><span class="o">+</span><span class="nx">https</span><span class="o">:</span><span class="c1">//github.com/ozgur/python-firebase
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="err">#</span> <span class="nx">main</span><span class="p">.</span><span class="nx">py</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">from</span> <span class="nx">linebot</span> <span class="kr">import</span> <span class="nx">LineBotApi</span><span class="p">,</span> <span class="nx">WebhookHandler</span>
+</span></span><span class="line"><span class="cl"><span class="nx">from</span> <span class="nx">linebot</span><span class="p">.</span><span class="nx">models</span> <span class="kr">import</span> <span class="nx">TextSendMessage</span><span class="p">,</span> <span class="nx">StickerSendMessage</span><span class="p">,</span> <span class="nx">ImageSendMessage</span><span class="p">,</span> <span class="nx">LocationSendMessage</span>
+</span></span><span class="line"><span class="cl"><span class="kr">import</span> <span class="nx">requests</span><span class="p">,</span> <span class="nx">json</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">import</span> <span class="nx">openai</span>
+</span></span><span class="line"><span class="cl"><span class="nx">openai</span><span class="p">.</span><span class="nx">api_key</span> <span class="o">=</span> <span class="s1">&#39;XXXXXXXXXXXXXXXXXXXX&#39;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">from</span> <span class="nx">firebase</span> <span class="kr">import</span> <span class="nx">firebase</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">token</span> <span class="o">=</span> <span class="s1">&#39;XXXXXXXXX&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="nx">secret</span> <span class="o">=</span> <span class="s1">&#39;XXXXXXXXX&#39;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">def</span> <span class="nx">linebot</span><span class="p">(</span><span class="nx">request</span><span class="p">)</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">body</span> <span class="o">=</span> <span class="nx">request</span><span class="p">.</span><span class="nx">get_data</span><span class="p">(</span><span class="nx">as_text</span><span class="o">=</span><span class="nx">True</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">json_data</span> <span class="o">=</span> <span class="nx">json</span><span class="p">.</span><span class="nx">loads</span><span class="p">(</span><span class="nx">body</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">try</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">line_bot_api</span> <span class="o">=</span> <span class="nx">LineBotApi</span><span class="p">(</span><span class="nx">token</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">handler</span> <span class="o">=</span> <span class="nx">WebhookHandler</span><span class="p">(</span><span class="nx">secret</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">signature</span> <span class="o">=</span> <span class="nx">request</span><span class="p">.</span><span class="nx">headers</span><span class="p">[</span><span class="s1">&#39;X-Line-Signature&#39;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">handler</span><span class="p">.</span><span class="nx">handle</span><span class="p">(</span><span class="nx">body</span><span class="p">,</span> <span class="nx">signature</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">tk</span> <span class="o">=</span> <span class="nx">json_data</span><span class="p">[</span><span class="s1">&#39;events&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;replyToken&#39;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">timestamp</span> <span class="o">=</span> <span class="nx">json_data</span><span class="p">[</span><span class="s1">&#39;events&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;timestamp&#39;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">msg_type</span> <span class="o">=</span> <span class="nx">json_data</span><span class="p">[</span><span class="s1">&#39;events&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;message&#39;</span><span class="p">][</span><span class="s1">&#39;type&#39;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="nx">msg_type</span> <span class="o">==</span> <span class="s1">&#39;text&#39;</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">            <span class="nx">msg</span> <span class="o">=</span> <span class="nx">json_data</span><span class="p">[</span><span class="s1">&#39;events&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;message&#39;</span><span class="p">][</span><span class="s1">&#39;text&#39;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">            <span class="nx">url</span> <span class="o">=</span> <span class="s1">&#39;XXXXXXXXXXXXXX.firebaseio.com&#39;</span>
+</span></span><span class="line"><span class="cl">            <span class="nx">fdb</span> <span class="o">=</span> <span class="nx">firebase</span><span class="p">.</span><span class="nx">FirebaseApplication</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span> <span class="nx">None</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                        <span class="nx">chatgpt</span> <span class="o">=</span> <span class="nx">fdb</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">,</span><span class="s1">&#39;chatgpt&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            
+</span></span><span class="line"><span class="cl">                        <span class="k">if</span> <span class="nx">chatgpt</span> <span class="o">==</span> <span class="nx">None</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">                            <span class="nx">messages</span> <span class="o">=</span> <span class="p">[]</span>
+</span></span><span class="line"><span class="cl">                        <span class="k">else</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">                            <span class="nx">messages</span> <span class="o">=</span> <span class="nx">chatgpt</span>
+</span></span><span class="line"><span class="cl">            
+</span></span><span class="line"><span class="cl">                        <span class="k">if</span> <span class="nx">msg</span> <span class="o">==</span> <span class="s1">&#39;!reset&#39;</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">                            <span class="nx">reply_msg</span> <span class="o">=</span> <span class="nx">TextSendMessage</span><span class="p">(</span><span class="nx">text</span><span class="o">=</span><span class="s1">&#39;對話歷史紀錄已經清空！&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                            <span class="nx">line_bot_api</span><span class="p">.</span><span class="nx">reply_message</span><span class="p">(</span><span class="nx">tk</span><span class="p">,</span><span class="nx">reply_msg</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                            <span class="nx">fdb</span><span class="p">.</span><span class="k">delete</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">,</span><span class="s1">&#39;chatgpt&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                        <span class="k">else</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">                            <span class="nx">messages</span><span class="p">.</span><span class="nx">append</span><span class="p">({</span><span class="s2">&#34;role&#34;</span><span class="o">:</span><span class="s2">&#34;user&#34;</span><span class="p">,</span><span class="s2">&#34;content&#34;</span><span class="o">:</span><span class="nx">msg</span><span class="p">})</span>
+</span></span><span class="line"><span class="cl">                            <span class="nx">response</span> <span class="o">=</span> <span class="nx">openai</span><span class="p">.</span><span class="nx">ChatCompletion</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">                                <span class="nx">model</span><span class="o">=</span><span class="s2">&#34;gpt-3.5-turbo&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                                <span class="nx">max_tokens</span><span class="o">=</span><span class="mi">640</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                                <span class="nx">temperature</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                                <span class="nx">messages</span><span class="o">=</span><span class="nx">messages</span>
+</span></span><span class="line"><span class="cl">                            <span class="p">)</span>
+</span></span><span class="line"><span class="cl">                            <span class="nx">ai_msg</span> <span class="o">=</span> <span class="nx">response</span><span class="p">.</span><span class="nx">choices</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">message</span><span class="p">.</span><span class="nx">content</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="s1">&#39;\n&#39;</span><span class="p">,</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                            <span class="nx">messages</span><span class="p">.</span><span class="nx">append</span><span class="p">({</span><span class="s2">&#34;role&#34;</span><span class="o">:</span><span class="s2">&#34;assistant&#34;</span><span class="p">,</span><span class="s2">&#34;content&#34;</span><span class="o">:</span><span class="nx">ai_msg</span><span class="p">})</span>
+</span></span><span class="line"><span class="cl">                            <span class="nx">reply_msg</span> <span class="o">=</span> <span class="nx">TextSendMessage</span><span class="p">(</span><span class="nx">text</span><span class="o">=</span><span class="nx">ai_msg</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                            <span class="nx">line_bot_api</span><span class="p">.</span><span class="nx">reply_message</span><span class="p">(</span><span class="nx">tk</span><span class="p">,</span><span class="nx">reply_msg</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                            <span class="nx">fdb</span><span class="p">.</span><span class="nx">put_async</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">,</span><span class="s1">&#39;chatgpt&#39;</span><span class="p">,</span><span class="nx">messages</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                    <span class="k">else</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">                        <span class="nx">reply_msg</span> <span class="o">=</span> <span class="nx">TextSendMessage</span><span class="p">(</span><span class="nx">text</span><span class="o">=</span><span class="s1">&#39;你傳的不是文字訊息啦&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                        <span class="nx">line_bot_api</span><span class="p">.</span><span class="nx">reply_message</span><span class="p">(</span><span class="nx">tk</span><span class="p">,</span><span class="nx">reply_msg</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                <span class="nx">except</span> <span class="nx">Exception</span> <span class="nx">as</span> <span class="nx">e</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">                    <span class="nx">detail</span> <span class="o">=</span> <span class="nx">e</span><span class="p">.</span><span class="nx">args</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">                    <span class="nx">print</span><span class="p">(</span><span class="nx">detail</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                <span class="k">return</span> <span class="s1">&#39;OK&#39;</span>
+</span></span></code></pre></div><p>建立好 <code>Function</code> 後 , 將 <code>觸發網址</code> 貼入 <code>Line Developers Webhook URL</code> 並點選 <code>Verify 驗證</code></p>
+<p><img src="/p/gcp-chatgpt-%E4%B8%B2%E6%8E%A5-firebase%E5%8F%8Alinebot/312.png"
+	width="1920"
+	height="937"
+	srcset="/p/gcp-chatgpt-%E4%B8%B2%E6%8E%A5-firebase%E5%8F%8Alinebot/312_hu0b910b08093899d11033591be69672c2_91361_480x0_resize_box_3.png 480w, /p/gcp-chatgpt-%E4%B8%B2%E6%8E%A5-firebase%E5%8F%8Alinebot/312_hu0b910b08093899d11033591be69672c2_91361_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="204"
+		data-flex-basis="491px"
+	
+></p>
+<p>進入 <code>Firebase Realtime database</code> 也能看到歷史紀錄的資料</p>
+<p><img src="/p/gcp-chatgpt-%E4%B8%B2%E6%8E%A5-firebase%E5%8F%8Alinebot/313.png"
+	width="1920"
+	height="937"
+	srcset="/p/gcp-chatgpt-%E4%B8%B2%E6%8E%A5-firebase%E5%8F%8Alinebot/313_huff7cac1dc33b904cfaaa26203f466618_96321_480x0_resize_box_3.png 480w, /p/gcp-chatgpt-%E4%B8%B2%E6%8E%A5-firebase%E5%8F%8Alinebot/313_huff7cac1dc33b904cfaaa26203f466618_96321_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="204"
+		data-flex-basis="491px"
+	
+></p>
+<hr>
+
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/firebase/">Firebase</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC By Laurance</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">Related content</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/p/gcp-google-cloud-monitoring-by-grafana/">
+        
+        
+            <div class="article-image">
+                <img src="/p/gcp-google-cloud-monitoring-by-grafana/100.4d218058b3cc5608aae380ec92a31ba1_hu955ca03f846527c7d15132e3291bde7f_39307_250x150_fill_box_smart1_3.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post GCP-Google Cloud Monitoring by Grafana"
+                        
+                        data-hash="md5-TSGAWLPMVgiq44DskqMboQ==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">GCP-Google Cloud Monitoring by Grafana</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/gcp-cloud-functions-%E9%83%A8%E5%B1%AC-line-bot--openai/">
+        
+        
+            <div class="article-image">
+                <img src="/p/gcp-cloud-functions-%E9%83%A8%E5%B1%AC-line-bot--openai/100.4d218058b3cc5608aae380ec92a31ba1_hu955ca03f846527c7d15132e3291bde7f_39307_250x150_fill_box_smart1_3.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post GCP-Cloud Functions 部屬 LINE BOT &#43; OpenAI"
+                        
+                        data-hash="md5-TSGAWLPMVgiq44DskqMboQ==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">GCP-Cloud Functions 部屬 LINE BOT &#43; OpenAI</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/gce-%E5%85%A7%E5%AD%98%E9%81%8E%E5%B0%8F%E5%B0%8E%E8%87%B4%E7%84%A1%E6%B3%95%E7%B7%A8%E8%AD%AFphp/">
+        
+        
+            <div class="article-image">
+                <img src="/p/gce-%E5%85%A7%E5%AD%98%E9%81%8E%E5%B0%8F%E5%B0%8E%E8%87%B4%E7%84%A1%E6%B3%95%E7%B7%A8%E8%AD%AFphp/100.4d218058b3cc5608aae380ec92a31ba1_hu955ca03f846527c7d15132e3291bde7f_39307_250x150_fill_box_smart1_3.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post GCE-內存過小導致無法編譯PHP"
+                        
+                        data-hash="md5-TSGAWLPMVgiq44DskqMboQ==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">GCE-內存過小導致無法編譯PHP</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/gcp-google-%E5%95%9F%E7%94%A8%E5%85%A9%E6%AD%A5%E9%A9%9F%E9%A9%97%E8%AD%89-%E5%86%8D%E8%A8%AD%E5%AE%9A%E6%87%89%E7%94%A8%E7%A8%8B%E5%BC%8F%E5%B0%88%E7%94%A8%E5%AF%86%E7%A2%BC/">
+        
+        
+            <div class="article-image">
+                <img src="/p/gcp-google-%E5%95%9F%E7%94%A8%E5%85%A9%E6%AD%A5%E9%A9%9F%E9%A9%97%E8%AD%89-%E5%86%8D%E8%A8%AD%E5%AE%9A%E6%87%89%E7%94%A8%E7%A8%8B%E5%BC%8F%E5%B0%88%E7%94%A8%E5%AF%86%E7%A2%BC/100.4d218058b3cc5608aae380ec92a31ba1_hu955ca03f846527c7d15132e3291bde7f_39307_250x150_fill_box_smart1_3.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post GCP-google 啟用兩步驟驗證 再設定應用程式專用密碼"
+                        
+                        data-hash="md5-TSGAWLPMVgiq44DskqMboQ==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">GCP-google 啟用兩步驟驗證 再設定應用程式專用密碼</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/gcp-%E7%A1%AC%E7%A2%9F%E6%93%B4%E5%AE%B9/">
+        
+        
+            <div class="article-image">
+                <img src="/p/gcp-%E7%A1%AC%E7%A2%9F%E6%93%B4%E5%AE%B9/100.4d218058b3cc5608aae380ec92a31ba1_hu955ca03f846527c7d15132e3291bde7f_39307_250x150_fill_box_smart1_3.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post GCP-硬碟擴容"
+                        
+                        data-hash="md5-TSGAWLPMVgiq44DskqMboQ==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">GCP-硬碟擴容</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "hugo-theme-stack" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2022 - 
+        
+        2023 Laurance&#39;s Note
+    </section>
+    
+    <section class="powerby">
+        
+            All rights reserved <br/>
+        
+
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        
+    </section>
+</footer>
+
+<span id="busuanzi_container_site_pv">
+    總瀏覽  <span id="busuanzi_value_site_pv"></span>  次
+</span>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+    
+
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='安裝必要套件 yum install xz gcc make wget unzip kernel-devel-$(uname -r) iptablesdevel.$(uname -p) perl-Text-CSV_XS 確認目前的kernel版本 uname -r 確認底下的目錄名稱必須要跟上個步驟的版號完全相同，若不同時請確認yum安裝'><title>centos7 內核3.10.0-957 iptables 使用geoip過濾國家</title>
+
+<link rel='canonical' href='https://note.laurance.ml/p/centos7-%E5%85%A7%E6%A0%B83.10.0-957-iptables-%E4%BD%BF%E7%94%A8geoip%E9%81%8E%E6%BF%BE%E5%9C%8B%E5%AE%B6/'>
+
+<link rel="stylesheet" href="/scss/style.min.ac77dcf8b111b51da39a92990f431923f210f3876d85798a2125667f96dc33a4.css"><meta property='og:title' content='centos7 內核3.10.0-957 iptables 使用geoip過濾國家'>
+<meta property='og:description' content='安裝必要套件 yum install xz gcc make wget unzip kernel-devel-$(uname -r) iptablesdevel.$(uname -p) perl-Text-CSV_XS 確認目前的kernel版本 uname -r 確認底下的目錄名稱必須要跟上個步驟的版號完全相同，若不同時請確認yum安裝'>
+<meta property='og:url' content='https://note.laurance.ml/p/centos7-%E5%85%A7%E6%A0%B83.10.0-957-iptables-%E4%BD%BF%E7%94%A8geoip%E9%81%8E%E6%BF%BE%E5%9C%8B%E5%AE%B6/'>
+<meta property='og:site_name' content='Laurance&#39;s Note'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Iptables' /><meta property='article:published_time' content='2022-09-08T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2022-09-08T00:00:00&#43;00:00'/><meta property='og:image' content='https://note.laurance.ml/p/centos7-%E5%85%A7%E6%A0%B83.10.0-957-iptables-%E4%BD%BF%E7%94%A8geoip%E9%81%8E%E6%BF%BE%E5%9C%8B%E5%AE%B6/100.jpg' />
+<meta name="twitter:title" content="centos7 內核3.10.0-957 iptables 使用geoip過濾國家">
+<meta name="twitter:description" content="安裝必要套件 yum install xz gcc make wget unzip kernel-devel-$(uname -r) iptablesdevel.$(uname -p) perl-Text-CSV_XS 確認目前的kernel版本 uname -r 確認底下的目錄名稱必須要跟上個步驟的版號完全相同，若不同時請確認yum安裝"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://note.laurance.ml/p/centos7-%E5%85%A7%E6%A0%B83.10.0-957-iptables-%E4%BD%BF%E7%94%A8geoip%E9%81%8E%E6%BF%BE%E5%9C%8B%E5%AE%B6/100.jpg' />
+    <link rel="shortcut icon" href="static/favicon.ico" />
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Live2D 看板娘 / Demo</title>
+</head>
+<body>
+<script src="https://cdn.jsdelivr.net/gh/dingbangli/live2d-widget@latest/autoload.js"></script>
+</body>
+</html>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu49eacb73e01f91348578131d7e8658f5_11993_300x0_resize_box_3.png" width="300"
+                            height="301" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🍥</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Laurance&#39;s Note</a></h1>
+            <h2 class="site-description">筆記 記錄美好生活
+</h2>
+        </div>
+    </header><ol class="menu" id="main-menu">
+        
+        
+        
+
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/about/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/links/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>Links</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+            
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>Dark Mode</span>
+                </li>
+            
+        </div>
+    </ol>
+</aside>
+<main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/centos7-%E5%85%A7%E6%A0%B83.10.0-957-iptables-%E4%BD%BF%E7%94%A8geoip%E9%81%8E%E6%BF%BE%E5%9C%8B%E5%AE%B6/">
+                <img src="/p/centos7-%E5%85%A7%E6%A0%B83.10.0-957-iptables-%E4%BD%BF%E7%94%A8geoip%E9%81%8E%E6%BF%BE%E5%9C%8B%E5%AE%B6/100_hufccc25f98c07fbd5a07eedc8b57cae89_16682_800x0_resize_q75_box.jpg"
+                        srcset="/p/centos7-%E5%85%A7%E6%A0%B83.10.0-957-iptables-%E4%BD%BF%E7%94%A8geoip%E9%81%8E%E6%BF%BE%E5%9C%8B%E5%AE%B6/100_hufccc25f98c07fbd5a07eedc8b57cae89_16682_800x0_resize_q75_box.jpg 800w, /p/centos7-%E5%85%A7%E6%A0%B83.10.0-957-iptables-%E4%BD%BF%E7%94%A8geoip%E9%81%8E%E6%BF%BE%E5%9C%8B%E5%AE%B6/100_hufccc25f98c07fbd5a07eedc8b57cae89_16682_1600x0_resize_q75_box.jpg 1600w"
+                        width="800" 
+                        height="250" 
+                        loading="lazy"
+                        alt="Featured image of post centos7 內核3.10.0-957 iptables 使用geoip過濾國家" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/linux/" >
+                Linux
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/centos7-%E5%85%A7%E6%A0%B83.10.0-957-iptables-%E4%BD%BF%E7%94%A8geoip%E9%81%8E%E6%BF%BE%E5%9C%8B%E5%AE%B6/">centos7 內核3.10.0-957 iptables 使用geoip過濾國家</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Sep 08, 2022</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    2 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+</header>
+
+    <section class="article-content">
+    
+    
+    <pre><code>安裝必要套件
+yum install xz gcc make wget unzip kernel-devel-$(uname -r) iptablesdevel.$(uname -p) perl-Text-CSV_XS
+
+確認目前的kernel版本
+uname -r
+
+確認底下的目錄名稱必須要跟上個步驟的版號完全相同，若不同時請確認yum安裝的kerneldevel套件版本，對不上時有下列幾種做法
+ls /usr/src/kernels/
+</code></pre>
+<p><img src="/p/centos7-%E5%85%A7%E6%A0%B83.10.0-957-iptables-%E4%BD%BF%E7%94%A8geoip%E9%81%8E%E6%BF%BE%E5%9C%8B%E5%AE%B6/01.png"
+	width="622"
+	height="143"
+	srcset="/p/centos7-%E5%85%A7%E6%A0%B83.10.0-957-iptables-%E4%BD%BF%E7%94%A8geoip%E9%81%8E%E6%BF%BE%E5%9C%8B%E5%AE%B6/01_hu7728b59a0f89a7c2cd75280faf811204_7623_480x0_resize_box_3.png 480w, /p/centos7-%E5%85%A7%E6%A0%B83.10.0-957-iptables-%E4%BD%BF%E7%94%A8geoip%E9%81%8E%E6%BF%BE%E5%9C%8B%E5%AE%B6/01_hu7728b59a0f89a7c2cd75280faf811204_7623_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="434"
+		data-flex-basis="1043px"
+	
+></p>
+<pre><code>1) 一般、非客制化Linux版本，請參照下述
+
+移除目前裝的版本
+rpm -e kernel-devel
+
+至 rpm包網站 http://rpm.pbone.net 下載與kernel相同版號的 kernel-devel
+wget *.rpm
+</code></pre>
+<p><img src="/p/centos7-%E5%85%A7%E6%A0%B83.10.0-957-iptables-%E4%BD%BF%E7%94%A8geoip%E9%81%8E%E6%BF%BE%E5%9C%8B%E5%AE%B6/02.png"
+	width="903"
+	height="509"
+	srcset="/p/centos7-%E5%85%A7%E6%A0%B83.10.0-957-iptables-%E4%BD%BF%E7%94%A8geoip%E9%81%8E%E6%BF%BE%E5%9C%8B%E5%AE%B6/02_huf269c4bc051504ca1d92d556515a4667_46140_480x0_resize_box_3.png 480w, /p/centos7-%E5%85%A7%E6%A0%B83.10.0-957-iptables-%E4%BD%BF%E7%94%A8geoip%E9%81%8E%E6%BF%BE%E5%9C%8B%E5%AE%B6/02_huf269c4bc051504ca1d92d556515a4667_46140_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="177"
+		data-flex-basis="425px"
+	
+></p>
+<pre><code>解壓kernel-devel套件
+rpm -hiv *.rpm
+
+確認目前的kernel版本
+ls /usr/src/kernels/
+
+確認套件版本
+uname -r
+</code></pre>
+<hr>
+<pre><code>2) Aamzon EC2請參照下述
+
+移除目前裝的版本
+rpm -e kernel-devel
+
+kernel版本升級
+yum install kernel
+
+重開機
+reboot
+
+確認目前的kernel版本
+uname -r
+
+再次yum安裝kernel-devel套件
+yum install kernel-devel-$(uname -r)
+
+確認套件版本
+ls /usr/src/kernels/
+
+確認iptables版本
+iptables -V
+
+下載與iptables相對應的套件版本
+wget xtables-addons-*.tar.xz
+</code></pre>
+<p><a class="link" href="https://sourceforge.net/projects/xtables-addons/files/Xtablesaddons/"  target="_blank" rel="noopener"
+    >Iptables套件載點</a></p>
+<pre><code>#iptables 1.47請用 xtables-addons-1.47.tar.xz
+#aws-ec2 請用 xtables-addons-3.0.tar.xz
+
+tar Jxf xtables-addons-1.47.tar.xz
+cd xtables-addons-1.47
+./configure
+make
+make install
+</code></pre>
+<hr>
+<pre><code>編譯遇到以下錯誤
+</code></pre>
+<p><img src="/p/centos7-%E5%85%A7%E6%A0%B83.10.0-957-iptables-%E4%BD%BF%E7%94%A8geoip%E9%81%8E%E6%BF%BE%E5%9C%8B%E5%AE%B6/03.png"
+	width="635"
+	height="61"
+	srcset="/p/centos7-%E5%85%A7%E6%A0%B83.10.0-957-iptables-%E4%BD%BF%E7%94%A8geoip%E9%81%8E%E6%BF%BE%E5%9C%8B%E5%AE%B6/03_huc86695b5205f7d13779edf61321cfcf5_4459_480x0_resize_box_3.png 480w, /p/centos7-%E5%85%A7%E6%A0%B83.10.0-957-iptables-%E4%BD%BF%E7%94%A8geoip%E9%81%8E%E6%BF%BE%E5%9C%8B%E5%AE%B6/03_huc86695b5205f7d13779edf61321cfcf5_4459_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="1040"
+		data-flex-basis="2498px"
+	
+></p>
+<pre><code>yum -y install iptables-devel
+
+其中若有遇到問題，可調整mconfig中的模組留geoip即可。
+</code></pre>
+<hr>
+<pre><code>若遇到 xtnu_ipv6_find_hdr' 錯誤處理程序如下
+</code></pre>
+<p><img src="/p/centos7-%E5%85%A7%E6%A0%B83.10.0-957-iptables-%E4%BD%BF%E7%94%A8geoip%E9%81%8E%E6%BF%BE%E5%9C%8B%E5%AE%B6/04.png"
+	width="1099"
+	height="390"
+	srcset="/p/centos7-%E5%85%A7%E6%A0%B83.10.0-957-iptables-%E4%BD%BF%E7%94%A8geoip%E9%81%8E%E6%BF%BE%E5%9C%8B%E5%AE%B6/04_hu662da645d3a70b261e54ae9d4a07b6e3_225698_480x0_resize_box_3.png 480w, /p/centos7-%E5%85%A7%E6%A0%B83.10.0-957-iptables-%E4%BD%BF%E7%94%A8geoip%E9%81%8E%E6%BF%BE%E5%9C%8B%E5%AE%B6/04_hu662da645d3a70b261e54ae9d4a07b6e3_225698_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="281"
+		data-flex-basis="676px"
+	
+></p>
+<pre><code>使用/* */注解此行
+vim /lib/modules/`uname -r`/build/include/linux/autoconf.h
+#define CONFIG_IP6_NF_IPTABLES_MODULE 1 #
+
+或是進入extensions資料夾執行
+sed -i '/define WITH_IPV6/d' compat_xtables.c xt_psd.c xt_length2.c xt_TARPIT.c xt_SYSRQ.c xt_RAWNAT.c
+</code></pre>
+<p><img src="/p/centos7-%E5%85%A7%E6%A0%B83.10.0-957-iptables-%E4%BD%BF%E7%94%A8geoip%E9%81%8E%E6%BF%BE%E5%9C%8B%E5%AE%B6/05.png"
+	width="1059"
+	height="358"
+	srcset="/p/centos7-%E5%85%A7%E6%A0%B83.10.0-957-iptables-%E4%BD%BF%E7%94%A8geoip%E9%81%8E%E6%BF%BE%E5%9C%8B%E5%AE%B6/05_hu10076990fd8f0b4d445ab908313f56ef_241181_480x0_resize_box_3.png 480w, /p/centos7-%E5%85%A7%E6%A0%B83.10.0-957-iptables-%E4%BD%BF%E7%94%A8geoip%E9%81%8E%E6%BF%BE%E5%9C%8B%E5%AE%B6/05_hu10076990fd8f0b4d445ab908313f56ef_241181_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="295"
+		data-flex-basis="709px"
+	
+></p>
+<pre><code>若鍽譯時遇到 /lib/modules/XXXX.x86_64/build/ 路徑錯誤時
+重新連結到正確的目錄
+
+cd /lib/modules/XXXX.x86_64/
+rm -rf build
+ln -s ../../../usr/src/kernels/XXX.x86_64/ build  
+</code></pre>
+<hr>
+<pre><code>開始建立IP資料庫
+cd geoip
+
+若是使用付費版的GeoIP2 Databases源
+./xt_geoip_dl
+./xt_geoip_build GeoIPCountryWhois.csv
+
+若是使用免費版的GeoLite2 Databases源
+
+需要先注冊一個 maxmind.com 帳號後即可生成一個 License Key
+</code></pre>
+<p><a class="link" href="https://www.maxmind.com/en/geolite2/signup?lang=en"  target="_blank" rel="noopener"
+    >註冊maxmind.com帳號</a></p>
+<pre><code>下載轉格式工具程式GeoLite2xtables
+wget https://github.com/mschmitt/GeoLite2xtables/archive/master.zip
+
+unzip master.zip
+
+cd GeoLite2xtables-master
+
+echo &quot;YOUR_LICENSE_KEY='你的金鑰'&quot; &gt;&gt; geolite2.license
+
+echo &quot;YOUR_LICENSE_KEY='tBobMt3HrPTWVJKP'&quot; &gt;&gt; geolite2.license
+
+./00_download_geolite2
+
+./10_download_countryinfo
+
+cat /tmp/GeoLite2-Country-Blocks-IPv4.csv | ./20_convert_geolite2 /tmp/CountryInfo.txt &gt; ../GeoIPCountryWhois.csv
+
+cd ..
+
+./xt_geoip_build GeoIPCountryWhois.csv   
+</code></pre>
+<hr>
+<pre><code>若是遇到下圖錯誤表示perl缺少模組
+</code></pre>
+<p><img src="/p/centos7-%E5%85%A7%E6%A0%B83.10.0-957-iptables-%E4%BD%BF%E7%94%A8geoip%E9%81%8E%E6%BF%BE%E5%9C%8B%E5%AE%B6/06.png"
+	width="1379"
+	height="399"
+	srcset="/p/centos7-%E5%85%A7%E6%A0%B83.10.0-957-iptables-%E4%BD%BF%E7%94%A8geoip%E9%81%8E%E6%BF%BE%E5%9C%8B%E5%AE%B6/06_hu5f171235978fd8f2acaa07e1d6afa820_298286_480x0_resize_box_3.png 480w, /p/centos7-%E5%85%A7%E6%A0%B83.10.0-957-iptables-%E4%BD%BF%E7%94%A8geoip%E9%81%8E%E6%BF%BE%E5%9C%8B%E5%AE%B6/06_hu5f171235978fd8f2acaa07e1d6afa820_298286_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="345"
+		data-flex-basis="829px"
+	
+></p>
+<pre><code>yum install *YAML* perl-CPAN
+
+perl -MCPAN -e shell
+
+#預設回答yes即可
+
+cpan[1]&gt; install NetAddr::IP
+
+cpan[1]&gt; exit   
+</code></pre>
+<hr>
+<pre><code>mkdir /usr/share/xt_geoip
+
+mv BE LE /usr/share/xt_geoip/
+
+確認是否有安裝成功
+lsmod|grep geoip
+</code></pre>
+<p><img src="/p/centos7-%E5%85%A7%E6%A0%B83.10.0-957-iptables-%E4%BD%BF%E7%94%A8geoip%E9%81%8E%E6%BF%BE%E5%9C%8B%E5%AE%B6/07.png"
+	width="1068"
+	height="73"
+	srcset="/p/centos7-%E5%85%A7%E6%A0%B83.10.0-957-iptables-%E4%BD%BF%E7%94%A8geoip%E9%81%8E%E6%BF%BE%E5%9C%8B%E5%AE%B6/07_hu830e06e2b630e52252ded4e9f4896f42_40290_480x0_resize_box_3.png 480w, /p/centos7-%E5%85%A7%E6%A0%B83.10.0-957-iptables-%E4%BD%BF%E7%94%A8geoip%E9%81%8E%E6%BF%BE%E5%9C%8B%E5%AE%B6/07_hu830e06e2b630e52252ded4e9f4896f42_40290_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="1463"
+		data-flex-basis="3511px"
+	
+></p>
+<pre><code>一行命令中最多可以使用10個國家
+iptables -I INPUT -m geoip --src-cc PH,KR -j DROP
+
+只允許中國IP的TCP80連線
+iptables -A except -p TCP --dport 80 -m geoip --src-cc CN -j ACCEPT
+
+只允許中國IP的TCP80、443連線
+iptables -A except -p TCP -m multiport --dports 80,443 -m geoip --src-cc CN -j ACCEPT
+
+若是要加進火牆shell請用這組
+iptables -A pig -m geoip --src-cc tw -j DROP
+
+確認規則是不是有吃到
+iptables -n --list INPUT
+</code></pre>
+<p><img src="/p/centos7-%E5%85%A7%E6%A0%B83.10.0-957-iptables-%E4%BD%BF%E7%94%A8geoip%E9%81%8E%E6%BF%BE%E5%9C%8B%E5%AE%B6/08.png"
+	width="910"
+	height="157"
+	srcset="/p/centos7-%E5%85%A7%E6%A0%B83.10.0-957-iptables-%E4%BD%BF%E7%94%A8geoip%E9%81%8E%E6%BF%BE%E5%9C%8B%E5%AE%B6/08_hu2d70219d79b450cdb3aab81d51a95067_76664_480x0_resize_box_3.png 480w, /p/centos7-%E5%85%A7%E6%A0%B83.10.0-957-iptables-%E4%BD%BF%E7%94%A8geoip%E9%81%8E%E6%BF%BE%E5%9C%8B%E5%AE%B6/08_hu2d70219d79b450cdb3aab81d51a95067_76664_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="579"
+		data-flex-basis="1391px"
+	
+></p>
+<hr>
+
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/iptables/">Iptables</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC By Laurance</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">Related content</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/p/linux-%E5%88%A9%E7%94%A8ipset%E5%BB%BA%E7%AB%8Biptables%E9%9B%86%E5%90%88-%E5%AF%A6%E7%8F%BE%E5%B0%81%E9%8E%96%E5%9C%8B%E5%AE%B6ip/">
+        
+        
+            <div class="article-image">
+                <img src="/p/linux-%E5%88%A9%E7%94%A8ipset%E5%BB%BA%E7%AB%8Biptables%E9%9B%86%E5%90%88-%E5%AF%A6%E7%8F%BE%E5%B0%81%E9%8E%96%E5%9C%8B%E5%AE%B6ip/100.ecede988c08495dbb11889b6d3e3aa6e_hufccc25f98c07fbd5a07eedc8b57cae89_16682_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Linux-利用ipset建立iptables集合 [實現封鎖國家IP] "
+                        
+                        data-hash="md5-7O3piMCElduxGIm20&#43;Oqbg==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Linux-利用ipset建立iptables集合 [實現封鎖國家IP] </h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/linux-iptables-%E6%B8%85%E9%99%A4%E6%89%80%E6%9C%89%E8%A6%8F%E5%89%87/">
+        
+        
+            <div class="article-image">
+                <img src="/p/linux-iptables-%E6%B8%85%E9%99%A4%E6%89%80%E6%9C%89%E8%A6%8F%E5%89%87/100.ecede988c08495dbb11889b6d3e3aa6e_hufccc25f98c07fbd5a07eedc8b57cae89_16682_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Linux-Iptables-清除所有規則"
+                        
+                        data-hash="md5-7O3piMCElduxGIm20&#43;Oqbg==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Linux-Iptables-清除所有規則</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/linux-iptables-%E7%A7%BB%E9%99%A4%E6%9F%90%E4%B8%80%E6%A2%9D%E8%A6%8F%E5%89%87/">
+        
+        
+            <div class="article-image">
+                <img src="/p/linux-iptables-%E7%A7%BB%E9%99%A4%E6%9F%90%E4%B8%80%E6%A2%9D%E8%A6%8F%E5%89%87/100.ecede988c08495dbb11889b6d3e3aa6e_hufccc25f98c07fbd5a07eedc8b57cae89_16682_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Linux-Iptables-移除某一條規則"
+                        
+                        data-hash="md5-7O3piMCElduxGIm20&#43;Oqbg==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Linux-Iptables-移除某一條規則</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/linux-iptables-%E8%BD%89%E7%99%BCport/">
+        
+        
+            <div class="article-image">
+                <img src="/p/linux-iptables-%E8%BD%89%E7%99%BCport/100.ecede988c08495dbb11889b6d3e3aa6e_hufccc25f98c07fbd5a07eedc8b57cae89_16682_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Linux-Iptables-轉發PORT"
+                        
+                        data-hash="md5-7O3piMCElduxGIm20&#43;Oqbg==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Linux-Iptables-轉發PORT</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/linux-iptables-%E6%B0%B8%E4%B9%85%E9%97%9C%E9%96%89%E6%8C%87%E4%BB%A4/">
+        
+        
+            <div class="article-image">
+                <img src="/p/linux-iptables-%E6%B0%B8%E4%B9%85%E9%97%9C%E9%96%89%E6%8C%87%E4%BB%A4/100.ecede988c08495dbb11889b6d3e3aa6e_hufccc25f98c07fbd5a07eedc8b57cae89_16682_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Linux-Iptables-永久關閉指令"
+                        
+                        data-hash="md5-7O3piMCElduxGIm20&#43;Oqbg==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Linux-Iptables-永久關閉指令</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "hugo-theme-stack" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2022 - 
+        
+        2023 Laurance&#39;s Note
+    </section>
+    
+    <section class="powerby">
+        
+            All rights reserved <br/>
+        
+
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        
+    </section>
+</footer>
+
+<span id="busuanzi_container_site_pv">
+    總瀏覽  <span id="busuanzi_value_site_pv"></span>  次
+</span>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+    
+
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

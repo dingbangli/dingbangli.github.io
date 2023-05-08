@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Cacti on Laurance&#39;s Note</title>
+        <link>https://note.laurance.ml/tags/cacti/</link>
+        <description>Recent content in Cacti on Laurance&#39;s Note</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Fri, 14 Oct 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://note.laurance.ml/tags/cacti/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Cacti-新增機器監控</title>
+        <link>https://note.laurance.ml/p/cacti-%E6%96%B0%E5%A2%9E%E6%A9%9F%E5%99%A8%E7%9B%A3%E6%8E%A7/</link>
+        <pubDate>Fri, 14 Oct 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://note.laurance.ml/p/cacti-%E6%96%B0%E5%A2%9E%E6%A9%9F%E5%99%A8%E7%9B%A3%E6%8E%A7/</guid>
+        <description>&lt;img src="https://note.laurance.ml/p/cacti-%E6%96%B0%E5%A2%9E%E6%A9%9F%E5%99%A8%E7%9B%A3%E6%8E%A7/100.jpg" alt="Featured image of post Cacti-新增機器監控" /&gt;&lt;pre&gt;&lt;code&gt;1. Cacti 後台選 Thresholds &amp;gt;&amp;gt; Add
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/cacti-%E6%96%B0%E5%A2%9E%E6%A9%9F%E5%99%A8%E7%9B%A3%E6%8E%A7/301.png&#34;
+	width=&#34;1920&#34;
+	height=&#34;937&#34;
+	srcset=&#34;https://note.laurance.ml/p/cacti-%E6%96%B0%E5%A2%9E%E6%A9%9F%E5%99%A8%E7%9B%A3%E6%8E%A7/301_hu0d2d6aa6c31af4335f55aaa398a32940_82914_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/cacti-%E6%96%B0%E5%A2%9E%E6%A9%9F%E5%99%A8%E7%9B%A3%E6%8E%A7/301_hu0d2d6aa6c31af4335f55aaa398a32940_82914_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;204&#34;
+		data-flex-basis=&#34;491px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;2. 寫入機器資訊 (Host , Graph , Data Source)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/cacti-%E6%96%B0%E5%A2%9E%E6%A9%9F%E5%99%A8%E7%9B%A3%E6%8E%A7/302.png&#34;
+	width=&#34;1920&#34;
+	height=&#34;937&#34;
+	srcset=&#34;https://note.laurance.ml/p/cacti-%E6%96%B0%E5%A2%9E%E6%A9%9F%E5%99%A8%E7%9B%A3%E6%8E%A7/302_hue185c28ff8e7b96d406e0bccc875a8d0_107666_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/cacti-%E6%96%B0%E5%A2%9E%E6%A9%9F%E5%99%A8%E7%9B%A3%E6%8E%A7/302_hue185c28ff8e7b96d406e0bccc875a8d0_107666_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;204&#34;
+		data-flex-basis=&#34;491px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;3. 設定監控相關參數
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/cacti-%E6%96%B0%E5%A2%9E%E6%A9%9F%E5%99%A8%E7%9B%A3%E6%8E%A7/303.png&#34;
+	width=&#34;1920&#34;
+	height=&#34;937&#34;
+	srcset=&#34;https://note.laurance.ml/p/cacti-%E6%96%B0%E5%A2%9E%E6%A9%9F%E5%99%A8%E7%9B%A3%E6%8E%A7/303_hu5d9f4d080862dbb40656f457fa0668a7_144557_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/cacti-%E6%96%B0%E5%A2%9E%E6%A9%9F%E5%99%A8%E7%9B%A3%E6%8E%A7/303_hu5d9f4d080862dbb40656f457fa0668a7_144557_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;204&#34;
+		data-flex-basis=&#34;491px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;hr&gt;
+
+</description>
+        </item>
+        <item>
+        <title>Cacti-新增機器及圖表</title>
+        <link>https://note.laurance.ml/p/cacti-%E6%96%B0%E5%A2%9E%E6%A9%9F%E5%99%A8%E5%8F%8A%E5%9C%96%E8%A1%A8/</link>
+        <pubDate>Wed, 14 Sep 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://note.laurance.ml/p/cacti-%E6%96%B0%E5%A2%9E%E6%A9%9F%E5%99%A8%E5%8F%8A%E5%9C%96%E8%A1%A8/</guid>
+        <description>&lt;img src="https://note.laurance.ml/p/cacti-%E6%96%B0%E5%A2%9E%E6%A9%9F%E5%99%A8%E5%8F%8A%E5%9C%96%E8%A1%A8/100.jpg" alt="Featured image of post Cacti-新增機器及圖表" /&gt;&lt;pre&gt;&lt;code&gt;1. 新建機器上面先安裝SNMP，並確保火牆有通 UDP161port
+    yum install -y net-snmp  net-snmp-utils
+
+2. Cacti 頁面新增 Device &amp;gt;&amp;gt; Add
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/cacti-%E6%96%B0%E5%A2%9E%E6%A9%9F%E5%99%A8%E5%8F%8A%E5%9C%96%E8%A1%A8/001.png&#34;
+	width=&#34;1920&#34;
+	height=&#34;969&#34;
+	srcset=&#34;https://note.laurance.ml/p/cacti-%E6%96%B0%E5%A2%9E%E6%A9%9F%E5%99%A8%E5%8F%8A%E5%9C%96%E8%A1%A8/001_huc1cc09bd9649b9cbba3884ddd3fc6f86_394094_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/cacti-%E6%96%B0%E5%A2%9E%E6%A9%9F%E5%99%A8%E5%8F%8A%E5%9C%96%E8%A1%A8/001_huc1cc09bd9649b9cbba3884ddd3fc6f86_394094_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;198&#34;
+		data-flex-basis=&#34;475px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;3. Device 填入機器的 hostname 及監控協議
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/cacti-%E6%96%B0%E5%A2%9E%E6%A9%9F%E5%99%A8%E5%8F%8A%E5%9C%96%E8%A1%A8/002.png&#34;
+	width=&#34;1903&#34;
+	height=&#34;1524&#34;
+	srcset=&#34;https://note.laurance.ml/p/cacti-%E6%96%B0%E5%A2%9E%E6%A9%9F%E5%99%A8%E5%8F%8A%E5%9C%96%E8%A1%A8/002_hu91503983570e14d431421d1cdb969e9a_319703_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/cacti-%E6%96%B0%E5%A2%9E%E6%A9%9F%E5%99%A8%E5%8F%8A%E5%9C%96%E8%A1%A8/002_hu91503983570e14d431421d1cdb969e9a_319703_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;124&#34;
+		data-flex-basis=&#34;299px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;4. Datasource 新增要撈取的資料
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/cacti-%E6%96%B0%E5%A2%9E%E6%A9%9F%E5%99%A8%E5%8F%8A%E5%9C%96%E8%A1%A8/003.png&#34;
+	width=&#34;1920&#34;
+	height=&#34;969&#34;
+	srcset=&#34;https://note.laurance.ml/p/cacti-%E6%96%B0%E5%A2%9E%E6%A9%9F%E5%99%A8%E5%8F%8A%E5%9C%96%E8%A1%A8/003_hu9da2109cbfff81133250e9edbba40c37_184370_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/cacti-%E6%96%B0%E5%A2%9E%E6%A9%9F%E5%99%A8%E5%8F%8A%E5%9C%96%E8%A1%A8/003_hu9da2109cbfff81133250e9edbba40c37_184370_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;198&#34;
+		data-flex-basis=&#34;475px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;5. Graph Management 新增監控圖表
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/cacti-%E6%96%B0%E5%A2%9E%E6%A9%9F%E5%99%A8%E5%8F%8A%E5%9C%96%E8%A1%A8/004.png&#34;
+	width=&#34;1920&#34;
+	height=&#34;969&#34;
+	srcset=&#34;https://note.laurance.ml/p/cacti-%E6%96%B0%E5%A2%9E%E6%A9%9F%E5%99%A8%E5%8F%8A%E5%9C%96%E8%A1%A8/004_hu1cd98eb262246d435000b9112edf33d3_150641_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/cacti-%E6%96%B0%E5%A2%9E%E6%A9%9F%E5%99%A8%E5%8F%8A%E5%9C%96%E8%A1%A8/004_hu1cd98eb262246d435000b9112edf33d3_150641_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;198&#34;
+		data-flex-basis=&#34;475px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;6. Graph Trees 分類圖表群
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/cacti-%E6%96%B0%E5%A2%9E%E6%A9%9F%E5%99%A8%E5%8F%8A%E5%9C%96%E8%A1%A8/005.png&#34;
+	width=&#34;1920&#34;
+	height=&#34;969&#34;
+	srcset=&#34;https://note.laurance.ml/p/cacti-%E6%96%B0%E5%A2%9E%E6%A9%9F%E5%99%A8%E5%8F%8A%E5%9C%96%E8%A1%A8/005_hu13e2a719c95a44550c9a3aca1c723257_234899_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/cacti-%E6%96%B0%E5%A2%9E%E6%A9%9F%E5%99%A8%E5%8F%8A%E5%9C%96%E8%A1%A8/005_hu13e2a719c95a44550c9a3aca1c723257_234899_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;198&#34;
+		data-flex-basis=&#34;475px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;hr&gt;
+
+</description>
+        </item>
+        <item>
+        <title>Cacti-安裝方法</title>
+        <link>https://note.laurance.ml/p/cacti-%E5%AE%89%E8%A3%9D%E6%96%B9%E6%B3%95/</link>
+        <pubDate>Sun, 07 Aug 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://note.laurance.ml/p/cacti-%E5%AE%89%E8%A3%9D%E6%96%B9%E6%B3%95/</guid>
+        <description>&lt;img src="https://note.laurance.ml/p/cacti-%E5%AE%89%E8%A3%9D%E6%96%B9%E6%B3%95/100.jpg" alt="Featured image of post Cacti-安裝方法" /&gt;&lt;pre&gt;&lt;code&gt;rpm -qa | grep mariadb
+rpm -qa | grep mysql
+
+yum install mysql-community-server mysql-devel
+
+./configure --prefix=/usr/local/web/apache2 --enable-ssl --enable-so  --enable-vhost-alias  --with-mpm=prefork
+
+&#39;./configure&#39; &#39;--prefix=/usr/local/web/php&#39; &#39;--with-apxs2=/usr/local/web/apache2/bin/apxs&#39; &#39;--with-mysql&#39; &#39;--with-mysqli&#39; &#39;--disable-cgi&#39; &#39;--with-iconv&#39; &#39;--disable-inline-optimization&#39; &#39;--enable-mbstring=tw&#39; &#39;--enable-sysvshm&#39; &#39;--enable-sysvsem&#39; &#39;--enable-sockets&#39; &#39;--with-jpeg-dir&#39; &#39;--with-png-dir&#39; &#39;--with-gd&#39; &#39;--with-zlib&#39; &#39;--with-curl&#39; &#39;--enable-zip&#39; &#39;--with-openssl-dir=/usr/lib/openssl&#39; &#39;--with-openssl&#39; &#39;--enable-opcache&#39;
+
+tar zxvf cacti-0.8.7g.tar.gz
+
+mv cacti-0.8.7g /home/cacti
+
+yum install -y net-snmp  net-snmp-utils
+
+tar zxvf rrdtool-1.0.50.tar.gz
+cd rrdtool-1.0.50
+./configure --prefix=/usr/local/rrdtool 
+make
+make install
+
+#ln -s /usr/local/libpng/lib/libpng.so /usr/lib/ 
+#ln -s /usr/local/freetype/lib/libfreetype.so /usr/lib/
+#yum -y install freetype-devel
+#yum -y install libpng-devel
+#yum -y install libart_lgpl-devel
+
+mysqld_safe &amp;amp;
+
+mysqladmin -u root password &#39;密碼&#39; 
+
+mysqladmin --user=root -p create cacti
+
+cd    /home/cacti/ 
+mysql -u root -p cacti &amp;lt; cacti.sql 
+
+mysql    -u    root    -p 
+mysql&amp;gt; grant all on cacti.* to cactiuser@localhost identified by &#39;123456&#39;; 
+mysql&amp;gt; flush privileges; 
+mysql&amp;gt; exit 
+
+vim /home/cacti/include/config.php 
+
+  26 $database_type = &amp;quot;mysql&amp;quot;; 
+  27 $database_default = &amp;quot;cacti&amp;quot;; 
+  28 $database_hostname = &amp;quot;localhost&amp;quot;; 
+  29 $database_username = &amp;quot;cactiuser&amp;quot;; 
+  30 $database_password = &amp;quot;kiwi888&amp;quot;; 
+  31 $database_port = &amp;quot;3306&amp;quot;;
+  
+useradd cactiuser
+
+su - cactiuser
+
+crontab -e
+
+*/1 * * * * /usr/local/bin/php  /home/cacti/poller.php &amp;gt; /dev/null 2&amp;gt;&amp;amp;1
+
+exit
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+
+</description>
+        </item>
+        
+    </channel>
+</rss>

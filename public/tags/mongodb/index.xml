@@ -1,0 +1,377 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Mongodb on Laurance&#39;s Note</title>
+        <link>https://note.laurance.ml/tags/mongodb/</link>
+        <description>Recent content in Mongodb on Laurance&#39;s Note</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Fri, 03 Mar 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://note.laurance.ml/tags/mongodb/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Mongod-Studio 3T for MongoDB 2019 019.3.0</title>
+        <link>https://note.laurance.ml/p/mongod-studio-3t-for-mongodb-2019-019.3.0/</link>
+        <pubDate>Fri, 03 Mar 2023 00:00:00 +0000</pubDate>
+        
+        <guid>https://note.laurance.ml/p/mongod-studio-3t-for-mongodb-2019-019.3.0/</guid>
+        <description>&lt;img src="https://note.laurance.ml/p/mongod-studio-3t-for-mongodb-2019-019.3.0/100.png" alt="Featured image of post Mongod-Studio 3T for MongoDB 2019 019.3.0" /&gt;&lt;p&gt;{Step 1} 安裝 &lt;code&gt;Studio 3T for 2019.3.0&lt;/code&gt; exe執行檔&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;ps. 記住安裝包路徑  ex: C:\Program Files\3T Software Labs\Studio 3T
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/mongod-studio-3t-for-mongodb-2019-019.3.0/301.png&#34;
+	width=&#34;502&#34;
+	height=&#34;422&#34;
+	srcset=&#34;https://note.laurance.ml/p/mongod-studio-3t-for-mongodb-2019-019.3.0/301_hu21033cda7af3ca37aa20f552ccb60d4e_5982_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/mongod-studio-3t-for-mongodb-2019-019.3.0/301_hu21033cda7af3ca37aa20f552ccb60d4e_5982_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;118&#34;
+		data-flex-basis=&#34;285px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;{Step 2} 安裝完成後前面會跳 &lt;code&gt;建議要更新&lt;/code&gt; , 不用理他按 &lt;code&gt;OK&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/mongod-studio-3t-for-mongodb-2019-019.3.0/306.png&#34;
+	width=&#34;518&#34;
+	height=&#34;154&#34;
+	srcset=&#34;https://note.laurance.ml/p/mongod-studio-3t-for-mongodb-2019-019.3.0/306_huf4539628f855fab499a2590d0d54eeb7_8315_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/mongod-studio-3t-for-mongodb-2019-019.3.0/306_huf4539628f855fab499a2590d0d54eeb7_8315_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;336&#34;
+		data-flex-basis=&#34;807px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;{Step 3} 點選 &lt;code&gt;I agree&lt;/code&gt; 即可&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/mongod-studio-3t-for-mongodb-2019-019.3.0/302.png&#34;
+	width=&#34;852&#34;
+	height=&#34;600&#34;
+	srcset=&#34;https://note.laurance.ml/p/mongod-studio-3t-for-mongodb-2019-019.3.0/302_huee5ac0d9c04bc699272e3c2ee49714d3_34964_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/mongod-studio-3t-for-mongodb-2019-019.3.0/302_huee5ac0d9c04bc699272e3c2ee49714d3_34964_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;142&#34;
+		data-flex-basis=&#34;340px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;{Step 4} 此時會跳出需要驗證的環節&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/mongod-studio-3t-for-mongodb-2019-019.3.0/303.png&#34;
+	width=&#34;852&#34;
+	height=&#34;600&#34;
+	srcset=&#34;https://note.laurance.ml/p/mongod-studio-3t-for-mongodb-2019-019.3.0/303_hu08758ad8c163b31610522455b33f8588_17670_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/mongod-studio-3t-for-mongodb-2019-019.3.0/303_hu08758ad8c163b31610522455b33f8588_17670_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;142&#34;
+		data-flex-basis=&#34;340px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;{Step 5} 將 &lt;code&gt;Crack 底下的 data-man-mongodb-XXX&lt;/code&gt; 移至安裝包路徑&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/mongod-studio-3t-for-mongodb-2019-019.3.0/304.png&#34;
+	width=&#34;1892&#34;
+	height=&#34;690&#34;
+	srcset=&#34;https://note.laurance.ml/p/mongod-studio-3t-for-mongodb-2019-019.3.0/304_hu39966e1143331fea3f7b6c5e3638a894_129348_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/mongod-studio-3t-for-mongodb-2019-019.3.0/304_hu39966e1143331fea3f7b6c5e3638a894_129348_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;274&#34;
+		data-flex-basis=&#34;658px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;{Step 6} 再次打開已跳過驗證環節&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/mongod-studio-3t-for-mongodb-2019-019.3.0/305.png&#34;
+	width=&#34;1426&#34;
+	height=&#34;752&#34;
+	srcset=&#34;https://note.laurance.ml/p/mongod-studio-3t-for-mongodb-2019-019.3.0/305_hu6542a43a55e790455c6c5b7ca57516cd_150323_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/mongod-studio-3t-for-mongodb-2019-019.3.0/305_hu6542a43a55e790455c6c5b7ca57516cd_150323_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;189&#34;
+		data-flex-basis=&#34;455px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://pesktop.com/en/windows/studio-3t-for-mongodb-2019&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;studio 3T for 2019 019.3.0&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+
+</description>
+        </item>
+        <item>
+        <title>Mongod- 建立每日備份 Shell Script</title>
+        <link>https://note.laurance.ml/p/mongod-%E5%BB%BA%E7%AB%8B%E6%AF%8F%E6%97%A5%E5%82%99%E4%BB%BD-shell-script/</link>
+        <pubDate>Sat, 22 Oct 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://note.laurance.ml/p/mongod-%E5%BB%BA%E7%AB%8B%E6%AF%8F%E6%97%A5%E5%82%99%E4%BB%BD-shell-script/</guid>
+        <description>&lt;img src="https://note.laurance.ml/p/mongod-%E5%BB%BA%E7%AB%8B%E6%AF%8F%E6%97%A5%E5%82%99%E4%BB%BD-shell-script/100.png" alt="Featured image of post Mongod- 建立每日備份 Shell Script" /&gt;&lt;p&gt;&lt;strong&gt;Linux 建立每日備份 Shell Script&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;#!/bin/sh
+
+# Definded Dump Configuartion
+rollingDays=7
+dumpFilename=&amp;quot;mongodb&amp;quot;
+dumpTmpDir=&amp;quot;/tmp/mongo-dump-tmp&amp;quot;
+backupPath=&amp;quot;/root/mongo-backup&amp;quot;
+username=&amp;quot;username&amp;quot;
+password=&amp;quot;password&amp;quot;
+hostname=&amp;quot;127.0.0.1&amp;quot;
+database=&amp;quot;my-mongo&amp;quot;
+
+#Start Dumpping.......
+today=`date &amp;quot;+%Y-%m-%d&amp;quot;`
+echo &amp;quot;Today: ${today}&amp;quot;
+echo &amp;quot;Start Dumpping.......&amp;quot;
+
+# Make backup directory
+if ! [ -d &amp;quot;${backupPath}&amp;quot; ] ; then
+    echo &amp;quot;make dir : ${backupPath}&amp;quot;
+    mkdir -p &amp;quot;${backupPath}&amp;quot;
+fi
+if ! [ -d &amp;quot;${dumpTmpDir}&amp;quot; ] ; then
+    echo &amp;quot;make dir : ${dumpTmpDir}&amp;quot;
+    mkdir -p &amp;quot;${dumpTmpDir}&amp;quot;
+fi
+
+# Make parameter
+dn=&amp;quot;-h ${hostname}&amp;quot;
+if [ &amp;quot;${username}&amp;quot; != &amp;quot;&amp;quot; ] &amp;amp;&amp;amp; [ &amp;quot;${password}&amp;quot; != &amp;quot;&amp;quot; ] ; then
+    dn=&amp;quot;${dn} -u ${username} -p ${password}&amp;quot;
+fi
+if [ &amp;quot;${databse}&amp;quot; != &amp;quot;&amp;quot; ] ; then
+    dn=&amp;quot;${dn} -d ${database}&amp;quot;
+fi
+
+# Run backup script
+rm -rf -R ${dumpTmpDir}
+command=&amp;quot;mongodump ${dn} -o ${dumpTmpDir}&amp;quot;
+echo $command
+$command
+if [ $? == 0 ] ; then
+    cd &amp;quot;${dumpTmpDir}&amp;quot;
+    /bin/tar -zcvf &amp;quot;${backupPath}/${dumpFilename}-${today}.tar.gz&amp;quot; *
+    find ${backupPath}/${dumpFilename}-* -mtime +{rollingDays} -exec rm -f {} \;
+fi
+rm -rf -R ${dumpTmpDir}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://blog.toright.com/posts/4069/mongodb-%E6%95%99%E5%AD%B8-%E5%A6%82%E4%BD%95%E5%82%99%E4%BB%BD%E8%88%87%E9%82%84%E5%8E%9F-mongodb.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;參考文件&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+
+</description>
+        </item>
+        <item>
+        <title>Mongod-如何使用studio 3T遠端建立連線</title>
+        <link>https://note.laurance.ml/p/mongod-%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8studio-3t%E9%81%A0%E7%AB%AF%E5%BB%BA%E7%AB%8B%E9%80%A3%E7%B7%9A/</link>
+        <pubDate>Sat, 22 Oct 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://note.laurance.ml/p/mongod-%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8studio-3t%E9%81%A0%E7%AB%AF%E5%BB%BA%E7%AB%8B%E9%80%A3%E7%B7%9A/</guid>
+        <description>&lt;img src="https://note.laurance.ml/p/mongod-%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8studio-3t%E9%81%A0%E7%AB%AF%E5%BB%BA%E7%AB%8B%E9%80%A3%E7%B7%9A/100.png" alt="Featured image of post Mongod-如何使用studio 3T遠端建立連線" /&gt;&lt;pre&gt;&lt;code&gt;新建立連線
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/mongod-%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8studio-3t%E9%81%A0%E7%AB%AF%E5%BB%BA%E7%AB%8B%E9%80%A3%E7%B7%9A/301.png&#34;
+	width=&#34;1920&#34;
+	height=&#34;1040&#34;
+	srcset=&#34;https://note.laurance.ml/p/mongod-%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8studio-3t%E9%81%A0%E7%AB%AF%E5%BB%BA%E7%AB%8B%E9%80%A3%E7%B7%9A/301_hu66274239cbd89fbd95d375b93ea7f107_118214_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/mongod-%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8studio-3t%E9%81%A0%E7%AB%AF%E5%BB%BA%E7%AB%8B%E9%80%A3%E7%B7%9A/301_hu66274239cbd89fbd95d375b93ea7f107_118214_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;184&#34;
+		data-flex-basis=&#34;443px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;打上 host , port 儲存
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/mongod-%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8studio-3t%E9%81%A0%E7%AB%AF%E5%BB%BA%E7%AB%8B%E9%80%A3%E7%B7%9A/302.png&#34;
+	width=&#34;1920&#34;
+	height=&#34;1040&#34;
+	srcset=&#34;https://note.laurance.ml/p/mongod-%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8studio-3t%E9%81%A0%E7%AB%AF%E5%BB%BA%E7%AB%8B%E9%80%A3%E7%B7%9A/302_hu9b5d514d844c3c104e0ca65738b6ce4b_99747_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/mongod-%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8studio-3t%E9%81%A0%E7%AB%AF%E5%BB%BA%E7%AB%8B%E9%80%A3%E7%B7%9A/302_hu9b5d514d844c3c104e0ca65738b6ce4b_99747_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;184&#34;
+		data-flex-basis=&#34;443px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://studio3t.com/download/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;studio 3T for windows&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+
+</description>
+        </item>
+        <item>
+        <title>Mongod-如何備份與還原 MongoDB</title>
+        <link>https://note.laurance.ml/p/mongod-%E5%A6%82%E4%BD%95%E5%82%99%E4%BB%BD%E8%88%87%E9%82%84%E5%8E%9F-mongodb/</link>
+        <pubDate>Sat, 22 Oct 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://note.laurance.ml/p/mongod-%E5%A6%82%E4%BD%95%E5%82%99%E4%BB%BD%E8%88%87%E9%82%84%E5%8E%9F-mongodb/</guid>
+        <description>&lt;img src="https://note.laurance.ml/p/mongod-%E5%A6%82%E4%BD%95%E5%82%99%E4%BB%BD%E8%88%87%E9%82%84%E5%8E%9F-mongodb/100.png" alt="Featured image of post Mongod-如何備份與還原 MongoDB" /&gt;&lt;p&gt;&lt;strong&gt;先建立要備份的資料庫 (否則會備份失敗)&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;mkdir /root/168-mongo.bak&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;透過以下命令進行單個資料庫備份 (參數 -d 資料庫)&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;mongodump -h 172.16.2.169 --port 27017 -d my-mongo -o ./root/168-mongo.bak
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;透過以下命令進行全部資料庫備份&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;mongodump -h 172.16.2.169 --port 27017 -o ./root/168-mongo.bak
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;透過以下命令進行本機備份 (解決Authentication failed.)&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;mongodump -o mongodb-dump/
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/mongod-%E5%A6%82%E4%BD%95%E5%82%99%E4%BB%BD%E8%88%87%E9%82%84%E5%8E%9F-mongodb/301.png&#34;
+	width=&#34;1919&#34;
+	height=&#34;722&#34;
+	srcset=&#34;https://note.laurance.ml/p/mongod-%E5%A6%82%E4%BD%95%E5%82%99%E4%BB%BD%E8%88%87%E9%82%84%E5%8E%9F-mongodb/301_hu5157d38fb9a36af699fca77287fac8e9_129135_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/mongod-%E5%A6%82%E4%BD%95%E5%82%99%E4%BB%BD%E8%88%87%E9%82%84%E5%8E%9F-mongodb/301_hu5157d38fb9a36af699fca77287fac8e9_129135_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;265&#34;
+		data-flex-basis=&#34;637px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;透過以下命令還原剛剛備份的資料庫&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;mongorestore -h 127.0.0.1 --port 27017 /root/168-mongo.bak
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;會報錯 ERROR - E11000 duplicate key error 重複密鑰錯誤集合&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/mongod-%E5%A6%82%E4%BD%95%E5%82%99%E4%BB%BD%E8%88%87%E9%82%84%E5%8E%9F-mongodb/302.png&#34;
+	width=&#34;1919&#34;
+	height=&#34;798&#34;
+	srcset=&#34;https://note.laurance.ml/p/mongod-%E5%A6%82%E4%BD%95%E5%82%99%E4%BB%BD%E8%88%87%E9%82%84%E5%8E%9F-mongodb/302_hu56219144d35ae6a5bddf323f63402917_217379_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/mongod-%E5%A6%82%E4%BD%95%E5%82%99%E4%BB%BD%E8%88%87%E9%82%84%E5%8E%9F-mongodb/302_hu56219144d35ae6a5bddf323f63402917_217379_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;240&#34;
+		data-flex-basis=&#34;577px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;(加入參數 --drop my-backup)  注意!!! 任何不在備份中的文件都將永久丟失！
+
+mongorestore -h 127.0.0.1 --port 27017 /root/168-mongo.bak --drop
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+
+</description>
+        </item>
+        <item>
+        <title>Mongodb-安裝教學</title>
+        <link>https://note.laurance.ml/p/mongodb-%E5%AE%89%E8%A3%9D%E6%95%99%E5%AD%B8/</link>
+        <pubDate>Mon, 15 Aug 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://note.laurance.ml/p/mongodb-%E5%AE%89%E8%A3%9D%E6%95%99%E5%AD%B8/</guid>
+        <description>&lt;img src="https://note.laurance.ml/p/mongodb-%E5%AE%89%E8%A3%9D%E6%95%99%E5%AD%B8/100.png" alt="Featured image of post Mongodb-安裝教學" /&gt;&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.mongodb.com/download-center#community&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;MongoDB官網下載地址&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/mongodb-%E5%AE%89%E8%A3%9D%E6%95%99%E5%AD%B8/1.png&#34;
+	width=&#34;1058&#34;
+	height=&#34;331&#34;
+	srcset=&#34;https://note.laurance.ml/p/mongodb-%E5%AE%89%E8%A3%9D%E6%95%99%E5%AD%B8/1_hu383407a6f0b18c0736595579a8618037_116725_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/mongodb-%E5%AE%89%E8%A3%9D%E6%95%99%E5%AD%B8/1_hu383407a6f0b18c0736595579a8618037_116725_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;319&#34;
+		data-flex-basis=&#34;767px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/mongodb-%E5%AE%89%E8%A3%9D%E6%95%99%E5%AD%B8/2.png&#34;
+	width=&#34;1049&#34;
+	height=&#34;309&#34;
+	srcset=&#34;https://note.laurance.ml/p/mongodb-%E5%AE%89%E8%A3%9D%E6%95%99%E5%AD%B8/2_hu5cefca8362278e340378772afe0f9913_245137_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/mongodb-%E5%AE%89%E8%A3%9D%E6%95%99%E5%AD%B8/2_hu5cefca8362278e340378772afe0f9913_245137_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;339&#34;
+		data-flex-basis=&#34;814px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; yum install libcurl openssl
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; wget https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-4.0.28.tgz
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; tar zxvf mongodb-linux-x86_64-4.0.28.tgz  -C /usr/local/
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; mv /usr/local/mongodb-linux-x86_64-4.0.28/ mongodb/
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; cd /usr/local/mongodb/
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; mkdir data log conf
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; cd data/ &lt;span class=&#34;err&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; mkdir db/
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; cd /usr/local/mongodb/conf &lt;span class=&#34;err&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; touch mongodb.conf
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;pre&gt;&lt;code&gt;vim mongodb.conf
+
+dbpath=/usr/local/mongodb/data/db  
+logpath=/usr/local/mongodb/log/mongodb.log 
+port=27017
+fork=true
+bind_ip=0.0.0.0
+
+cd ..
+
+./bin/mongod --config ./conf/mongodb.conf               //啟動服務
+./bin/mongod --config ./conf/mongodb.conf --shutdown    //關閉服務
+./mongo		                                        //連線mongodb
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+
+</description>
+        </item>
+        <item>
+        <title>Mongodb-常用語法</title>
+        <link>https://note.laurance.ml/p/mongodb-%E5%B8%B8%E7%94%A8%E8%AA%9E%E6%B3%95/</link>
+        <pubDate>Mon, 15 Aug 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://note.laurance.ml/p/mongodb-%E5%B8%B8%E7%94%A8%E8%AA%9E%E6%B3%95/</guid>
+        <description>&lt;img src="https://note.laurance.ml/p/mongodb-%E5%B8%B8%E7%94%A8%E8%AA%9E%E6%B3%95/100.png" alt="Featured image of post Mongodb-常用語法" /&gt;&lt;p&gt;創建資料庫  (如果資料庫不存在，則創建並切換過去)&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;use DATABASE_NAME
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;創建集合&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;db.createCollection(&amp;quot;runoob&amp;quot;)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;查看集合&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;show collections &amp;amp;&amp;amp; show tables
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;查看資料庫&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;db.col.find()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;顯示目前數據庫&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;db
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;查看所有數據庫&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;show dbs
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;插入資料到數據庫&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;db.test222.insert({&amp;quot;name&amp;quot;:&amp;quot;菜鳥&amp;quot;})
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;刪除數據庫&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;db.dropDatabase()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;删除集合&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;db.collection.drop()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;創建固定集合mycol，集合空間大小6142800B，文檔最大個數10000個&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;db.createCollection(&amp;quot;mycol&amp;quot;, { capped : true, autoIndexId : true, size : 6142800, max : 10000 } )
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;集合插入多個文檔&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;db.col.insert({title: &#39;MongoDB教程&#39;, 
+    description: &#39;MongoDB 是一個Nosql數據庫&#39;,
+    by: &#39;菜鳥&#39;,
+    url: &#39;https://note.laurance.ml&#39;,
+    tags: [&#39;mongodb&#39;, &#39;database&#39;, &#39;NoSQL&#39;],
+    likes: 100
+    })
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;或是可以設成變量&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;document=({title: &#39;MongoDB教程&#39;, 
+    description: &#39;MongoDB 是一個Nosql數據庫&#39;,
+    by: &#39;菜鳥&#39;,
+    url: &#39;https://note.laurance.ml&#39;,
+    tags: [&#39;mongodb&#39;, &#39;database&#39;, &#39;NoSQL&#39;],
+    likes: 100
+    });
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;在執行插入動作&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;db.col.insert(document)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+
+</description>
+        </item>
+        
+    </channel>
+</rss>

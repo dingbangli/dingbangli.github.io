@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>MariaDB on Laurance&#39;s Note</title>
+        <link>https://note.laurance.ml/tags/mariadb/</link>
+        <description>Recent content in MariaDB on Laurance&#39;s Note</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Wed, 03 Aug 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://note.laurance.ml/tags/mariadb/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Docker-建立MariaDB</title>
+        <link>https://note.laurance.ml/p/docker-%E5%BB%BA%E7%AB%8Bmariadb/</link>
+        <pubDate>Wed, 03 Aug 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://note.laurance.ml/p/docker-%E5%BB%BA%E7%AB%8Bmariadb/</guid>
+        <description>&lt;img src="https://note.laurance.ml/p/docker-%E5%BB%BA%E7%AB%8Bmariadb/100.png" alt="Featured image of post Docker-建立MariaDB" /&gt;&lt;pre&gt;&lt;code&gt;建立本機須掛載的目錄
+mkdir -p /root/docker-service/grafana/etc
+mkdir -p /root/docker-service/grafana/share
+
+拉取映象
+docker pull grafana
+
+執行映象
+docker run -d --name grafana -p 3000:3000 grafana/grafana
+
+複製docker裡的設定檔到本機
+docker cp -a 594649e64f24:/etc/grafana /root/docker-service/grafana/etc/
+docker cp -a 594649e64f24:/usr/share/grafana /root/docker-service/grafana/share/
+
+刪除container
+docker stop container_id
+docker rm container_id
+
+重跑設定檔 重跑掛載
+docker run -d -i -p 3000:3000 \
+  -e &amp;quot;GF_SERVER_ROOT_URL=http://grafana.server.name&amp;quot;  \
+  -e &amp;quot;GF_SECURITY_ADMIN_PASSWORD=admin&amp;quot;  \
+  -v /root/docker-service/grafana/etc/grafana/grafana.ini:/etc/grafana/grafana.ini \
+  -v /root/docker-service/grafana/share/grafana/conf/defaults.ini:/usr/share/grafana/conf/defaults.ini \
+  --net=host \
+  grafana/grafana
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+
+</description>
+        </item>
+        
+    </channel>
+</rss>

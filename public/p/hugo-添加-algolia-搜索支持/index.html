@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='新增搜索模塊 Algolia 配置在 hugo 上,實現本地搜索 Algolia 官方網址: https://www.algolia.com/ {Step 1} 新建 application 及 index {Step 2} 紀錄 Keys 等等會用到 ( Application ID, Search-Only API Key, Admin API Key ) {Step 3} 修改 config.yaml 主要生成 Algolia 索引 outputFormats: Algolia: baseName: algolia isPlainText:'><title>HUGO 添加 Algolia 搜索支持</title>
+
+<link rel='canonical' href='https://note.laurance.ml/p/hugo-%E6%B7%BB%E5%8A%A0-algolia-%E6%90%9C%E7%B4%A2%E6%94%AF%E6%8C%81/'>
+
+<link rel="stylesheet" href="/scss/style.min.ac77dcf8b111b51da39a92990f431923f210f3876d85798a2125667f96dc33a4.css"><meta property='og:title' content='HUGO 添加 Algolia 搜索支持'>
+<meta property='og:description' content='新增搜索模塊 Algolia 配置在 hugo 上,實現本地搜索 Algolia 官方網址: https://www.algolia.com/ {Step 1} 新建 application 及 index {Step 2} 紀錄 Keys 等等會用到 ( Application ID, Search-Only API Key, Admin API Key ) {Step 3} 修改 config.yaml 主要生成 Algolia 索引 outputFormats: Algolia: baseName: algolia isPlainText:'>
+<meta property='og:url' content='https://note.laurance.ml/p/hugo-%E6%B7%BB%E5%8A%A0-algolia-%E6%90%9C%E7%B4%A2%E6%94%AF%E6%8C%81/'>
+<meta property='og:site_name' content='Laurance&#39;s Note'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='HUGO' /><meta property='article:published_time' content='2023-03-10T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2023-03-10T00:00:00&#43;00:00'/><meta property='og:image' content='https://note.laurance.ml/p/hugo-%E6%B7%BB%E5%8A%A0-algolia-%E6%90%9C%E7%B4%A2%E6%94%AF%E6%8C%81/100.png' />
+<meta name="twitter:title" content="HUGO 添加 Algolia 搜索支持">
+<meta name="twitter:description" content="新增搜索模塊 Algolia 配置在 hugo 上,實現本地搜索 Algolia 官方網址: https://www.algolia.com/ {Step 1} 新建 application 及 index {Step 2} 紀錄 Keys 等等會用到 ( Application ID, Search-Only API Key, Admin API Key ) {Step 3} 修改 config.yaml 主要生成 Algolia 索引 outputFormats: Algolia: baseName: algolia isPlainText:"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://note.laurance.ml/p/hugo-%E6%B7%BB%E5%8A%A0-algolia-%E6%90%9C%E7%B4%A2%E6%94%AF%E6%8C%81/100.png' />
+    <link rel="shortcut icon" href="static/favicon.ico" />
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Live2D 看板娘 / Demo</title>
+</head>
+<body>
+<script src="https://cdn.jsdelivr.net/gh/dingbangli/live2d-widget@latest/autoload.js"></script>
+</body>
+</html>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu49eacb73e01f91348578131d7e8658f5_11993_300x0_resize_box_3.png" width="300"
+                            height="301" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🍥</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Laurance&#39;s Note</a></h1>
+            <h2 class="site-description">筆記 記錄美好生活
+</h2>
+        </div>
+    </header><ol class="menu" id="main-menu">
+        
+        
+        
+
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/about/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/links/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>Links</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+            
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>Dark Mode</span>
+                </li>
+            
+        </div>
+    </ol>
+</aside>
+<main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/hugo-%E6%B7%BB%E5%8A%A0-algolia-%E6%90%9C%E7%B4%A2%E6%94%AF%E6%8C%81/">
+                <img src="/p/hugo-%E6%B7%BB%E5%8A%A0-algolia-%E6%90%9C%E7%B4%A2%E6%94%AF%E6%8C%81/100_hu1eca35fab2be5a61a943c0c4f6a621a8_107137_800x0_resize_box_3.png"
+                        srcset="/p/hugo-%E6%B7%BB%E5%8A%A0-algolia-%E6%90%9C%E7%B4%A2%E6%94%AF%E6%8C%81/100_hu1eca35fab2be5a61a943c0c4f6a621a8_107137_800x0_resize_box_3.png 800w, /p/hugo-%E6%B7%BB%E5%8A%A0-algolia-%E6%90%9C%E7%B4%A2%E6%94%AF%E6%8C%81/100_hu1eca35fab2be5a61a943c0c4f6a621a8_107137_1600x0_resize_box_3.png 1600w"
+                        width="800" 
+                        height="219" 
+                        loading="lazy"
+                        alt="Featured image of post HUGO 添加 Algolia 搜索支持" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/hugo/" >
+                HUGO
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/hugo-%E6%B7%BB%E5%8A%A0-algolia-%E6%90%9C%E7%B4%A2%E6%94%AF%E6%8C%81/">HUGO 添加 Algolia 搜索支持</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Mar 10, 2023</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    1 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+</header>
+
+    <section class="article-content">
+    
+    
+    <h1 id="新增搜索模塊-algolia-配置在-hugo-上實現本地搜索">新增搜索模塊 <code>Algolia</code> 配置在 hugo 上,實現本地搜索</h1>
+<p>Algolia 官方網址: <a class="link" href="https://www.algolia.com/"  target="_blank" rel="noopener"
+    >https://www.algolia.com/</a></p>
+<p>{Step 1} 新建 application 及 index</p>
+<p><img src="/p/hugo-%E6%B7%BB%E5%8A%A0-algolia-%E6%90%9C%E7%B4%A2%E6%94%AF%E6%8C%81/301.png"
+	width="1513"
+	height="776"
+	srcset="/p/hugo-%E6%B7%BB%E5%8A%A0-algolia-%E6%90%9C%E7%B4%A2%E6%94%AF%E6%8C%81/301_hu794d8a808feec8e392ef1d392342d884_122427_480x0_resize_box_3.png 480w, /p/hugo-%E6%B7%BB%E5%8A%A0-algolia-%E6%90%9C%E7%B4%A2%E6%94%AF%E6%8C%81/301_hu794d8a808feec8e392ef1d392342d884_122427_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="194"
+		data-flex-basis="467px"
+	
+>
+<img src="/p/hugo-%E6%B7%BB%E5%8A%A0-algolia-%E6%90%9C%E7%B4%A2%E6%94%AF%E6%8C%81/302.png"
+	width="1502"
+	height="777"
+	srcset="/p/hugo-%E6%B7%BB%E5%8A%A0-algolia-%E6%90%9C%E7%B4%A2%E6%94%AF%E6%8C%81/302_huc5c5f79584586c753932d5a8a0913c58_93857_480x0_resize_box_3.png 480w, /p/hugo-%E6%B7%BB%E5%8A%A0-algolia-%E6%90%9C%E7%B4%A2%E6%94%AF%E6%8C%81/302_huc5c5f79584586c753932d5a8a0913c58_93857_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="193"
+		data-flex-basis="463px"
+	
+></p>
+<p>{Step 2} 紀錄 Keys 等等會用到 ( <code>Application ID</code>, <code>Search-Only API Key</code>, <code>Admin API Key</code> )</p>
+<p><img src="/p/hugo-%E6%B7%BB%E5%8A%A0-algolia-%E6%90%9C%E7%B4%A2%E6%94%AF%E6%8C%81/303.png"
+	width="1920"
+	height="937"
+	srcset="/p/hugo-%E6%B7%BB%E5%8A%A0-algolia-%E6%90%9C%E7%B4%A2%E6%94%AF%E6%8C%81/303_hu7d420651dbaf30f02c7dc6e638ed404f_200763_480x0_resize_box_3.png 480w, /p/hugo-%E6%B7%BB%E5%8A%A0-algolia-%E6%90%9C%E7%B4%A2%E6%94%AF%E6%8C%81/303_hu7d420651dbaf30f02c7dc6e638ed404f_200763_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="204"
+		data-flex-basis="491px"
+	
+></p>
+<p>{Step 3} 修改 <code>config.yaml</code> 主要生成 <code>Algolia 索引</code></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">outputFormats</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">Algolia</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">baseName</span><span class="p">:</span><span class="w"> </span><span class="l">algolia</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">isPlainText</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">mediaType</span><span class="p">:</span><span class="w"> </span><span class="l">application/json</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">notAlternative</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">outputs</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">home</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&#34;HTML&#34;</span><span class="p">,</span><span class="w"> </span><span class="s2">&#34;RSS&#34;</span><span class="p">,</span><span class="w"> </span><span class="s2">&#34;Algolia&#34;</span><span class="p">]</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">params.algolia</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">appId</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;Application ID&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">indexName</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;Index name&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">searchOnlyKey</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;Admin API Key&#34;</span><span class="w">
+</span></span></span></code></pre></div><p>{Step 4} 在目錄下 <code>layouts/_default</code> 新建 <code>list.algolia.json</code> 文件</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl">{{<span class="l">/* 生成Algolia搜索索引文件 */}}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span>{{- <span class="l">$.Scratch.Add &#34;index&#34; slice -}}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span>{{<span class="l">/* content/posts或content/post目錄下的博文才生成索引 */}}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span>{{- <span class="l">range where (where .Site.Pages &#34;Type&#34; &#34;in&#34; (slice &#34;posts&#34; &#34;post&#34;)) &#34;IsPage&#34; true -}}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span>{{- <span class="l">if and (not .Draft) (not .Params.private) -}}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>{{- <span class="l">$.Scratch.Add &#34;index&#34; (dict &#34;objectID&#34; .File.UniqueID &#34;url&#34; .Permalink &#34;content&#34; (.Summary | plainify) &#34;tags&#34; .Params.Tags &#34;lvl0&#34; .Title &#34;lvl1&#34; .Params.Categories &#34;lvl2&#34; &#34;摘要&#34;) -}}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span>{{- <span class="l">end -}}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span>{{- <span class="l">end -}}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span>{{- <span class="l">$.Scratch.Get &#34;index&#34; | jsonify -}}</span><span class="w">
+</span></span></span></code></pre></div><p>{Step 5} 目錄下執行 <code>hugo</code> 命令後,在 <code>public/</code> 下會生成 <code>algolia.json</code></p>
+<p>{Step 6} 將上述生成的 <code>algolia.json</code> 上傳至 <code>Algolia</code></p>
+<p><img src="/p/hugo-%E6%B7%BB%E5%8A%A0-algolia-%E6%90%9C%E7%B4%A2%E6%94%AF%E6%8C%81/305.png"
+	width="1920"
+	height="937"
+	srcset="/p/hugo-%E6%B7%BB%E5%8A%A0-algolia-%E6%90%9C%E7%B4%A2%E6%94%AF%E6%8C%81/305_huae73351023c61ec5e3e3e7bd7cbb0608_61234_480x0_resize_box_3.png 480w, /p/hugo-%E6%B7%BB%E5%8A%A0-algolia-%E6%90%9C%E7%B4%A2%E6%94%AF%E6%8C%81/305_huae73351023c61ec5e3e3e7bd7cbb0608_61234_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="204"
+		data-flex-basis="491px"
+	
+></p>
+<p>{Step 7} 安裝 <code>Atomic-Algolia</code> (目的: 自動上傳)</p>
+<p>在根目錄下語法</p>
+<p><code>註：這裡需要用到 npm 套件工具，所以需要安裝 node js</code></p>
+<pre><code>npm init  (這裡直接一直 ENTER)
+
+npm install atomic-algolia --save
+</code></pre>
+<p>修改根目錄下的 <code>Package.Json</code></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">&#34;scripts&#34;: </span>{<span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">&#34;test&#34;: </span><span class="s2">&#34;echo \&#34;Error: no test specified\&#34; &amp;&amp; exit 1&#34;</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">&#34;algolia&#34;: </span><span class="s2">&#34;atomic-algolia&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span>}<span class="p">,</span><span class="w">
+</span></span></span></code></pre></div><p><code>到根目錄下的 package.json 內，在 scripts 下添加</code></p>
+<p><code>Json 格式記得要加逗號,不然會跳 ERROR</code></p>
+<p><img src="/p/hugo-%E6%B7%BB%E5%8A%A0-algolia-%E6%90%9C%E7%B4%A2%E6%94%AF%E6%8C%81/306.png"
+	width="1896"
+	height="161"
+	srcset="/p/hugo-%E6%B7%BB%E5%8A%A0-algolia-%E6%90%9C%E7%B4%A2%E6%94%AF%E6%8C%81/306_hu5f89519cf4f177e809e2fad59ea90646_15168_480x0_resize_box_3.png 480w, /p/hugo-%E6%B7%BB%E5%8A%A0-algolia-%E6%90%9C%E7%B4%A2%E6%94%AF%E6%8C%81/306_hu5f89519cf4f177e809e2fad59ea90646_15168_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="1177"
+		data-flex-basis="2826px"
+	
+></p>
+<p>建立 .ENV 檔</p>
+<pre><code>ALGOLIA_APP_ID=你的Application ID
+    
+ALGOLIA_INDEX_NAME=你的索引名字  
+    
+ALGOLIA_INDEX_FILE=public/algolia.json
+    
+ALGOLIA_ADMIN_KEY=你的Admin API Key
+</code></pre>
+<p>上傳索引文件</p>
+<pre><code>可以在 local 端執行 `npm run algolia` 這行指令查看效果
+</code></pre>
+<p><img src="/p/hugo-%E6%B7%BB%E5%8A%A0-algolia-%E6%90%9C%E7%B4%A2%E6%94%AF%E6%8C%81/307.png"
+	width="1896"
+	height="159"
+	srcset="/p/hugo-%E6%B7%BB%E5%8A%A0-algolia-%E6%90%9C%E7%B4%A2%E6%94%AF%E6%8C%81/307_hue757395eb1b02a077e6665ec1ed28c62_9202_480x0_resize_box_3.png 480w, /p/hugo-%E6%B7%BB%E5%8A%A0-algolia-%E6%90%9C%E7%B4%A2%E6%94%AF%E6%8C%81/307_hue757395eb1b02a077e6665ec1ed28c62_9202_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="1192"
+		data-flex-basis="2861px"
+	
+></p>
+<p>參考: <a class="link" href="https://edward852.github.io/post/hugo%E6%B7%BB%E5%8A%A0algolia%E6%90%9C%E7%B4%A2%E6%94%AF%E6%8C%81/#%E7%94%9F%E6%88%90%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6"  target="_blank" rel="noopener"
+    >https://edward852.github.io/post/hugo%E6%B7%BB%E5%8A%A0algolia%E6%90%9C%E7%B4%A2%E6%94%AF%E6%8C%81/#%E7%94%9F%E6%88%90%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6</a></p>
+<hr>
+
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/hugo/">HUGO</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC By Laurance</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+     
+    
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "hugo-theme-stack" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2022 - 
+        
+        2023 Laurance&#39;s Note
+    </section>
+    
+    <section class="powerby">
+        
+            All rights reserved <br/>
+        
+
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        
+    </section>
+</footer>
+
+<span id="busuanzi_container_site_pv">
+    總瀏覽  <span id="busuanzi_value_site_pv"></span>  次
+</span>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+    
+
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

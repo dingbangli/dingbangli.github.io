@@ -1,0 +1,500 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>FortiGate on Laurance&#39;s Note</title>
+        <link>https://note.laurance.ml/tags/fortigate/</link>
+        <description>Recent content in FortiGate on Laurance&#39;s Note</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Tue, 20 Sep 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://note.laurance.ml/tags/fortigate/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Fortinet-FortiGate60E SSL匯入自簽3個月憑證</title>
+        <link>https://note.laurance.ml/p/fortinet-fortigate60e-ssl%E5%8C%AF%E5%85%A5%E8%87%AA%E7%B0%BD3%E5%80%8B%E6%9C%88%E6%86%91%E8%AD%89/</link>
+        <pubDate>Tue, 20 Sep 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://note.laurance.ml/p/fortinet-fortigate60e-ssl%E5%8C%AF%E5%85%A5%E8%87%AA%E7%B0%BD3%E5%80%8B%E6%9C%88%E6%86%91%E8%AD%89/</guid>
+        <description>&lt;img src="https://note.laurance.ml/p/fortinet-fortigate60e-ssl%E5%8C%AF%E5%85%A5%E8%87%AA%E7%B0%BD3%E5%80%8B%E6%9C%88%E6%86%91%E8%AD%89/100.png" alt="Featured image of post Fortinet-FortiGate60E SSL匯入自簽3個月憑證" /&gt;&lt;pre&gt;&lt;code&gt;1. 使用certbot-auto簽發三個月憑證,並驗證TXT
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/fortinet-fortigate60e-ssl%E5%8C%AF%E5%85%A5%E8%87%AA%E7%B0%BD3%E5%80%8B%E6%9C%88%E6%86%91%E8%AD%89/001.png&#34;
+	width=&#34;976&#34;
+	height=&#34;384&#34;
+	srcset=&#34;https://note.laurance.ml/p/fortinet-fortigate60e-ssl%E5%8C%AF%E5%85%A5%E8%87%AA%E7%B0%BD3%E5%80%8B%E6%9C%88%E6%86%91%E8%AD%89/001_hue3e5b346148b2c939f3f4bd52aba895d_24602_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/fortinet-fortigate60e-ssl%E5%8C%AF%E5%85%A5%E8%87%AA%E7%B0%BD3%E5%80%8B%E6%9C%88%E6%86%91%E8%AD%89/001_hue3e5b346148b2c939f3f4bd52aba895d_24602_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;254&#34;
+		data-flex-basis=&#34;610px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;2. 將兩隻key丟到nginx目錄測試(fullchain1.pem &amp;gt;&amp;gt; XXX.crt , privkey1.pem &amp;gt;&amp;gt; XXX.key)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/fortinet-fortigate60e-ssl%E5%8C%AF%E5%85%A5%E8%87%AA%E7%B0%BD3%E5%80%8B%E6%9C%88%E6%86%91%E8%AD%89/003.png&#34;
+	width=&#34;1897&#34;
+	height=&#34;437&#34;
+	srcset=&#34;https://note.laurance.ml/p/fortinet-fortigate60e-ssl%E5%8C%AF%E5%85%A5%E8%87%AA%E7%B0%BD3%E5%80%8B%E6%9C%88%E6%86%91%E8%AD%89/003_hu76a2aafff31235d740a4c447c19fa8a4_45568_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/fortinet-fortigate60e-ssl%E5%8C%AF%E5%85%A5%E8%87%AA%E7%B0%BD3%E5%80%8B%E6%9C%88%E6%86%91%E8%AD%89/003_hu76a2aafff31235d740a4c447c19fa8a4_45568_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;434&#34;
+		data-flex-basis=&#34;1041px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;3. Nginx重啟reload
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/fortinet-fortigate60e-ssl%E5%8C%AF%E5%85%A5%E8%87%AA%E7%B0%BD3%E5%80%8B%E6%9C%88%E6%86%91%E8%AD%89/004.png&#34;
+	width=&#34;1071&#34;
+	height=&#34;68&#34;
+	srcset=&#34;https://note.laurance.ml/p/fortinet-fortigate60e-ssl%E5%8C%AF%E5%85%A5%E8%87%AA%E7%B0%BD3%E5%80%8B%E6%9C%88%E6%86%91%E8%AD%89/004_hu23c41bae41f95ac0cc3399f4f73a89ce_8306_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/fortinet-fortigate60e-ssl%E5%8C%AF%E5%85%A5%E8%87%AA%E7%B0%BD3%E5%80%8B%E6%9C%88%E6%86%91%E8%AD%89/004_hu23c41bae41f95ac0cc3399f4f73a89ce_8306_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;1575&#34;
+		data-flex-basis=&#34;3780px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;4. 將解析綁到本機hosts
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/fortinet-fortigate60e-ssl%E5%8C%AF%E5%85%A5%E8%87%AA%E7%B0%BD3%E5%80%8B%E6%9C%88%E6%86%91%E8%AD%89/005.png&#34;
+	width=&#34;1287&#34;
+	height=&#34;534&#34;
+	srcset=&#34;https://note.laurance.ml/p/fortinet-fortigate60e-ssl%E5%8C%AF%E5%85%A5%E8%87%AA%E7%B0%BD3%E5%80%8B%E6%9C%88%E6%86%91%E8%AD%89/005_huf43ef0b429d708eb6801345e776031d5_28653_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/fortinet-fortigate60e-ssl%E5%8C%AF%E5%85%A5%E8%87%AA%E7%B0%BD3%E5%80%8B%E6%9C%88%E6%86%91%E8%AD%89/005_huf43ef0b429d708eb6801345e776031d5_28653_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;241&#34;
+		data-flex-basis=&#34;578px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;5. 開啟剛剛設置的域名,查看憑證是否設定正確
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/fortinet-fortigate60e-ssl%E5%8C%AF%E5%85%A5%E8%87%AA%E7%B0%BD3%E5%80%8B%E6%9C%88%E6%86%91%E8%AD%89/006.png&#34;
+	width=&#34;1920&#34;
+	height=&#34;1040&#34;
+	srcset=&#34;https://note.laurance.ml/p/fortinet-fortigate60e-ssl%E5%8C%AF%E5%85%A5%E8%87%AA%E7%B0%BD3%E5%80%8B%E6%9C%88%E6%86%91%E8%AD%89/006_huf6605a71279ba1ee9b110031b708150b_104947_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/fortinet-fortigate60e-ssl%E5%8C%AF%E5%85%A5%E8%87%AA%E7%B0%BD3%E5%80%8B%E6%9C%88%E6%86%91%E8%AD%89/006_huf6605a71279ba1ee9b110031b708150b_104947_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;184&#34;
+		data-flex-basis=&#34;443px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;6. 使用openssl將兩隻key合併生成XXX.pfx (fortigate支援的格式) ps.會強制設定密碼
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/fortinet-fortigate60e-ssl%E5%8C%AF%E5%85%A5%E8%87%AA%E7%B0%BD3%E5%80%8B%E6%9C%88%E6%86%91%E8%AD%89/007.png&#34;
+	width=&#34;1431&#34;
+	height=&#34;467&#34;
+	srcset=&#34;https://note.laurance.ml/p/fortinet-fortigate60e-ssl%E5%8C%AF%E5%85%A5%E8%87%AA%E7%B0%BD3%E5%80%8B%E6%9C%88%E6%86%91%E8%AD%89/007_hu788246343d7d5a80fcd8c2a514b78621_32622_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/fortinet-fortigate60e-ssl%E5%8C%AF%E5%85%A5%E8%87%AA%E7%B0%BD3%E5%80%8B%E6%9C%88%E6%86%91%E8%AD%89/007_hu788246343d7d5a80fcd8c2a514b78621_32622_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;306&#34;
+		data-flex-basis=&#34;735px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;7. 將剛剛製作的憑證XXX.pfx上傳至fortigate後台,並輸入剛剛設置的密碼
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/fortinet-fortigate60e-ssl%E5%8C%AF%E5%85%A5%E8%87%AA%E7%B0%BD3%E5%80%8B%E6%9C%88%E6%86%91%E8%AD%89/009.png&#34;
+	width=&#34;1920&#34;
+	height=&#34;937&#34;
+	srcset=&#34;https://note.laurance.ml/p/fortinet-fortigate60e-ssl%E5%8C%AF%E5%85%A5%E8%87%AA%E7%B0%BD3%E5%80%8B%E6%9C%88%E6%86%91%E8%AD%89/009_hu4370eef0f32662709b961a5a0f3cb5a0_120188_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/fortinet-fortigate60e-ssl%E5%8C%AF%E5%85%A5%E8%87%AA%E7%B0%BD3%E5%80%8B%E6%9C%88%E6%86%91%E8%AD%89/009_hu4370eef0f32662709b961a5a0f3cb5a0_120188_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;204&#34;
+		data-flex-basis=&#34;491px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;8. Fotigate後台,SSL-VPN設定這邊的伺服器憑證選單裡就會出現剛剛設置的三個月憑證
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/fortinet-fortigate60e-ssl%E5%8C%AF%E5%85%A5%E8%87%AA%E7%B0%BD3%E5%80%8B%E6%9C%88%E6%86%91%E8%AD%89/010.png&#34;
+	width=&#34;1914&#34;
+	height=&#34;936&#34;
+	srcset=&#34;https://note.laurance.ml/p/fortinet-fortigate60e-ssl%E5%8C%AF%E5%85%A5%E8%87%AA%E7%B0%BD3%E5%80%8B%E6%9C%88%E6%86%91%E8%AD%89/010_hu2d2fd9ba9b532dc7e67c14dc31fe0645_78139_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/fortinet-fortigate60e-ssl%E5%8C%AF%E5%85%A5%E8%87%AA%E7%B0%BD3%E5%80%8B%E6%9C%88%E6%86%91%E8%AD%89/010_hu2d2fd9ba9b532dc7e67c14dc31fe0645_78139_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;204&#34;
+		data-flex-basis=&#34;490px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;9. 驗證查看 &amp;gt;&amp;gt; 已出現剛剛製作的憑證
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/fortinet-fortigate60e-ssl%E5%8C%AF%E5%85%A5%E8%87%AA%E7%B0%BD3%E5%80%8B%E6%9C%88%E6%86%91%E8%AD%89/011.png&#34;
+	width=&#34;1920&#34;
+	height=&#34;1040&#34;
+	srcset=&#34;https://note.laurance.ml/p/fortinet-fortigate60e-ssl%E5%8C%AF%E5%85%A5%E8%87%AA%E7%B0%BD3%E5%80%8B%E6%9C%88%E6%86%91%E8%AD%89/011_hua1fe6c8def0f1d159934464d02800436_45567_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/fortinet-fortigate60e-ssl%E5%8C%AF%E5%85%A5%E8%87%AA%E7%B0%BD3%E5%80%8B%E6%9C%88%E6%86%91%E8%AD%89/011_hua1fe6c8def0f1d159934464d02800436_45567_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;184&#34;
+		data-flex-basis=&#34;443px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;hr&gt;
+
+</description>
+        </item>
+        <item>
+        <title>Fortinet-FortiGate60E 延遲自動登出設定</title>
+        <link>https://note.laurance.ml/p/fortinet-fortigate60e-%E5%BB%B6%E9%81%B2%E8%87%AA%E5%8B%95%E7%99%BB%E5%87%BA%E8%A8%AD%E5%AE%9A/</link>
+        <pubDate>Tue, 20 Sep 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://note.laurance.ml/p/fortinet-fortigate60e-%E5%BB%B6%E9%81%B2%E8%87%AA%E5%8B%95%E7%99%BB%E5%87%BA%E8%A8%AD%E5%AE%9A/</guid>
+        <description>&lt;img src="https://note.laurance.ml/p/fortinet-fortigate60e-%E5%BB%B6%E9%81%B2%E8%87%AA%E5%8B%95%E7%99%BB%E5%87%BA%E8%A8%AD%E5%AE%9A/100.png" alt="Featured image of post Fortinet-FortiGate60E 延遲自動登出設定" /&gt;&lt;pre&gt;&lt;code&gt;1. 修改閒置時間
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/fortinet-fortigate60e-%E5%BB%B6%E9%81%B2%E8%87%AA%E5%8B%95%E7%99%BB%E5%87%BA%E8%A8%AD%E5%AE%9A/001.png&#34;
+	width=&#34;1920&#34;
+	height=&#34;937&#34;
+	srcset=&#34;https://note.laurance.ml/p/fortinet-fortigate60e-%E5%BB%B6%E9%81%B2%E8%87%AA%E5%8B%95%E7%99%BB%E5%87%BA%E8%A8%AD%E5%AE%9A/001_hud7156744eb5f4a9b485f7cadcf9e478a_73088_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/fortinet-fortigate60e-%E5%BB%B6%E9%81%B2%E8%87%AA%E5%8B%95%E7%99%BB%E5%87%BA%E8%A8%AD%E5%AE%9A/001_hud7156744eb5f4a9b485f7cadcf9e478a_73088_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;204&#34;
+		data-flex-basis=&#34;491px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;hr&gt;
+
+</description>
+        </item>
+        <item>
+        <title>Fortinet-FortiGate60E SSL-VPN設置</title>
+        <link>https://note.laurance.ml/p/fortinet-fortigate60e-ssl-vpn%E8%A8%AD%E7%BD%AE/</link>
+        <pubDate>Sun, 18 Sep 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://note.laurance.ml/p/fortinet-fortigate60e-ssl-vpn%E8%A8%AD%E7%BD%AE/</guid>
+        <description>&lt;img src="https://note.laurance.ml/p/fortinet-fortigate60e-ssl-vpn%E8%A8%AD%E7%BD%AE/100.png" alt="Featured image of post Fortinet-FortiGate60E SSL-VPN設置" /&gt;&lt;pre&gt;&lt;code&gt;1. 網路 &amp;gt;&amp;gt; 介面切 WAN1 對應外網 (設定成VPN入口) 
+
+   (Group1: 172.16.198.50-172.16.198.100 &amp;gt;&amp;gt; ADDR1)
+   (Group2: 172.16.198.101-172.16.198.150 &amp;gt;&amp;gt; ADDR2)
+   
+   其餘port設定為LAN口 (internal:port1-7) IP/遮罩 172.16.0.55/16 關閉DHCP
+   
+   (默認會無法解放LAN-Port,因為被其他位置占用,解除之後就可以了)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/fortinet-fortigate60e-ssl-vpn%E8%A8%AD%E7%BD%AE/001.png&#34;
+	width=&#34;1920&#34;
+	height=&#34;937&#34;
+	srcset=&#34;https://note.laurance.ml/p/fortinet-fortigate60e-ssl-vpn%E8%A8%AD%E7%BD%AE/001_hu575d3f754fa112644de5add0a9a6faa4_75515_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/fortinet-fortigate60e-ssl-vpn%E8%A8%AD%E7%BD%AE/001_hu575d3f754fa112644de5add0a9a6faa4_75515_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;204&#34;
+		data-flex-basis=&#34;491px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;2. 設置辦公室內部DNS
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/fortinet-fortigate60e-ssl-vpn%E8%A8%AD%E7%BD%AE/002.png&#34;
+	width=&#34;1920&#34;
+	height=&#34;937&#34;
+	srcset=&#34;https://note.laurance.ml/p/fortinet-fortigate60e-ssl-vpn%E8%A8%AD%E7%BD%AE/002_hu6e71f77d81379148b48cce40e6405067_46322_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/fortinet-fortigate60e-ssl-vpn%E8%A8%AD%E7%BD%AE/002_hu6e71f77d81379148b48cce40e6405067_46322_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;204&#34;
+		data-flex-basis=&#34;491px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;3. 開啟進階功能開關 &amp;gt;&amp;gt; 系統管理 Feature Visibility (其餘依照環境設置)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/fortinet-fortigate60e-ssl-vpn%E8%A8%AD%E7%BD%AE/003.png&#34;
+	width=&#34;1920&#34;
+	height=&#34;937&#34;
+	srcset=&#34;https://note.laurance.ml/p/fortinet-fortigate60e-ssl-vpn%E8%A8%AD%E7%BD%AE/003_hu55de2d93f19905b640228d3a4a97ac98_93166_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/fortinet-fortigate60e-ssl-vpn%E8%A8%AD%E7%BD%AE/003_hu55de2d93f19905b640228d3a4a97ac98_93166_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;204&#34;
+		data-flex-basis=&#34;491px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;4. 新增位址 &amp;gt;&amp;gt; 內部 Internal-IP
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/fortinet-fortigate60e-ssl-vpn%E8%A8%AD%E7%BD%AE/004.png&#34;
+	width=&#34;1920&#34;
+	height=&#34;937&#34;
+	srcset=&#34;https://note.laurance.ml/p/fortinet-fortigate60e-ssl-vpn%E8%A8%AD%E7%BD%AE/004_hu4d75e5bcdec39a6d2f99ff432905f765_46058_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/fortinet-fortigate60e-ssl-vpn%E8%A8%AD%E7%BD%AE/004_hu4d75e5bcdec39a6d2f99ff432905f765_46058_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;204&#34;
+		data-flex-basis=&#34;491px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;5. 新增位址 &amp;gt;&amp;gt; SSLVPN_TUNNEL_ADDR1 , SSLVPN_TUNNEL_ADDR2 (做2個VPN通道)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/fortinet-fortigate60e-ssl-vpn%E8%A8%AD%E7%BD%AE/006.png&#34;
+	width=&#34;1920&#34;
+	height=&#34;937&#34;
+	srcset=&#34;https://note.laurance.ml/p/fortinet-fortigate60e-ssl-vpn%E8%A8%AD%E7%BD%AE/006_huc11681c0c28943a69aa5f52b9b8798e6_45134_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/fortinet-fortigate60e-ssl-vpn%E8%A8%AD%E7%BD%AE/006_huc11681c0c28943a69aa5f52b9b8798e6_45134_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;204&#34;
+		data-flex-basis=&#34;491px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/fortinet-fortigate60e-ssl-vpn%E8%A8%AD%E7%BD%AE/007.png&#34;
+	width=&#34;1920&#34;
+	height=&#34;937&#34;
+	srcset=&#34;https://note.laurance.ml/p/fortinet-fortigate60e-ssl-vpn%E8%A8%AD%E7%BD%AE/007_hucbb487f6bd94a14b8181d36203ea446a_45342_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/fortinet-fortigate60e-ssl-vpn%E8%A8%AD%E7%BD%AE/007_hucbb487f6bd94a14b8181d36203ea446a_45342_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;204&#34;
+		data-flex-basis=&#34;491px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;6. SSL-VPN入口頁面 &amp;gt;&amp;gt; 新建 VPN-GROUP1 , VPN-GROUP2 對應 ADDR1 , ADDR2
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/fortinet-fortigate60e-ssl-vpn%E8%A8%AD%E7%BD%AE/021.png&#34;
+	width=&#34;1920&#34;
+	height=&#34;937&#34;
+	srcset=&#34;https://note.laurance.ml/p/fortinet-fortigate60e-ssl-vpn%E8%A8%AD%E7%BD%AE/021_huc7223f8895c818021b88a48dbde7e1a2_54932_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/fortinet-fortigate60e-ssl-vpn%E8%A8%AD%E7%BD%AE/021_huc7223f8895c818021b88a48dbde7e1a2_54932_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;204&#34;
+		data-flex-basis=&#34;491px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/fortinet-fortigate60e-ssl-vpn%E8%A8%AD%E7%BD%AE/022.png&#34;
+	width=&#34;1920&#34;
+	height=&#34;937&#34;
+	srcset=&#34;https://note.laurance.ml/p/fortinet-fortigate60e-ssl-vpn%E8%A8%AD%E7%BD%AE/022_hu05aab2f4ec2f595fab158c20d2a00845_54969_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/fortinet-fortigate60e-ssl-vpn%E8%A8%AD%E7%BD%AE/022_hu05aab2f4ec2f595fab158c20d2a00845_54969_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;204&#34;
+		data-flex-basis=&#34;491px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;7. 設置靜態路由 WAN1 (VPN入口)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/fortinet-fortigate60e-ssl-vpn%E8%A8%AD%E7%BD%AE/008.png&#34;
+	width=&#34;1920&#34;
+	height=&#34;937&#34;
+	srcset=&#34;https://note.laurance.ml/p/fortinet-fortigate60e-ssl-vpn%E8%A8%AD%E7%BD%AE/008_hu207485141f290b423b163be79f22eb65_50916_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/fortinet-fortigate60e-ssl-vpn%E8%A8%AD%E7%BD%AE/008_hu207485141f290b423b163be79f22eb65_50916_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;204&#34;
+		data-flex-basis=&#34;491px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;8. 設置政策路由 (設置WAN1出口,來源分兩個 Group)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/fortinet-fortigate60e-ssl-vpn%E8%A8%AD%E7%BD%AE/010.png&#34;
+	width=&#34;1920&#34;
+	height=&#34;937&#34;
+	srcset=&#34;https://note.laurance.ml/p/fortinet-fortigate60e-ssl-vpn%E8%A8%AD%E7%BD%AE/010_hu90c24e4461322209308b81443c6104c9_75222_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/fortinet-fortigate60e-ssl-vpn%E8%A8%AD%E7%BD%AE/010_hu90c24e4461322209308b81443c6104c9_75222_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;204&#34;
+		data-flex-basis=&#34;491px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/fortinet-fortigate60e-ssl-vpn%E8%A8%AD%E7%BD%AE/011.png&#34;
+	width=&#34;1920&#34;
+	height=&#34;937&#34;
+	srcset=&#34;https://note.laurance.ml/p/fortinet-fortigate60e-ssl-vpn%E8%A8%AD%E7%BD%AE/011_huff7678b47424c5f8fe21e458cf602f80_72433_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/fortinet-fortigate60e-ssl-vpn%E8%A8%AD%E7%BD%AE/011_huff7678b47424c5f8fe21e458cf602f80_72433_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;204&#34;
+		data-flex-basis=&#34;491px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/fortinet-fortigate60e-ssl-vpn%E8%A8%AD%E7%BD%AE/012.png&#34;
+	width=&#34;1920&#34;
+	height=&#34;937&#34;
+	srcset=&#34;https://note.laurance.ml/p/fortinet-fortigate60e-ssl-vpn%E8%A8%AD%E7%BD%AE/012_hue6fc884a0bfa106cd0717314d8282a27_69396_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/fortinet-fortigate60e-ssl-vpn%E8%A8%AD%E7%BD%AE/012_hue6fc884a0bfa106cd0717314d8282a27_69396_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;204&#34;
+		data-flex-basis=&#34;491px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;9. IP Pool &amp;gt;&amp;gt; 新建IP池 (外部IP設置自己到自己)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/fortinet-fortigate60e-ssl-vpn%E8%A8%AD%E7%BD%AE/013.png&#34;
+	width=&#34;1920&#34;
+	height=&#34;937&#34;
+	srcset=&#34;https://note.laurance.ml/p/fortinet-fortigate60e-ssl-vpn%E8%A8%AD%E7%BD%AE/013_hu2c156cbcc44d247581f18e2a79ecaae9_67171_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/fortinet-fortigate60e-ssl-vpn%E8%A8%AD%E7%BD%AE/013_hu2c156cbcc44d247581f18e2a79ecaae9_67171_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;204&#34;
+		data-flex-basis=&#34;491px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;10. 新增用戶群組
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/fortinet-fortigate60e-ssl-vpn%E8%A8%AD%E7%BD%AE/014.png&#34;
+	width=&#34;1920&#34;
+	height=&#34;937&#34;
+	srcset=&#34;https://note.laurance.ml/p/fortinet-fortigate60e-ssl-vpn%E8%A8%AD%E7%BD%AE/014_hu13528c70db400849474fbdb62dbbc5f9_58398_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/fortinet-fortigate60e-ssl-vpn%E8%A8%AD%E7%BD%AE/014_hu13528c70db400849474fbdb62dbbc5f9_58398_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;204&#34;
+		data-flex-basis=&#34;491px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;11. SSL-VPN設定 &amp;gt;&amp;gt; 監聽走WAN1 , 4826Port , IP範圍:ADDR1,ADDR2 , 認證入口對應群組
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/fortinet-fortigate60e-ssl-vpn%E8%A8%AD%E7%BD%AE/015.png&#34;
+	width=&#34;1920&#34;
+	height=&#34;937&#34;
+	srcset=&#34;https://note.laurance.ml/p/fortinet-fortigate60e-ssl-vpn%E8%A8%AD%E7%BD%AE/015_hub1902daec0122f465b7cad04bf2564dd_95851_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/fortinet-fortigate60e-ssl-vpn%E8%A8%AD%E7%BD%AE/015_hub1902daec0122f465b7cad04bf2564dd_95851_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;204&#34;
+		data-flex-basis=&#34;491px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;12. 新增IPV4政策 
+
+(internal-wan1) (SSLVPN-LAN) (SSLVPN-WAN1)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/fortinet-fortigate60e-ssl-vpn%E8%A8%AD%E7%BD%AE/016.png&#34;
+	width=&#34;1920&#34;
+	height=&#34;937&#34;
+	srcset=&#34;https://note.laurance.ml/p/fortinet-fortigate60e-ssl-vpn%E8%A8%AD%E7%BD%AE/016_hub46e461ec7ae2f714bf5f3b7b157cbb7_62225_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/fortinet-fortigate60e-ssl-vpn%E8%A8%AD%E7%BD%AE/016_hub46e461ec7ae2f714bf5f3b7b157cbb7_62225_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;204&#34;
+		data-flex-basis=&#34;491px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/fortinet-fortigate60e-ssl-vpn%E8%A8%AD%E7%BD%AE/017.png&#34;
+	width=&#34;1920&#34;
+	height=&#34;937&#34;
+	srcset=&#34;https://note.laurance.ml/p/fortinet-fortigate60e-ssl-vpn%E8%A8%AD%E7%BD%AE/017_hub7020182429b3b1015227b82a7f8bd58_67375_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/fortinet-fortigate60e-ssl-vpn%E8%A8%AD%E7%BD%AE/017_hub7020182429b3b1015227b82a7f8bd58_67375_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;204&#34;
+		data-flex-basis=&#34;491px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/fortinet-fortigate60e-ssl-vpn%E8%A8%AD%E7%BD%AE/018.png&#34;
+	width=&#34;1920&#34;
+	height=&#34;937&#34;
+	srcset=&#34;https://note.laurance.ml/p/fortinet-fortigate60e-ssl-vpn%E8%A8%AD%E7%BD%AE/018_hu805d5244e73adc52859edc5fe7783934_68934_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/fortinet-fortigate60e-ssl-vpn%E8%A8%AD%E7%BD%AE/018_hu805d5244e73adc52859edc5fe7783934_68934_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;204&#34;
+		data-flex-basis=&#34;491px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/fortinet-fortigate60e-ssl-vpn%E8%A8%AD%E7%BD%AE/019.png&#34;
+	width=&#34;1920&#34;
+	height=&#34;937&#34;
+	srcset=&#34;https://note.laurance.ml/p/fortinet-fortigate60e-ssl-vpn%E8%A8%AD%E7%BD%AE/019_hua6d71c3865755dd0fa380e0e9c74631a_119370_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/fortinet-fortigate60e-ssl-vpn%E8%A8%AD%E7%BD%AE/019_hua6d71c3865755dd0fa380e0e9c74631a_119370_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;204&#34;
+		data-flex-basis=&#34;491px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;hr&gt;
+
+</description>
+        </item>
+        <item>
+        <title>Fortinet-FortiGate 常用防火牆CLI指令</title>
+        <link>https://note.laurance.ml/p/fortinet-fortigate-%E5%B8%B8%E7%94%A8%E9%98%B2%E7%81%AB%E7%89%86cli%E6%8C%87%E4%BB%A4/</link>
+        <pubDate>Tue, 13 Sep 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://note.laurance.ml/p/fortinet-fortigate-%E5%B8%B8%E7%94%A8%E9%98%B2%E7%81%AB%E7%89%86cli%E6%8C%87%E4%BB%A4/</guid>
+        <description>&lt;img src="https://note.laurance.ml/p/fortinet-fortigate-%E5%B8%B8%E7%94%A8%E9%98%B2%E7%81%AB%E7%89%86cli%E6%8C%87%E4%BB%A4/100.png" alt="Featured image of post Fortinet-FortiGate 常用防火牆CLI指令" /&gt;&lt;pre&gt;&lt;code&gt;查看設定檔
+show full-configuration
+
+備份設定檔 
+exe backup config/allconfig/ipsuserdefsigfilename xx.x.x(tftp server)
+
+還原設定檔
+# exe restore config/allconfig/ipsuserdefsig/imagefilename x.x.x.x(tftp server)
+
+顯示系統狀態
+# get sys status
+
+顯示系統效能介面
+# get system interface
+#show system interface
+
+顯示系統效能
+# get system performance
+
+顯示各service utilization
+#diag sys top (ctrl-c exit)
+
+格式化硬碟以消除所有記錄
+#exe formatlogdisk
+
+手動同步HA設定
+#exe ha synchronize config
+
+查看HA 狀態
+#diagnose sys ha checksum cluster    
+#show system ha
+#get sys ha status
+
+重新啟動
+# execute reboot
+
+關機
+# execute shutdown
+
+查看 arp table
+# get system arp
+
+清除 arp table cache
+# execute clear system arp table
+
+ping
+#exe ping x.x.X.X
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+
+</description>
+        </item>
+        
+    </channel>
+</rss>

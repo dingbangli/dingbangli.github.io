@@ -1,0 +1,27 @@
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+2023/05/02-13:37:35 啟動 hugo 背景模式
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Start building sites … 
+hugo v0.111.3-5d4eb5154e1fed125ca8e9b5a0315c4180dab192+extended linux/amd64 BuildDate=2023-03-12T11:40:50Z VendorInfo=snap:0.111.3
+
+                   |  EN   
+-------------------+-------
+  Pages            |  436  
+  Paginator pages  |    9  
+  Non-page files   |  774  
+  Static files     |    2  
+  Processed images | 1832  
+  Aliases          |  105  
+  Sitemaps         |    1  
+  Cleaned          |    0  
+
+Built in 2969 ms
+Watching for changes in /home/svn/blogtocloud/nowblog-2023-05-02/{archetypes,assets,content,data,i18n,layouts,static,themes}
+Watching for config changes in /home/svn/blogtocloud/nowblog-2023-05-02/config.yaml, /home/svn/blogtocloud/nowblog-2023-05-02/themes/hugo-theme-stack/config.yaml, /home/svn/blogtocloud/nowblog-2023-05-02/go.mod
+Environment: "development"
+Serving pages from memory
+Running in Fast Render Mode. For full rebuilds on change: hugo server --disableFastRender
+Web Server is available at http://172.16.0.222:1313/ (bind address 0.0.0.0)
+Press Ctrl+C to stop

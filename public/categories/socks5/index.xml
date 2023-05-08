@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>SOCKS5 on Laurance&#39;s Note</title>
+        <link>https://note.laurance.ml/categories/socks5/</link>
+        <description>Recent content in SOCKS5 on Laurance&#39;s Note</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Mon, 26 Dec 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://note.laurance.ml/categories/socks5/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>VPN-建置 SOCKS5(SS5)代理</title>
+        <link>https://note.laurance.ml/p/vpn-%E5%BB%BA%E7%BD%AE-socks5ss5%E4%BB%A3%E7%90%86/</link>
+        <pubDate>Mon, 26 Dec 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://note.laurance.ml/p/vpn-%E5%BB%BA%E7%BD%AE-socks5ss5%E4%BB%A3%E7%90%86/</guid>
+        <description>&lt;img src="https://note.laurance.ml/p/vpn-%E5%BB%BA%E7%BD%AE-socks5ss5%E4%BB%A3%E7%90%86/100.jpg" alt="Featured image of post VPN-建置 SOCKS5(SS5)代理" /&gt;&lt;p&gt;從官網下載源碼&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;wget https://nchc.dl.sourceforge.net/project/ss5/ss5/3.8.9-8/ss5-3.8.9-8.tar.gz
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;安裝依賴&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;yum -y install pam-devel openldap-devel cyrus-sasl-devel openssl-devel gcc automake make
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;解壓、編譯、安裝&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;tar xvf ss5-3.8.9-8.tar.gz
+
+cd ss5-3.8.9
+
+./configure &amp;amp;&amp;amp; make &amp;amp;&amp;amp; make install
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;[ SS5設定檔 ]&lt;/p&gt;
+&lt;p&gt;修改認證方式&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;vim /etc/opt/ss5/ss5.conf
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;無帳號密碼的設定&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-json&#34; data-lang=&#34;json&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;auth&lt;/span&gt;    &lt;span class=&#34;mf&#34;&gt;0.0&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;mf&#34;&gt;0.0&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;               &lt;span class=&#34;err&#34;&gt;-&lt;/span&gt;              &lt;span class=&#34;err&#34;&gt;-&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;permit&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;-&lt;/span&gt;       &lt;span class=&#34;mf&#34;&gt;0.0&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;mf&#34;&gt;0.0&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;       &lt;span class=&#34;err&#34;&gt;-&lt;/span&gt;       &lt;span class=&#34;mf&#34;&gt;0.0&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;mf&#34;&gt;0.0&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;       &lt;span class=&#34;err&#34;&gt;-&lt;/span&gt;       &lt;span class=&#34;err&#34;&gt;-&lt;/span&gt;       &lt;span class=&#34;err&#34;&gt;-&lt;/span&gt;       &lt;span class=&#34;err&#34;&gt;-&lt;/span&gt;       &lt;span class=&#34;err&#34;&gt;-&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;有帳號密碼的設定&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-json&#34; data-lang=&#34;json&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;auth&lt;/span&gt;    &lt;span class=&#34;mf&#34;&gt;0.0&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;mf&#34;&gt;0.0&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;               &lt;span class=&#34;err&#34;&gt;-&lt;/span&gt;              &lt;span class=&#34;err&#34;&gt;u&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;permit&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;u&lt;/span&gt;        &lt;span class=&#34;mf&#34;&gt;0.0&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;mf&#34;&gt;0.0&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;       &lt;span class=&#34;err&#34;&gt;-&lt;/span&gt;       &lt;span class=&#34;mf&#34;&gt;0.0&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;mf&#34;&gt;0.0&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;       &lt;span class=&#34;err&#34;&gt;-&lt;/span&gt;       &lt;span class=&#34;err&#34;&gt;-&lt;/span&gt;       &lt;span class=&#34;err&#34;&gt;-&lt;/span&gt;       &lt;span class=&#34;err&#34;&gt;-&lt;/span&gt;       &lt;span class=&#34;err&#34;&gt;-&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;加入 USER 及 PASSWD&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;vim /etc/opt/ss5/ss5.passwd
+&lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-javascript&#34; data-lang=&#34;javascript&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nx&#34;&gt;laurance&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;lau888&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;修改 ss5 啟動的 port&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;vim /etc/sysconfig/ss5
+&lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-javascript&#34; data-lang=&#34;javascript&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nx&#34;&gt;SS5_OPTS&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34; -u root -b 0.0.0.0:8080&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;新增 ss5 執行檔權限&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;chmod 755 /etc/rc.d/init.d/ss5
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;啟動服務&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;systemctl restart ss5
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;查看啟動 LOG&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;more /var/log/ss5/ss5.log
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;[ Chrome 套件名稱: Proxy SwitchyOmega ]&lt;/p&gt;
+&lt;p&gt;使用 Chrome 套件 &amp;amp; SS5 翻牆&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/vpn-%E5%BB%BA%E7%BD%AE-socks5ss5%E4%BB%A3%E7%90%86/00001.png&#34;
+	width=&#34;1584&#34;
+	height=&#34;864&#34;
+	srcset=&#34;https://note.laurance.ml/p/vpn-%E5%BB%BA%E7%BD%AE-socks5ss5%E4%BB%A3%E7%90%86/00001_hubed9df9b1f90f534b340eeb9360cecf4_32516_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/vpn-%E5%BB%BA%E7%BD%AE-socks5ss5%E4%BB%A3%E7%90%86/00001_hubed9df9b1f90f534b340eeb9360cecf4_32516_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;183&#34;
+		data-flex-basis=&#34;440px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;hr&gt;
+
+</description>
+        </item>
+        
+    </channel>
+</rss>

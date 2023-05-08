@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='自行編譯低版本 PSQL-14.7'><title>Postgresql-install postgresql-14.7 on centos7</title>
+
+<link rel='canonical' href='https://note.laurance.ml/p/postgresql-install-postgresql-14.7-on-centos7/'>
+
+<link rel="stylesheet" href="/scss/style.min.ac77dcf8b111b51da39a92990f431923f210f3876d85798a2125667f96dc33a4.css"><meta property='og:title' content='Postgresql-install postgresql-14.7 on centos7'>
+<meta property='og:description' content='自行編譯低版本 PSQL-14.7'>
+<meta property='og:url' content='https://note.laurance.ml/p/postgresql-install-postgresql-14.7-on-centos7/'>
+<meta property='og:site_name' content='Laurance&#39;s Note'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Postgresql' /><meta property='article:published_time' content='2023-03-21T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2023-03-21T00:00:00&#43;00:00'/><meta property='og:image' content='https://note.laurance.ml/p/postgresql-install-postgresql-14.7-on-centos7/100.png' />
+<meta name="twitter:title" content="Postgresql-install postgresql-14.7 on centos7">
+<meta name="twitter:description" content="自行編譯低版本 PSQL-14.7"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://note.laurance.ml/p/postgresql-install-postgresql-14.7-on-centos7/100.png' />
+    <link rel="shortcut icon" href="static/favicon.ico" />
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Live2D 看板娘 / Demo</title>
+</head>
+<body>
+<script src="https://cdn.jsdelivr.net/gh/dingbangli/live2d-widget@latest/autoload.js"></script>
+</body>
+</html>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu49eacb73e01f91348578131d7e8658f5_11993_300x0_resize_box_3.png" width="300"
+                            height="301" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🍥</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Laurance&#39;s Note</a></h1>
+            <h2 class="site-description">筆記 記錄美好生活
+</h2>
+        </div>
+    </header><ol class="menu" id="main-menu">
+        
+        
+        
+
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/about/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/links/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>Links</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+            
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>Dark Mode</span>
+                </li>
+            
+        </div>
+    </ol>
+</aside>
+<main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/postgresql-install-postgresql-14.7-on-centos7/">
+                <img src="/p/postgresql-install-postgresql-14.7-on-centos7/100_hu33d5a232e6145cf3db53180f3ae836a8_4639_800x0_resize_box_3.png"
+                        srcset="/p/postgresql-install-postgresql-14.7-on-centos7/100_hu33d5a232e6145cf3db53180f3ae836a8_4639_800x0_resize_box_3.png 800w, /p/postgresql-install-postgresql-14.7-on-centos7/100_hu33d5a232e6145cf3db53180f3ae836a8_4639_1600x0_resize_box_3.png 1600w"
+                        width="800" 
+                        height="357" 
+                        loading="lazy"
+                        alt="Featured image of post Postgresql-install postgresql-14.7 on centos7" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/postgresql/" >
+                Postgresql
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/postgresql-install-postgresql-14.7-on-centos7/">Postgresql-install postgresql-14.7 on centos7</a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            自行編譯低版本 PSQL-14.7
+        </h3>
+        
+    </div>
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Mar 21, 2023</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    2 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+</header>
+
+    <section class="article-content">
+    
+    
+    <p>安裝依賴套件</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="nx">yum</span> <span class="nx">install</span> <span class="nx">gcc</span> <span class="nx">gcc</span><span class="o">-</span><span class="nx">c</span><span class="o">++</span> <span class="nx">readline</span><span class="o">-</span><span class="nx">devel</span> <span class="nx">zlib</span><span class="o">-</span><span class="nx">devel</span> <span class="nx">openssl</span> <span class="nx">openssl</span><span class="o">-</span><span class="nx">devel</span>
+</span></span></code></pre></div><p>下載安裝 cmake編譯器</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="nx">wget</span> <span class="o">-</span><span class="nx">t</span> <span class="mi">0</span> <span class="nx">https</span><span class="o">:</span><span class="c1">//github.com/Kitware/CMake/releases/download/v3.23.1/cmake-3.23.1.tar.gz
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">tar</span> <span class="nx">zxf</span> <span class="nx">cmake</span><span class="o">-</span><span class="mf">3.23</span><span class="p">.</span><span class="mf">1.</span><span class="nx">tar</span><span class="p">.</span><span class="nx">gz</span>
+</span></span><span class="line"><span class="cl"><span class="nx">cd</span> <span class="nx">cmake</span><span class="o">-</span><span class="mf">3.23</span><span class="p">.</span><span class="mi">1</span>
+</span></span><span class="line"><span class="cl"><span class="p">.</span><span class="o">/</span><span class="nx">bootstrap</span> <span class="o">&amp;&amp;</span> <span class="nx">gmake</span> <span class="o">&amp;&amp;</span> <span class="nx">gmake</span> <span class="nx">install</span>
+</span></span><span class="line"><span class="cl"><span class="nx">cmake</span> <span class="o">--</span><span class="nx">version</span>
+</span></span></code></pre></div><p>下載 <code>postgresql-14.7 tar包</code></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="nx">wget</span> <span class="nx">https</span><span class="o">:</span><span class="c1">//ftp.postgresql.org/pub/source/v14.7/postgresql-14.7.tar.gz --no-check-certificate
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">tar</span> <span class="nx">zxf</span> <span class="nx">postgresql</span><span class="o">-</span><span class="mf">14.7</span><span class="p">.</span><span class="nx">tar</span><span class="p">.</span><span class="nx">gz</span>
+</span></span><span class="line"><span class="cl"><span class="nx">cd</span> <span class="nx">postgresql</span><span class="o">-</span><span class="mf">14.7</span>
+</span></span><span class="line"><span class="cl"><span class="p">.</span><span class="o">/</span><span class="nx">configure</span> <span class="o">--</span><span class="nx">prefix</span><span class="o">=</span><span class="err">/var/lib/postgresql</span>
+</span></span><span class="line"><span class="cl"><span class="nx">make</span> <span class="o">&amp;&amp;</span> <span class="nx">make</span> <span class="nx">install</span>
+</span></span></code></pre></div><p>新增 <code>postgres</code> 使用者來執行DB</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="nx">useradd</span> <span class="nx">postgres</span>
+</span></span></code></pre></div><p>建立存放資料及LOG的位置並給予權限 <code>for postgres</code></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="nx">cd</span> <span class="o">/</span><span class="kd">var</span><span class="err">/lib/postgresql/</span>
+</span></span><span class="line"><span class="cl"><span class="nx">mkdir</span> <span class="nx">data</span>
+</span></span><span class="line"><span class="cl"><span class="nx">mkdir</span> <span class="nx">log</span>
+</span></span><span class="line"><span class="cl"><span class="nx">chown</span> <span class="o">-</span><span class="nx">R</span> <span class="nx">postgres</span><span class="p">.</span><span class="nx">postgres</span> <span class="o">/</span><span class="kd">var</span><span class="err">/lib/postgresql</span>
+</span></span></code></pre></div><p>添加 <code>psql環境變數</code></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="nx">su</span> <span class="o">-</span> <span class="nx">postgres</span> <span class="o">-</span><span class="nx">c</span> <span class="s2">&#34;vim ~/.bash_profile&#34;</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="nx">$</span>	<span class="kr">export</span> <span class="nx">PGHOME</span><span class="o">=</span><span class="err">/var/lib/postgresql</span>
+</span></span><span class="line"><span class="cl"><span class="nx">$</span>	<span class="kr">export</span> <span class="nx">PGDATA</span><span class="o">=</span><span class="err">/var/lib/postgresql/data</span>
+</span></span><span class="line"><span class="cl"><span class="nx">$</span>	<span class="kr">export</span> <span class="nx">PATH</span><span class="o">=</span><span class="nx">$PATH</span><span class="o">:</span><span class="nx">$JAVA_HOME</span><span class="o">/</span><span class="nx">bin</span><span class="o">:</span><span class="nx">$PGHOME</span><span class="o">/</span><span class="nx">bin</span>
+</span></span></code></pre></div><p>初始化資料庫及指定存放資料位置</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="nx">su</span> <span class="o">-</span> <span class="nx">postgres</span> <span class="o">-</span><span class="nx">c</span> <span class="s2">&#34;/var/lib/postgresql/bin/initdb -D /var/lib/postgresql/data/&#34;</span>
+</span></span></code></pre></div><p>更改設定檔 &amp;&amp; 設定監聽位置</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="nx">vim</span> <span class="o">/</span><span class="kd">var</span><span class="err">/lib/postgresql/data/postgresql.conf</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl">	<span class="nx">listen_addresses</span> <span class="o">=</span> <span class="s1">&#39;*&#39;</span> 
+</span></span><span class="line"><span class="cl">	<span class="nx">port</span> <span class="o">=</span> <span class="mi">5432</span> 
+</span></span><span class="line"><span class="cl">	
+</span></span></code></pre></div><p>設定使用者及IP段</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="nx">vim</span> <span class="o">/</span><span class="kd">var</span><span class="err">/lib/postgresql/data/pg_hba.conf</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl">	<span class="nx">host</span>    <span class="nx">all</span>             <span class="nx">rd</span>              <span class="mf">10.140</span><span class="p">.</span><span class="mf">0.0</span><span class="o">/</span><span class="mi">16</span>           <span class="nx">password</span>
+</span></span><span class="line"><span class="cl">	
+</span></span></code></pre></div><p>切換使用者 &amp;&amp; 啟動 PostgreSQL</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="nx">su</span> <span class="o">-</span> <span class="nx">postgres</span> <span class="o">-</span><span class="nx">c</span> <span class="s2">&#34;/var/lib/postgresql/bin/pg_ctl start -l /var/lib/postgresql/log/pg_server.log&#34;</span>
+</span></span></code></pre></div><p>切換使用者 &amp;&amp; 重啟 PostgreSQL</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="nx">su</span> <span class="o">-</span> <span class="nx">postgres</span> <span class="o">-</span><span class="nx">c</span> <span class="s2">&#34;/var/lib/postgresql/bin/pg_ctl restart&#34;</span>
+</span></span></code></pre></div><p>切換使用者 &amp;&amp; 建立 <code>超級使用者帳號</code></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="nx">su</span> <span class="o">-</span> <span class="nx">postgres</span> <span class="o">-</span><span class="nx">c</span> <span class="s2">&#34;createuser -s -i -d -l -r king&#34;</span>
+</span></span></code></pre></div><pre><code>-s , --superuser 新使用者將是超級使用者
+
+-i , --inherit 新角色將自動繼承其所屬角色的權限。這是預設值。
+
+-d , --createdb 將允許新使用者建立資料庫。
+
+-l , --login 將允許新使用者登入（即，使用者名稱可以用作初始連線使用者）。這是預設值。
+
+-r , --createrole 將允許新使用者建立新角色（即，此使用者將具有 CREATEROLE 權限）。
+</code></pre>
+<p>切換使用者 &amp;&amp; 建立 <code>普通使用者</code></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="nx">su</span> <span class="o">-</span> <span class="nx">postgres</span> <span class="o">-</span><span class="nx">c</span> <span class="s2">&#34;createuser -d -l -P rd&#34;</span>
+</span></span></code></pre></div><pre><code>-p , --pwprompt 如果有此選項，createuser 將發出新使用者密碼的提示。如果您不打算使用密碼身份驗證，則毌須執行此操作。
+</code></pre>
+<p>切換使用者 &amp;&amp; 進入 <code>psql cmd</code></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="nx">su</span> <span class="o">-</span> <span class="nx">postgres</span> <span class="o">-</span><span class="nx">c</span> <span class="s2">&#34;psql&#34;</span>
+</span></span></code></pre></div><p>設定使用者 <code>rd</code> 對 <code>public</code> 新 <code>Sequences</code> 的預設權限</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="nx">$</span>	<span class="nx">ALTER</span> <span class="nx">DEFAULT</span> <span class="nx">PRIVILEGES</span> <span class="nx">IN</span> <span class="nx">SCHEMA</span> <span class="kr">public</span> <span class="nx">GRANT</span> <span class="nx">USAGE</span> <span class="nx">ON</span> <span class="nx">SEQUENCES</span> <span class="nx">TO</span> <span class="nx">rd</span><span class="p">;</span>
+</span></span></code></pre></div><p>設定使用者 <code>rd</code> 對 <code>public</code> 新 <code>表</code> 的預設權限</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="nx">$</span>	<span class="nx">ALTER</span> <span class="nx">DEFAULT</span> <span class="nx">PRIVILEGES</span> <span class="nx">IN</span> <span class="nx">SCHEMA</span> <span class="kr">public</span> <span class="nx">GRANT</span> <span class="nx">USAGE</span> <span class="nx">ON</span> <span class="nx">TABLES</span> <span class="nx">TO</span> <span class="nx">rd</span><span class="p">;</span>
+</span></span></code></pre></div><p><code>PS. 要先建立 database 才能用使用者連線</code></p>
+<p>官方 yum 安裝: <a class="link" href="https://jovepater.com/article/centos-7-postgresql-14-installation/"  target="_blank" rel="noopener"
+    >https://jovepater.com/article/centos-7-postgresql-14-installation/</a></p>
+<p>參考: <a class="link" href="https://pjchender.dev/database/psql-roles-privilege/"  target="_blank" rel="noopener"
+    >https://pjchender.dev/database/psql-roles-privilege/</a></p>
+<p>參考: <a class="link" href="https://blog.csdn.net/zou8944/article/details/121528128"  target="_blank" rel="noopener"
+    >https://blog.csdn.net/zou8944/article/details/121528128</a></p>
+<hr>
+
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/postgresql/">Postgresql</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC By Laurance</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">Related content</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/p/postgresql-%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/">
+        
+        
+            <div class="article-image">
+                <img src="/p/postgresql-%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/100.55a821d0057f6161424da0f10165122c_hu33d5a232e6145cf3db53180f3ae836a8_4639_250x150_fill_box_smart1_3.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Postgresql-常用指令"
+                        
+                        data-hash="md5-Vagh0AV/YWFCTaDxAWUSLA==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Postgresql-常用指令</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "hugo-theme-stack" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2022 - 
+        
+        2023 Laurance&#39;s Note
+    </section>
+    
+    <section class="powerby">
+        
+            All rights reserved <br/>
+        
+
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        
+    </section>
+</footer>
+
+<span id="busuanzi_container_site_pv">
+    總瀏覽  <span id="busuanzi_value_site_pv"></span>  次
+</span>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+    
+
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

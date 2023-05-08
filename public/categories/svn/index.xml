@@ -1,0 +1,403 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>SVN on Laurance&#39;s Note</title>
+        <link>https://note.laurance.ml/categories/svn/</link>
+        <description>Recent content in SVN on Laurance&#39;s Note</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Sat, 04 Feb 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://note.laurance.ml/categories/svn/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>SVN-解決每次都需要輸入密碼</title>
+        <link>https://note.laurance.ml/p/svn-%E8%A7%A3%E6%B1%BA%E6%AF%8F%E6%AC%A1%E9%83%BD%E9%9C%80%E8%A6%81%E8%BC%B8%E5%85%A5%E5%AF%86%E7%A2%BC/</link>
+        <pubDate>Sat, 04 Feb 2023 00:00:00 +0000</pubDate>
+        
+        <guid>https://note.laurance.ml/p/svn-%E8%A7%A3%E6%B1%BA%E6%AF%8F%E6%AC%A1%E9%83%BD%E9%9C%80%E8%A6%81%E8%BC%B8%E5%85%A5%E5%AF%86%E7%A2%BC/</guid>
+        <description>&lt;img src="https://note.laurance.ml/p/svn-%E8%A7%A3%E6%B1%BA%E6%AF%8F%E6%AC%A1%E9%83%BD%E9%9C%80%E8%A6%81%E8%BC%B8%E5%85%A5%E5%AF%86%E7%A2%BC/100.png" alt="Featured image of post SVN-解決每次都需要輸入密碼" /&gt;&lt;p&gt;刪除原本緩存密碼的文件&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;rm -f ~/.subversion/auth/svn.simple/*
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;執行一次 &amp;ldquo;svn update&amp;rdquo; 讓密碼緩存文件重新生成&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;cd nowblog-2023-02-08/ 
+
+svn up --username laurance
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;修改緩存目錄下的文件&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;vim ~/.subversion/auth/svn.simple/1b47431ba1edd4463343286aca5a7e1
+&lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;l&#34;&gt;K 15&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;l&#34;&gt;svn:realmstring&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;l&#34;&gt;V 43&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;l&#34;&gt;&amp;lt;svn://192.168.168.1:3690&amp;gt;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;l&#34;&gt;K 8&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;l&#34;&gt;passtype&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;l&#34;&gt;V 6&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;l&#34;&gt;simple&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;l&#34;&gt;K 8&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;l&#34;&gt;username&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;l&#34;&gt;V 8&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;l&#34;&gt;laurance&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;l&#34;&gt;K 8&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;l&#34;&gt;password&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;l&#34;&gt;V 10&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;l&#34;&gt;XXXXXX   (密碼)&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;l&#34;&gt;END&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h1 id=&#34;-passtype-固定是-simple---k-和-v-後面的數字分別代表-key-和-value-的長度-&#34;&gt;{ passtype 固定是 simple ,  K 和 V 後面的數字分別代表 key 和 value 的長度 }&lt;/h1&gt;
+&lt;p&gt;參考: &lt;a class=&#34;link&#34; href=&#34;https://blog.csdn.net/u013304850/article/details/124821651&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://blog.csdn.net/u013304850/article/details/124821651&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+
+</description>
+        </item>
+        <item>
+        <title>SVN-刪除早期版本庫 (記得先備份!!!)</title>
+        <link>https://note.laurance.ml/p/svn-%E5%88%AA%E9%99%A4%E6%97%A9%E6%9C%9F%E7%89%88%E6%9C%AC%E5%BA%AB-%E8%A8%98%E5%BE%97%E5%85%88%E5%82%99%E4%BB%BD/</link>
+        <pubDate>Mon, 26 Dec 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://note.laurance.ml/p/svn-%E5%88%AA%E9%99%A4%E6%97%A9%E6%9C%9F%E7%89%88%E6%9C%AC%E5%BA%AB-%E8%A8%98%E5%BE%97%E5%85%88%E5%82%99%E4%BB%BD/</guid>
+        <description>&lt;img src="https://note.laurance.ml/p/svn-%E5%88%AA%E9%99%A4%E6%97%A9%E6%9C%9F%E7%89%88%E6%9C%AC%E5%BA%AB-%E8%A8%98%E5%BE%97%E5%85%88%E5%82%99%E4%BB%BD/100.png" alt="Featured image of post SVN-刪除早期版本庫 (記得先備份!!!)" /&gt;&lt;p&gt;查看目前版本號&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;svnlook youngest /home/svn/mis-note
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;保留 130-138 版本號的 dump&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;svnadmin dump /home/svn/mis-note -r 130:138 &amp;gt; repo_dump_130-138.dmp 2&amp;gt;repo_dump_130-138.log
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;將舊的庫移成 .bak&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;mv mis-note/ mis-note-20230105.bak/
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;新建庫&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;svnadmin create /home/svn/mis-note
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;將設定檔複製過來&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;cp -r ../mis-note-20230105.bak/conf .
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;查看乾淨庫的容量&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;du -hs mis-note
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;導入 dump&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;svnadmin load /home/svn/mis-note &amp;lt; repo_dump_130-138.dmp &amp;gt;repo_load_130-138.log 2&amp;gt;repo_load_130-138.errlog
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;看一下新庫容量有沒有增加&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;du -hs mis-note
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;client-端-windows-砍掉舊有的svn資料夾--並取出新資料夾&#34;&gt;Client 端 (Windows): 砍掉舊有的SVN資料夾 , 並取出新資料夾&lt;/h1&gt;
+&lt;h1 id=&#34;server重啟&#34;&gt;Server重啟&lt;/h1&gt;
+&lt;hr&gt;
+
+</description>
+        </item>
+        <item>
+        <title>SVN_SERVER-安裝教學 (CentOS7)</title>
+        <link>https://note.laurance.ml/p/svn_server-%E5%AE%89%E8%A3%9D%E6%95%99%E5%AD%B8-centos7/</link>
+        <pubDate>Thu, 06 Oct 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://note.laurance.ml/p/svn_server-%E5%AE%89%E8%A3%9D%E6%95%99%E5%AD%B8-centos7/</guid>
+        <description>&lt;img src="https://note.laurance.ml/p/svn_server-%E5%AE%89%E8%A3%9D%E6%95%99%E5%AD%B8-centos7/100.png" alt="Featured image of post SVN_SERVER-安裝教學 (CentOS7)" /&gt;&lt;pre&gt;&lt;code&gt;yum install apr* gcc zlib-devel automake autoconf libtool make
+wget https://archive.apache.org/dist/subversion/subversion-1.10.8.tar.gz
+tar zxvf subversion-1.10.8.tar.gz
+cd subversion-1.10.8
+mkdir sqlite-amalgamation
+
+[configure: error: Subversion requires SQLite]
+cd ../
+wget https://www.sqlite.org/2022/sqlite-autoconf-3400000.tar.gz --no-check-certificate
+tar zxvf sqlite-autoconf-3400000.tar.gz
+
+cd subversion-1.10.8/sqlite-amalgamation
+cp -r ../../sqlite-autoconf-3400000/* .
+
+
+cd ../
+./configure --prefix=/usr/local/svn --without-berkeley-db --with-lz4=internal --with-utf8proc=internal
+make &amp;amp;&amp;amp; make install
+cp /usr/local/svn/bin/* /usr/local/bin/
+
+
+啟動 svnserve:
+/usr/local/bin/svnserve --daemon --pid-file=/var/run/svnserve.pid
+
+adduser svn
+passwd svn
+
+建立資料庫
+svnadmin create /home/svn/project/
+
+增加使用者與密碼
+vim /home/svn/project/conf/passwd
+[users]
+mis=yoyoyo
+    
+權限
+vim /home/svn/project/conf/auth
+[/]
+laurance=rw
+
+設定檔
+vim /home/svn/project/conf/svnserve.conf
+[general]
+anon-access=read
+auth-access=write
+password-db=passwd
+authz-db=authz
+realm=/home/svn/nowblog
+[sasl]
+
+重啟
+
+windows client 
+
+SVN 取出:
+svn://192.168.1.146/home/svn/project
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+
+</description>
+        </item>
+        <item>
+        <title>SVN-error 你必須先更新你的工作副本</title>
+        <link>https://note.laurance.ml/p/svn-error-%E4%BD%A0%E5%BF%85%E9%A0%88%E5%85%88%E6%9B%B4%E6%96%B0%E4%BD%A0%E7%9A%84%E5%B7%A5%E4%BD%9C%E5%89%AF%E6%9C%AC/</link>
+        <pubDate>Wed, 05 Oct 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://note.laurance.ml/p/svn-error-%E4%BD%A0%E5%BF%85%E9%A0%88%E5%85%88%E6%9B%B4%E6%96%B0%E4%BD%A0%E7%9A%84%E5%B7%A5%E4%BD%9C%E5%89%AF%E6%9C%AC/</guid>
+        <description>&lt;img src="https://note.laurance.ml/p/svn-error-%E4%BD%A0%E5%BF%85%E9%A0%88%E5%85%88%E6%9B%B4%E6%96%B0%E4%BD%A0%E7%9A%84%E5%B7%A5%E4%BD%9C%E5%89%AF%E6%9C%AC/100.png" alt="Featured image of post SVN-error 你必須先更新你的工作副本" /&gt;&lt;pre&gt;&lt;code&gt;SVN送交時失敗跳error &amp;quot;你必須先更新你的工作副本&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/svn-error-%E4%BD%A0%E5%BF%85%E9%A0%88%E5%85%88%E6%9B%B4%E6%96%B0%E4%BD%A0%E7%9A%84%E5%B7%A5%E4%BD%9C%E5%89%AF%E6%9C%AC/001.png&#34;
+	width=&#34;762&#34;
+	height=&#34;341&#34;
+	srcset=&#34;https://note.laurance.ml/p/svn-error-%E4%BD%A0%E5%BF%85%E9%A0%88%E5%85%88%E6%9B%B4%E6%96%B0%E4%BD%A0%E7%9A%84%E5%B7%A5%E4%BD%9C%E5%89%AF%E6%9C%AC/001_huf0293e7045a70dd1bfcd7d6c266def0e_38713_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/svn-error-%E4%BD%A0%E5%BF%85%E9%A0%88%E5%85%88%E6%9B%B4%E6%96%B0%E4%BD%A0%E7%9A%84%E5%B7%A5%E4%BD%9C%E5%89%AF%E6%9C%AC/001_huf0293e7045a70dd1bfcd7d6c266def0e_38713_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;223&#34;
+		data-flex-basis=&#34;536px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;按確定之後，會自動跳出 作業失敗-請先更新的視窗，再點選更新即可
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/svn-error-%E4%BD%A0%E5%BF%85%E9%A0%88%E5%85%88%E6%9B%B4%E6%96%B0%E4%BD%A0%E7%9A%84%E5%B7%A5%E4%BD%9C%E5%89%AF%E6%9C%AC/002.png&#34;
+	width=&#34;542&#34;
+	height=&#34;445&#34;
+	srcset=&#34;https://note.laurance.ml/p/svn-error-%E4%BD%A0%E5%BF%85%E9%A0%88%E5%85%88%E6%9B%B4%E6%96%B0%E4%BD%A0%E7%9A%84%E5%B7%A5%E4%BD%9C%E5%89%AF%E6%9C%AC/002_hu9a5b6534776146feabc01f94a8d2873c_22544_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/svn-error-%E4%BD%A0%E5%BF%85%E9%A0%88%E5%85%88%E6%9B%B4%E6%96%B0%E4%BD%A0%E7%9A%84%E5%B7%A5%E4%BD%9C%E5%89%AF%E6%9C%AC/002_hu9a5b6534776146feabc01f94a8d2873c_22544_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;121&#34;
+		data-flex-basis=&#34;292px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;hr&gt;
+
+</description>
+        </item>
+        <item>
+        <title>SVN-更新時發生衝突如何解決</title>
+        <link>https://note.laurance.ml/p/svn-%E6%9B%B4%E6%96%B0%E6%99%82%E7%99%BC%E7%94%9F%E8%A1%9D%E7%AA%81%E5%A6%82%E4%BD%95%E8%A7%A3%E6%B1%BA/</link>
+        <pubDate>Tue, 13 Sep 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://note.laurance.ml/p/svn-%E6%9B%B4%E6%96%B0%E6%99%82%E7%99%BC%E7%94%9F%E8%A1%9D%E7%AA%81%E5%A6%82%E4%BD%95%E8%A7%A3%E6%B1%BA/</guid>
+        <description>&lt;img src="https://note.laurance.ml/p/svn-%E6%9B%B4%E6%96%B0%E6%99%82%E7%99%BC%E7%94%9F%E8%A1%9D%E7%AA%81%E5%A6%82%E4%BD%95%E8%A7%A3%E6%B1%BA/100.png" alt="Featured image of post SVN-更新時發生衝突如何解決" /&gt;&lt;pre&gt;&lt;code&gt;在標示了衝突的那個檔案上點滑鼠左鍵兩下
+
+會自動開啟內建的合併工具
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/svn-%E6%9B%B4%E6%96%B0%E6%99%82%E7%99%BC%E7%94%9F%E8%A1%9D%E7%AA%81%E5%A6%82%E4%BD%95%E8%A7%A3%E6%B1%BA/001.png&#34;
+	width=&#34;681&#34;
+	height=&#34;318&#34;
+	srcset=&#34;https://note.laurance.ml/p/svn-%E6%9B%B4%E6%96%B0%E6%99%82%E7%99%BC%E7%94%9F%E8%A1%9D%E7%AA%81%E5%A6%82%E4%BD%95%E8%A7%A3%E6%B1%BA/001_hu3c1ea7af69e0f1fd9f9142e69cd3b3d7_76809_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/svn-%E6%9B%B4%E6%96%B0%E6%99%82%E7%99%BC%E7%94%9F%E8%A1%9D%E7%AA%81%E5%A6%82%E4%BD%95%E8%A7%A3%E6%B1%BA/001_hu3c1ea7af69e0f1fd9f9142e69cd3b3d7_76809_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;214&#34;
+		data-flex-basis=&#34;513px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;左邊區塊是版本庫的檔案  
+
+右邊區塊是本機副本的檔案  
+
+底下區塊是合併後的結果，看得出來有一堆問號的部份就是無法自動合併的區塊  
+
+（也就是衝突）
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/svn-%E6%9B%B4%E6%96%B0%E6%99%82%E7%99%BC%E7%94%9F%E8%A1%9D%E7%AA%81%E5%A6%82%E4%BD%95%E8%A7%A3%E6%B1%BA/002.png&#34;
+	width=&#34;648&#34;
+	height=&#34;352&#34;
+	srcset=&#34;https://note.laurance.ml/p/svn-%E6%9B%B4%E6%96%B0%E6%99%82%E7%99%BC%E7%94%9F%E8%A1%9D%E7%AA%81%E5%A6%82%E4%BD%95%E8%A7%A3%E6%B1%BA/002_hu62ece3d28fdd02472211703068b2148e_72952_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/svn-%E6%9B%B4%E6%96%B0%E6%99%82%E7%99%BC%E7%94%9F%E8%A1%9D%E7%AA%81%E5%A6%82%E4%BD%95%E8%A7%A3%E6%B1%BA/002_hu62ece3d28fdd02472211703068b2148e_72952_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;184&#34;
+		data-flex-basis=&#34;441px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;在左邊區塊衝突的部分按「滑鼠右鍵」就可以跳出相關的快顯功能表
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/svn-%E6%9B%B4%E6%96%B0%E6%99%82%E7%99%BC%E7%94%9F%E8%A1%9D%E7%AA%81%E5%A6%82%E4%BD%95%E8%A7%A3%E6%B1%BA/003.png&#34;
+	width=&#34;506&#34;
+	height=&#34;215&#34;
+	srcset=&#34;https://note.laurance.ml/p/svn-%E6%9B%B4%E6%96%B0%E6%99%82%E7%99%BC%E7%94%9F%E8%A1%9D%E7%AA%81%E5%A6%82%E4%BD%95%E8%A7%A3%E6%B1%BA/003_hu7310ce11ddcdb24ea8435a34a966dd91_15496_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/svn-%E6%9B%B4%E6%96%B0%E6%99%82%E7%99%BC%E7%94%9F%E8%A1%9D%E7%AA%81%E5%A6%82%E4%BD%95%E8%A7%A3%E6%B1%BA/003_hu7310ce11ddcdb24ea8435a34a966dd91_15496_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;235&#34;
+		data-flex-basis=&#34;564px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;手動選擇後在下方的窗格會顯示合併後的結果
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/svn-%E6%9B%B4%E6%96%B0%E6%99%82%E7%99%BC%E7%94%9F%E8%A1%9D%E7%AA%81%E5%A6%82%E4%BD%95%E8%A7%A3%E6%B1%BA/004.png&#34;
+	width=&#34;652&#34;
+	height=&#34;357&#34;
+	srcset=&#34;https://note.laurance.ml/p/svn-%E6%9B%B4%E6%96%B0%E6%99%82%E7%99%BC%E7%94%9F%E8%A1%9D%E7%AA%81%E5%A6%82%E4%BD%95%E8%A7%A3%E6%B1%BA/004_hu99d002d4f17c0787ca243bd6442f927f_77602_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/svn-%E6%9B%B4%E6%96%B0%E6%99%82%E7%99%BC%E7%94%9F%E8%A1%9D%E7%AA%81%E5%A6%82%E4%BD%95%E8%A7%A3%E6%B1%BA/004_hu99d002d4f17c0787ca243bd6442f927f_77602_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;182&#34;
+		data-flex-basis=&#34;438px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;將所有的衝突都處理完畢後按工具列上的圖示
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/svn-%E6%9B%B4%E6%96%B0%E6%99%82%E7%99%BC%E7%94%9F%E8%A1%9D%E7%AA%81%E5%A6%82%E4%BD%95%E8%A7%A3%E6%B1%BA/005.png&#34;
+	width=&#34;555&#34;
+	height=&#34;125&#34;
+	srcset=&#34;https://note.laurance.ml/p/svn-%E6%9B%B4%E6%96%B0%E6%99%82%E7%99%BC%E7%94%9F%E8%A1%9D%E7%AA%81%E5%A6%82%E4%BD%95%E8%A7%A3%E6%B1%BA/005_hu2b06e0e7a88871104d572243cfa198d4_14609_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/svn-%E6%9B%B4%E6%96%B0%E6%99%82%E7%99%BC%E7%94%9F%E8%A1%9D%E7%AA%81%E5%A6%82%E4%BD%95%E8%A7%A3%E6%B1%BA/005_hu2b06e0e7a88871104d572243cfa198d4_14609_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;444&#34;
+		data-flex-basis=&#34;1065px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;hr&gt;
+
+</description>
+        </item>
+        <item>
+        <title>SVN-error (SQLite compiled for 3.19.2, but running with 3.6.20)</title>
+        <link>https://note.laurance.ml/p/svn-error-sqlite-compiled-for-3.19.2-but-running-with-3.6.20/</link>
+        <pubDate>Thu, 04 Aug 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://note.laurance.ml/p/svn-error-sqlite-compiled-for-3.19.2-but-running-with-3.6.20/</guid>
+        <description>&lt;img src="https://note.laurance.ml/p/svn-error-sqlite-compiled-for-3.19.2-but-running-with-3.6.20/100.png" alt="Featured image of post SVN-error (SQLite compiled for 3.19.2, but running with 3.6.20)" /&gt;&lt;pre&gt;&lt;code&gt;---------------------------------------
+#svn --version
+
+svn: E200029: Couldn&#39;t perform atomic initialization
+svn: E200030: SQLite compiled for 3.19.2, but running with 3.6.20
+
+這是因為編譯SVN用的sqlite 版本3.19.2和系統中已安裝的sqlite3.6.20版本不一致
+
+#cd /usr/local/svn/bin
+#ldd svn
+
+從輸出中看出 libsqlite3.so.0 =&amp;gt; /usr/lib64/libsqlite3.so.0 (0x00007f0f8572d000)
+
+[root@localhost lib64]# find / -name libsqlite3.so.0 -print
+/usr/local/sqlite/lib/libsqlite3.so.0
+/usr/local/sqlite-autoconf-3190200/.libs/libsqlite3.so.0
+/usr/local/lib/libsqlite3.so.0
+/usr/lib64/libsqlite3.so.0
+[root@localhost lib64]# mv libsqlite3.so.0 libsqlite3.so.0.old
+[root@localhost lib64]# ln -s /usr/local/lib/libsqlite3.so.0 libsqlite3.so.0
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+
+</description>
+        </item>
+        <item>
+        <title>SVN-error (undefined symbol: svn_fs_util__version)</title>
+        <link>https://note.laurance.ml/p/svn-error-undefined-symbol-svn_fs_util__version/</link>
+        <pubDate>Thu, 04 Aug 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://note.laurance.ml/p/svn-error-undefined-symbol-svn_fs_util__version/</guid>
+        <description>&lt;img src="https://note.laurance.ml/p/svn-error-undefined-symbol-svn_fs_util__version/100.png" alt="Featured image of post SVN-error (undefined symbol: svn_fs_util__version)" /&gt;&lt;pre&gt;&lt;code&gt;---------------------------------------
+SVN出錯 symbol lookup error
+
+svn: symbol lookup error: /usr/local/lib/libsvn_fs_x-1.so.0: undefined symbol: svn_fs_util__version
+
+系统中装了rpm版的subversion，跟APR，引起版本混乱。故清理这些RPM包试试：
+
+rpm -qa|grep subversion
+
+rpm -e --nodeps subversion-libs-1.7.14-16.el7.x86_64
+
+rpm -qa|grep apr
+
+echo &#39;/usr/local/APR/lib&#39;&amp;gt;&amp;gt;/etc/ld.so.conf
+
+echo &#39;/usr/local/ARP-util/lib&#39;&amp;gt;&amp;gt;/etc/ld.so.conf
+
+ldconfig
+
+svnadmin create --pre-1.6-compatible /home/svn/mis-note
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+
+</description>
+        </item>
+        <item>
+        <title>SVN-綠色勾勾消失</title>
+        <link>https://note.laurance.ml/p/svn-%E7%B6%A0%E8%89%B2%E5%8B%BE%E5%8B%BE%E6%B6%88%E5%A4%B1/</link>
+        <pubDate>Wed, 03 Aug 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://note.laurance.ml/p/svn-%E7%B6%A0%E8%89%B2%E5%8B%BE%E5%8B%BE%E6%B6%88%E5%A4%B1/</guid>
+        <description>&lt;img src="https://note.laurance.ml/p/svn-%E7%B6%A0%E8%89%B2%E5%8B%BE%E5%8B%BE%E6%B6%88%E5%A4%B1/100.png" alt="Featured image of post SVN-綠色勾勾消失" /&gt;&lt;pre&gt;&lt;code&gt;---------------------------------------
+SVN綠色勾勾消失
+
+1. Win + R &amp;gt;&amp;gt; regedit &amp;gt;&amp;gt; HKEY_LOCAL_MACHINE-&amp;gt;SOFTWARE-&amp;gt;Microsoft-&amp;gt;Windows-&amp;gt;CurrentVersion-&amp;gt;Explorer-&amp;gt;ShellIconOverlayIdentifiers 
+
+2. 查看註冊表中是否有Tortoisesvn相關選項，如果有，將Tortoisesvn相關移到最前端，將首字母改爲數字，或者空格 
+(如果註冊表中沒有Tortoisesvn相關，則將Tortoisesvn導入到註冊表，具體內容爲：
+Windows Registry Editor Version 5.00)
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\ShellIconOverlayIdentifiers\1TortoiseNormal]
+@=&amp;quot;{C5994560-53D9-4125-87C9-F193FC689CB2}&amp;quot;
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\ShellIconOverlayIdentifiers\2TortoiseModified]
+@=&amp;quot;{C5994561-53D9-4125-87C9-F193FC689CB2}&amp;quot;
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\ShellIconOverlayIdentifiers\3TortoiseConflict]
+@=&amp;quot;{C5994562-53D9-4125-87C9-F193FC689CB2}&amp;quot;
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\ShellIconOverlayIdentifiers\4TortoiseLocked]
+@=&amp;quot;{C5994563-53D9-4125-87C9-F193FC689CB2}&amp;quot;
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\ShellIconOverlayIdentifiers\5TortoiseReadOnly]
+@=&amp;quot;{C5994564-53D9-4125-87C9-F193FC689CB2}&amp;quot;
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\ShellIconOverlayIdentifiers\6TortoiseDeleted]
+@=&amp;quot;{C5994565-53D9-4125-87C9-F193FC689CB2}&amp;quot;
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\ShellIconOverlayIdentifiers\7TortoiseAdded]
+@=&amp;quot;{C5994566-53D9-4125-87C9-F193FC689CB2}&amp;quot;
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\ShellIconOverlayIdentifiers\8TortoiseIgnored]
+@=&amp;quot;{C5994567-53D9-4125-87C9-F193FC689CB2}&amp;quot;
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\ShellIconOverlayIdentifiers\9TortoiseUnversioned]
+@=&amp;quot;{C5994568-53D9-4125-87C9-F193FC689CB2}&amp;quot;
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\ShellIconOverlayIdentifiers\Offline Files]
+@=&amp;quot;{750fdf0e-2a26-11d1-a3ea-080036587f03}&amp;quot;
+
+將上面內容保存到svn.reg文件中，然後導入註冊表
+
+3. 重啓Explorer 
+
+CND :  taskkill /f /im explorer.exe &amp;gt; start explorer.exe
+
+PW :  stop-process -name explorer -force
+
+4. EX: 電腦\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\ShellIconOverlayIdentifiers\ 
+
+   001Tortoise1Normal
+   001Tortoise2Modified
+   001Tortoise3Conflict
+   001Tortoise4Locked
+   001Tortoise5ReadOnly
+   001Tortoise6Deleted
+   001Tortoise7Added
+   001Tortoise8Ignored
+   001Tortoise9Unversioned
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+
+</description>
+        </item>
+        
+    </channel>
+</rss>

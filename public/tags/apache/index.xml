@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Apache on Laurance&#39;s Note</title>
+        <link>https://note.laurance.ml/tags/apache/</link>
+        <description>Recent content in Apache on Laurance&#39;s Note</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Sat, 03 Dec 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://note.laurance.ml/tags/apache/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Apache-透過 apxs 添加 proxy 模块</title>
+        <link>https://note.laurance.ml/p/apache-%E9%80%8F%E9%81%8E-apxs-%E6%B7%BB%E5%8A%A0-proxy-%E6%A8%A1%E5%9D%97/</link>
+        <pubDate>Sat, 03 Dec 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://note.laurance.ml/p/apache-%E9%80%8F%E9%81%8E-apxs-%E6%B7%BB%E5%8A%A0-proxy-%E6%A8%A1%E5%9D%97/</guid>
+        <description>&lt;img src="https://note.laurance.ml/p/apache-%E9%80%8F%E9%81%8E-apxs-%E6%B7%BB%E5%8A%A0-proxy-%E6%A8%A1%E5%9D%97/100.png" alt="Featured image of post Apache-透過 apxs 添加 proxy 模块" /&gt;&lt;p&gt;查看所有模塊&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;/usr/local/web/apache2/bin/httpd -l
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/apache-%E9%80%8F%E9%81%8E-apxs-%E6%B7%BB%E5%8A%A0-proxy-%E6%A8%A1%E5%9D%97/201.png&#34;
+	width=&#34;1892&#34;
+	height=&#34;499&#34;
+	srcset=&#34;https://note.laurance.ml/p/apache-%E9%80%8F%E9%81%8E-apxs-%E6%B7%BB%E5%8A%A0-proxy-%E6%A8%A1%E5%9D%97/201_hu4cc6ba74c76eb5460ba40f8d405628a9_16700_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/apache-%E9%80%8F%E9%81%8E-apxs-%E6%B7%BB%E5%8A%A0-proxy-%E6%A8%A1%E5%9D%97/201_hu4cc6ba74c76eb5460ba40f8d405628a9_16700_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;379&#34;
+		data-flex-basis=&#34;909px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;進入proxy moudle 編碼目錄&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;cd /root/dbmonitor-case/dbmonitor/httpd-2.2.27/modules/proxy
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/apache-%E9%80%8F%E9%81%8E-apxs-%E6%B7%BB%E5%8A%A0-proxy-%E6%A8%A1%E5%9D%97/202.png&#34;
+	width=&#34;1901&#34;
+	height=&#34;274&#34;
+	srcset=&#34;https://note.laurance.ml/p/apache-%E9%80%8F%E9%81%8E-apxs-%E6%B7%BB%E5%8A%A0-proxy-%E6%A8%A1%E5%9D%97/202_hu77c40619db5d3e34ea54d29469048dca_39695_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/apache-%E9%80%8F%E9%81%8E-apxs-%E6%B7%BB%E5%8A%A0-proxy-%E6%A8%A1%E5%9D%97/202_hu77c40619db5d3e34ea54d29469048dca_39695_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;693&#34;
+		data-flex-basis=&#34;1665px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;使用apxs進行編譯安裝&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;/usr/local/web/apache2/bin/apxs -i -c -a mod_proxy.c proxy_util.c
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/apache-%E9%80%8F%E9%81%8E-apxs-%E6%B7%BB%E5%8A%A0-proxy-%E6%A8%A1%E5%9D%97/203.png&#34;
+	width=&#34;1905&#34;
+	height=&#34;547&#34;
+	srcset=&#34;https://note.laurance.ml/p/apache-%E9%80%8F%E9%81%8E-apxs-%E6%B7%BB%E5%8A%A0-proxy-%E6%A8%A1%E5%9D%97/203_hucc94f7a7e8b3146f72b6c1fc8788c720_55448_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/apache-%E9%80%8F%E9%81%8E-apxs-%E6%B7%BB%E5%8A%A0-proxy-%E6%A8%A1%E5%9D%97/203_hucc94f7a7e8b3146f72b6c1fc8788c720_55448_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;348&#34;
+		data-flex-basis=&#34;835px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;hr&gt;
+
+</description>
+        </item>
+        <item>
+        <title>Apache-透過rsyslog同步log</title>
+        <link>https://note.laurance.ml/p/apache-%E9%80%8F%E9%81%8Ersyslog%E5%90%8C%E6%AD%A5log/</link>
+        <pubDate>Wed, 03 Aug 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://note.laurance.ml/p/apache-%E9%80%8F%E9%81%8Ersyslog%E5%90%8C%E6%AD%A5log/</guid>
+        <description>&lt;img src="https://note.laurance.ml/p/apache-%E9%80%8F%E9%81%8Ersyslog%E5%90%8C%E6%AD%A5log/100.png" alt="Featured image of post Apache-透過rsyslog同步log" /&gt;&lt;pre&gt;&lt;code&gt;編輯 Apache 設定檔
+vim /etc/httpd/conf/httpd.conf
+
+ErrorLogFormat &amp;quot;[%{u}t] [%-m:%l] [pid %P:tid %T] %7F: %E: [client\ %a] %M% ,\ referer\ %{Referer}i&amp;quot;
+&amp;lt;IfModule logio_module&amp;gt;
+LogFormat &amp;quot;%h %l %u %t \&amp;quot;%r\&amp;quot; %&amp;gt;s %O %I %T %b \&amp;quot;%{Referer}i\&amp;quot; \&amp;quot;%{User-Agent}i\&amp;quot;&amp;quot; nreporter
+&amp;lt;/IfModule&amp;gt;
+CustomLog &amp;quot;logs/access-NReporter_log&amp;quot; nreporter
+
+重啟 Apache 服務和確認 Apache 服務狀態
+systemctl restart httpd &amp;amp;&amp;amp; systemctl status httpd
+
+編輯 rsyslog 設定檔
+vim /etc/rsyslog.conf
+
+###MODULES###
+$ModLoad imfile # provides support for file logging
+# Send Apache log to N-Reporter
+input(type=&amp;quot;imfile&amp;quot; File=&amp;quot;/var/log/httpd/access-NReporter_log&amp;quot; Tag=&amp;quot;apache&amp;quot; Severity=&amp;quot;info&amp;quot; Facility=&amp;quot;local6&amp;quot;
+Ruleset=&amp;quot;nreporter&amp;quot;)
+input(type=&amp;quot;imfile&amp;quot; File=&amp;quot;/var/log/httpd/error_log&amp;quot; Tag=&amp;quot;apache&amp;quot; Severity=&amp;quot;warning&amp;quot; Facility=&amp;quot;local6&amp;quot;
+Ruleset=&amp;quot;nreporter&amp;quot;)
+ruleset(name=&amp;quot;nreporter&amp;quot;){action(type=&amp;quot;omfwd&amp;quot; Target=&amp;quot;192.168.2.69&amp;quot; Port=&amp;quot;514&amp;quot; Protocol=&amp;quot;udp&amp;quot;)}
+
+重啟 Rsyslog 服務和確認 Rsyslog 服務正常
+systemctl restart rsyslog &amp;amp;&amp;amp; systemctl status rsyslog
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+
+</description>
+        </item>
+        
+    </channel>
+</rss>

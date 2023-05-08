@@ -1,0 +1,1526 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='筆記 記錄美好生活
+'><title>Category: Linux - Laurance&#39;s Note</title>
+
+<link rel='canonical' href='https://note.laurance.ml/categories/linux/'>
+
+<link rel="stylesheet" href="/scss/style.min.ac77dcf8b111b51da39a92990f431923f210f3876d85798a2125667f96dc33a4.css"><meta property='og:title' content='Category: Linux - Laurance&#39;s Note'>
+<meta property='og:description' content='筆記 記錄美好生活
+'>
+<meta property='og:url' content='https://note.laurance.ml/categories/linux/'>
+<meta property='og:site_name' content='Laurance&#39;s Note'>
+<meta property='og:type' content='website'><meta property='og:updated_time' content=' 2023-03-23T00:00:00&#43;00:00 '/>
+<meta name="twitter:title" content="Category: Linux - Laurance&#39;s Note">
+<meta name="twitter:description" content="筆記 記錄美好生活
+"><link rel="alternate" type="application/rss&#43;xml" href="https://note.laurance.ml/categories/linux/index.xml">
+    <link rel="shortcut icon" href="static/favicon.ico" />
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Live2D 看板娘 / Demo</title>
+</head>
+<body>
+<script src="https://cdn.jsdelivr.net/gh/dingbangli/live2d-widget@latest/autoload.js"></script>
+</body>
+</html>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+    </head>
+    <body class="">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu49eacb73e01f91348578131d7e8658f5_11993_300x0_resize_box_3.png" width="300"
+                            height="301" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🍥</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Laurance&#39;s Note</a></h1>
+            <h2 class="site-description">筆記 記錄美好生活
+</h2>
+        </div>
+    </header><ol class="menu" id="main-menu">
+        
+        
+        
+
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/about/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/links/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>Links</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+            
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>Dark Mode</span>
+                </li>
+            
+        </div>
+    </ol>
+</aside>
+<main class="main full-width">
+    <header>
+        <h3 class="section-title">
+            
+                Categories
+            
+        </h3>
+
+        <div class="section-card">
+            <div class="section-details">
+                <h3 class="section-count">49 pages</h3>
+                <h1 class="section-term">Linux</h1>
+                
+            </div>
+        </div>
+    </header>
+    
+    <section class="article-list--compact">
+        
+            <article>
+    <a href="/p/linux-%E6%A0%B8%E5%BF%83-%E7%B3%BB%E7%B5%B1%E6%97%A5%E8%AA%8C%E6%AA%94-local-%E7%B4%9A%E5%88%A5/">
+        <div class="article-details">
+            <h2 class="article-title">Linux 核心 &amp; 系統日誌檔 (local 級別)</h2>
+            <footer class="article-time">
+                <time datetime='2023-03-03T00:00:00Z'>Mar 03, 2023</time>
+            </footer>
+        </div>
+            <div class="article-image">
+                <img src="/p/linux-%E6%A0%B8%E5%BF%83-%E7%B3%BB%E7%B5%B1%E6%97%A5%E8%AA%8C%E6%AA%94-local-%E7%B4%9A%E5%88%A5/100_hu1acf48b62c2e007a3a704d91e9dd9674_43864_120x120_fill_box_smart1_3.png" 
+                        width="120"
+                        height="120" 
+                        alt="Linux 核心 &amp; 系統日誌檔 (local 級別)"
+                        loading="lazy">
+                
+            </div>
+        
+    </a>
+</article>
+        
+            <article>
+    <a href="/p/linux-youtube-dl-ffmpeg-%E5%AE%89%E8%A3%9D%E6%95%99%E5%AD%B8/">
+        <div class="article-details">
+            <h2 class="article-title">Linux-youtube-dl &amp;&amp; ffmpeg 安裝教學</h2>
+            <footer class="article-time">
+                <time datetime='2023-02-13T00:00:00Z'>Feb 13, 2023</time>
+            </footer>
+        </div>
+            <div class="article-image">
+                <img src="/p/linux-youtube-dl-ffmpeg-%E5%AE%89%E8%A3%9D%E6%95%99%E5%AD%B8/100_hu1acf48b62c2e007a3a704d91e9dd9674_43864_120x120_fill_box_smart1_3.png" 
+                        width="120"
+                        height="120" 
+                        alt="Linux-youtube-dl &amp;&amp; ffmpeg 安裝教學"
+                        loading="lazy">
+                
+            </div>
+        
+    </a>
+</article>
+        
+            <article>
+    <a href="/p/linux-rsync-%E5%9F%BA%E6%9C%AC%E8%A8%AD%E5%AE%9A%E6%95%99%E5%AD%B8/">
+        <div class="article-details">
+            <h2 class="article-title">Linux-Rsync 基本設定教學</h2>
+            <footer class="article-time">
+                <time datetime='2023-02-03T00:00:00Z'>Feb 03, 2023</time>
+            </footer>
+        </div>
+            <div class="article-image">
+                <img src="/p/linux-rsync-%E5%9F%BA%E6%9C%AC%E8%A8%AD%E5%AE%9A%E6%95%99%E5%AD%B8/100_hu1acf48b62c2e007a3a704d91e9dd9674_43864_120x120_fill_box_smart1_3.png" 
+                        width="120"
+                        height="120" 
+                        alt="Linux-Rsync 基本設定教學"
+                        loading="lazy">
+                
+            </div>
+        
+    </a>
+</article>
+        
+            <article>
+    <a href="/p/linux-%E4%BD%BF%E7%94%A8-locate-%E5%B0%8B%E6%89%BE%E6%AA%94%E6%A1%88%E6%95%99%E5%AD%B8%E8%88%87%E7%AF%84%E4%BE%8B/">
+        <div class="article-details">
+            <h2 class="article-title">Linux-使用 locate 尋找檔案教學與範例</h2>
+            <footer class="article-time">
+                <time datetime='2023-02-01T00:00:00Z'>Feb 01, 2023</time>
+            </footer>
+        </div>
+            <div class="article-image">
+                <img src="/p/linux-%E4%BD%BF%E7%94%A8-locate-%E5%B0%8B%E6%89%BE%E6%AA%94%E6%A1%88%E6%95%99%E5%AD%B8%E8%88%87%E7%AF%84%E4%BE%8B/100_hu1acf48b62c2e007a3a704d91e9dd9674_43864_120x120_fill_box_smart1_3.png" 
+                        width="120"
+                        height="120" 
+                        alt="Linux-使用 locate 尋找檔案教學與範例"
+                        loading="lazy">
+                
+            </div>
+        
+    </a>
+</article>
+        
+            <article>
+    <a href="/p/centos-%E5%A6%82%E4%BD%95%E5%B0%87%E5%AE%89%E8%A3%9D%E5%8C%85%E5%8F%8A%E5%85%B6%E4%BE%9D%E8%B3%B4%E5%8C%85%E4%B8%8B%E8%BC%89%E5%88%B0%E6%9C%AC%E5%9C%B0/">
+        <div class="article-details">
+            <h2 class="article-title">CentOS-如何將安裝包及其依賴包下載到本地</h2>
+            <footer class="article-time">
+                <time datetime='2023-01-26T00:00:00Z'>Jan 26, 2023</time>
+            </footer>
+        </div>
+            <div class="article-image">
+                <img src="/p/centos-%E5%A6%82%E4%BD%95%E5%B0%87%E5%AE%89%E8%A3%9D%E5%8C%85%E5%8F%8A%E5%85%B6%E4%BE%9D%E8%B3%B4%E5%8C%85%E4%B8%8B%E8%BC%89%E5%88%B0%E6%9C%AC%E5%9C%B0/100_huc03b46b7f8bda3b0ed1195c88ee7f533_13486_120x120_fill_box_smart1_3.png" 
+                        width="120"
+                        height="120" 
+                        alt="CentOS-如何將安裝包及其依賴包下載到本地"
+                        loading="lazy">
+                
+            </div>
+        
+    </a>
+</article>
+        
+            <article>
+    <a href="/p/rsyslog%E6%97%A5%E8%AA%8C%E9%81%A0%E7%AB%AF%E9%9B%86%E4%B8%AD%E5%BC%8F%E7%AE%A1%E7%90%86/">
+        <div class="article-details">
+            <h2 class="article-title">Rsyslog日誌遠端集中式管理</h2>
+            <footer class="article-time">
+                <time datetime='2022-12-21T00:00:00Z'>Dec 21, 2022</time>
+            </footer>
+        </div>
+            <div class="article-image">
+                <img src="/p/rsyslog%E6%97%A5%E8%AA%8C%E9%81%A0%E7%AB%AF%E9%9B%86%E4%B8%AD%E5%BC%8F%E7%AE%A1%E7%90%86/100_hu1acf48b62c2e007a3a704d91e9dd9674_43864_120x120_fill_box_smart1_3.png" 
+                        width="120"
+                        height="120" 
+                        alt="Rsyslog日誌遠端集中式管理"
+                        loading="lazy">
+                
+            </div>
+        
+    </a>
+</article>
+        
+            <article>
+    <a href="/p/centos7-%E4%BD%BF%E7%94%A8certbot%E5%8D%8A%E8%87%AA%E5%8B%95%E6%9B%B4%E6%96%B0ssl%E6%86%91%E8%AD%89/">
+        <div class="article-details">
+            <h2 class="article-title">CentOS7-使用certbot半自動更新SSL憑證</h2>
+            <footer class="article-time">
+                <time datetime='2022-12-10T00:00:00Z'>Dec 10, 2022</time>
+            </footer>
+        </div>
+            <div class="article-image">
+                <img src="/p/centos7-%E4%BD%BF%E7%94%A8certbot%E5%8D%8A%E8%87%AA%E5%8B%95%E6%9B%B4%E6%96%B0ssl%E6%86%91%E8%AD%89/100_huc03b46b7f8bda3b0ed1195c88ee7f533_13486_120x120_fill_box_smart1_3.png" 
+                        width="120"
+                        height="120" 
+                        alt="CentOS7-使用certbot半自動更新SSL憑證"
+                        loading="lazy">
+                
+            </div>
+        
+    </a>
+</article>
+        
+            <article>
+    <a href="/p/linux-history%E5%91%BD%E4%BB%A4%E4%BF%9D%E5%AD%98%E7%9A%84%E6%9C%80%E5%A4%A7%E6%95%B8/">
+        <div class="article-details">
+            <h2 class="article-title">Linux-history命令保存的最大數</h2>
+            <footer class="article-time">
+                <time datetime='2022-12-10T00:00:00Z'>Dec 10, 2022</time>
+            </footer>
+        </div>
+            <div class="article-image">
+                <img src="/p/linux-history%E5%91%BD%E4%BB%A4%E4%BF%9D%E5%AD%98%E7%9A%84%E6%9C%80%E5%A4%A7%E6%95%B8/100_hu1acf48b62c2e007a3a704d91e9dd9674_43864_120x120_fill_box_smart1_3.png" 
+                        width="120"
+                        height="120" 
+                        alt="Linux-history命令保存的最大數"
+                        loading="lazy">
+                
+            </div>
+        
+    </a>
+</article>
+        
+            <article>
+    <a href="/p/linux-%E4%BD%BF%E7%94%A8-ssh-%E9%85%8D%E5%90%88%E6%86%91%E8%AD%89%E4%BE%86%E9%81%A0%E7%AB%AF%E8%A4%87%E8%A3%BD%E6%AA%94%E6%A1%88-scp/">
+        <div class="article-details">
+            <h2 class="article-title">Linux-使用 SSH 配合憑證來遠端複製檔案 (scp)</h2>
+            <footer class="article-time">
+                <time datetime='2022-12-10T00:00:00Z'>Dec 10, 2022</time>
+            </footer>
+        </div>
+            <div class="article-image">
+                <img src="/p/linux-%E4%BD%BF%E7%94%A8-ssh-%E9%85%8D%E5%90%88%E6%86%91%E8%AD%89%E4%BE%86%E9%81%A0%E7%AB%AF%E8%A4%87%E8%A3%BD%E6%AA%94%E6%A1%88-scp/100_hu1acf48b62c2e007a3a704d91e9dd9674_43864_120x120_fill_box_smart1_3.png" 
+                        width="120"
+                        height="120" 
+                        alt="Linux-使用 SSH 配合憑證來遠端複製檔案 (scp)"
+                        loading="lazy">
+                
+            </div>
+        
+    </a>
+</article>
+        
+            <article>
+    <a href="/p/linux-%E5%88%A9%E7%94%A8ipset%E5%BB%BA%E7%AB%8Biptables%E9%9B%86%E5%90%88-%E5%AF%A6%E7%8F%BE%E5%B0%81%E9%8E%96%E5%9C%8B%E5%AE%B6ip/">
+        <div class="article-details">
+            <h2 class="article-title">Linux-利用ipset建立iptables集合 [實現封鎖國家IP] </h2>
+            <footer class="article-time">
+                <time datetime='2022-12-05T00:00:00Z'>Dec 05, 2022</time>
+            </footer>
+        </div>
+            <div class="article-image">
+                <img src="/p/linux-%E5%88%A9%E7%94%A8ipset%E5%BB%BA%E7%AB%8Biptables%E9%9B%86%E5%90%88-%E5%AF%A6%E7%8F%BE%E5%B0%81%E9%8E%96%E5%9C%8B%E5%AE%B6ip/100_hufccc25f98c07fbd5a07eedc8b57cae89_16682_120x120_fill_q75_box_smart1.jpg" 
+                        width="120"
+                        height="120" 
+                        alt="Linux-利用ipset建立iptables集合 [實現封鎖國家IP] "
+                        loading="lazy">
+                
+            </div>
+        
+    </a>
+</article>
+        
+            <article>
+    <a href="/p/linux-iptables-%E6%B8%85%E9%99%A4%E6%89%80%E6%9C%89%E8%A6%8F%E5%89%87/">
+        <div class="article-details">
+            <h2 class="article-title">Linux-Iptables-清除所有規則</h2>
+            <footer class="article-time">
+                <time datetime='2022-11-18T00:00:00Z'>Nov 18, 2022</time>
+            </footer>
+        </div>
+            <div class="article-image">
+                <img src="/p/linux-iptables-%E6%B8%85%E9%99%A4%E6%89%80%E6%9C%89%E8%A6%8F%E5%89%87/100_hufccc25f98c07fbd5a07eedc8b57cae89_16682_120x120_fill_q75_box_smart1.jpg" 
+                        width="120"
+                        height="120" 
+                        alt="Linux-Iptables-清除所有規則"
+                        loading="lazy">
+                
+            </div>
+        
+    </a>
+</article>
+        
+            <article>
+    <a href="/p/linux-iptables-%E7%A7%BB%E9%99%A4%E6%9F%90%E4%B8%80%E6%A2%9D%E8%A6%8F%E5%89%87/">
+        <div class="article-details">
+            <h2 class="article-title">Linux-Iptables-移除某一條規則</h2>
+            <footer class="article-time">
+                <time datetime='2022-11-18T00:00:00Z'>Nov 18, 2022</time>
+            </footer>
+        </div>
+            <div class="article-image">
+                <img src="/p/linux-iptables-%E7%A7%BB%E9%99%A4%E6%9F%90%E4%B8%80%E6%A2%9D%E8%A6%8F%E5%89%87/100_hufccc25f98c07fbd5a07eedc8b57cae89_16682_120x120_fill_q75_box_smart1.jpg" 
+                        width="120"
+                        height="120" 
+                        alt="Linux-Iptables-移除某一條規則"
+                        loading="lazy">
+                
+            </div>
+        
+    </a>
+</article>
+        
+            <article>
+    <a href="/p/linux-iptables-%E8%BD%89%E7%99%BCport/">
+        <div class="article-details">
+            <h2 class="article-title">Linux-Iptables-轉發PORT</h2>
+            <footer class="article-time">
+                <time datetime='2022-10-20T00:00:00Z'>Oct 20, 2022</time>
+            </footer>
+        </div>
+            <div class="article-image">
+                <img src="/p/linux-iptables-%E8%BD%89%E7%99%BCport/100_hufccc25f98c07fbd5a07eedc8b57cae89_16682_120x120_fill_q75_box_smart1.jpg" 
+                        width="120"
+                        height="120" 
+                        alt="Linux-Iptables-轉發PORT"
+                        loading="lazy">
+                
+            </div>
+        
+    </a>
+</article>
+        
+            <article>
+    <a href="/p/centos-%E5%95%9F%E5%8B%95%E7%B6%B2%E8%B7%AF%E6%99%82%E5%87%BA%E7%8F%BE-bring-up-interface-ip-address-is-already-in-use-for-device-eth0/">
+        <div class="article-details">
+            <h2 class="article-title">Centos-啟動網路時出現 bring up interface ip address is already in use for device eth0</h2>
+            <footer class="article-time">
+                <time datetime='2022-10-07T00:00:00Z'>Oct 07, 2022</time>
+            </footer>
+        </div>
+            <div class="article-image">
+                <img src="/p/centos-%E5%95%9F%E5%8B%95%E7%B6%B2%E8%B7%AF%E6%99%82%E5%87%BA%E7%8F%BE-bring-up-interface-ip-address-is-already-in-use-for-device-eth0/100_huc03b46b7f8bda3b0ed1195c88ee7f533_13486_120x120_fill_box_smart1_3.png" 
+                        width="120"
+                        height="120" 
+                        alt="Centos-啟動網路時出現 bring up interface ip address is already in use for device eth0"
+                        loading="lazy">
+                
+            </div>
+        
+    </a>
+</article>
+        
+            <article>
+    <a href="/p/shell-script-%E5%BB%BA%E7%AB%8B-svn-co-%E6%8E%92%E7%A8%8B%E4%B8%A6sync%E8%87%B3%E9%9B%B2%E7%AB%AF/">
+        <div class="article-details">
+            <h2 class="article-title">shell-script-建立 SVN-CO 排程並sync至雲端</h2>
+            <footer class="article-time">
+                <time datetime='2022-10-03T00:00:00Z'>Oct 03, 2022</time>
+            </footer>
+        </div>
+            <div class="article-image">
+                <img src="/p/shell-script-%E5%BB%BA%E7%AB%8B-svn-co-%E6%8E%92%E7%A8%8B%E4%B8%A6sync%E8%87%B3%E9%9B%B2%E7%AB%AF/100_hu1acf48b62c2e007a3a704d91e9dd9674_43864_120x120_fill_box_smart1_3.png" 
+                        width="120"
+                        height="120" 
+                        alt="shell-script-建立 SVN-CO 排程並sync至雲端"
+                        loading="lazy">
+                
+            </div>
+        
+    </a>
+</article>
+        
+            <article>
+    <a href="/p/centos7-%E5%85%A7%E6%A0%B83.10.0-957-iptables-%E4%BD%BF%E7%94%A8geoip%E9%81%8E%E6%BF%BE%E5%9C%8B%E5%AE%B6/">
+        <div class="article-details">
+            <h2 class="article-title">centos7 內核3.10.0-957 iptables 使用geoip過濾國家</h2>
+            <footer class="article-time">
+                <time datetime='2022-09-08T00:00:00Z'>Sep 08, 2022</time>
+            </footer>
+        </div>
+            <div class="article-image">
+                <img src="/p/centos7-%E5%85%A7%E6%A0%B83.10.0-957-iptables-%E4%BD%BF%E7%94%A8geoip%E9%81%8E%E6%BF%BE%E5%9C%8B%E5%AE%B6/100_hufccc25f98c07fbd5a07eedc8b57cae89_16682_120x120_fill_q75_box_smart1.jpg" 
+                        width="120"
+                        height="120" 
+                        alt="centos7 內核3.10.0-957 iptables 使用geoip過濾國家"
+                        loading="lazy">
+                
+            </div>
+        
+    </a>
+</article>
+        
+            <article>
+    <a href="/p/linux-iptables-%E6%B0%B8%E4%B9%85%E9%97%9C%E9%96%89%E6%8C%87%E4%BB%A4/">
+        <div class="article-details">
+            <h2 class="article-title">Linux-Iptables-永久關閉指令</h2>
+            <footer class="article-time">
+                <time datetime='2022-09-08T00:00:00Z'>Sep 08, 2022</time>
+            </footer>
+        </div>
+            <div class="article-image">
+                <img src="/p/linux-iptables-%E6%B0%B8%E4%B9%85%E9%97%9C%E9%96%89%E6%8C%87%E4%BB%A4/100_hufccc25f98c07fbd5a07eedc8b57cae89_16682_120x120_fill_q75_box_smart1.jpg" 
+                        width="120"
+                        height="120" 
+                        alt="Linux-Iptables-永久關閉指令"
+                        loading="lazy">
+                
+            </div>
+        
+    </a>
+</article>
+        
+            <article>
+    <a href="/p/centos8-%E6%89%BE%E4%B8%8D%E5%88%B0%E6%BA%90/">
+        <div class="article-details">
+            <h2 class="article-title">CentOS8-找不到源</h2>
+            <footer class="article-time">
+                <time datetime='2022-08-19T00:00:00Z'>Aug 19, 2022</time>
+            </footer>
+        </div>
+            <div class="article-image">
+                <img src="/p/centos8-%E6%89%BE%E4%B8%8D%E5%88%B0%E6%BA%90/100_huc03b46b7f8bda3b0ed1195c88ee7f533_13486_120x120_fill_box_smart1_3.png" 
+                        width="120"
+                        height="120" 
+                        alt="CentOS8-找不到源"
+                        loading="lazy">
+                
+            </div>
+        
+    </a>
+</article>
+        
+            <article>
+    <a href="/p/linux-history%E5%A2%9E%E5%8A%A0%E6%99%82%E9%96%93%E9%A1%AF%E7%A4%BA/">
+        <div class="article-details">
+            <h2 class="article-title">Linux-History增加時間顯示</h2>
+            <footer class="article-time">
+                <time datetime='2022-08-16T00:00:00Z'>Aug 16, 2022</time>
+            </footer>
+        </div>
+            <div class="article-image">
+                <img src="/p/linux-history%E5%A2%9E%E5%8A%A0%E6%99%82%E9%96%93%E9%A1%AF%E7%A4%BA/100_hu1acf48b62c2e007a3a704d91e9dd9674_43864_120x120_fill_box_smart1_3.png" 
+                        width="120"
+                        height="120" 
+                        alt="Linux-History增加時間顯示"
+                        loading="lazy">
+                
+            </div>
+        
+    </a>
+</article>
+        
+            <article>
+    <a href="/p/xenserver-%E5%AE%89%E8%A3%85%E6%95%99%E5%AD%B8/">
+        <div class="article-details">
+            <h2 class="article-title">XenServer-安装教學</h2>
+            <footer class="article-time">
+                <time datetime='2022-08-15T00:00:00Z'>Aug 15, 2022</time>
+            </footer>
+        </div>
+            <div class="article-image">
+                <img src="/p/xenserver-%E5%AE%89%E8%A3%85%E6%95%99%E5%AD%B8/100_hu442ea9164a062f86740540d4232db639_41801_120x120_fill_box_smart1_3.png" 
+                        width="120"
+                        height="120" 
+                        alt="XenServer-安装教學"
+                        loading="lazy">
+                
+            </div>
+        
+    </a>
+</article>
+        
+            <article>
+    <a href="/p/xenserver-%E9%80%8F%E9%81%8E%E8%99%9B%E6%93%AC%E6%A9%9F%E5%81%9Anfs-server/">
+        <div class="article-details">
+            <h2 class="article-title">XenServer-透過虛擬機做NFS-Server </h2>
+            <footer class="article-time">
+                <time datetime='2022-08-12T00:00:00Z'>Aug 12, 2022</time>
+            </footer>
+        </div>
+            <div class="article-image">
+                <img src="/p/xenserver-%E9%80%8F%E9%81%8E%E8%99%9B%E6%93%AC%E6%A9%9F%E5%81%9Anfs-server/100_hu442ea9164a062f86740540d4232db639_41801_120x120_fill_box_smart1_3.png" 
+                        width="120"
+                        height="120" 
+                        alt="XenServer-透過虛擬機做NFS-Server "
+                        loading="lazy">
+                
+            </div>
+        
+    </a>
+</article>
+        
+            <article>
+    <a href="/p/linux-%E7%B3%BB%E7%B5%B1%E9%87%8D%E5%95%9F-%E6%AA%A2%E8%A6%96%E6%97%A5%E8%AA%8C%E5%8F%8A%E6%AD%B7%E5%8F%B2%E7%B4%80%E9%8C%84/">
+        <div class="article-details">
+            <h2 class="article-title">Linux-系統重啟 &amp; 檢視日誌及歷史紀錄</h2>
+            <footer class="article-time">
+                <time datetime='2022-08-11T00:00:00Z'>Aug 11, 2022</time>
+            </footer>
+        </div>
+            <div class="article-image">
+                <img src="/p/linux-%E7%B3%BB%E7%B5%B1%E9%87%8D%E5%95%9F-%E6%AA%A2%E8%A6%96%E6%97%A5%E8%AA%8C%E5%8F%8A%E6%AD%B7%E5%8F%B2%E7%B4%80%E9%8C%84/100_hu1acf48b62c2e007a3a704d91e9dd9674_43864_120x120_fill_box_smart1_3.png" 
+                        width="120"
+                        height="120" 
+                        alt="Linux-系統重啟 &amp; 檢視日誌及歷史紀錄"
+                        loading="lazy">
+                
+            </div>
+        
+    </a>
+</article>
+        
+            <article>
+    <a href="/p/centos7-%E6%9B%B4%E6%94%B9yum%E6%BA%90hinet/">
+        <div class="article-details">
+            <h2 class="article-title">Centos7-更改Yum源(HiNet)</h2>
+            <footer class="article-time">
+                <time datetime='2022-08-10T00:00:00Z'>Aug 10, 2022</time>
+            </footer>
+        </div>
+            <div class="article-image">
+                <img src="/p/centos7-%E6%9B%B4%E6%94%B9yum%E6%BA%90hinet/100_huc03b46b7f8bda3b0ed1195c88ee7f533_13486_120x120_fill_box_smart1_3.png" 
+                        width="120"
+                        height="120" 
+                        alt="Centos7-更改Yum源(HiNet)"
+                        loading="lazy">
+                
+            </div>
+        
+    </a>
+</article>
+        
+            <article>
+    <a href="/p/linux-%E5%BB%BA%E7%AB%8B%E9%96%8B%E6%A9%9F%E7%95%AB%E9%9D%A2motd%E6%96%87%E5%AD%97/">
+        <div class="article-details">
+            <h2 class="article-title">Linux-建立開機畫面motd文字</h2>
+            <footer class="article-time">
+                <time datetime='2022-08-10T00:00:00Z'>Aug 10, 2022</time>
+            </footer>
+        </div>
+            <div class="article-image">
+                <img src="/p/linux-%E5%BB%BA%E7%AB%8B%E9%96%8B%E6%A9%9F%E7%95%AB%E9%9D%A2motd%E6%96%87%E5%AD%97/100_hu1acf48b62c2e007a3a704d91e9dd9674_43864_120x120_fill_box_smart1_3.png" 
+                        width="120"
+                        height="120" 
+                        alt="Linux-建立開機畫面motd文字"
+                        loading="lazy">
+                
+            </div>
+        
+    </a>
+</article>
+        
+            <article>
+    <a href="/p/centos-%E6%9B%B4%E6%94%B9%E7%B3%BB%E7%B5%B1%E8%AA%9E%E8%A8%80/">
+        <div class="article-details">
+            <h2 class="article-title">Centos-更改系統語言</h2>
+            <footer class="article-time">
+                <time datetime='2022-08-07T00:00:00Z'>Aug 07, 2022</time>
+            </footer>
+        </div>
+            <div class="article-image">
+                <img src="/p/centos-%E6%9B%B4%E6%94%B9%E7%B3%BB%E7%B5%B1%E8%AA%9E%E8%A8%80/100_huc03b46b7f8bda3b0ed1195c88ee7f533_13486_120x120_fill_box_smart1_3.png" 
+                        width="120"
+                        height="120" 
+                        alt="Centos-更改系統語言"
+                        loading="lazy">
+                
+            </div>
+        
+    </a>
+</article>
+        
+            <article>
+    <a href="/p/centos-%E5%AE%89%E8%A3%85speedtest-cli/">
+        <div class="article-details">
+            <h2 class="article-title">CentOS-安装speedtest-cli</h2>
+            <footer class="article-time">
+                <time datetime='2022-08-03T00:00:00Z'>Aug 03, 2022</time>
+            </footer>
+        </div>
+            <div class="article-image">
+                <img src="/p/centos-%E5%AE%89%E8%A3%85speedtest-cli/100_huc03b46b7f8bda3b0ed1195c88ee7f533_13486_120x120_fill_box_smart1_3.png" 
+                        width="120"
+                        height="120" 
+                        alt="CentOS-安装speedtest-cli"
+                        loading="lazy">
+                
+            </div>
+        
+    </a>
+</article>
+        
+            <article>
+    <a href="/p/centos-%E6%A0%B9%E7%9B%AE%E9%8C%84%E7%A3%81%E5%8D%80%E6%93%B4%E5%85%85/">
+        <div class="article-details">
+            <h2 class="article-title">CentOS-根目錄磁區擴充</h2>
+            <footer class="article-time">
+                <time datetime='2022-08-03T00:00:00Z'>Aug 03, 2022</time>
+            </footer>
+        </div>
+            <div class="article-image">
+                <img src="/p/centos-%E6%A0%B9%E7%9B%AE%E9%8C%84%E7%A3%81%E5%8D%80%E6%93%B4%E5%85%85/100_huc03b46b7f8bda3b0ed1195c88ee7f533_13486_120x120_fill_box_smart1_3.png" 
+                        width="120"
+                        height="120" 
+                        alt="CentOS-根目錄磁區擴充"
+                        loading="lazy">
+                
+            </div>
+        
+    </a>
+</article>
+        
+            <article>
+    <a href="/p/centos-%E7%9B%AE%E9%8C%84%E6%B2%92%E9%A1%AF%E7%A4%BA%E9%A1%8F%E8%89%B2/">
+        <div class="article-details">
+            <h2 class="article-title">CentOS-目錄沒顯示顏色</h2>
+            <footer class="article-time">
+                <time datetime='2022-08-03T00:00:00Z'>Aug 03, 2022</time>
+            </footer>
+        </div>
+            <div class="article-image">
+                <img src="/p/centos-%E7%9B%AE%E9%8C%84%E6%B2%92%E9%A1%AF%E7%A4%BA%E9%A1%8F%E8%89%B2/100_huc03b46b7f8bda3b0ed1195c88ee7f533_13486_120x120_fill_box_smart1_3.png" 
+                        width="120"
+                        height="120" 
+                        alt="CentOS-目錄沒顯示顏色"
+                        loading="lazy">
+                
+            </div>
+        
+    </a>
+</article>
+        
+            <article>
+    <a href="/p/centos6-%E4%BF%AE%E6%94%B9yum%E6%BA%90/">
+        <div class="article-details">
+            <h2 class="article-title">CentOS6-修改yum源</h2>
+            <footer class="article-time">
+                <time datetime='2022-08-03T00:00:00Z'>Aug 03, 2022</time>
+            </footer>
+        </div>
+            <div class="article-image">
+                <img src="/p/centos6-%E4%BF%AE%E6%94%B9yum%E6%BA%90/100_huc03b46b7f8bda3b0ed1195c88ee7f533_13486_120x120_fill_box_smart1_3.png" 
+                        width="120"
+                        height="120" 
+                        alt="CentOS6-修改yum源"
+                        loading="lazy">
+                
+            </div>
+        
+    </a>
+</article>
+        
+            <article>
+    <a href="/p/linux-crontab%E5%AF%A6%E7%8F%BE%E4%BB%A5%E7%A7%92%E7%82%BA%E5%96%AE%E4%BD%8D%E6%8E%92%E7%A8%8B/">
+        <div class="article-details">
+            <h2 class="article-title">Linux-Crontab實現以秒為單位排程</h2>
+            <footer class="article-time">
+                <time datetime='2022-08-03T00:00:00Z'>Aug 03, 2022</time>
+            </footer>
+        </div>
+            <div class="article-image">
+                <img src="/p/linux-crontab%E5%AF%A6%E7%8F%BE%E4%BB%A5%E7%A7%92%E7%82%BA%E5%96%AE%E4%BD%8D%E6%8E%92%E7%A8%8B/100_hu1acf48b62c2e007a3a704d91e9dd9674_43864_120x120_fill_box_smart1_3.png" 
+                        width="120"
+                        height="120" 
+                        alt="Linux-Crontab實現以秒為單位排程"
+                        loading="lazy">
+                
+            </div>
+        
+    </a>
+</article>
+        
+            <article>
+    <a href="/p/linux-iptables%E5%8F%83%E6%95%B8/">
+        <div class="article-details">
+            <h2 class="article-title">Linux-Iptables參數</h2>
+            <footer class="article-time">
+                <time datetime='2022-08-03T00:00:00Z'>Aug 03, 2022</time>
+            </footer>
+        </div>
+            <div class="article-image">
+                <img src="/p/linux-iptables%E5%8F%83%E6%95%B8/100_hufccc25f98c07fbd5a07eedc8b57cae89_16682_120x120_fill_q75_box_smart1.jpg" 
+                        width="120"
+                        height="120" 
+                        alt="Linux-Iptables參數"
+                        loading="lazy">
+                
+            </div>
+        
+    </a>
+</article>
+        
+            <article>
+    <a href="/p/linux-iptables%E5%B8%B8%E7%94%A8%E8%AA%9E%E6%B3%95/">
+        <div class="article-details">
+            <h2 class="article-title">Linux-Iptables常用語法</h2>
+            <footer class="article-time">
+                <time datetime='2022-08-03T00:00:00Z'>Aug 03, 2022</time>
+            </footer>
+        </div>
+            <div class="article-image">
+                <img src="/p/linux-iptables%E5%B8%B8%E7%94%A8%E8%AA%9E%E6%B3%95/100_hufccc25f98c07fbd5a07eedc8b57cae89_16682_120x120_fill_q75_box_smart1.jpg" 
+                        width="120"
+                        height="120" 
+                        alt="Linux-Iptables常用語法"
+                        loading="lazy">
+                
+            </div>
+        
+    </a>
+</article>
+        
+            <article>
+    <a href="/p/linux-logrotate-%E5%8F%83%E6%95%B8/">
+        <div class="article-details">
+            <h2 class="article-title">Linux-Logrotate 參數</h2>
+            <footer class="article-time">
+                <time datetime='2022-08-03T00:00:00Z'>Aug 03, 2022</time>
+            </footer>
+        </div>
+            <div class="article-image">
+                <img src="/p/linux-logrotate-%E5%8F%83%E6%95%B8/100_hu1acf48b62c2e007a3a704d91e9dd9674_43864_120x120_fill_box_smart1_3.png" 
+                        width="120"
+                        height="120" 
+                        alt="Linux-Logrotate 參數"
+                        loading="lazy">
+                
+            </div>
+        
+    </a>
+</article>
+        
+            <article>
+    <a href="/p/linux-nodejs-%E5%AE%89%E8%A3%9D/">
+        <div class="article-details">
+            <h2 class="article-title">Linux-Nodejs-安裝</h2>
+            <footer class="article-time">
+                <time datetime='2022-08-03T00:00:00Z'>Aug 03, 2022</time>
+            </footer>
+        </div>
+            <div class="article-image">
+                <img src="/p/linux-nodejs-%E5%AE%89%E8%A3%9D/100_hu1acf48b62c2e007a3a704d91e9dd9674_43864_120x120_fill_box_smart1_3.png" 
+                        width="120"
+                        height="120" 
+                        alt="Linux-Nodejs-安裝"
+                        loading="lazy">
+                
+            </div>
+        
+    </a>
+</article>
+        
+            <article>
+    <a href="/p/linux-telegraf-%E8%92%90%E9%9B%86%E8%B3%87%E6%96%99%E8%87%B3influxdb/">
+        <div class="article-details">
+            <h2 class="article-title">Linux-Telegraf-蒐集資料至InfluxDB</h2>
+            <footer class="article-time">
+                <time datetime='2022-08-03T00:00:00Z'>Aug 03, 2022</time>
+            </footer>
+        </div>
+            <div class="article-image">
+                <img src="/p/linux-telegraf-%E8%92%90%E9%9B%86%E8%B3%87%E6%96%99%E8%87%B3influxdb/100_hu1acf48b62c2e007a3a704d91e9dd9674_43864_120x120_fill_box_smart1_3.png" 
+                        width="120"
+                        height="120" 
+                        alt="Linux-Telegraf-蒐集資料至InfluxDB"
+                        loading="lazy">
+                
+            </div>
+        
+    </a>
+</article>
+        
+            <article>
+    <a href="/p/linux-vim%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/">
+        <div class="article-details">
+            <h2 class="article-title">Linux-VIM常用指令</h2>
+            <footer class="article-time">
+                <time datetime='2022-08-03T00:00:00Z'>Aug 03, 2022</time>
+            </footer>
+        </div>
+            <div class="article-image">
+                <img src="/p/linux-vim%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/100_hu1acf48b62c2e007a3a704d91e9dd9674_43864_120x120_fill_box_smart1_3.png" 
+                        width="120"
+                        height="120" 
+                        alt="Linux-VIM常用指令"
+                        loading="lazy">
+                
+            </div>
+        
+    </a>
+</article>
+        
+            <article>
+    <a href="/p/linux-%E5%88%AA%E9%99%A4%E6%AE%AD%E5%B1%8D%E7%A8%8B%E5%BA%8F/">
+        <div class="article-details">
+            <h2 class="article-title">Linux-刪除殭屍程序</h2>
+            <footer class="article-time">
+                <time datetime='2022-08-03T00:00:00Z'>Aug 03, 2022</time>
+            </footer>
+        </div>
+            <div class="article-image">
+                <img src="/p/linux-%E5%88%AA%E9%99%A4%E6%AE%AD%E5%B1%8D%E7%A8%8B%E5%BA%8F/100_hu1acf48b62c2e007a3a704d91e9dd9674_43864_120x120_fill_box_smart1_3.png" 
+                        width="120"
+                        height="120" 
+                        alt="Linux-刪除殭屍程序"
+                        loading="lazy">
+                
+            </div>
+        
+    </a>
+</article>
+        
+            <article>
+    <a href="/p/linux-%E5%AE%89%E8%A3%9Dtelegraf-agent%E5%AF%A6%E7%8F%BE%E7%9B%A3%E6%8E%A7/">
+        <div class="article-details">
+            <h2 class="article-title">Linux-安裝telegraf-agent實現監控</h2>
+            <footer class="article-time">
+                <time datetime='2022-08-03T00:00:00Z'>Aug 03, 2022</time>
+            </footer>
+        </div>
+            <div class="article-image">
+                <img src="/p/linux-%E5%AE%89%E8%A3%9Dtelegraf-agent%E5%AF%A6%E7%8F%BE%E7%9B%A3%E6%8E%A7/100_hu1acf48b62c2e007a3a704d91e9dd9674_43864_120x120_fill_box_smart1_3.png" 
+                        width="120"
+                        height="120" 
+                        alt="Linux-安裝telegraf-agent實現監控"
+                        loading="lazy">
+                
+            </div>
+        
+    </a>
+</article>
+        
+            <article>
+    <a href="/p/linux-%E6%96%B0%E5%A2%9Eswap%E8%A8%98%E6%86%B6%E9%AB%94/">
+        <div class="article-details">
+            <h2 class="article-title">Linux-新增SWAP記憶體</h2>
+            <footer class="article-time">
+                <time datetime='2022-08-03T00:00:00Z'>Aug 03, 2022</time>
+            </footer>
+        </div>
+            <div class="article-image">
+                <img src="/p/linux-%E6%96%B0%E5%A2%9Eswap%E8%A8%98%E6%86%B6%E9%AB%94/100_hu1acf48b62c2e007a3a704d91e9dd9674_43864_120x120_fill_box_smart1_3.png" 
+                        width="120"
+                        height="120" 
+                        alt="Linux-新增SWAP記憶體"
+                        loading="lazy">
+                
+            </div>
+        
+    </a>
+</article>
+        
+            <article>
+    <a href="/p/linux-%E6%9F%A5%E7%9C%8B%E7%95%B6%E5%89%8D%E6%96%87%E4%BB%B6%E7%9B%AE%E9%8C%84%E5%A4%A7%E5%B0%8F/">
+        <div class="article-details">
+            <h2 class="article-title">Linux-查看當前文件目錄大小</h2>
+            <footer class="article-time">
+                <time datetime='2022-08-03T00:00:00Z'>Aug 03, 2022</time>
+            </footer>
+        </div>
+            <div class="article-image">
+                <img src="/p/linux-%E6%9F%A5%E7%9C%8B%E7%95%B6%E5%89%8D%E6%96%87%E4%BB%B6%E7%9B%AE%E9%8C%84%E5%A4%A7%E5%B0%8F/100_hu1acf48b62c2e007a3a704d91e9dd9674_43864_120x120_fill_box_smart1_3.png" 
+                        width="120"
+                        height="120" 
+                        alt="Linux-查看當前文件目錄大小"
+                        loading="lazy">
+                
+            </div>
+        
+    </a>
+</article>
+        
+            <article>
+    <a href="/p/linux-%E6%A9%9F%E5%99%A8%E7%99%BB%E5%85%A5%E4%BA%8C%E9%9A%8E%E6%AE%B5%E8%AA%8D%E8%AD%89mfa/">
+        <div class="article-details">
+            <h2 class="article-title">Linux-機器登入二階段認證MFA</h2>
+            <footer class="article-time">
+                <time datetime='2022-08-03T00:00:00Z'>Aug 03, 2022</time>
+            </footer>
+        </div>
+            <div class="article-image">
+                <img src="/p/linux-%E6%A9%9F%E5%99%A8%E7%99%BB%E5%85%A5%E4%BA%8C%E9%9A%8E%E6%AE%B5%E8%AA%8D%E8%AD%89mfa/100_hu1acf48b62c2e007a3a704d91e9dd9674_43864_120x120_fill_box_smart1_3.png" 
+                        width="120"
+                        height="120" 
+                        alt="Linux-機器登入二階段認證MFA"
+                        loading="lazy">
+                
+            </div>
+        
+    </a>
+</article>
+        
+            <article>
+    <a href="/p/linux-%E8%A8%AD%E5%AE%9Alogrotate-%E8%BC%AA%E8%A9%A2/">
+        <div class="article-details">
+            <h2 class="article-title">Linux-設定logrotate 輪詢</h2>
+            <footer class="article-time">
+                <time datetime='2022-08-03T00:00:00Z'>Aug 03, 2022</time>
+            </footer>
+        </div>
+            <div class="article-image">
+                <img src="/p/linux-%E8%A8%AD%E5%AE%9Alogrotate-%E8%BC%AA%E8%A9%A2/100_hu1acf48b62c2e007a3a704d91e9dd9674_43864_120x120_fill_box_smart1_3.png" 
+                        width="120"
+                        height="120" 
+                        alt="Linux-設定logrotate 輪詢"
+                        loading="lazy">
+                
+            </div>
+        
+    </a>
+</article>
+        
+            <article>
+    <a href="/p/shell-script-%E5%81%B5%E6%B8%ACtelegraf%E6%9C%8D%E5%8B%99/">
+        <div class="article-details">
+            <h2 class="article-title">shell script-偵測telegraf服務</h2>
+            <footer class="article-time">
+                <time datetime='2022-08-03T00:00:00Z'>Aug 03, 2022</time>
+            </footer>
+        </div>
+            <div class="article-image">
+                <img src="/p/shell-script-%E5%81%B5%E6%B8%ACtelegraf%E6%9C%8D%E5%8B%99/100_hu1acf48b62c2e007a3a704d91e9dd9674_43864_120x120_fill_box_smart1_3.png" 
+                        width="120"
+                        height="120" 
+                        alt="shell script-偵測telegraf服務"
+                        loading="lazy">
+                
+            </div>
+        
+    </a>
+</article>
+        
+            <article>
+    <a href="/p/shell-script-%E6%8A%93youtube%E5%BD%B1%E7%89%87%E8%85%B3%E6%9C%AC/">
+        <div class="article-details">
+            <h2 class="article-title">shell script-抓youtube影片腳本</h2>
+            <footer class="article-time">
+                <time datetime='2022-08-03T00:00:00Z'>Aug 03, 2022</time>
+            </footer>
+        </div>
+            <div class="article-image">
+                <img src="/p/shell-script-%E6%8A%93youtube%E5%BD%B1%E7%89%87%E8%85%B3%E6%9C%AC/100_hu1acf48b62c2e007a3a704d91e9dd9674_43864_120x120_fill_box_smart1_3.png" 
+                        width="120"
+                        height="120" 
+                        alt="shell script-抓youtube影片腳本"
+                        loading="lazy">
+                
+            </div>
+        
+    </a>
+</article>
+        
+            <article>
+    <a href="/p/shell-script-%E6%96%B0%E5%A2%9E%E4%BD%BF%E7%94%A8%E8%80%85/">
+        <div class="article-details">
+            <h2 class="article-title">shell script-新增使用者</h2>
+            <footer class="article-time">
+                <time datetime='2022-08-03T00:00:00Z'>Aug 03, 2022</time>
+            </footer>
+        </div>
+            <div class="article-image">
+                <img src="/p/shell-script-%E6%96%B0%E5%A2%9E%E4%BD%BF%E7%94%A8%E8%80%85/100_hu1acf48b62c2e007a3a704d91e9dd9674_43864_120x120_fill_box_smart1_3.png" 
+                        width="120"
+                        height="120" 
+                        alt="shell script-新增使用者"
+                        loading="lazy">
+                
+            </div>
+        
+    </a>
+</article>
+        
+            <article>
+    <a href="/p/shell-script-%E6%B8%85%E9%99%A4%E5%85%A7%E9%83%A8%E8%A7%A3%E6%9E%90%E6%9A%AB%E5%AD%98/">
+        <div class="article-details">
+            <h2 class="article-title">shell script-清除內部解析暫存</h2>
+            <footer class="article-time">
+                <time datetime='2022-08-03T00:00:00Z'>Aug 03, 2022</time>
+            </footer>
+        </div>
+            <div class="article-image">
+                <img src="/p/shell-script-%E6%B8%85%E9%99%A4%E5%85%A7%E9%83%A8%E8%A7%A3%E6%9E%90%E6%9A%AB%E5%AD%98/100_hu1acf48b62c2e007a3a704d91e9dd9674_43864_120x120_fill_box_smart1_3.png" 
+                        width="120"
+                        height="120" 
+                        alt="shell script-清除內部解析暫存"
+                        loading="lazy">
+                
+            </div>
+        
+    </a>
+</article>
+        
+            <article>
+    <a href="/p/shell-script-%E5%81%B5%E6%B8%AC-mysql-%E6%9C%8D%E5%8B%99%E6%98%AF%E5%90%A6%E6%AD%A3%E5%B8%B8%E9%81%8B%E4%BD%9C/">
+        <div class="article-details">
+            <h2 class="article-title">shell-script-偵測 mysql 服務是否正常運作</h2>
+            <footer class="article-time">
+                <time datetime='2022-08-03T00:00:00Z'>Aug 03, 2022</time>
+            </footer>
+        </div>
+            <div class="article-image">
+                <img src="/p/shell-script-%E5%81%B5%E6%B8%AC-mysql-%E6%9C%8D%E5%8B%99%E6%98%AF%E5%90%A6%E6%AD%A3%E5%B8%B8%E9%81%8B%E4%BD%9C/100_hu1acf48b62c2e007a3a704d91e9dd9674_43864_120x120_fill_box_smart1_3.png" 
+                        width="120"
+                        height="120" 
+                        alt="shell-script-偵測 mysql 服務是否正常運作"
+                        loading="lazy">
+                
+            </div>
+        
+    </a>
+</article>
+        
+            <article>
+    <a href="/p/xenserver-%E6%93%B4%E5%85%85root%E7%A3%81%E5%8D%80/">
+        <div class="article-details">
+            <h2 class="article-title">XenServer-擴充root磁區</h2>
+            <footer class="article-time">
+                <time datetime='2022-08-03T00:00:00Z'>Aug 03, 2022</time>
+            </footer>
+        </div>
+            <div class="article-image">
+                <img src="/p/xenserver-%E6%93%B4%E5%85%85root%E7%A3%81%E5%8D%80/100_hu442ea9164a062f86740540d4232db639_41801_120x120_fill_box_smart1_3.png" 
+                        width="120"
+                        height="120" 
+                        alt="XenServer-擴充root磁區"
+                        loading="lazy">
+                
+            </div>
+        
+    </a>
+</article>
+        
+            <article>
+    <a href="/p/xenserver-%E7%84%A1%E6%B3%95%E5%82%B3iso%E6%98%A0%E5%83%8F%E6%AA%94/">
+        <div class="article-details">
+            <h2 class="article-title">XenServer-無法傳ISO映像檔</h2>
+            <footer class="article-time">
+                <time datetime='2022-08-03T00:00:00Z'>Aug 03, 2022</time>
+            </footer>
+        </div>
+            <div class="article-image">
+                <img src="/p/xenserver-%E7%84%A1%E6%B3%95%E5%82%B3iso%E6%98%A0%E5%83%8F%E6%AA%94/100_hu442ea9164a062f86740540d4232db639_41801_120x120_fill_box_smart1_3.png" 
+                        width="120"
+                        height="120" 
+                        alt="XenServer-無法傳ISO映像檔"
+                        loading="lazy">
+                
+            </div>
+        
+    </a>
+</article>
+        
+    </section>
+<footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2022 - 
+        
+        2023 Laurance&#39;s Note
+    </section>
+    
+    <section class="powerby">
+        
+            All rights reserved <br/>
+        
+
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        
+    </section>
+</footer>
+
+<span id="busuanzi_container_site_pv">
+    總瀏覽  <span id="busuanzi_value_site_pv"></span>  次
+</span>
+
+
+            </main>
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                <form action="/search/" class="search-form widget" >
+        <p>
+            <label>Search</label>
+            <input name="keyword" required placeholder="Type something..." />
+        
+            <button title="Search">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+            </button>
+        </p>
+    </form>
+            
+        
+            
+                <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-infinity" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M9.828 9.172a4 4 0 1 0 0 5.656 a10 10 0 0 0 2.172 -2.828a10 10 0 0 1 2.172 -2.828 a4 4 0 1 1 0 5.656a10 10 0 0 1 -2.172 -2.828a10 10 0 0 0 -2.172 -2.828" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Archives</h2>
+
+        
+        
+        
+        
+        
+        <div class="widget-archive--list">
+            <div class="archives-year">
+                    <a href="/archives/#2023">
+                        
+                            <span class="year">2023</span>
+                            <span class="count">35</span>
+                        
+                    </a> 
+                </div>
+            <div class="archives-year">
+                    <a href="/archives/#2022">
+                        
+                            <span class="year">2022</span>
+                            <span class="count">184</span>
+                        
+                    </a> 
+                </div>
+            <div class="archives-year">
+                    <a href="/archives/#2020">
+                        
+                            <span class="year">2020</span>
+                            <span class="count">1</span>
+                        
+                    </a> 
+                </div>
+            <div class="archives-year">
+                    <a href="/archives/#2019">
+                        
+                            <span class="year">2019</span>
+                            <span class="count">5</span>
+                        
+                    </a> 
+                </div>
+            
+        </div>
+    </section>
+            
+        
+            
+                <section class="widget tagCloud">
+    <div class="widget-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-tag" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11 3L20 12a1.5 1.5 0 0 1 0 2L14 20a1.5 1.5 0 0 1 -2 0L3 11v-4a4 4 0 0 1 4 -4h4" />
+  <circle cx="9" cy="9" r="2" />
+</svg>
+
+
+
+    </div>
+    <h2 class="widget-title section-title">Tags</h2>
+
+    <div class="tagCloud-tags">
+        
+            <a href="/tags/mysql/" class="font_size_15">
+                MySQL
+            </a>
+        
+            <a href="/tags/aws/" class="font_size_14">
+                AWS
+            </a>
+        
+            <a href="/tags/nginx/" class="font_size_14">
+                Nginx
+            </a>
+        
+            <a href="/tags/centos/" class="font_size_11">
+                CentOS
+            </a>
+        
+            <a href="/tags/grafana/" class="font_size_11">
+                Grafana
+            </a>
+        
+            <a href="/tags/kubernetes/" class="font_size_11">
+                Kubernetes
+            </a>
+        
+            <a href="/tags/linux/" class="font_size_9">
+                Linux
+            </a>
+        
+            <a href="/tags/gcp/" class="font_size_8">
+                GCP
+            </a>
+        
+            <a href="/tags/iptables/" class="font_size_8">
+                Iptables
+            </a>
+        
+            <a href="/tags/php/" class="font_size_8">
+                PHP
+            </a>
+        
+            <a href="/tags/svn/" class="font_size_8">
+                SVN
+            </a>
+        
+            <a href="/tags/windows/" class="font_size_7">
+                Windows
+            </a>
+        
+            <a href="/tags/docker/" class="font_size_6">
+                Docker
+            </a>
+        
+            <a href="/tags/mongodb/" class="font_size_6">
+                Mongodb
+            </a>
+        
+            <a href="/tags/redis/" class="font_size_6">
+                Redis
+            </a>
+        
+            <a href="/tags/shell-script/" class="font_size_6">
+                shell script
+            </a>
+        
+            <a href="/tags/influxdb/" class="font_size_5">
+                influxdb
+            </a>
+        
+            <a href="/tags/telegraf/" class="font_size_5">
+                telegraf
+            </a>
+        
+            <a href="/tags/xencenter/" class="font_size_5">
+                XenCenter
+            </a>
+        
+            <a href="/tags/fortigate/" class="font_size_4">
+                FortiGate
+            </a>
+        
+            <a href="/tags/cacti/" class="font_size_3">
+                Cacti
+            </a>
+        
+            <a href="/tags/debian/" class="font_size_3">
+                Debian
+            </a>
+        
+            <a href="/tags/dns/" class="font_size_3">
+                DNS
+            </a>
+        
+            <a href="/tags/loki/" class="font_size_3">
+                Loki
+            </a>
+        
+            <a href="/tags/memcache/" class="font_size_3">
+                Memcache
+            </a>
+        
+            <a href="/tags/promtail/" class="font_size_3">
+                Promtail
+            </a>
+        
+            <a href="/tags/rclone/" class="font_size_3">
+                rclone
+            </a>
+        
+            <a href="/tags/apache/" class="font_size_2">
+                Apache
+            </a>
+        
+            <a href="/tags/git/" class="font_size_2">
+                GIT
+            </a>
+        
+            <a href="/tags/logrotate/" class="font_size_2">
+                Logrotate
+            </a>
+        
+            <a href="/tags/postgresql/" class="font_size_2">
+                Postgresql
+            </a>
+        
+            <a href="/tags/prometheus/" class="font_size_2">
+                Prometheus
+            </a>
+        
+            <a href="/tags/rsync/" class="font_size_2">
+                rsync
+            </a>
+        
+            <a href="/tags/xshell/" class="font_size_2">
+                Xshell
+            </a>
+        
+            <a href="/tags/youtube-dl/" class="font_size_2">
+                youtube-dl
+            </a>
+        
+            <a href="/tags/crontab/" class="font_size_1">
+                Crontab
+            </a>
+        
+            <a href="/tags/exporter/" class="font_size_1">
+                exporter
+            </a>
+        
+            <a href="/tags/ffmpeg/" class="font_size_1">
+                FFmpeg
+            </a>
+        
+            <a href="/tags/firebase/" class="font_size_1">
+                Firebase
+            </a>
+        
+            <a href="/tags/haproxy/" class="font_size_1">
+                Haproxy
+            </a>
+        
+    </div>
+</section>
+            
+        
+    </aside>
+
+
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

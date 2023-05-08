@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='PMA 下載 PMA 安裝包 wget https://files.phpmyadmin.net/phpMyAdmin/4.9.10/phpMyAdmin-3.4.9-all-languages.tar.gz tar zxvf phpMyAdmin-3.4.9-all-languages.tar.gz cp -Rf phpMyAdmin-3.4.9-all-languages /home/phpMyAdmin cd /home/phpMyAdmin cp config.sample.inc.php config.inc.php 編輯 PMA 設定檔 [ 實測不能單台多套] vim config.inc.php &amp;lt;?php /* vim: set expandtab sw=4 ts=4 sts=4: */ /** * phpMyAdmin sample configuration, you can use it as base for * manual configuration. For easier setup you can use setup/'><title>PMA-環境安裝</title>
+
+<link rel='canonical' href='https://note.laurance.ml/p/pma-%E7%92%B0%E5%A2%83%E5%AE%89%E8%A3%9D/'>
+
+<link rel="stylesheet" href="/scss/style.min.ac77dcf8b111b51da39a92990f431923f210f3876d85798a2125667f96dc33a4.css"><meta property='og:title' content='PMA-環境安裝'>
+<meta property='og:description' content='PMA 下載 PMA 安裝包 wget https://files.phpmyadmin.net/phpMyAdmin/4.9.10/phpMyAdmin-3.4.9-all-languages.tar.gz tar zxvf phpMyAdmin-3.4.9-all-languages.tar.gz cp -Rf phpMyAdmin-3.4.9-all-languages /home/phpMyAdmin cd /home/phpMyAdmin cp config.sample.inc.php config.inc.php 編輯 PMA 設定檔 [ 實測不能單台多套] vim config.inc.php &amp;lt;?php /* vim: set expandtab sw=4 ts=4 sts=4: */ /** * phpMyAdmin sample configuration, you can use it as base for * manual configuration. For easier setup you can use setup/'>
+<meta property='og:url' content='https://note.laurance.ml/p/pma-%E7%92%B0%E5%A2%83%E5%AE%89%E8%A3%9D/'>
+<meta property='og:site_name' content='Laurance&#39;s Note'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='PMA' /><meta property='article:published_time' content='2022-11-22T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2022-11-22T00:00:00&#43;00:00'/><meta property='og:image' content='https://note.laurance.ml/p/pma-%E7%92%B0%E5%A2%83%E5%AE%89%E8%A3%9D/100.png' />
+<meta name="twitter:title" content="PMA-環境安裝">
+<meta name="twitter:description" content="PMA 下載 PMA 安裝包 wget https://files.phpmyadmin.net/phpMyAdmin/4.9.10/phpMyAdmin-3.4.9-all-languages.tar.gz tar zxvf phpMyAdmin-3.4.9-all-languages.tar.gz cp -Rf phpMyAdmin-3.4.9-all-languages /home/phpMyAdmin cd /home/phpMyAdmin cp config.sample.inc.php config.inc.php 編輯 PMA 設定檔 [ 實測不能單台多套] vim config.inc.php &amp;lt;?php /* vim: set expandtab sw=4 ts=4 sts=4: */ /** * phpMyAdmin sample configuration, you can use it as base for * manual configuration. For easier setup you can use setup/"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://note.laurance.ml/p/pma-%E7%92%B0%E5%A2%83%E5%AE%89%E8%A3%9D/100.png' />
+    <link rel="shortcut icon" href="static/favicon.ico" />
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Live2D 看板娘 / Demo</title>
+</head>
+<body>
+<script src="https://cdn.jsdelivr.net/gh/dingbangli/live2d-widget@latest/autoload.js"></script>
+</body>
+</html>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu49eacb73e01f91348578131d7e8658f5_11993_300x0_resize_box_3.png" width="300"
+                            height="301" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🍥</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Laurance&#39;s Note</a></h1>
+            <h2 class="site-description">筆記 記錄美好生活
+</h2>
+        </div>
+    </header><ol class="menu" id="main-menu">
+        
+        
+        
+
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/about/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/links/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>Links</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+            
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>Dark Mode</span>
+                </li>
+            
+        </div>
+    </ol>
+</aside>
+<main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/pma-%E7%92%B0%E5%A2%83%E5%AE%89%E8%A3%9D/">
+                <img src="/p/pma-%E7%92%B0%E5%A2%83%E5%AE%89%E8%A3%9D/100_hu4c5fb71db444766758acf084cd136252_57405_800x0_resize_box_3.png"
+                        srcset="/p/pma-%E7%92%B0%E5%A2%83%E5%AE%89%E8%A3%9D/100_hu4c5fb71db444766758acf084cd136252_57405_800x0_resize_box_3.png 800w, /p/pma-%E7%92%B0%E5%A2%83%E5%AE%89%E8%A3%9D/100_hu4c5fb71db444766758acf084cd136252_57405_1600x0_resize_box_3.png 1600w"
+                        width="800" 
+                        height="260" 
+                        loading="lazy"
+                        alt="Featured image of post PMA-環境安裝" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/pma/" >
+                PMA
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/pma-%E7%92%B0%E5%A2%83%E5%AE%89%E8%A3%9D/">PMA-環境安裝</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Nov 22, 2022</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    3 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+</header>
+
+    <section class="article-content">
+    
+    
+    <p><em><strong>PMA</strong></em></p>
+<p>下載 PMA 安裝包</p>
+<pre><code>wget https://files.phpmyadmin.net/phpMyAdmin/4.9.10/phpMyAdmin-3.4.9-all-languages.tar.gz
+
+tar zxvf phpMyAdmin-3.4.9-all-languages.tar.gz
+
+cp -Rf phpMyAdmin-3.4.9-all-languages /home/phpMyAdmin
+
+cd /home/phpMyAdmin
+
+cp config.sample.inc.php config.inc.php
+</code></pre>
+<p>編輯 PMA 設定檔   [ 實測不能單台多套]</p>
+<pre><code>vim config.inc.php
+</code></pre>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="o">&lt;?</span><span class="nx">php</span>
+</span></span><span class="line"><span class="cl"><span class="cm">/* vim: set expandtab sw=4 ts=4 sts=4: */</span>
+</span></span><span class="line"><span class="cl"><span class="sd">/**
+</span></span></span><span class="line"><span class="cl"><span class="sd"> * phpMyAdmin sample configuration, you can use it as base for
+</span></span></span><span class="line"><span class="cl"><span class="sd"> * manual configuration. For easier setup you can use setup/
+</span></span></span><span class="line"><span class="cl"><span class="sd"> *
+</span></span></span><span class="line"><span class="cl"><span class="sd"> * All directives are explained in documentation in the doc/ folder
+</span></span></span><span class="line"><span class="cl"><span class="sd"> * or at &lt;https://docs.phpmyadmin.net/&gt;.
+</span></span></span><span class="line"><span class="cl"><span class="sd"> *
+</span></span></span><span class="line"><span class="cl"><span class="sd"> * @package PhpMyAdmin
+</span></span></span><span class="line"><span class="cl"><span class="sd"> */</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="sd">/**
+</span></span></span><span class="line"><span class="cl"><span class="sd"> * This is needed for cookie based authentication to encrypt password in
+</span></span></span><span class="line"><span class="cl"><span class="sd"> * cookie. Needs to be 32 chars long.
+</span></span></span><span class="line"><span class="cl"><span class="sd"> */</span>
+</span></span><span class="line"><span class="cl"><span class="c1">//$cfg[&#39;blowfish_secret&#39;] = &#39;3d21cb29984ee1ebccec07d650032&#39;; /* YOU MUST FILL IN THIS FOR COOKIE AUTH! */
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="c1">//$cfg[&#39;blowfish_secret&#39;] = &#39;&#39;;
+</span></span></span><span class="line"><span class="cl"><span class="c1">//$cfg[&#39;UploadDir&#39;] = &#39;&#39;;
+</span></span></span><span class="line"><span class="cl"><span class="c1">//$cfg[&#39;SaveDir&#39;] = &#39;&#39;;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="nv">$cfg</span><span class="p">[</span><span class="s1">&#39;blowfish_secret&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;laurance&#39;</span><span class="p">;</span> <span class="cm">/* YOU MUST FILL IN THIS FOR COOKIE AUTH! */</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$cfg</span><span class="p">[</span><span class="s1">&#39;PmaAbsoluteUri&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;http://phpmyadmin.project.orz/&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$cfg</span><span class="p">[</span><span class="s1">&#39;UploadDir&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$cfg</span><span class="p">[</span><span class="s1">&#39;SaveDir&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="sd">/**
+</span></span></span><span class="line"><span class="cl"><span class="sd"> * Servers configuration
+</span></span></span><span class="line"><span class="cl"><span class="sd"> */</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="sd">/**
+</span></span></span><span class="line"><span class="cl"><span class="sd"> * First server
+</span></span></span><span class="line"><span class="cl"><span class="sd"> */</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">//----------------------------------------------------------------------- pma/pma
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nv">$i</span><span class="o">++</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="cm">/* Authentication type */</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$cfg</span><span class="p">[</span><span class="s1">&#39;Servers&#39;</span><span class="p">][</span><span class="nv">$i</span><span class="p">][</span><span class="s1">&#39;auth_type&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;http&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$cfg</span><span class="p">[</span><span class="s1">&#39;Servers&#39;</span><span class="p">][</span><span class="nv">$i</span><span class="p">][</span><span class="s1">&#39;host&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;172.16.0.222&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$cfg</span><span class="p">[</span><span class="s1">&#39;Servers&#39;</span><span class="p">][</span><span class="nv">$i</span><span class="p">][</span><span class="s1">&#39;port&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;3306&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$cfg</span><span class="p">[</span><span class="s1">&#39;Servers&#39;</span><span class="p">][</span><span class="nv">$i</span><span class="p">][</span><span class="s1">&#39;user&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$cfg</span><span class="p">[</span><span class="s1">&#39;Servers&#39;</span><span class="p">][</span><span class="nv">$i</span><span class="p">][</span><span class="s1">&#39;password&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$cfg</span><span class="p">[</span><span class="s1">&#39;Servers&#39;</span><span class="p">][</span><span class="nv">$i</span><span class="p">][</span><span class="s1">&#39;extension&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;mysqli&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$cfg</span><span class="p">[</span><span class="s1">&#39;Servers&#39;</span><span class="p">][</span><span class="nv">$i</span><span class="p">][</span><span class="s1">&#39;compress&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="k">false</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$cfg</span><span class="p">[</span><span class="s1">&#39;Servers&#39;</span><span class="p">][</span><span class="nv">$i</span><span class="p">][</span><span class="s1">&#39;AllowNoPassword&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="k">true</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="cm">/* Advanced phpMyAdmin features */</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$cfg</span><span class="p">[</span><span class="s1">&#39;Servers&#39;</span><span class="p">][</span><span class="nv">$i</span><span class="p">][</span><span class="s1">&#39;pmadb&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$cfg</span><span class="p">[</span><span class="s1">&#39;Servers&#39;</span><span class="p">][</span><span class="nv">$i</span><span class="p">][</span><span class="s1">&#39;bookmarktable&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$cfg</span><span class="p">[</span><span class="s1">&#39;Servers&#39;</span><span class="p">][</span><span class="nv">$i</span><span class="p">][</span><span class="s1">&#39;relation&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$cfg</span><span class="p">[</span><span class="s1">&#39;Servers&#39;</span><span class="p">][</span><span class="nv">$i</span><span class="p">][</span><span class="s1">&#39;table_info&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$cfg</span><span class="p">[</span><span class="s1">&#39;Servers&#39;</span><span class="p">][</span><span class="nv">$i</span><span class="p">][</span><span class="s1">&#39;table_coords&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$cfg</span><span class="p">[</span><span class="s1">&#39;Servers&#39;</span><span class="p">][</span><span class="nv">$i</span><span class="p">][</span><span class="s1">&#39;pdf_pages&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$cfg</span><span class="p">[</span><span class="s1">&#39;Servers&#39;</span><span class="p">][</span><span class="nv">$i</span><span class="p">][</span><span class="s1">&#39;column_info&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$cfg</span><span class="p">[</span><span class="s1">&#39;Servers&#39;</span><span class="p">][</span><span class="nv">$i</span><span class="p">][</span><span class="s1">&#39;history&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$cfg</span><span class="p">[</span><span class="s1">&#39;Servers&#39;</span><span class="p">][</span><span class="nv">$i</span><span class="p">][</span><span class="s1">&#39;designer_coords&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$cfg</span><span class="p">[</span><span class="s1">&#39;Servers&#39;</span><span class="p">][</span><span class="nv">$i</span><span class="p">][</span><span class="s1">&#39;tracking&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="c1">//----------------------------------------------------------------------- pmas/pmas
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="cm">/* Server parameters */</span>
+</span></span><span class="line"><span class="cl"><span class="c1">//$cfg[&#39;Servers&#39;][$i][&#39;auth_type&#39;] = &#39;http&#39;;
+</span></span></span><span class="line"><span class="cl"><span class="c1">//$cfg[&#39;Servers&#39;][$i][&#39;host&#39;] = &#39;172.16.0.222&#39;;
+</span></span></span><span class="line"><span class="cl"><span class="c1">//$cfg[&#39;Servers&#39;][$i][&#39;port&#39;] = &#39;3307&#39;;
+</span></span></span><span class="line"><span class="cl"><span class="c1">//$cfg[&#39;Servers&#39;][$i][&#39;user&#39;] = &#39;&#39;;
+</span></span></span><span class="line"><span class="cl"><span class="c1">//$cfg[&#39;Servers&#39;][$i][&#39;password&#39;] = &#39;&#39;;
+</span></span></span><span class="line"><span class="cl"><span class="c1">//$cfg[&#39;Servers&#39;][$i][&#39;extension&#39;] = &#39;mysqli&#39;;
+</span></span></span><span class="line"><span class="cl"><span class="c1">//$cfg[&#39;Servers&#39;][$i][&#39;compress&#39;] = false;
+</span></span></span><span class="line"><span class="cl"><span class="c1">//$cfg[&#39;Servers&#39;][$i][&#39;AllowNoPassword&#39;] = true;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="cm">/* Advanced phpMyAdmin features */</span>
+</span></span><span class="line"><span class="cl"><span class="c1">//$cfg[&#39;Servers&#39;][$i][&#39;pmadb&#39;] = &#39;&#39;;
+</span></span></span><span class="line"><span class="cl"><span class="c1">//$cfg[&#39;Servers&#39;][$i][&#39;bookmarktable&#39;] = &#39;&#39;;
+</span></span></span><span class="line"><span class="cl"><span class="c1">//$cfg[&#39;Servers&#39;][$i][&#39;relation&#39;] = &#39;&#39;;
+</span></span></span><span class="line"><span class="cl"><span class="c1">//$cfg[&#39;Servers&#39;][$i][&#39;table_info&#39;] = &#39;&#39;;
+</span></span></span><span class="line"><span class="cl"><span class="c1">//$cfg[&#39;Servers&#39;][$i][&#39;table_coords&#39;] = &#39;&#39;;
+</span></span></span><span class="line"><span class="cl"><span class="c1">//$cfg[&#39;Servers&#39;][$i][&#39;pdf_pages&#39;] = &#39;&#39;;
+</span></span></span><span class="line"><span class="cl"><span class="c1">//$cfg[&#39;Servers&#39;][$i][&#39;column_info&#39;] = &#39;&#39;;
+</span></span></span><span class="line"><span class="cl"><span class="c1">//$cfg[&#39;Servers&#39;][$i][&#39;history&#39;] = &#39;&#39;;
+</span></span></span><span class="line"><span class="cl"><span class="c1">//$cfg[&#39;Servers&#39;][$i][&#39;designer_coords&#39;] = &#39;&#39;;
+</span></span></span><span class="line"><span class="cl"><span class="c1">//$cfg[&#39;Servers&#39;][$i][&#39;tracking&#39;] = &#39;&#39;;
+</span></span></span><span class="line"><span class="cl"><span class="c1">//-----------------------------------------------------------------------
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="sd">/**
+</span></span></span><span class="line"><span class="cl"><span class="sd"> * phpMyAdmin configuration storage settings.
+</span></span></span><span class="line"><span class="cl"><span class="sd"> */</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="cm">/* User used to manipulate with storage */</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// $cfg[&#39;Servers&#39;][$i][&#39;controlhost&#39;] = &#39;&#39;;
+</span></span></span><span class="line"><span class="cl"><span class="c1">// $cfg[&#39;Servers&#39;][$i][&#39;controlport&#39;] = &#39;&#39;;
+</span></span></span><span class="line"><span class="cl"><span class="c1">// $cfg[&#39;Servers&#39;][$i][&#39;controluser&#39;] = &#39;pma&#39;;
+</span></span></span><span class="line"><span class="cl"><span class="c1">// $cfg[&#39;Servers&#39;][$i][&#39;controlpass&#39;] = &#39;pmapass&#39;;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="cm">/* Storage database and tables */</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// $cfg[&#39;Servers&#39;][$i][&#39;pmadb&#39;] = &#39;phpmyadmin&#39;;
+</span></span></span><span class="line"><span class="cl"><span class="c1">// $cfg[&#39;Servers&#39;][$i][&#39;bookmarktable&#39;] = &#39;pma__bookmark&#39;;
+</span></span></span><span class="line"><span class="cl"><span class="c1">// $cfg[&#39;Servers&#39;][$i][&#39;relation&#39;] = &#39;pma__relation&#39;;
+</span></span></span><span class="line"><span class="cl"><span class="c1">// $cfg[&#39;Servers&#39;][$i][&#39;table_info&#39;] = &#39;pma__table_info&#39;;
+</span></span></span><span class="line"><span class="cl"><span class="c1">// $cfg[&#39;Servers&#39;][$i][&#39;table_coords&#39;] = &#39;pma__table_coords&#39;;
+</span></span></span><span class="line"><span class="cl"><span class="c1">// $cfg[&#39;Servers&#39;][$i][&#39;pdf_pages&#39;] = &#39;pma__pdf_pages&#39;;
+</span></span></span><span class="line"><span class="cl"><span class="c1">// $cfg[&#39;Servers&#39;][$i][&#39;column_info&#39;] = &#39;pma__column_info&#39;;
+</span></span></span><span class="line"><span class="cl"><span class="c1">// $cfg[&#39;Servers&#39;][$i][&#39;history&#39;] = &#39;pma__history&#39;;
+</span></span></span><span class="line"><span class="cl"><span class="c1">// $cfg[&#39;Servers&#39;][$i][&#39;table_uiprefs&#39;] = &#39;pma__table_uiprefs&#39;;
+</span></span></span><span class="line"><span class="cl"><span class="c1">// $cfg[&#39;Servers&#39;][$i][&#39;tracking&#39;] = &#39;pma__tracking&#39;;
+</span></span></span><span class="line"><span class="cl"><span class="c1">// $cfg[&#39;Servers&#39;][$i][&#39;userconfig&#39;] = &#39;pma__userconfig&#39;;
+</span></span></span><span class="line"><span class="cl"><span class="c1">// $cfg[&#39;Servers&#39;][$i][&#39;recent&#39;] = &#39;pma__recent&#39;;
+</span></span></span><span class="line"><span class="cl"><span class="c1">// $cfg[&#39;Servers&#39;][$i][&#39;favorite&#39;] = &#39;pma__favorite&#39;;
+</span></span></span><span class="line"><span class="cl"><span class="c1">// $cfg[&#39;Servers&#39;][$i][&#39;users&#39;] = &#39;pma__users&#39;;
+</span></span></span><span class="line"><span class="cl"><span class="c1">// $cfg[&#39;Servers&#39;][$i][&#39;usergroups&#39;] = &#39;pma__usergroups&#39;;
+</span></span></span><span class="line"><span class="cl"><span class="c1">// $cfg[&#39;Servers&#39;][$i][&#39;navigationhiding&#39;] = &#39;pma__navigationhiding&#39;;
+</span></span></span><span class="line"><span class="cl"><span class="c1">// $cfg[&#39;Servers&#39;][$i][&#39;savedsearches&#39;] = &#39;pma__savedsearches&#39;;
+</span></span></span><span class="line"><span class="cl"><span class="c1">// $cfg[&#39;Servers&#39;][$i][&#39;central_columns&#39;] = &#39;pma__central_columns&#39;;
+</span></span></span><span class="line"><span class="cl"><span class="c1">// $cfg[&#39;Servers&#39;][$i][&#39;designer_settings&#39;] = &#39;pma__designer_settings&#39;;
+</span></span></span><span class="line"><span class="cl"><span class="c1">// $cfg[&#39;Servers&#39;][$i][&#39;export_templates&#39;] = &#39;pma__export_templates&#39;;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="sd">/**
+</span></span></span><span class="line"><span class="cl"><span class="sd"> * End of servers configuration
+</span></span></span><span class="line"><span class="cl"><span class="sd"> */</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="sd">/**
+</span></span></span><span class="line"><span class="cl"><span class="sd"> * Directories for saving/loading files from server
+</span></span></span><span class="line"><span class="cl"><span class="sd"> */</span>
+</span></span><span class="line"><span class="cl"><span class="c1">//$cfg[&#39;UploadDir&#39;] = &#39;&#39;;
+</span></span></span><span class="line"><span class="cl"><span class="c1">//$cfg[&#39;SaveDir&#39;] = &#39;&#39;;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="sd">/**
+</span></span></span><span class="line"><span class="cl"><span class="sd"> * Whether to display icons or text or both icons and text in table row
+</span></span></span><span class="line"><span class="cl"><span class="sd"> * action segment. Value can be either of &#39;icons&#39;, &#39;text&#39; or &#39;both&#39;.
+</span></span></span><span class="line"><span class="cl"><span class="sd"> * default = &#39;both&#39;
+</span></span></span><span class="line"><span class="cl"><span class="sd"> */</span>
+</span></span><span class="line"><span class="cl"><span class="c1">//$cfg[&#39;RowActionType&#39;] = &#39;icons&#39;;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="sd">/**
+</span></span></span><span class="line"><span class="cl"><span class="sd"> * Defines whether a user should be displayed a &#34;show all (records)&#34;
+</span></span></span><span class="line"><span class="cl"><span class="sd"> * button in browse mode or not.
+</span></span></span><span class="line"><span class="cl"><span class="sd"> * default = false
+</span></span></span><span class="line"><span class="cl"><span class="sd"> */</span>
+</span></span><span class="line"><span class="cl"><span class="c1">//$cfg[&#39;ShowAll&#39;] = true;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="sd">/**
+</span></span></span><span class="line"><span class="cl"><span class="sd"> * Number of rows displayed when browsing a result set. If the result
+</span></span></span><span class="line"><span class="cl"><span class="sd"> * set contains more rows, &#34;Previous&#34; and &#34;Next&#34;.
+</span></span></span><span class="line"><span class="cl"><span class="sd"> * Possible values: 25, 50, 100, 250, 500
+</span></span></span><span class="line"><span class="cl"><span class="sd"> * default = 25
+</span></span></span><span class="line"><span class="cl"><span class="sd"> */</span>
+</span></span><span class="line"><span class="cl"><span class="c1">//$cfg[&#39;MaxRows&#39;] = 50;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="sd">/**
+</span></span></span><span class="line"><span class="cl"><span class="sd"> * Disallow editing of binary fields
+</span></span></span><span class="line"><span class="cl"><span class="sd"> * valid values are:
+</span></span></span><span class="line"><span class="cl"><span class="sd"> *   false    allow editing
+</span></span></span><span class="line"><span class="cl"><span class="sd"> *   &#39;blob&#39;   allow editing except for BLOB fields
+</span></span></span><span class="line"><span class="cl"><span class="sd"> *   &#39;noblob&#39; disallow editing except for BLOB fields
+</span></span></span><span class="line"><span class="cl"><span class="sd"> *   &#39;all&#39;    disallow editing
+</span></span></span><span class="line"><span class="cl"><span class="sd"> * default = &#39;blob&#39;
+</span></span></span><span class="line"><span class="cl"><span class="sd"> */</span>
+</span></span><span class="line"><span class="cl"><span class="c1">//$cfg[&#39;ProtectBinary&#39;] = false;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="sd">/**
+</span></span></span><span class="line"><span class="cl"><span class="sd"> * Default language to use, if not browser-defined or user-defined
+</span></span></span><span class="line"><span class="cl"><span class="sd"> * (you find all languages in the locale folder)
+</span></span></span><span class="line"><span class="cl"><span class="sd"> * uncomment the desired line:
+</span></span></span><span class="line"><span class="cl"><span class="sd"> * default = &#39;en&#39;
+</span></span></span><span class="line"><span class="cl"><span class="sd"> */</span>
+</span></span><span class="line"><span class="cl"><span class="c1">//$cfg[&#39;DefaultLang&#39;] = &#39;en&#39;;
+</span></span></span><span class="line"><span class="cl"><span class="c1">//$cfg[&#39;DefaultLang&#39;] = &#39;de&#39;;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="sd">/**
+</span></span></span><span class="line"><span class="cl"><span class="sd"> * How many columns should be used for table display of a database?
+</span></span></span><span class="line"><span class="cl"><span class="sd"> * (a value larger than 1 results in some information being hidden)
+</span></span></span><span class="line"><span class="cl"><span class="sd"> * default = 1
+</span></span></span><span class="line"><span class="cl"><span class="sd"> */</span>
+</span></span><span class="line"><span class="cl"><span class="c1">//$cfg[&#39;PropertiesNumColumns&#39;] = 2;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="sd">/**
+</span></span></span><span class="line"><span class="cl"><span class="sd"> * Set to true if you want DB-based query history.If false, this utilizes
+</span></span></span><span class="line"><span class="cl"><span class="sd"> * JS-routines to display query history (lost by window close)
+</span></span></span><span class="line"><span class="cl"><span class="sd"> *
+</span></span></span><span class="line"><span class="cl"><span class="sd"> * This requires configuration storage enabled, see above.
+</span></span></span><span class="line"><span class="cl"><span class="sd"> * default = false
+</span></span></span><span class="line"><span class="cl"><span class="sd"> */</span>
+</span></span><span class="line"><span class="cl"><span class="c1">//$cfg[&#39;QueryHistoryDB&#39;] = true;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="sd">/**
+</span></span></span><span class="line"><span class="cl"><span class="sd"> * When using DB-based query history, how many entries should be kept?
+</span></span></span><span class="line"><span class="cl"><span class="sd"> * default = 25
+</span></span></span><span class="line"><span class="cl"><span class="sd"> */</span>
+</span></span><span class="line"><span class="cl"><span class="c1">//$cfg[&#39;QueryHistoryMax&#39;] = 100;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="sd">/**
+</span></span></span><span class="line"><span class="cl"><span class="sd"> * Whether or not to query the user before sending the error report to
+</span></span></span><span class="line"><span class="cl"><span class="sd"> * the phpMyAdmin team when a JavaScript error occurs
+</span></span></span><span class="line"><span class="cl"><span class="sd"> *
+</span></span></span><span class="line"><span class="cl"><span class="sd"> * Available options
+</span></span></span><span class="line"><span class="cl"><span class="sd"> * (&#39;ask&#39; | &#39;always&#39; | &#39;never&#39;)
+</span></span></span><span class="line"><span class="cl"><span class="sd"> * default = &#39;ask&#39;
+</span></span></span><span class="line"><span class="cl"><span class="sd"> */</span>
+</span></span><span class="line"><span class="cl"><span class="c1">//$cfg[&#39;SendErrorReports&#39;] = &#39;always&#39;;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="sd">/**
+</span></span></span><span class="line"><span class="cl"><span class="sd"> * You can find more configuration options in the documentation
+</span></span></span><span class="line"><span class="cl"><span class="sd"> * in the doc/ folder or at &lt;https://docs.phpmyadmin.net/&gt;.
+</span></span></span><span class="line"><span class="cl"><span class="sd"> */</span>
+</span></span></code></pre></div><p><em><strong>PMA</strong></em></p>
+<pre><code>$cfg['Servers'][$i]['auth_type'] = 'config'
+</code></pre>
+<p>config: 安全性最差也最方便，因為你必須將MySQL帳號、密碼儲存在config之中，換句話說你不需要輸入帳號密碼即可登入</p>
+<p>http: 只要使用MySQL中建立的有效帳號即可登入</p>
+<p>cookie: MySQL帳號、密碼會儲存在cookie之中，不過在本次session結束之後會將密碼刪除
+採用cookie的驗證方式，需要再額外設定『blowfish_secret』用來作為加密的key。</p>
+<p><em><strong>MySQL</strong></em></p>
+<p>MySQL 記得加帳號及權限</p>
+<pre><code>CREATE USER 'pma'@'%' IDENTIFIED BY 'pma';
+
+grant all on *.* to 'pma'@'%';
+
+flush privileges;
+</code></pre>
+<p><em><strong>NGINX</strong></em></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl">server
+</span></span><span class="line"><span class="cl">{
+</span></span><span class="line"><span class="cl">    listen      80;
+</span></span><span class="line"><span class="cl">    server_name phpmyadmin.project.orz;
+</span></span><span class="line"><span class="cl">    index       index.php index.html;
+</span></span><span class="line"><span class="cl">    root /home/pma/;
+</span></span><span class="line"><span class="cl">    include vhost/file1.conf;
+</span></span><span class="line"><span class="cl">    access_log  logs/pma/pma.acc access;
+</span></span><span class="line"><span class="cl">}</span></span></code></pre></div>
+<pre><code>WINDOWS 本機綁 hosts &gt; 172.16.0.222 phpmyadmin.project.orz
+
+phpmyadmin.project.orz 登入 &gt; [mysql帳密]
+</code></pre>
+<hr>
+
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/pma/">PMA</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC By Laurance</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+     
+    
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "hugo-theme-stack" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2022 - 
+        
+        2023 Laurance&#39;s Note
+    </section>
+    
+    <section class="powerby">
+        
+            All rights reserved <br/>
+        
+
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        
+    </section>
+</footer>
+
+<span id="busuanzi_container_site_pv">
+    總瀏覽  <span id="busuanzi_value_site_pv"></span>  次
+</span>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+    
+
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

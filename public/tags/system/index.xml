@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>System on Laurance&#39;s Note</title>
+        <link>https://note.laurance.ml/tags/system/</link>
+        <description>Recent content in System on Laurance&#39;s Note</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Fri, 03 Mar 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://note.laurance.ml/tags/system/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Linux 核心 &amp; 系統日誌檔 (local 級別)</title>
+        <link>https://note.laurance.ml/p/linux-%E6%A0%B8%E5%BF%83-%E7%B3%BB%E7%B5%B1%E6%97%A5%E8%AA%8C%E6%AA%94-local-%E7%B4%9A%E5%88%A5/</link>
+        <pubDate>Fri, 03 Mar 2023 00:00:00 +0000</pubDate>
+        
+        <guid>https://note.laurance.ml/p/linux-%E6%A0%B8%E5%BF%83-%E7%B3%BB%E7%B5%B1%E6%97%A5%E8%AA%8C%E6%AA%94-local-%E7%B4%9A%E5%88%A5/</guid>
+        <description>&lt;img src="https://note.laurance.ml/p/linux-%E6%A0%B8%E5%BF%83-%E7%B3%BB%E7%B5%B1%E6%97%A5%E8%AA%8C%E6%AA%94-local-%E7%B4%9A%E5%88%A5/100.png" alt="Featured image of post Linux 核心 &amp; 系統日誌檔 (local 級別)" /&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;等級數值&lt;/th&gt;
+&lt;th&gt;等級名稱&lt;/th&gt;
+&lt;th&gt;說明&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;7&lt;/td&gt;
+&lt;td&gt;debug&lt;/td&gt;
+&lt;td&gt;用來 debug (除錯) 時產生的訊息資料；&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;6&lt;/td&gt;
+&lt;td&gt;info&lt;/td&gt;
+&lt;td&gt;僅是一些基本的訊息說明而已；&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;5&lt;/td&gt;
+&lt;td&gt;notice&lt;/td&gt;
+&lt;td&gt;雖然是正常資訊，但比 info 還需要被注意到的一些資訊內容；&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;4&lt;/td&gt;
+&lt;td&gt;warning&lt;/td&gt;
+&lt;td&gt;警示的訊息，可能有問題，但是還不至於影響到某個 daemon 運作的資訊；&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;3&lt;/td&gt;
+&lt;td&gt;err&lt;/td&gt;
+&lt;td&gt;一些重大的錯誤訊息，例如設定檔的某些設定值造成該服務服法啟動的資訊說明 ;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;2&lt;/td&gt;
+&lt;td&gt;crit&lt;/td&gt;
+&lt;td&gt;比 error 還要嚴重的錯誤資訊，這個 crit 是臨界點 (critical) 的縮寫 ;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;1&lt;/td&gt;
+&lt;td&gt;alert&lt;/td&gt;
+&lt;td&gt;警告警告，已經很有問題的等級，比 crit 還要嚴重！ ;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;0&lt;/td&gt;
+&lt;td&gt;emerg&lt;/td&gt;
+&lt;td&gt;疼痛等級，意指系統已經幾乎要當機的狀態！ 很嚴重的錯誤資訊了。通常大概只有硬體出問題，導致整個核心無法順利運作 ;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;hr&gt;
+
+</description>
+        </item>
+        
+    </channel>
+</rss>

@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>XL2TPD on Laurance&#39;s Note</title>
+        <link>https://note.laurance.ml/tags/xl2tpd/</link>
+        <description>Recent content in XL2TPD on Laurance&#39;s Note</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Tue, 27 Dec 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://note.laurance.ml/tags/xl2tpd/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>VPN-建置 XL2TPD &#43; IPSec 服務 by DOCKER</title>
+        <link>https://note.laurance.ml/p/vpn-%E5%BB%BA%E7%BD%AE-xl2tpd--ipsec-%E6%9C%8D%E5%8B%99-by-docker/</link>
+        <pubDate>Tue, 27 Dec 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://note.laurance.ml/p/vpn-%E5%BB%BA%E7%BD%AE-xl2tpd--ipsec-%E6%9C%8D%E5%8B%99-by-docker/</guid>
+        <description>&lt;img src="https://note.laurance.ml/p/vpn-%E5%BB%BA%E7%BD%AE-xl2tpd--ipsec-%E6%9C%8D%E5%8B%99-by-docker/100.jpg" alt="Featured image of post VPN-建置 XL2TPD &#43; IPSec 服務 by DOCKER" /&gt;&lt;p&gt;[DOCKER]&lt;/p&gt;
+&lt;p&gt;安裝最新版 Docker&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;wget -qO- get.docker.com | bash 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/vpn-%E5%BB%BA%E7%BD%AE-xl2tpd--ipsec-%E6%9C%8D%E5%8B%99-by-docker/00001.png&#34;
+	width=&#34;1894&#34;
+	height=&#34;572&#34;
+	srcset=&#34;https://note.laurance.ml/p/vpn-%E5%BB%BA%E7%BD%AE-xl2tpd--ipsec-%E6%9C%8D%E5%8B%99-by-docker/00001_hu07c207d86fd9aa953a349f44334a9151_43878_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/vpn-%E5%BB%BA%E7%BD%AE-xl2tpd--ipsec-%E6%9C%8D%E5%8B%99-by-docker/00001_hu07c207d86fd9aa953a349f44334a9151_43878_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;331&#34;
+		data-flex-basis=&#34;794px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;查看版本&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;docker version 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/vpn-%E5%BB%BA%E7%BD%AE-xl2tpd--ipsec-%E6%9C%8D%E5%8B%99-by-docker/00002.png&#34;
+	width=&#34;1910&#34;
+	height=&#34;344&#34;
+	srcset=&#34;https://note.laurance.ml/p/vpn-%E5%BB%BA%E7%BD%AE-xl2tpd--ipsec-%E6%9C%8D%E5%8B%99-by-docker/00002_hue352836c6ebf1ad2cbd53c0f67eaaf0c_21690_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/vpn-%E5%BB%BA%E7%BD%AE-xl2tpd--ipsec-%E6%9C%8D%E5%8B%99-by-docker/00002_hue352836c6ebf1ad2cbd53c0f67eaaf0c_21690_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;555&#34;
+		data-flex-basis=&#34;1332px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;啟動服務&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;systemctl start docker 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;查看狀態&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;systemctl status docker
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;[L2TP/IPsec]&lt;/p&gt;
+&lt;p&gt;拉取鏡像&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;docker pull teddysun/l2tp
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;建立環境參數設定檔&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;vim /etc/l2tp.env
+&lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-javascript&#34; data-lang=&#34;javascript&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nx&#34;&gt;VPN_IPSEC_PSK&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1234567890&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nx&#34;&gt;VPN_USER&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;laurance&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nx&#34;&gt;VPN_PASSWORD&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;lau888&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nx&#34;&gt;VPN_PUBLIC_IP&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;XX&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;XX&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;XX&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;XX&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nx&#34;&gt;VPN_L2TP_NET&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;mf&#34;&gt;192.168&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;mf&#34;&gt;18.0&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;24&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nx&#34;&gt;VPN_L2TP_LOCAL&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;mf&#34;&gt;192.168&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;mf&#34;&gt;18.1&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nx&#34;&gt;VPN_L2TP_REMOTE&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;mf&#34;&gt;192.168&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;mf&#34;&gt;18.10&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;mf&#34;&gt;192.168&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;mf&#34;&gt;18.250&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nx&#34;&gt;VPN_XAUTH_NET&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;mf&#34;&gt;192.168&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;mf&#34;&gt;20.0&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;24&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nx&#34;&gt;VPN_XAUTH_REMOTE&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;mf&#34;&gt;192.168&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;mf&#34;&gt;20.10&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;mf&#34;&gt;192.168&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;mf&#34;&gt;20.250&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nx&#34;&gt;VPN_DNS1&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;mf&#34;&gt;8.8&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;mf&#34;&gt;8.8&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nx&#34;&gt;VPN_DNS2&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;mf&#34;&gt;9.9&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;mf&#34;&gt;9.9&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nx&#34;&gt;VPN_SHA2_TRUNCBUG&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-javascript&#34; data-lang=&#34;javascript&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nx&#34;&gt;VPN_IPSEC_PSK&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;：&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;預共享密鑰&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nx&#34;&gt;VPN_USER&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;：&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;默認的登錄用戶名&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nx&#34;&gt;VPN_PASSWORD&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;：&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;默認的登錄用戶密碼&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nx&#34;&gt;VPN_PUBLIC_IP&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;：&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;指定公網&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;IP&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;地址&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;，&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;當你的&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;VPS&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;有多個公網&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;IP&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;時&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;，&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;可能需要手動指定一下&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nx&#34;&gt;VPN_L2TP_NET&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;：&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;內網&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;L2TP&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;網段範圍&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;，&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;默認為&lt;/span&gt; &lt;span class=&#34;mf&#34;&gt;192.168&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;mf&#34;&gt;18.0&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;24&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;，&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;一般此處留空即可&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nx&#34;&gt;VPN_L2TP_LOCAL&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;：&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;內網&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;L2TP&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;網關&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;IP&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;，&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;默認為&lt;/span&gt; &lt;span class=&#34;mf&#34;&gt;192.168&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;mf&#34;&gt;18.1&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;，&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;一般此處留空即可&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nx&#34;&gt;VPN_L2TP_REMOTE&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;：&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;內網&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;L2TP&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;網段分配給連接的&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;IP&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;段&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;，&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;默認為&lt;/span&gt; &lt;span class=&#34;mf&#34;&gt;192.168&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;mf&#34;&gt;18.10&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;mf&#34;&gt;192.168&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;mf&#34;&gt;18.250&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;，&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;一般此處留空即可&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nx&#34;&gt;VPN_XAUTH_NET&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;：&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;內網&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;XAUTH&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;網段範圍&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;，&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;默認為&lt;/span&gt; &lt;span class=&#34;mf&#34;&gt;192.168&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;mf&#34;&gt;20.0&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;24&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;，&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;一般此處留空即可&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nx&#34;&gt;VPN_XAUTH_REMOTE&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;：&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;內網&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;XAUTH&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;網段分配給連接的&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;IP&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;段&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;，&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;默認為&lt;/span&gt; &lt;span class=&#34;mf&#34;&gt;192.168&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;mf&#34;&gt;20.10&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;mf&#34;&gt;192.168&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;mf&#34;&gt;20.250&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;，&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;一般此處留空即可&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nx&#34;&gt;VPN_DNS1&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;：&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;默認&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;DNS&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;服務器&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;，&lt;/span&gt;&lt;span class=&#34;mf&#34;&gt;8.8&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;mf&#34;&gt;8.8&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;，&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;一般此處留空即可&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nx&#34;&gt;VPN_DNS2&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;：&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;默認&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;DNS&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;服務器&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;，&lt;/span&gt;&lt;span class=&#34;mf&#34;&gt;8.8&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;mf&#34;&gt;4.4&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;，&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;一般此處留空即可&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nx&#34;&gt;Android&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;6&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;和&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;7&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;用戶&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;：&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;如果你遇到連接問題&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;，&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;請嘗試在&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;etc&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;ipsec&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;conf&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;中設置&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;sha2&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;truncbug&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;yes&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;（&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;默認為&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;no&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;），&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;你可以在&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;etc&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;l2tp&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;env&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;文件中添加&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;VPN_SHA2_TRUNCBUG&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;yes&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;，&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;然後重新創建&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;Docker&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;容器&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;。&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;啟動容器&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;docker run -d --privileged -p 500:500/udp -p 4500:4500/udp --name l2tp --restart=always --env-file /etc/l2tp.env -v /lib/modules:/lib/modules teddysun/l2tp
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;查看啟動 LOG&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;docker logs l2tp
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;查看 ipsec status 輸出&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;docker exec -it l2tp ipsec status
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;[管理 VPN 用户]&lt;/p&gt;
+&lt;p&gt;列出所有 user &amp;amp; password&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;docker exec -it l2tp l2tpctl -l
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;新增 user&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;docker exec -it l2tp l2tpctl -a
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;刪除 user&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;docker exec -it l2tp l2tpctl -d
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;修改 user 密碼&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;docker exec -it l2tp l2tpctl -m
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;查看 libreswan 和 xl2tpd 版本&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;docker exec -it l2tp l2tpctl -v 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Linux Libreswan 3.32 (netkey) on 3.10.0-1160.76.1.el7.x86_64
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;xl2tpd version:  xl2tpd-1.3.15
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;[Windows 10 下连接 L2TP VPN]&lt;/p&gt;
+&lt;p&gt;修改 VPN 協議&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/vpn-%E5%BB%BA%E7%BD%AE-xl2tpd--ipsec-%E6%9C%8D%E5%8B%99-by-docker/102.png&#34;
+	width=&#34;421&#34;
+	height=&#34;540&#34;
+	srcset=&#34;https://note.laurance.ml/p/vpn-%E5%BB%BA%E7%BD%AE-xl2tpd--ipsec-%E6%9C%8D%E5%8B%99-by-docker/102_hu595246ce64a40ea3c24ad45e94127403_25115_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/vpn-%E5%BB%BA%E7%BD%AE-xl2tpd--ipsec-%E6%9C%8D%E5%8B%99-by-docker/102_hu595246ce64a40ea3c24ad45e94127403_25115_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;77&#34;
+		data-flex-basis=&#34;187px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Configure a L2TP/IPsec server behind a NAT-T device&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;win + R 輸入 regedit
+
+HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\PolicyAgent
+
+新增一組機碼 &amp;gt;&amp;gt; DWORD（32 位）值 &amp;gt;&amp;gt; AssumeUDPEncapsulationContextOnSendRule &amp;gt;&amp;gt; 值設定為 2 (1 不會過)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;[PHONE]&lt;/p&gt;
+&lt;p&gt;Android 版本小於或等於 7 時，建議選擇 IPSec Xauth PSK (Cisco IPsec) 模式連接&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/vpn-%E5%BB%BA%E7%BD%AE-xl2tpd--ipsec-%E6%9C%8D%E5%8B%99-by-docker/101.jpg&#34;
+	width=&#34;640&#34;
+	height=&#34;585&#34;
+	srcset=&#34;https://note.laurance.ml/p/vpn-%E5%BB%BA%E7%BD%AE-xl2tpd--ipsec-%E6%9C%8D%E5%8B%99-by-docker/101_hua1ff7a473ac75d3a6ed403b4e497ffda_64962_480x0_resize_q75_box.jpg 480w, https://note.laurance.ml/p/vpn-%E5%BB%BA%E7%BD%AE-xl2tpd--ipsec-%E6%9C%8D%E5%8B%99-by-docker/101_hua1ff7a473ac75d3a6ed403b4e497ffda_64962_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;109&#34;
+		data-flex-basis=&#34;262px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;[參考] &lt;a class=&#34;link&#34; href=&#34;https://learn.microsoft.com/en-US/troubleshoot/windows-server/networking/configure-l2tp-ipsec-server-behind-nat-t-device&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://learn.microsoft.com/en-US/troubleshoot/windows-server/networking/configure-l2tp-ipsec-server-behind-nat-t-device&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;[參考] &lt;a class=&#34;link&#34; href=&#34;https://teddysun.com/536.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://teddysun.com/536.html&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+
+</description>
+        </item>
+        
+    </channel>
+</rss>

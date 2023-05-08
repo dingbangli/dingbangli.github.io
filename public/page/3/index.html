@@ -1,0 +1,4368 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+    <head>
+	<meta name="generator" content="Hugo 0.111.3"><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='筆記 記錄美好生活
+'><title>Laurance&#39;s Note</title>
+
+<link rel='canonical' href='https://note.laurance.ml/'>
+
+<link rel="stylesheet" href="/scss/style.min.ac77dcf8b111b51da39a92990f431923f210f3876d85798a2125667f96dc33a4.css"><meta property='og:title' content='Laurance&#39;s Note'>
+<meta property='og:description' content='筆記 記錄美好生活
+'>
+<meta property='og:url' content='https://note.laurance.ml/'>
+<meta property='og:site_name' content='Laurance&#39;s Note'>
+<meta property='og:type' content='website'><meta property='og:updated_time' content=' 2023-03-23T00:00:00&#43;00:00 '/>
+<meta name="twitter:title" content="Laurance&#39;s Note">
+<meta name="twitter:description" content="筆記 記錄美好生活
+"><link rel="alternate" type="application/rss&#43;xml" href="https://note.laurance.ml/index.xml">
+    <link rel="shortcut icon" href="static/favicon.ico" />
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Live2D 看板娘 / Demo</title>
+</head>
+<body>
+<script src="https://cdn.jsdelivr.net/gh/dingbangli/live2d-widget@latest/autoload.js"></script>
+</body>
+</html>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+    </head>
+    <body class="">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu49eacb73e01f91348578131d7e8658f5_11993_300x0_resize_box_3.png" width="300"
+                            height="301" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🍥</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Laurance&#39;s Note</a></h1>
+            <h2 class="site-description">筆記 記錄美好生活
+</h2>
+        </div>
+    </header><ol class="menu" id="main-menu">
+        
+        
+        
+
+        <li  class='current' >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/about/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/links/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>Links</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+            
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>Dark Mode</span>
+                </li>
+            
+        </div>
+    </ol>
+</aside>
+<main class="main full-width">
+    
+    
+    
+    
+
+    <section class="article-list">
+        
+            
+<article class="has-image">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/kubernetes-install-kubectl-on-linux-by-yum/">
+                <img src="/p/kubernetes-install-kubectl-on-linux-by-yum/100_hu011eff4eb1029f53348717cab0d2cf5f_19415_800x0_resize_box_3.png"
+                        srcset="/p/kubernetes-install-kubectl-on-linux-by-yum/100_hu011eff4eb1029f53348717cab0d2cf5f_19415_800x0_resize_box_3.png 800w, /p/kubernetes-install-kubectl-on-linux-by-yum/100_hu011eff4eb1029f53348717cab0d2cf5f_19415_1600x0_resize_box_3.png 1600w"
+                        width="800" 
+                        height="444" 
+                        loading="lazy"
+                        alt="Featured image of post Kubernetes-Install kubectl on Linux by yum" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/kubernetes/" >
+                Kubernetes
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/kubernetes-install-kubectl-on-linux-by-yum/">Kubernetes-Install kubectl on Linux by yum</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Oct 06, 2022</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    1 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+</header>
+</article>
+        
+            
+<article class="has-image">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/kubernetes-install-minikube-on-linux/">
+                <img src="/p/kubernetes-install-minikube-on-linux/100_hu011eff4eb1029f53348717cab0d2cf5f_19415_800x0_resize_box_3.png"
+                        srcset="/p/kubernetes-install-minikube-on-linux/100_hu011eff4eb1029f53348717cab0d2cf5f_19415_800x0_resize_box_3.png 800w, /p/kubernetes-install-minikube-on-linux/100_hu011eff4eb1029f53348717cab0d2cf5f_19415_1600x0_resize_box_3.png 1600w"
+                        width="800" 
+                        height="444" 
+                        loading="lazy"
+                        alt="Featured image of post Kubernetes-install minikube on Linux" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/kubernetes/" >
+                Kubernetes
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/kubernetes-install-minikube-on-linux/">Kubernetes-install minikube on Linux</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Oct 06, 2022</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    1 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+</header>
+</article>
+        
+            
+<article class="has-image">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/svn_server-%E5%AE%89%E8%A3%9D%E6%95%99%E5%AD%B8-centos7/">
+                <img src="/p/svn_server-%E5%AE%89%E8%A3%9D%E6%95%99%E5%AD%B8-centos7/100_hu791d074278204665296c002ec84be428_1698_800x0_resize_box_3.png"
+                        srcset="/p/svn_server-%E5%AE%89%E8%A3%9D%E6%95%99%E5%AD%B8-centos7/100_hu791d074278204665296c002ec84be428_1698_800x0_resize_box_3.png 800w, /p/svn_server-%E5%AE%89%E8%A3%9D%E6%95%99%E5%AD%B8-centos7/100_hu791d074278204665296c002ec84be428_1698_1600x0_resize_box_3.png 1600w"
+                        width="800" 
+                        height="600" 
+                        loading="lazy"
+                        alt="Featured image of post SVN_SERVER-安裝教學 (CentOS7)" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/svn/" >
+                SVN
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/svn_server-%E5%AE%89%E8%A3%9D%E6%95%99%E5%AD%B8-centos7/">SVN_SERVER-安裝教學 (CentOS7)</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Oct 06, 2022</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    1 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+</header>
+</article>
+        
+            
+<article class="has-image">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/svn-error-%E4%BD%A0%E5%BF%85%E9%A0%88%E5%85%88%E6%9B%B4%E6%96%B0%E4%BD%A0%E7%9A%84%E5%B7%A5%E4%BD%9C%E5%89%AF%E6%9C%AC/">
+                <img src="/p/svn-error-%E4%BD%A0%E5%BF%85%E9%A0%88%E5%85%88%E6%9B%B4%E6%96%B0%E4%BD%A0%E7%9A%84%E5%B7%A5%E4%BD%9C%E5%89%AF%E6%9C%AC/100_hu791d074278204665296c002ec84be428_1698_800x0_resize_box_3.png"
+                        srcset="/p/svn-error-%E4%BD%A0%E5%BF%85%E9%A0%88%E5%85%88%E6%9B%B4%E6%96%B0%E4%BD%A0%E7%9A%84%E5%B7%A5%E4%BD%9C%E5%89%AF%E6%9C%AC/100_hu791d074278204665296c002ec84be428_1698_800x0_resize_box_3.png 800w, /p/svn-error-%E4%BD%A0%E5%BF%85%E9%A0%88%E5%85%88%E6%9B%B4%E6%96%B0%E4%BD%A0%E7%9A%84%E5%B7%A5%E4%BD%9C%E5%89%AF%E6%9C%AC/100_hu791d074278204665296c002ec84be428_1698_1600x0_resize_box_3.png 1600w"
+                        width="800" 
+                        height="600" 
+                        loading="lazy"
+                        alt="Featured image of post SVN-error 你必須先更新你的工作副本" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/svn/" >
+                SVN
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/svn-error-%E4%BD%A0%E5%BF%85%E9%A0%88%E5%85%88%E6%9B%B4%E6%96%B0%E4%BD%A0%E7%9A%84%E5%B7%A5%E4%BD%9C%E5%89%AF%E6%9C%AC/">SVN-error 你必須先更新你的工作副本</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Oct 05, 2022</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    1 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+</header>
+</article>
+        
+            
+<article class="has-image">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/gcp-asg%E5%9F%B7%E8%A1%8C%E7%AF%84%E6%9C%AC%E5%BB%BA%E7%AB%8B%E8%88%87%E6%9B%B4%E6%96%B0/">
+                <img src="/p/gcp-asg%E5%9F%B7%E8%A1%8C%E7%AF%84%E6%9C%AC%E5%BB%BA%E7%AB%8B%E8%88%87%E6%9B%B4%E6%96%B0/100_hu955ca03f846527c7d15132e3291bde7f_39307_800x0_resize_box_3.png"
+                        srcset="/p/gcp-asg%E5%9F%B7%E8%A1%8C%E7%AF%84%E6%9C%AC%E5%BB%BA%E7%AB%8B%E8%88%87%E6%9B%B4%E6%96%B0/100_hu955ca03f846527c7d15132e3291bde7f_39307_800x0_resize_box_3.png 800w, /p/gcp-asg%E5%9F%B7%E8%A1%8C%E7%AF%84%E6%9C%AC%E5%BB%BA%E7%AB%8B%E8%88%87%E6%9B%B4%E6%96%B0/100_hu955ca03f846527c7d15132e3291bde7f_39307_1600x0_resize_box_3.png 1600w"
+                        width="800" 
+                        height="230" 
+                        loading="lazy"
+                        alt="Featured image of post GCP- ASG執行範本建立與更新" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/gcp/" >
+                GCP
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/gcp-asg%E5%9F%B7%E8%A1%8C%E7%AF%84%E6%9C%AC%E5%BB%BA%E7%AB%8B%E8%88%87%E6%9B%B4%E6%96%B0/">GCP- ASG執行範本建立與更新</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Oct 03, 2022</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    1 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+</header>
+</article>
+        
+            
+<article class="has-image">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/sectigo-%E6%94%B9%E7%B0%BDssl%E6%95%99%E5%AD%B8/">
+                <img src="/p/sectigo-%E6%94%B9%E7%B0%BDssl%E6%95%99%E5%AD%B8/100_hu07570c01234663d05f8d1d92258d9305_51571_800x0_resize_box_3.png"
+                        srcset="/p/sectigo-%E6%94%B9%E7%B0%BDssl%E6%95%99%E5%AD%B8/100_hu07570c01234663d05f8d1d92258d9305_51571_800x0_resize_box_3.png 800w, /p/sectigo-%E6%94%B9%E7%B0%BDssl%E6%95%99%E5%AD%B8/100_hu07570c01234663d05f8d1d92258d9305_51571_1600x0_resize_box_3.png 1600w"
+                        width="800" 
+                        height="229" 
+                        loading="lazy"
+                        alt="Featured image of post SECTIGO-改簽SSL教學" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/sectigo/" >
+                SECTIGO
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/sectigo-%E6%94%B9%E7%B0%BDssl%E6%95%99%E5%AD%B8/">SECTIGO-改簽SSL教學</a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            (SECTIGO SSL改簽其他域名)
+        </h3>
+        
+    </div>
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Oct 03, 2022</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    1 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+</header>
+</article>
+        
+            
+<article class="has-image">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/shell-script-%E5%BB%BA%E7%AB%8B-svn-co-%E6%8E%92%E7%A8%8B%E4%B8%A6sync%E8%87%B3%E9%9B%B2%E7%AB%AF/">
+                <img src="/p/shell-script-%E5%BB%BA%E7%AB%8B-svn-co-%E6%8E%92%E7%A8%8B%E4%B8%A6sync%E8%87%B3%E9%9B%B2%E7%AB%AF/100_hu1acf48b62c2e007a3a704d91e9dd9674_43864_800x0_resize_box_3.png"
+                        srcset="/p/shell-script-%E5%BB%BA%E7%AB%8B-svn-co-%E6%8E%92%E7%A8%8B%E4%B8%A6sync%E8%87%B3%E9%9B%B2%E7%AB%AF/100_hu1acf48b62c2e007a3a704d91e9dd9674_43864_800x0_resize_box_3.png 800w, /p/shell-script-%E5%BB%BA%E7%AB%8B-svn-co-%E6%8E%92%E7%A8%8B%E4%B8%A6sync%E8%87%B3%E9%9B%B2%E7%AB%AF/100_hu1acf48b62c2e007a3a704d91e9dd9674_43864_1600x0_resize_box_3.png 1600w"
+                        width="800" 
+                        height="247" 
+                        loading="lazy"
+                        alt="Featured image of post shell-script-建立 SVN-CO 排程並sync至雲端" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/linux/" >
+                Linux
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/shell-script-%E5%BB%BA%E7%AB%8B-svn-co-%E6%8E%92%E7%A8%8B%E4%B8%A6sync%E8%87%B3%E9%9B%B2%E7%AB%AF/">shell-script-建立 SVN-CO 排程並sync至雲端</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Oct 03, 2022</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    1 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+</header>
+</article>
+        
+            
+<article class="has-image">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/aws-codecommit-ssh-%E9%87%91%E9%91%B0%E4%B8%8A%E5%82%B3%E5%8F%8A%E8%A8%AD%E7%BD%AE/">
+                <img src="/p/aws-codecommit-ssh-%E9%87%91%E9%91%B0%E4%B8%8A%E5%82%B3%E5%8F%8A%E8%A8%AD%E7%BD%AE/100_hu4977afd0e8455b389e73ed8c78bcad93_31864_800x0_resize_box_3.png"
+                        srcset="/p/aws-codecommit-ssh-%E9%87%91%E9%91%B0%E4%B8%8A%E5%82%B3%E5%8F%8A%E8%A8%AD%E7%BD%AE/100_hu4977afd0e8455b389e73ed8c78bcad93_31864_800x0_resize_box_3.png 800w, /p/aws-codecommit-ssh-%E9%87%91%E9%91%B0%E4%B8%8A%E5%82%B3%E5%8F%8A%E8%A8%AD%E7%BD%AE/100_hu4977afd0e8455b389e73ed8c78bcad93_31864_1600x0_resize_box_3.png 1600w"
+                        width="800" 
+                        height="250" 
+                        loading="lazy"
+                        alt="Featured image of post AWS-Codecommit SSH 金鑰上傳及設置" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/aws/" >
+                AWS
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/aws-codecommit-ssh-%E9%87%91%E9%91%B0%E4%B8%8A%E5%82%B3%E5%8F%8A%E8%A8%AD%E7%BD%AE/">AWS-Codecommit SSH 金鑰上傳及設置</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Sep 30, 2022</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    1 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+</header>
+</article>
+        
+            
+<article class="has-image">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/php-%E5%AE%89%E8%A3%9Dmemcached%E6%93%B4%E5%B1%95/">
+                <img src="/p/php-%E5%AE%89%E8%A3%9Dmemcached%E6%93%B4%E5%B1%95/100_hu2ca637fb1d0a70ad637da30e1c6e56b4_46154_800x0_resize_box_3.png"
+                        srcset="/p/php-%E5%AE%89%E8%A3%9Dmemcached%E6%93%B4%E5%B1%95/100_hu2ca637fb1d0a70ad637da30e1c6e56b4_46154_800x0_resize_box_3.png 800w, /p/php-%E5%AE%89%E8%A3%9Dmemcached%E6%93%B4%E5%B1%95/100_hu2ca637fb1d0a70ad637da30e1c6e56b4_46154_1600x0_resize_box_3.png 1600w"
+                        width="800" 
+                        height="250" 
+                        loading="lazy"
+                        alt="Featured image of post PHP-安裝memcached擴展" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/web/" >
+                Web
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/php-%E5%AE%89%E8%A3%9Dmemcached%E6%93%B4%E5%B1%95/">PHP-安裝memcached擴展</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Sep 30, 2022</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    1 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+</header>
+</article>
+        
+            
+<article class="has-image">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/redis-%E5%AE%89%E8%A3%9D%E5%8F%8A%E9%85%8D%E7%BD%AE%E6%95%99%E5%AD%B8/">
+                <img src="/p/redis-%E5%AE%89%E8%A3%9D%E5%8F%8A%E9%85%8D%E7%BD%AE%E6%95%99%E5%AD%B8/100_hu74f8d656a97bc6b7ca99b23e97f954a2_40393_800x0_resize_box_3.png"
+                        srcset="/p/redis-%E5%AE%89%E8%A3%9D%E5%8F%8A%E9%85%8D%E7%BD%AE%E6%95%99%E5%AD%B8/100_hu74f8d656a97bc6b7ca99b23e97f954a2_40393_800x0_resize_box_3.png 800w, /p/redis-%E5%AE%89%E8%A3%9D%E5%8F%8A%E9%85%8D%E7%BD%AE%E6%95%99%E5%AD%B8/100_hu74f8d656a97bc6b7ca99b23e97f954a2_40393_1600x0_resize_box_3.png 1600w"
+                        width="800" 
+                        height="259" 
+                        loading="lazy"
+                        alt="Featured image of post Redis-安裝及配置教學" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/cache/" >
+                Cache
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/redis-%E5%AE%89%E8%A3%9D%E5%8F%8A%E9%85%8D%E7%BD%AE%E6%95%99%E5%AD%B8/">Redis-安裝及配置教學</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Sep 30, 2022</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    1 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+</header>
+</article>
+        
+            
+<article class="has-image">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/grafana--influxdb--telegraf-%E6%A7%8B%E5%BB%BAlinux%E6%95%88%E8%83%BD%E7%9B%A3%E6%8E%A7/">
+                <img src="/p/grafana--influxdb--telegraf-%E6%A7%8B%E5%BB%BAlinux%E6%95%88%E8%83%BD%E7%9B%A3%E6%8E%A7/100_hu620c7a524b6dcb360e250bc73a09da7c_32448_800x0_resize_box_3.png"
+                        srcset="/p/grafana--influxdb--telegraf-%E6%A7%8B%E5%BB%BAlinux%E6%95%88%E8%83%BD%E7%9B%A3%E6%8E%A7/100_hu620c7a524b6dcb360e250bc73a09da7c_32448_800x0_resize_box_3.png 800w, /p/grafana--influxdb--telegraf-%E6%A7%8B%E5%BB%BAlinux%E6%95%88%E8%83%BD%E7%9B%A3%E6%8E%A7/100_hu620c7a524b6dcb360e250bc73a09da7c_32448_1600x0_resize_box_3.png 1600w"
+                        width="800" 
+                        height="467" 
+                        loading="lazy"
+                        alt="Featured image of post Grafana &#43; influxdb &#43; telegraf , 構建Linux效能監控" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/grafana/" >
+                Grafana
+            </a>
+        
+            <a href="/categories/influxdb/" >
+                influxdb
+            </a>
+        
+            <a href="/categories/telegraf/" >
+                telegraf
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/grafana--influxdb--telegraf-%E6%A7%8B%E5%BB%BAlinux%E6%95%88%E8%83%BD%E7%9B%A3%E6%8E%A7/">Grafana &#43; influxdb &#43; telegraf , 構建Linux效能監控</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Sep 27, 2022</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    1 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+</header>
+</article>
+        
+            
+<article class="has-image">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/mysql-5.7-%E5%89%9B%E8%BC%89%E5%AE%8C%E7%9A%84%E5%AF%86%E7%A2%BC%E5%AD%98%E6%94%BE%E4%BD%8D%E7%BD%AE/">
+                <img src="/p/mysql-5.7-%E5%89%9B%E8%BC%89%E5%AE%8C%E7%9A%84%E5%AF%86%E7%A2%BC%E5%AD%98%E6%94%BE%E4%BD%8D%E7%BD%AE/100_huad49eaec4f433d83d4d3047da152b4f9_9127_800x0_resize_box_3.png"
+                        srcset="/p/mysql-5.7-%E5%89%9B%E8%BC%89%E5%AE%8C%E7%9A%84%E5%AF%86%E7%A2%BC%E5%AD%98%E6%94%BE%E4%BD%8D%E7%BD%AE/100_huad49eaec4f433d83d4d3047da152b4f9_9127_800x0_resize_box_3.png 800w, /p/mysql-5.7-%E5%89%9B%E8%BC%89%E5%AE%8C%E7%9A%84%E5%AF%86%E7%A2%BC%E5%AD%98%E6%94%BE%E4%BD%8D%E7%BD%AE/100_huad49eaec4f433d83d4d3047da152b4f9_9127_1600x0_resize_box_3.png 1600w"
+                        width="800" 
+                        height="298" 
+                        loading="lazy"
+                        alt="Featured image of post Mysql-5.7 剛載完的密碼存放位置" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/database/" >
+                Database
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/mysql-5.7-%E5%89%9B%E8%BC%89%E5%AE%8C%E7%9A%84%E5%AF%86%E7%A2%BC%E5%AD%98%E6%94%BE%E4%BD%8D%E7%BD%AE/">Mysql-5.7 剛載完的密碼存放位置</a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            [實測 mysql-5.7 會有隨機密碼, mariadb則預設沒密碼]
+        </h3>
+        
+    </div>
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Sep 27, 2022</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    1 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+</header>
+</article>
+        
+            
+<article class="has-image">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/mysql-%E4%BF%AE%E6%94%B9%E5%AF%86%E7%A2%BC%E5%BC%B7%E5%BA%A6%E8%A6%8F%E5%89%87/">
+                <img src="/p/mysql-%E4%BF%AE%E6%94%B9%E5%AF%86%E7%A2%BC%E5%BC%B7%E5%BA%A6%E8%A6%8F%E5%89%87/100_huad49eaec4f433d83d4d3047da152b4f9_9127_800x0_resize_box_3.png"
+                        srcset="/p/mysql-%E4%BF%AE%E6%94%B9%E5%AF%86%E7%A2%BC%E5%BC%B7%E5%BA%A6%E8%A6%8F%E5%89%87/100_huad49eaec4f433d83d4d3047da152b4f9_9127_800x0_resize_box_3.png 800w, /p/mysql-%E4%BF%AE%E6%94%B9%E5%AF%86%E7%A2%BC%E5%BC%B7%E5%BA%A6%E8%A6%8F%E5%89%87/100_huad49eaec4f433d83d4d3047da152b4f9_9127_1600x0_resize_box_3.png 1600w"
+                        width="800" 
+                        height="298" 
+                        loading="lazy"
+                        alt="Featured image of post Mysql-修改密碼強度規則" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/database/" >
+                Database
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/mysql-%E4%BF%AE%E6%94%B9%E5%AF%86%E7%A2%BC%E5%BC%B7%E5%BA%A6%E8%A6%8F%E5%89%87/">Mysql-修改密碼強度規則</a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            ERROR 1819 (HY000): Your password does not satisfy the current policy requirements
+        </h3>
+        
+    </div>
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Sep 27, 2022</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    1 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+</header>
+</article>
+        
+            
+<article class="has-image">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/mysql-%E5%B0%87%E9%A0%90%E8%A8%AD%E8%B3%87%E6%96%99%E5%BA%AB%E7%B7%A8%E7%A2%BC-latin1-%E6%94%B9%E7%82%BA-utf8/">
+                <img src="/p/mysql-%E5%B0%87%E9%A0%90%E8%A8%AD%E8%B3%87%E6%96%99%E5%BA%AB%E7%B7%A8%E7%A2%BC-latin1-%E6%94%B9%E7%82%BA-utf8/100_huad49eaec4f433d83d4d3047da152b4f9_9127_800x0_resize_box_3.png"
+                        srcset="/p/mysql-%E5%B0%87%E9%A0%90%E8%A8%AD%E8%B3%87%E6%96%99%E5%BA%AB%E7%B7%A8%E7%A2%BC-latin1-%E6%94%B9%E7%82%BA-utf8/100_huad49eaec4f433d83d4d3047da152b4f9_9127_800x0_resize_box_3.png 800w, /p/mysql-%E5%B0%87%E9%A0%90%E8%A8%AD%E8%B3%87%E6%96%99%E5%BA%AB%E7%B7%A8%E7%A2%BC-latin1-%E6%94%B9%E7%82%BA-utf8/100_huad49eaec4f433d83d4d3047da152b4f9_9127_1600x0_resize_box_3.png 1600w"
+                        width="800" 
+                        height="298" 
+                        loading="lazy"
+                        alt="Featured image of post Mysql-將預設資料庫編碼 latin1 改為 UTF8" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/database/" >
+                Database
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/mysql-%E5%B0%87%E9%A0%90%E8%A8%AD%E8%B3%87%E6%96%99%E5%BA%AB%E7%B7%A8%E7%A2%BC-latin1-%E6%94%B9%E7%82%BA-utf8/">Mysql-將預設資料庫編碼 latin1 改為 UTF8</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Sep 27, 2022</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    1 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+</header>
+</article>
+        
+            
+<article class="has-image">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/windows-10-%E7%84%A1%E6%B3%95%E5%BB%BA%E7%AB%8Bvpn%E9%80%A3%E7%B7%9A/">
+                <img src="/p/windows-10-%E7%84%A1%E6%B3%95%E5%BB%BA%E7%AB%8Bvpn%E9%80%A3%E7%B7%9A/100_hue86d16e89f42e1cd25cf83156a3f9032_45736_800x0_resize_box_3.png"
+                        srcset="/p/windows-10-%E7%84%A1%E6%B3%95%E5%BB%BA%E7%AB%8Bvpn%E9%80%A3%E7%B7%9A/100_hue86d16e89f42e1cd25cf83156a3f9032_45736_800x0_resize_box_3.png 800w, /p/windows-10-%E7%84%A1%E6%B3%95%E5%BB%BA%E7%AB%8Bvpn%E9%80%A3%E7%B7%9A/100_hue86d16e89f42e1cd25cf83156a3f9032_45736_1600x0_resize_box_3.png 1600w"
+                        width="800" 
+                        height="579" 
+                        loading="lazy"
+                        alt="Featured image of post Windows 10 無法建立VPN連線" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/windows/" >
+                Windows
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/windows-10-%E7%84%A1%E6%B3%95%E5%BB%BA%E7%AB%8Bvpn%E9%80%A3%E7%B7%9A/">Windows 10 無法建立VPN連線</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Sep 27, 2022</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    1 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+</header>
+</article>
+        
+            
+<article class="has-image">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/gcp-%E5%B0%87mysql-db%E5%8F%8Abinlog%E5%82%99%E4%BB%BD%E8%87%B3cloudstorage/">
+                <img src="/p/gcp-%E5%B0%87mysql-db%E5%8F%8Abinlog%E5%82%99%E4%BB%BD%E8%87%B3cloudstorage/100_hu955ca03f846527c7d15132e3291bde7f_39307_800x0_resize_box_3.png"
+                        srcset="/p/gcp-%E5%B0%87mysql-db%E5%8F%8Abinlog%E5%82%99%E4%BB%BD%E8%87%B3cloudstorage/100_hu955ca03f846527c7d15132e3291bde7f_39307_800x0_resize_box_3.png 800w, /p/gcp-%E5%B0%87mysql-db%E5%8F%8Abinlog%E5%82%99%E4%BB%BD%E8%87%B3cloudstorage/100_hu955ca03f846527c7d15132e3291bde7f_39307_1600x0_resize_box_3.png 1600w"
+                        width="800" 
+                        height="230" 
+                        loading="lazy"
+                        alt="Featured image of post GCP-將MySQL-DB及BINLOG備份至Cloudstorage" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/gcp/" >
+                GCP
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/gcp-%E5%B0%87mysql-db%E5%8F%8Abinlog%E5%82%99%E4%BB%BD%E8%87%B3cloudstorage/">GCP-將MySQL-DB及BINLOG備份至Cloudstorage</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Sep 21, 2022</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    1 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+</header>
+</article>
+        
+            
+<article class="has-image">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/xenserver-%E9%80%8F%E9%81%8E.xva%E6%AA%94%E8%BD%89%E7%A7%BB%E5%88%B0%E5%8F%A6%E4%B8%80%E5%8F%B0server/">
+                <img src="/p/xenserver-%E9%80%8F%E9%81%8E.xva%E6%AA%94%E8%BD%89%E7%A7%BB%E5%88%B0%E5%8F%A6%E4%B8%80%E5%8F%B0server/100_hu442ea9164a062f86740540d4232db639_41801_800x0_resize_box_3.png"
+                        srcset="/p/xenserver-%E9%80%8F%E9%81%8E.xva%E6%AA%94%E8%BD%89%E7%A7%BB%E5%88%B0%E5%8F%A6%E4%B8%80%E5%8F%B0server/100_hu442ea9164a062f86740540d4232db639_41801_800x0_resize_box_3.png 800w, /p/xenserver-%E9%80%8F%E9%81%8E.xva%E6%AA%94%E8%BD%89%E7%A7%BB%E5%88%B0%E5%8F%A6%E4%B8%80%E5%8F%B0server/100_hu442ea9164a062f86740540d4232db639_41801_1600x0_resize_box_3.png 1600w"
+                        width="800" 
+                        height="259" 
+                        loading="lazy"
+                        alt="Featured image of post XenServer-透過.XVA檔轉移到另一台SERVER" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/xencenter/" >
+                XenCenter
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/xenserver-%E9%80%8F%E9%81%8E.xva%E6%AA%94%E8%BD%89%E7%A7%BB%E5%88%B0%E5%8F%A6%E4%B8%80%E5%8F%B0server/">XenServer-透過.XVA檔轉移到另一台SERVER</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Sep 21, 2022</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    1 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+</header>
+</article>
+        
+            
+<article class="has-image">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/fortinet-fortigate60e-ssl%E5%8C%AF%E5%85%A5%E8%87%AA%E7%B0%BD3%E5%80%8B%E6%9C%88%E6%86%91%E8%AD%89/">
+                <img src="/p/fortinet-fortigate60e-ssl%E5%8C%AF%E5%85%A5%E8%87%AA%E7%B0%BD3%E5%80%8B%E6%9C%88%E6%86%91%E8%AD%89/100_hu34e33e709cfe1953b88f412f1a715a07_5414_800x0_resize_box_3.png"
+                        srcset="/p/fortinet-fortigate60e-ssl%E5%8C%AF%E5%85%A5%E8%87%AA%E7%B0%BD3%E5%80%8B%E6%9C%88%E6%86%91%E8%AD%89/100_hu34e33e709cfe1953b88f412f1a715a07_5414_800x0_resize_box_3.png 800w, /p/fortinet-fortigate60e-ssl%E5%8C%AF%E5%85%A5%E8%87%AA%E7%B0%BD3%E5%80%8B%E6%9C%88%E6%86%91%E8%AD%89/100_hu34e33e709cfe1953b88f412f1a715a07_5414_1600x0_resize_box_3.png 1600w"
+                        width="800" 
+                        height="246" 
+                        loading="lazy"
+                        alt="Featured image of post Fortinet-FortiGate60E SSL匯入自簽3個月憑證" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/fortigate/" >
+                FortiGate
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/fortinet-fortigate60e-ssl%E5%8C%AF%E5%85%A5%E8%87%AA%E7%B0%BD3%E5%80%8B%E6%9C%88%E6%86%91%E8%AD%89/">Fortinet-FortiGate60E SSL匯入自簽3個月憑證</a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            (SSL-VPN匯入PKCS12憑證)
+        </h3>
+        
+    </div>
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Sep 20, 2022</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    1 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+</header>
+</article>
+        
+            
+<article class="has-image">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/fortinet-fortigate60e-%E5%BB%B6%E9%81%B2%E8%87%AA%E5%8B%95%E7%99%BB%E5%87%BA%E8%A8%AD%E5%AE%9A/">
+                <img src="/p/fortinet-fortigate60e-%E5%BB%B6%E9%81%B2%E8%87%AA%E5%8B%95%E7%99%BB%E5%87%BA%E8%A8%AD%E5%AE%9A/100_hu34e33e709cfe1953b88f412f1a715a07_5414_800x0_resize_box_3.png"
+                        srcset="/p/fortinet-fortigate60e-%E5%BB%B6%E9%81%B2%E8%87%AA%E5%8B%95%E7%99%BB%E5%87%BA%E8%A8%AD%E5%AE%9A/100_hu34e33e709cfe1953b88f412f1a715a07_5414_800x0_resize_box_3.png 800w, /p/fortinet-fortigate60e-%E5%BB%B6%E9%81%B2%E8%87%AA%E5%8B%95%E7%99%BB%E5%87%BA%E8%A8%AD%E5%AE%9A/100_hu34e33e709cfe1953b88f412f1a715a07_5414_1600x0_resize_box_3.png 1600w"
+                        width="800" 
+                        height="246" 
+                        loading="lazy"
+                        alt="Featured image of post Fortinet-FortiGate60E 延遲自動登出設定" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/fortigate/" >
+                FortiGate
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/fortinet-fortigate60e-%E5%BB%B6%E9%81%B2%E8%87%AA%E5%8B%95%E7%99%BB%E5%87%BA%E8%A8%AD%E5%AE%9A/">Fortinet-FortiGate60E 延遲自動登出設定</a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            (解決延遲登出時間過短)
+        </h3>
+        
+    </div>
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Sep 20, 2022</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    1 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+</header>
+</article>
+        
+            
+<article class="has-image">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/fortinet-fortigate60e-ssl-vpn%E8%A8%AD%E7%BD%AE/">
+                <img src="/p/fortinet-fortigate60e-ssl-vpn%E8%A8%AD%E7%BD%AE/100_hu34e33e709cfe1953b88f412f1a715a07_5414_800x0_resize_box_3.png"
+                        srcset="/p/fortinet-fortigate60e-ssl-vpn%E8%A8%AD%E7%BD%AE/100_hu34e33e709cfe1953b88f412f1a715a07_5414_800x0_resize_box_3.png 800w, /p/fortinet-fortigate60e-ssl-vpn%E8%A8%AD%E7%BD%AE/100_hu34e33e709cfe1953b88f412f1a715a07_5414_1600x0_resize_box_3.png 1600w"
+                        width="800" 
+                        height="246" 
+                        loading="lazy"
+                        alt="Featured image of post Fortinet-FortiGate60E SSL-VPN設置" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/fortigate/" >
+                FortiGate
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/fortinet-fortigate60e-ssl-vpn%E8%A8%AD%E7%BD%AE/">Fortinet-FortiGate60E SSL-VPN設置</a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            (實現分群連接SSL-VPN)
+        </h3>
+        
+    </div>
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Sep 18, 2022</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    1 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+</header>
+</article>
+        
+            
+<article class="has-image">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/cacti-%E6%96%B0%E5%A2%9E%E6%A9%9F%E5%99%A8%E5%8F%8A%E5%9C%96%E8%A1%A8/">
+                <img src="/p/cacti-%E6%96%B0%E5%A2%9E%E6%A9%9F%E5%99%A8%E5%8F%8A%E5%9C%96%E8%A1%A8/100_hub50bab8a129011c882645158bcca07f0_64329_800x0_resize_q75_box.jpg"
+                        srcset="/p/cacti-%E6%96%B0%E5%A2%9E%E6%A9%9F%E5%99%A8%E5%8F%8A%E5%9C%96%E8%A1%A8/100_hub50bab8a129011c882645158bcca07f0_64329_800x0_resize_q75_box.jpg 800w, /p/cacti-%E6%96%B0%E5%A2%9E%E6%A9%9F%E5%99%A8%E5%8F%8A%E5%9C%96%E8%A1%A8/100_hub50bab8a129011c882645158bcca07f0_64329_1600x0_resize_q75_box.jpg 1600w"
+                        width="800" 
+                        height="250" 
+                        loading="lazy"
+                        alt="Featured image of post Cacti-新增機器及圖表" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/cacti/" >
+                Cacti
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/cacti-%E6%96%B0%E5%A2%9E%E6%A9%9F%E5%99%A8%E5%8F%8A%E5%9C%96%E8%A1%A8/">Cacti-新增機器及圖表</a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            (新建EC2加入Cacti監控)
+        </h3>
+        
+    </div>
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Sep 14, 2022</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    1 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+</header>
+</article>
+        
+            
+<article class="has-image">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/windows-chrome%E9%95%B7%E6%88%AA%E5%9C%96%E6%95%99%E5%AD%B8/">
+                <img src="/p/windows-chrome%E9%95%B7%E6%88%AA%E5%9C%96%E6%95%99%E5%AD%B8/100_hue86d16e89f42e1cd25cf83156a3f9032_45736_800x0_resize_box_3.png"
+                        srcset="/p/windows-chrome%E9%95%B7%E6%88%AA%E5%9C%96%E6%95%99%E5%AD%B8/100_hue86d16e89f42e1cd25cf83156a3f9032_45736_800x0_resize_box_3.png 800w, /p/windows-chrome%E9%95%B7%E6%88%AA%E5%9C%96%E6%95%99%E5%AD%B8/100_hue86d16e89f42e1cd25cf83156a3f9032_45736_1600x0_resize_box_3.png 1600w"
+                        width="800" 
+                        height="579" 
+                        loading="lazy"
+                        alt="Featured image of post Windows-Chrome長截圖教學" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/windows/" >
+                Windows
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/windows-chrome%E9%95%B7%E6%88%AA%E5%9C%96%E6%95%99%E5%AD%B8/">Windows-Chrome長截圖教學</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Sep 14, 2022</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    1 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+</header>
+</article>
+        
+            
+<article class="has-image">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/docker-error-requested-access-to-the-resource-is-denied/">
+                <img src="/p/docker-error-requested-access-to-the-resource-is-denied/100_hu3201776fa374726f6ce1bc51624a8839_26222_800x0_resize_box_3.png"
+                        srcset="/p/docker-error-requested-access-to-the-resource-is-denied/100_hu3201776fa374726f6ce1bc51624a8839_26222_800x0_resize_box_3.png 800w, /p/docker-error-requested-access-to-the-resource-is-denied/100_hu3201776fa374726f6ce1bc51624a8839_26222_1600x0_resize_box_3.png 1600w"
+                        width="800" 
+                        height="250" 
+                        loading="lazy"
+                        alt="Featured image of post Docker-Error-requested access to the resource is denied" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/docker/" >
+                Docker
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/docker-error-requested-access-to-the-resource-is-denied/">Docker-Error-requested access to the resource is denied</a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            上傳鏡像被拒絕 Denied
+        </h3>
+        
+    </div>
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Sep 13, 2022</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    1 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+</header>
+</article>
+        
+            
+<article class="has-image">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/docker-overlay2%E4%BD%94%E7%94%A8%E5%A4%A7%E9%87%8F%E7%A3%81%E7%A2%9F%E7%A9%BA%E9%96%93%E8%99%95%E7%90%86%E6%96%B9%E6%B3%95/">
+                <img src="/p/docker-overlay2%E4%BD%94%E7%94%A8%E5%A4%A7%E9%87%8F%E7%A3%81%E7%A2%9F%E7%A9%BA%E9%96%93%E8%99%95%E7%90%86%E6%96%B9%E6%B3%95/100_hu3201776fa374726f6ce1bc51624a8839_26222_800x0_resize_box_3.png"
+                        srcset="/p/docker-overlay2%E4%BD%94%E7%94%A8%E5%A4%A7%E9%87%8F%E7%A3%81%E7%A2%9F%E7%A9%BA%E9%96%93%E8%99%95%E7%90%86%E6%96%B9%E6%B3%95/100_hu3201776fa374726f6ce1bc51624a8839_26222_800x0_resize_box_3.png 800w, /p/docker-overlay2%E4%BD%94%E7%94%A8%E5%A4%A7%E9%87%8F%E7%A3%81%E7%A2%9F%E7%A9%BA%E9%96%93%E8%99%95%E7%90%86%E6%96%B9%E6%B3%95/100_hu3201776fa374726f6ce1bc51624a8839_26222_1600x0_resize_box_3.png 1600w"
+                        width="800" 
+                        height="250" 
+                        loading="lazy"
+                        alt="Featured image of post Docker-overlay2佔用大量磁碟空間處理方法" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/docker/" >
+                Docker
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/docker-overlay2%E4%BD%94%E7%94%A8%E5%A4%A7%E9%87%8F%E7%A3%81%E7%A2%9F%E7%A9%BA%E9%96%93%E8%99%95%E7%90%86%E6%96%B9%E6%B3%95/">Docker-overlay2佔用大量磁碟空間處理方法</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Sep 13, 2022</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    1 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+</header>
+</article>
+        
+            
+<article class="has-image">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/fortinet-fortigate-%E5%B8%B8%E7%94%A8%E9%98%B2%E7%81%AB%E7%89%86cli%E6%8C%87%E4%BB%A4/">
+                <img src="/p/fortinet-fortigate-%E5%B8%B8%E7%94%A8%E9%98%B2%E7%81%AB%E7%89%86cli%E6%8C%87%E4%BB%A4/100_hu34e33e709cfe1953b88f412f1a715a07_5414_800x0_resize_box_3.png"
+                        srcset="/p/fortinet-fortigate-%E5%B8%B8%E7%94%A8%E9%98%B2%E7%81%AB%E7%89%86cli%E6%8C%87%E4%BB%A4/100_hu34e33e709cfe1953b88f412f1a715a07_5414_800x0_resize_box_3.png 800w, /p/fortinet-fortigate-%E5%B8%B8%E7%94%A8%E9%98%B2%E7%81%AB%E7%89%86cli%E6%8C%87%E4%BB%A4/100_hu34e33e709cfe1953b88f412f1a715a07_5414_1600x0_resize_box_3.png 1600w"
+                        width="800" 
+                        height="246" 
+                        loading="lazy"
+                        alt="Featured image of post Fortinet-FortiGate 常用防火牆CLI指令" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/fortigate/" >
+                FortiGate
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/fortinet-fortigate-%E5%B8%B8%E7%94%A8%E9%98%B2%E7%81%AB%E7%89%86cli%E6%8C%87%E4%BB%A4/">Fortinet-FortiGate 常用防火牆CLI指令</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Sep 13, 2022</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    1 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+</header>
+</article>
+        
+            
+<article class="has-image">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/svn-%E6%9B%B4%E6%96%B0%E6%99%82%E7%99%BC%E7%94%9F%E8%A1%9D%E7%AA%81%E5%A6%82%E4%BD%95%E8%A7%A3%E6%B1%BA/">
+                <img src="/p/svn-%E6%9B%B4%E6%96%B0%E6%99%82%E7%99%BC%E7%94%9F%E8%A1%9D%E7%AA%81%E5%A6%82%E4%BD%95%E8%A7%A3%E6%B1%BA/100_hu791d074278204665296c002ec84be428_1698_800x0_resize_box_3.png"
+                        srcset="/p/svn-%E6%9B%B4%E6%96%B0%E6%99%82%E7%99%BC%E7%94%9F%E8%A1%9D%E7%AA%81%E5%A6%82%E4%BD%95%E8%A7%A3%E6%B1%BA/100_hu791d074278204665296c002ec84be428_1698_800x0_resize_box_3.png 800w, /p/svn-%E6%9B%B4%E6%96%B0%E6%99%82%E7%99%BC%E7%94%9F%E8%A1%9D%E7%AA%81%E5%A6%82%E4%BD%95%E8%A7%A3%E6%B1%BA/100_hu791d074278204665296c002ec84be428_1698_1600x0_resize_box_3.png 1600w"
+                        width="800" 
+                        height="600" 
+                        loading="lazy"
+                        alt="Featured image of post SVN-更新時發生衝突如何解決" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/svn/" >
+                SVN
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/svn-%E6%9B%B4%E6%96%B0%E6%99%82%E7%99%BC%E7%94%9F%E8%A1%9D%E7%AA%81%E5%A6%82%E4%BD%95%E8%A7%A3%E6%B1%BA/">SVN-更新時發生衝突如何解決</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Sep 13, 2022</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    1 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+</header>
+</article>
+        
+            
+<article class="has-image">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/aws-waf-rules-%E5%BB%BA%E7%BD%AE/">
+                <img src="/p/aws-waf-rules-%E5%BB%BA%E7%BD%AE/100_hu4977afd0e8455b389e73ed8c78bcad93_31864_800x0_resize_box_3.png"
+                        srcset="/p/aws-waf-rules-%E5%BB%BA%E7%BD%AE/100_hu4977afd0e8455b389e73ed8c78bcad93_31864_800x0_resize_box_3.png 800w, /p/aws-waf-rules-%E5%BB%BA%E7%BD%AE/100_hu4977afd0e8455b389e73ed8c78bcad93_31864_1600x0_resize_box_3.png 1600w"
+                        width="800" 
+                        height="250" 
+                        loading="lazy"
+                        alt="Featured image of post AWS - WAF &amp; Rules 建置" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/aws/" >
+                AWS
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/aws-waf-rules-%E5%BB%BA%E7%BD%AE/">AWS - WAF &amp; Rules 建置</a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            ( 封鎖 IP 政策 )
+        </h3>
+        
+    </div>
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Sep 08, 2022</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    1 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+</header>
+</article>
+        
+            
+<article class="has-image">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/aws-update-ip-set-to-block-based-ip-address-for-waf/">
+                <img src="/p/aws-update-ip-set-to-block-based-ip-address-for-waf/100_hu4977afd0e8455b389e73ed8c78bcad93_31864_800x0_resize_box_3.png"
+                        srcset="/p/aws-update-ip-set-to-block-based-ip-address-for-waf/100_hu4977afd0e8455b389e73ed8c78bcad93_31864_800x0_resize_box_3.png 800w, /p/aws-update-ip-set-to-block-based-ip-address-for-waf/100_hu4977afd0e8455b389e73ed8c78bcad93_31864_1600x0_resize_box_3.png 1600w"
+                        width="800" 
+                        height="250" 
+                        loading="lazy"
+                        alt="Featured image of post AWS- update-ip-set to block based IP address for WAF" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/aws/" >
+                AWS
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/aws-update-ip-set-to-block-based-ip-address-for-waf/">AWS- update-ip-set to block based IP address for WAF</a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            可用於腳本 API
+        </h3>
+        
+    </div>
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Sep 08, 2022</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    1 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+</header>
+</article>
+        
+            
+<article class="has-image">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/aws-cloudfront-cdn%E5%BF%AB%E5%8F%96%E6%B8%85%E9%99%A4/">
+                <img src="/p/aws-cloudfront-cdn%E5%BF%AB%E5%8F%96%E6%B8%85%E9%99%A4/100_hu4977afd0e8455b389e73ed8c78bcad93_31864_800x0_resize_box_3.png"
+                        srcset="/p/aws-cloudfront-cdn%E5%BF%AB%E5%8F%96%E6%B8%85%E9%99%A4/100_hu4977afd0e8455b389e73ed8c78bcad93_31864_800x0_resize_box_3.png 800w, /p/aws-cloudfront-cdn%E5%BF%AB%E5%8F%96%E6%B8%85%E9%99%A4/100_hu4977afd0e8455b389e73ed8c78bcad93_31864_1600x0_resize_box_3.png 1600w"
+                        width="800" 
+                        height="250" 
+                        loading="lazy"
+                        alt="Featured image of post AWS-Cloudfront CDN快取清除" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/aws/" >
+                AWS
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/aws-cloudfront-cdn%E5%BF%AB%E5%8F%96%E6%B8%85%E9%99%A4/">AWS-Cloudfront CDN快取清除</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Sep 08, 2022</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    1 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+</header>
+</article>
+        
+            
+<article class="has-image">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/aws-ec2-ami%E8%BD%89%E5%9C%B0%E5%8D%80%E5%B8%B3%E8%99%9F/">
+                <img src="/p/aws-ec2-ami%E8%BD%89%E5%9C%B0%E5%8D%80%E5%B8%B3%E8%99%9F/100_hu4977afd0e8455b389e73ed8c78bcad93_31864_800x0_resize_box_3.png"
+                        srcset="/p/aws-ec2-ami%E8%BD%89%E5%9C%B0%E5%8D%80%E5%B8%B3%E8%99%9F/100_hu4977afd0e8455b389e73ed8c78bcad93_31864_800x0_resize_box_3.png 800w, /p/aws-ec2-ami%E8%BD%89%E5%9C%B0%E5%8D%80%E5%B8%B3%E8%99%9F/100_hu4977afd0e8455b389e73ed8c78bcad93_31864_1600x0_resize_box_3.png 1600w"
+                        width="800" 
+                        height="250" 
+                        loading="lazy"
+                        alt="Featured image of post AWS-EC2 AMI轉地區&amp;帳號" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/aws/" >
+                AWS
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/aws-ec2-ami%E8%BD%89%E5%9C%B0%E5%8D%80%E5%B8%B3%E8%99%9F/">AWS-EC2 AMI轉地區&amp;帳號</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Sep 08, 2022</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    1 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+</header>
+</article>
+        
+            
+<article class="has-image">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/aws-ec2-mysql-slave%E8%B7%9F%E9%9A%A8rds%E6%95%99%E5%AD%B8/">
+                <img src="/p/aws-ec2-mysql-slave%E8%B7%9F%E9%9A%A8rds%E6%95%99%E5%AD%B8/100_hu4977afd0e8455b389e73ed8c78bcad93_31864_800x0_resize_box_3.png"
+                        srcset="/p/aws-ec2-mysql-slave%E8%B7%9F%E9%9A%A8rds%E6%95%99%E5%AD%B8/100_hu4977afd0e8455b389e73ed8c78bcad93_31864_800x0_resize_box_3.png 800w, /p/aws-ec2-mysql-slave%E8%B7%9F%E9%9A%A8rds%E6%95%99%E5%AD%B8/100_hu4977afd0e8455b389e73ed8c78bcad93_31864_1600x0_resize_box_3.png 1600w"
+                        width="800" 
+                        height="250" 
+                        loading="lazy"
+                        alt="Featured image of post AWS-EC2 mysql-slave跟隨RDS教學" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/aws/" >
+                AWS
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/aws-ec2-mysql-slave%E8%B7%9F%E9%9A%A8rds%E6%95%99%E5%AD%B8/">AWS-EC2 mysql-slave跟隨RDS教學</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Sep 08, 2022</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    1 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+</header>
+</article>
+        
+            
+<article class="has-image">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/aws-%E8%AE%8A%E6%9B%B4-management-console-%E7%9A%84%E8%AA%9E%E8%A8%80/">
+                <img src="/p/aws-%E8%AE%8A%E6%9B%B4-management-console-%E7%9A%84%E8%AA%9E%E8%A8%80/100_hu4977afd0e8455b389e73ed8c78bcad93_31864_800x0_resize_box_3.png"
+                        srcset="/p/aws-%E8%AE%8A%E6%9B%B4-management-console-%E7%9A%84%E8%AA%9E%E8%A8%80/100_hu4977afd0e8455b389e73ed8c78bcad93_31864_800x0_resize_box_3.png 800w, /p/aws-%E8%AE%8A%E6%9B%B4-management-console-%E7%9A%84%E8%AA%9E%E8%A8%80/100_hu4977afd0e8455b389e73ed8c78bcad93_31864_1600x0_resize_box_3.png 1600w"
+                        width="800" 
+                        height="250" 
+                        loading="lazy"
+                        alt="Featured image of post AWS-變更 Management Console 的語言" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/aws/" >
+                AWS
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/aws-%E8%AE%8A%E6%9B%B4-management-console-%E7%9A%84%E8%AA%9E%E8%A8%80/">AWS-變更 Management Console 的語言</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Sep 08, 2022</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    1 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+</header>
+</article>
+        
+            
+<article class="has-image">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/centos7-%E5%85%A7%E6%A0%B83.10.0-957-iptables-%E4%BD%BF%E7%94%A8geoip%E9%81%8E%E6%BF%BE%E5%9C%8B%E5%AE%B6/">
+                <img src="/p/centos7-%E5%85%A7%E6%A0%B83.10.0-957-iptables-%E4%BD%BF%E7%94%A8geoip%E9%81%8E%E6%BF%BE%E5%9C%8B%E5%AE%B6/100_hufccc25f98c07fbd5a07eedc8b57cae89_16682_800x0_resize_q75_box.jpg"
+                        srcset="/p/centos7-%E5%85%A7%E6%A0%B83.10.0-957-iptables-%E4%BD%BF%E7%94%A8geoip%E9%81%8E%E6%BF%BE%E5%9C%8B%E5%AE%B6/100_hufccc25f98c07fbd5a07eedc8b57cae89_16682_800x0_resize_q75_box.jpg 800w, /p/centos7-%E5%85%A7%E6%A0%B83.10.0-957-iptables-%E4%BD%BF%E7%94%A8geoip%E9%81%8E%E6%BF%BE%E5%9C%8B%E5%AE%B6/100_hufccc25f98c07fbd5a07eedc8b57cae89_16682_1600x0_resize_q75_box.jpg 1600w"
+                        width="800" 
+                        height="250" 
+                        loading="lazy"
+                        alt="Featured image of post centos7 內核3.10.0-957 iptables 使用geoip過濾國家" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/linux/" >
+                Linux
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/centos7-%E5%85%A7%E6%A0%B83.10.0-957-iptables-%E4%BD%BF%E7%94%A8geoip%E9%81%8E%E6%BF%BE%E5%9C%8B%E5%AE%B6/">centos7 內核3.10.0-957 iptables 使用geoip過濾國家</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Sep 08, 2022</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    2 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+</header>
+</article>
+        
+            
+<article class="has-image">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/linux-iptables-%E6%B0%B8%E4%B9%85%E9%97%9C%E9%96%89%E6%8C%87%E4%BB%A4/">
+                <img src="/p/linux-iptables-%E6%B0%B8%E4%B9%85%E9%97%9C%E9%96%89%E6%8C%87%E4%BB%A4/100_hufccc25f98c07fbd5a07eedc8b57cae89_16682_800x0_resize_q75_box.jpg"
+                        srcset="/p/linux-iptables-%E6%B0%B8%E4%B9%85%E9%97%9C%E9%96%89%E6%8C%87%E4%BB%A4/100_hufccc25f98c07fbd5a07eedc8b57cae89_16682_800x0_resize_q75_box.jpg 800w, /p/linux-iptables-%E6%B0%B8%E4%B9%85%E9%97%9C%E9%96%89%E6%8C%87%E4%BB%A4/100_hufccc25f98c07fbd5a07eedc8b57cae89_16682_1600x0_resize_q75_box.jpg 1600w"
+                        width="800" 
+                        height="250" 
+                        loading="lazy"
+                        alt="Featured image of post Linux-Iptables-永久關閉指令" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/linux/" >
+                Linux
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/linux-iptables-%E6%B0%B8%E4%B9%85%E9%97%9C%E9%96%89%E6%8C%87%E4%BB%A4/">Linux-Iptables-永久關閉指令</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Sep 08, 2022</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    1 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+</header>
+</article>
+        
+            
+<article class="has-image">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/centos8-%E6%89%BE%E4%B8%8D%E5%88%B0%E6%BA%90/">
+                <img src="/p/centos8-%E6%89%BE%E4%B8%8D%E5%88%B0%E6%BA%90/100_huc03b46b7f8bda3b0ed1195c88ee7f533_13486_800x0_resize_box_3.png"
+                        srcset="/p/centos8-%E6%89%BE%E4%B8%8D%E5%88%B0%E6%BA%90/100_huc03b46b7f8bda3b0ed1195c88ee7f533_13486_800x0_resize_box_3.png 800w, /p/centos8-%E6%89%BE%E4%B8%8D%E5%88%B0%E6%BA%90/100_huc03b46b7f8bda3b0ed1195c88ee7f533_13486_1600x0_resize_box_3.png 1600w"
+                        width="800" 
+                        height="233" 
+                        loading="lazy"
+                        alt="Featured image of post CentOS8-找不到源" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/linux/" >
+                Linux
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/centos8-%E6%89%BE%E4%B8%8D%E5%88%B0%E6%BA%90/">CentOS8-找不到源</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Aug 19, 2022</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    1 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+</header>
+</article>
+        
+            
+<article class="has-image">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/docker-%E5%AE%98%E6%96%B9yum%E6%BA%90%E5%AE%89%E8%A3%9D%E6%8C%87%E5%AE%9A%E7%89%88%E6%9C%AC%E6%B5%81%E7%A8%8B/">
+                <img src="/p/docker-%E5%AE%98%E6%96%B9yum%E6%BA%90%E5%AE%89%E8%A3%9D%E6%8C%87%E5%AE%9A%E7%89%88%E6%9C%AC%E6%B5%81%E7%A8%8B/100_hu3201776fa374726f6ce1bc51624a8839_26222_800x0_resize_box_3.png"
+                        srcset="/p/docker-%E5%AE%98%E6%96%B9yum%E6%BA%90%E5%AE%89%E8%A3%9D%E6%8C%87%E5%AE%9A%E7%89%88%E6%9C%AC%E6%B5%81%E7%A8%8B/100_hu3201776fa374726f6ce1bc51624a8839_26222_800x0_resize_box_3.png 800w, /p/docker-%E5%AE%98%E6%96%B9yum%E6%BA%90%E5%AE%89%E8%A3%9D%E6%8C%87%E5%AE%9A%E7%89%88%E6%9C%AC%E6%B5%81%E7%A8%8B/100_hu3201776fa374726f6ce1bc51624a8839_26222_1600x0_resize_box_3.png 1600w"
+                        width="800" 
+                        height="250" 
+                        loading="lazy"
+                        alt="Featured image of post Docker-官方yum源安裝指定版本流程" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/docker/" >
+                Docker
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/docker-%E5%AE%98%E6%96%B9yum%E6%BA%90%E5%AE%89%E8%A3%9D%E6%8C%87%E5%AE%9A%E7%89%88%E6%9C%AC%E6%B5%81%E7%A8%8B/">Docker-官方yum源安裝指定版本流程</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Aug 19, 2022</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    1 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+</header>
+</article>
+        
+            
+<article class="has-image">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/linux-history%E5%A2%9E%E5%8A%A0%E6%99%82%E9%96%93%E9%A1%AF%E7%A4%BA/">
+                <img src="/p/linux-history%E5%A2%9E%E5%8A%A0%E6%99%82%E9%96%93%E9%A1%AF%E7%A4%BA/100_hu1acf48b62c2e007a3a704d91e9dd9674_43864_800x0_resize_box_3.png"
+                        srcset="/p/linux-history%E5%A2%9E%E5%8A%A0%E6%99%82%E9%96%93%E9%A1%AF%E7%A4%BA/100_hu1acf48b62c2e007a3a704d91e9dd9674_43864_800x0_resize_box_3.png 800w, /p/linux-history%E5%A2%9E%E5%8A%A0%E6%99%82%E9%96%93%E9%A1%AF%E7%A4%BA/100_hu1acf48b62c2e007a3a704d91e9dd9674_43864_1600x0_resize_box_3.png 1600w"
+                        width="800" 
+                        height="247" 
+                        loading="lazy"
+                        alt="Featured image of post Linux-History增加時間顯示" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/linux/" >
+                Linux
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/linux-history%E5%A2%9E%E5%8A%A0%E6%99%82%E9%96%93%E9%A1%AF%E7%A4%BA/">Linux-History增加時間顯示</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Aug 16, 2022</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    1 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+</header>
+</article>
+        
+            
+<article class="has-image">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/memcache-%E5%8F%83%E6%95%B8/">
+                <img src="/p/memcache-%E5%8F%83%E6%95%B8/100_hu73f91f28ac20a05a3c02db312866cae0_6272_800x0_resize_q75_box.jpeg"
+                        srcset="/p/memcache-%E5%8F%83%E6%95%B8/100_hu73f91f28ac20a05a3c02db312866cae0_6272_800x0_resize_q75_box.jpeg 800w, /p/memcache-%E5%8F%83%E6%95%B8/100_hu73f91f28ac20a05a3c02db312866cae0_6272_1600x0_resize_q75_box.jpeg 1600w"
+                        width="800" 
+                        height="217" 
+                        loading="lazy"
+                        alt="Featured image of post Memcache-參數" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/database/" >
+                Database
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/memcache-%E5%8F%83%E6%95%B8/">Memcache-參數</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Aug 16, 2022</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    1 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+</header>
+</article>
+        
+            
+<article class="has-image">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/memcache-%E5%AE%89%E8%A3%9D-centos7/">
+                <img src="/p/memcache-%E5%AE%89%E8%A3%9D-centos7/100_hu73f91f28ac20a05a3c02db312866cae0_6272_800x0_resize_q75_box.jpeg"
+                        srcset="/p/memcache-%E5%AE%89%E8%A3%9D-centos7/100_hu73f91f28ac20a05a3c02db312866cae0_6272_800x0_resize_q75_box.jpeg 800w, /p/memcache-%E5%AE%89%E8%A3%9D-centos7/100_hu73f91f28ac20a05a3c02db312866cae0_6272_1600x0_resize_q75_box.jpeg 1600w"
+                        width="800" 
+                        height="217" 
+                        loading="lazy"
+                        alt="Featured image of post Memcache-安裝-CentOS7" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/database/" >
+                Database
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/memcache-%E5%AE%89%E8%A3%9D-centos7/">Memcache-安裝-CentOS7</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Aug 16, 2022</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    1 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+</header>
+</article>
+        
+            
+<article class="has-image">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/memcache-%E5%B8%B8%E7%94%A8%E8%AA%9E%E6%B3%95/">
+                <img src="/p/memcache-%E5%B8%B8%E7%94%A8%E8%AA%9E%E6%B3%95/100_hu73f91f28ac20a05a3c02db312866cae0_6272_800x0_resize_q75_box.jpeg"
+                        srcset="/p/memcache-%E5%B8%B8%E7%94%A8%E8%AA%9E%E6%B3%95/100_hu73f91f28ac20a05a3c02db312866cae0_6272_800x0_resize_q75_box.jpeg 800w, /p/memcache-%E5%B8%B8%E7%94%A8%E8%AA%9E%E6%B3%95/100_hu73f91f28ac20a05a3c02db312866cae0_6272_1600x0_resize_q75_box.jpeg 1600w"
+                        width="800" 
+                        height="217" 
+                        loading="lazy"
+                        alt="Featured image of post Memcache-常用語法" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/database/" >
+                Database
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/memcache-%E5%B8%B8%E7%94%A8%E8%AA%9E%E6%B3%95/">Memcache-常用語法</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Aug 16, 2022</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    1 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+</header>
+</article>
+        
+            
+<article class="has-image">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/mongodb-%E5%AE%89%E8%A3%9D%E6%95%99%E5%AD%B8/">
+                <img src="/p/mongodb-%E5%AE%89%E8%A3%9D%E6%95%99%E5%AD%B8/100_hu5573e9113ac5ca93c9830f3619376466_35662_800x0_resize_box_3.png"
+                        srcset="/p/mongodb-%E5%AE%89%E8%A3%9D%E6%95%99%E5%AD%B8/100_hu5573e9113ac5ca93c9830f3619376466_35662_800x0_resize_box_3.png 800w, /p/mongodb-%E5%AE%89%E8%A3%9D%E6%95%99%E5%AD%B8/100_hu5573e9113ac5ca93c9830f3619376466_35662_1600x0_resize_box_3.png 1600w"
+                        width="800" 
+                        height="267" 
+                        loading="lazy"
+                        alt="Featured image of post Mongodb-安裝教學" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/database/" >
+                Database
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/mongodb-%E5%AE%89%E8%A3%9D%E6%95%99%E5%AD%B8/">Mongodb-安裝教學</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Aug 15, 2022</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    1 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+</header>
+</article>
+        
+            
+<article class="has-image">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/mongodb-%E5%B8%B8%E7%94%A8%E8%AA%9E%E6%B3%95/">
+                <img src="/p/mongodb-%E5%B8%B8%E7%94%A8%E8%AA%9E%E6%B3%95/100_hu5573e9113ac5ca93c9830f3619376466_35662_800x0_resize_box_3.png"
+                        srcset="/p/mongodb-%E5%B8%B8%E7%94%A8%E8%AA%9E%E6%B3%95/100_hu5573e9113ac5ca93c9830f3619376466_35662_800x0_resize_box_3.png 800w, /p/mongodb-%E5%B8%B8%E7%94%A8%E8%AA%9E%E6%B3%95/100_hu5573e9113ac5ca93c9830f3619376466_35662_1600x0_resize_box_3.png 1600w"
+                        width="800" 
+                        height="267" 
+                        loading="lazy"
+                        alt="Featured image of post Mongodb-常用語法" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/database/" >
+                Database
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/mongodb-%E5%B8%B8%E7%94%A8%E8%AA%9E%E6%B3%95/">Mongodb-常用語法</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Aug 15, 2022</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    1 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+</header>
+</article>
+        
+            
+<article class="has-image">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/php-%E5%AE%89%E8%A3%9Dmongodb%E6%93%B4%E5%B1%95/">
+                <img src="/p/php-%E5%AE%89%E8%A3%9Dmongodb%E6%93%B4%E5%B1%95/100_hu2ca637fb1d0a70ad637da30e1c6e56b4_46154_800x0_resize_box_3.png"
+                        srcset="/p/php-%E5%AE%89%E8%A3%9Dmongodb%E6%93%B4%E5%B1%95/100_hu2ca637fb1d0a70ad637da30e1c6e56b4_46154_800x0_resize_box_3.png 800w, /p/php-%E5%AE%89%E8%A3%9Dmongodb%E6%93%B4%E5%B1%95/100_hu2ca637fb1d0a70ad637da30e1c6e56b4_46154_1600x0_resize_box_3.png 1600w"
+                        width="800" 
+                        height="250" 
+                        loading="lazy"
+                        alt="Featured image of post PHP-安裝MongoDB擴展" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/web/" >
+                Web
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/php-%E5%AE%89%E8%A3%9Dmongodb%E6%93%B4%E5%B1%95/">PHP-安裝MongoDB擴展</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Aug 15, 2022</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    1 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+</header>
+</article>
+        
+            
+<article class="has-image">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/php-%E5%AE%89%E8%A3%9Dredis%E6%93%B4%E5%B1%95/">
+                <img src="/p/php-%E5%AE%89%E8%A3%9Dredis%E6%93%B4%E5%B1%95/100_hu2ca637fb1d0a70ad637da30e1c6e56b4_46154_800x0_resize_box_3.png"
+                        srcset="/p/php-%E5%AE%89%E8%A3%9Dredis%E6%93%B4%E5%B1%95/100_hu2ca637fb1d0a70ad637da30e1c6e56b4_46154_800x0_resize_box_3.png 800w, /p/php-%E5%AE%89%E8%A3%9Dredis%E6%93%B4%E5%B1%95/100_hu2ca637fb1d0a70ad637da30e1c6e56b4_46154_1600x0_resize_box_3.png 1600w"
+                        width="800" 
+                        height="250" 
+                        loading="lazy"
+                        alt="Featured image of post PHP-安裝Redis擴展" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/web/" >
+                Web
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/php-%E5%AE%89%E8%A3%9Dredis%E6%93%B4%E5%B1%95/">PHP-安裝Redis擴展</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Aug 15, 2022</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    1 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+</header>
+</article>
+        
+            
+<article class="has-image">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/xenserver-%E5%AE%89%E8%A3%85%E6%95%99%E5%AD%B8/">
+                <img src="/p/xenserver-%E5%AE%89%E8%A3%85%E6%95%99%E5%AD%B8/100_hu442ea9164a062f86740540d4232db639_41801_800x0_resize_box_3.png"
+                        srcset="/p/xenserver-%E5%AE%89%E8%A3%85%E6%95%99%E5%AD%B8/100_hu442ea9164a062f86740540d4232db639_41801_800x0_resize_box_3.png 800w, /p/xenserver-%E5%AE%89%E8%A3%85%E6%95%99%E5%AD%B8/100_hu442ea9164a062f86740540d4232db639_41801_1600x0_resize_box_3.png 1600w"
+                        width="800" 
+                        height="259" 
+                        loading="lazy"
+                        alt="Featured image of post XenServer-安装教學" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/linux/" >
+                Linux
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/xenserver-%E5%AE%89%E8%A3%85%E6%95%99%E5%AD%B8/">XenServer-安装教學</a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            (Citrix XenServer 7.2 虛擬化集群搭建)
+        </h3>
+        
+    </div>
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Aug 15, 2022</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    0 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+</header>
+</article>
+        
+            
+<article class="has-image">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/xenserver-%E9%80%8F%E9%81%8E%E8%99%9B%E6%93%AC%E6%A9%9F%E5%81%9Anfs-server/">
+                <img src="/p/xenserver-%E9%80%8F%E9%81%8E%E8%99%9B%E6%93%AC%E6%A9%9F%E5%81%9Anfs-server/100_hu442ea9164a062f86740540d4232db639_41801_800x0_resize_box_3.png"
+                        srcset="/p/xenserver-%E9%80%8F%E9%81%8E%E8%99%9B%E6%93%AC%E6%A9%9F%E5%81%9Anfs-server/100_hu442ea9164a062f86740540d4232db639_41801_800x0_resize_box_3.png 800w, /p/xenserver-%E9%80%8F%E9%81%8E%E8%99%9B%E6%93%AC%E6%A9%9F%E5%81%9Anfs-server/100_hu442ea9164a062f86740540d4232db639_41801_1600x0_resize_box_3.png 1600w"
+                        width="800" 
+                        height="259" 
+                        loading="lazy"
+                        alt="Featured image of post XenServer-透過虛擬機做NFS-Server " />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/linux/" >
+                Linux
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/xenserver-%E9%80%8F%E9%81%8E%E8%99%9B%E6%93%AC%E6%A9%9F%E5%81%9Anfs-server/">XenServer-透過虛擬機做NFS-Server </a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            (dev/mapper/centos-root)
+        </h3>
+        
+    </div>
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Aug 12, 2022</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    1 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+</header>
+</article>
+        
+            
+<article class="has-image">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/linux-%E7%B3%BB%E7%B5%B1%E9%87%8D%E5%95%9F-%E6%AA%A2%E8%A6%96%E6%97%A5%E8%AA%8C%E5%8F%8A%E6%AD%B7%E5%8F%B2%E7%B4%80%E9%8C%84/">
+                <img src="/p/linux-%E7%B3%BB%E7%B5%B1%E9%87%8D%E5%95%9F-%E6%AA%A2%E8%A6%96%E6%97%A5%E8%AA%8C%E5%8F%8A%E6%AD%B7%E5%8F%B2%E7%B4%80%E9%8C%84/100_hu1acf48b62c2e007a3a704d91e9dd9674_43864_800x0_resize_box_3.png"
+                        srcset="/p/linux-%E7%B3%BB%E7%B5%B1%E9%87%8D%E5%95%9F-%E6%AA%A2%E8%A6%96%E6%97%A5%E8%AA%8C%E5%8F%8A%E6%AD%B7%E5%8F%B2%E7%B4%80%E9%8C%84/100_hu1acf48b62c2e007a3a704d91e9dd9674_43864_800x0_resize_box_3.png 800w, /p/linux-%E7%B3%BB%E7%B5%B1%E9%87%8D%E5%95%9F-%E6%AA%A2%E8%A6%96%E6%97%A5%E8%AA%8C%E5%8F%8A%E6%AD%B7%E5%8F%B2%E7%B4%80%E9%8C%84/100_hu1acf48b62c2e007a3a704d91e9dd9674_43864_1600x0_resize_box_3.png 1600w"
+                        width="800" 
+                        height="247" 
+                        loading="lazy"
+                        alt="Featured image of post Linux-系統重啟 &amp; 檢視日誌及歷史紀錄" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/linux/" >
+                Linux
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/linux-%E7%B3%BB%E7%B5%B1%E9%87%8D%E5%95%9F-%E6%AA%A2%E8%A6%96%E6%97%A5%E8%AA%8C%E5%8F%8A%E6%AD%B7%E5%8F%B2%E7%B4%80%E9%8C%84/">Linux-系統重啟 &amp; 檢視日誌及歷史紀錄</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Aug 11, 2022</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    2 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+</header>
+</article>
+        
+            
+<article class="has-image">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/centos7-%E6%9B%B4%E6%94%B9yum%E6%BA%90hinet/">
+                <img src="/p/centos7-%E6%9B%B4%E6%94%B9yum%E6%BA%90hinet/100_huc03b46b7f8bda3b0ed1195c88ee7f533_13486_800x0_resize_box_3.png"
+                        srcset="/p/centos7-%E6%9B%B4%E6%94%B9yum%E6%BA%90hinet/100_huc03b46b7f8bda3b0ed1195c88ee7f533_13486_800x0_resize_box_3.png 800w, /p/centos7-%E6%9B%B4%E6%94%B9yum%E6%BA%90hinet/100_huc03b46b7f8bda3b0ed1195c88ee7f533_13486_1600x0_resize_box_3.png 1600w"
+                        width="800" 
+                        height="233" 
+                        loading="lazy"
+                        alt="Featured image of post Centos7-更改Yum源(HiNet)" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/linux/" >
+                Linux
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/centos7-%E6%9B%B4%E6%94%B9yum%E6%BA%90hinet/">Centos7-更改Yum源(HiNet)</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Aug 10, 2022</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    1 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+</header>
+</article>
+        
+            
+<article class="has-image">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/docker-%E9%80%8F%E9%81%8Eimage%E5%82%B3%E8%BC%B8%E8%87%B3%E5%8F%A6%E4%B8%80%E5%8F%B0%E5%85%A7%E7%B6%B2%E6%A9%9F%E5%99%A8/">
+                <img src="/p/docker-%E9%80%8F%E9%81%8Eimage%E5%82%B3%E8%BC%B8%E8%87%B3%E5%8F%A6%E4%B8%80%E5%8F%B0%E5%85%A7%E7%B6%B2%E6%A9%9F%E5%99%A8/100_hu3201776fa374726f6ce1bc51624a8839_26222_800x0_resize_box_3.png"
+                        srcset="/p/docker-%E9%80%8F%E9%81%8Eimage%E5%82%B3%E8%BC%B8%E8%87%B3%E5%8F%A6%E4%B8%80%E5%8F%B0%E5%85%A7%E7%B6%B2%E6%A9%9F%E5%99%A8/100_hu3201776fa374726f6ce1bc51624a8839_26222_800x0_resize_box_3.png 800w, /p/docker-%E9%80%8F%E9%81%8Eimage%E5%82%B3%E8%BC%B8%E8%87%B3%E5%8F%A6%E4%B8%80%E5%8F%B0%E5%85%A7%E7%B6%B2%E6%A9%9F%E5%99%A8/100_hu3201776fa374726f6ce1bc51624a8839_26222_1600x0_resize_box_3.png 1600w"
+                        width="800" 
+                        height="250" 
+                        loading="lazy"
+                        alt="Featured image of post Docker-透過image傳輸至另一台內網機器" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/docker/" >
+                Docker
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/docker-%E9%80%8F%E9%81%8Eimage%E5%82%B3%E8%BC%B8%E8%87%B3%E5%8F%A6%E4%B8%80%E5%8F%B0%E5%85%A7%E7%B6%B2%E6%A9%9F%E5%99%A8/">Docker-透過image傳輸至另一台內網機器</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Aug 10, 2022</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    1 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+</header>
+</article>
+        
+            
+<article class="has-image">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/linux-%E5%BB%BA%E7%AB%8B%E9%96%8B%E6%A9%9F%E7%95%AB%E9%9D%A2motd%E6%96%87%E5%AD%97/">
+                <img src="/p/linux-%E5%BB%BA%E7%AB%8B%E9%96%8B%E6%A9%9F%E7%95%AB%E9%9D%A2motd%E6%96%87%E5%AD%97/100_hu1acf48b62c2e007a3a704d91e9dd9674_43864_800x0_resize_box_3.png"
+                        srcset="/p/linux-%E5%BB%BA%E7%AB%8B%E9%96%8B%E6%A9%9F%E7%95%AB%E9%9D%A2motd%E6%96%87%E5%AD%97/100_hu1acf48b62c2e007a3a704d91e9dd9674_43864_800x0_resize_box_3.png 800w, /p/linux-%E5%BB%BA%E7%AB%8B%E9%96%8B%E6%A9%9F%E7%95%AB%E9%9D%A2motd%E6%96%87%E5%AD%97/100_hu1acf48b62c2e007a3a704d91e9dd9674_43864_1600x0_resize_box_3.png 1600w"
+                        width="800" 
+                        height="247" 
+                        loading="lazy"
+                        alt="Featured image of post Linux-建立開機畫面motd文字" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/linux/" >
+                Linux
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/linux-%E5%BB%BA%E7%AB%8B%E9%96%8B%E6%A9%9F%E7%95%AB%E9%9D%A2motd%E6%96%87%E5%AD%97/">Linux-建立開機畫面motd文字</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Aug 10, 2022</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    1 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+</header>
+</article>
+        
+    </section>
+    <nav class='pagination'>
+        
+        
+
+        
+            
+                    <a class='page-link' href='/'>1</a>
+                
+            
+            
+                    <a class='page-link' href='/page/2/'>2</a>
+                
+            
+            
+                <span class='page-link current'>3</span>
+                
+            
+            
+                    <a class='page-link' href='/page/4/'>4</a>
+                
+            
+            
+                    <a class='page-link' href='/page/5/'>5</a>
+                
+            
+    </nav>
+
+<footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2022 - 
+        
+        2023 Laurance&#39;s Note
+    </section>
+    
+    <section class="powerby">
+        
+            All rights reserved <br/>
+        
+
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        
+    </section>
+</footer>
+
+<span id="busuanzi_container_site_pv">
+    總瀏覽  <span id="busuanzi_value_site_pv"></span>  次
+</span>
+
+            </main>
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                <form action="/search/" class="search-form widget" >
+        <p>
+            <label>Search</label>
+            <input name="keyword" required placeholder="Type something..." />
+        
+            <button title="Search">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+            </button>
+        </p>
+    </form>
+            
+        
+            
+                <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-infinity" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M9.828 9.172a4 4 0 1 0 0 5.656 a10 10 0 0 0 2.172 -2.828a10 10 0 0 1 2.172 -2.828 a4 4 0 1 1 0 5.656a10 10 0 0 1 -2.172 -2.828a10 10 0 0 0 -2.172 -2.828" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Archives</h2>
+
+        
+        
+        
+        
+        
+        <div class="widget-archive--list">
+            <div class="archives-year">
+                    <a href="/archives/#2023">
+                        
+                            <span class="year">2023</span>
+                            <span class="count">35</span>
+                        
+                    </a> 
+                </div>
+            <div class="archives-year">
+                    <a href="/archives/#2022">
+                        
+                            <span class="year">2022</span>
+                            <span class="count">184</span>
+                        
+                    </a> 
+                </div>
+            <div class="archives-year">
+                    <a href="/archives/#2020">
+                        
+                            <span class="year">2020</span>
+                            <span class="count">1</span>
+                        
+                    </a> 
+                </div>
+            <div class="archives-year">
+                    <a href="/archives/#2019">
+                        
+                            <span class="year">2019</span>
+                            <span class="count">5</span>
+                        
+                    </a> 
+                </div>
+            
+        </div>
+    </section>
+            
+        
+            
+                <section class="widget tagCloud">
+    <div class="widget-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-tag" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11 3L20 12a1.5 1.5 0 0 1 0 2L14 20a1.5 1.5 0 0 1 -2 0L3 11v-4a4 4 0 0 1 4 -4h4" />
+  <circle cx="9" cy="9" r="2" />
+</svg>
+
+
+
+    </div>
+    <h2 class="widget-title section-title">Tags</h2>
+
+    <div class="tagCloud-tags">
+        
+            <a href="/tags/mysql/" class="font_size_15">
+                MySQL
+            </a>
+        
+            <a href="/tags/aws/" class="font_size_14">
+                AWS
+            </a>
+        
+            <a href="/tags/nginx/" class="font_size_14">
+                Nginx
+            </a>
+        
+            <a href="/tags/centos/" class="font_size_11">
+                CentOS
+            </a>
+        
+            <a href="/tags/grafana/" class="font_size_11">
+                Grafana
+            </a>
+        
+            <a href="/tags/kubernetes/" class="font_size_11">
+                Kubernetes
+            </a>
+        
+            <a href="/tags/linux/" class="font_size_9">
+                Linux
+            </a>
+        
+            <a href="/tags/gcp/" class="font_size_8">
+                GCP
+            </a>
+        
+            <a href="/tags/iptables/" class="font_size_8">
+                Iptables
+            </a>
+        
+            <a href="/tags/php/" class="font_size_8">
+                PHP
+            </a>
+        
+            <a href="/tags/svn/" class="font_size_8">
+                SVN
+            </a>
+        
+            <a href="/tags/windows/" class="font_size_7">
+                Windows
+            </a>
+        
+            <a href="/tags/docker/" class="font_size_6">
+                Docker
+            </a>
+        
+            <a href="/tags/mongodb/" class="font_size_6">
+                Mongodb
+            </a>
+        
+            <a href="/tags/redis/" class="font_size_6">
+                Redis
+            </a>
+        
+            <a href="/tags/shell-script/" class="font_size_6">
+                shell script
+            </a>
+        
+            <a href="/tags/influxdb/" class="font_size_5">
+                influxdb
+            </a>
+        
+            <a href="/tags/telegraf/" class="font_size_5">
+                telegraf
+            </a>
+        
+            <a href="/tags/xencenter/" class="font_size_5">
+                XenCenter
+            </a>
+        
+            <a href="/tags/fortigate/" class="font_size_4">
+                FortiGate
+            </a>
+        
+            <a href="/tags/cacti/" class="font_size_3">
+                Cacti
+            </a>
+        
+            <a href="/tags/debian/" class="font_size_3">
+                Debian
+            </a>
+        
+            <a href="/tags/dns/" class="font_size_3">
+                DNS
+            </a>
+        
+            <a href="/tags/loki/" class="font_size_3">
+                Loki
+            </a>
+        
+            <a href="/tags/memcache/" class="font_size_3">
+                Memcache
+            </a>
+        
+            <a href="/tags/promtail/" class="font_size_3">
+                Promtail
+            </a>
+        
+            <a href="/tags/rclone/" class="font_size_3">
+                rclone
+            </a>
+        
+            <a href="/tags/apache/" class="font_size_2">
+                Apache
+            </a>
+        
+            <a href="/tags/git/" class="font_size_2">
+                GIT
+            </a>
+        
+            <a href="/tags/logrotate/" class="font_size_2">
+                Logrotate
+            </a>
+        
+            <a href="/tags/postgresql/" class="font_size_2">
+                Postgresql
+            </a>
+        
+            <a href="/tags/prometheus/" class="font_size_2">
+                Prometheus
+            </a>
+        
+            <a href="/tags/rsync/" class="font_size_2">
+                rsync
+            </a>
+        
+            <a href="/tags/xshell/" class="font_size_2">
+                Xshell
+            </a>
+        
+            <a href="/tags/youtube-dl/" class="font_size_2">
+                youtube-dl
+            </a>
+        
+            <a href="/tags/crontab/" class="font_size_1">
+                Crontab
+            </a>
+        
+            <a href="/tags/exporter/" class="font_size_1">
+                exporter
+            </a>
+        
+            <a href="/tags/ffmpeg/" class="font_size_1">
+                FFmpeg
+            </a>
+        
+            <a href="/tags/firebase/" class="font_size_1">
+                Firebase
+            </a>
+        
+            <a href="/tags/haproxy/" class="font_size_1">
+                Haproxy
+            </a>
+        
+    </div>
+</section>
+            
+        
+    </aside>
+
+
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

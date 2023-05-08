@@ -1,0 +1,503 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>rclone on Laurance&#39;s Note</title>
+        <link>https://note.laurance.ml/categories/rclone/</link>
+        <description>Recent content in rclone on Laurance&#39;s Note</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Wed, 01 Feb 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://note.laurance.ml/categories/rclone/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Rclone啟動腳本 {CentOS7}</title>
+        <link>https://note.laurance.ml/p/rclone%E5%95%9F%E5%8B%95%E8%85%B3%E6%9C%AC-centos7/</link>
+        <pubDate>Wed, 01 Feb 2023 00:00:00 +0000</pubDate>
+        
+        <guid>https://note.laurance.ml/p/rclone%E5%95%9F%E5%8B%95%E8%85%B3%E6%9C%AC-centos7/</guid>
+        <description>&lt;img src="https://note.laurance.ml/p/rclone%E5%95%9F%E5%8B%95%E8%85%B3%E6%9C%AC-centos7/100.png" alt="Featured image of post Rclone啟動腳本 {CentOS7}" /&gt;&lt;p&gt;[官方 Global Flags] &lt;a class=&#34;link&#34; href=&#34;https://rclone.org/flags/?utm_source=ld246.com&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://rclone.org/flags/?utm_source=ld246.com&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;[參考文獻] &lt;a class=&#34;link&#34; href=&#34;https://ld246.com/article/1600853705300&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://ld246.com/article/1600853705300&lt;/a&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;l&#34;&gt;cat &amp;lt;&amp;lt;EOF |tee /usr/lib/systemd/system/rclone.service&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;c&#34;&gt;# User service for Rclone mounting&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;c&#34;&gt;#&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;c&#34;&gt;# Place in ~/.config/systemd/user/&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;c&#34;&gt;# File must include the &amp;#39;@&amp;#39; (ex rclone@.service)&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;c&#34;&gt;# As your normal user, run &lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;c&#34;&gt;#   systemctl --user daemon-reload&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;c&#34;&gt;# You can now start/enable each remote by using rclone@&amp;lt;remote&amp;gt;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;c&#34;&gt;#   systemctl --user enable rclone@drive&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;c&#34;&gt;#   systemctl --user start rclone@drive&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;c&#34;&gt;#   Global Flags https://rclone.org/flags/?utm_source=ld246.com&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;l&#34;&gt;Unit]&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;Description=rclone&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;l&#34;&gt;Remote FUSE filesystem for cloud storage config&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;l&#34;&gt;Documentation=man:rclone(1)&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;l&#34;&gt;After=network-online.target&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;l&#34;&gt;Wants=network-online.target&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;l&#34;&gt;AssertPathIsDirectory=/home/web-note&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;l&#34;&gt;Service]&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;l&#34;&gt;Type=notify&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;l&#34;&gt;ExecStartPre=/bin/mkdir -p /home/web-note&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;l&#34;&gt;ExecStart= \&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;  &lt;/span&gt;&lt;span class=&#34;l&#34;&gt;/usr/bin/rclone mount -P \&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;--&lt;span class=&#34;l&#34;&gt;config /root/.config/rclone/rclone.conf \&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;--&lt;span class=&#34;l&#34;&gt;allow-non-empty \&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;--&lt;span class=&#34;l&#34;&gt;allow-other \&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;--&lt;span class=&#34;l&#34;&gt;vfs-cache-mode full \&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;--&lt;span class=&#34;l&#34;&gt;vfs-cache-max-size 500M \&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;--&lt;span class=&#34;l&#34;&gt;dir-cache-time 5m \&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;--&lt;span class=&#34;l&#34;&gt;poll-interval 1m \&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;--&lt;span class=&#34;l&#34;&gt;vfs-read-chunk-size-limit 128M \&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;--&lt;span class=&#34;l&#34;&gt;vfs-read-chunk-size-limit off \&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;--&lt;span class=&#34;l&#34;&gt;log-level INFO \&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;--&lt;span class=&#34;l&#34;&gt;log-file /var/log/rclone/rclone.log \&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;--&lt;span class=&#34;l&#34;&gt;bwlimit 0 \&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;--&lt;span class=&#34;l&#34;&gt;umask 022 \&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;hward&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;l&#34;&gt;/home/web-note&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;l&#34;&gt;ExecStop=/bin/fusermount -uz /home/web-note&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;l&#34;&gt;Restart=always&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;l&#34;&gt;RestartSec=10&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;l&#34;&gt;Install]&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;l&#34;&gt;WantedBy=default.target&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;l&#34;&gt;EOF&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;設置開機啟動&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;systemctl enable rclone
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;常用參數&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Rclone 常用參數&lt;/th&gt;
+&lt;th&gt;功能&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;Type=notify&lt;/td&gt;
+&lt;td&gt;掛載點被成功配置之後 service 會進行啟動狀態&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;-P&lt;/td&gt;
+&lt;td&gt;顯示實時速度&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&amp;ndash;allow-non-empty&lt;/td&gt;
+&lt;td&gt;允許掛載到非空目錄（Not Windows）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&amp;ndash;allow-other&lt;/td&gt;
+&lt;td&gt;允許其他用戶訪問&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&amp;ndash;vfs-cache-mode full&lt;/td&gt;
+&lt;td&gt;緩存模式 off&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&amp;ndash;vfs-cache-max-size 500M&lt;/td&gt;
+&lt;td&gt;緩存中對象的最大總大小（默認關閉）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&amp;ndash;dir-cache-time 5m&lt;/td&gt;
+&lt;td&gt;緩存時間&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&amp;ndash;poll-interval 1m&lt;/td&gt;
+&lt;td&gt;在輪詢更改之間等待的時間。 必須小於 dir-cache-time&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&amp;ndash;vfs-read-chunk-size-limit off&lt;/td&gt;
+&lt;td&gt;最大緩存大小 (默認是 &amp;ldquo;off&amp;rdquo;)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&amp;ndash;log-level INFO&lt;/td&gt;
+&lt;td&gt;允許掛載到非空目錄（Not Windows）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&amp;ndash;log-format LIST&lt;/td&gt;
+&lt;td&gt;可配置 date, time, microseconds, longfile, shortfile, UTC. 默認是 “date,time”&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&amp;ndash;log-file /var/log/rclone/rclone.log&lt;/td&gt;
+&lt;td&gt;緩存模式 off&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&amp;ndash;bwlimit 40M&lt;/td&gt;
+&lt;td&gt;限制速度40MB&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&amp;ndash;umask 022&lt;/td&gt;
+&lt;td&gt;每一個新產生的檔案會是644 (rw-r&amp;ndash;r&amp;ndash;)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Restart=always&lt;/td&gt;
+&lt;td&gt;自動啟動&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;hr&gt;
+
+</description>
+        </item>
+        <item>
+        <title>Rclone掛載 google drive 作為本地硬碟使用 </title>
+        <link>https://note.laurance.ml/p/rclone%E6%8E%9B%E8%BC%89-google-drive-%E4%BD%9C%E7%82%BA%E6%9C%AC%E5%9C%B0%E7%A1%AC%E7%A2%9F%E4%BD%BF%E7%94%A8/</link>
+        <pubDate>Wed, 01 Feb 2023 00:00:00 +0000</pubDate>
+        
+        <guid>https://note.laurance.ml/p/rclone%E6%8E%9B%E8%BC%89-google-drive-%E4%BD%9C%E7%82%BA%E6%9C%AC%E5%9C%B0%E7%A1%AC%E7%A2%9F%E4%BD%BF%E7%94%A8/</guid>
+        <description>&lt;img src="https://note.laurance.ml/p/rclone%E6%8E%9B%E8%BC%89-google-drive-%E4%BD%9C%E7%82%BA%E6%9C%AC%E5%9C%B0%E7%A1%AC%E7%A2%9F%E4%BD%BF%E7%94%A8/100.png" alt="Featured image of post Rclone掛載 google drive 作為本地硬碟使用 " /&gt;&lt;h1 id=&#34;掛載-google-drive-作為本地硬碟使用-mount-google-drive&#34;&gt;掛載 google drive 作為本地硬碟使用 (mount google drive)&lt;/h1&gt;
+&lt;p&gt;[官方] &lt;a class=&#34;link&#34; href=&#34;https://rclone.org/commands/rclone_mount/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://rclone.org/commands/rclone_mount/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;設定並驗證好 rclone步驟 :&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.laurance.ml/p/centos7%E4%B8%8A%E4%BD%BF%E7%94%A8rclone%E9%81%A0%E7%AB%AF%E5%82%99%E4%BB%BD%E8%87%B3%E9%9B%B2%E7%AB%AF/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://www.laurance.ml/p/centos7%E4%B8%8A%E4%BD%BF%E7%94%A8rclone%E9%81%A0%E7%AB%AF%E5%82%99%E4%BB%BD%E8%87%B3%E9%9B%B2%E7%AB%AF/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;安裝依賴&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;yum install fuse
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;將 drive mount到本地 linux&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;rclone mount  &amp;lt;gdrive剛剛輸入的代稱&amp;gt;:&amp;lt;根目錄以下的雲端路徑&amp;gt; &amp;lt;mount 本地的路徑&amp;gt;&amp;gt;rclone mount  &amp;lt;gdrive剛剛輸入的代稱&amp;gt;:&amp;lt;根目錄以下的雲端路徑&amp;gt; &amp;lt;mount 本地的路徑&amp;gt;
+
+rclone mount hward: /home/web-note --allow-other --allow-non-empty --vfs-cache-mode full --daemon
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;取消掛載&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;fusermount -qzu {本地路徑}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Mount 之前&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/rclone%E6%8E%9B%E8%BC%89-google-drive-%E4%BD%9C%E7%82%BA%E6%9C%AC%E5%9C%B0%E7%A1%AC%E7%A2%9F%E4%BD%BF%E7%94%A8/101.png&#34;
+	width=&#34;1896&#34;
+	height=&#34;332&#34;
+	srcset=&#34;https://note.laurance.ml/p/rclone%E6%8E%9B%E8%BC%89-google-drive-%E4%BD%9C%E7%82%BA%E6%9C%AC%E5%9C%B0%E7%A1%AC%E7%A2%9F%E4%BD%BF%E7%94%A8/101_hu7fb805575ed8a9ed263f843d4fd615ca_14243_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/rclone%E6%8E%9B%E8%BC%89-google-drive-%E4%BD%9C%E7%82%BA%E6%9C%AC%E5%9C%B0%E7%A1%AC%E7%A2%9F%E4%BD%BF%E7%94%A8/101_hu7fb805575ed8a9ed263f843d4fd615ca_14243_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;571&#34;
+		data-flex-basis=&#34;1370px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Mount 之後&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/rclone%E6%8E%9B%E8%BC%89-google-drive-%E4%BD%9C%E7%82%BA%E6%9C%AC%E5%9C%B0%E7%A1%AC%E7%A2%9F%E4%BD%BF%E7%94%A8/102.png&#34;
+	width=&#34;1891&#34;
+	height=&#34;342&#34;
+	srcset=&#34;https://note.laurance.ml/p/rclone%E6%8E%9B%E8%BC%89-google-drive-%E4%BD%9C%E7%82%BA%E6%9C%AC%E5%9C%B0%E7%A1%AC%E7%A2%9F%E4%BD%BF%E7%94%A8/102_huab3734dc704cc0804f093795cb1a8df5_23716_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/rclone%E6%8E%9B%E8%BC%89-google-drive-%E4%BD%9C%E7%82%BA%E6%9C%AC%E5%9C%B0%E7%A1%AC%E7%A2%9F%E4%BD%BF%E7%94%A8/102_huab3734dc704cc0804f093795cb1a8df5_23716_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;552&#34;
+		data-flex-basis=&#34;1327px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;常用語法&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;rclone命令範例&lt;/th&gt;
+&lt;th&gt;功能&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&amp;ndash;allow-other&lt;/td&gt;
+&lt;td&gt;允許非當前 rclone 用戶外其它用戶進行訪問&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&amp;ndash;attr-timeout 5m&lt;/td&gt;
+&lt;td&gt;文件屬性緩存，（大小，修改時間等）的時間。如果 VPS 配置比較低，建議適當提高這個值，避免過多內核交互，降低資源佔用&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;-vfs-cache-mode full&lt;/td&gt;
+&lt;td&gt;開啟 VFS 文件緩存，可減少 rclone 與 API 交互，同時可提高文件讀寫效率&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&amp;ndash;vfs-cache-max-age 24h&lt;/td&gt;
+&lt;td&gt;VFS 文件緩存時間，這裡設置 24 小時，如果文件很少更改，建議設置更長時間&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&amp;ndash;vfs-cache-max-size 10G&lt;/td&gt;
+&lt;td&gt;VFS文件緩存上限大小，建議不超過當前空餘磁盤的50%&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;vfs-read-chunk-size-limit 100M&lt;/td&gt;
+&lt;td&gt;分塊讀取大小，這裡設置的是100M，可提高文件讀的效率，比如1G的文件，大致分為10個塊進行讀取，但與此同時API請求次數也會增多&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&amp;ndash;buffer-size 100M&lt;/td&gt;
+&lt;td&gt;內存緩存，如果您內存比較小，可降低此值，如果內存比較大，可適當提高&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&amp;ndash;daemon&lt;/td&gt;
+&lt;td&gt;指後台方式運行&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;hr&gt;
+
+</description>
+        </item>
+        <item>
+        <title>CentOS7上使用Rclone遠端備份至雲端</title>
+        <link>https://note.laurance.ml/p/centos7%E4%B8%8A%E4%BD%BF%E7%94%A8rclone%E9%81%A0%E7%AB%AF%E5%82%99%E4%BB%BD%E8%87%B3%E9%9B%B2%E7%AB%AF/</link>
+        <pubDate>Sun, 27 Nov 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://note.laurance.ml/p/centos7%E4%B8%8A%E4%BD%BF%E7%94%A8rclone%E9%81%A0%E7%AB%AF%E5%82%99%E4%BB%BD%E8%87%B3%E9%9B%B2%E7%AB%AF/</guid>
+        <description>&lt;img src="https://note.laurance.ml/p/centos7%E4%B8%8A%E4%BD%BF%E7%94%A8rclone%E9%81%A0%E7%AB%AF%E5%82%99%E4%BB%BD%E8%87%B3%E9%9B%B2%E7%AB%AF/100.png" alt="Featured image of post CentOS7上使用Rclone遠端備份至雲端" /&gt;&lt;pre&gt;&lt;code&gt;安裝依賴
+yum install curl unzip man-db
+
+安裝 Rclone
+curl https://rclone.org/install.sh | bash
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/centos7%E4%B8%8A%E4%BD%BF%E7%94%A8rclone%E9%81%A0%E7%AB%AF%E5%82%99%E4%BB%BD%E8%87%B3%E9%9B%B2%E7%AB%AF/401.png&#34;
+	width=&#34;1900&#34;
+	height=&#34;679&#34;
+	srcset=&#34;https://note.laurance.ml/p/centos7%E4%B8%8A%E4%BD%BF%E7%94%A8rclone%E9%81%A0%E7%AB%AF%E5%82%99%E4%BB%BD%E8%87%B3%E9%9B%B2%E7%AB%AF/401_hu7476b60d71dd6fa2c4b4a891dafae43f_59743_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/centos7%E4%B8%8A%E4%BD%BF%E7%94%A8rclone%E9%81%A0%E7%AB%AF%E5%82%99%E4%BB%BD%E8%87%B3%E9%9B%B2%E7%AB%AF/401_hu7476b60d71dd6fa2c4b4a891dafae43f_59743_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;279&#34;
+		data-flex-basis=&#34;671px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;建立設定檔並進入交互式操作
+rclone config
+
+回答 n 以建立新的遠端服務 
+name 這邊以 goodle-drive 示範
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/centos7%E4%B8%8A%E4%BD%BF%E7%94%A8rclone%E9%81%A0%E7%AB%AF%E5%82%99%E4%BB%BD%E8%87%B3%E9%9B%B2%E7%AB%AF/402.png&#34;
+	width=&#34;1901&#34;
+	height=&#34;288&#34;
+	srcset=&#34;https://note.laurance.ml/p/centos7%E4%B8%8A%E4%BD%BF%E7%94%A8rclone%E9%81%A0%E7%AB%AF%E5%82%99%E4%BB%BD%E8%87%B3%E9%9B%B2%E7%AB%AF/402_hu1ef813e789cbadf10476b8f3c1f11191_17090_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/centos7%E4%B8%8A%E4%BD%BF%E7%94%A8rclone%E9%81%A0%E7%AB%AF%E5%82%99%E4%BB%BD%E8%87%B3%E9%9B%B2%E7%AB%AF/402_hu1ef813e789cbadf10476b8f3c1f11191_17090_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;660&#34;
+		data-flex-basis=&#34;1584px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;打入 Google Drive 對應序號 18
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/centos7%E4%B8%8A%E4%BD%BF%E7%94%A8rclone%E9%81%A0%E7%AB%AF%E5%82%99%E4%BB%BD%E8%87%B3%E9%9B%B2%E7%AB%AF/403.png&#34;
+	width=&#34;1902&#34;
+	height=&#34;836&#34;
+	srcset=&#34;https://note.laurance.ml/p/centos7%E4%B8%8A%E4%BD%BF%E7%94%A8rclone%E9%81%A0%E7%AB%AF%E5%82%99%E4%BB%BD%E8%87%B3%E9%9B%B2%E7%AB%AF/403_hu5db012c8088361162f0f6aed2be7a043_48095_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/centos7%E4%B8%8A%E4%BD%BF%E7%94%A8rclone%E9%81%A0%E7%AB%AF%E5%82%99%E4%BB%BD%E8%87%B3%E9%9B%B2%E7%AB%AF/403_hu5db012c8088361162f0f6aed2be7a043_48095_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;227&#34;
+		data-flex-basis=&#34;546px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/centos7%E4%B8%8A%E4%BD%BF%E7%94%A8rclone%E9%81%A0%E7%AB%AF%E5%82%99%E4%BB%BD%E8%87%B3%E9%9B%B2%E7%AB%AF/404.png&#34;
+	width=&#34;1905&#34;
+	height=&#34;833&#34;
+	srcset=&#34;https://note.laurance.ml/p/centos7%E4%B8%8A%E4%BD%BF%E7%94%A8rclone%E9%81%A0%E7%AB%AF%E5%82%99%E4%BB%BD%E8%87%B3%E9%9B%B2%E7%AB%AF/404_hu985e1e53026bebd7fcba7b088230413e_43828_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/centos7%E4%B8%8A%E4%BD%BF%E7%94%A8rclone%E9%81%A0%E7%AB%AF%E5%82%99%E4%BB%BD%E8%87%B3%E9%9B%B2%E7%AB%AF/404_hu985e1e53026bebd7fcba7b088230413e_43828_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;228&#34;
+		data-flex-basis=&#34;548px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;client_id &amp;gt; 通常直接按 enter 不需填入
+
+client_secret &amp;gt; 通常直接按 enter 不需填入
+
+scope &amp;gt;  選 1 獲取全部權限
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/centos7%E4%B8%8A%E4%BD%BF%E7%94%A8rclone%E9%81%A0%E7%AB%AF%E5%82%99%E4%BB%BD%E8%87%B3%E9%9B%B2%E7%AB%AF/405.png&#34;
+	width=&#34;1904&#34;
+	height=&#34;552&#34;
+	srcset=&#34;https://note.laurance.ml/p/centos7%E4%B8%8A%E4%BD%BF%E7%94%A8rclone%E9%81%A0%E7%AB%AF%E5%82%99%E4%BB%BD%E8%87%B3%E9%9B%B2%E7%AB%AF/405_hu57ae2c190fbe276c7cb6a095ef72c10e_39336_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/centos7%E4%B8%8A%E4%BD%BF%E7%94%A8rclone%E9%81%A0%E7%AB%AF%E5%82%99%E4%BB%BD%E8%87%B3%E9%9B%B2%E7%AB%AF/405_hu57ae2c190fbe276c7cb6a095ef72c10e_39336_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;344&#34;
+		data-flex-basis=&#34;827px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;root_folder_id &amp;gt; 通常直接按 enter 不需填入
+
+service_account_file &amp;gt; 通常直接按 enter 不需填入
+
+Edit advanced config ?  選 n 不需要進階設定
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/centos7%E4%B8%8A%E4%BD%BF%E7%94%A8rclone%E9%81%A0%E7%AB%AF%E5%82%99%E4%BB%BD%E8%87%B3%E9%9B%B2%E7%AB%AF/406.png&#34;
+	width=&#34;1904&#34;
+	height=&#34;222&#34;
+	srcset=&#34;https://note.laurance.ml/p/centos7%E4%B8%8A%E4%BD%BF%E7%94%A8rclone%E9%81%A0%E7%AB%AF%E5%82%99%E4%BB%BD%E8%87%B3%E9%9B%B2%E7%AB%AF/406_hub7a5532a0a2ebbf62be537658619e3d1_15226_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/centos7%E4%B8%8A%E4%BD%BF%E7%94%A8rclone%E9%81%A0%E7%AB%AF%E5%82%99%E4%BB%BD%E8%87%B3%E9%9B%B2%E7%AB%AF/406_hub7a5532a0a2ebbf62be537658619e3d1_15226_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;857&#34;
+		data-flex-basis=&#34;2058px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Use web browser to automatically authenticate rclone with remote ?  選 n 遠程取 Token
+
+Use auto config ?   選 n 遠程取 Token
+
+並複製 TOKEN 至 config_token
+
+(取 TOKEN 看下面) 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/centos7%E4%B8%8A%E4%BD%BF%E7%94%A8rclone%E9%81%A0%E7%AB%AF%E5%82%99%E4%BB%BD%E8%87%B3%E9%9B%B2%E7%AB%AF/407.png&#34;
+	width=&#34;1901&#34;
+	height=&#34;834&#34;
+	srcset=&#34;https://note.laurance.ml/p/centos7%E4%B8%8A%E4%BD%BF%E7%94%A8rclone%E9%81%A0%E7%AB%AF%E5%82%99%E4%BB%BD%E8%87%B3%E9%9B%B2%E7%AB%AF/407_hu25ad6714a55e935c7e6583c10500f6e2_59801_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/centos7%E4%B8%8A%E4%BD%BF%E7%94%A8rclone%E9%81%A0%E7%AB%AF%E5%82%99%E4%BB%BD%E8%87%B3%E9%9B%B2%E7%AB%AF/407_hu25ad6714a55e935c7e6583c10500f6e2_59801_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;227&#34;
+		data-flex-basis=&#34;547px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;以下至 Windows 進行操作，驗證登入取 TOKEN&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;在本地 Windows 下載 rclone
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://downloads.rclone.org/rclone-current-windows-amd64.zip&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://downloads.rclone.org/rclone-current-windows-amd64.zip&lt;/a&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;載完解壓縮至慣用資料夾
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/centos7%E4%B8%8A%E4%BD%BF%E7%94%A8rclone%E9%81%A0%E7%AB%AF%E5%82%99%E4%BB%BD%E8%87%B3%E9%9B%B2%E7%AB%AF/408.png&#34;
+	width=&#34;1262&#34;
+	height=&#34;615&#34;
+	srcset=&#34;https://note.laurance.ml/p/centos7%E4%B8%8A%E4%BD%BF%E7%94%A8rclone%E9%81%A0%E7%AB%AF%E5%82%99%E4%BB%BD%E8%87%B3%E9%9B%B2%E7%AB%AF/408_hu02f67446e0bccfca4f12733d5d444eb5_13861_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/centos7%E4%B8%8A%E4%BD%BF%E7%94%A8rclone%E9%81%A0%E7%AB%AF%E5%82%99%E4%BB%BD%E8%87%B3%E9%9B%B2%E7%AB%AF/408_hu02f67446e0bccfca4f12733d5d444eb5_13861_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;205&#34;
+		data-flex-basis=&#34;492px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;WIN + X + A 叫出 Powershell
+
+cd 至剛剛壓縮的資料夾底下 [.exe執行檔這層]
+
+執行語法 .\rclone authorize &amp;quot;要驗證的雲端&amp;quot;  ps. google_drive 為 drive
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/centos7%E4%B8%8A%E4%BD%BF%E7%94%A8rclone%E9%81%A0%E7%AB%AF%E5%82%99%E4%BB%BD%E8%87%B3%E9%9B%B2%E7%AB%AF/409.png&#34;
+	width=&#34;1920&#34;
+	height=&#34;1040&#34;
+	srcset=&#34;https://note.laurance.ml/p/centos7%E4%B8%8A%E4%BD%BF%E7%94%A8rclone%E9%81%A0%E7%AB%AF%E5%82%99%E4%BB%BD%E8%87%B3%E9%9B%B2%E7%AB%AF/409_hua00999f5a220bad171ec0ba532cdd865_113606_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/centos7%E4%B8%8A%E4%BD%BF%E7%94%A8rclone%E9%81%A0%E7%AB%AF%E5%82%99%E4%BB%BD%E8%87%B3%E9%9B%B2%E7%AB%AF/409_hua00999f5a220bad171ec0ba532cdd865_113606_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;184&#34;
+		data-flex-basis=&#34;443px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;驗證完成後會出現以下畫面
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/centos7%E4%B8%8A%E4%BD%BF%E7%94%A8rclone%E9%81%A0%E7%AB%AF%E5%82%99%E4%BB%BD%E8%87%B3%E9%9B%B2%E7%AB%AF/410.png&#34;
+	width=&#34;1920&#34;
+	height=&#34;881&#34;
+	srcset=&#34;https://note.laurance.ml/p/centos7%E4%B8%8A%E4%BD%BF%E7%94%A8rclone%E9%81%A0%E7%AB%AF%E5%82%99%E4%BB%BD%E8%87%B3%E9%9B%B2%E7%AB%AF/410_hud765291a81ca161778fcb4bc14c0f861_12048_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/centos7%E4%B8%8A%E4%BD%BF%E7%94%A8rclone%E9%81%A0%E7%AB%AF%E5%82%99%E4%BB%BD%E8%87%B3%E9%9B%B2%E7%AB%AF/410_hud765291a81ca161778fcb4bc14c0f861_12048_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;217&#34;
+		data-flex-basis=&#34;523px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;最後將剛剛 powershell 驗證過的 TOKEN 貼入 LINUX
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.laurance.ml/p/centos7%E4%B8%8A%E4%BD%BF%E7%94%A8rclone%E9%81%A0%E7%AB%AF%E5%82%99%E4%BB%BD%E8%87%B3%E9%9B%B2%E7%AB%AF/411.png&#34;
+	width=&#34;1903&#34;
+	height=&#34;779&#34;
+	srcset=&#34;https://note.laurance.ml/p/centos7%E4%B8%8A%E4%BD%BF%E7%94%A8rclone%E9%81%A0%E7%AB%AF%E5%82%99%E4%BB%BD%E8%87%B3%E9%9B%B2%E7%AB%AF/411_hu29ea614cac33ff692778833117c4002f_112136_480x0_resize_box_3.png 480w, https://note.laurance.ml/p/centos7%E4%B8%8A%E4%BD%BF%E7%94%A8rclone%E9%81%A0%E7%AB%AF%E5%82%99%E4%BB%BD%E8%87%B3%E9%9B%B2%E7%AB%AF/411_hu29ea614cac33ff692778833117c4002f_112136_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;244&#34;
+		data-flex-basis=&#34;586px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;常用語法 (以 dropbox 為例)&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;rclone命令範例&lt;/th&gt;
+&lt;th&gt;功能&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;rclone lsd dropbox:路徑&lt;/td&gt;
+&lt;td&gt;列出資料夾&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;rclone ls dropbox:路徑&lt;/td&gt;
+&lt;td&gt;列出檔案 (路徑，大小)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;rclone lsl dropbox:路徑&lt;/td&gt;
+&lt;td&gt;列出檔案的修改時間、路徑、大小等&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;rclone size dropbox:路徑&lt;/td&gt;
+&lt;td&gt;路徑 的檔案大小合計&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;rclone mkdir dropbox:路徑&lt;/td&gt;
+&lt;td&gt;建立資料夾 路徑&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;rclone rmdir dropbox:路徑&lt;/td&gt;
+&lt;td&gt;移除資料夾 路徑&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;rclone delete dropbox:路徑&lt;/td&gt;
+&lt;td&gt;刪除檔案&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;rclone –min-size 100M lsl dropbox:doc&lt;/td&gt;
+&lt;td&gt;列出 /doc 資料夾裡超過100MB的檔案&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;rclone –dry-run –min-size 100M delete dropbox:doc&lt;/td&gt;
+&lt;td&gt;測試一下會刪掉那些檔&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;rclone –min-size 100M delete dropbox:doc&lt;/td&gt;
+&lt;td&gt;確定刪除&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;rclone copy d:\doc\test.doc dropbox:doc&lt;/td&gt;
+&lt;td&gt;拷貝檔案&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;rclone copy dropoox:doc dropbox:backup/20160315&lt;/td&gt;
+&lt;td&gt;直接在Dropbox上拷貝檔案&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;rclone sync d:\doc dropbox:doc&lt;/td&gt;
+&lt;td&gt;同步處理&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;rclone -v&lt;/td&gt;
+&lt;td&gt;顯示所有指令與選項之說明&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;hr&gt;
+
+</description>
+        </item>
+        
+    </channel>
+</rss>
